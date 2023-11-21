@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "University of Southampton Library R training",
+    "section": "",
+    "text": "Preface\nThis is a book contains R code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.\nIf you want a full guide to data analysis in R check out R for Data Science\nSome of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called Coding Together.\nIf you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE). You can use R without RStudio, but not the other way around.\nDownload R here and Download RStudio Desktop here."
+  }
+]
