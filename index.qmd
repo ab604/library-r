@@ -4,6 +4,8 @@ This is a book contains R code and examples for addressing tasks faced by the Bi
 
 If you want a full guide to data analysis in R check out [R for Data Science](https://r4ds.hadley.nz/)
 
-```{r}
-1 + 1
-```
+Some of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called [Coding Together](https://ab604.github.io/docs/coding-together-2019/).
+
+If you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE). You can use R without RStudio, but not the other way around.
+
+[Download R here](https://cran.r-project.org/) and [Download RStudio Desktop here](https://posit.co/download/rstudio-desktop/).
