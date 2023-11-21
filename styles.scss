@@ -1,0 +1,35 @@
+/*-- scss:defaults --*/
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Cabin:600,600i&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Staatliches&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Megrim&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Pompiere&display=swap);
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,400italic);
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+
+// fonts
+$font-family-sans-serif: 'Atkinson Hyperlegible',Atkinson+Hyperlegible
+  FreeSerif, serif !default;
+
+//$body-bg: #f0f1eb !default;
+//$body-color: #000 !default;
+//$link-color: #1381B0 !default;
+//$selection-bg: #26351c !default;
+// headings
+$presentation-heading-font: 'Atkinson Hyperlegible',Atkinson+Hyperlegible
+  FreeSerif, serif !default;
+//$presentation-heading-color: #383d3d !default;
+
+/* University of Southampton Logo amd marine 1 background-color */
+//$title-slide-background-color: #005C84 !default;
+  //background-image; url(https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/uos-logo-white.png);
+//	background-position; left 20px top 20px;
+//	background-size; 23%;
+
+/*-- scss:rules --*/
+.reveal a {
+  line-height: 1em;
+}

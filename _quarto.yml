@@ -2,13 +2,14 @@ project:
   type: book
 
 book:
-  title: "Universiry of Southampton Library R training"
+  title: "University of Southampton Library R training"
   author: "Alistair Bailey"
   date: last-modified
   date-format: "[Last Updated on] YYYY-MM-DD"
   reader-mode: true  
   page-footer:
       left: |
+        This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.
       right: |
         This book was built with <a href="https://quarto.org/">Quarto</a>.
   chapters:
@@ -22,7 +23,9 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: [cosmo, styles.scss]
+      dark: [darkly, styles.scss]
   pdf:
     documentclass: scrreprt
 
