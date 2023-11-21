@@ -1,0 +1,30 @@
+project:
+  type: book
+
+book:
+  title: "Universiry of Southampton Library R training"
+  author: "Alistair Bailey"
+  date: last-modified
+  date-format: "[Last Updated on] YYYY-MM-DD"
+  reader-mode: true  
+  page-footer:
+      left: |
+      right: |
+        This book was built with <a href="https://quarto.org/">Quarto</a>.
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+  
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

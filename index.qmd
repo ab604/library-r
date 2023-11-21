@@ -1,0 +1,9 @@
+# Preface {.unnumbered}
+
+This is a book contains R code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.
+
+If you want a full guide to data analysis in R check out [R for Data Science](https://r4ds.hadley.nz/)
+
+```{r}
+1 + 1
+```
