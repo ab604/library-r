@@ -21,7 +21,6 @@ book:
     - visualisation.qmd
     - references.qmd
   
-
 bibliography: references.bib
 
 format:
