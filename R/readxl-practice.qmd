@@ -1,0 +1,26 @@
+---
+title: "Read excel practice"
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(readxl)
+```
+
+## Read in
+
+> "...a fortnightly check that Stephie carries out for REF and Funder Compliance, the Export Control Team periodically asks us for information about particular staff/institutions/countries and we can use this as it has been sense checked as UoS, trying to search in the Affiliations can be very time consuming..."
+
+```{r}
+dat <- read_xlsx("../data/V1 New OA Compliance Master Sheet.xlsx", sheet = "Master (New data)")
+```
+
+```{r}
+dat |> filter(`UoS Corresponding Author` == "Yes") |> tally()
+
+dat |> select(Affiliations) |> 
+  separate_wider_delim(cols = Affiliations, delim = ";", names_sep = "_", 
+                       too_few = "align_start",too_many = "drop") |> 
+  view()
+```
