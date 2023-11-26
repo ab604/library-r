@@ -19,8 +19,17 @@ dat <- read_xlsx("../data/V1 New OA Compliance Master Sheet.xlsx", sheet = "Mast
 ```{r}
 dat |> filter(`UoS Corresponding Author` == "Yes") |> tally()
 
-dat |> select(Affiliations) |> 
+dt <- dat |> #select(Affiliations) |> 
   separate_wider_delim(cols = Affiliations, delim = ";", names_sep = "_", 
                        too_few = "align_start",too_many = "drop") |> 
-  view()
+  select(14:827) |> 
+  #mutate(uos = coalesce(Affiliations_1,Affiliations_2))
+  mutate(across(starts_with("Affiliations"), str_extract, "Southampton", 
+         .names = "{.col}_extract")) |> 
+  mutate(component = coalesce(ends_with("_extract")),
+        .keep = "unused")
+
+# dat |> group_by(`Document Type`) |> summarise(n())
+# 
+# dat |> mutate(uos_aff = str_extract(Affiliations, "(?<=;)(.*Southampton.*)(?=;)")) |> view()
 ```
