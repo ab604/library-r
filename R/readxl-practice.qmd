@@ -13,7 +13,7 @@ library(readxl)
 > "...a fortnightly check that Stephie carries out for REF and Funder Compliance, the Export Control Team periodically asks us for information about particular staff/institutions/countries and we can use this as it has been sense checked as UoS, trying to search in the Affiliations can be very time consuming..."
 
 ```{r}
-dat <- read_xlsx("../data/V1 New OA Compliance Master Sheet.xlsx", sheet = "Master (New data)")
+dat <- read_xlsx("../data/V1 New OA Compliance Master Sheet.xlsx", sheet = "Master (New data)") 
 ```
 
 ```{r}
@@ -21,15 +21,31 @@ dat |> filter(`UoS Corresponding Author` == "Yes") |> tally()
 
 dt <- dat |> #select(Affiliations) |> 
   separate_wider_delim(cols = Affiliations, delim = ";", names_sep = "_", 
-                       too_few = "align_start",too_many = "drop") |> 
-  select(14:827) |> 
-  #mutate(uos = coalesce(Affiliations_1,Affiliations_2))
-  mutate(across(starts_with("Affiliations"), str_extract, "Southampton", 
-         .names = "{.col}_extract")) |> 
-  mutate(component = coalesce(ends_with("_extract")),
-        .keep = "unused")
+                       too_few = "align_start")
 
-# dat |> group_by(`Document Type`) |> summarise(n())
-# 
-# dat |> mutate(uos_aff = str_extract(Affiliations, "(?<=;)(.*Southampton.*)(?=;)")) |> view()
+dt_long <- dt |> pivot_longer(14:883, names_to = "Affiliation_No", values_to = "Department", values_drop_na = TRUE)
+
+
+dt_uos <- dt_long |> filter(str_detect(Department, "South*ampton"))
+
+dt_uos |> distinct(Title) |> tally()
+dt_long |> distinct(Title) |> tally()
+
+dt_uos |> group_by(Department) |> count() |> view()
+
+dt_uos |> filter(str_detect(Department,"MRC Lifecourse Epid")) |> distinct(Title) |> tally()
+
+dt_uos |> summarise_all(list(~ sum(is.na(.))))
+
+dt_long |> count(Department, sort = T)
+
+dt_all <- dat |> left_join(dt_uos)
+
+dat |> anti_join(dt_uos) |> view()
+
+# Count the missing values
+dat |> summarise_all(list(~ sum(is.na(.)))) |> 
+  pivot_longer(1:35, names_to = "variable", values_to = "NAs") |> view()
 ```
+
+To-do; create synthetic data, sense checks and counting NAs, looking for spelling inconsistencies.
