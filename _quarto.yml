@@ -28,8 +28,8 @@ format:
     theme:
       light: [cosmo, styles.scss]
       dark: [darkly, styles.scss]
-  pdf:
-    documentclass: scrreprt
+  #pdf:
+   # documentclass: scrreprt
 
 editor: visual
 

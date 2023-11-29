@@ -1,5 +1,3 @@
 # Data wrangling II
 
-In this chapter we'll do some more complicated transformations.
-
-Let's start with a small data set called
+This chapter has no content yet.

@@ -1,0 +1,557 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={University of Southampton Library R training},
+  pdfauthor={Alistair Bailey},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{University of Southampton Library R training}
+\author{Alistair Bailey}
+\date{Last Updated on 2023-11-29}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, frame hidden, interior hidden, enhanced, boxrule=0pt, sharp corners, breakable]}{\end{tcolorbox}}\fi
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\bookmarksetup{startatroot}
+
+\hypertarget{preface}{%
+\chapter*{Preface}\label{preface}}
+\addcontentsline{toc}{chapter}{Preface}
+
+\markboth{Preface}{Preface}
+
+This is a book contains R code and examples for addressing tasks faced
+by the Bibliometrics Team at the University of Southampton Library
+Service.
+
+If you want a full guide to data analysis in R check out
+\href{https://r4ds.hadley.nz/}{R for Data Science}
+
+Some of the materials here are re-used from previous workshops I ran for
+biologists from 2019/20 called
+\href{https://ab604.github.io/docs/coding-together-2019/}{Coding
+Together}.
+
+If you are new to R, then the first thing to know is that R is a
+programming language and RStudio is program for working with R called an
+integrated development environment (IDE). You can use R without RStudio,
+but not the other way around.
+
+\href{https://cran.r-project.org/}{Download R here} and
+\href{https://posit.co/download/rstudio-desktop/}{Download RStudio
+Desktop here}.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{getting-started}{%
+\chapter{Getting started}\label{getting-started}}
+
+This has no content yet. See Knuth (1984) for additional discussion of
+literate programming.
+
+\hypertarget{data-transformations}{%
+\section{Data transformations}\label{data-transformations}}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{data-wrangling-i}{%
+\chapter{Data wrangling I}\label{data-wrangling-i}}
+
+This section is work in progress
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: package 'ggplot2' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{verbatim}
+Warning: package 'dplyr' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{verbatim}
+Warning: package 'stringr' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{verbatim}
+Warning: package 'lubridate' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(openxlsx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: package 'openxlsx' was built under R version 4.3.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(janitor)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tidying-data}{%
+\section{Tidying data}\label{tidying-data}}
+
+In this section we're going to do some more complicated transformations.
+Let's remind ourselves of the definition of tidy data:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Each variable must have its own column.
+\item
+  Each observation must have its own row.
+\item
+  Each value must have its own cell.
+\end{enumerate}
+
+We'll start with a table of published articles where each row is a set
+of observations about each article.
+
+\emph{What makes it untidy?}
+
+It's untidy because here we are interested in the University of
+Southampton (UoS) affiliations associated with each article.
+Unfortunatley, all the individual affiliations for all the institutions
+affiliated with each paper are combined in a single column rather than
+their own columns. Therefore the values for each affiliation aren't in
+their own cells.
+
+Hence for the purposes of the question we wish to pose, \emph{``Which
+UoS department is affiliated to each article?''} the table is untidy in
+terms of rules 1 and 3.
+
+\hypertarget{our-workflow}{%
+\subsection{Our workflow}\label{our-workflow}}
+
+Let's consider the steps we need to take to arrive at a table which is
+tidy and contains the values for each UoS affiliation for each published
+article:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Import the table, check it and repair if necessary.
+\item
+  Seperate the affiliations into a new column (variable) for each
+  affiliation associated with each article.
+\end{enumerate}
+
+The articles don't all have the same number of affiliations, so we will
+have lots of columns with only a few values in. In other words a wide
+table (lots of columns) but sparsely populated. What we want is a table
+that has only the UoS affiliation observations.
+
+What is our usual trick for obtaining only the observations of interest?
+We \texttt{filter} the rows. But hang on, we can't do that unless we
+have the each affiliation in a row, rather spread across lots of
+columns. So what do?
+
+Transforming a table so that columns become rows, or rows become columns
+is called \textbf{\emph{pivoting}}. Here, having separated the
+affiliations and created a wide table with a variable for each
+affiliation we want to pivot from wide-to-long.
+
+When we pivot wide-to-long, the column names become a new set of
+observations in a new variable, and the values from each column become
+another set of observations in a new variable. Everything else is
+duplicated and hence we end up with lots of rows.
+
+In this way we create a table on which we can filter the rows for the
+UoS affiliations.
+
+For some articles there may be multiple UoS affiliations, so we may wish
+to pivot long-to-wide to create a final tidy table with a single row for
+each article, but columns for each UoS affiliation.
+
+\hypertarget{importing}{%
+\subsection{Importing}\label{importing}}
+
+Let's start with a small data set called
+\texttt{OA-compliance-subset-2023-11-29.xlsx} from the repository
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Use the read.xlsx to download and load the excel file into object dat}
+\NormalTok{dat }\OtherTok{\textless{}{-}} \FunctionTok{read.xlsx}\NormalTok{(}\StringTok{"https://github.com/ab604/library{-}r/raw/main/data/OA{-}compliance{-}subset{-}2023{-}11{-}29.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Use the \texttt{glimpse()} function from \texttt{dplyr} to take a peak
+at this data:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We can see that the table has 20 rows with 35 columns of variables.
+\item
+  Looking at the data types, we can see the import function parsed two
+  types of data: \texttt{\textless{}chr\textgreater{}} character,
+  meaning strings of text and \texttt{\textless{}dbl\textgreater{}}
+  double, meaning numerical data. However, looking at the variable
+  names, some are dates and haven't been identified automatically.
+\item
+  There are lots of \texttt{NA} s, which are missing values. This may or
+  may not matter.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 20
+Columns: 35
+$ Faculty                          <chr> "FELS", "FEPS", "FEPS", "FELS", "FSS"~
+$ Report.Date                      <dbl> 45201, 45243, 45201, 45215, 45229, 45~
+$ Ref.OA.Compliance                <chr> "No", "Yes", "Yes", "Yes", "Yes", "Ye~
+$ `Reason.for.Non-Compliance`      <chr> "No Pure Record", NA, NA, NA, NA, NA,~
+$ Time.remaining.to.make.compliant <dbl> 16, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ Notes                            <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ Authors                          <chr> "Aeschbach D.; Cohen D.A.; Lockyer B.~
+$ Title                            <chr> "Spontaneous attentional failures ref~
+$ Source.Title                     <chr> "Sleep Health", "Frontiers in Artific~
+$ Document.Type                    <chr> "Article", "Conference paper", "Artic~
+$ Publisher                        <chr> "Elsevier Inc.", "IOS Press BV", "Ame~
+$ DOI                              <chr> "10.1016/j.sleh.2023.07.013", "10.323~
+$ Hyperlink.DOI                    <chr> "http://dx.doi.org/10.1016/j.sleh.202~
+$ Affiliations                     <chr> "Department of Sleep and Human Factor~
+$ SCH1                             <chr> "PSY", "CS", "PA", "BS", "SES", "PSY"~
+$ SCH2                             <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ SCH3                             <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ Accepted.Date                    <chr> "45129", NA, "45156", "11/09/23", "45~
+$ Epublication.Date                <chr> "45176", "45198", "45174", "45196", "~
+$ Publisher.OA                     <chr> "No", "Yes", "No", "Yes", "Yes", "Yes~
+$ Publisher.Licence                <chr> NA, "CC BY-NC", NA, "CC BY", "CC BY",~
+$ PURE.ID                          <chr> "No Record", NA, "143740848", "143621~
+$ Version.in.Pure                  <chr> NA, NA, "Accepted manuscript, Version~
+$ Licence.in.Pure                  <chr> NA, NA, "UoS AM", "CC BY", NA, NA, "C~
+$ Funder.1                         <chr> "N/A", "EPSRC", "N/A", "MRC", "N/A", ~
+$ Funder.2                         <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, "~
+$ Funder.3                         <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ Data.Statement                   <chr> NA, "No", "Yes", "Yes", NA, NA, NA, N~
+$ Rights.Rentention.Statement      <chr> NA, NA, NA, "Yes", NA, NA, NA, NA, NA~
+$ UKRI.Compliant                   <chr> NA, "No", NA, "Yes", NA, NA, NA, NA, ~
+$ OA.Status                        <chr> "No", "Gold", "Green", "Gold", "Gold"~
+$ Correspondence.address           <chr> "D. Aeschbach; Department of Sleep an~
+$ UoS.Corresponding.Author         <chr> "No", "No", "Yes", "Yes", "Yes", "No"~
+$ Controlled.Publisher             <chr> "Elsevier", NA, "ACS", NA, NA, "Sprin~
+$ `Hide.Column.-.DOI.Formula`      <chr> "http://dx.doi.org/10.1016/j.sleh.202~
+\end{verbatim}
+
+\hypertarget{lets-fix-the-dates}{%
+\subsection{Let's fix the dates}\label{lets-fix-the-dates}}
+
+We'll make a new object called \texttt{dat\_repaired} and use the
+\texttt{mutate} function from \texttt{dpylr} along with
+\texttt{convert\_to\_date} in the \texttt{janitor} package to convert
+the number values into dates.
+
+Then we'll take a look with the glimpse function and we can see these
+look like dates in the year-month-day format and are identified as
+\texttt{\textless{}date\textgreater{}} data types.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat\_repaired }\OtherTok{\textless{}{-}}\NormalTok{ dat }\SpecialCharTok{|\textgreater{}} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Report.Date =} \FunctionTok{convert\_to\_date}\NormalTok{(Report.Date),}
+                              \AttributeTok{Accepted.Date =} \FunctionTok{convert\_to\_date}\NormalTok{(Accepted.Date),}
+                              \AttributeTok{Epublication.Date =} \FunctionTok{convert\_to\_date}\NormalTok{(Epublication.Date))}
+\FunctionTok{glimpse}\NormalTok{(dat\_repaired)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 20
+Columns: 35
+$ Faculty                          <chr> "FELS", "FEPS", "FEPS", "FELS", "FSS"~
+$ Report.Date                      <date> 2023-10-02, 2023-11-13, 2023-10-02, ~
+$ Ref.OA.Compliance                <chr> "No", "Yes", "Yes", "Yes", "Yes", "Ye~
+$ `Reason.for.Non-Compliance`      <chr> "No Pure Record", NA, NA, NA, NA, NA,~
+$ Time.remaining.to.make.compliant <dbl> 16, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ Notes                            <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ Authors                          <chr> "Aeschbach D.; Cohen D.A.; Lockyer B.~
+$ Title                            <chr> "Spontaneous attentional failures ref~
+$ Source.Title                     <chr> "Sleep Health", "Frontiers in Artific~
+$ Document.Type                    <chr> "Article", "Conference paper", "Artic~
+$ Publisher                        <chr> "Elsevier Inc.", "IOS Press BV", "Ame~
+$ DOI                              <chr> "10.1016/j.sleh.2023.07.013", "10.323~
+$ Hyperlink.DOI                    <chr> "http://dx.doi.org/10.1016/j.sleh.202~
+$ Affiliations                     <chr> "Department of Sleep and Human Factor~
+$ SCH1                             <chr> "PSY", "CS", "PA", "BS", "SES", "PSY"~
+$ SCH2                             <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ SCH3                             <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ Accepted.Date                    <date> 2023-07-22, NA, 2023-08-18, 2011-09-~
+$ Epublication.Date                <date> 2023-09-07, 2023-09-29, 2023-09-05, ~
+$ Publisher.OA                     <chr> "No", "Yes", "No", "Yes", "Yes", "Yes~
+$ Publisher.Licence                <chr> NA, "CC BY-NC", NA, "CC BY", "CC BY",~
+$ PURE.ID                          <chr> "No Record", NA, "143740848", "143621~
+$ Version.in.Pure                  <chr> NA, NA, "Accepted manuscript, Version~
+$ Licence.in.Pure                  <chr> NA, NA, "UoS AM", "CC BY", NA, NA, "C~
+$ Funder.1                         <chr> "N/A", "EPSRC", "N/A", "MRC", "N/A", ~
+$ Funder.2                         <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, "~
+$ Funder.3                         <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N~
+$ Data.Statement                   <chr> NA, "No", "Yes", "Yes", NA, NA, NA, N~
+$ Rights.Rentention.Statement      <chr> NA, NA, NA, "Yes", NA, NA, NA, NA, NA~
+$ UKRI.Compliant                   <chr> NA, "No", NA, "Yes", NA, NA, NA, NA, ~
+$ OA.Status                        <chr> "No", "Gold", "Green", "Gold", "Gold"~
+$ Correspondence.address           <chr> "D. Aeschbach; Department of Sleep an~
+$ UoS.Corresponding.Author         <chr> "No", "No", "Yes", "Yes", "Yes", "No"~
+$ Controlled.Publisher             <chr> "Elsevier", NA, "ACS", NA, NA, "Sprin~
+$ `Hide.Column.-.DOI.Formula`      <chr> "http://dx.doi.org/10.1016/j.sleh.202~
+\end{verbatim}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{data-wrangling-ii}{%
+\chapter{Data wrangling II}\label{data-wrangling-ii}}
+
+This chapter has no content yet.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{visualisation}{%
+\chapter{Visualisation}\label{visualisation}}
+
+This has no content yet.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-knuth84}{}}%
+Knuth, Donald E. 1984. {``Literate Programming.''} \emph{Comput. J.} 27
+(2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
+
+\end{CSLReferences}
+
+
+
+\end{document}
