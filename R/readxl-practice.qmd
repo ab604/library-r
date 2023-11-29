@@ -3,9 +3,12 @@ title: "Read excel practice"
 ---
 
 ```{r}
+#| message: false
 library(tidyverse)
 library(janitor)
 library(readxl)
+library(writexl)
+library(glue)
 ```
 
 ## Read in
@@ -14,6 +17,10 @@ library(readxl)
 
 ```{r}
 dat <- read_xlsx("../data/V1 New OA Compliance Master Sheet.xlsx", sheet = "Master (New data)") 
+
+dat_small <- dat |> slice_sample(n = 20) 
+
+dat_small |> write_xlsx(glue("../data/OA-compliance-subset-{today()}.xlsx"))
 ```
 
 ```{r}
@@ -49,3 +56,19 @@ dat |> summarise_all(list(~ sum(is.na(.)))) |>
 ```
 
 To-do; create synthetic data, sense checks and counting NAs, looking for spelling inconsistencies.
+
+```{r}
+dat_small_wide <- dat_small |> 
+  separate_wider_delim(cols = Affiliations, delim = ";", names_sep = "_", 
+                       too_few = "align_start")
+
+dat_small_long <- dat_small_wide |> pivot_longer(14:59, 
+                                                 names_to = "Affiliation_No", 
+                                                 values_to = "Department", 
+                                                 values_drop_na = TRUE)
+
+dat_uos <- dat_small_long |> filter(str_detect(Department, "South*ampton"))
+
+dat_uos |> group_by(Department) |> summarise()
+```
+
