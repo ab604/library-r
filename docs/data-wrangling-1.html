@@ -236,24 +236,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>This section is work in progress</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.3.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.3.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'stringr' was built under R version 4.3.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'lubridate' was built under R version 4.3.2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'openxlsx' was built under R version 4.3.2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="tidying-data" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="tidying-data"><span class="header-section-number">2.1</span> Tidying data</h2>
@@ -275,18 +260,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Seperate the affiliations into a new column (variable) for each affiliation associated with each article.</li>
 </ol>
 <p>The articles don’t all have the same number of affiliations, so we will have lots of columns with only a few values in. In other words a wide table (lots of columns) but sparsely populated. What we want is a table that has only the UoS affiliation observations.</p>
-<p>What is our usual trick for obtaining only the observations of interest? We <code>filter</code> the rows. But hang on, we can’t do that unless we have the each affiliation in a row, rather spread across lots of columns. So what do?</p>
+<p>What is our usual trick for obtaining only the observations of interest?</p>
+<p>We <code>filter</code> the rows. But hang on, we can’t do that unless we have the each affiliation in a row, rather spread across lots of columns. So what do?</p>
 <p>Transforming a table so that columns become rows, or rows become columns is called <strong><em>pivoting</em></strong>. Here, having separated the affiliations and created a wide table with a variable for each affiliation we want to pivot from wide-to-long.</p>
 <p>When we pivot wide-to-long, the column names become a new set of observations in a new variable, and the values from each column become another set of observations in a new variable. Everything else is duplicated and hence we end up with lots of rows.</p>
-<p>In this way we create a table on which we can filter the rows for the UoS affiliations.</p>
+<ol start="3" type="1">
+<li>Using <code>pivot_long</code> we create a table on which we can filter the rows for the UoS affiliations.</li>
+</ol>
 <p>For some articles there may be multiple UoS affiliations, so we may wish to pivot long-to-wide to create a final tidy table with a single row for each article, but columns for each UoS affiliation.</p>
 </section>
 <section id="importing" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="importing"><span class="header-section-number">2.1.2</span> Importing</h3>
 <p>Let’s start with a small data set called <code>OA-compliance-subset-2023-11-29.xlsx</code> from the repository</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the read.xlsx to download and load the excel file into object dat</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/OA-compliance-subset-2023-11-29.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the read.xlsx to download and load the excel file into object dat</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/OA-compliance-subset-2023-11-29.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Use the <code>glimpse()</code> function from <code>dplyr</code> to take a peak at this data:</p>
 <ol type="1">
@@ -295,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>There are lots of <code>NA</code> s, which are missing values. This may or may not matter.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 35
@@ -342,10 +330,10 @@ $ `Hide.Column.-.DOI.Formula`      &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh
 <p>We’ll make a new object called <code>dat_repaired</code> and use the <code>mutate</code> function from <code>dpylr</code> along with <code>convert_to_date</code> in the <code>janitor</code> package to convert the number values into dates.</p>
 <p>Then we’ll take a look with the glimpse function and we can see these look like dates in the year-month-day format and are identified as <code>&lt;date&gt;</code> data types.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Report.Date =</span> <span class="fu">convert_to_date</span>(Report.Date),</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Accepted.Date =</span> <span class="fu">convert_to_date</span>(Accepted.Date),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Epublication.Date =</span> <span class="fu">convert_to_date</span>(Epublication.Date))</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat_repaired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Report.Date =</span> <span class="fu">convert_to_date</span>(Report.Date),</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Accepted.Date =</span> <span class="fu">convert_to_date</span>(Accepted.Date),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Epublication.Date =</span> <span class="fu">convert_to_date</span>(Epublication.Date))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat_repaired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 35

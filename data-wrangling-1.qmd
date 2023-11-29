@@ -4,6 +4,8 @@ This section is work in progress
 
 ```{r}
 #| message: false
+#| warning: false
+#| label: load-libraries
 library(tidyverse)
 library(openxlsx)
 library(janitor)
@@ -34,13 +36,15 @@ Let's consider the steps we need to take to arrive at a table which is tidy and 
 
 The articles don't all have the same number of affiliations, so we will have lots of columns with only a few values in. In other words a wide table (lots of columns) but sparsely populated. What we want is a table that has only the UoS affiliation observations.
 
-What is our usual trick for obtaining only the observations of interest? We `filter` the rows. But hang on, we can't do that unless we have the each affiliation in a row, rather spread across lots of columns. So what do?
+What is our usual trick for obtaining only the observations of interest?
+
+We `filter` the rows. But hang on, we can't do that unless we have the each affiliation in a row, rather spread across lots of columns. So what do?
 
 Transforming a table so that columns become rows, or rows become columns is called ***pivoting***. Here, having separated the affiliations and created a wide table with a variable for each affiliation we want to pivot from wide-to-long.
 
 When we pivot wide-to-long, the column names become a new set of observations in a new variable, and the values from each column become another set of observations in a new variable. Everything else is duplicated and hence we end up with lots of rows.
 
-In this way we create a table on which we can filter the rows for the UoS affiliations.
+3.  Using `pivot_long` we create a table on which we can filter the rows for the UoS affiliations.
 
 For some articles there may be multiple UoS affiliations, so we may wish to pivot long-to-wide to create a final tidy table with a single row for each article, but columns for each UoS affiliation.
 
@@ -49,6 +53,7 @@ For some articles there may be multiple UoS affiliations, so we may wish to pivo
 Let's start with a small data set called `OA-compliance-subset-2023-11-29.xlsx` from the repository
 
 ```{r}
+#| label: import-data
 # Use the read.xlsx to download and load the excel file into object dat
 dat <- read.xlsx("https://github.com/ab604/library-r/raw/main/data/OA-compliance-subset-2023-11-29.xlsx")
 ```
@@ -60,6 +65,7 @@ Use the `glimpse()` function from `dplyr` to take a peak at this data:
 3.  There are lots of `NA` s, which are missing values. This may or may not matter.
 
 ```{r}
+#| label: glimpse-data
 glimpse(dat)
 ```
 
@@ -70,6 +76,7 @@ We'll make a new object called `dat_repaired` and use the `mutate` function from
 Then we'll take a look with the glimpse function and we can see these look like dates in the year-month-day format and are identified as `<date>` data types.
 
 ```{r}
+#| label: fix-dates
 dat_repaired <- dat |> mutate(Report.Date = convert_to_date(Report.Date),
                               Accepted.Date = convert_to_date(Accepted.Date),
                               Epublication.Date = convert_to_date(Epublication.Date))
