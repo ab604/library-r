@@ -9,3 +9,9 @@ Some of the materials here are re-used from previous workshops I ran for biologi
 If you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE). You can use R without RStudio, but not the other way around.
 
 [Download R here](https://cran.r-project.org/) and [Download RStudio Desktop here](https://posit.co/download/rstudio-desktop/).
+
+### Guiding principles
+
+Keep the raw data raw
+
+Write love letters to our future selves.
