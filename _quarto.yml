@@ -15,6 +15,7 @@ book:
         This book was built with <a href="https://quarto.org/">Quarto</a>.
   chapters:
     - index.qmd
+    - setting-the-scene.qmd
     - getting-started.qmd
     #- data-wrangling-1.qmd
     #- data-wrangling-2.qmd

@@ -10,4 +10,4 @@ If you are new to R, then the first thing to know is that R is a programming lan
 
 You can use R without installing RStudio, but you can't work with R in RStudio by installing RStudio alone. [Download R here](https://cran.r-project.org/) and [Download RStudio Desktop here](https://posit.co/download/rstudio-desktop/).
 
-If you are wondering if and/or why learning R might be useful, the first few sections of @sec-getting-started should help answer those questions.
+If you are wondering if and/or why learning R might be useful, @sec-setting-the-scene should help answer those questions.

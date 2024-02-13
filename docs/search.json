@@ -4,39 +4,159 @@
     "href": "index.html",
     "title": "R for Librarians",
     "section": "",
-    "text": "Preface\nThis is a book contains guidance for getting started using R, with code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.\nIf you want a full guide to data analysis in R check out R for Data Science\nSome of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called Coding Together.\nIf you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE).\nYou can use R without installing RStudio, but you can’t work with R in RStudio by installing RStudio alone. Download R here and Download RStudio Desktop here.\nIf you are wondering if and/or why learning R might be useful, the first few sections of 1  Getting started should help answer those questions.",
+    "text": "Preface\nThis is a book contains guidance for getting started using R, with code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.\nIf you want a full guide to data analysis in R check out R for Data Science\nSome of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called Coding Together.\nIf you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE).\nYou can use R without installing RStudio, but you can’t work with R in RStudio by installing RStudio alone. Download R here and Download RStudio Desktop here.\nIf you are wondering if and/or why learning R might be useful, 1  Setting the scene should help answer those questions.",
     "crumbs": [
       "Preface"
     ]
   },
   {
-    "objectID": "getting-started.html",
-    "href": "getting-started.html",
-    "title": "1  Getting started",
+    "objectID": "setting-the-scene.html",
+    "href": "setting-the-scene.html",
+    "title": "1  Setting the scene",
     "section": "",
     "text": "The challenge\nNew often means difficult, but difficult things are also often worth doing. The quote in Note 1.1 pretty much captures my feelings about the challenge of getting started and learning R:",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting the scene</span>"
     ]
   },
   {
-    "objectID": "getting-started.html#sec-if-youre-using-excel-you-are-already-programming",
-    "href": "getting-started.html#sec-if-youre-using-excel-you-are-already-programming",
-    "title": "1  Getting started",
+    "objectID": "setting-the-scene.html#sec-if-youre-using-excel-you-are-already-programming",
+    "href": "setting-the-scene.html#sec-if-youre-using-excel-you-are-already-programming",
+    "title": "1  Setting the scene",
     "section": "1.1 If you’re using Excel you are already programming",
     "text": "1.1 If you’re using Excel you are already programming\nIn 2021 Excel became Turing-complete (Figure 1.2), which is a colloquial way of saying one computing language can approximate another computing language.\nIn other words, anything one can do in Python, R, C++ and so on, should also be possible in Excel.\nHence if you are using Excel, you are already a programmer.\n\n\n\n\n\n\n\n\nFigure 1.2: The head of Microsoft announces that Excel is Turing-complete.\n\n\n\n\n\nGordon Shotwell wrote a blog called R for Excel Users …",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting the scene</span>"
     ]
   },
   {
-    "objectID": "getting-started.html#data-transformations",
-    "href": "getting-started.html#data-transformations",
-    "title": "1  Getting started",
-    "section": "1.2 Data transformations",
-    "text": "1.2 Data transformations",
+    "objectID": "setting-the-scene.html#sec-a-little-goes-a-long-way",
+    "href": "setting-the-scene.html#sec-a-little-goes-a-long-way",
+    "title": "1  Setting the scene",
+    "section": "1.2 A little goes a long way",
+    "text": "1.2 A little goes a long way",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting the scene</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html",
+    "href": "getting-started.html",
+    "title": "2  Getting started",
+    "section": "",
+    "text": "2.1 What is R?\nStuff",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#rstudio",
+    "href": "getting-started.html#rstudio",
+    "title": "2  Getting started",
+    "section": "2.2 RStudio",
+    "text": "2.2 RStudio\n\n2.2.1 What is real?\n\n\n2.2.2 Where am I?",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#installing-and-loading-packages",
+    "href": "getting-started.html#installing-and-loading-packages",
+    "title": "2  Getting started",
+    "section": "2.3 Installing and loading packages",
+    "text": "2.3 Installing and loading packages",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#what-is-a-function-and-how-do-i-use-them",
+    "href": "getting-started.html#what-is-a-function-and-how-do-i-use-them",
+    "title": "2  Getting started",
+    "section": "2.4 What is a function and how do I use them?",
+    "text": "2.4 What is a function and how do I use them?",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#a-project-orientated-workflow",
+    "href": "getting-started.html#a-project-orientated-workflow",
+    "title": "2  Getting started",
+    "section": "2.5 A project orientated workflow",
+    "text": "2.5 A project orientated workflow",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#base-r-the-tidyverse-and-tidy-data",
+    "href": "getting-started.html#base-r-the-tidyverse-and-tidy-data",
+    "title": "2  Getting started",
+    "section": "2.6 Base R, the tidyverse and tidy data",
+    "text": "2.6 Base R, the tidyverse and tidy data",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#atoms-of-r",
+    "href": "getting-started.html#atoms-of-r",
+    "title": "2  Getting started",
+    "section": "2.7 Atoms of R",
+    "text": "2.7 Atoms of R",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#categorical-data-aka-factors",
+    "href": "getting-started.html#categorical-data-aka-factors",
+    "title": "2  Getting started",
+    "section": "2.8 Categorical data aka Factors",
+    "text": "2.8 Categorical data aka Factors",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#assigning-objects",
+    "href": "getting-started.html#assigning-objects",
+    "title": "2  Getting started",
+    "section": "2.9 Assigning objects",
+    "text": "2.9 Assigning objects\n\n2.9.1 Indexing and sub-setting",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#data-containers-lists-matrices-arrays-and-data-frames",
+    "href": "getting-started.html#data-containers-lists-matrices-arrays-and-data-frames",
+    "title": "2  Getting started",
+    "section": "2.10 Data containers: Lists, matrices, arrays and data frames",
+    "text": "2.10 Data containers: Lists, matrices, arrays and data frames",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#plotting-and-exporting-data",
+    "href": "getting-started.html#plotting-and-exporting-data",
+    "title": "2  Getting started",
+    "section": "2.11 Plotting and exporting data",
+    "text": "2.11 Plotting and exporting data",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#getting-help",
+    "href": "getting-started.html#getting-help",
+    "title": "2  Getting started",
+    "section": "2.12 Getting help",
+    "text": "2.12 Getting help",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
   }
 ]
