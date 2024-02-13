@@ -1,10 +1,10 @@
 # Setting the scene {#sec-setting-the-scene}
 
 ::: {#chapter-01-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
-You can skip this chapter if you want to dive straight into learning R. This chapter is primarily background and philosophy to set the scene before we start installing and using R.
+You can skip this chapter if you want to dive straight into learning R. This chapter is primarily background and philosophy to set the scene before we start using R.
 :::
 
-### The challenge {#sec-the-challenge .unnumbered}
+## The challenge {#sec-the-challenge}
 
 New often means difficult, but difficult things are also often worth doing. The quote in @nte-biostar-quote pretty much captures my feelings about the challenge of getting started and learning R:
 
@@ -14,12 +14,12 @@ New often means difficult, but difficult things are also often worth doing. The 
 Source: [The Biostar Handbook](https://www.biostarhandbook.com/index.html)
 :::
 
-### But why is it worth doing? {#sec-but-why-is-it-worth-doing .unnumbered}
+### But why is it worth doing? {#sec-but-why-is-it-worth-doing}
 
 1.  Maybe it isn't, but experience is one way to find out.
 2.  My experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting things.
 
-### What are we doing? {#sec-what-are-we-doing .unnumbered}
+### What are we doing? {#sec-what-are-we-doing}
 
 @fig-workflow shows a truncated version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game). Conceptually, this is what we are mostly doing. I've crossed out modelling as that is beyond the scope here, but you may wish to explore the modelling part of the cycle yourself.
 
@@ -46,7 +46,7 @@ We then need to communicate our findings back out of our working environment to 
 knitr::include_graphics("img/ds-workflow-2024-02-13.png", dpi = 270)
 ```
 
-### How are we going to do it? {#sec-how-are-we-going-to-do-it .unnumbered}
+### How are we going to do it? {#sec-how-are-we-going-to-do-it}
 
 As per @nte-biostar-quote, step-by-step and through practice we will learn to think and work in a certain way that may be different to how you have previously worked.
 

@@ -150,12 +150,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-the-challenge" id="toc-sec-the-challenge" class="nav-link active" data-scroll-target="#sec-the-challenge">The challenge</a></li>
-  <li><a href="#sec-but-why-is-it-worth-doing" id="toc-sec-but-why-is-it-worth-doing" class="nav-link" data-scroll-target="#sec-but-why-is-it-worth-doing">But why is it worth doing?</a></li>
-  <li><a href="#sec-what-are-we-doing" id="toc-sec-what-are-we-doing" class="nav-link" data-scroll-target="#sec-what-are-we-doing">What are we doing?</a></li>
-  <li><a href="#sec-how-are-we-going-to-do-it" id="toc-sec-how-are-we-going-to-do-it" class="nav-link" data-scroll-target="#sec-how-are-we-going-to-do-it">How are we going to do it?</a></li>
-  <li><a href="#sec-if-youre-using-excel-you-are-already-programming" id="toc-sec-if-youre-using-excel-you-are-already-programming" class="nav-link" data-scroll-target="#sec-if-youre-using-excel-you-are-already-programming"><span class="header-section-number">1.1</span> If you’re using Excel you are already programming</a></li>
-  <li><a href="#sec-a-little-goes-a-long-way" id="toc-sec-a-little-goes-a-long-way" class="nav-link" data-scroll-target="#sec-a-little-goes-a-long-way"><span class="header-section-number">1.2</span> A little goes a long way</a></li>
+  <li><a href="#sec-the-challenge" id="toc-sec-the-challenge" class="nav-link active" data-scroll-target="#sec-the-challenge"><span class="header-section-number">1.1</span> The challenge</a>
+  <ul class="collapse">
+  <li><a href="#sec-but-why-is-it-worth-doing" id="toc-sec-but-why-is-it-worth-doing" class="nav-link" data-scroll-target="#sec-but-why-is-it-worth-doing"><span class="header-section-number">1.1.1</span> But why is it worth doing?</a></li>
+  <li><a href="#sec-what-are-we-doing" id="toc-sec-what-are-we-doing" class="nav-link" data-scroll-target="#sec-what-are-we-doing"><span class="header-section-number">1.1.2</span> What are we doing?</a></li>
+  <li><a href="#sec-how-are-we-going-to-do-it" id="toc-sec-how-are-we-going-to-do-it" class="nav-link" data-scroll-target="#sec-how-are-we-going-to-do-it"><span class="header-section-number">1.1.3</span> How are we going to do it?</a></li>
+  </ul></li>
+  <li><a href="#sec-if-youre-using-excel-you-are-already-programming" id="toc-sec-if-youre-using-excel-you-are-already-programming" class="nav-link" data-scroll-target="#sec-if-youre-using-excel-you-are-already-programming"><span class="header-section-number">1.2</span> If you’re using Excel you are already programming</a></li>
+  <li><a href="#sec-a-little-goes-a-long-way" id="toc-sec-a-little-goes-a-long-way" class="nav-link" data-scroll-target="#sec-a-little-goes-a-long-way"><span class="header-section-number">1.3</span> A little goes a long way</a></li>
   </ul>
 </nav>
     </div>
@@ -191,11 +193,11 @@ Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can skip this chapter if you want to dive straight into learning R. This chapter is primarily background and philosophy to set the scene before we start installing and using R.</p>
+<p>You can skip this chapter if you want to dive straight into learning R. This chapter is primarily background and philosophy to set the scene before we start using R.</p>
 </div>
 </div>
-<section id="sec-the-challenge" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="sec-the-challenge">The challenge</h3>
+<section id="sec-the-challenge" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-the-challenge"><span class="header-section-number">1.1</span> The challenge</h2>
 <p>New often means difficult, but difficult things are also often worth doing. The quote in <a href="#nte-biostar-quote" class="quarto-xref">Note&nbsp;<span>1.1</span></a> pretty much captures my feelings about the challenge of getting started and learning R:</p>
 <div id="nte-biostar-quote" class="callout callout-style-default callout-note no-icon callout-titled" title="Is programming hard to learn?" data-appearence="minimal">
 <div class="callout-header d-flex align-content-center">
@@ -211,16 +213,15 @@ Note&nbsp;1.1: Is programming hard to learn?
 <p>Source: <a href="https://www.biostarhandbook.com/index.html">The Biostar Handbook</a></p>
 </div>
 </div>
-</section>
-<section id="sec-but-why-is-it-worth-doing" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="sec-but-why-is-it-worth-doing">But why is it worth doing?</h3>
+<section id="sec-but-why-is-it-worth-doing" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="sec-but-why-is-it-worth-doing"><span class="header-section-number">1.1.1</span> But why is it worth doing?</h3>
 <ol type="1">
 <li>Maybe it isn’t, but experience is one way to find out.</li>
 <li>My experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting things.</li>
 </ol>
 </section>
-<section id="sec-what-are-we-doing" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="sec-what-are-we-doing">What are we doing?</h3>
+<section id="sec-what-are-we-doing" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="sec-what-are-we-doing"><span class="header-section-number">1.1.2</span> What are we doing?</h3>
 <p><a href="#fig-workflow" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> shows a truncated version of the data science cycle from <a href="https://r4ds.hadley.nz/whole-game">R4DS</a>. Conceptually, this is what we are mostly doing. I’ve crossed out modelling as that is beyond the scope here, but you may wish to explore the modelling part of the cycle yourself.</p>
 <p>As a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.</p>
 <p>In asking and answering those questions we need to learn to transform data and/or visualise our data.</p>
@@ -240,8 +241,8 @@ Figure&nbsp;1.1: A truncated version of the data science cycle from <a href="htt
 </div>
 </div>
 </section>
-<section id="sec-how-are-we-going-to-do-it" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="sec-how-are-we-going-to-do-it">How are we going to do it?</h3>
+<section id="sec-how-are-we-going-to-do-it" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="sec-how-are-we-going-to-do-it"><span class="header-section-number">1.1.3</span> How are we going to do it?</h3>
 <p>As per <a href="#nte-biostar-quote" class="quarto-xref">Note&nbsp;<span>1.1</span></a>, step-by-step and through practice we will learn to think and work in a certain way that may be different to how you have previously worked.</p>
 <p>It may seem all a bit abstract to begin with, but that is part of the point. In learning to generalise, one can apply the same concepts to lots of specific problems that may at first seem different, but are either the same or similar.</p>
 <p>Our guiding principles in doing this are:</p>
@@ -250,8 +251,9 @@ Figure&nbsp;1.1: A truncated version of the data science cycle from <a href="htt
 <li>Write love letters to our future selves in the form of code and how we organise and document our data.</li>
 </ol>
 </section>
-<section id="sec-if-youre-using-excel-you-are-already-programming" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="sec-if-youre-using-excel-you-are-already-programming"><span class="header-section-number">1.1</span> If you’re using Excel you are already programming</h2>
+</section>
+<section id="sec-if-youre-using-excel-you-are-already-programming" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-if-youre-using-excel-you-are-already-programming"><span class="header-section-number">1.2</span> If you’re using Excel you are already programming</h2>
 <p>In 2021 Excel became Turing-complete (<a href="#fig-excel-twitter" class="quarto-xref">Figure&nbsp;<span>1.2</span></a>), which is a colloquial way of saying one computing language can approximate another computing language.</p>
 <p>In other words, anything one can do in Python, R, C++ and so on, should also be possible in Excel.</p>
 <p>Hence if you are using Excel, you are already a programmer.</p>
@@ -271,8 +273,8 @@ Figure&nbsp;1.2: The head of Microsoft announces that Excel is Turing-complete.
 </div>
 <p>Gordon Shotwell wrote a blog called <a href="https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html">R for Excel Users</a> …</p>
 </section>
-<section id="sec-a-little-goes-a-long-way" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="sec-a-little-goes-a-long-way"><span class="header-section-number">1.2</span> A little goes a long way</h2>
+<section id="sec-a-little-goes-a-long-way" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-a-little-goes-a-long-way"><span class="header-section-number">1.3</span> A little goes a long way</h2>
 <!--# Practioner-Programmer goes here -->
 
 
