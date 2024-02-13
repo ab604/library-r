@@ -39,3 +39,5 @@ Stuff
 ## Plotting and exporting data
 
 ## Getting help
+
+https://rweekly.org/ https://posit.cloud/learn/recipes https://www.bigbookofr.com/
