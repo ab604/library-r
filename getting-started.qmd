@@ -1,5 +1,81 @@
-# Getting started
+# Getting started {#sec-getting-started}
 
-This has no content yet. See @knuth84 for additional discussion of literate programming.
+### The challenge {#sec-the-challenge .unnumbered}
+
+New often means difficult, but difficult things are also often worth doing. The quote in @nte-biostar-quote pretty much captures my feelings about the challenge of getting started and learning R:
+
+::: {#nte-biostar-quote .callout-note appearence="simple" icon="false"}
+### Is programming hard to learn?
+
+"...programming in general...is primarily about learning to think a certain way - to decompose a problem into very simple steps each of which can be easily solved. Some people have an affinity to this -- they will pick it up faster, while others will need more practice."
+
+Source: [The Biostar Handbook](https://www.biostarhandbook.com/index.html)
+:::
+
+### But why is it worth doing? {#sec-but-why-is-it-worth-doing .unnumbered}
+
+1.  Maybe it isn't, but experience is one way to find out.
+2.  My experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting things.
+
+### What are we doing? {#sec-what-are-we-doing .unnumbered}
+
+@fig-workflow shows a truncated version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game). Conceptually, this is what we are mostly doing. I've crossed out modelling as that is beyond the scope here, but you may wish to explore the modelling part of the cycle yourself.
+
+As a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.
+
+In asking and answering those questions we need to learn to transform data and/or visualise our data.
+
+We then need to communicate our findings back out of our working environment to our colleagues or for our own records.
+
+```{r}
+#| label: fig-workflow 
+#| echo: false
+#| out.width: NULL
+#| fig-cap: |
+#|   A truncated version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game).
+#|   We will cover data importing, tidying, transformation and visualisation, but not modelling. 
+#|   Communication of your output is the final part of the workflow.  
+#| fig-alt: |
+#|  A diagram displaying the data science cycle: Import -> Tidy ->
+#|   Understand  (which has the phases Transform -> Visualize -> Model in a
+#|   cycle) -> Communicate. Model is crossed out Surrounding all of these is Program 
+#|   Import, Tidy, Transform, and Visualize is highlighted.
+
+knitr::include_graphics("img/ds-workflow-2024-02-13.png", dpi = 270)
+```
+
+### How are we going to do it? {#sec-how-are-we-going-to-do-it .unnumbered}
+
+As per @nte-biostar-quote, step-by-step and through practice we will learn to think and work in a certain way that may be different to how you have previously worked.
+
+It may seem all a bit abstract to begin with, but that is part of the point. In learning to generalise, one can apply the same concepts to lots of specific problems that may at first seem different, but are either the same or similar.
+
+Our guiding principles in doing this are:
+
+1.  Keep the raw data raw.
+2.  Write love letters to our future selves in the form of code and how we organise and document our data.
+
+## If you're using Excel you are already programming {#sec-if-youre-using-excel-you-are-already-programming}
+
+In 2021 Excel became Turing-complete (@fig-excel-twitter), which is a colloquial way of saying one computing language can approximate another computing language.
+
+In other words, anything one can do in Python, R, C++ and so on, should also be possible in Excel.
+
+Hence if you are using Excel, you are already a programmer.
+
+```{r}
+#| label: fig-excel-twitter 
+#| echo: false
+#| out.width: NULL
+#| fig-cap: |
+#|   The head of Microsoft announces that Excel is Turing-complete.
+#| fig-alt: |
+#|  An image of a tweet from the head of Microsoft announcing that 
+#|  Excel is Turing-complete.
+
+knitr::include_graphics("img/excel-twitter-2021-02-09.png", dpi = 270)
+```
+
+Gordon Shotwell wrote a blog called [R for Excel Users](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html) ...
 
 ## Data transformations

@@ -2,43 +2,41 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "University of Southampton Library R training",
+    "title": "R for Librarians",
     "section": "",
-    "text": "Preface\nThis is a book contains R code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.\nIf you want a full guide to data analysis in R check out R for Data Science\nSome of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called Coding Together.\nIf you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE). You can use R without RStudio, but not the other way around.\nDownload R here and Download RStudio Desktop here."
+    "text": "Preface\nThis is a book contains guidance for getting started using R, with code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.\nIf you want a full guide to data analysis in R check out R for Data Science\nSome of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called Coding Together.\nIf you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE).\nYou can use R without installing RStudio, but you can’t work with R in RStudio by installing RStudio alone. Download R here and Download RStudio Desktop here.\nIf you are wondering if and/or why learning R might be useful, the first few sections of 1  Getting started should help answer those questions.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "getting-started.html",
+    "href": "getting-started.html",
+    "title": "1  Getting started",
+    "section": "",
+    "text": "The challenge\nNew often means difficult, but difficult things are also often worth doing. The quote in Note 1.1 pretty much captures my feelings about the challenge of getting started and learning R:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "getting-started.html#sec-if-youre-using-excel-you-are-already-programming",
+    "href": "getting-started.html#sec-if-youre-using-excel-you-are-already-programming",
+    "title": "1  Getting started",
+    "section": "1.1 If you’re using Excel you are already programming",
+    "text": "1.1 If you’re using Excel you are already programming\nIn 2021 Excel became Turing-complete (Figure 1.2), which is a colloquial way of saying one computing language can approximate another computing language.\nIn other words, anything one can do in Python, R, C++ and so on, should also be possible in Excel.\nHence if you are using Excel, you are already a programmer.\n\n\n\n\n\n\n\n\nFigure 1.2: The head of Microsoft announces that Excel is Turing-complete.\n\n\n\n\n\nGordon Shotwell wrote a blog called R for Excel Users …",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
+    ]
   },
   {
     "objectID": "getting-started.html#data-transformations",
     "href": "getting-started.html#data-transformations",
     "title": "1  Getting started",
-    "section": "1.1 Data transformations",
-    "text": "1.1 Data transformations\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
-  },
-  {
-    "objectID": "data-wrangling-1.html#tidying-data",
-    "href": "data-wrangling-1.html#tidying-data",
-    "title": "2  Data wrangling I",
-    "section": "2.1 Tidying data",
-    "text": "2.1 Tidying data\nIn this section we’re going to do some more complicated transformations. Let’s remind ourselves of the definition of tidy data:\n\nEach variable must have its own column.\nEach observation must have its own row.\nEach value must have its own cell.\n\nWe’ll start with a table of published articles where each row is a set of observations about each article.\nWhat makes it untidy?\nIt’s untidy because here we are interested in the University of Southampton (UoS) affiliations associated with each article. Unfortunatley, all the individual affiliations for all the institutions affiliated with each paper are combined in a single column rather than their own columns. Therefore the values for each affiliation aren’t in their own cells.\nHence for the purposes of the question we wish to pose, “Which UoS department is affiliated to each article?” the table is untidy in terms of rules 1 and 3.\n\n2.1.1 Our workflow\nLet’s consider the steps we need to take to arrive at a table which is tidy and contains the values for each UoS affiliation for each published article:\n\nImport the table, check it and repair if necessary.\nSeperate the affiliations into a new column (variable) for each affiliation associated with each article.\n\nThe articles don’t all have the same number of affiliations, so we will have lots of columns with only a few values in. In other words a wide table (lots of columns) but sparsely populated. What we want is a table that has only the UoS affiliation observations.\nWhat is our usual trick for obtaining only the observations of interest?\nWe filter the rows. But hang on, we can’t do that unless we have the each affiliation in a row, rather spread across lots of columns. So what do?\nTransforming a table so that columns become rows, or rows become columns is called pivoting. Here, having separated the affiliations and created a wide table with a variable for each affiliation we want to pivot from wide-to-long.\nWhen we pivot wide-to-long, the column names become a new set of observations in a new variable, and the values from each column become another set of observations in a new variable. Everything else is duplicated and hence we end up with lots of rows.\n\nUsing pivot_long we create a table on which we can filter the rows for the UoS affiliations.\n\nFor some articles there may be multiple UoS affiliations, so we may wish to pivot long-to-wide to create a final tidy table with a single row for each article, but columns for each UoS affiliation.\n\n\n2.1.2 Importing\nLet’s start with a small data set called OA-compliance-subset-2023-11-29.xlsx from the repository\n\n# Use the read.xlsx to download and load the excel file into object dat\ndat <- read.xlsx(\"https://github.com/ab604/library-r/raw/main/data/OA-compliance-subset-2023-11-29.xlsx\")\n\nUse the glimpse() function from dplyr to take a peak at this data:\n\nWe can see that the table has 20 rows with 35 columns of variables.\nLooking at the data types, we can see the import function parsed two types of data: <chr> character, meaning strings of text and <dbl> double, meaning numerical data. However, looking at the variable names, some are dates and haven’t been identified automatically.\nThere are lots of NA s, which are missing values. This may or may not matter.\n\n\nglimpse(dat)\n\nRows: 20\nColumns: 35\n$ Faculty                          <chr> \"FELS\", \"FEPS\", \"FEPS\", \"FELS\", \"FSS\"…\n$ Report.Date                      <dbl> 45201, 45243, 45201, 45215, 45229, 45…\n$ Ref.OA.Compliance                <chr> \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Ye…\n$ `Reason.for.Non-Compliance`      <chr> \"No Pure Record\", NA, NA, NA, NA, NA,…\n$ Time.remaining.to.make.compliant <dbl> 16, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ Notes                            <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ Authors                          <chr> \"Aeschbach D.; Cohen D.A.; Lockyer B.…\n$ Title                            <chr> \"Spontaneous attentional failures ref…\n$ Source.Title                     <chr> \"Sleep Health\", \"Frontiers in Artific…\n$ Document.Type                    <chr> \"Article\", \"Conference paper\", \"Artic…\n$ Publisher                        <chr> \"Elsevier Inc.\", \"IOS Press BV\", \"Ame…\n$ DOI                              <chr> \"10.1016/j.sleh.2023.07.013\", \"10.323…\n$ Hyperlink.DOI                    <chr> \"http://dx.doi.org/10.1016/j.sleh.202…\n$ Affiliations                     <chr> \"Department of Sleep and Human Factor…\n$ SCH1                             <chr> \"PSY\", \"CS\", \"PA\", \"BS\", \"SES\", \"PSY\"…\n$ SCH2                             <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ SCH3                             <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ Accepted.Date                    <chr> \"45129\", NA, \"45156\", \"11/09/23\", \"45…\n$ Epublication.Date                <chr> \"45176\", \"45198\", \"45174\", \"45196\", \"…\n$ Publisher.OA                     <chr> \"No\", \"Yes\", \"No\", \"Yes\", \"Yes\", \"Yes…\n$ Publisher.Licence                <chr> NA, \"CC BY-NC\", NA, \"CC BY\", \"CC BY\",…\n$ PURE.ID                          <chr> \"No Record\", NA, \"143740848\", \"143621…\n$ Version.in.Pure                  <chr> NA, NA, \"Accepted manuscript, Version…\n$ Licence.in.Pure                  <chr> NA, NA, \"UoS AM\", \"CC BY\", NA, NA, \"C…\n$ Funder.1                         <chr> \"N/A\", \"EPSRC\", \"N/A\", \"MRC\", \"N/A\", …\n$ Funder.2                         <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, \"…\n$ Funder.3                         <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ Data.Statement                   <chr> NA, \"No\", \"Yes\", \"Yes\", NA, NA, NA, N…\n$ Rights.Rentention.Statement      <chr> NA, NA, NA, \"Yes\", NA, NA, NA, NA, NA…\n$ UKRI.Compliant                   <chr> NA, \"No\", NA, \"Yes\", NA, NA, NA, NA, …\n$ OA.Status                        <chr> \"No\", \"Gold\", \"Green\", \"Gold\", \"Gold\"…\n$ Correspondence.address           <chr> \"D. Aeschbach; Department of Sleep an…\n$ UoS.Corresponding.Author         <chr> \"No\", \"No\", \"Yes\", \"Yes\", \"Yes\", \"No\"…\n$ Controlled.Publisher             <chr> \"Elsevier\", NA, \"ACS\", NA, NA, \"Sprin…\n$ `Hide.Column.-.DOI.Formula`      <chr> \"http://dx.doi.org/10.1016/j.sleh.202…\n\n\n\n\n2.1.3 Let’s fix the dates\nWe’ll make a new object called dat_repaired and use the mutate function from dpylr along with convert_to_date in the janitor package to convert the number values into dates.\nThen we’ll take a look with the glimpse function and we can see these look like dates in the year-month-day format and are identified as <date> data types.\n\ndat_repaired <- dat |> mutate(Report.Date = convert_to_date(Report.Date),\n                              Accepted.Date = convert_to_date(Accepted.Date),\n                              Epublication.Date = convert_to_date(Epublication.Date))\nglimpse(dat_repaired)\n\nRows: 20\nColumns: 35\n$ Faculty                          <chr> \"FELS\", \"FEPS\", \"FEPS\", \"FELS\", \"FSS\"…\n$ Report.Date                      <date> 2023-10-02, 2023-11-13, 2023-10-02, …\n$ Ref.OA.Compliance                <chr> \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Ye…\n$ `Reason.for.Non-Compliance`      <chr> \"No Pure Record\", NA, NA, NA, NA, NA,…\n$ Time.remaining.to.make.compliant <dbl> 16, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ Notes                            <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ Authors                          <chr> \"Aeschbach D.; Cohen D.A.; Lockyer B.…\n$ Title                            <chr> \"Spontaneous attentional failures ref…\n$ Source.Title                     <chr> \"Sleep Health\", \"Frontiers in Artific…\n$ Document.Type                    <chr> \"Article\", \"Conference paper\", \"Artic…\n$ Publisher                        <chr> \"Elsevier Inc.\", \"IOS Press BV\", \"Ame…\n$ DOI                              <chr> \"10.1016/j.sleh.2023.07.013\", \"10.323…\n$ Hyperlink.DOI                    <chr> \"http://dx.doi.org/10.1016/j.sleh.202…\n$ Affiliations                     <chr> \"Department of Sleep and Human Factor…\n$ SCH1                             <chr> \"PSY\", \"CS\", \"PA\", \"BS\", \"SES\", \"PSY\"…\n$ SCH2                             <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ SCH3                             <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ Accepted.Date                    <date> 2023-07-22, NA, 2023-08-18, 2011-09-…\n$ Epublication.Date                <date> 2023-09-07, 2023-09-29, 2023-09-05, …\n$ Publisher.OA                     <chr> \"No\", \"Yes\", \"No\", \"Yes\", \"Yes\", \"Yes…\n$ Publisher.Licence                <chr> NA, \"CC BY-NC\", NA, \"CC BY\", \"CC BY\",…\n$ PURE.ID                          <chr> \"No Record\", NA, \"143740848\", \"143621…\n$ Version.in.Pure                  <chr> NA, NA, \"Accepted manuscript, Version…\n$ Licence.in.Pure                  <chr> NA, NA, \"UoS AM\", \"CC BY\", NA, NA, \"C…\n$ Funder.1                         <chr> \"N/A\", \"EPSRC\", \"N/A\", \"MRC\", \"N/A\", …\n$ Funder.2                         <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, \"…\n$ Funder.3                         <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ Data.Statement                   <chr> NA, \"No\", \"Yes\", \"Yes\", NA, NA, NA, N…\n$ Rights.Rentention.Statement      <chr> NA, NA, NA, \"Yes\", NA, NA, NA, NA, NA…\n$ UKRI.Compliant                   <chr> NA, \"No\", NA, \"Yes\", NA, NA, NA, NA, …\n$ OA.Status                        <chr> \"No\", \"Gold\", \"Green\", \"Gold\", \"Gold\"…\n$ Correspondence.address           <chr> \"D. Aeschbach; Department of Sleep an…\n$ UoS.Corresponding.Author         <chr> \"No\", \"No\", \"Yes\", \"Yes\", \"Yes\", \"No\"…\n$ Controlled.Publisher             <chr> \"Elsevier\", NA, \"ACS\", NA, NA, \"Sprin…\n$ `Hide.Column.-.DOI.Formula`      <chr> \"http://dx.doi.org/10.1016/j.sleh.202…"
-  },
-  {
-    "objectID": "data-wrangling-2.html",
-    "href": "data-wrangling-2.html",
-    "title": "3  Data wrangling II",
-    "section": "",
-    "text": "This chapter has no content yet."
-  },
-  {
-    "objectID": "visualisation.html",
-    "href": "visualisation.html",
-    "title": "4  Visualisation",
-    "section": "",
-    "text": "This has no content yet."
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "section": "1.2 Data transformations",
+    "text": "1.2 Data transformations",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
+    ]
   }
 ]

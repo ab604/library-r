@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "University of Southampton Library R training"
+  title: "R for Librarians"
   author: "Alistair Bailey"
   date: last-modified
   date-format: "[Last Updated on] YYYY-MM-DD"
@@ -16,9 +16,9 @@ book:
   chapters:
     - index.qmd
     - getting-started.qmd
-    - data-wrangling-1.qmd
-    - data-wrangling-2.qmd
-    - visualisation.qmd
+    #- data-wrangling-1.qmd
+    #- data-wrangling-2.qmd
+    #- visualisation.qmd
     - references.qmd
   
 bibliography: references.bib
@@ -27,7 +27,7 @@ format:
   html:
     theme:
       light: [cosmo, styles.scss]
-      dark: [darkly, styles.scss]
+      dark: [cosmo, dark.scss]
   #pdf:
    # documentclass: scrreprt
 

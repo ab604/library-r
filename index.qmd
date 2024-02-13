@@ -1,17 +1,13 @@
 # Preface {.unnumbered}
 
-This is a book contains R code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.
+This is a book contains guidance for getting started using R, with code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.
 
 If you want a full guide to data analysis in R check out [R for Data Science](https://r4ds.hadley.nz/)
 
 Some of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called [Coding Together](https://ab604.github.io/docs/coding-together-2019/).
 
-If you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE). You can use R without RStudio, but not the other way around.
+If you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE).
 
-[Download R here](https://cran.r-project.org/) and [Download RStudio Desktop here](https://posit.co/download/rstudio-desktop/).
+You can use R without installing RStudio, but you can't work with R in RStudio by installing RStudio alone. [Download R here](https://cran.r-project.org/) and [Download RStudio Desktop here](https://posit.co/download/rstudio-desktop/).
 
-### Guiding principles
-
-Keep the raw data raw
-
-Write love letters to our future selves.
+If you are wondering if and/or why learning R might be useful, the first few sections of @sec-getting-started should help answer those questions.
