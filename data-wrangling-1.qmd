@@ -23,8 +23,6 @@ In this section we're going to do some more complicated transformations. Let's r
 
 This can come in two forms: **long** or **wide**
 
-
-
 We'll start with a table of published articles where each row is a set of observations about each article.
 
 *What makes it untidy?*

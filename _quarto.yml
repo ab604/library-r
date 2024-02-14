@@ -26,6 +26,8 @@ bibliography: references.bib
 
 format:
   html:
+    link-external-icon: true
+    link-external-newwindow: true
     theme:
       light: [cosmo, styles.scss]
       dark: [cosmo, dark.scss]

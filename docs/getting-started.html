@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -156,7 +190,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-is-real" id="toc-what-is-real" class="nav-link" data-scroll-target="#what-is-real"><span class="header-section-number">2.2.1</span> What is real?</a></li>
   <li><a href="#where-am-i" id="toc-where-am-i" class="nav-link" data-scroll-target="#where-am-i"><span class="header-section-number">2.2.2</span> Where am I?</a></li>
   </ul></li>
-  <li><a href="#installing-and-loading-packages" id="toc-installing-and-loading-packages" class="nav-link" data-scroll-target="#installing-and-loading-packages"><span class="header-section-number">2.3</span> Installing and loading packages</a></li>
+  <li><a href="#installing-and-loading-packages" id="toc-installing-and-loading-packages" class="nav-link" data-scroll-target="#installing-and-loading-packages"><span class="header-section-number">2.3</span> Installing and loading packages</a>
+  <ul class="collapse">
+  <li><a href="#introducing-the-palmer-penguins" id="toc-introducing-the-palmer-penguins" class="nav-link" data-scroll-target="#introducing-the-palmer-penguins"><span class="header-section-number">2.3.1</span> Introducing the Palmer Penguins</a></li>
+  </ul></li>
   <li><a href="#what-is-a-function-and-how-do-i-use-them" id="toc-what-is-a-function-and-how-do-i-use-them" class="nav-link" data-scroll-target="#what-is-a-function-and-how-do-i-use-them"><span class="header-section-number">2.4</span> What is a function and how do I use them?</a></li>
   <li><a href="#a-project-orientated-workflow" id="toc-a-project-orientated-workflow" class="nav-link" data-scroll-target="#a-project-orientated-workflow"><span class="header-section-number">2.5</span> A project orientated workflow</a></li>
   <li><a href="#base-r-the-tidyverse-and-tidy-data" id="toc-base-r-the-tidyverse-and-tidy-data" class="nav-link" data-scroll-target="#base-r-the-tidyverse-and-tidy-data"><span class="header-section-number">2.6</span> Base R, the tidyverse and tidy data</a></li>
@@ -194,13 +231,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div id="chapter-02-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<a href="" id="chapter-02-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -224,6 +261,92 @@ Summary
 </section>
 <section id="installing-and-loading-packages" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="installing-and-loading-packages"><span class="header-section-number">2.3</span> Installing and loading packages</h2>
+<p>Packages are collections of functions, and a function is a piece of code written to perform a specific task, such as installing a package.</p>
+<p>Therefore, the function <code>install.packages()</code> is a piece of code written to perform the task of installing packages.</p>
+<p>We use the function by typing <code>install.packages("tidyverse")</code> with the name of the package in quotes inside the round brackets.</p>
+<p>Here the package is <code>tidyverse</code>. Using the console panel to type this and pressing <code>Enter</code> will run the function.</p>
+<p>We of course need to know the name of the packages we are interested in.</p>
+<p>Once a package is installed we need to load it into our environment to use it. Loading packages is performed using the <code>library()</code> function. As with installation, we put the name of the package - the argument for our function - that we want to load in between the round brackets like so <code>library(tidyverse)</code>.</p>
+<p>As before this can be done on the console, but we will usually load packages as part of script. <em>Note that we don’t need the quotes for the library function.</em></p>
+<div class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="" id="cowsay"></a>Try installing the <code>cowsay</code> package
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now load <code>cowsay</code> with the <code>library()</code> function. <code>cowsay</code> has one function called <code>say()</code> that you can use to create messages with animals.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ ----- 
+Use ?say to open the help
+documentation for the say() function. 
+ ------ 
+    \   ^__^ 
+     \  (oo)\ ________ 
+        (__)\         )\ /\ 
+             ||------w|
+             ||      ||</code></pre>
+</div>
+</div>
+</div>
+</div>
+<section id="introducing-the-palmer-penguins" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="introducing-the-palmer-penguins"><span class="header-section-number">2.3.1</span> Introducing the Palmer Penguins</h3>
+<p>The <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package is a dataset curated by Allison Horst of data on three penguin species from the <a href="https://pallter.marine.rutgers.edu/">Palmer Station in Antarctica</a> (<a href="#fig-palmer-penguins-hex" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-palmer-penguins-hex" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-palmer-penguins-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/palmerpenguins.png" class="img-fluid figure-img" style="width:33.0%" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-palmer-penguins-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Hex sticker of the <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package curated by Allison Horst showing the Chinstrap, Gentoo and Adélie penguins.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>It’s a great dataset for getting started with and you can install it like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The three penguins species are the Chinstrap, Gentoo and Adélie penguins (<a href="#fig-palmer-penguins" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-palmer-penguins" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-palmer-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/penguins.png" class="img-fluid figure-img" style="width:80.0%" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-palmer-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie penguins.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The dataset records various information about 344 penguins, including their culmen (<a href="#fig-culmen" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-culmen" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-culmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/culmen_depth.png" class="img-fluid figure-img" style="width:66.0%" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-culmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Artwork by @allison_horst of the culman of a Gentoo penguin.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="what-is-a-function-and-how-do-i-use-them" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="what-is-a-function-and-how-do-i-use-them"><span class="header-section-number">2.4</span> What is a function and how do I use them?</h2>
@@ -483,6 +606,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -565,12 +708,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

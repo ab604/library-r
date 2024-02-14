@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -183,13 +183,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div id="chapter-01-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<a href="" id="chapter-01-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -199,13 +199,13 @@ Summary
 <section id="sec-the-challenge" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-the-challenge"><span class="header-section-number">1.1</span> The challenge</h2>
 <p>New often means difficult, but difficult things are also often worth doing. The quote in <a href="#nte-biostar-quote" class="quarto-xref">Note&nbsp;<span>1.1</span></a> pretty much captures my feelings about the challenge of getting started and learning R:</p>
-<div id="nte-biostar-quote" class="callout callout-style-default callout-note no-icon callout-titled" title="Is programming hard to learn?" data-appearence="minimal">
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Is programming hard to learn?" data-appearence="minimal">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note&nbsp;1.1: Is programming hard to learn?
+<a href="" id="nte-biostar-quote"></a>Note&nbsp;1.1: Is programming hard to learn?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -231,7 +231,7 @@ Note&nbsp;1.1: Is programming hard to learn?
 <div id="fig-workflow" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A diagram displaying the data science cycle: Import -> Tidy ->  Understand  (which has the phases Transform -> Visualize -> Model in a  cycle) -> Communicate. Model is crossed out Surrounding all of these is Program  Import, Tidy, Transform, and Visualize is highlighted.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/ds-workflow-2024-02-13.png" class="img-fluid figure-img" alt="A diagram displaying the data science cycle: Import -> Tidy ->  Understand  (which has the phases Transform -> Visualize -> Model in a  cycle) -> Communicate. Model is crossed out Surrounding all of these is Program  Import, Tidy, Transform, and Visualize is highlighted." width="591">
+<img src="img/ds-workflow-2024-02-13.png" class="img-fluid figure-img" alt="A diagram displaying the data science cycle: Import -> Tidy ->  Understand  (which has the phases Transform -> Visualize -> Model in a  cycle) -> Communicate. Model is crossed out Surrounding all of these is Program  Import, Tidy, Transform, and Visualize is highlighted.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.1: A truncated version of the data science cycle from <a href="https://r4ds.hadley.nz/whole-game">R4DS</a>. We will cover data importing, tidying, transformation and visualisation, but not modelling. Communication of your output is the final part of the workflow.
@@ -262,7 +262,7 @@ Figure&nbsp;1.1: A truncated version of the data science cycle from <a href="htt
 <div id="fig-excel-twitter" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of a tweet from the head of Microsoft announcing that Excel is Turing-complete.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-excel-twitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/excel-twitter-2021-02-09.png" class="img-fluid figure-img" alt="An image of a tweet from the head of Microsoft announcing that Excel is Turing-complete." width="532">
+<img src="img/excel-twitter-2021-02-09.png" class="img-fluid figure-img" style="width:80.0%" alt="An image of a tweet from the head of Microsoft announcing that Excel is Turing-complete.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excel-twitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.2: The head of Microsoft announces that Excel is Turing-complete.
@@ -504,6 +504,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -586,12 +606,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

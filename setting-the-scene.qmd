@@ -68,7 +68,7 @@ Hence if you are using Excel, you are already a programmer.
 ```{r}
 #| label: fig-excel-twitter 
 #| echo: false
-#| out.width: NULL
+#| out-width: 80%
 #| fig-cap: |
 #|   The head of Microsoft announces that Excel is Turing-complete.
 #| fig-alt: |
