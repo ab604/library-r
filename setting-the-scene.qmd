@@ -21,7 +21,9 @@ Source: [The Biostar Handbook](https://www.biostarhandbook.com/index.html)
 
 ### What are we doing? {#sec-what-are-we-doing}
 
-@fig-workflow shows a truncated version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game). Conceptually, this is what we are mostly doing. I've crossed out modelling as that is beyond the scope here, but you may wish to explore the modelling part of the cycle yourself.
+@fig-workflow shows a version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game). Conceptually, this is what we are mostly doing. In R4DS, all of these steps are done programmatically, but we won't be trying to do everything here.
+
+Modelling is beyond our scope here, but you may wish to explore the modelling part of the cycle yourself. For example, check out [Tidy Modeling with R](https://www.tmwr.org/).
 
 As a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.
 
@@ -34,16 +36,16 @@ We then need to communicate our findings back out of our working environment to 
 #| echo: false
 #| out.width: NULL
 #| fig-cap: |
-#|   A truncated version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game).
+#|   A version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game).
 #|   We will cover data importing, tidying, transformation and visualisation, but not modelling. 
 #|   Communication of your output is the final part of the workflow.  
 #| fig-alt: |
 #|  A diagram displaying the data science cycle: Import -> Tidy ->
 #|   Understand  (which has the phases Transform -> Visualize -> Model in a
-#|   cycle) -> Communicate. Model is crossed out Surrounding all of these is Program 
-#|   Import, Tidy, Transform, and Visualize is highlighted.
+#|   cycle) -> Communicate. Surrounding all of these is Workflow 
+#|   Import, Tidy, Transform, and Visualise are highlighted.
 
-knitr::include_graphics("img/ds-workflow-2024-02-13.png", dpi = 270)
+knitr::include_graphics("img/ds-workflow.png", dpi = 270)
 ```
 
 ### How are we going to do it? {#sec-how-are-we-going-to-do-it}
@@ -78,8 +80,44 @@ Hence if you are using Excel, you are already a programmer.
 knitr::include_graphics("img/excel-twitter-2021-02-09.png", dpi = 270)
 ```
 
-Gordon Shotwell wrote a blog called [R for Excel Users](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html) that discusses the [differences between Excel and R](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html#four-fundamental-differences-between-r-and-excel). Perhaps the biggest conceptual difference is that in Excel, one is programming directly using the raw data - which conflicts with the guiding principles of keeping the raw data separate
+Gordon Shotwell wrote a blog called [R for Excel Users](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html) that discusses the [differences between Excel and R](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html#four-fundamental-differences-between-r-and-excel). Perhaps the biggest conceptual difference is that in Excel one is programming with the raw data - which conflicts with the guiding principles of keeping the raw data separate from the code (@sec-how-are-we-going-to-do-it).
+
+With most languages, the file(s) holding the data are separate from the file(s) that contains
+the code.
+
+On the one hand programming with the raw data makes it easy to get started in Excel, but harder as the complexity of 
+what you are trying to do increases.
+
+And vice versa. In other languages getting started is harder, but it's easier to do more complex tasks once
+some initial learning is done.
+
+It's really a case of whether it's worth the investment learning R, python etc. Hence my comments in @sec-but-why-is-it-worth-doing.
 
 ## A little goes a long way {#sec-a-little-goes-a-long-way}
 
+When considering investing in learning, it's important to know that we don't need to learn everything. A modest investment does yield large rewards. 
+
+A few hours learning, backed-up with practice can be enough for many people.
+
+As illustrated in @fig-pp-spectrum  there are a whole spectrum of users from practitioners at one end who are focused on applying some programming tools to their specific problems. Whilst at the other end who develop the programming tools and language itself. 
+
+In reality one may move around on that spectrum as ones needs and interests change over time.
+
 <!--# Practioner-Programmer goes here -->
+
+```{r}
+#| label: fig-pp-spectrum 
+#| echo: false
+#| out.width: NULL
+#| fig-cap: |
+#|  The practitioner-programmer spectrum. At one end lies practitioners
+#|  who use programming tools and at the other end lies developers of programming languages
+#|  and tools. The circle in-between indicates how individuals may move around on the spectrum.
+#| fig-alt: |
+#|  A diagram displaying practitioner-programmer spectrum. At one end lies practitioners
+#|  who use programming tools and at the other end lies developers of programming languages
+#|  and tools. A circle in-between indicates how individuals may move around on the spectrum.
+
+knitr::include_graphics("img/practitioner-programmer.png", dpi = 270)
+```
+

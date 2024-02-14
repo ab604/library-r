@@ -22,15 +22,15 @@ Stuff
 
 Packages are collections of functions, and a function is a piece of code written to perform a specific task, such as installing a package.
 
-Therefore, the function `install.packages()` is a piece of code written to perform the task of installing packages. 
+Therefore, the function `install.packages()` is a piece of code written to perform the task of installing packages.
 
-We use the function by typing `install.packages("tidyverse")` with the name of the package in quotes inside the round brackets. 
+We use the function by typing `install.packages("tidyverse")` with the name of the package in quotes inside the round brackets.
 
 Here the package is `tidyverse`. Using the console panel to type this and pressing `Enter` will run the function.
 
 We of course need to know the name of the packages we are interested in.
 
-Once a package is installed we need to load it into our environment to use it. Loading packages is performed using the `library()` function. As with installation, we put the name of the package - the argument for our function - that we want to load in between the round brackets like so `library(tidyverse)`. 
+Once a package is installed we need to load it into our environment to use it. Loading packages is performed using the `library()` function. As with installation, we put the name of the package - the argument for our function - that we want to load in between the round brackets like so `library(tidyverse)`.
 
 As before this can be done on the console, but we will usually load packages as part of script. *Note that we don't need the quotes for the library function.*
 
@@ -69,7 +69,7 @@ It's a great dataset for getting started with and you can install it like so:
 install.packages("palmerpenguins")
 ```
 
-The three penguins species are the Chinstrap, Gentoo  and Adélie penguins (@fig-palmer-penguins).
+The three penguins species are the Chinstrap, Gentoo and Adélie penguins (@fig-palmer-penguins).
 
 ```{r}
 #| label: fig-palmer-penguins 
@@ -83,7 +83,7 @@ The three penguins species are the Chinstrap, Gentoo  and Adélie penguins (@fig
 knitr::include_graphics("img/penguins.png", dpi = 270)
 ```
 
-The dataset records various information about 344 penguins, including their culmen (@fig-culmen). 
+The dataset records various information about 344 penguins, including their culmen (@fig-culmen).
 
 ```{r}
 #| label: fig-culmen 
