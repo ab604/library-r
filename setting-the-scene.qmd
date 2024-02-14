@@ -78,7 +78,7 @@ Hence if you are using Excel, you are already a programmer.
 knitr::include_graphics("img/excel-twitter-2021-02-09.png", dpi = 270)
 ```
 
-Gordon Shotwell wrote a blog called [R for Excel Users](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html) ...
+Gordon Shotwell wrote a blog called [R for Excel Users](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html) that discusses the [differences between Excel and R](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html#four-fundamental-differences-between-r-and-excel). Perhaps the biggest conceptual difference is that in Excel, one is programming directly using the raw data - which conflicts with the guiding principles of keeping the raw data separate
 
 ## A little goes a long way {#sec-a-little-goes-a-long-way}
 
