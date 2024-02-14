@@ -23,7 +23,7 @@ Source: [The Biostar Handbook](https://www.biostarhandbook.com/index.html)
 
 @fig-workflow shows a version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game). Conceptually, this is what we are mostly doing. In R4DS, all of these steps are done programmatically, but we won't be trying to do everything here.
 
-Modelling is beyond our scope here, but you may wish to explore the modelling part of the cycle yourself. For example, check out [Tidy Modeling with R](https://www.tmwr.org/).
+Modeling is beyond our scope here, but you may wish to explore the modeling part of the cycle yourself. For example, check out [Tidy Modeling with R](https://www.tmwr.org/).
 
 As a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.
 
@@ -37,7 +37,7 @@ We then need to communicate our findings back out of our working environment to 
 #| out.width: NULL
 #| fig-cap: |
 #|   A version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game).
-#|   We will cover data importing, tidying, transformation and visualisation, but not modelling. 
+#|   We will cover data importing, tidying, transformation and visualisation, but not modeling. 
 #|   Communication of your output is the final part of the workflow.  
 #| fig-alt: |
 #|  A diagram displaying the data science cycle: Import -> Tidy ->
@@ -52,12 +52,12 @@ knitr::include_graphics("img/ds-workflow.png", dpi = 270)
 
 As per @nte-biostar-quote, step-by-step and through practice we will learn to think and work in a certain way that may be different to how you have previously worked.
 
-It may seem all a bit abstract to begin with, but that is part of the point. In learning to generalise, one can apply the same concepts to lots of specific problems that may at first seem different, but are either the same or similar.
+It may seem all a bit abstract to begin with, but that is part of the point. In learning to generalise from abstractions, one can identify and apply the same concepts to lots of specific problems that may at first seem different, but are either the same or similar.
 
 Our guiding principles in doing this are:
 
 1.  Keep the raw data raw.
-2.  Write love letters to our future selves in the form of code and how we organise and document our data.
+2.  Write love letters to our future selves in the form of our code and how we organise and document our data.
 
 ## If you're using Excel you are already programming {#sec-if-youre-using-excel-you-are-already-programming}
 
@@ -80,26 +80,25 @@ Hence if you are using Excel, you are already a programmer.
 knitr::include_graphics("img/excel-twitter-2021-02-09.png", dpi = 270)
 ```
 
-Gordon Shotwell wrote a blog called [R for Excel Users](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html) that discusses the [differences between Excel and R](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html#four-fundamental-differences-between-r-and-excel). Perhaps the biggest conceptual difference is that in Excel one is programming with the raw data - which conflicts with the guiding principles of keeping the raw data separate from the code (@sec-how-are-we-going-to-do-it).
+Gordon Shotwell wrote a blog post called [R for Excel Users](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html) that discusses the [differences between Excel and R](https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html#four-fundamental-differences-between-r-and-excel). Perhaps the biggest conceptual difference is that in Excel one is programming with the raw data - which conflicts with the guiding principles of keeping the raw data separate from the code (@sec-how-are-we-going-to-do-it).
 
-With most languages, the file(s) holding the data are separate from the file(s) that contains
-the code.
+With most languages, the file(s) holding the data are separate from the file(s) that contains the code.
 
-On the one hand programming with the raw data makes it easy to get started in Excel, but harder as the complexity of 
-what you are trying to do increases.
+On the one hand programming with the raw data makes it easy to get started in Excel, but on the other hand it gets harder as the complexity of what you are trying to do increases.
 
-And vice versa. In other languages getting started is harder, but it's easier to do more complex tasks once
-some initial learning is done.
+And vice versa.
 
-It's really a case of whether it's worth the investment learning R, python etc. Hence my comments in @sec-but-why-is-it-worth-doing.
+In other languages getting started is harder, but it's easier to do more complex tasks once some initial learning is done.
+
+It's really a question of whether it's worth the investment learning R, python etc. Hence my comments in @sec-but-why-is-it-worth-doing.
 
 ## A little goes a long way {#sec-a-little-goes-a-long-way}
 
-When considering investing in learning, it's important to know that we don't need to learn everything. A modest investment does yield large rewards. 
+When considering investing in learning, it's important to know that we don't need to learn everything. A modest investment does yield large rewards.
 
 A few hours learning, backed-up with practice can be enough for many people.
 
-As illustrated in @fig-pp-spectrum  there are a whole spectrum of users from practitioners at one end who are focused on applying some programming tools to their specific problems. Whilst at the other end who develop the programming tools and language itself. 
+As illustrated in @fig-pp-spectrum there are a whole spectrum of users from practitioners at one end who are focused on applying some programming tools to their specific problems. Whilst at the other end who develop the programming tools and language itself.
 
 In reality one may move around on that spectrum as ones needs and interests change over time.
 
@@ -120,4 +119,3 @@ In reality one may move around on that spectrum as ones needs and interests chan
 
 knitr::include_graphics("img/practitioner-programmer.png", dpi = 270)
 ```
-
