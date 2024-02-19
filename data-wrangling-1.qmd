@@ -1,0 +1,11 @@
+```{r}
+#| label: fig-filter 
+#| echo: false
+#| out-width: NULL
+#| fig-cap: |
+#|   dplyr filter
+#| fig-alt: |
+#|  dplyr filter
+
+knitr::include_graphics("img/dplyr-filter-penguin.png", dpi = 270)
+```

@@ -1,6 +1,12 @@
 # Wrangling bibliometrics data
 
-It's time to apply our knowledge to some bibliometrics data
+::: {#bibliometrics-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
+The bibliometrics team have a spreadsheet detailing published journal articles from which they would like to understand, *"Which UoS department is affiliated to each article?"*
+
+Here we go through the process of wrangling the data to answer this question and produce some summary statistics.
+:::
+
+It's time to apply our knowledge to some bibliometrics data.
 
 ```{r}
 #| message: false
@@ -27,7 +33,7 @@ We'll start with a table of published articles where each row is a set of observ
 
 *What makes it untidy?*
 
-It's untidy because here we are interested in the University of Southampton (UoS) affiliations associated with each article. Unfortunatley, all the individual affiliations for all the institutions affiliated with each paper are combined in a single column rather than their own columns. Therefore the values for each affiliation aren't in their own cells.
+It's untidy because here we are interested in the University of Southampton (UoS) affiliations associated with each article. Here, all the individual affiliations for all the institutions affiliated with each paper are combined in a single column rather than their own columns. Therefore the values for each affiliation aren't in their own cells.
 
 Hence for the purposes of the question we wish to pose, *"Which UoS department is affiliated to each article?"* the table is untidy in terms of rules 1 and 3.
 
@@ -86,15 +92,7 @@ dat_repaired <- dat |> mutate(Report.Date = convert_to_date(Report.Date),
                               Epublication.Date = convert_to_date(Epublication.Date))
 glimpse(dat_repaired)
 ```
-
 ```{r}
-#| label: fig-filter 
-#| echo: false
-#| out-width: NULL
-#| fig-cap: |
-#|   dplyr filter
-#| fig-alt: |
-#|  dplyr filter
-
-knitr::include_graphics("img/dplyr-filter-penguin.png", dpi = 270)
+dat_repaired |> select(Affiliations) |> slice(1:2)
 ```
+

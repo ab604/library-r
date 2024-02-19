@@ -103,6 +103,12 @@ knitr::include_graphics("img/culmen_depth.png", dpi = 270)
 
 ## Base R, the tidyverse and tidy data
 
+The key difference between base R and the tidyverse is that the tidyverse uses 
+functions named as verbs with a single purpose, whereas base R syntax can be used for
+multiple purposes.
+
+This trade-off I'd characterise as cognitive ease versus flexibility.
+
 ## Atoms of R
 
 ## Categorical data aka Factors
