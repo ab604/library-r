@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./data-wrangling-1.html" rel="next">
 <link href="./setting-the-scene.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -170,6 +170,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./data-wrangling-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -184,15 +190,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link active" data-scroll-target="#what-is-r"><span class="header-section-number">2.1</span> What is R?</a></li>
-  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio"><span class="header-section-number">2.2</span> RStudio</a>
+  <li><a href="#sec-what-is-r" id="toc-sec-what-is-r" class="nav-link active" data-scroll-target="#sec-what-is-r"><span class="header-section-number">2.1</span> What is R?</a></li>
+  <li><a href="#sec-rstudio" id="toc-sec-rstudio" class="nav-link" data-scroll-target="#sec-rstudio"><span class="header-section-number">2.2</span> RStudio</a>
   <ul class="collapse">
   <li><a href="#what-is-real" id="toc-what-is-real" class="nav-link" data-scroll-target="#what-is-real"><span class="header-section-number">2.2.1</span> What is real?</a></li>
   <li><a href="#where-am-i" id="toc-where-am-i" class="nav-link" data-scroll-target="#where-am-i"><span class="header-section-number">2.2.2</span> Where am I?</a></li>
   </ul></li>
   <li><a href="#installing-and-loading-packages" id="toc-installing-and-loading-packages" class="nav-link" data-scroll-target="#installing-and-loading-packages"><span class="header-section-number">2.3</span> Installing and loading packages</a>
   <ul class="collapse">
-  <li><a href="#introducing-the-palmer-penguins" id="toc-introducing-the-palmer-penguins" class="nav-link" data-scroll-target="#introducing-the-palmer-penguins"><span class="header-section-number">2.3.1</span> Introducing the Palmer Penguins</a></li>
+  <li><a href="#sec-palmer-penguins" id="toc-sec-palmer-penguins" class="nav-link" data-scroll-target="#sec-palmer-penguins"><span class="header-section-number">2.3.1</span> Introducing the Palmer Penguins</a></li>
   </ul></li>
   <li><a href="#what-is-a-function-and-how-do-i-use-them" id="toc-what-is-a-function-and-how-do-i-use-them" class="nav-link" data-scroll-target="#what-is-a-function-and-how-do-i-use-them"><span class="header-section-number">2.4</span> What is a function and how do I use them?</a></li>
   <li><a href="#a-project-orientated-workflow" id="toc-a-project-orientated-workflow" class="nav-link" data-scroll-target="#a-project-orientated-workflow"><span class="header-section-number">2.5</span> A project orientated workflow</a></li>
@@ -203,7 +209,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#indexing-and-sub-setting" id="toc-indexing-and-sub-setting" class="nav-link" data-scroll-target="#indexing-and-sub-setting"><span class="header-section-number">2.9.1</span> Indexing and sub-setting</a></li>
   </ul></li>
-  <li><a href="#data-containers-lists-matrices-arrays-and-data-frames" id="toc-data-containers-lists-matrices-arrays-and-data-frames" class="nav-link" data-scroll-target="#data-containers-lists-matrices-arrays-and-data-frames"><span class="header-section-number">2.10</span> Data containers: Lists, matrices, arrays and data frames</a></li>
+  <li><a href="#sec-data-containers" id="toc-sec-data-containers" class="nav-link" data-scroll-target="#sec-data-containers"><span class="header-section-number">2.10</span> Data containers: Lists, matrices, arrays and data frames</a>
+  <ul class="collapse">
+  <li><a href="#sec-data-frames" id="toc-sec-data-frames" class="nav-link" data-scroll-target="#sec-data-frames"><span class="header-section-number">2.10.1</span> Data frames</a></li>
+  </ul></li>
   <li><a href="#plotting-and-exporting-data" id="toc-plotting-and-exporting-data" class="nav-link" data-scroll-target="#plotting-and-exporting-data"><span class="header-section-number">2.11</span> Plotting and exporting data</a></li>
   <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help"><span class="header-section-number">2.12</span> Getting help</a></li>
   </ul>
@@ -214,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></h1>
+<h1 class="title"><span id="sec-getting-started" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span></h1>
 </div>
 
 
@@ -246,12 +255,12 @@ Summary
 <p>Don’t worry if you don’t get it all in the first pass, that’s why the book and lots of other materials exist, so you can come back here or explore out there.</p>
 </div>
 </div>
-<section id="what-is-r" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="what-is-r"><span class="header-section-number">2.1</span> What is R?</h2>
+<section id="sec-what-is-r" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-what-is-r"><span class="header-section-number">2.1</span> What is R?</h2>
 <p>Stuff</p>
 </section>
-<section id="rstudio" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="rstudio"><span class="header-section-number">2.2</span> RStudio</h2>
+<section id="sec-rstudio" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-rstudio"><span class="header-section-number">2.2</span> RStudio</h2>
 <section id="what-is-real" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="what-is-real"><span class="header-section-number">2.2.1</span> What is real?</h3>
 </section>
@@ -295,8 +304,8 @@ documentation for the say() function.
 </div>
 </div>
 </div>
-<section id="introducing-the-palmer-penguins" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="introducing-the-palmer-penguins"><span class="header-section-number">2.3.1</span> Introducing the Palmer Penguins</h3>
+<section id="sec-palmer-penguins" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="sec-palmer-penguins"><span class="header-section-number">2.3.1</span> Introducing the Palmer Penguins</h3>
 <p>The <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package is a dataset curated by Allison Horst of data on three penguin species from the <a href="https://pallter.marine.rutgers.edu/">Palmer Station in Antarctica</a> (<a href="#fig-palmer-penguins-hex" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -356,6 +365,8 @@ Figure&nbsp;2.3: Artwork by @allison_horst of the culman of a Gentoo penguin.
 </section>
 <section id="base-r-the-tidyverse-and-tidy-data" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="base-r-the-tidyverse-and-tidy-data"><span class="header-section-number">2.6</span> Base R, the tidyverse and tidy data</h2>
+<p>The key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.</p>
+<p>This trade-off I’d characterise as cognitive ease versus flexibility.</p>
 </section>
 <section id="atoms-of-r" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="atoms-of-r"><span class="header-section-number">2.7</span> Atoms of R</h2>
@@ -369,8 +380,12 @@ Figure&nbsp;2.3: Artwork by @allison_horst of the culman of a Gentoo penguin.
 <h3 data-number="2.9.1" class="anchored" data-anchor-id="indexing-and-sub-setting"><span class="header-section-number">2.9.1</span> Indexing and sub-setting</h3>
 </section>
 </section>
-<section id="data-containers-lists-matrices-arrays-and-data-frames" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="data-containers-lists-matrices-arrays-and-data-frames"><span class="header-section-number">2.10</span> Data containers: Lists, matrices, arrays and data frames</h2>
+<section id="sec-data-containers" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="sec-data-containers"><span class="header-section-number">2.10</span> Data containers: Lists, matrices, arrays and data frames</h2>
+<section id="sec-data-frames" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="sec-data-frames"><span class="header-section-number">2.10.1</span> Data frames</h3>
+<p>For data analysis in R, we mostly be using data frames.</p>
+</section>
 </section>
 <section id="plotting-and-exporting-data" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="plotting-and-exporting-data"><span class="header-section-number">2.11</span> Plotting and exporting data</h2>
@@ -941,8 +956,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-wrangling-1.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Data wrangling I</span>">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

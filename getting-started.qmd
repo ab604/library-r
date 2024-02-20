@@ -1,4 +1,4 @@
-# Getting started
+# Getting started {#sec-getting-started}
 
 ::: {#chapter-02-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
 This is a long chapter that goes on a whistle stop tour of R.
@@ -8,11 +8,11 @@ It covers setting up RStudio, installing packages, finding help, how to organise
 Don't worry if you don't get it all in the first pass, that's why the book and lots of other materials exist, so you can come back here or explore out there.
 :::
 
-## What is R?
+## What is R? {#sec-what-is-r}
 
 Stuff
 
-## RStudio
+## RStudio {#sec-rstudio}
 
 ### What is real?
 
@@ -46,7 +46,7 @@ say("Use ?say to open the help\ndocumentation for the say() function.",
 ```
 :::
 
-### Introducing the Palmer Penguins
+### Introducing the Palmer Penguins {#sec-palmer-penguins}
 
 The [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/) package is a dataset curated by Allison Horst of data on three penguin species from the [Palmer Station in Antarctica](https://pallter.marine.rutgers.edu/) (@fig-palmer-penguins-hex).
 
@@ -103,9 +103,7 @@ knitr::include_graphics("img/culmen_depth.png", dpi = 270)
 
 ## Base R, the tidyverse and tidy data
 
-The key difference between base R and the tidyverse is that the tidyverse uses 
-functions named as verbs with a single purpose, whereas base R syntax can be used for
-multiple purposes.
+The key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.
 
 This trade-off I'd characterise as cognitive ease versus flexibility.
 
@@ -117,7 +115,11 @@ This trade-off I'd characterise as cognitive ease versus flexibility.
 
 ### Indexing and sub-setting
 
-## Data containers: Lists, matrices, arrays and data frames
+## Data containers: Lists, matrices, arrays and data frames {#sec-data-containers}
+
+### Data frames {#sec-data-frames}
+
+For data analysis in R, we mostly be using data frames.
 
 ## Plotting and exporting data
 

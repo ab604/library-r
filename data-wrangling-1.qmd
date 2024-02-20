@@ -1,3 +1,43 @@
+# Data wrangling I {#sec-data-wrangling-i}
+
+::: {#chapter-03-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
+Chapter 3 summary
+:::
+
+## Organising your data in spreadsheets {#sec-spreadsheets}
+
+[Data Organization in Spreadsheets by Karl W. Broman & Kara H. Woo](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.
+
+### Plain formats and Excel files
+
+File formats like `.csv` and `.tsv`, comma separated variables and tab separated variables respectively are plain text files. That is to say they contain only the data, as text information, and are the simplest and most convenient way to share data as lots of software, including Excel, can read and interpret them.
+
+Excel files saves files into its own proprietary format `.xls` or `.xlsx` that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse `readxl` package is very useful.
+
+## Introducing `dplyr`
+
+[`dplyr`](https://dplyr.tidyverse.org/) *"is a grammar of data manipulation"*. Concretely, it's a package of functions from the tidyverse that have been created for tasks that require manipulation of data stored in @sec-data-frames.
+
+The grammar comes from the naming of the functions as verbs. Personally, I find this parallel between R code and human language makes things cognitively easier for me. I can describe what I want to do using natural language and translate it easily into tidyverse code.
+
+```{r}
+#| label: fig-dplyr-name
+#| echo: false
+#| out-width: NULL
+#| fig-cap: |
+#|   '[Why is it called `dplyr`?](https://github.com/tidyverse/dplyr/issues/1857)'
+#| fig-alt: |
+#|   'The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.'
+
+knitr::include_graphics("img/dplyr-name-github.png")
+```
+
+## The four most common `dplyr` verbs
+
+We'll use the four most common verbs in `dplyr` to examine the @sec-palmer-penguins data.
+
+### Filter rows with `filter()`
+
 ```{r}
 #| label: fig-filter 
 #| echo: false
@@ -8,4 +48,28 @@
 #|  dplyr filter
 
 knitr::include_graphics("img/dplyr-filter-penguin.png", dpi = 270)
+```
+
+### Arranging rows with `arrange()`
+
+### Selecting columns with `select()`
+
+### Creating new columns with `mutate()`
+
+## Creating grouped summaries with `dplyr`
+
+### Using `group_by()` and `summarise()` together
+
+## Pivots
+
+```{r}
+#| label: fig-pivot-animation 
+#| echo: false
+#| out-width: NULL
+#| fig-cap: |
+#|   pivot
+#| fig-alt: |
+#|  pivot
+
+knitr::include_graphics("img/tidyr-pivoting.gif", dpi = 270)
 ```

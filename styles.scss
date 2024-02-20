@@ -24,7 +24,10 @@ $shamrock: #1E8765 !default;
 $neutral1: #495961 !default;
 $neutral2: #758D9A !default;
 $link-color: $marine1 !default;
+
 $headings-color: $marine1 !default;
+$code-color: $horizon4 !default;
+$code-bg: $white !default;
 
 /*-- scss:rules --*/
 .highlight {
@@ -42,3 +45,5 @@ $headings-color: $marine1 !default;
 .quarto-title-meta-heading {
   color: $marine1;
 }
+
+

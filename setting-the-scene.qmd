@@ -17,7 +17,7 @@ Source: [The Biostar Handbook](https://www.biostarhandbook.com/index.html)
 ### But why is it worth doing? {#sec-but-why-is-it-worth-doing}
 
 1.  Maybe it isn't, but experience is one way to find out.
-2.  My experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting things.
+2.  My experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting and more complex things.
 
 ### What are we doing? {#sec-what-are-we-doing}
 

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "R for Librarians",
     "section": "",
-    "text": "Preface\nThis is a book contains guidance for getting started using R, with code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton Library Service.\nIf you want a full guide to data analysis in R check out R for Data Science\nSome of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called Coding Together.\nIf you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE).\nYou can use R without installing RStudio, but you can’t work with R in RStudio by installing RStudio alone. Download R here and Download RStudio Desktop here.\nIf you are wondering if and/or why learning R might be useful, 1  Setting the scene should help answer those questions.",
+    "text": "Preface\nThis is a book contains guidance for getting started using R, with code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton (UoS) Library Service.\nIf you want a full guide to data analysis in R check out R for Data Science\nSome of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called Coding Together.\nIf you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE).\nYou can use R without installing RStudio, but you can’t work with R in RStudio by installing RStudio alone. Download R here and Download RStudio Desktop here.\nIf you are wondering if and/or why learning R might be useful, 1  Setting the scene should help answer those questions.",
     "crumbs": [
       "Preface"
     ]
@@ -24,7 +24,7 @@
     "href": "setting-the-scene.html#sec-the-challenge",
     "title": "1  Setting the scene",
     "section": "",
-    "text": "Note 1.1: Is programming hard to learn?\n\n\n\n“…programming in general…is primarily about learning to think a certain way - to decompose a problem into very simple steps each of which can be easily solved. Some people have an affinity to this – they will pick it up faster, while others will need more practice.”\nSource: The Biostar Handbook\n\n\n\n1.1.1 But why is it worth doing?\n\nMaybe it isn’t, but experience is one way to find out.\nMy experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting things.\n\n\n\n1.1.2 What are we doing?\nFigure 1.1 shows a version of the data science cycle from R4DS. Conceptually, this is what we are mostly doing. In R4DS, all of these steps are done programmatically, but we won’t be trying to do everything here.\nModeling is beyond our scope here, but you may wish to explore the modeling part of the cycle yourself. For example, check out Tidy Modeling with R.\nAs a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.\nIn asking and answering those questions we need to learn to transform data and/or visualise our data.\nWe then need to communicate our findings back out of our working environment to our colleagues or for our own records.\n\n\n\n\n\n\n\n\nFigure 1.1: A version of the data science cycle from R4DS. We will cover data importing, tidying, transformation and visualisation, but not modeling. Communication of your output is the final part of the workflow.\n\n\n\n\n\n\n\n1.1.3 How are we going to do it?\nAs per Note 1.1, step-by-step and through practice we will learn to think and work in a certain way that may be different to how you have previously worked.\nIt may seem all a bit abstract to begin with, but that is part of the point. In learning to generalise from abstractions, one can identify and apply the same concepts to lots of specific problems that may at first seem different, but are either the same or similar.\nOur guiding principles in doing this are:\n\nKeep the raw data raw.\nWrite love letters to our future selves in the form of our code and how we organise and document our data.",
+    "text": "Note 1.1: Is programming hard to learn?\n\n\n\n“…programming in general…is primarily about learning to think a certain way - to decompose a problem into very simple steps each of which can be easily solved. Some people have an affinity to this – they will pick it up faster, while others will need more practice.”\nSource: The Biostar Handbook\n\n\n\n1.1.1 But why is it worth doing?\n\nMaybe it isn’t, but experience is one way to find out.\nMy experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting and more complex things.\n\n\n\n1.1.2 What are we doing?\nFigure 1.1 shows a version of the data science cycle from R4DS. Conceptually, this is what we are mostly doing. In R4DS, all of these steps are done programmatically, but we won’t be trying to do everything here.\nModeling is beyond our scope here, but you may wish to explore the modeling part of the cycle yourself. For example, check out Tidy Modeling with R.\nAs a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.\nIn asking and answering those questions we need to learn to transform data and/or visualise our data.\nWe then need to communicate our findings back out of our working environment to our colleagues or for our own records.\n\n\n\n\n\n\n\n\nFigure 1.1: A version of the data science cycle from R4DS. We will cover data importing, tidying, transformation and visualisation, but not modeling. Communication of your output is the final part of the workflow.\n\n\n\n\n\n\n\n1.1.3 How are we going to do it?\nAs per Note 1.1, step-by-step and through practice we will learn to think and work in a certain way that may be different to how you have previously worked.\nIt may seem all a bit abstract to begin with, but that is part of the point. In learning to generalise from abstractions, one can identify and apply the same concepts to lots of specific problems that may at first seem different, but are either the same or similar.\nOur guiding principles in doing this are:\n\nKeep the raw data raw.\nWrite love letters to our future selves in the form of our code and how we organise and document our data.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting the scene</span>"
     ]
@@ -60,8 +60,8 @@
     ]
   },
   {
-    "objectID": "getting-started.html#rstudio",
-    "href": "getting-started.html#rstudio",
+    "objectID": "getting-started.html#sec-rstudio",
+    "href": "getting-started.html#sec-rstudio",
     "title": "2  Getting started",
     "section": "2.2 RStudio",
     "text": "2.2 RStudio\n\n2.2.1 What is real?\n\n\n2.2.2 Where am I?",
@@ -104,7 +104,7 @@
     "href": "getting-started.html#base-r-the-tidyverse-and-tidy-data",
     "title": "2  Getting started",
     "section": "2.6 Base R, the tidyverse and tidy data",
-    "text": "2.6 Base R, the tidyverse and tidy data",
+    "text": "2.6 Base R, the tidyverse and tidy data\nThe key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.\nThis trade-off I’d characterise as cognitive ease versus flexibility.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -140,11 +140,11 @@
     ]
   },
   {
-    "objectID": "getting-started.html#data-containers-lists-matrices-arrays-and-data-frames",
-    "href": "getting-started.html#data-containers-lists-matrices-arrays-and-data-frames",
+    "objectID": "getting-started.html#sec-data-containers",
+    "href": "getting-started.html#sec-data-containers",
     "title": "2  Getting started",
     "section": "2.10 Data containers: Lists, matrices, arrays and data frames",
-    "text": "2.10 Data containers: Lists, matrices, arrays and data frames",
+    "text": "2.10 Data containers: Lists, matrices, arrays and data frames\n\n2.10.1 Data frames\nFor data analysis in R, we mostly be using data frames.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -167,6 +167,66 @@
     "text": "2.12 Getting help\nhttps://rweekly.org/ https://posit.cloud/learn/recipes https://www.bigbookofr.com/",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "data-wrangling-1.html",
+    "href": "data-wrangling-1.html",
+    "title": "3  Data wrangling I",
+    "section": "",
+    "text": "3.1 Organising your data in spreadsheets\nData Organization in Spreadsheets by Karl W. Broman & Kara H. Woo is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
+    ]
+  },
+  {
+    "objectID": "data-wrangling-1.html#sec-spreadsheets",
+    "href": "data-wrangling-1.html#sec-spreadsheets",
+    "title": "3  Data wrangling I",
+    "section": "",
+    "text": "3.1.1 Plain formats and Excel files\nFile formats like .csv and .tsv, comma separated variables and tab separated variables respectively are plain text files. That is to say they contain only the data, as text information, and are the simplest and most convenient way to share data as lots of software, including Excel, can read and interpret them.\nExcel files saves files into its own proprietary format .xls or .xlsx that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse readxl package is very useful.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
+    ]
+  },
+  {
+    "objectID": "data-wrangling-1.html#introducing-dplyr",
+    "href": "data-wrangling-1.html#introducing-dplyr",
+    "title": "3  Data wrangling I",
+    "section": "3.2 Introducing dplyr",
+    "text": "3.2 Introducing dplyr\ndplyr “is a grammar of data manipulation”. Concretely, it’s a package of functions from the tidyverse that have been created for tasks that require manipulation of data stored in Section 2.10.1.\nThe grammar comes from the naming of the functions as verbs. Personally, I find this parallel between R code and human language makes things cognitively easier for me. I can describe what I want to do using natural language and translate it easily into tidyverse code.\n\n\n\n\n\n\n\n\nFigure 3.1: ‘Why is it called dplyr?’",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
+    ]
+  },
+  {
+    "objectID": "data-wrangling-1.html#the-four-most-common-dplyr-verbs",
+    "href": "data-wrangling-1.html#the-four-most-common-dplyr-verbs",
+    "title": "3  Data wrangling I",
+    "section": "3.3 The four most common dplyr verbs",
+    "text": "3.3 The four most common dplyr verbs\nWe’ll use the four most common verbs in dplyr to examine the Section 2.3.1 data.\n\n3.3.1 Filter rows with filter()\n\n\n\n\n\n\n\n\nFigure 3.2: dplyr filter\n\n\n\n\n\n\n\n3.3.2 Arranging rows with arrange()\n\n\n3.3.3 Selecting columns with select()\n\n\n3.3.4 Creating new columns with mutate()",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
+    ]
+  },
+  {
+    "objectID": "data-wrangling-1.html#creating-grouped-summaries-with-dplyr",
+    "href": "data-wrangling-1.html#creating-grouped-summaries-with-dplyr",
+    "title": "3  Data wrangling I",
+    "section": "3.4 Creating grouped summaries with dplyr",
+    "text": "3.4 Creating grouped summaries with dplyr\n\n3.4.1 Using group_by() and summarise() together",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
+    ]
+  },
+  {
+    "objectID": "data-wrangling-1.html#pivots",
+    "href": "data-wrangling-1.html#pivots",
+    "title": "3  Data wrangling I",
+    "section": "3.5 Pivots",
+    "text": "3.5 Pivots\n\n\n\n\n\n\n\n\nFigure 3.3: pivot",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
     ]
   }
 ]

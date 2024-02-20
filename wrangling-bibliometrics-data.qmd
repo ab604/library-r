@@ -92,7 +92,7 @@ dat_repaired <- dat |> mutate(Report.Date = convert_to_date(Report.Date),
                               Epublication.Date = convert_to_date(Epublication.Date))
 glimpse(dat_repaired)
 ```
+
 ```{r}
 dat_repaired |> select(Affiliations) |> slice(1:2)
 ```
-
