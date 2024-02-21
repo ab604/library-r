@@ -41,7 +41,7 @@ We'll use the four most common verbs in `dplyr` to examine the @sec-palmer-pengu
 ```{r}
 #| label: fig-filter 
 #| echo: false
-#| out-width: NULL
+#| out-width: 80%
 #| fig-cap: |
 #|   dplyr filter
 #| fig-alt: |
