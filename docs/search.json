@@ -104,7 +104,7 @@
     "href": "getting-started.html#base-r-the-tidyverse-and-tidy-data",
     "title": "2  Getting started",
     "section": "2.6 Base R, the tidyverse and tidy data",
-    "text": "2.6 Base R, the tidyverse and tidy data\nThe key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.\nThis trade-off I’d characterise as cognitive ease versus flexibility.",
+    "text": "2.6 Base R, the tidyverse and tidy data\nBase R is everything that comes included when you install the R language, whereas the tidyverse has have to be installed in addition to base R. The tidyverse eight core packages that are loaded when the tidyverse library is loaded, but installs a number of other tidyverse packages that can be load separately using the library function.\nThe key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.\nThis trade-off I’d characterise as cognitive ease versus flexibility.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -204,7 +204,7 @@
     "href": "data-wrangling-1.html#the-four-most-common-dplyr-verbs",
     "title": "3  Data wrangling I",
     "section": "3.3 The four most common dplyr verbs",
-    "text": "3.3 The four most common dplyr verbs\nWe’ll use the four most common verbs in dplyr to examine the Section 2.3.1 data.\n\n3.3.1 Filter rows with filter()\n\n\n\n\n\n\n\n\nFigure 3.2: dplyr filter\n\n\n\n\n\n\n\n3.3.2 Arranging rows with arrange()\n\n\n3.3.3 Selecting columns with select()\n\n\n3.3.4 Creating new columns with mutate()",
+    "text": "3.3 The four most common dplyr verbs\nWe’ll use the four most common verbs in dplyr to examine the Palmer Penguins data (Section 2.3.1).\n\n3.3.1 Filter rows with filter()\n\n\n\n\n\n\n\n\nFigure 3.2: The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as TRUE. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.2 Arranging rows with arrange()\n\n\n\n\n\n\n\n\nFigure 3.3: The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.3 Selecting columns with select()\n\n\n\n\n\n\n\n\nFigure 3.4: The dplyr select function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.4 Creating new columns with mutate()\n\n\n\n\n\n\n\n\nFigure 3.5: The dplyr mutate function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called body_mass_kg in the Palmer Penguins data.frame by dividing the values in the body_mass_g column by 1000 and storing the answer in new variable body_mass_kg. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
     ]
@@ -214,7 +214,7 @@
     "href": "data-wrangling-1.html#creating-grouped-summaries-with-dplyr",
     "title": "3  Data wrangling I",
     "section": "3.4 Creating grouped summaries with dplyr",
-    "text": "3.4 Creating grouped summaries with dplyr\n\n3.4.1 Using group_by() and summarise() together",
+    "text": "3.4 Creating grouped summaries with dplyr\n\npenguins |&gt; \n  summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), n_penguins = n())\n\n# A tibble: 1 × 2\n  mean_mass_g n_penguins\n        &lt;dbl&gt;      &lt;int&gt;\n1       4202.        344\n\n\n\npenguins |&gt; \n  group_by(species) |&gt; \n  summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), n_penguins = n())\n\n# A tibble: 3 × 3\n  species   mean_mass_g n_penguins\n  &lt;fct&gt;           &lt;dbl&gt;      &lt;int&gt;\n1 Adelie          3701.        152\n2 Chinstrap       3733.         68\n3 Gentoo          5076.        124\n\n\n\n3.4.1 Using group_by() and summarise() together",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
     ]
@@ -224,7 +224,7 @@
     "href": "data-wrangling-1.html#pivots",
     "title": "3  Data wrangling I",
     "section": "3.5 Pivots",
-    "text": "3.5 Pivots\n\n\n\n\n\n\n\n\nFigure 3.3: pivot",
+    "text": "3.5 Pivots\n\n\n\n\n\n\n\n\nFigure 3.6: pivot\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3.7: pivot",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
     ]

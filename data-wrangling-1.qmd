@@ -4,6 +4,15 @@
 Chapter 3 summary
 :::
 
+```{r}
+#| label: set-up
+#| message: false
+#| echo: false
+library(palmerpenguins)
+library(dplyr)
+```
+
+
 ## Organising your data in spreadsheets {#sec-spreadsheets}
 
 [Data Organization in Spreadsheets by Karl W. Broman & Kara H. Woo](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.
@@ -34,7 +43,7 @@ knitr::include_graphics("img/dplyr-name-github.png")
 
 ## The four most common `dplyr` verbs
 
-We'll use the four most common verbs in `dplyr` to examine the @sec-palmer-penguins data.
+We'll use the four most common verbs in `dplyr` to examine the Palmer Penguins data (@sec-palmer-penguins).
 
 ### Filter rows with `filter()`
 
@@ -43,24 +52,87 @@ We'll use the four most common verbs in `dplyr` to examine the @sec-palmer-pengu
 #| echo: false
 #| out-width: 80%
 #| fig-cap: |
-#|   dplyr filter
+#|   The `dplyr filter` function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.
 #| fig-alt: |
-#|  dplyr filter
+#|  The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.
 
 knitr::include_graphics("img/dplyr-filter-penguin.png", dpi = 270)
 ```
 
 ### Arranging rows with `arrange()`
 
+```{r}
+#| label: fig-arrange 
+#| echo: false
+#| out-width: 80%
+#| fig-cap: |
+#|   The `dplyr arrange` function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.
+#| fig-alt: |
+#|  The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.
+
+knitr::include_graphics("img/dplyr-arrange-penguin.png", dpi = 270)
+```
+
 ### Selecting columns with `select()`
+
+```{r}
+#| label: fig-select 
+#| echo: false
+#| out-width: 80%
+#| fig-cap: |
+#|   The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.
+#| fig-alt: |
+#|  The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.
+
+knitr::include_graphics("img/dplyr-select-penguin.png", dpi = 270)
+```
 
 ### Creating new columns with `mutate()`
 
+```{r}
+#| label: fig-mutate
+#| echo: false
+#| out-width: 80%
+#| fig-cap: |
+#|   The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.
+#| fig-alt: |
+#|  The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.
+
+knitr::include_graphics("img/dplyr-mutate-penguin.png", dpi = 270)
+```
+
 ## Creating grouped summaries with `dplyr`
+
+```{r}
+#| label: penguin-summary
+penguins |> 
+  summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), n_penguins = n())
+```
+
+
+```{r}
+#| label: penguin--grouped-summary
+penguins |> 
+  group_by(species) |> 
+  summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), n_penguins = n())
+```
+
 
 ### Using `group_by()` and `summarise()` together
 
 ## Pivots
+
+```{r}
+#| label: fig-pivot 
+#| echo: false
+#| out-width: NULL
+#| fig-cap: |
+#|   pivot
+#| fig-alt: |
+#|  pivot
+
+knitr::include_graphics("img/pivot-penguins.png", dpi = 270)
+```
 
 ```{r}
 #| label: fig-pivot-animation 

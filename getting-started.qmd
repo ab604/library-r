@@ -103,6 +103,8 @@ knitr::include_graphics("img/culmen_depth.png", dpi = 270)
 
 ## Base R, the tidyverse and tidy data
 
+Base R is everything that comes included when you install the R language, whereas the tidyverse has have to be installed in addition to base R. The tidyverse eight core packages that are loaded when the tidyverse library is loaded, but installs a number of other tidyverse packages that can be load separately using the library function.
+
 The key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.
 
 This trade-off I'd characterise as cognitive ease versus flexibility.
