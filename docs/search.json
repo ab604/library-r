@@ -54,7 +54,7 @@
     "href": "getting-started.html",
     "title": "2  Getting started",
     "section": "",
-    "text": "2.1 What is R?\nStuff",
+    "text": "2.1 What is R?\nR is a programming language that follows the philosophy laid down by it’s predecessor S. The philosophy being that users begin in an interactive environment where they don’t consciously think of themselves as programming. It was created in 1993, and documented in (Ihaka and Gentleman 1996).\nReasons R has become popular include that it is both open source and cross platform, and that it has broad functionality, from the analysis of data and creating graphical visualisations and web apps.\nLike all languages though it has limitations, for example the syntax is initially confusing.\nJumping Rivers maintains a list of useR groups and meetings, such as the R-Ladies group.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -64,44 +64,44 @@
     "href": "getting-started.html#sec-rstudio",
     "title": "2  Getting started",
     "section": "2.2 RStudio",
-    "text": "2.2 RStudio\n\n2.2.1 What is real?\n\n\n2.2.2 Where am I?",
+    "text": "2.2 RStudio\nR is the language and RStudio is software created to facilitate our use of R. They are installed separately. You don’t need RStudio to use R, but you do need R to used RStudio.\nWe will use R Studio IDE to write code, navigate the files found on our computer, inspect the variables we are going to create, and visualize the plots we will generate. R Studio can also be used for other things (e.g., version control, developing packages, writing Shiny apps) that we don’t have time to cover during this workshop.\nFigure 2.1 shows the default view of the RStudio interactive development environment (IDE). It is divided into “Panes”.\nWhen you first open RStudio, there are three panes,the console where you type commands, your environment/history (top-right), and your files/plots/packages/help/viewer (bottom-right).\n\n\n\n\n\n\n\n\nFigure 2.1: RStudio interactive development environment (IDE). This the default view of the R console, environment and output panes. These can be rearranged as desired.\n\n\n\n\n\nThe environment shows all the R objects you have created or are using, such as data you have imported.\nThe output pane can be used to view any plots you have created.\nNot opened at first start up is the fourth default pane: the script editor pane, but this will open as soon as we create/edit a R script (or many other document types). The script editor is where will be typing much of the time.\nThe placement of these panes and their content can be customized (see menu, R Studio -&gt; Tools -&gt; Global Options -&gt; Pane Layout). One of the advantages of using R Studio is that all the information you need to write code is available in a single window. Additionally, with many short-cuts, auto-completion, and highlighting for the major file types you use while developing in R, R Studio will make typing easier and less error-prone.\n\n\n\n\n\n\nShortcuts\n\n\n\nRStudio has lots of keyboard shortcuts to make coding quicker and easier. Try to find the menu listing all the keyboard shortcuts, including the short-cut to find the menu!\n\n\nTime for another philosophical diversion…\n\n2.2.1 What is real?\nAt the start, we might consider our environment “real”, that is to say the objects we’ve created/loaded and are using are “real”.\nBut it’s much better in the long run to consider our scripts as “real”.\n\n\n\n\n\n\nOur scripts are where we write down the code that creates our objects that we’ll be using in our environment.\nAs a script is a document, it is reproducible.\n\n\n\nOr to put it another way: we can easily recreate an environment from our scripts, but not so easily create a script from an environment.\nTo support the notion of thinking in terms of our scripts as real, it is recommended to turn off the preservation of workspaces between sessions by setting the Tools &gt; Global Options menu in R studio as shown in Figure 2.2\n\n\n\n\n\n\n\n\nFigure 2.2: It is recommended to turn off the preservation of workspaces between sessions by setting Save workspace to .RData on exit to Never\n\n\n\n\n\n\n\n2.2.2 Where am I?\nThe part of your computer operating system that manages files and directories (aka folders) is called the file system. This dates back to 1969 and the Unix filesystem.\nThe idea is that we have a rooted tree, as with phylogenetic rooted trees in biology. From the root all other directories and files exist along paths going back to the root as shown in Figure 2.3.\nOn Unix based systems such as Apple or Android, the root is denoted with a forward slash /. On Windows the root is a back slash \\. The / or \\ is used to to separate directories along the path, denoting a change in the level of the tree\nNote: in RStudio the path separator and root is always / regardless of the operating system.\n\n2.2.2.1 Absolute path from the root /\nFigure 2.3 shows the absolute path from the root to folder H as a red line.\nThis is just a made-up example, but in text in this would be /B/E/H.\nOn a Windows machine the root path may start with the hard drive name e.g. C:/ and on an Apple or Linux machine it will just begin /.\n\n\n\n\n\n\n\n\nFigure 2.3: The absolute path from the root / through sub-folders B and E to folder H is shown by the red line.\n\n\n\n\n\n\n\n\n\n\n\nIn the R console, the function getwd() will show your current working directory as an absolute path from the root.\nThe path is also shown at the top of the R console.\n\n\n\n\n\n\n2.2.3 Relative path from where you are\nWe can also consider relative paths, paths that are relative to each file or folder rather than the root.\nImagine I have project called penguin-project and I have a script in the R folder that analyses data in a spreadsheet in the data folder.\nFigure 2.4 shows the relative path between analysis-2024-02-27.R and the spreadsheet survey-2024-02-27.csv.\nIn natural language from the R script to access the spreadsheet we would need to “go up from the R directory to the project directory and then back down into the data directory”.\nIn machine readable language from our R script the relative path would be written as ../data/survey-2024-02-27.csv where ../ means go up one level from where the script is.\n\n\n\n\n\n\n\n\nFigure 2.4: The relative path between the R script analysis-2024-02-27.R in the R folder and the and the spreadsheet survey-2024-02-27.csv used by the R script in the data folder is shown in red.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
   },
   {
-    "objectID": "getting-started.html#installing-and-loading-packages",
-    "href": "getting-started.html#installing-and-loading-packages",
+    "objectID": "getting-started.html#sec-packages",
+    "href": "getting-started.html#sec-packages",
     "title": "2  Getting started",
     "section": "2.3 Installing and loading packages",
-    "text": "2.3 Installing and loading packages\nPackages are collections of functions, and a function is a piece of code written to perform a specific task, such as installing a package.\nTherefore, the function install.packages() is a piece of code written to perform the task of installing packages.\nWe use the function by typing install.packages(\"tidyverse\") with the name of the package in quotes inside the round brackets.\nHere the package is tidyverse. Using the console panel to type this and pressing Enter will run the function.\nWe of course need to know the name of the packages we are interested in.\nOnce a package is installed we need to load it into our environment to use it. Loading packages is performed using the library() function. As with installation, we put the name of the package - the argument for our function - that we want to load in between the round brackets like so library(tidyverse).\nAs before this can be done on the console, but we will usually load packages as part of script. Note that we don’t need the quotes for the library function.\n\n\n\n\n\n\nTry installing the cowsay package\n\n\n\nNow load cowsay with the library() function. cowsay has one function called say() that you can use to create messages with animals.\n\n\n\n ----- \nUse ?say to open the help\ndocumentation for the say() function. \n ------ \n    \\   ^__^ \n     \\  (oo)\\ ________ \n        (__)\\         )\\ /\\ \n             ||------w|\n             ||      ||\n\n\n\n\n\n2.3.1 Introducing the Palmer Penguins\nThe Palmer Penguins package is a dataset curated by Allison Horst of data on three penguin species from the Palmer Station in Antarctica (Figure 2.1).\n\n\n\n\n\n\n\n\nFigure 2.1: Hex sticker of the Palmer Penguins package curated by Allison Horst showing the Chinstrap, Gentoo and Adélie penguins.\n\n\n\n\n\nIt’s a great dataset for getting started with and you can install it like so:\n\ninstall.packages(\"palmerpenguins\")\n\nThe three penguins species are the Chinstrap, Gentoo and Adélie penguins (Figure 2.2).\n\n\n\n\n\n\n\n\nFigure 2.2: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie penguins.\n\n\n\n\n\nThe dataset records various information about 344 penguins, including their culmen (Figure 2.3).\n\n\n\n\n\n\n\n\nFigure 2.3: Artwork by @allison_horst of the culman of a Gentoo penguin.",
+    "text": "2.3 Installing and loading packages\nPackages are collections of functions, and a function is a piece of code written to perform a specific task, such as installing a package.\nTherefore, the function install.packages() is a piece of code written to perform the task of installing packages.\nWe use the function by typing install.packages(\"tidyverse\") with the name of the package in quotes inside the round brackets.\nHere the package is tidyverse. Using the console panel to type this and pressing Enter will run the function.\nWe of course need to know the name of the packages we are interested in.\nOnce a package is installed we need to load it into our environment to use it. Loading packages is performed using the library() function. As with installation, we put the name of the package - the argument for our function - that we want to load in between the round brackets like so library(tidyverse).\nAs before this can be done on the console, but we will usually load packages as part of script. Note that we don’t need the quotes for the library function.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
   },
   {
-    "objectID": "getting-started.html#what-is-a-function-and-how-do-i-use-them",
-    "href": "getting-started.html#what-is-a-function-and-how-do-i-use-them",
+    "objectID": "getting-started.html#sec-what-is-a-function",
+    "href": "getting-started.html#sec-what-is-a-function",
     "title": "2  Getting started",
     "section": "2.4 What is a function and how do I use them?",
-    "text": "2.4 What is a function and how do I use them?",
+    "text": "2.4 What is a function and how do I use them?\nA function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in Section 2.3 the function install.packages() requires the name of the package we want to install as arguments.\nMany, if not most, functions can take more than one argument. The creators of the function should have given these defaults for the situation where the user provides only one or some arguments. RStudio should prompt you for the arguments as you type, but if you need to see what they are, use the help function ? with the function name in the Console and it will open the help panel or type the function name into the help panel search box.\nFor example, to find out all the arguments for install.packages() we’d type ?install.packages and press Enter.\n\n\n\n\n\n\nTry installing the cowsay package\n\n\n\nInstall and load cowsay with the install.packages() and library() functions. cowsay has one function called say() that you can use to create messages with animals.\n\n\n\n ----- \nUse ?say to open the help\ndocumentation for the say() function. \n ------ \n    \\   ^__^ \n     \\  (oo)\\ ________ \n        (__)\\         )\\ /\\ \n             ||------w|\n             ||      ||\n\n\n\n\n\n2.4.1 Introducing the Palmer Penguins\nThe Palmer Penguins package is a dataset curated by Allison Horst of data on three penguin species from the Palmer Station in Antarctica (Figure 2.5).\n\n\n\n\n\n\n\n\nFigure 2.5: Hex sticker of the Palmer Penguins package curated by Allison Horst showing the Chinstrap, Gentoo and Adélie penguins.\n\n\n\n\n\nIt’s a great dataset for getting started with and you can install it like so:\n\ninstall.packages(\"palmerpenguins\")\n\nThe three penguins species are the Chinstrap, Gentoo and Adélie penguins (Figure 2.6).\n\n\n\n\n\n\n\n\nFigure 2.6: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie penguins.\n\n\n\n\n\nThe dataset records various information about 344 penguins, including their culmen (Figure 2.7).\n\n\n\n\n\n\n\n\nFigure 2.7: Artwork by @allison_horst of the culman of a Gentoo penguin.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
   },
   {
-    "objectID": "getting-started.html#a-project-orientated-workflow",
-    "href": "getting-started.html#a-project-orientated-workflow",
+    "objectID": "getting-started.html#sec-a-project-orientated-workflow",
+    "href": "getting-started.html#sec-a-project-orientated-workflow",
     "title": "2  Getting started",
     "section": "2.5 A project orientated workflow",
-    "text": "2.5 A project orientated workflow",
+    "text": "2.5 A project orientated workflow\nThis section is all about how to use R and RStudio to “maximize effectiveness and reduce frustration.”\nThe above quote is from Jenny Bryan’s article about a project orientated workflow.\nThe main point here is that how you do things, the workflow, should not be mixed up with the product of the workflow itself.\nThe product being:\n\nthe raw data.\nthe code needed to produce the results from the raw data.\n\nWays in which you can mix workflow and product include having lines in your script that set your working directory, or using RStudio to save your environment when you are working.\nBut why is this a problem?\nIt’s because your computer isn’t my computer or my laptop isn’t my desktop or I’m now using a Windows machine and I wrote the code two years ago on a Mac.\nBy hard coding the directory into a script I have ensured my code will only run on the machine in which it was written. Chances are you will want to share your code with someone, either for publication or for them to check your work, or because you are working collaboratively and therefore we need to avoid mixing workflow with product.\nLikewise we can’t share environments directly, but we can share the code that creates the environment.\nIf we organise our analysis into self-contained projects that hold everything needed to perform the analysis. These projects can be shared across machines and the analysis recreated, and thus the workflow is kept separate from the product.\nWhat does this look like in practice?\n\n2.5.1 RStudio Projects\nStep one is to use an interactive development environment such as RStudio rather than using R on its own for your analysis.\nRStudio contains a facility to keep all files associated with a particular analysis together called, as you might expect from Section 2.5, a Project.\nCreating a Project creates a file .Rproj containing all the information associated with your analysis including the Project location (allowing you to quickly navigate to it), and optionally preserves custom settings and open files to make it easier to resume work after a break. This is also super helpful if you are working on multiple projects as you can switch between them at a click.\n\n\n\n\n\n\n\n\nFigure 2.8: Starting a new R project in RStudio\n\n\n\n\n\nThese the steps for creating an Project in a new folder:\n\nStart R Studio (presentation of R Studio -below- should happen here)\nUnder the File menu, click on New project, choose New directory, then Empty project\nEnter a name for this new folder (aka directory), and choose a convenient location for it. This will be your working directory for the project.\nClick on Create project\n\n\n\n2.5.2 Naming things\nJenny Bryan also has three principles for naming things that are well worth remembering.\nWhen you names something, a file or an object, ideally it should be:\n\nMachine readable (no white space, punctuation, upper and lower-case)\nHuman readable (makes sense in 6 months or 2 years time)\nPlays well with default ordering (numerical or date order)\n\nWe’ll see examples of this as we go along.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
   },
   {
-    "objectID": "getting-started.html#base-r-the-tidyverse-and-tidy-data",
-    "href": "getting-started.html#base-r-the-tidyverse-and-tidy-data",
+    "objectID": "getting-started.html#sec-base-r-tidyverse",
+    "href": "getting-started.html#sec-base-r-tidyverse",
     "title": "2  Getting started",
     "section": "2.6 Base R, the tidyverse and tidy data",
     "text": "2.6 Base R, the tidyverse and tidy data\nBase R is everything that comes included when you install the R language, whereas the tidyverse has have to be installed in addition to base R. The tidyverse eight core packages that are loaded when the tidyverse library is loaded, but installs a number of other tidyverse packages that can be load separately using the library function.\nThe key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.\nThis trade-off I’d characterise as cognitive ease versus flexibility.",
@@ -114,7 +114,7 @@
     "href": "getting-started.html#atoms-of-r",
     "title": "2  Getting started",
     "section": "2.7 Atoms of R",
-    "text": "2.7 Atoms of R",
+    "text": "2.7 Atoms of R\n\n\n\n\n\n\n\n\nFigure 2.9: R data types",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -134,7 +134,7 @@
     "href": "getting-started.html#assigning-objects",
     "title": "2  Getting started",
     "section": "2.9 Assigning objects",
-    "text": "2.9 Assigning objects\n\n2.9.1 Indexing and sub-setting",
+    "text": "2.9 Assigning objects\n\n\n\n\n\n\n\n\nFigure 2.10: Bibi\n\n\n\n\n\n\n2.9.1 Indexing and sub-setting",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -144,14 +144,14 @@
     "href": "getting-started.html#sec-data-containers",
     "title": "2  Getting started",
     "section": "2.10 Data containers: Lists, matrices, arrays and data frames",
-    "text": "2.10 Data containers: Lists, matrices, arrays and data frames\n\n2.10.1 Data frames\nFor data analysis in R, we mostly be using data frames.",
+    "text": "2.10 Data containers: Lists, matrices, arrays and data frames\n\n\n\n\n\n\n\n\nFigure 2.11: Starting a new R project in RStudio\n\n\n\n\n\n\n2.10.1 Data frames\nFor data analysis in R, we mostly be using data frames.\n\n\n\n\n\n\n\n\nFigure 2.12: Data frame",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
   },
   {
-    "objectID": "getting-started.html#plotting-and-exporting-data",
-    "href": "getting-started.html#plotting-and-exporting-data",
+    "objectID": "getting-started.html#sec-plotting-and-exporting-data",
+    "href": "getting-started.html#sec-plotting-and-exporting-data",
     "title": "2  Getting started",
     "section": "2.11 Plotting and exporting data",
     "text": "2.11 Plotting and exporting data",
@@ -160,11 +160,11 @@
     ]
   },
   {
-    "objectID": "getting-started.html#getting-help",
-    "href": "getting-started.html#getting-help",
+    "objectID": "getting-started.html#sec-help-and-resources",
+    "href": "getting-started.html#sec-help-and-resources",
     "title": "2  Getting started",
-    "section": "2.12 Getting help",
-    "text": "2.12 Getting help\nhttps://rweekly.org/ https://posit.cloud/learn/recipes https://www.bigbookofr.com/",
+    "section": "2.12 Help and resources",
+    "text": "2.12 Help and resources\n\n2.12.1 Using ? to access R function help pages\nIf you need help with a specific R function, let’s say barplot(), you can type\nthe function name without round brackets, with a question mark at the start:\n\n?barplot\n\n\n\n2.12.2 Using Google to find R answers\nA Google or internet search “R &lt;task&gt;” will often either send you to the appropriate package documentation or a helpful forum question that someone else already asked, such as the RStudio Community or Stack Overflow.\n\n\n2.12.3 Asking questions\nAs well as knowing where to ask, the key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.\nTry to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem.\nIf possible, try to reduce what doesn’t work to a simple reproducible example otherwise known as a reprex.\nFor more information on how to write a reproducible example see this article using the reprex package.\n\n\n2.12.4 News, tutorials other online books\nR weekly provides a round-up of what’s new in R, including packages and tutorials.\nThe creators of RStudio have Posit recipes to illustrate how to do common data tasks.\nThe big book of R contains links to many on-line books for learning R across various subject areas.\n\n\n\n\nIhaka, Ross, and Robert Gentleman. 1996. “R: A Language for Data Analysis and Graphics.” Journal of Computational and Graphical Statistics 5 (3): 299–314. https://doi.org/10.2307/1390807.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
     ]
@@ -204,7 +204,7 @@
     "href": "data-wrangling-1.html#the-four-most-common-dplyr-verbs",
     "title": "3  Data wrangling I",
     "section": "3.3 The four most common dplyr verbs",
-    "text": "3.3 The four most common dplyr verbs\nWe’ll use the four most common verbs in dplyr to examine the Palmer Penguins data (Section 2.3.1).\n\n3.3.1 Filter rows with filter()\n\n\n\n\n\n\n\n\nFigure 3.2: The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as TRUE. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.2 Arranging rows with arrange()\n\n\n\n\n\n\n\n\nFigure 3.3: The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.3 Selecting columns with select()\n\n\n\n\n\n\n\n\nFigure 3.4: The dplyr select function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.4 Creating new columns with mutate()\n\n\n\n\n\n\n\n\nFigure 3.5: The dplyr mutate function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called body_mass_kg in the Palmer Penguins data.frame by dividing the values in the body_mass_g column by 1000 and storing the answer in new variable body_mass_kg. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.",
+    "text": "3.3 The four most common dplyr verbs\nWe’ll use the four most common verbs in dplyr to examine the Palmer Penguins data (Section 2.4.1).\n\n3.3.1 Filter rows with filter()\n\n\n\n\n\n\n\n\nFigure 3.2: The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as TRUE. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.2 Arranging rows with arrange()\n\n\n\n\n\n\n\n\nFigure 3.3: The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.3 Selecting columns with select()\n\n\n\n\n\n\n\n\nFigure 3.4: The dplyr select function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.\n\n\n\n\n\n\n\n3.3.4 Creating new columns with mutate()\n\n\n\n\n\n\n\n\nFigure 3.5: The dplyr mutate function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called body_mass_kg in the Palmer Penguins data.frame by dividing the values in the body_mass_g column by 1000 and storing the answer in new variable body_mass_kg. The function can either be used by providing the penguins data.frame as the first argument to the function or by passing the penguins data.frame via a pipe.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
     ]
@@ -227,6 +227,16 @@
     "text": "3.5 Pivots\n\n\n\n\n\n\n\n\nFigure 3.6: pivot\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3.7: pivot",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data wrangling I</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Ihaka, Ross, and Robert Gentleman. 1996. “R: A Language for Data\nAnalysis and Graphics.” Journal of Computational and\nGraphical Statistics 5 (3): 299–314. https://doi.org/10.2307/1390807.",
+    "crumbs": [
+      "References"
     ]
   }
 ]

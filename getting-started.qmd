@@ -10,15 +10,145 @@ Don't worry if you don't get it all in the first pass, that's why the book and l
 
 ## What is R? {#sec-what-is-r}
 
-Stuff
+**R** is a programming language that follows the philosophy laid down by it's predecessor S. The philosophy being that users begin in an interactive environment where they don't consciously think of themselves as programming. It was created in 1993, and documented in [@ihaka1996].
+
+Reasons R has become popular include that it is both open source and cross platform, and that it has broad functionality, from the analysis of data and creating graphical visualisations and web apps.
+
+Like all languages though it has limitations, for example the syntax is initially confusing.
+
+[Jumping Rivers](https://jumpingrivers.github.io/meetingsR/) maintains a list of useR groups and meetings, such as the [R-Ladies](https://rladies.org/) group.
 
 ## RStudio {#sec-rstudio}
 
-### What is real?
+**R is the language and RStudio is software created to facilitate our use of R.** They are installed separately. You don't need RStudio to use R, but you do need R to used RStudio.
+
+We will use R Studio IDE to write code, navigate the files found on our computer, inspect the variables we are going to create, and visualize the plots we will generate. R Studio can also be used for other things (e.g., version control, developing packages, writing Shiny apps) that we don't have time to cover during this workshop.
+
+@fig-rstudio-ide shows the default view of the [RStudio](https://posit.co/products/open-source/rstudio/) interactive development environment (IDE). It is divided into "Panes".
+
+When you first open RStudio, there are three panes,the console where you type commands, your environment/history (top-right), and your files/plots/packages/help/viewer (bottom-right).
+
+```{r}
+#| label: fig-rstudio-ide 
+#| echo: false
+#| out-width: 100%
+#| fig-cap: |
+#|   RStudio interactive development environment (IDE). This the default view of the R console, environment and output panes. These can be rearranged as desired.
+#| fig-alt: |
+#|  Image of the default RStudio interactive development environment, showing the default view of the R console, environment and output panes. These can be rearranged as desired.
+
+knitr::include_graphics("img/rstudio-view.png", dpi = 270)
+```
+
+The environment shows all the R objects you have created or are using, such as data you have imported.
+
+The output pane can be used to view any plots you have created.
+
+Not opened at first start up is the fourth default pane: the script editor pane, but this will open as soon as we create/edit a R script (or many other document types). *The script editor is where will be typing much of the time.*
+
+The placement of these panes and their content can be customized (see menu, R Studio -\> Tools -\> Global Options -\> Pane Layout). One of the advantages of using R Studio is that all the information you need to write code is available in a single window. Additionally, with many short-cuts, auto-completion, and highlighting for the major file types you use while developing in R, R Studio will make typing easier and less error-prone.
+
+::: {.callout-tip .unnumbered title="Shortcuts" appearance="simple" icon="false"}
+RStudio has lots of keyboard shortcuts to make coding quicker and easier. Try to find the menu listing all the keyboard shortcuts, including the short-cut to find the menu!
+:::
+
+Time for another philosophical diversion...
+
+### What is real? {#sec-what-is-real}
+
+At the start, we might consider our environment "real", that is to say the objects we've created/loaded and are using are "real".
+
+But it's much better in the long run to consider our scripts as "real".
+
+::: {.callout-important appearance="simple" icon="false"}
+Our scripts are where we write down the code that creates our objects that we'll be using in our environment.
+
+**As a script is a document, it is reproducible.**
+:::
+
+Or to put it another way: we can easily recreate an environment from our scripts, but not so easily create a script from an environment.
+
+To support the notion of thinking in terms of our scripts as real, it is recommended to turn off the preservation of workspaces between sessions by setting the Tools \> Global Options menu in R studio as shown in @fig-rstudio-env
+
+```{r}
+#| label: fig-rstudio-env 
+#| echo: false
+#| out-width: 66%
+#| fig-cap: |
+#|   It is recommended to turn off the preservation of workspaces between sessions by setting `Save workspace to .RData on exit` to `Never`
+#| fig-alt: |
+#|  Image of the RStudio Global Options Save workspace to .RData on exit set to Never.
+
+knitr::include_graphics("img/rstudio-options.png", dpi = 270)
+```
 
 ### Where am I?
 
-## Installing and loading packages
+The part of your computer operating system that manages files and directories (aka folders) is called the file system. This dates back to 1969 and the [Unix filesystem](https://en.wikipedia.org/wiki/Unix_filesystem).
+
+The idea is that we have a rooted tree, as with [phylogenetic rooted trees](https://en.wikipedia.org/wiki/Phylogenetic_tree#Rooted_tree) in biology. From the root all other directories and files exist along paths going back to the root as shown in @fig-absolute-path.
+
+On Unix based systems such as Apple or Android, the root is denoted with a forward slash `/`. On Windows the root is a back slash `\`. The `/` or `\` is used to to separate directories along the path, denoting a change in the level of the tree
+
+**Note: in RStudio the path separator and root is always `/` regardless of the operating system.**
+
+#### Absolute path from the root `/` {#sec-absolute-path}
+
+@fig-absolute-path shows the absolute path from the root to folder `H` as a red line.
+
+This is just a made-up example, but in text in this would be `/B/E/H`.
+
+On a Windows machine the root path may start with the hard drive name e.g. `C:/` and on an Apple or Linux machine it will just begin `/`.
+
+```{r}
+#| label: fig-absolute-path 
+#| echo: false
+#| out-width: 50%
+#| fig-cap: |
+#|   The absolute path from the root `/` through sub-folders `B` and `E` to 
+#|   folder `H` is shown by the red line.
+#| fig-alt: |
+#|  Image of an absolute path from the root `/` through sub-folders `B` and `E` to 
+#|  folder `H` is shown by a red line.
+
+knitr::include_graphics("img/directory-structure.svg", dpi = 270)
+```
+
+::: {.callout-tip .unnumbered title="" appearance="simple" icon="false"}
+In the R console, the function `getwd()` will show your current working directory as an absolute path from the root.
+
+The path is also shown at the top of the R console.
+:::
+
+### Relative path from where you are {#sec-relative-path}
+
+We can also consider relative paths, paths that are relative to each file or folder rather than the root.
+
+Imagine I have project called `penguin-project` and I have a script in the `R` folder that analyses data in a spreadsheet in the `data` folder.
+
+@fig-relative-path shows the relative path between `analysis-2024-02-27.R` and the spreadsheet `survey-2024-02-27.csv`.
+
+In natural language from the R script to access the spreadsheet we would need to *"go up from the R directory to the project directory and then back down into the data directory"*.
+
+In machine readable language from our R script the relative path would be written as `../data/survey-2024-02-27.csv` where `../` means go up one level from where the script is.
+
+```{r}
+#| label: fig-relative-path 
+#| echo: false
+#| out-width: 100%
+#| fig-cap: |
+#|   The relative path between the R script `analysis-2024-02-27.R` in the R folder 
+#|   and the and the spreadsheet `survey-2024-02-27.csv` used by the R script in 
+#|   the data folder is shown in red.
+#| fig-alt: |
+#|  Image of a line indicating a relative path between a R script `analysis-2024-02-27.R` 
+#|  in the R folder and the 
+#|  spreadsheet `survey-2024-02-27.csv` used by the R script in the data folder.
+
+knitr::include_graphics("img/relative-path.svg", dpi = 270)
+```
+
+## Installing and loading packages {#sec-packages}
 
 Packages are collections of functions, and a function is a piece of code written to perform a specific task, such as installing a package.
 
@@ -34,9 +164,16 @@ Once a package is installed we need to load it into our environment to use it. L
 
 As before this can be done on the console, but we will usually load packages as part of script. *Note that we don't need the quotes for the library function.*
 
-::: {#cowsay .callout-tip .unnumbered title="Try installing the `cowsay` package" icon="false"}
-Now load `cowsay` with the `library()` function. `cowsay` has one function called `say()` that you can use to create messages with animals.
+## What is a function and how do I use them? {#sec-what-is-a-function}
 
+A function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in @sec-packages the function `install.packages()` requires the name of the package we want to install as arguments.
+
+Many, if not most, functions can take more than one argument. The creators of the function should have given these defaults for the situation where the user provides only one or some arguments. RStudio should prompt you for the arguments as you type, but if you need to see what they are, use the help function `?` with the function name in the Console and it will open the help panel or type the function name into the help panel search box.
+
+For example, to find out all the arguments for `install.packages()` we'd type `?install.packages` and press `Enter`.
+
+::: {#cowsay .callout-tip .unnumbered title="Try installing the `cowsay` package" icon="false"}
+Install and load `cowsay` with the `install.packages()` and `library()` functions. `cowsay` has one function called `say()` that you can use to create messages with animals.
 ```{r}
 #| echo: false
 #| message: false
@@ -97,11 +234,78 @@ The dataset records various information about 344 penguins, including their culm
 knitr::include_graphics("img/culmen_depth.png", dpi = 270)
 ```
 
-## What is a function and how do I use them?
+## A project orientated workflow {#sec-a-project-orientated-workflow}
 
-## A project orientated workflow
+This section is all about how to use R and RStudio to *"maximize effectiveness and reduce frustration."*
 
-## Base R, the tidyverse and tidy data
+The above quote is from [Jenny Bryan's article](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/) about a project orientated workflow.
+
+The main point here is that how you do things, **the workflow**, should not be mixed up with the **product of the workflow** itself.
+
+The product being:
+
+-   the raw data.
+-   the code needed to produce the results from the raw data.
+
+Ways in which you can mix workflow and product include having lines in your script that set your working directory, or using RStudio to save your environment when you are working.
+
+**But why is this a problem?**
+
+It's because **your computer isn't my computer** or **my laptop isn't my desktop** or **I'm now using a Windows machine and I wrote the code two years ago on a Mac**.
+
+By hard coding the directory into a script I have ensured my code will only run on the machine in which it was written. Chances are you will want to share your code with someone, either for publication or for them to check your work, or because you are working collaboratively and therefore we need to avoid mixing workflow with product.
+
+Likewise we can't share environments directly, but we can share the code that creates the environment.
+
+If we organise our analysis into self-contained projects that hold everything needed to perform the analysis. These projects can be shared across machines and the analysis recreated, and thus the workflow is kept separate from the product.
+
+What does this look like in practice?
+
+### RStudio Projects {#sec-r-projects}
+
+Step one is to use an interactive development environment such as RStudio rather than using R on its own for your analysis.
+
+RStudio contains a facility to keep all files associated with a particular analysis together called, as you might expect from @sec-a-project-orientated-workflow, a Project.
+
+Creating a Project creates a file `.Rproj` containing all the information associated with your analysis including the Project location (allowing you to quickly navigate to it), and optionally preserves custom settings and open files to make it easier to resume work after a break. This is also super helpful if you are working on multiple projects as you can switch between them at a click.
+
+```{r}
+#| label: fig-create-project 
+#| echo: false
+#| out-width: 66%
+#| fig-cap: |
+#|   Starting a new R project in RStudio
+#| fig-alt: |
+#|  An image of the new R project menu in RStudio
+
+knitr::include_graphics("img/create-project.png", dpi = 270)
+```
+
+These the steps for creating an `Project` in a new folder:
+
+* Start R Studio (presentation of R Studio -below- should happen here)
+* Under the `File` menu, click on `New project`, choose `New directory`, then
+  `Empty project`
+* Enter a name for this new folder (aka directory), and
+  choose a convenient location for it. This will be your **working directory**
+  for the project.
+* Click on `Create project`
+
+### Naming things {#sec-names}
+  
+[Jenny Bryan](https://ropensci.org/blog/2017/12/08/rprofile-jenny-bryan/)
+also has three principles for [naming things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf) 
+that are well worth remembering.
+
+When you names something, a file or an object, ideally it should be:
+  
+1. Machine readable (no white space, punctuation, upper and lower-case)
+2. Human readable  (makes sense in 6 months or 2 years time)
+3. Plays well with default ordering (numerical or date order)
+
+We'll see examples of this as we go along.
+
+## Base R, the tidyverse and tidy data {#sec-base-r-tidyverse}
 
 Base R is everything that comes included when you install the R language, whereas the tidyverse has have to be installed in addition to base R. The tidyverse eight core packages that are loaded when the tidyverse library is loaded, but installs a number of other tidyverse packages that can be load separately using the library function.
 
@@ -111,20 +315,108 @@ This trade-off I'd characterise as cognitive ease versus flexibility.
 
 ## Atoms of R
 
+
+```{r}
+#| label: fig-r-atoms 
+#| echo: false
+#| out-width: 66%
+#| fig-cap: |
+#|   R data types
+#| fig-alt: |
+#|  R data types
+
+knitr::include_graphics("img/R-vectors.png", dpi = 270)
+```
+
+
 ## Categorical data aka Factors
 
 ## Assigning objects
+
+
+```{r}
+#| label: fig-bibi-object
+#| echo: false
+#| out-width: 66%
+#| fig-cap: |
+#|   Bibi
+#| fig-alt: |
+#|  Bibi
+
+knitr::include_graphics("img/bibi-data.png", dpi = 270)
+```
+
 
 ### Indexing and sub-setting
 
 ## Data containers: Lists, matrices, arrays and data frames {#sec-data-containers}
 
+
+```{r}
+#| label: fig-list-index 
+#| echo: false
+#| out-width: 66%
+#| fig-cap: |
+#|   Starting a new R project in RStudio
+#| fig-alt: |
+#|  An image of the new R project menu in RStudio
+
+knitr::include_graphics("img/indexing.png", dpi = 270)
+```
+
+
 ### Data frames {#sec-data-frames}
 
 For data analysis in R, we mostly be using data frames.
 
-## Plotting and exporting data
 
-## Getting help
+```{r}
+#| label: fig-data-frame 
+#| echo: false
+#| out-width: 66%
+#| fig-cap: |
+#|   Data frame
+#| fig-alt: |
+#|  Data frame
 
-https://rweekly.org/ https://posit.cloud/learn/recipes https://www.bigbookofr.com/
+knitr::include_graphics("img/R-data-frame.png", dpi = 270)
+```
+
+
+## Plotting and exporting data {#sec-plotting-and-exporting-data}
+
+## Help and resources {#sec-help-and-resources}
+
+### Using `?` to access R function help pages
+
+If you need help with a specific R function, let's say `barplot()`, you can type
+
+the function name without round brackets, with a question mark at the start:
+
+```{r}
+#| label: barplot-help
+#| eval: FALSE
+?barplot
+```
+
+### Using Google to find R answers
+
+A Google or internet search "R \<task\>" will often either send you to the appropriate package documentation or a helpful forum question that someone else already asked, such as the [RStudio Community](https://community.rstudio.com/) or [Stack Overflow](http://stackoverflow.com/questions/tagged/r).
+
+### Asking questions
+
+As well as knowing [where to ask](https://www.tidyverse.org/help/#where-to-ask), the key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.
+
+Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem.
+
+If possible, try to reduce what doesn't work to a simple *reproducible example* otherwise known as a *reprex*.
+
+For more information on how to write a reproducible example see [this article](https://www.tidyverse.org/help/#reprex) using the `reprex` package.
+
+### News, tutorials other online books {#sec-other-resources}
+
+[R weekly](https://rweekly.org/) provides a round-up of what's new in R, including packages and tutorials.
+
+The creators of RStudio have [Posit recipes](https://posit.cloud/learn/recipes) to illustrate how to do common data tasks.
+
+[The big book of R](https://www.bigbookofr.com/) contains links to many on-line books for learning R across various subject areas.
