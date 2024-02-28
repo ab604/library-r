@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,13 +232,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="chapter-03-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<a href="" id="chapter-03-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -263,7 +263,7 @@ Summary
 <div id="fig-dplyr-name" class="quarto-figure quarto-figure-center quarto-float anchored" alt="'The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.'">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/dplyr-name-github.png" class="img-fluid figure-img" alt="'The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.'" width="484">
+<img src="img/dplyr-name-github.png" class="img-fluid figure-img" alt="'The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.'">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.1: ‘<a href="https://github.com/tidyverse/dplyr/issues/1857">Why is it called <code>dplyr</code>?</a>’
@@ -381,7 +381,7 @@ Figure&nbsp;3.5: The <code>dplyr mutate</code> function. The mutate function cre
 <div id="fig-pivot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="pivot">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/pivot-penguins.png" class="img-fluid figure-img" alt="pivot" width="1422">
+<img src="img/pivot-penguins.png" class="img-fluid figure-img" alt="pivot">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.6: pivot
@@ -734,12 +734,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

@@ -12,7 +12,6 @@ library(palmerpenguins)
 library(dplyr)
 ```
 
-
 ## Organising your data in spreadsheets {#sec-spreadsheets}
 
 [Data Organization in Spreadsheets by Karl W. Broman & Kara H. Woo](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.
@@ -109,14 +108,12 @@ penguins |>
   summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), n_penguins = n())
 ```
 
-
 ```{r}
 #| label: penguin--grouped-summary
 penguins |> 
   group_by(species) |> 
   summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), n_penguins = n())
 ```
-
 
 ### Using `group_by()` and `summarise()` together
 
