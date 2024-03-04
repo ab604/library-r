@@ -18,8 +18,8 @@ book:
     - setting-the-scene.qmd
     - getting-started.qmd
     - data-wrangling-1.qmd
-    #- data-wrangling-2.qmd
-    #- wrangling-bibliometrics-data.qmd
+    - data-wrangling-2.qmd
+    - wrangling-bibliometrics-data.qmd
     #- visualisation.qmd
     - references.qmd
   

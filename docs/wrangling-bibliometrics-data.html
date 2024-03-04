@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alistair Bailey">
 
-<title>R for Librarians</title>
+<title>R for Librarians - 5&nbsp; Wrangling bibliometrics data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./setting-the-scene.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./data-wrangling-2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -83,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wrangling-bibliometrics-data.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -118,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -148,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./wrangling-bibliometrics-data.html" class="sidebar-item-text sidebar-link">
+  <a href="./wrangling-bibliometrics-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
   </div>
 </li>
@@ -168,7 +202,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#tidying-data" id="toc-tidying-data" class="nav-link active" data-scroll-target="#tidying-data"><span class="header-section-number">5.1</span> Tidying data</a>
+  <ul class="collapse">
+  <li><a href="#our-workflow" id="toc-our-workflow" class="nav-link" data-scroll-target="#our-workflow"><span class="header-section-number">5.1.1</span> Our workflow</a></li>
+  <li><a href="#importing" id="toc-importing" class="nav-link" data-scroll-target="#importing"><span class="header-section-number">5.1.2</span> Importing</a></li>
+  <li><a href="#lets-fix-the-dates" id="toc-lets-fix-the-dates" class="nav-link" data-scroll-target="#lets-fix-the-dates"><span class="header-section-number">5.1.3</span> Let’s fix the dates</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -177,26 +216,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R for Librarians</h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alistair Bailey </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Last Updated on 2024-03-04</p>
-    </div>
-  </div>
   
     
   </div>
@@ -206,16 +233,173 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a book contains guidance for getting started using R, with code and examples for addressing tasks faced by the Bibliometrics Team at the University of Southampton (UoS) Library Service.</p>
-<p>If you want a full guide to data analysis in R check out <a href="https://r4ds.hadley.nz/">R for Data Science</a></p>
-<p>Some of the materials here are re-used from previous workshops I ran for biologists from 2019/20 called <a href="https://ab604.github.io/docs/coding-together-2019/">Coding Together</a>.</p>
-<p>If you are new to R, then the first thing to know is that R is a programming language and RStudio is program for working with R called an integrated development environment (IDE).</p>
-<p>You can use R without installing RStudio, but you can’t work with R in RStudio by installing RStudio alone. <a href="https://cran.r-project.org/">Download R here</a> and <a href="https://posit.co/download/rstudio-desktop/">Download RStudio Desktop here</a>.</p>
-<p>If you are wondering if and/or why learning R might be useful, <a href="setting-the-scene.html" class="quarto-xref"><span>1&nbsp; Setting the scene</span></a> should help answer those questions.</p>
+<p><strong>WORK IN PROGRESS</strong></p>
+<div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="" id="bibliometrics-summary"></a>Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The bibliometrics team have a spreadsheet detailing published journal articles from which they would like to understand, <em>“Which UoS department is affiliated to each article?”</em></p>
+<p>Here we go through the process of wrangling the data to answer this question and produce some summary statistics.</p>
+</div>
+</div>
+<p>It’s time to apply our knowledge to some bibliometrics data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="tidying-data" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="tidying-data"><span class="header-section-number">5.1</span> Tidying data</h2>
+<p>In this section we’re going to do some more complicated transformations. Let’s remind ourselves of the definition of tidy data:</p>
+<ol type="1">
+<li><p>Each variable must have its own column.</p></li>
+<li><p>Each observation must have its own row.</p></li>
+<li><p>Each value must have its own cell.</p></li>
+</ol>
+<p>This can come in two forms: <strong>long</strong> or <strong>wide</strong></p>
+<p>We’ll start with a table of published articles where each row is a set of observations about each article.</p>
+<p><em>What makes it untidy?</em></p>
+<p>It’s untidy because here we are interested in the University of Southampton (UoS) affiliations associated with each article. Here, all the individual affiliations for all the institutions affiliated with each paper are combined in a single column rather than their own columns. Therefore the values for each affiliation aren’t in their own cells.</p>
+<p>Hence for the purposes of the question we wish to pose, <em>“Which UoS department is affiliated to each article?”</em> the table is untidy in terms of rules 1 and 3.</p>
+<section id="our-workflow" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="our-workflow"><span class="header-section-number">5.1.1</span> Our workflow</h3>
+<p>Let’s consider the steps we need to take to arrive at a table which is tidy and contains the values for each UoS affiliation for each published article:</p>
+<ol type="1">
+<li>Import the table, check it and repair if necessary.</li>
+<li>Seperate the affiliations into a new column (variable) for each affiliation associated with each article.</li>
+</ol>
+<p>The articles don’t all have the same number of affiliations, so we will have lots of columns with only a few values in. In other words a wide table (lots of columns) but sparsely populated. What we want is a table that has only the UoS affiliation observations.</p>
+<p>What is our usual trick for obtaining only the observations of interest?</p>
+<p>We <code>filter</code> the rows. But hang on, we can’t do that unless we have the each affiliation in a row, rather spread across lots of columns. So what do?</p>
+<p>Transforming a table so that columns become rows, or rows become columns is called <strong><em>pivoting</em></strong>. Here, having separated the affiliations and created a wide table with a variable for each affiliation we want to pivot from wide-to-long.</p>
+<p>When we pivot wide-to-long, the column names become a new set of observations in a new variable, and the values from each column become another set of observations in a new variable. Everything else is duplicated and hence we end up with lots of rows.</p>
+<ol start="3" type="1">
+<li>Using <code>pivot_long</code> we create a table on which we can filter the rows for the UoS affiliations.</li>
+</ol>
+<p>For some articles there may be multiple UoS affiliations, so we may wish to pivot long-to-wide to create a final tidy table with a single row for each article, but columns for each UoS affiliation.</p>
+</section>
+<section id="importing" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="importing"><span class="header-section-number">5.1.2</span> Importing</h3>
+<p>Let’s start with a small data set called <code>OA-compliance-subset-2023-11-29.xlsx</code> from the repository</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the read.xlsx to download and load the excel file into object dat</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/OA-compliance-subset-2023-11-29.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the <code>glimpse()</code> function from <code>dplyr</code> to take a peak at this data:</p>
+<ol type="1">
+<li>We can see that the table has 20 rows with 35 columns of variables.</li>
+<li>Looking at the data types, we can see the import function parsed two types of data: <code>&lt;chr&gt;</code> character, meaning strings of text and <code>&lt;dbl&gt;</code> double, meaning numerical data. However, looking at the variable names, some are dates and haven’t been identified automatically.</li>
+<li>There are lots of <code>NA</code> s, which are missing values. This may or may not matter.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 20
+Columns: 35
+$ Faculty                          &lt;chr&gt; "FELS", "FEPS", "FEPS", "FELS", "FSS"…
+$ Report.Date                      &lt;dbl&gt; 45201, 45243, 45201, 45215, 45229, 45…
+$ Ref.OA.Compliance                &lt;chr&gt; "No", "Yes", "Yes", "Yes", "Yes", "Ye…
+$ `Reason.for.Non-Compliance`      &lt;chr&gt; "No Pure Record", NA, NA, NA, NA, NA,…
+$ Time.remaining.to.make.compliant &lt;dbl&gt; 16, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Notes                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Authors                          &lt;chr&gt; "Aeschbach D.; Cohen D.A.; Lockyer B.…
+$ Title                            &lt;chr&gt; "Spontaneous attentional failures ref…
+$ Source.Title                     &lt;chr&gt; "Sleep Health", "Frontiers in Artific…
+$ Document.Type                    &lt;chr&gt; "Article", "Conference paper", "Artic…
+$ Publisher                        &lt;chr&gt; "Elsevier Inc.", "IOS Press BV", "Ame…
+$ DOI                              &lt;chr&gt; "10.1016/j.sleh.2023.07.013", "10.323…
+$ Hyperlink.DOI                    &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh.202…
+$ Affiliations                     &lt;chr&gt; "Department of Sleep and Human Factor…
+$ SCH1                             &lt;chr&gt; "PSY", "CS", "PA", "BS", "SES", "PSY"…
+$ SCH2                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ SCH3                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Accepted.Date                    &lt;chr&gt; "45129", NA, "45156", "11/09/23", "45…
+$ Epublication.Date                &lt;chr&gt; "45176", "45198", "45174", "45196", "…
+$ Publisher.OA                     &lt;chr&gt; "No", "Yes", "No", "Yes", "Yes", "Yes…
+$ Publisher.Licence                &lt;chr&gt; NA, "CC BY-NC", NA, "CC BY", "CC BY",…
+$ PURE.ID                          &lt;chr&gt; "No Record", NA, "143740848", "143621…
+$ Version.in.Pure                  &lt;chr&gt; NA, NA, "Accepted manuscript, Version…
+$ Licence.in.Pure                  &lt;chr&gt; NA, NA, "UoS AM", "CC BY", NA, NA, "C…
+$ Funder.1                         &lt;chr&gt; "N/A", "EPSRC", "N/A", "MRC", "N/A", …
+$ Funder.2                         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, "…
+$ Funder.3                         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Data.Statement                   &lt;chr&gt; NA, "No", "Yes", "Yes", NA, NA, NA, N…
+$ Rights.Rentention.Statement      &lt;chr&gt; NA, NA, NA, "Yes", NA, NA, NA, NA, NA…
+$ UKRI.Compliant                   &lt;chr&gt; NA, "No", NA, "Yes", NA, NA, NA, NA, …
+$ OA.Status                        &lt;chr&gt; "No", "Gold", "Green", "Gold", "Gold"…
+$ Correspondence.address           &lt;chr&gt; "D. Aeschbach; Department of Sleep an…
+$ UoS.Corresponding.Author         &lt;chr&gt; "No", "No", "Yes", "Yes", "Yes", "No"…
+$ Controlled.Publisher             &lt;chr&gt; "Elsevier", NA, "ACS", NA, NA, "Sprin…
+$ `Hide.Column.-.DOI.Formula`      &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh.202…</code></pre>
+</div>
+</div>
+</section>
+<section id="lets-fix-the-dates" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="lets-fix-the-dates"><span class="header-section-number">5.1.3</span> Let’s fix the dates</h3>
+<p>We’ll make a new object called <code>dat_repaired</code> and use the <code>mutate</code> function from <code>dpylr</code> along with <code>convert_to_date</code> in the <code>janitor</code> package to convert the number values into dates.</p>
+<p>Then we’ll take a look with the glimpse function and we can see these look like dates in the year-month-day format and are identified as <code>&lt;date&gt;</code> data types.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Report.Date =</span> <span class="fu">convert_to_date</span>(Report.Date),</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Accepted.Date =</span> <span class="fu">convert_to_date</span>(Accepted.Date),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Epublication.Date =</span> <span class="fu">convert_to_date</span>(Epublication.Date))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat_repaired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 20
+Columns: 35
+$ Faculty                          &lt;chr&gt; "FELS", "FEPS", "FEPS", "FELS", "FSS"…
+$ Report.Date                      &lt;date&gt; 2023-10-02, 2023-11-13, 2023-10-02, …
+$ Ref.OA.Compliance                &lt;chr&gt; "No", "Yes", "Yes", "Yes", "Yes", "Ye…
+$ `Reason.for.Non-Compliance`      &lt;chr&gt; "No Pure Record", NA, NA, NA, NA, NA,…
+$ Time.remaining.to.make.compliant &lt;dbl&gt; 16, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Notes                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Authors                          &lt;chr&gt; "Aeschbach D.; Cohen D.A.; Lockyer B.…
+$ Title                            &lt;chr&gt; "Spontaneous attentional failures ref…
+$ Source.Title                     &lt;chr&gt; "Sleep Health", "Frontiers in Artific…
+$ Document.Type                    &lt;chr&gt; "Article", "Conference paper", "Artic…
+$ Publisher                        &lt;chr&gt; "Elsevier Inc.", "IOS Press BV", "Ame…
+$ DOI                              &lt;chr&gt; "10.1016/j.sleh.2023.07.013", "10.323…
+$ Hyperlink.DOI                    &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh.202…
+$ Affiliations                     &lt;chr&gt; "Department of Sleep and Human Factor…
+$ SCH1                             &lt;chr&gt; "PSY", "CS", "PA", "BS", "SES", "PSY"…
+$ SCH2                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ SCH3                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Accepted.Date                    &lt;date&gt; 2023-07-22, NA, 2023-08-18, 2011-09-…
+$ Epublication.Date                &lt;date&gt; 2023-09-07, 2023-09-29, 2023-09-05, …
+$ Publisher.OA                     &lt;chr&gt; "No", "Yes", "No", "Yes", "Yes", "Yes…
+$ Publisher.Licence                &lt;chr&gt; NA, "CC BY-NC", NA, "CC BY", "CC BY",…
+$ PURE.ID                          &lt;chr&gt; "No Record", NA, "143740848", "143621…
+$ Version.in.Pure                  &lt;chr&gt; NA, NA, "Accepted manuscript, Version…
+$ Licence.in.Pure                  &lt;chr&gt; NA, NA, "UoS AM", "CC BY", NA, NA, "C…
+$ Funder.1                         &lt;chr&gt; "N/A", "EPSRC", "N/A", "MRC", "N/A", …
+$ Funder.2                         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, "…
+$ Funder.3                         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Data.Statement                   &lt;chr&gt; NA, "No", "Yes", "Yes", NA, NA, NA, N…
+$ Rights.Rentention.Statement      &lt;chr&gt; NA, NA, NA, "Yes", NA, NA, NA, NA, NA…
+$ UKRI.Compliant                   &lt;chr&gt; NA, "No", NA, "Yes", NA, NA, NA, NA, …
+$ OA.Status                        &lt;chr&gt; "No", "Gold", "Green", "Gold", "Gold"…
+$ Correspondence.address           &lt;chr&gt; "D. Aeschbach; Department of Sleep an…
+$ UoS.Corresponding.Author         &lt;chr&gt; "No", "No", "Yes", "Yes", "Yes", "No"…
+$ Controlled.Publisher             &lt;chr&gt; "Elsevier", NA, "ACS", NA, NA, "Sprin…
+$ `Hide.Column.-.DOI.Formula`      &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh.202…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="sc">|&gt;</span> <span class="fu">select</span>(Affiliations) <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Affiliations
+1 Department of Sleep and Human Factors Research, Institute of Aerospace Medicine, German Aerospace Center, Cologne, Germany; Institute of Experimental Epileptology and Cognition Research, University of Bonn Medical Center, Bonn, Germany; Division of Sleep and Circadian Disorders, Department of Medicine, Department of Neurology, Brigham and Women's Hospital, Boston, MA, United States; Division of Sleep Medicine, Harvard Medical School, Boston, MA, United States; Department of Neurology, Eastern Virginia Medical School, Norfolk, VA, United States; School of Psychology, Faculty of Environmental and Life Sciences, University of Southampton, Southampton, United Kingdom; Department of Neurology, Massachusetts General Hospital, Boston, MA, United States
+2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Department of Computer Science, University of Bath, United Kingdom; School of Electronic and Computer Science, University of Southampton, United Kingdom</code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -767,10 +951,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./data-wrangling-2.html" class="pagination-link  aria-label=" &lt;span="" wrangling="" ii&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./setting-the-scene.html" class="pagination-link" aria-label="<span class='chapter-number'>1</span>&nbsp; <span class='chapter-title'>Setting the scene</span>">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting the scene</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

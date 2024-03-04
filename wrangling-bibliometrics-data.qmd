@@ -1,5 +1,7 @@
 # Wrangling bibliometrics data
 
+**WORK IN PROGRESS**
+
 ::: {#bibliometrics-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
 The bibliometrics team have a spreadsheet detailing published journal articles from which they would like to understand, *"Which UoS department is affiliated to each article?"*
 
