@@ -188,6 +188,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./visualisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualisation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -206,19 +212,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#plain-formats-and-excel-files" id="toc-plain-formats-and-excel-files" class="nav-link" data-scroll-target="#plain-formats-and-excel-files"><span class="header-section-number">3.1.1</span> Plain formats and Excel files</a></li>
   </ul></li>
-  <li><a href="#introducing-dplyr" id="toc-introducing-dplyr" class="nav-link" data-scroll-target="#introducing-dplyr"><span class="header-section-number">3.2</span> Introducing <code>dplyr</code></a></li>
-  <li><a href="#the-four-most-common-dplyr-verbs" id="toc-the-four-most-common-dplyr-verbs" class="nav-link" data-scroll-target="#the-four-most-common-dplyr-verbs"><span class="header-section-number">3.3</span> The four most common <code>dplyr</code> verbs</a>
+  <li><a href="#sec-the-pipe" id="toc-sec-the-pipe" class="nav-link" data-scroll-target="#sec-the-pipe"><span class="header-section-number">3.2</span> The pipe <code>|&gt;</code></a></li>
+  <li><a href="#sec-introducing-dplyr" id="toc-sec-introducing-dplyr" class="nav-link" data-scroll-target="#sec-introducing-dplyr"><span class="header-section-number">3.3</span> Introducing <code>dplyr</code></a></li>
+  <li><a href="#the-four-most-common-dplyr-verbs" id="toc-the-four-most-common-dplyr-verbs" class="nav-link" data-scroll-target="#the-four-most-common-dplyr-verbs"><span class="header-section-number">3.4</span> The four most common <code>dplyr</code> verbs</a>
   <ul class="collapse">
-  <li><a href="#filter-rows-with-filter" id="toc-filter-rows-with-filter" class="nav-link" data-scroll-target="#filter-rows-with-filter"><span class="header-section-number">3.3.1</span> Filter rows with <code>filter()</code></a></li>
-  <li><a href="#arranging-rows-with-arrange" id="toc-arranging-rows-with-arrange" class="nav-link" data-scroll-target="#arranging-rows-with-arrange"><span class="header-section-number">3.3.2</span> Arranging rows with <code>arrange()</code></a></li>
-  <li><a href="#selecting-columns-with-select" id="toc-selecting-columns-with-select" class="nav-link" data-scroll-target="#selecting-columns-with-select"><span class="header-section-number">3.3.3</span> Selecting columns with <code>select()</code></a></li>
-  <li><a href="#creating-new-columns-with-mutate" id="toc-creating-new-columns-with-mutate" class="nav-link" data-scroll-target="#creating-new-columns-with-mutate"><span class="header-section-number">3.3.4</span> Creating new columns with <code>mutate()</code></a></li>
+  <li><a href="#filter-rows-with-filter" id="toc-filter-rows-with-filter" class="nav-link" data-scroll-target="#filter-rows-with-filter"><span class="header-section-number">3.4.1</span> Filter rows with <code>filter()</code></a></li>
+  <li><a href="#arranging-rows-with-arrange" id="toc-arranging-rows-with-arrange" class="nav-link" data-scroll-target="#arranging-rows-with-arrange"><span class="header-section-number">3.4.2</span> Arranging rows with <code>arrange()</code></a></li>
+  <li><a href="#selecting-columns-with-select" id="toc-selecting-columns-with-select" class="nav-link" data-scroll-target="#selecting-columns-with-select"><span class="header-section-number">3.4.3</span> Selecting columns with <code>select()</code></a></li>
+  <li><a href="#creating-new-columns-with-mutate" id="toc-creating-new-columns-with-mutate" class="nav-link" data-scroll-target="#creating-new-columns-with-mutate"><span class="header-section-number">3.4.4</span> Creating new columns with <code>mutate()</code></a></li>
   </ul></li>
-  <li><a href="#creating-grouped-summaries-with-dplyr" id="toc-creating-grouped-summaries-with-dplyr" class="nav-link" data-scroll-target="#creating-grouped-summaries-with-dplyr"><span class="header-section-number">3.4</span> Creating grouped summaries with <code>dplyr</code></a>
+  <li><a href="#creating-grouped-summaries-with-dplyr" id="toc-creating-grouped-summaries-with-dplyr" class="nav-link" data-scroll-target="#creating-grouped-summaries-with-dplyr"><span class="header-section-number">3.5</span> Creating grouped summaries with <code>dplyr</code></a>
   <ul class="collapse">
-  <li><a href="#using-group_by-and-summarise-together" id="toc-using-group_by-and-summarise-together" class="nav-link" data-scroll-target="#using-group_by-and-summarise-together"><span class="header-section-number">3.4.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</a></li>
+  <li><a href="#using-group_by-and-summarise-together" id="toc-using-group_by-and-summarise-together" class="nav-link" data-scroll-target="#using-group_by-and-summarise-together"><span class="header-section-number">3.5.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</a></li>
   </ul></li>
-  <li><a href="#pivots" id="toc-pivots" class="nav-link" data-scroll-target="#pivots"><span class="header-section-number">3.5</span> Pivots</a></li>
+  <li><a href="#pivots" id="toc-pivots" class="nav-link" data-scroll-target="#pivots"><span class="header-section-number">3.6</span> Pivots</a></li>
   </ul>
 </nav>
     </div>
@@ -263,11 +270,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plain-formats-and-excel-files" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="plain-formats-and-excel-files"><span class="header-section-number">3.1.1</span> Plain formats and Excel files</h3>
 <p>File formats like <code>.csv</code> and <code>.tsv</code>, comma separated variables and tab separated variables respectively are plain text files. That is to say they contain only the data, as text information, and are the simplest and most convenient way to share data as lots of software, including Excel, can read and interpret them.</p>
-<p>Excel files saves files into its own proprietary format <code>.xls</code> or <code>.xlsx</code> that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse <code>readxl</code> package is very useful.</p>
+<p>Excel files saves files into its own proprietary format <code>.xls</code> or <code>.xlsx</code> that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse <code>readxl</code> package is the place to start: <a href="https://readxl.tidyverse.org/">readxl homepage</a>.</p>
 </section>
 </section>
-<section id="introducing-dplyr" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="introducing-dplyr"><span class="header-section-number">3.2</span> Introducing <code>dplyr</code></h2>
+<section id="sec-the-pipe" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-the-pipe"><span class="header-section-number">3.2</span> The pipe <code>|&gt;</code></h2>
+<p>The pipe operator <code>|&gt;</code> allows you to combine operations by passing the output of an object or function to another. It will make more sense why this is a good thing once we start writing code, but you can think of it as a coding adverb such as <em>then</em>.</p>
+<p>In the example below, the <code>penguins</code> dataframe is piped to the <code>count</code> function which has <code>species</code> as its argument. Think of it as: <em>Print the penguins table then count how many rows there are for each species</em>.</p>
+<div class="unnumbered callout callout-style-simple callout-tip callout-titled" title="Pipe style">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pipe style
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The recommended pipe style is a space before a pipe and the pipe to be the last thing on a line, like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This makes reading and adding new steps easier.</p>
+</div>
+</div>
+<p>The pipe <code>|&gt;</code> was added to R as of version 4.1.0 , you may see the <code>%&gt;%</code> pipe from the <code>magrittr</code> package sometimes, but it’s simpler to use the native version, but you may need to check it’s enabled in the <code>Options</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-pipe" class="quarto-figure quarto-figure-center quarto-float anchored" alt="'An image of the settings for the native pipe `|>` option in RStudio.'">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/R-native-pipe.PNG" class="img-fluid figure-img" alt="'An image of the settings for the native pipe `|>` option in RStudio.'">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: ‘Setting the native pipe <code>|&gt;</code> option in RStudio’
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-introducing-dplyr" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-introducing-dplyr"><span class="header-section-number">3.3</span> Introducing <code>dplyr</code></h2>
 <p><a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> <em>“is a grammar of data manipulation”</em>. Concretely, it’s a package of functions from the tidyverse that have been created for tasks that require manipulation of data stored in <a href="getting-started.html#sec-data-frames" class="quarto-xref"><span>Section 2.10.1</span></a>.</p>
 <p>The grammar comes from the naming of the functions as verbs. Personally, I find this parallel between R code and human language makes things cognitively easier for me. I can describe what I want to do using natural language and translate it easily into tidyverse code.</p>
 <div class="cell">
@@ -278,18 +323,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="img/dplyr-name-github.png" class="img-fluid figure-img" alt="'The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.'">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: ‘<a href="https://github.com/tidyverse/dplyr/issues/1857">Why is it called <code>dplyr</code>?</a>’
+Figure&nbsp;3.2: ‘<a href="https://github.com/tidyverse/dplyr/issues/1857">Why is it called <code>dplyr</code>?</a>’
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="the-four-most-common-dplyr-verbs" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="the-four-most-common-dplyr-verbs"><span class="header-section-number">3.3</span> The four most common <code>dplyr</code> verbs</h2>
+<section id="the-four-most-common-dplyr-verbs" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="the-four-most-common-dplyr-verbs"><span class="header-section-number">3.4</span> The four most common <code>dplyr</code> verbs</h2>
 <p>We’ll use the four most common verbs in <code>dplyr</code> to examine the Palmer Penguins data (<a href="getting-started.html#sec-palmer-penguins" class="quarto-xref"><span>Section 2.4.1</span></a>).</p>
-<section id="filter-rows-with-filter" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="filter-rows-with-filter"><span class="header-section-number">3.3.1</span> Filter rows with <code>filter()</code></h3>
+<section id="filter-rows-with-filter" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="filter-rows-with-filter"><span class="header-section-number">3.4.1</span> Filter rows with <code>filter()</code></h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-filter" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
@@ -298,15 +343,15 @@ Figure&nbsp;3.1: ‘<a href="https://github.com/tidyverse/dplyr/issues/1857">Why
 <img src="img/dplyr-filter-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: The <code>dplyr filter</code> function. The filter function returns rows from your data frame that satisfy your filter expression as <code>TRUE</code>. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
+Figure&nbsp;3.3: The <code>dplyr filter</code> function. The filter function returns rows from your data frame that satisfy your filter expression as <code>TRUE</code>. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="arranging-rows-with-arrange" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="arranging-rows-with-arrange"><span class="header-section-number">3.3.2</span> Arranging rows with <code>arrange()</code></h3>
+<section id="arranging-rows-with-arrange" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="arranging-rows-with-arrange"><span class="header-section-number">3.4.2</span> Arranging rows with <code>arrange()</code></h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-arrange" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
@@ -315,15 +360,15 @@ Figure&nbsp;3.2: The <code>dplyr filter</code> function. The filter function ret
 <img src="img/dplyr-arrange-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arrange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.3: The <code>dplyr arrange</code> function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
+Figure&nbsp;3.4: The <code>dplyr arrange</code> function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="selecting-columns-with-select" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="selecting-columns-with-select"><span class="header-section-number">3.3.3</span> Selecting columns with <code>select()</code></h3>
+<section id="selecting-columns-with-select" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="selecting-columns-with-select"><span class="header-section-number">3.4.3</span> Selecting columns with <code>select()</code></h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-select" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
@@ -332,15 +377,15 @@ Figure&nbsp;3.3: The <code>dplyr arrange</code> function. The arrange function o
 <img src="img/dplyr-select-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-select-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.4: The <code>dplyr select</code> function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
+Figure&nbsp;3.5: The <code>dplyr select</code> function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="creating-new-columns-with-mutate" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="creating-new-columns-with-mutate"><span class="header-section-number">3.3.4</span> Creating new columns with <code>mutate()</code></h3>
+<section id="creating-new-columns-with-mutate" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="creating-new-columns-with-mutate"><span class="header-section-number">3.4.4</span> Creating new columns with <code>mutate()</code></h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-mutate" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
@@ -349,7 +394,7 @@ Figure&nbsp;3.4: The <code>dplyr select</code> function. This function selects c
 <img src="img/dplyr-mutate-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mutate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.5: The <code>dplyr mutate</code> function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called <code>body_mass_kg</code> in the Palmer Penguins data.frame by dividing the values in the <code>body_mass_g</code> column by 1000 and storing the answer in new variable <code>body_mass_kg</code>. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
+Figure&nbsp;3.6: The <code>dplyr mutate</code> function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called <code>body_mass_kg</code> in the Palmer Penguins data.frame by dividing the values in the <code>body_mass_g</code> column by 1000 and storing the answer in new variable <code>body_mass_kg</code>. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
 </figcaption>
 </figure>
 </div>
@@ -357,11 +402,11 @@ Figure&nbsp;3.5: The <code>dplyr mutate</code> function. The mutate function cre
 </div>
 </section>
 </section>
-<section id="creating-grouped-summaries-with-dplyr" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="creating-grouped-summaries-with-dplyr"><span class="header-section-number">3.4</span> Creating grouped summaries with <code>dplyr</code></h2>
+<section id="creating-grouped-summaries-with-dplyr" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="creating-grouped-summaries-with-dplyr"><span class="header-section-number">3.5</span> Creating grouped summaries with <code>dplyr</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_mass_g =</span> <span class="fu">mean</span>(body_mass_g,<span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n_penguins =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_mass_g =</span> <span class="fu">mean</span>(body_mass_g,<span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n_penguins =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   mean_mass_g n_penguins
@@ -370,9 +415,9 @@ Figure&nbsp;3.5: The <code>dplyr mutate</code> function. The mutate function cre
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_mass_g =</span> <span class="fu">mean</span>(body_mass_g,<span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n_penguins =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_mass_g =</span> <span class="fu">mean</span>(body_mass_g,<span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n_penguins =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   species   mean_mass_g n_penguins
@@ -382,12 +427,12 @@ Figure&nbsp;3.5: The <code>dplyr mutate</code> function. The mutate function cre
 3 Gentoo          5076.        124</code></pre>
 </div>
 </div>
-<section id="using-group_by-and-summarise-together" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="using-group_by-and-summarise-together"><span class="header-section-number">3.4.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</h3>
+<section id="using-group_by-and-summarise-together" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="using-group_by-and-summarise-together"><span class="header-section-number">3.5.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</h3>
 </section>
 </section>
-<section id="pivots" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="pivots"><span class="header-section-number">3.5</span> Pivots</h2>
+<section id="pivots" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="pivots"><span class="header-section-number">3.6</span> Pivots</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pivot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="pivot">
@@ -396,7 +441,7 @@ Figure&nbsp;3.5: The <code>dplyr mutate</code> function. The mutate function cre
 <img src="img/pivot-penguins.png" class="img-fluid figure-img" alt="pivot">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.6: pivot
+Figure&nbsp;3.7: pivot
 </figcaption>
 </figure>
 </div>
@@ -410,7 +455,7 @@ Figure&nbsp;3.6: pivot
 <img src="img/tidyr-pivoting.gif" class="img-fluid figure-img" alt="pivot">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.7: pivot
+Figure&nbsp;3.8: pivot
 </figcaption>
 </figure>
 </div>

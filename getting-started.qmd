@@ -673,36 +673,53 @@ which maps the data to type of plot we want to make e.g. a histogram or scatter 
 Don't worry if this sounds confusing, it becomes clear with practice and all plots 
 follow this grammar.
 
-We'll use the `pengiuns` dataset that comes with the tidyverse to examine
-the question *do cars with big engines use more fuel than cars with small engines?*
+We'll use the `pengiuns` from the Palmer Penguins (@sec-palmer-penguins) dataset to
+the question *what is the relationship between body mass and flipper length?*
 
-Try `?mpg` to learn more about the data.
+Try `?penguins` to learn more about the data.
 
-1. Engine size in litres is in the `displ` column.
-2. Fuel efficiency on the highway in miles per gallon is given in the `hwy` column.
+1. Penguin mass in grams is in the `body_mass_g` column.
+2. Flipper length is in the `flipper_length_mm` column.
 
-To create a plot of engine size `displ` (x-axis) against fuel efficiency `hwy` 
-(y-axis)  we do the following:
-
-Now try extending this code to include to add a `colour` aesthetic to the
-the `aes()` function, let `colour = class`, `class` being the vehicle type.
-This should create a plot with as before but with the points coloured
-according to the vehicle type to expand our understanding.
+To create a plot of penguin mass `body_mass_g` (x-axis) against flipper length `flipper_length_mm` 
+(y-axis) we do the following:
 
 ```{r}
-#| label: penguin-plot
+#| label: penguin-plot-1
 #| message: false
 library(ggplot2)
 library(palmerpenguins)
 
 ggplot(data = penguins) + 
-  geom_point(mapping = aes(x = bill_length_mm, y = flipper_length_mm, colour = species))
+  geom_point(mapping = aes(x = body_mass_g, y = flipper_length_mm))
 ```
 
-Now we can see that as we might expect, bigger cars such as SUVs tend to have 
-bigger engines and are also less fuel efficient, but some smaller cars such as 
-2-seaters also have big engines and greater fuel efficiency. Hence we have a 
-more nuanced view with this additional aesthetic.
+:::{.callout-important .unnumbered title="Warning messages" appearance="simple" icon="true"}
+When we created the plot we got a message: `Warning: Removed 2 rows containing missing values (`geom_point()`).`
+
+This is telling us that two rows have missing values for either the flipper length or body mass and therefore couldn't be plotted. 
+
+R and ggplot2 give us warnings like this to help us stop and think. This time we can safely ignore the warning, but in general we should investigate and document our choices.
+:::
+
+Our initial plot shows as we might expect, bigger penguins have bigger flippers.
+
+Now try extending this code to include to add a `colour` aesthetic to the
+the `aes()` function, let `colour = species`, so we can see the different sizes
+of the penguin species.
+
+```{r}
+#| label: penguin-plot-2
+#| message: false
+library(ggplot2)
+library(palmerpenguins)
+
+ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = body_mass_g, y = flipper_length_mm, colour = species))
+```
+
+Now we can see that in addition to the relationship betweeen body mass and flipper length, that
+Adélie and Chinstrap penguins are approximately the same in mass and flipper length, whilst Gentoo penguins are generally heavier with bigger flippers..
 
 Check out the ggplot2 documentation for all the aesthetic possibilities (and 
 Google for examples): http://ggplot2.tidyverse.org/reference/
@@ -714,9 +731,9 @@ ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
 
-Concretely, in our first example `<DATA>` was `mpg`, the `<GEOM_FUNCTION>` 
+Concretely, in our first example `<DATA>` was `penguins`, the `<GEOM_FUNCTION>` 
 was `geom_point()` and the arguments we supplies to map our aesthetics 
-`<MAPPINGS>` were `x = displ, y = hwy`.
+`<MAPPINGS>` were `x = body_mass_g, y = flipper_length_mm`.
 
 As we can use this code for any tidy data set, hopefully you are beginning to 
 see how a small amount of code can do a lot.

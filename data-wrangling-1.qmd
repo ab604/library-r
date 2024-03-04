@@ -20,9 +20,41 @@ library(dplyr)
 
 File formats like `.csv` and `.tsv`, comma separated variables and tab separated variables respectively are plain text files. That is to say they contain only the data, as text information, and are the simplest and most convenient way to share data as lots of software, including Excel, can read and interpret them.
 
-Excel files saves files into its own proprietary format `.xls` or `.xlsx` that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse `readxl` package is very useful.
+Excel files saves files into its own proprietary format `.xls` or `.xlsx` that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse `readxl` package is the place to start: [readxl homepage](https://readxl.tidyverse.org/).
 
-## Introducing `dplyr`
+## The pipe `|>` {#sec-the-pipe}
+
+The pipe operator `|>` allows you to combine operations by passing the output of an object or function to another. It will make more sense why this is a good thing once we start writing code, but you can think of it as a coding adverb such as *then*.
+
+In the example below, the `penguins` dataframe is piped to the `count` function which has `species` as its argument. Think of it as: *Print the penguins table then count how many rows there are for each species*.
+
+::: {.callout-tip .unnumbered title="Pipe style" appearance="simple" icon="true"}
+The recommended pipe style is a space before a pipe and the pipe to be the last thing on a line, like so:
+
+```{r}
+#| eval: false
+penguins |> 
+  count(species)
+```
+
+This makes reading and adding new steps easier.
+:::
+
+The pipe `|>` was added to R as of version 4.1.0 , you may see the `%>%` pipe from the `magrittr` package sometimes, but it's simpler to use the native version, but you may need to check it's enabled in the `Options`.
+
+```{r}
+#| label: fig-pipe
+#| echo: false
+#| out-width: NULL
+#| fig-cap: |
+#|   'Setting the native pipe `|>` option in RStudio'
+#| fig-alt: |
+#|   'An image of the settings for the native pipe `|>` option in RStudio.'
+
+knitr::include_graphics("img/R-native-pipe.PNG")
+```
+
+## Introducing `dplyr` {#sec-introducing-dplyr}
 
 [`dplyr`](https://dplyr.tidyverse.org/) *"is a grammar of data manipulation"*. Concretely, it's a package of functions from the tidyverse that have been created for tasks that require manipulation of data stored in @sec-data-frames.
 

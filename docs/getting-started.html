@@ -208,6 +208,12 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./visualisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualisation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -871,7 +877,7 @@ Figure&nbsp;2.13: An example data frame <code>df</code> with three rows and thre
 </section>
 <section id="sec-plotting-and-exporting-data" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="sec-plotting-and-exporting-data"><span class="header-section-number">2.11</span> Plotting and exporting data</h2>
-<p>One of the most useful and important parts of any data analysis is plotting data and <span class="quarto-unresolved-ref">?sec-visualisation</span> goes into detail. But to give you an example, we’ll use the <code>ggplot2</code> package as an introduction to automating a task in code, and as a tool for understanding data.</p>
+<p>One of the most useful and important parts of any data analysis is plotting data and <a href="visualisation.html" class="quarto-xref"><span>Chapter 6</span></a> goes into detail. But to give you an example, we’ll use the <code>ggplot2</code> package as an introduction to automating a task in code, and as a tool for understanding data.</p>
 <p><code>ggplot2</code> implements the <em>grammar of graphics</em>, for describing and building graphs. The idea being that we construct a plot in the following way:</p>
 <ol type="1">
 <li>Call the <code>ggplot()</code> function to create a graph.</li>
@@ -880,39 +886,72 @@ Figure&nbsp;2.13: An example data frame <code>df</code> with three rows and thre
 <li>Then we follow the ggplot function with a <code>+</code> sign to indicate we are going to add more code, followed by a geometric object function, a <code>geom</code> which maps the data to type of plot we want to make e.g.&nbsp;a histogram or scatter plot.</li>
 </ol>
 <p>Don’t worry if this sounds confusing, it becomes clear with practice and all plots follow this grammar.</p>
-<p>We’ll use the <code>pengiuns</code> dataset that comes with the tidyverse to examine the question <em>do cars with big engines use more fuel than cars with small engines?</em></p>
-<p>Try <code>?mpg</code> to learn more about the data.</p>
+<p>We’ll use the <code>pengiuns</code> from the Palmer Penguins (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 2.4.1</span></a>) dataset to the question <em>what is the relationship between body mass and flipper length?</em></p>
+<p>Try <code>?penguins</code> to learn more about the data.</p>
 <ol type="1">
-<li>Engine size in litres is in the <code>displ</code> column.</li>
-<li>Fuel efficiency on the highway in miles per gallon is given in the <code>hwy</code> column.</li>
+<li>Penguin mass in grams is in the <code>body_mass_g</code> column.</li>
+<li>Flipper length is in the <code>flipper_length_mm</code> column.</li>
 </ol>
-<p>To create a plot of engine size <code>displ</code> (x-axis) against fuel efficiency <code>hwy</code> (y-axis) we do the following:</p>
-<p>Now try extending this code to include to add a <code>colour</code> aesthetic to the the <code>aes()</code> function, let <code>colour = class</code>, <code>class</code> being the vehicle type. This should create a plot with as before but with the points coloured according to the vehicle type to expand our understanding.</p>
+<p>To create a plot of penguin mass <code>body_mass_g</code> (x-axis) against flipper length <code>flipper_length_mm</code> (y-axis) we do the following:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins) <span class="sc">+</span> </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm, <span class="at">colour =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="getting-started_files/figure-html/penguin-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="getting-started_files/figure-html/penguin-plot-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Now we can see that as we might expect, bigger cars such as SUVs tend to have bigger engines and are also less fuel efficient, but some smaller cars such as 2-seaters also have big engines and greater fuel efficiency. Hence we have a more nuanced view with this additional aesthetic.</p>
+<div class="unnumbered callout callout-style-simple callout-important callout-titled" title="Warning messages">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning messages
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When we created the plot we got a message: <code>Warning: Removed 2 rows containing missing values (</code>geom_point()<code>).</code></p>
+<p>This is telling us that two rows have missing values for either the flipper length or body mass and therefore couldn’t be plotted.</p>
+<p>R and ggplot2 give us warnings like this to help us stop and think. This time we can safely ignore the warning, but in general we should investigate and document our choices.</p>
+</div>
+</div>
+<p>Our initial plot shows as we might expect, bigger penguins have bigger flippers.</p>
+<p>Now try extending this code to include to add a <code>colour</code> aesthetic to the the <code>aes()</code> function, let <code>colour = species</code>, so we can see the different sizes of the penguin species.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins) <span class="sc">+</span> </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm, <span class="at">colour =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="getting-started_files/figure-html/penguin-plot-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we can see that in addition to the relationship betweeen body mass and flipper length, that Adélie and Chinstrap penguins are approximately the same in mass and flipper length, whilst Gentoo penguins are generally heavier with bigger flippers..</p>
 <p>Check out the ggplot2 documentation for all the aesthetic possibilities (and Google for examples): http://ggplot2.tidyverse.org/reference/</p>
 <p>So now we have re-usable code snippet for generating plots in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Concretely, in our first example <code>&lt;DATA&gt;</code> was <code>mpg</code>, the <code>&lt;GEOM_FUNCTION&gt;</code> was <code>geom_point()</code> and the arguments we supplies to map our aesthetics <code>&lt;MAPPINGS&gt;</code> were <code>x = displ, y = hwy</code>.</p>
+<p>Concretely, in our first example <code>&lt;DATA&gt;</code> was <code>penguins</code>, the <code>&lt;GEOM_FUNCTION&gt;</code> was <code>geom_point()</code> and the arguments we supplies to map our aesthetics <code>&lt;MAPPINGS&gt;</code> were <code>x = body_mass_g, y = flipper_length_mm</code>.</p>
 <p>As we can use this code for any tidy data set, hopefully you are beginning to see how a small amount of code can do a lot.</p>
 </section>
 <section id="sec-help-and-resources" class="level2" data-number="2.12">
@@ -922,7 +961,7 @@ Figure&nbsp;2.13: An example data frame <code>df</code> with three rows and thre
 <p>If you need help with a specific R function, let’s say <code>barplot()</code>, you can type</p>
 <p>the function name without round brackets, with a question mark at the start:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>?barplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>?barplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-google-to-find-r-answers" class="level3" data-number="2.12.2">
