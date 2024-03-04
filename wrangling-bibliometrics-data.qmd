@@ -1,4 +1,4 @@
-# Wrangling bibliometrics data
+# Wrangling bibliometrics data {#sec-wrangling-bibliometrics-data}
 
 **WORK IN PROGRESS**
 
