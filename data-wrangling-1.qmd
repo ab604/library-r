@@ -10,6 +10,7 @@ Chapter 3 summary
 #| echo: false
 library(palmerpenguins)
 library(dplyr)
+library(flextable)
 ```
 
 ## Organising your data in spreadsheets {#sec-spreadsheets}
@@ -26,7 +27,7 @@ Excel files saves files into its own proprietary format `.xls` or `.xlsx` that h
 
 The pipe operator `|>` allows you to combine operations by passing the output of an object or function to another. It will make more sense why this is a good thing once we start writing code, but you can think of it as a coding adverb such as *then*.
 
-In the example below, the `penguins` dataframe is piped to the `count` function which has `species` as its argument. Think of it as: *Print the penguins table then count how many rows there are for each species*.
+In the example below, the `penguins` dataframe is piped to the `count` function which has `species` as its argument. Think of it as: *Return the penguins table then count how many rows there are for each species*.
 
 ::: {.callout-tip .unnumbered title="Pipe style" appearance="simple" icon="true"}
 The recommended pipe style is a space before a pipe and the pipe to be the last thing on a line, like so:
@@ -40,34 +41,37 @@ penguins |>
 This makes reading and adding new steps easier.
 :::
 
-The pipe `|>` was added to R as of version 4.1.0 , you may see the `%>%` pipe from the `magrittr` package sometimes, but it's simpler to use the native version, but you may need to check it's enabled in the `Options`.
+The pipe `|>` was added to R as of version 4.1.0 , you may see the `%>%` pipe from the `magrittr` package sometimes, but it's simpler to use the native version. 
+However, you may need to check the native pipe is enabled in the `Options` (@fig-pipe).
 
 ```{r}
 #| label: fig-pipe
 #| echo: false
 #| out-width: NULL
 #| fig-cap: |
-#|   'Setting the native pipe `|>` option in RStudio'
+#|   Setting the native pipe `|>` option in RStudio
 #| fig-alt: |
-#|   'An image of the settings for the native pipe `|>` option in RStudio.'
+#|   An image of the settings for the native pipe `|>` option in RStudio.
 
 knitr::include_graphics("img/R-native-pipe.PNG")
 ```
 
+The shortcut for the pipe operator is `Ctl+Shift+M` on Windows or `Cmd+Shift+M` on a Mac.
+
 ## Introducing `dplyr` {#sec-introducing-dplyr}
 
-[`dplyr`](https://dplyr.tidyverse.org/) *"is a grammar of data manipulation"*. Concretely, it's a package of functions from the tidyverse that have been created for tasks that require manipulation of data stored in @sec-data-frames.
+[`dplyr`](https://dplyr.tidyverse.org/) *"is a grammar of data manipulation"*. Concretely, it's a package of functions from the tidyverse that have been created for tasks that require manipulation of data stored in data frames @sec-data-frames.
 
-The grammar comes from the naming of the functions as verbs. Personally, I find this parallel between R code and human language makes things cognitively easier for me. I can describe what I want to do using natural language and translate it easily into tidyverse code.
+As mentioned in @sec-base-r-tidyverse, the grammar is the naming of the functions as verbs. Personally, I find this parallel between R code and human language makes things cognitively easier for me. I can describe what I want to do using natural language and translate it easily into tidyverse code.
 
 ```{r}
 #| label: fig-dplyr-name
 #| echo: false
 #| out-width: NULL
 #| fig-cap: |
-#|   '[Why is it called `dplyr`?](https://github.com/tidyverse/dplyr/issues/1857)'
+#|   [Why is it called `dplyr`?](https://github.com/tidyverse/dplyr/issues/1857)
 #| fig-alt: |
-#|   'The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.'
+#|   The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.
 
 knitr::include_graphics("img/dplyr-name-github.png")
 ```
@@ -78,19 +82,104 @@ We'll use the four most common verbs in `dplyr` to examine the Palmer Penguins d
 
 ### Filter rows with `filter()`
 
+To remind you, the `penguins` data frame has 344 rows (@sec-palmer-penguins). 
+Each row contains a set of observations contained in the columns for a single penguin from one of three species (@fig-palmer-penguins) living on one of three islands.
+
+So if for example we wanted to *filter* the data frame for only the rows of penguins
+with a bills longer or equal to 50 mm, we would use the `filter` function as shown in
+@fig-filter.
+
+The function takes the `penguins` data frame object as the first argument. Either within the
+parentheses or via a pipe. 
+
+The second argument is the column (variable) we wish to filter on, in this case `bill_length_mm` and a logical expression (evaluates as `TRUE` or `FALSE`) that is the filter. 
+
+Here the expression is greater or equal to 50 `>= 50`. 
+
+So any row with a value in `bill_length_mm` greater or equal to 50 is `TRUE` and is retained and any row with a value less than 50 is  `FALSE` and is discarded.
+
 ```{r}
 #| label: fig-filter 
 #| echo: false
 #| out-width: 80%
 #| fig-cap: |
-#|   The `dplyr filter` function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.
+#|   The `dplyr filter` function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data frame via a pipe.
 #| fig-alt: |
-#|  The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.
+#|  The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` data frame via a pipe.
 
 knitr::include_graphics("img/dplyr-filter-penguin.png", dpi = 270)
 ```
 
+Here is the code, note that I've piped the output to the dplyr `glimpse()` function 
+which provides a summary of the filtered data frame contents. 
+
+Instead of a table of 344 penguins, we've returned a data frame with the 57 penguins (rows) 
+that have bills equal or longer than 50 mm, but we still have 8 columns (variables) as `filter()`
+only acts on the rows.
+
+```{r}
+#| label: filter-penguins
+penguins |> 
+  filter(bill_length_mm >= 50) |> 
+  glimpse()
+```
+Filtering can be done using multiple columns and expressions.
+
 ### Arranging rows with `arrange()`
+
+Another row verb is `arrange()` which as the name suggests *arranges the rows* according
+to column values. 
+
+```{r}
+#| eval: false
+penguins |> 
+  head() 
+```
+
+```{r}
+#| echo: false
+#| warning: false
+penguins |> 
+  head() |> 
+  qflextable() |>
+  colformat_num(big.mark = "", decimal.mark = "", na_str = "NA") |>
+  colformat_char(na_str = "NA") |>
+  font(part = "all", fontname = "Consolas") |>
+  bg(bg = "white", part = "all") |> 
+  color(j = "flipper_length_mm", color = "#E73037") |> 
+  #color(j = "island", color = "#005C84") |> 
+  autofit()
+```
+```{r}
+#| eval: false
+penguins |> 
+  arrange(flipper_length_mm) |> 
+  head()
+```
+
+```{r}
+#| echo: false
+#| warning: false
+penguins |> 
+  arrange(flipper_length_mm) |> 
+  head() |> 
+  qflextable() |>
+  colformat_num(big.mark = "", decimal.mark = "", na_str = "NA") |>  
+  font(part = "all", fontname = "Consolas") |>
+  bg(bg = "white", part = "all") |>
+  color(j = "flipper_length_mm", color = "#E73037") |> 
+  #color(j = "island", color = "#005C84") |> 
+  autofit()
+```
+
+```{r}
+#| echo: false
+#| eval: false
+penguins |>
+  group_by(island) |> 
+  arrange(flipper_length_mm, .by_group = TRUE) |> 
+  head()
+```
 
 ```{r}
 #| label: fig-arrange 

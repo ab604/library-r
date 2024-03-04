@@ -18,13 +18,13 @@ Like all languages though it has limitations, for example the syntax is initiall
 
 [Jumping Rivers](https://jumpingrivers.github.io/meetingsR/) maintains a list of useR groups and meetings, such as the [R-Ladies](https://rladies.org/) group.
 
-## RStudio {#sec-rstudio}
+## What is RStudio? {#sec-rstudio}
 
 **R is the language and RStudio is software created to facilitate our use of R.** They are installed separately. You don't need RStudio to use R, but you do need R to used RStudio.
 
-We will use R Studio IDE to write code, navigate the files found on our computer, inspect the variables we are going to create, and visualize the plots we will generate. R Studio can also be used for other things (e.g., version control, developing packages, writing Shiny apps) that we don't have time to cover during this workshop.
+[RStudio](https://posit.co/products/open-source/rstudio/) is an interactive development environment (IDE). It can be used to write code, navigate the files found on our computer, inspect the variables we are going to create, and visualize the plots. RStudio can also be used for other languages and other tasks (e.g., version control, developing packages, writing Shiny apps) that are beyond the scope here.
 
-@fig-rstudio-ide shows the default view of the [RStudio](https://posit.co/products/open-source/rstudio/) interactive development environment (IDE). It is divided into "Panes".
+@fig-rstudio-ide shows the default view of the RStudio. It is divided into "Panes".
 
 When you first open RStudio, there are three panes,the console where you type commands, your environment/history (top-right), and your files/plots/packages/help/viewer (bottom-right).
 
@@ -33,7 +33,7 @@ When you first open RStudio, there are three panes,the console where you type co
 #| echo: false
 #| out-width: 100%
 #| fig-cap: |
-#|   RStudio interactive development environment (IDE). This the default view of the R console, environment and output panes. These can be rearranged as desired.
+#|   RStudio is an interactive development environment (IDE). This the default view of the R console, environment and output panes. These can be rearranged as desired.
 #| fig-alt: |
 #|  Image of the default RStudio interactive development environment, showing the default view of the R console, environment and output panes. These can be rearranged as desired.
 
@@ -555,7 +555,7 @@ that store data of the same type in a two dimensional array like a table.
 
 Whereas arrays can have N dimensions, which makes them hard to imagine. We won't be using these either, but they are also valid R objects
 
-## Categorical data aka Factors {#sec-categorical-data-aka-factors}
+### Categorical data aka Factors {#sec-categorical-data-aka-factors}
 
 Factors are Rs way of storing categorical information such as eye colour or
 car type. A factor is something that can only have certain values, and can be
@@ -695,7 +695,9 @@ ggplot(data = penguins) +
 ```
 
 :::{.callout-important .unnumbered title="Warning messages" appearance="simple" icon="true"}
-When we created the plot we got a message: `Warning: Removed 2 rows containing missing values (`geom_point()`).`
+When we created the plot we got a message: 
+
+`Warning: Removed 2 rows containing missing values ('geom_point()').`
 
 This is telling us that two rows have missing values for either the flipper length or body mass and therefore couldn't be plotted. 
 
@@ -715,7 +717,8 @@ library(ggplot2)
 library(palmerpenguins)
 
 ggplot(data = penguins) + 
-  geom_point(mapping = aes(x = body_mass_g, y = flipper_length_mm, colour = species))
+  geom_point(mapping = aes(x = body_mass_g, y = flipper_length_mm, 
+                           colour = species))
 ```
 
 Now we can see that in addition to the relationship betweeen body mass and flipper length, that
