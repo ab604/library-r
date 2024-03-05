@@ -309,27 +309,56 @@ The key difference between base R and the tidyverse is that the tidyverse uses f
 
 This trade-off I'd characterise as cognitive ease versus flexibility.
 
-[The tidyverse website](https://www.tidyverse.org/) has extensive materials for 
-learning more about the tidyverse. And [Hands on Programming with R](https://rstudio-education.github.io/hopr/) provides a base R view.
+[The tidyverse website](https://www.tidyverse.org/) has extensive materials for learning more about the tidyverse. And [Hands on Programming with R](https://rstudio-education.github.io/hopr/) provides a base R view.
+
+## Tidy data
+
+Tidy data follows three principals for tabular data as proposed in the Tidy Data paper [@wickham2014]:
+
+1.   Each variable is a column; each column is a variable.
+
+2.   Each observation is a row; each row is an observation.
+
+3.   Each value is a cell; each cell is a single value.
+
+This is illustrated in @fig-tidy-data using a part of the Palmer Penguins dataset (@sec-palmer-penguins). The eight variables in the columns form an observation for each penguin in every row, and each cell has a single value recorded.
+
+```{r}
+#| label: fig-tidy-data 
+#| echo: false
+#| out-width: NULL
+#| fig-cap: |
+#|   Some tidy data from the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.
+#| fig-alt: |
+#|  An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.
+
+knitr::include_graphics("img/tidy-data.png", dpi = 270)
+```
+
+Hadley Wickham explains in [R4DS tidy data](https://r4ds.hadley.nz/data-tidy):
+
+> *Why ensure that your data is tidy? There are two main advantages:*
+>
+> 1.   *There\'s a general advantage to picking one consistent way of storing data. If you have a consistent data structure, it\'s easier to learn the tools that work with it because they have an underlying uniformity.*
+>
+> 2.  *There\'s a specific advantage to placing variables in columns because it allows R\'s vectorized nature to shine.*
+
+This will hopefully become apparent in @sec-data-wrangling-i and @sec-data-wrangling-ii.
 
 ## Atoms of R {#sec-atoms}
 
-Having set ourselves up in RStudio, let's turn our attention to the language of
-R itself.
+Having set ourselves up in RStudio, let's turn our attention to the language of R itself.
 
-The basic building blocks of how R stores data are called atomic vector types. 
-It's from these atoms that more complex structures are built. Atomic vectors
-have one dimension, just like a single row or a single column in a spreadsheet.
+The basic building blocks of how R stores data are called atomic vector types. It's from these atoms that more complex structures are built. Atomic vectors have one dimension, just like a single row or a single column in a spreadsheet.
 
-These are the building blocks of more complex data containers such as data frame (@sec-data-frames) 
-containing the penguin dataset (@sec-palmer-penguins).
+These are the building blocks of more complex data containers such as data frame (@sec-data-frames) containing the penguin dataset (@sec-palmer-penguins).
 
-The four main atoms of R are: 
+The four main atoms of R are:
 
-+ Doubles: regular numbers, +ve or -ve and with or without decimal places. AKA numerics.
-+ Integers: whole numbers, specified with an upper-case L, e.g. `int <- 2L`
-+ Characters: Strings of text
-+ Logicals: these store `TRUE`'s and `FALSE`'s' which are useful for comparisons.
+-   Doubles: regular numbers, +ve or -ve and with or without decimal places. AKA numerics.
+-   Integers: whole numbers, specified with an upper-case L, e.g. `int <- 2L`
+-   Characters: Strings of text
+-   Logicals: these store `TRUE`'s and `FALSE`'s' which are useful for comparisons.
 
 ```{r}
 #| label: fig-r-atoms 
@@ -343,11 +372,7 @@ The four main atoms of R are:
 knitr::include_graphics("img/R-atomic-vectors.png", dpi = 270)
 ```
 
-Let's make a character vector and check the atomic vector type, using the `typeof()`.
-This also introduces a very important R function `c()`. This lower case c stands
-for **combine**. So when we have several objects e.g. words or numbers, we can
-combine them into a vector the length of the number of objects, as illustrated
-here for a pack of cards:
+Let's make a character vector and check the atomic vector type, using the `typeof()`. This also introduces a very important R function `c()`. This lower case c stands for **combine**. So when we have several objects e.g. words or numbers, we can combine them into a vector the length of the number of objects, as illustrated here for a pack of cards:
 
 ```{r}
 #| label: cards-characters
@@ -358,33 +383,28 @@ cards
 typeof(cards)
 ```
 
-Note here that we see the use of the assignment operator `<-` to assign our 
-vector on the right as the object `cards`. We talk more about that in @sec-assigning-objects.
+Note here that we see the use of the assignment operator `<-` to assign our vector on the right as the object `cards`. We talk more about that in @sec-assigning-objects.
 
 Also note that the output of `typeof()` is itself a vector of length one and type `character`.
 
 ::: {#seq .callout-tip .unnumbered title="Try creating a vector of integers" icon="false"}
-Use the `seq()` function to create a vector of numbers from 1 to 10, and `typeof()` to 
-examine the vector type.
+Use the `seq()` function to create a vector of numbers from 1 to 10, and `typeof()` to examine the vector type.
 
 Remember to use `?seq` if you want to learn more about the function.
 :::
 
 ## Assigning objects {#sec-assigning-objects}
 
-Objects are how we store data inside the R environment. We assign labels to
-objects using the assignment operator `<-`
+Objects are how we store data inside the R environment. We assign labels to objects using the assignment operator `<-`
 
 ```{r}
 #| label: mass-kg
 mass_kg <- 55
 ```
 
-Read this as *"mass_kg is assigned to value 55"* in your head. A subtle but important
-point here is that the object is 55 and the value remains 55 regardless of the label we assign to it. 
+Read this as *"mass_kg is assigned to value 55"* in your head. A subtle but important point here is that the object is 55 and the value remains 55 regardless of the label we assign to it.
 
-In fact we could assign more than one label to the same object. Another way to think 
-about this is that Bibi is a cat (@fig-bibi-object), and remains a cat even if I call her Pickle when she's being naughty.
+In fact we could assign more than one label to the same object. Another way to think about this is that Bibi is a cat (@fig-bibi-object), and remains a cat even if I call her Pickle when she's being naughty.
 
 ```{r}
 #| label: fig-bibi-object
@@ -398,25 +418,15 @@ about this is that Bibi is a cat (@fig-bibi-object), and remains a cat even if I
 knitr::include_graphics("img/bibi-data.png", dpi = 270)
 ```
 
-Using `<-` can be annoying to type, so use RStudio’s keyboard short cut: 
-Alt + - (the minus sign) to make life easier. 
+Using `<-` can be annoying to type, so use RStudio's keyboard short cut: Alt + - (the minus sign) to make life easier.
 
 Many people ask why we use this assignment operator when we can use `=` instead?
 
-[Colin Fay had a Twitter thread on this subject](https://twitter.com/_colinfay/status/1006139974377443328),
-but the reason I favour most is that it provides clarity. The arrow points in 
-the direction of the assignment (it is actually possible to assign in the other
-direction too) and it distinguishes between creating an object in the workspace 
-and assigning a value inside a function.
+[Colin Fay had a Twitter thread on this subject](https://twitter.com/_colinfay/status/1006139974377443328), but the reason I favour most is that it provides clarity. The arrow points in the direction of the assignment (it is actually possible to assign in the other direction too) and it distinguishes between creating an object in the workspace and assigning a value inside a function.
 
-Object name style is a matter of choice, but must start with a letter and can 
-only contain letters, numbers, `_` and `.`. We recommend using descriptive names
-and using `_` between words. Some special symbols cannot be used in variable 
-names, so watch out for those.
+Object name style is a matter of choice, but must start with a letter and can only contain letters, numbers, `_` and `.`. We recommend using descriptive names and using `_` between words. Some special symbols cannot be used in variable names, so watch out for those.
 
-So here we've used the name to indicate its value represents a mass in kilograms. 
-Look in your environment pane and you'll see the `mass_kg` object 
-containing the (data) value 55.
+So here we've used the name to indicate its value represents a mass in kilograms. Look in your environment pane and you'll see the `mass_kg` object containing the (data) value 55.
 
 We can inspect an object by typing it's name:
 
@@ -427,7 +437,7 @@ mass_kg
 
 What's wrong here?
 
-```{r} 
+```{r}
 #| label: mass-wrong-name
 #| eval: FALSE
 mass_KG
@@ -435,70 +445,57 @@ mass_KG
 
 `Error: object 'mass_KG' not found`
 
-This error illustrates that typos matter, everything must be precise and `mass_KG`
-is not the same as `mass_kg`. `mass_KG` doesn't exist, hence the error.
+This error illustrates that typos matter, everything must be precise and `mass_KG` is not the same as `mass_kg`. `mass_KG` doesn't exist, hence the error.
 
 Let's use `seq()` to create a **seq**uence of numbers, and at the same time practice tab completion.
 
-Start typing `se` in the console and you should see a list of functions appear,
-add `q` to shorten the list, then use the up and down arrow to highlight the function
-of interest `seq()` and hit Tab to select. This is tab completion.
+Start typing `se` in the console and you should see a list of functions appear, add `q` to shorten the list, then use the up and down arrow to highlight the function of interest `seq()` and hit Tab to select. This is tab completion.
 
-RStudio puts the cursor between the parentheses to prompt us to enter some 
-arguments. Here we'll use 1 as the start and 10 as the end:
+RStudio puts the cursor between the parentheses to prompt us to enter some arguments. Here we'll use 1 as the start and 10 as the end:
 
-```{r} 
+```{r}
 #| label: sequence-function
 seq(1,10)
 ```
 
-If we left off a parentheses to close the function, then when we hit enter 
-we'll see a `+` indicating RStudio is expecting further code. We either add the 
-missing part or press Escape to cancel the code.
+If we left off a parentheses to close the function, then when we hit enter we'll see a `+` indicating RStudio is expecting further code. We either add the missing part or press Escape to cancel the code.
 
-Let's call a function and make an assignment at the same time. Here we'll use
-the base R function `seq()` which takes three arguments: `from`, `to` and `by`.
+Let's call a function and make an assignment at the same time. Here we'll use the base R function `seq()` which takes three arguments: `from`, `to` and `by`.
 
 Read the following code as *"assign my_sequence to an object that stores a sequence of numbers from 2 to 20 by intervals of 2*.
 
-```{r} 
+```{r}
 #| label: sequence-object
 my_sequence <- seq(2,20,2)
 ```
 
-This time nothing was returned to the console, but we now have an object called
-`my_sequence` in our environment.
+This time nothing was returned to the console, but we now have an object called `my_sequence` in our environment.
 
 ### Indexing and sub-setting {#sec-indexing}
 
-If we want to access and subset elements of `my_sequence` we use 
-square brackets `[]` and the index number. Indexing in R starts at 1 such that 
-1 is the index of the first element in the sequence, element 1 having the the value of 2.
+If we want to access and subset elements of `my_sequence` we use square brackets `[]` and the index number. Indexing in R starts at 1 such that 1 is the index of the first element in the sequence, element 1 having the the value of 2.
 
 For example element five would be subset by:
 
-```{r} 
+```{r}
 #| label: sequence-element
 my_sequence[5]
 ```
 
-Here the number five is the index of the vector, not the value of the fifth element. The value of the fifth element is 10. 
+Here the number five is the index of the vector, not the value of the fifth element. The value of the fifth element is 10.
 
 And returning multiple elements uses a colon `:`, like so
 
-```{r} 
+```{r}
 #| label: sequence-range
 my_sequence[5:8]
 ```
 
 ## Lists, matrices, arrays and data frames {#sec-lists}
 
-Lists also group data into one dimensional sets of data. The difference being 
-that list group objects instead of individual values, such as several atomic 
-vectors.
+Lists also group data into one dimensional sets of data. The difference being that list group objects instead of individual values, such as several atomic vectors.
 
-For example, let's make a list containing a vector of numbers and a character
-vector
+For example, let's make a list containing a vector of numbers and a character vector
 
 ```{r}
 #| label: list-example
@@ -507,20 +504,15 @@ list_1 <- list(1:110,"R")
 list_1
 ```
 
-Note the double brackets to indicate the list elements, i.e. element one is the
-vector of numbers and element two is a vector of a single character.
+Note the double brackets to indicate the list elements, i.e. element one is the vector of numbers and element two is a vector of a single character.
 
-We won't be working with lists, but they are a flexible way to 
-store data of different types in R. 
+We won't be working with lists, but they are a flexible way to store data of different types in R.
 
-Accessing list elements uses double square brackets syntax, for example
-`list_1[[1]]` would return the first vector in our list. 
+Accessing list elements uses double square brackets syntax, for example `list_1[[1]]` would return the first vector in our list.
 
-And to access the first element in the first vector would combine double and
-single square brackets like so: `list_1[[1]][1]`.
+And to access the first element in the first vector would combine double and single square brackets like so: `list_1[[1]][1]`.
 
-Don't worry if you find this confusing, everyone does when they first start with
-R. Hadley Wickham tweeted an image to illustrate list indexing shown in @fig-list-index.
+Don't worry if you find this confusing, everyone does when they first start with R. Hadley Wickham tweeted an image to illustrate list indexing shown in @fig-list-index.
 
 ```{r}
 #| label: fig-list-index 
@@ -534,8 +526,7 @@ R. Hadley Wickham tweeted an image to illustrate list indexing shown in @fig-lis
 knitr::include_graphics("img/indexing.png", dpi = 270)
 ```
 
-Lists and `NULL` which indicates the absence of a vector, complete the set
-of base vectors in R as illustrated in @fig-r-vectors.
+Lists and `NULL` which indicates the absence of a vector, complete the set of base vectors in R as illustrated in @fig-r-vectors.
 
 ```{r}
 #| label: fig-r-vectors 
@@ -548,41 +539,32 @@ of base vectors in R as illustrated in @fig-r-vectors.
 
 knitr::include_graphics("img/R-vectors.png", dpi = 270)
 ```
+
 ### Matrices and arrays {#sec-matrices}
 
-Atomic vectors have one dimension, one row or one column. Matrices are an object type 
-that store data of the same type in a two dimensional array like a table. 
+Atomic vectors have one dimension, one row or one column. Matrices are an object type that store data of the same type in a two dimensional array like a table.
 
 Whereas arrays can have N dimensions, which makes them hard to imagine. We won't be using these either, but they are also valid R objects
 
 ### Categorical data aka Factors {#sec-categorical-data-aka-factors}
 
-Factors are Rs way of storing categorical information such as eye colour or
-car type. A factor is something that can only have certain values, and can be
-ordered (such as `low`,`medium`,`high`) or unordered such as types of fruit.
+Factors are Rs way of storing categorical information such as eye colour or car type. A factor is something that can only have certain values, and can be ordered (such as `low`,`medium`,`high`) or unordered such as types of fruit.
 
-Factors are useful as they code string variables such as "red" or "blue" to integer 
-values e.g. 1 and 2, which can be used in statistical models and when plotting, 
-but they are confusing as they look like strings. 
+Factors are useful as they code string variables such as "red" or "blue" to integer values e.g. 1 and 2, which can be used in statistical models and when plotting, but they are confusing as they look like strings.
 
 **Factors look like strings, but behave like integers.**
 
-Historically R converts strings to factors when we load and create data, but 
-it's often not what we want as a default. Since R version 4.0.0 strings not treated as factors by default.
+Historically R converts strings to factors when we load and create data, but it's often not what we want as a default. Since R version 4.0.0 strings not treated as factors by default.
 
 ### Data frames {#sec-data-frames}
 
 For data analysis in R, we mostly be using data frames.
 
-Data frames are two dimensional versions of lists in that they can contain different data types in the same object (unlike matrices or arrays). This is form of storing
-data we are going to be using and is encountered day-to-day in the library. 
+Data frames are two dimensional versions of lists in that they can contain different data types in the same object (unlike matrices or arrays). This is form of storing data we are going to be using and is encountered day-to-day in the library.
 
-In a data frame each atomic vector type becomes a column, and a data frame is formed by
-columns of vectors of the same length. Each column element must be of the same type, but the column types can vary.
+In a data frame each atomic vector type becomes a column, and a data frame is formed by columns of vectors of the same length. Each column element must be of the same type, but the column types can vary.
 
-@fig-data-frame shows an example data frame we'll refer to as
-saved as the object `df` consisting of three rows and three columns. Each 
-column is a different atomic data type of the same length.
+@fig-data-frame shows an example data frame we'll refer to as saved as the object `df` consisting of three rows and three columns. Each column is a different atomic data type of the same length.
 
 ```{r}
 #| label: fig-data-frame 
@@ -596,8 +578,7 @@ column is a different atomic data type of the same length.
 knitr::include_graphics("img/R-data-frame.png", dpi = 270)
 ```
 
-
-```{r} 
+```{r}
 #| label: make-data-frame
 df <- data.frame(numeric_vector = c(1,7,3), 
                  character_vector = c("S","A","U"),
@@ -607,17 +588,13 @@ df <- data.frame(numeric_vector = c(1,7,3),
 df
 ```
 
-Packages in the  tidyverse create a modified form of data frame called a tibble.
-You can read about tibbles [here](http://r4ds.had.co.nz/tibbles.html).
+Packages in the tidyverse create a modified form of data frame called a tibble. You can read about tibbles [here](http://r4ds.had.co.nz/tibbles.html).
 
-Here's what the code to make the same data frame as before as a tibble looks like.
-Note how we get more information from a tibble when it is returned to the Console,
-it tells us what the dimensions are, and what type of vectors it contains.
+Here's what the code to make the same data frame as before as a tibble looks like. Note how we get more information from a tibble when it is returned to the Console, it tells us what the dimensions are, and what type of vectors it contains.
 
-Note that I have to load the `tibble` package as it is not a base R function. Also note
-the difference in the way the information about `df` and `tbl_df` are displayed.
+Note that I have to load the `tibble` package as it is not a base R function. Also note the difference in the way the information about `df` and `tbl_df` are displayed.
 
-```{r} 
+```{r}
 #| labels: make-tibble
 #| message: false
 library(tibble)
@@ -629,17 +606,13 @@ tbl_df <- tibble(numeric_vector = c(1,7,3),
 tbl_df
 ```
 
-Sub-setting data frames can also be done with square bracket syntax, but as we
-have both rows and columns, we need to provide index values for both row and 
-column.
+Sub-setting data frames can also be done with square bracket syntax, but as we have both rows and columns, we need to provide index values for both row and column.
 
-For example `df[1,2]` means **return the value of `df` row 1, column 2**. This corresponds with the value `A`. 
+For example `df[1,2]` means **return the value of `df` row 1, column 2**. This corresponds with the value `A`.
 
-We can also use the colon operator to choose
-several rows or columns, and by leaving the row or column blank we return all 
-rows or all columns.
+We can also use the colon operator to choose several rows or columns, and by leaving the row or column blank we return all rows or all columns.
 
-```{r} 
+```{r}
 #|  label: subset-df
 #|  eval: TRUE
 # Subset rows 1 and 2 of column 1
@@ -649,40 +622,29 @@ df[1:2,1]
 df[,3]
 ```
 
-Don't worry too much about this for now, we won't be doing this, 
-but it's worth being aware of this syntax.
+Don't worry too much about this for now, we won't be doing this, but it's worth being aware of this syntax.
 
 ## Plotting and exporting data {#sec-plotting-and-exporting-data}
 
-One of the most useful and important parts of any data analysis is plotting 
-data and @sec-visualisation goes into detail. But to 
-give you an example, we'll use the `ggplot2` package as an introduction to 
-automating a task in code, and as a tool for understanding data.
+One of the most useful and important parts of any data analysis is plotting data and @sec-visualisation goes into detail. But to give you an example, we'll use the `ggplot2` package as an introduction to automating a task in code, and as a tool for understanding data.
 
-`ggplot2` implements the *grammar of graphics*, for describing
-and building graphs. The idea being that we construct a plot in the following way:
+`ggplot2` implements the *grammar of graphics*, for describing and building graphs. The idea being that we construct a plot in the following way:
 
-1. Call the `ggplot()` function to create a graph.
-2. Pass our data as the first argument to the `ggplot()` function.
-3. Then pass some arguments to the aesthetics function `aes()` inside 
-the `gpplot()` which tell ggplot how to plot the data e.g. which data goes on the x and y axis.
-4. Then we follow the ggplot function with a `+` sign to indicate
-we are going to add more code, followed by a geometric object function, a `geom`
-which maps the data to type of plot we want to make e.g. a histogram or scatter plot.
+1.  Call the `ggplot()` function to create a graph.
+2.  Pass our data as the first argument to the `ggplot()` function.
+3.  Then pass some arguments to the aesthetics function `aes()` inside the `gpplot()` which tell ggplot how to plot the data e.g. which data goes on the x and y axis.
+4.  Then we follow the ggplot function with a `+` sign to indicate we are going to add more code, followed by a geometric object function, a `geom` which maps the data to type of plot we want to make e.g. a histogram or scatter plot.
 
-Don't worry if this sounds confusing, it becomes clear with practice and all plots 
-follow this grammar.
+Don't worry if this sounds confusing, it becomes clear with practice and all plots follow this grammar.
 
-We'll use the `pengiuns` from the Palmer Penguins (@sec-palmer-penguins) dataset to
-the question *what is the relationship between body mass and flipper length?*
+We'll use the `pengiuns` from the Palmer Penguins (@sec-palmer-penguins) dataset to the question *what is the relationship between body mass and flipper length?*
 
 Try `?penguins` to learn more about the data.
 
-1. Penguin mass in grams is in the `body_mass_g` column.
-2. Flipper length is in the `flipper_length_mm` column.
+1.  Penguin mass in grams is in the `body_mass_g` column.
+2.  Flipper length is in the `flipper_length_mm` column.
 
-To create a plot of penguin mass `body_mass_g` (x-axis) against flipper length `flipper_length_mm` 
-(y-axis) we do the following:
+To create a plot of penguin mass `body_mass_g` (x-axis) against flipper length `flipper_length_mm` (y-axis) we do the following:
 
 ```{r}
 #| label: penguin-plot-1
@@ -694,21 +656,19 @@ ggplot(data = penguins) +
   geom_point(mapping = aes(x = body_mass_g, y = flipper_length_mm))
 ```
 
-:::{.callout-important .unnumbered title="Warning messages" appearance="simple" icon="true"}
-When we created the plot we got a message: 
+::: {.callout-important .unnumbered title="Warning messages" appearance="simple" icon="true"}
+When we created the plot we got a message:
 
 `Warning: Removed 2 rows containing missing values ('geom_point()').`
 
-This is telling us that two rows have missing values for either the flipper length or body mass and therefore couldn't be plotted. 
+This is telling us that two rows have missing values for either the flipper length or body mass and therefore couldn't be plotted.
 
 R and ggplot2 give us warnings like this to help us stop and think. This time we can safely ignore the warning, but in general we should investigate and document our choices.
 :::
 
 Our initial plot shows as we might expect, bigger penguins have bigger flippers.
 
-Now try extending this code to include to add a `colour` aesthetic to the
-the `aes()` function, let `colour = species`, so we can see the different sizes
-of the penguin species.
+Now try extending this code to include to add a `colour` aesthetic to the the `aes()` function, let `colour = species`, so we can see the different sizes of the penguin species.
 
 ```{r}
 #| label: penguin-plot-2
@@ -721,11 +681,9 @@ ggplot(data = penguins) +
                            colour = species))
 ```
 
-Now we can see that in addition to the relationship betweeen body mass and flipper length, that
-Adélie and Chinstrap penguins are approximately the same in mass and flipper length, whilst Gentoo penguins are generally heavier with bigger flippers..
+Now we can see that in addition to the relationship betweeen body mass and flipper length, that Adélie and Chinstrap penguins are approximately the same in mass and flipper length, whilst Gentoo penguins are generally heavier with bigger flippers..
 
-Check out the ggplot2 documentation for all the aesthetic possibilities (and 
-Google for examples): http://ggplot2.tidyverse.org/reference/
+Check out the [ggplot2 documentation](http://ggplot2.tidyverse.org/reference/) for all the aesthetic possibilities (and Google for examples).
 
 So now we have re-usable code snippet for generating plots in R:
 
@@ -734,12 +692,73 @@ ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
 
-Concretely, in our first example `<DATA>` was `penguins`, the `<GEOM_FUNCTION>` 
-was `geom_point()` and the arguments we supplies to map our aesthetics 
-`<MAPPINGS>` were `x = body_mass_g, y = flipper_length_mm`.
+Concretely, in our first example `<DATA>` was `penguins`, the `<GEOM_FUNCTION>` was `geom_point()` and the arguments we supplies to map our aesthetics `<MAPPINGS>` were `x = body_mass_g, y = flipper_length_mm`.
 
-As we can use this code for any tidy data set, hopefully you are beginning to 
-see how a small amount of code can do a lot.
+As we can use this code for any tidy data set, hopefully you are beginning to see how a small amount of code can do a lot.
+
+## Exporting data
+
+We'll spend more time on getting data in and out of our R environment in the @sec-data-wrangling-i, but let's imagine we wanted to export our plot and the `penguin` data for a colleague or presentation.
+
+### readr
+
+To export tibbles and data frames, we'll use the `readr` package, and the `write_excel_csv()` function. This creates a table in comma separated variable format that can opened by spreadsheet software such as excel.
+
+As it is a function is has round brackets and the main arguments we pass are the object containing the data we want to output and the name of the file and the location we want to write the file to, in this case the `outputs` folder.
+
+I'm also going to use the `glue` package and `glue()` function combined with base R function `Sys.Date()` to create a filename which is a character vector using today's date.
+
+So the syntax here is of one function nested inside another function: `write_excel_csv(<data>, glue(<output-file>))` and `glue()` has a third function `Sys.Date()` called from within it too. So it's a bit confusing at first.
+
+```{r}
+#| label: write-data
+#| eval: FALSE
+library(glue)
+# Write csv file to outputs folder with today's date
+write_excel_csv(penguins, 
+                glue("outputs/penguin-data-{Sys.Date()}.csv")
+                )
+```
+
+::: {.callout-tip .unnumbered appearance="simple" icon="true" title="`glue`  evaluation"}
+We've not seen this syntax before, but [`glue`](https://glue.tidyverse.org/) is a tidyverse package for working with strings.
+
+Using curly brackets `{}` the `glue()` function will paste together and evaluate values from R objects with strings of characters.
+
+This has lots of uses, but to aid your understanding here's an example where I create two single value vectors, one character and the other integer for Bibi the cat and then use `glue` to insert them into a sentence.
+
+```{r}
+#| label: glue-bibi
+library(glue)
+name <- "Bibi"
+age <- 11
+
+glue("My neighbour's cat is called {name} and this year she 
+     will be {age+1} years old.")
+```
+
+Note that `glue` evaluates the expression `age+1`.
+:::
+
+Here we are writing the `penguins` data frame as a csv file to the `outputs` folder and a file called `r glue("outputs/penguin-data-{Sys.Date()}.csv")`. The date in the filename is the date I built this book (`r Sys.Date()`)
+
+### ggsave
+
+If we want to save the last plot we made in `ggplot2` we can use the [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html) function.
+
+We tell `ggsave()` the filename, and it will save it as that type depending on how we name the file. For example if we use `file.png` it will save a png and if we use `file.jpeg` it will save a `jpeg`.
+
+Check out `?ggsave` or the link above for more arguments we can supply to `ggsave()`, such as plot width and height, resolution or background colour.
+
+To save our last plot for example using `glue()` again to automatically provide the date.
+
+```{r}
+#| label: ggsave 
+#| eval: false
+ggsave(
+  glue("outputs/penguins-mass-vs-flipper-plot-{Sys.Date()}.png")
+  )
+```
 
 ## Help and resources {#sec-help-and-resources}
 
