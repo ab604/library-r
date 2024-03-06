@@ -289,11 +289,7 @@ See the [`select` documentation](https://dplyr.tidyverse.org/reference/select.ht
 
 ### Creating new columns with `mutate()` {#sec-creating-new-columns-with-mutate}
 
-Another common task is to create a new variable or variables, often from existing data
-within the data frame. For this we use the `mutate()` verb. It follows the 
-same syntax as for `filter()`, `arrange()` and `select()` in that the first
-argument is the dataset, and the subsequent arguments are the new variables we wish
-to create (@fig-mutate).
+Another common task is to create a new variable or variables, often from existing data within the data frame. For this we use the `mutate()` verb. It follows the same syntax as for `filter()`, `arrange()` and `select()` in that the first argument is the dataset, and the subsequent arguments are the new variables we wish to create (@fig-mutate).
 
 ```{r}
 #| label: fig-mutate
@@ -307,13 +303,9 @@ to create (@fig-mutate).
 knitr::include_graphics("img/dplyr-mutate-penguin.png", dpi = 270)
 ```
 
-Here I'll use the piped syntax again and `glimpse()` on the output to create
-a new variable for penguin body mass in kilograms called `body_mass_kg` 
-from the existing body mass in grams variable by dividing by 1,000 using `mutate()`.
+Here I'll use the piped syntax again and `glimpse()` on the output to create a new variable for penguin body mass in kilograms called `body_mass_kg` from the existing body mass in grams variable by dividing by 1,000 using `mutate()`.
 
-I'm also going to use `select()` to select only the `species`,
-`body_mass_g` and new variable `body_mass_kg` and then `head()` to view the first 
-six rows to make the output a bit easier to read.
+I'm also going to use `select()` to select only the `species`, `body_mass_g` and new variable `body_mass_kg` and then `head()` to view the first six rows to make the output a bit easier to read.
 
 ```{r}
 #| label: penguin-mutate
@@ -359,12 +351,9 @@ penguins |>
 
 ## Pivots
 
-Data can be untidy in different ways. One way might be that the values are in the 
-variable names. Or perhaps the reverse is true and you'd like the values to 
-be column names.
+Data can be untidy in different ways. One way might be that the values are in the variable names. Or perhaps the reverse is true and you'd like the values to be column names.
 
-Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use `pivot_longer()` and if one pivots a table
-to increase the number of columns one would use `pivot_wider()` (@fig-pivot and @fig-pivot-animation).
+Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use `pivot_longer()` and if one pivots a table to increase the number of columns one would use `pivot_wider()` (@fig-pivot and @fig-pivot-animation).
 
 ```{r}
 #| label: fig-pivot 
