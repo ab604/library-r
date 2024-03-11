@@ -30,8 +30,11 @@ dt <- dat |> #select(Affiliations) |>
   separate_wider_delim(cols = Affiliations, delim = ";", names_sep = "_", 
                        too_few = "align_start")
 
-dt_long <- dt |> pivot_longer(14:883, names_to = "Affiliation_No", values_to = "Department", values_drop_na = TRUE)
+#dt_long <- dt |> pivot_longer(14:883, names_to = "Affiliation_No", values_to = "Department", values_drop_na = TRUE)
 
+dt_long <- dt |> pivot_longer(starts_with("Affiliations_"), 
+                              names_to = "Affiliation_No", 
+                              values_to = "Department", values_drop_na = TRUE)
 
 dt_uos <- dt_long |> filter(str_detect(Department, "South*ampton"))
 
