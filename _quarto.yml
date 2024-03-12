@@ -16,6 +16,7 @@ book:
   chapters:
     - index.qmd
     - setting-the-scene.qmd
+    - markup-languages.qmd
     - getting-started.qmd
     - data-wrangling-1.qmd
     - data-wrangling-2.qmd

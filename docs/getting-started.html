@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Librarians - 2&nbsp; Getting started</title>
+<title>R for Librarians - 3&nbsp; Getting started</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./data-wrangling-1.html" rel="next">
-<link href="./setting-the-scene.html" rel="prev">
+<link href="./markup-languages.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -137,7 +137,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./getting-started.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./getting-started.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -184,32 +184,38 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./markup-languages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./getting-started.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-wrangling-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-wrangling-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wrangling-bibliometrics-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualisation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualisation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualisation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -228,48 +234,48 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-what-is-r" id="toc-sec-what-is-r" class="nav-link active" data-scroll-target="#sec-what-is-r"><span class="header-section-number">2.1</span> What is R?</a></li>
-  <li><a href="#sec-rstudio" id="toc-sec-rstudio" class="nav-link" data-scroll-target="#sec-rstudio"><span class="header-section-number">2.2</span> What is RStudio?</a>
+  <li><a href="#sec-what-is-r" id="toc-sec-what-is-r" class="nav-link active" data-scroll-target="#sec-what-is-r"><span class="header-section-number">3.1</span> What is R?</a></li>
+  <li><a href="#sec-rstudio" id="toc-sec-rstudio" class="nav-link" data-scroll-target="#sec-rstudio"><span class="header-section-number">3.2</span> What is RStudio?</a>
   <ul class="collapse">
-  <li><a href="#sec-what-is-real" id="toc-sec-what-is-real" class="nav-link" data-scroll-target="#sec-what-is-real"><span class="header-section-number">2.2.1</span> What is real?</a></li>
-  <li><a href="#where-am-i" id="toc-where-am-i" class="nav-link" data-scroll-target="#where-am-i"><span class="header-section-number">2.2.2</span> Where am I?</a></li>
-  <li><a href="#sec-relative-path" id="toc-sec-relative-path" class="nav-link" data-scroll-target="#sec-relative-path"><span class="header-section-number">2.2.3</span> Relative path from where you are</a></li>
+  <li><a href="#sec-what-is-real" id="toc-sec-what-is-real" class="nav-link" data-scroll-target="#sec-what-is-real"><span class="header-section-number">3.2.1</span> What is real?</a></li>
+  <li><a href="#where-am-i" id="toc-where-am-i" class="nav-link" data-scroll-target="#where-am-i"><span class="header-section-number">3.2.2</span> Where am I?</a></li>
+  <li><a href="#sec-relative-path" id="toc-sec-relative-path" class="nav-link" data-scroll-target="#sec-relative-path"><span class="header-section-number">3.2.3</span> Relative path from where you are</a></li>
   </ul></li>
-  <li><a href="#sec-packages" id="toc-sec-packages" class="nav-link" data-scroll-target="#sec-packages"><span class="header-section-number">2.3</span> Installing and loading packages</a></li>
-  <li><a href="#sec-what-is-a-function" id="toc-sec-what-is-a-function" class="nav-link" data-scroll-target="#sec-what-is-a-function"><span class="header-section-number">2.4</span> What is a function and how do I use them?</a>
+  <li><a href="#sec-packages" id="toc-sec-packages" class="nav-link" data-scroll-target="#sec-packages"><span class="header-section-number">3.3</span> Installing and loading packages</a></li>
+  <li><a href="#sec-what-is-a-function" id="toc-sec-what-is-a-function" class="nav-link" data-scroll-target="#sec-what-is-a-function"><span class="header-section-number">3.4</span> What is a function and how do I use them?</a>
   <ul class="collapse">
-  <li><a href="#sec-palmer-penguins" id="toc-sec-palmer-penguins" class="nav-link" data-scroll-target="#sec-palmer-penguins"><span class="header-section-number">2.4.1</span> Introducing the Palmer Penguins</a></li>
+  <li><a href="#sec-palmer-penguins" id="toc-sec-palmer-penguins" class="nav-link" data-scroll-target="#sec-palmer-penguins"><span class="header-section-number">3.4.1</span> Introducing the Palmer Penguins</a></li>
   </ul></li>
-  <li><a href="#sec-a-project-orientated-workflow" id="toc-sec-a-project-orientated-workflow" class="nav-link" data-scroll-target="#sec-a-project-orientated-workflow"><span class="header-section-number">2.5</span> A project orientated workflow</a>
+  <li><a href="#sec-a-project-orientated-workflow" id="toc-sec-a-project-orientated-workflow" class="nav-link" data-scroll-target="#sec-a-project-orientated-workflow"><span class="header-section-number">3.5</span> A project orientated workflow</a>
   <ul class="collapse">
-  <li><a href="#sec-r-projects" id="toc-sec-r-projects" class="nav-link" data-scroll-target="#sec-r-projects"><span class="header-section-number">2.5.1</span> RStudio Projects</a></li>
-  <li><a href="#sec-names" id="toc-sec-names" class="nav-link" data-scroll-target="#sec-names"><span class="header-section-number">2.5.2</span> Naming things</a></li>
+  <li><a href="#sec-r-projects" id="toc-sec-r-projects" class="nav-link" data-scroll-target="#sec-r-projects"><span class="header-section-number">3.5.1</span> RStudio Projects</a></li>
+  <li><a href="#sec-names" id="toc-sec-names" class="nav-link" data-scroll-target="#sec-names"><span class="header-section-number">3.5.2</span> Naming things</a></li>
   </ul></li>
-  <li><a href="#sec-base-r-tidyverse" id="toc-sec-base-r-tidyverse" class="nav-link" data-scroll-target="#sec-base-r-tidyverse"><span class="header-section-number">2.6</span> Base R, the tidyverse and tidy data</a></li>
-  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data"><span class="header-section-number">2.7</span> Tidy data</a></li>
-  <li><a href="#sec-atoms" id="toc-sec-atoms" class="nav-link" data-scroll-target="#sec-atoms"><span class="header-section-number">2.8</span> Atoms of R</a></li>
-  <li><a href="#sec-assigning-objects" id="toc-sec-assigning-objects" class="nav-link" data-scroll-target="#sec-assigning-objects"><span class="header-section-number">2.9</span> Assigning objects</a>
+  <li><a href="#sec-base-r-tidyverse" id="toc-sec-base-r-tidyverse" class="nav-link" data-scroll-target="#sec-base-r-tidyverse"><span class="header-section-number">3.6</span> Base R, the tidyverse and tidy data</a></li>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data"><span class="header-section-number">3.7</span> Tidy data</a></li>
+  <li><a href="#sec-atoms" id="toc-sec-atoms" class="nav-link" data-scroll-target="#sec-atoms"><span class="header-section-number">3.8</span> Atoms of R</a></li>
+  <li><a href="#sec-assigning-objects" id="toc-sec-assigning-objects" class="nav-link" data-scroll-target="#sec-assigning-objects"><span class="header-section-number">3.9</span> Assigning objects</a>
   <ul class="collapse">
-  <li><a href="#sec-indexing" id="toc-sec-indexing" class="nav-link" data-scroll-target="#sec-indexing"><span class="header-section-number">2.9.1</span> Indexing and sub-setting</a></li>
+  <li><a href="#sec-indexing" id="toc-sec-indexing" class="nav-link" data-scroll-target="#sec-indexing"><span class="header-section-number">3.9.1</span> Indexing and sub-setting</a></li>
   </ul></li>
-  <li><a href="#sec-lists" id="toc-sec-lists" class="nav-link" data-scroll-target="#sec-lists"><span class="header-section-number">2.10</span> Lists, matrices, arrays and data frames</a>
+  <li><a href="#sec-lists" id="toc-sec-lists" class="nav-link" data-scroll-target="#sec-lists"><span class="header-section-number">3.10</span> Lists, matrices, arrays and data frames</a>
   <ul class="collapse">
-  <li><a href="#sec-matrices" id="toc-sec-matrices" class="nav-link" data-scroll-target="#sec-matrices"><span class="header-section-number">2.10.1</span> Matrices and arrays</a></li>
-  <li><a href="#sec-categorical-data-aka-factors" id="toc-sec-categorical-data-aka-factors" class="nav-link" data-scroll-target="#sec-categorical-data-aka-factors"><span class="header-section-number">2.10.2</span> Categorical data aka Factors</a></li>
-  <li><a href="#sec-data-frames" id="toc-sec-data-frames" class="nav-link" data-scroll-target="#sec-data-frames"><span class="header-section-number">2.10.3</span> Data frames</a></li>
+  <li><a href="#sec-matrices" id="toc-sec-matrices" class="nav-link" data-scroll-target="#sec-matrices"><span class="header-section-number">3.10.1</span> Matrices and arrays</a></li>
+  <li><a href="#sec-categorical-data-aka-factors" id="toc-sec-categorical-data-aka-factors" class="nav-link" data-scroll-target="#sec-categorical-data-aka-factors"><span class="header-section-number">3.10.2</span> Categorical data aka Factors</a></li>
+  <li><a href="#sec-data-frames" id="toc-sec-data-frames" class="nav-link" data-scroll-target="#sec-data-frames"><span class="header-section-number">3.10.3</span> Data frames</a></li>
   </ul></li>
-  <li><a href="#sec-plotting-and-exporting-data" id="toc-sec-plotting-and-exporting-data" class="nav-link" data-scroll-target="#sec-plotting-and-exporting-data"><span class="header-section-number">2.11</span> Plotting and exporting data</a></li>
-  <li><a href="#exporting-data" id="toc-exporting-data" class="nav-link" data-scroll-target="#exporting-data"><span class="header-section-number">2.12</span> Exporting data</a>
+  <li><a href="#sec-plotting-and-exporting-data" id="toc-sec-plotting-and-exporting-data" class="nav-link" data-scroll-target="#sec-plotting-and-exporting-data"><span class="header-section-number">3.11</span> Plotting and exporting data</a></li>
+  <li><a href="#exporting-data" id="toc-exporting-data" class="nav-link" data-scroll-target="#exporting-data"><span class="header-section-number">3.12</span> Exporting data</a>
   <ul class="collapse">
-  <li><a href="#readr" id="toc-readr" class="nav-link" data-scroll-target="#readr"><span class="header-section-number">2.12.1</span> readr</a></li>
-  <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"><span class="header-section-number">2.12.2</span> ggsave</a></li>
+  <li><a href="#readr" id="toc-readr" class="nav-link" data-scroll-target="#readr"><span class="header-section-number">3.12.1</span> readr</a></li>
+  <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"><span class="header-section-number">3.12.2</span> ggsave</a></li>
   </ul></li>
-  <li><a href="#sec-help-and-resources" id="toc-sec-help-and-resources" class="nav-link" data-scroll-target="#sec-help-and-resources"><span class="header-section-number">2.13</span> Help and resources</a>
+  <li><a href="#sec-help-and-resources" id="toc-sec-help-and-resources" class="nav-link" data-scroll-target="#sec-help-and-resources"><span class="header-section-number">3.13</span> Help and resources</a>
   <ul class="collapse">
-  <li><a href="#using-to-access-r-function-help-pages" id="toc-using-to-access-r-function-help-pages" class="nav-link" data-scroll-target="#using-to-access-r-function-help-pages"><span class="header-section-number">2.13.1</span> Using <code>?</code> to access R function help pages</a></li>
-  <li><a href="#using-google-to-find-r-answers" id="toc-using-google-to-find-r-answers" class="nav-link" data-scroll-target="#using-google-to-find-r-answers"><span class="header-section-number">2.13.2</span> Using Google to find R answers</a></li>
-  <li><a href="#asking-questions" id="toc-asking-questions" class="nav-link" data-scroll-target="#asking-questions"><span class="header-section-number">2.13.3</span> Asking questions</a></li>
-  <li><a href="#sec-other-resources" id="toc-sec-other-resources" class="nav-link" data-scroll-target="#sec-other-resources"><span class="header-section-number">2.13.4</span> News, tutorials other online books</a></li>
+  <li><a href="#using-to-access-r-function-help-pages" id="toc-using-to-access-r-function-help-pages" class="nav-link" data-scroll-target="#using-to-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</a></li>
+  <li><a href="#using-google-to-find-r-answers" id="toc-using-google-to-find-r-answers" class="nav-link" data-scroll-target="#using-google-to-find-r-answers"><span class="header-section-number">3.13.2</span> Using Google to find R answers</a></li>
+  <li><a href="#asking-questions" id="toc-asking-questions" class="nav-link" data-scroll-target="#asking-questions"><span class="header-section-number">3.13.3</span> Asking questions</a></li>
+  <li><a href="#sec-other-resources" id="toc-sec-other-resources" class="nav-link" data-scroll-target="#sec-other-resources"><span class="header-section-number">3.13.4</span> News, tutorials other online books</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -279,7 +285,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-getting-started" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span></h1>
+<h1 class="title"><span id="sec-getting-started" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span></h1>
 </div>
 
 
@@ -311,18 +317,18 @@ Summary
 <p>Don’t worry if you don’t get it all in the first pass, that’s why the book and lots of other materials exist, so you can come back here or explore out there.</p>
 </div>
 </div>
-<section id="sec-what-is-r" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sec-what-is-r"><span class="header-section-number">2.1</span> What is R?</h2>
+<section id="sec-what-is-r" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-what-is-r"><span class="header-section-number">3.1</span> What is R?</h2>
 <p><strong>R</strong> is a programming language that follows the philosophy laid down by it’s predecessor S. The philosophy being that users begin in an interactive environment where they don’t consciously think of themselves as programming. It was created in 1993, and documented in <span class="citation" data-cites="ihaka1996">(<a href="references.html#ref-ihaka1996" role="doc-biblioref">Ihaka and Gentleman 1996</a>)</span>.</p>
 <p>Reasons R has become popular include that it is both open source and cross platform, and that it has broad functionality, from the analysis of data and creating graphical visualisations and web apps.</p>
 <p>Like all languages though it has limitations, for example the syntax is initially confusing.</p>
 <p><a href="https://jumpingrivers.github.io/meetingsR/">Jumping Rivers</a> maintains a list of useR groups and meetings, such as the <a href="https://rladies.org/">R-Ladies</a> group.</p>
 </section>
-<section id="sec-rstudio" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="sec-rstudio"><span class="header-section-number">2.2</span> What is RStudio?</h2>
+<section id="sec-rstudio" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-rstudio"><span class="header-section-number">3.2</span> What is RStudio?</h2>
 <p><strong>R is the language and RStudio is software created to facilitate our use of R.</strong> They are installed separately. You don’t need RStudio to use R, but you do need R to used RStudio.</p>
 <p><a href="https://posit.co/products/open-source/rstudio/">RStudio</a> is an interactive development environment (IDE). It can be used to write code, navigate the files found on our computer, inspect the variables we are going to create, and visualize the plots. RStudio can also be used for other languages and other tasks (e.g., version control, developing packages, writing Shiny apps) that are beyond the scope here.</p>
-<p><a href="#fig-rstudio-ide" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> shows the default view of the RStudio. It is divided into “Panes”.</p>
+<p><a href="#fig-rstudio-ide" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> shows the default view of the RStudio. It is divided into “Panes”.</p>
 <p>When you first open RStudio, there are three panes,the console where you type commands, your environment/history (top-right), and your files/plots/packages/help/viewer (bottom-right).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -332,7 +338,7 @@ Summary
 <img src="img/rstudio-view.png" class="img-fluid figure-img" style="width:100.0%" alt="Image of the default RStudio interactive development environment, showing the default view of the R console, environment and output panes. These can be rearranged as desired.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-ide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: RStudio is an interactive development environment (IDE). This the default view of the R console, environment and output panes. These can be rearranged as desired.
+Figure&nbsp;3.1: RStudio is an interactive development environment (IDE). This the default view of the R console, environment and output panes. These can be rearranged as desired.
 </figcaption>
 </figure>
 </div>
@@ -356,8 +362,8 @@ Shortcuts
 </div>
 </div>
 <p>Time for another philosophical diversion…</p>
-<section id="sec-what-is-real" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="sec-what-is-real"><span class="header-section-number">2.2.1</span> What is real?</h3>
+<section id="sec-what-is-real" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-what-is-real"><span class="header-section-number">3.2.1</span> What is real?</h3>
 <p>At the start, we might consider our environment “real”, that is to say the objects we’ve created/loaded and are using are “real”.</p>
 <p>But it’s much better in the long run to consider our scripts as “real”.</p>
 <div class="callout callout-style-simple callout-important no-icon">
@@ -372,7 +378,7 @@ Shortcuts
 </div>
 </div>
 <p>Or to put it another way: we can easily recreate an environment from our scripts, but not so easily create a script from an environment.</p>
-<p>To support the notion of thinking in terms of our scripts as real, it is recommended to turn off the preservation of workspaces between sessions by setting the Tools &gt; Global Options menu in R studio as shown in <a href="#fig-rstudio-env" class="quarto-xref">Figure&nbsp;<span>2.2</span></a></p>
+<p>To support the notion of thinking in terms of our scripts as real, it is recommended to turn off the preservation of workspaces between sessions by setting the Tools &gt; Global Options menu in R studio as shown in <a href="#fig-rstudio-env" class="quarto-xref">Figure&nbsp;<span>3.2</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-rstudio-env" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of the RStudio Global Options Save workspace to .RData on exit set to Never.">
@@ -381,22 +387,22 @@ Shortcuts
 <img src="img/rstudio-options.png" class="img-fluid figure-img" style="width:66.0%" alt="Image of the RStudio Global Options Save workspace to .RData on exit set to Never.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: It is recommended to turn off the preservation of workspaces between sessions by setting <code>Save workspace to .RData on exit</code> to <code>Never</code>
+Figure&nbsp;3.2: It is recommended to turn off the preservation of workspaces between sessions by setting <code>Save workspace to .RData on exit</code> to <code>Never</code>
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="where-am-i" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="where-am-i"><span class="header-section-number">2.2.2</span> Where am I?</h3>
+<section id="where-am-i" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="where-am-i"><span class="header-section-number">3.2.2</span> Where am I?</h3>
 <p>The part of your computer operating system that manages files and directories (aka folders) is called the file system. This dates back to 1969 and the <a href="https://en.wikipedia.org/wiki/Unix_filesystem">Unix filesystem</a>.</p>
-<p>The idea is that we have a rooted tree, as with <a href="https://en.wikipedia.org/wiki/Phylogenetic_tree#Rooted_tree">phylogenetic rooted trees</a> in biology. From the root all other directories and files exist along paths going back to the root as shown in <a href="#fig-absolute-path" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>.</p>
+<p>The idea is that we have a rooted tree, as with <a href="https://en.wikipedia.org/wiki/Phylogenetic_tree#Rooted_tree">phylogenetic rooted trees</a> in biology. From the root all other directories and files exist along paths going back to the root as shown in <a href="#fig-absolute-path" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>.</p>
 <p>On Unix based systems such as Apple or Android, the root is denoted with a forward slash <code>/</code>. On Windows the root is a back slash <code>\</code>. The <code>/</code> or <code>\</code> is used to to separate directories along the path, denoting a change in the level of the tree</p>
 <p><strong>Note: in RStudio the path separator and root is always <code>/</code> regardless of the operating system.</strong></p>
-<section id="sec-absolute-path" class="level4" data-number="2.2.2.1">
-<h4 data-number="2.2.2.1" class="anchored" data-anchor-id="sec-absolute-path"><span class="header-section-number">2.2.2.1</span> Absolute path from the root <code>/</code></h4>
-<p><a href="#fig-absolute-path" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> shows the absolute path from the root to folder <code>H</code> as a red line.</p>
+<section id="sec-absolute-path" class="level4" data-number="3.2.2.1">
+<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="sec-absolute-path"><span class="header-section-number">3.2.2.1</span> Absolute path from the root <code>/</code></h4>
+<p><a href="#fig-absolute-path" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> shows the absolute path from the root to folder <code>H</code> as a red line.</p>
 <p>This is just a made-up example, but in text in this would be <code>/B/E/H</code>.</p>
 <p>On a Windows machine the root path may start with the hard drive name e.g.&nbsp;<code>C:/</code> and on an Apple or Linux machine it will just begin <code>/</code>.</p>
 <div class="cell">
@@ -407,7 +413,7 @@ Figure&nbsp;2.2: It is recommended to turn off the preservation of workspaces be
 <img src="img/directory-structure.svg" class="img-fluid figure-img" style="width:50.0%" alt="Image of an absolute path from the root `/` through sub-folders `B` and `E` to folder `H` is shown by a red line.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-absolute-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.3: The absolute path from the root <code>/</code> through sub-folders <code>B</code> and <code>E</code> to folder <code>H</code> is shown by the red line.
+Figure&nbsp;3.3: The absolute path from the root <code>/</code> through sub-folders <code>B</code> and <code>E</code> to folder <code>H</code> is shown by the red line.
 </figcaption>
 </figure>
 </div>
@@ -426,11 +432,11 @@ Figure&nbsp;2.3: The absolute path from the root <code>/</code> through sub-fold
 </div>
 </section>
 </section>
-<section id="sec-relative-path" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="sec-relative-path"><span class="header-section-number">2.2.3</span> Relative path from where you are</h3>
+<section id="sec-relative-path" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="sec-relative-path"><span class="header-section-number">3.2.3</span> Relative path from where you are</h3>
 <p>We can also consider relative paths, paths that are relative to each file or folder rather than the root.</p>
 <p>Imagine I have project called <code>penguin-project</code> and I have a script in the <code>R</code> folder that analyses data in a spreadsheet in the <code>data</code> folder.</p>
-<p><a href="#fig-relative-path" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> shows the relative path between <code>analysis-2024-02-27.R</code> and the spreadsheet <code>survey-2024-02-27.csv</code>.</p>
+<p><a href="#fig-relative-path" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> shows the relative path between <code>analysis-2024-02-27.R</code> and the spreadsheet <code>survey-2024-02-27.csv</code>.</p>
 <p>In natural language from the R script to access the spreadsheet we would need to <em>“go up from the R directory to the project directory and then back down into the data directory”</em>.</p>
 <p>In machine readable language from our R script the relative path would be written as <code>../data/survey-2024-02-27.csv</code> where <code>../</code> means go up one level from where the script is.</p>
 <div class="cell">
@@ -441,7 +447,7 @@ Figure&nbsp;2.3: The absolute path from the root <code>/</code> through sub-fold
 <img src="img/relative-path.svg" class="img-fluid figure-img" style="width:100.0%" alt="Image of a line indicating a relative path between a R script `analysis-2024-02-27.R` in the R folder and the spreadsheet `survey-2024-02-27.csv` used by the R script in the data folder.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-relative-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.4: The relative path between the R script <code>analysis-2024-02-27.R</code> in the R folder and the and the spreadsheet <code>survey-2024-02-27.csv</code> used by the R script in the data folder is shown in red.
+Figure&nbsp;3.4: The relative path between the R script <code>analysis-2024-02-27.R</code> in the R folder and the and the spreadsheet <code>survey-2024-02-27.csv</code> used by the R script in the data folder is shown in red.
 </figcaption>
 </figure>
 </div>
@@ -449,8 +455,8 @@ Figure&nbsp;2.4: The relative path between the R script <code>analysis-2024-02-2
 </div>
 </section>
 </section>
-<section id="sec-packages" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="sec-packages"><span class="header-section-number">2.3</span> Installing and loading packages</h2>
+<section id="sec-packages" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-packages"><span class="header-section-number">3.3</span> Installing and loading packages</h2>
 <p>Packages are collections of functions, and a function is a piece of code written to perform a specific task, such as installing a package.</p>
 <p>Therefore, the function <code>install.packages()</code> is a piece of code written to perform the task of installing packages.</p>
 <p>We use the function by typing <code>install.packages("tidyverse")</code> with the name of the package in quotes inside the round brackets.</p>
@@ -459,9 +465,9 @@ Figure&nbsp;2.4: The relative path between the R script <code>analysis-2024-02-2
 <p>Once a package is installed we need to load it into our environment to use it. Loading packages is performed using the <code>library()</code> function. As with installation, we put the name of the package - the argument for our function - that we want to load in between the round brackets like so <code>library(tidyverse)</code>.</p>
 <p>As before this can be done on the console, but we will usually load packages as part of script. <em>Note that we don’t need the quotes for the library function.</em></p>
 </section>
-<section id="sec-what-is-a-function" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="sec-what-is-a-function"><span class="header-section-number">2.4</span> What is a function and how do I use them?</h2>
-<p>A function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in <a href="#sec-packages" class="quarto-xref"><span>Section 2.3</span></a> the function <code>install.packages()</code> requires the name of the package we want to install as arguments.</p>
+<section id="sec-what-is-a-function" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-what-is-a-function"><span class="header-section-number">3.4</span> What is a function and how do I use them?</h2>
+<p>A function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in <a href="#sec-packages" class="quarto-xref"><span>Section 3.3</span></a> the function <code>install.packages()</code> requires the name of the package we want to install as arguments.</p>
 <p>Many, if not most, functions can take more than one argument. The creators of the function should have given these defaults for the situation where the user provides only one or some arguments. RStudio should prompt you for the arguments as you type, but if you need to see what they are, use the help function <code>?</code> with the function name in the Console and it will open the help panel or type the function name into the help panel search box.</p>
 <p>For example, to find out all the arguments for <code>install.packages()</code> we’d type <code>?install.packages</code> and press <code>Enter</code>.</p>
 <div id="cowsay" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
@@ -491,9 +497,9 @@ documentation for the say() function.
 </div>
 </div>
 </div>
-<section id="sec-palmer-penguins" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="sec-palmer-penguins"><span class="header-section-number">2.4.1</span> Introducing the Palmer Penguins</h3>
-<p>The <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package is a dataset curated by Allison Horst of data on three penguin species from the <a href="https://pallter.marine.rutgers.edu/">Palmer Station in Antarctica</a> (<a href="#fig-palmer-penguins-hex" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>).</p>
+<section id="sec-palmer-penguins" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="sec-palmer-penguins"><span class="header-section-number">3.4.1</span> Introducing the Palmer Penguins</h3>
+<p>The <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package is a dataset curated by Allison Horst of data on three penguin species from the <a href="https://pallter.marine.rutgers.edu/">Palmer Station in Antarctica</a> (<a href="#fig-palmer-penguins-hex" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-palmer-penguins-hex" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
@@ -502,7 +508,7 @@ documentation for the say() function.
 <img src="img/palmerpenguins.png" class="img-fluid figure-img" style="width:33.0%" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-palmer-penguins-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.5: Hex sticker of the <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package curated by Allison Horst showing the Chinstrap, Gentoo and Adélie penguins.
+Figure&nbsp;3.5: Hex sticker of the <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package curated by Allison Horst showing the Chinstrap, Gentoo and Adélie penguins.
 </figcaption>
 </figure>
 </div>
@@ -512,7 +518,7 @@ Figure&nbsp;2.5: Hex sticker of the <a href="https://allisonhorst.github.io/palm
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The three penguins species are the Chinstrap, Gentoo and Adélie penguins (<a href="#fig-palmer-penguins" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>).</p>
+<p>The three penguins species are the Chinstrap, Gentoo and Adélie penguins (<a href="#fig-palmer-penguins" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-palmer-penguins" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
@@ -521,13 +527,13 @@ Figure&nbsp;2.5: Hex sticker of the <a href="https://allisonhorst.github.io/palm
 <img src="img/penguins.png" class="img-fluid figure-img" style="width:80.0%" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-palmer-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.6: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie penguins.
+Figure&nbsp;3.6: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie penguins.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The dataset records various information about 344 penguins, including their culmen (<a href="#fig-culmen" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>).</p>
+<p>The dataset records various information about 344 penguins, including their culmen (<a href="#fig-culmen" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-culmen" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
@@ -536,7 +542,7 @@ Figure&nbsp;2.6: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie 
 <img src="img/culmen_depth.png" class="img-fluid figure-img" style="width:66.0%" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-culmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.7: Artwork by @allison_horst of the culman of a Gentoo penguin.
+Figure&nbsp;3.7: Artwork by @allison_horst of the culman of a Gentoo penguin.
 </figcaption>
 </figure>
 </div>
@@ -544,8 +550,8 @@ Figure&nbsp;2.7: Artwork by @allison_horst of the culman of a Gentoo penguin.
 </div>
 </section>
 </section>
-<section id="sec-a-project-orientated-workflow" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="sec-a-project-orientated-workflow"><span class="header-section-number">2.5</span> A project orientated workflow</h2>
+<section id="sec-a-project-orientated-workflow" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-a-project-orientated-workflow"><span class="header-section-number">3.5</span> A project orientated workflow</h2>
 <p>This section is all about how to use R and RStudio to <em>“maximize effectiveness and reduce frustration.”</em></p>
 <p>The above quote is from <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">Jenny Bryan’s article</a> about a project orientated workflow.</p>
 <p>The main point here is that how you do things, <strong>the workflow</strong>, should not be mixed up with the <strong>product of the workflow</strong> itself.</p>
@@ -561,10 +567,10 @@ Figure&nbsp;2.7: Artwork by @allison_horst of the culman of a Gentoo penguin.
 <p>Likewise we can’t share environments directly, but we can share the code that creates the environment.</p>
 <p>If we organise our analysis into self-contained projects that hold everything needed to perform the analysis. These projects can be shared across machines and the analysis recreated, and thus the workflow is kept separate from the product.</p>
 <p>What does this look like in practice?</p>
-<section id="sec-r-projects" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="sec-r-projects"><span class="header-section-number">2.5.1</span> RStudio Projects</h3>
+<section id="sec-r-projects" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-r-projects"><span class="header-section-number">3.5.1</span> RStudio Projects</h3>
 <p>Step one is to use an interactive development environment such as RStudio rather than using R on its own for your analysis.</p>
-<p>RStudio contains a facility to keep all files associated with a particular analysis together called, as you might expect from <a href="#sec-a-project-orientated-workflow" class="quarto-xref"><span>Section 2.5</span></a>, a Project.</p>
+<p>RStudio contains a facility to keep all files associated with a particular analysis together called, as you might expect from <a href="#sec-a-project-orientated-workflow" class="quarto-xref"><span>Section 3.5</span></a>, a Project.</p>
 <p>Creating a Project creates a file <code>.Rproj</code> containing all the information associated with your analysis including the Project location (allowing you to quickly navigate to it), and optionally preserves custom settings and open files to make it easier to resume work after a break. This is also super helpful if you are working on multiple projects as you can switch between them at a click.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -574,7 +580,7 @@ Figure&nbsp;2.7: Artwork by @allison_horst of the culman of a Gentoo penguin.
 <img src="img/create-project.png" class="img-fluid figure-img" style="width:66.0%" alt="An image of the new R project menu in RStudio">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.8: Starting a new R project in RStudio
+Figure&nbsp;3.8: Starting a new R project in RStudio
 </figcaption>
 </figure>
 </div>
@@ -588,8 +594,8 @@ Figure&nbsp;2.8: Starting a new R project in RStudio
 <li>Click on <code>Create project</code></li>
 </ul>
 </section>
-<section id="sec-names" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="sec-names"><span class="header-section-number">2.5.2</span> Naming things</h3>
+<section id="sec-names" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-names"><span class="header-section-number">3.5.2</span> Naming things</h3>
 <p><a href="https://ropensci.org/blog/2017/12/08/rprofile-jenny-bryan/">Jenny Bryan</a> also has three principles for <a href="http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf">naming things</a> that are well worth remembering.</p>
 <p>When you names something, a file or an object, ideally it should be:</p>
 <ol type="1">
@@ -600,22 +606,22 @@ Figure&nbsp;2.8: Starting a new R project in RStudio
 <p>We’ll see examples of this as we go along.</p>
 </section>
 </section>
-<section id="sec-base-r-tidyverse" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="sec-base-r-tidyverse"><span class="header-section-number">2.6</span> Base R, the tidyverse and tidy data</h2>
+<section id="sec-base-r-tidyverse" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-base-r-tidyverse"><span class="header-section-number">3.6</span> Base R, the tidyverse and tidy data</h2>
 <p>Base R is everything that comes included when you install the R language, whereas <a href="https://www.tidyverse.org/">the tidyverse</a> has have to be installed in addition to base R. The tidyverse eight core packages that are loaded when the tidyverse library is loaded, but installs a number of other tidyverse packages that can be load separately using the library function.</p>
 <p>The key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.</p>
 <p>This trade-off I’d characterise as cognitive ease versus flexibility.</p>
 <p><a href="https://www.tidyverse.org/">The tidyverse website</a> has extensive materials for learning more about the tidyverse. And <a href="https://rstudio-education.github.io/hopr/">Hands on Programming with R</a> provides a base R view.</p>
 </section>
-<section id="tidy-data" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="tidy-data"><span class="header-section-number">2.7</span> Tidy data</h2>
+<section id="tidy-data" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="tidy-data"><span class="header-section-number">3.7</span> Tidy data</h2>
 <p>Tidy data follows three principals for tabular data as proposed in the Tidy Data paper <span class="citation" data-cites="wickham2014">(<a href="references.html#ref-wickham2014" role="doc-biblioref">Wickham 2014</a>)</span>:</p>
 <ol type="1">
 <li><p>Each variable is a column; each column is a variable.</p></li>
 <li><p>Each observation is a row; each row is an observation.</p></li>
 <li><p>Each value is a cell; each cell is a single value.</p></li>
 </ol>
-<p>This is illustrated in <a href="#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>2.9</span></a> using a part of the Palmer Penguins dataset (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 2.4.1</span></a>). The eight variables in the columns form an observation for each penguin in every row, and each cell has a single value recorded.</p>
+<p>This is illustrated in <a href="#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a> using a part of the Palmer Penguins dataset (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>). The eight variables in the columns form an observation for each penguin in every row, and each cell has a single value recorded.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-tidy-data" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
@@ -624,7 +630,7 @@ Figure&nbsp;2.8: Starting a new R project in RStudio
 <img src="img/tidy-data.png" class="img-fluid figure-img" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell." width="683">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.9: Some tidy data from the penguin dataset. Every variable has it’s own column, every observation has its own row and every value has its own cell.
+Figure&nbsp;3.9: Some tidy data from the penguin dataset. Every variable has it’s own column, every observation has its own row and every value has its own cell.
 </figcaption>
 </figure>
 </div>
@@ -634,17 +640,17 @@ Figure&nbsp;2.9: Some tidy data from the penguin dataset. Every variable has it�
 <blockquote class="blockquote">
 <p><em>Why ensure that your data is tidy? There are two main advantages:</em></p>
 <ol type="1">
-<li><p><em>There's a general advantage to picking one consistent way of storing data. If you have a consistent data structure, it's easier to learn the tools that work with it because they have an underlying uniformity.</em></p></li>
-<li><p><em>There's a specific advantage to placing variables in columns because it allows R's vectorized nature to shine.</em></p></li>
+<li><p><em>There’s a general advantage to picking one consistent way of storing data. If you have a consistent data structure, it’s easier to learn the tools that work with it because they have an underlying uniformity.</em></p></li>
+<li><p><em>There’s a specific advantage to placing variables in columns because it allows R’s vectorized nature to shine.</em></p></li>
 </ol>
 </blockquote>
-<p>This will hopefully become apparent in <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 3</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<p>This will hopefully become apparent in <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 </section>
-<section id="sec-atoms" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="sec-atoms"><span class="header-section-number">2.8</span> Atoms of R</h2>
+<section id="sec-atoms" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-atoms"><span class="header-section-number">3.8</span> Atoms of R</h2>
 <p>Having set ourselves up in RStudio, let’s turn our attention to the language of R itself.</p>
 <p>The basic building blocks of how R stores data are called atomic vector types. It’s from these atoms that more complex structures are built. Atomic vectors have one dimension, just like a single row or a single column in a spreadsheet.</p>
-<p>These are the building blocks of more complex data containers such as data frame (<a href="#sec-data-frames" class="quarto-xref"><span>Section 2.10.3</span></a>) containing the penguin dataset (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 2.4.1</span></a>).</p>
+<p>These are the building blocks of more complex data containers such as data frame (<a href="#sec-data-frames" class="quarto-xref"><span>Section 3.10.3</span></a>) containing the penguin dataset (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>).</p>
 <p>The four main atoms of R are:</p>
 <ul>
 <li>Doubles: regular numbers, +ve or -ve and with or without decimal places. AKA numerics.</li>
@@ -660,7 +666,7 @@ Figure&nbsp;2.9: Some tidy data from the penguin dataset. Every variable has it�
 <img src="img/R-atomic-vectors.png" class="img-fluid figure-img" style="width:50.0%" alt="An image of atomic R data types: doubles, integers, characters and logicals.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-atoms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.10: The atomic R data types that form the building blocks of more complex data containers.
+Figure&nbsp;3.10: The atomic R data types that form the building blocks of more complex data containers.
 </figcaption>
 </figure>
 </div>
@@ -679,7 +685,7 @@ Figure&nbsp;2.10: The atomic R data types that form the building blocks of more 
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
-<p>Note here that we see the use of the assignment operator <code>&lt;-</code> to assign our vector on the right as the object <code>cards</code>. We talk more about that in <a href="#sec-assigning-objects" class="quarto-xref"><span>Section 2.9</span></a>.</p>
+<p>Note here that we see the use of the assignment operator <code>&lt;-</code> to assign our vector on the right as the object <code>cards</code>. We talk more about that in <a href="#sec-assigning-objects" class="quarto-xref"><span>Section 3.9</span></a>.</p>
 <p>Also note that the output of <code>typeof()</code> is itself a vector of length one and type <code>character</code>.</p>
 <div id="seq" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try creating a vector of integers">
 <div class="callout-header d-flex align-content-center">
@@ -696,14 +702,14 @@ Try creating a vector of integers
 </div>
 </div>
 </section>
-<section id="sec-assigning-objects" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="sec-assigning-objects"><span class="header-section-number">2.9</span> Assigning objects</h2>
+<section id="sec-assigning-objects" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="sec-assigning-objects"><span class="header-section-number">3.9</span> Assigning objects</h2>
 <p>Objects are how we store data inside the R environment. We assign labels to objects using the assignment operator <code>&lt;-</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mass_kg <span class="ot">&lt;-</span> <span class="dv">55</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Read this as <em>“mass_kg is assigned to value 55”</em> in your head. A subtle but important point here is that the object is 55 and the value remains 55 regardless of the label we assign to it.</p>
-<p>In fact we could assign more than one label to the same object. Another way to think about this is that Bibi is a cat (<a href="#fig-bibi-object" class="quarto-xref">Figure&nbsp;<span>2.11</span></a>), and remains a cat even if I call her Pickle when she’s being naughty.</p>
+<p>In fact we could assign more than one label to the same object. Another way to think about this is that Bibi is a cat (<a href="#fig-bibi-object" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>), and remains a cat even if I call her Pickle when she’s being naughty.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-bibi-object" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of a cat being assigned the name Bibi to illustrate how the name does not change the data type of the object.">
@@ -712,7 +718,7 @@ Try creating a vector of integers
 <img src="img/bibi-data.png" class="img-fluid figure-img" style="width:80.0%" alt="An image of a cat being assigned the name Bibi to illustrate how the name does not change the data type of the object.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bibi-object-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.11: Bibi is of data type cat regardless of her name.
+Figure&nbsp;3.11: Bibi is of data type cat regardless of her name.
 </figcaption>
 </figure>
 </div>
@@ -752,8 +758,8 @@ Figure&nbsp;2.11: Bibi is of data type cat regardless of her name.
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_sequence <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This time nothing was returned to the console, but we now have an object called <code>my_sequence</code> in our environment.</p>
-<section id="sec-indexing" class="level3" data-number="2.9.1">
-<h3 data-number="2.9.1" class="anchored" data-anchor-id="sec-indexing"><span class="header-section-number">2.9.1</span> Indexing and sub-setting</h3>
+<section id="sec-indexing" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="sec-indexing"><span class="header-section-number">3.9.1</span> Indexing and sub-setting</h3>
 <p>If we want to access and subset elements of <code>my_sequence</code> we use square brackets <code>[]</code> and the index number. Indexing in R starts at 1 such that 1 is the index of the first element in the sequence, element 1 having the the value of 2.</p>
 <p>For example element five would be subset by:</p>
 <div class="cell">
@@ -772,8 +778,8 @@ Figure&nbsp;2.11: Bibi is of data type cat regardless of her name.
 </div>
 </section>
 </section>
-<section id="sec-lists" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="sec-lists"><span class="header-section-number">2.10</span> Lists, matrices, arrays and data frames</h2>
+<section id="sec-lists" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="sec-lists"><span class="header-section-number">3.10</span> Lists, matrices, arrays and data frames</h2>
 <p>Lists also group data into one dimensional sets of data. The difference being that list group objects instead of individual values, such as several atomic vectors.</p>
 <p>For example, let’s make a list containing a vector of numbers and a character vector</p>
 <div class="cell">
@@ -798,7 +804,7 @@ Figure&nbsp;2.11: Bibi is of data type cat regardless of her name.
 <p>We won’t be working with lists, but they are a flexible way to store data of different types in R.</p>
 <p>Accessing list elements uses double square brackets syntax, for example <code>list_1[[1]]</code> would return the first vector in our list.</p>
 <p>And to access the first element in the first vector would combine double and single square brackets like so: <code>list_1[[1]][1]</code>.</p>
-<p>Don’t worry if you find this confusing, everyone does when they first start with R. Hadley Wickham tweeted an image to illustrate list indexing shown in <a href="#fig-list-index" class="quarto-xref">Figure&nbsp;<span>2.12</span></a>.</p>
+<p>Don’t worry if you find this confusing, everyone does when they first start with R. Hadley Wickham tweeted an image to illustrate list indexing shown in <a href="#fig-list-index" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-list-index" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image a tweet by Hadley Wickham showing pepper pots to indicate how indexing in lists works">
@@ -807,13 +813,13 @@ Figure&nbsp;2.11: Bibi is of data type cat regardless of her name.
 <img src="img/indexing.png" class="img-fluid figure-img" style="width:80.0%" alt="An image a tweet by Hadley Wickham showing pepper pots to indicate how indexing in lists works">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-list-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.12: List indexing by Hadley Wickham
+Figure&nbsp;3.12: List indexing by Hadley Wickham
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Lists and <code>NULL</code> which indicates the absence of a vector, complete the set of base vectors in R as illustrated in <a href="#fig-r-vectors" class="quarto-xref">Figure&nbsp;<span>2.13</span></a>.</p>
+<p>Lists and <code>NULL</code> which indicates the absence of a vector, complete the set of base vectors in R as illustrated in <a href="#fig-r-vectors" class="quarto-xref">Figure&nbsp;<span>3.13</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-r-vectors" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of the base vectors of R which includes Lists and Null vectors in addition to the atomic vectors.">
@@ -822,30 +828,30 @@ Figure&nbsp;2.12: List indexing by Hadley Wickham
 <img src="img/R-vectors.png" class="img-fluid figure-img" style="width:66.0%" alt="An image of the base vectors of R which includes Lists and Null vectors in addition to the atomic vectors.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-vectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.13: The base vectors of R includes Lists and NULL vectors in addition to the atomic vectors.
+Figure&nbsp;3.13: The base vectors of R includes Lists and NULL vectors in addition to the atomic vectors.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="sec-matrices" class="level3" data-number="2.10.1">
-<h3 data-number="2.10.1" class="anchored" data-anchor-id="sec-matrices"><span class="header-section-number">2.10.1</span> Matrices and arrays</h3>
+<section id="sec-matrices" class="level3" data-number="3.10.1">
+<h3 data-number="3.10.1" class="anchored" data-anchor-id="sec-matrices"><span class="header-section-number">3.10.1</span> Matrices and arrays</h3>
 <p>Atomic vectors have one dimension, one row or one column. Matrices are an object type that store data of the same type in a two dimensional array like a table.</p>
 <p>Whereas arrays can have N dimensions, which makes them hard to imagine. We won’t be using these either, but they are also valid R objects</p>
 </section>
-<section id="sec-categorical-data-aka-factors" class="level3" data-number="2.10.2">
-<h3 data-number="2.10.2" class="anchored" data-anchor-id="sec-categorical-data-aka-factors"><span class="header-section-number">2.10.2</span> Categorical data aka Factors</h3>
+<section id="sec-categorical-data-aka-factors" class="level3" data-number="3.10.2">
+<h3 data-number="3.10.2" class="anchored" data-anchor-id="sec-categorical-data-aka-factors"><span class="header-section-number">3.10.2</span> Categorical data aka Factors</h3>
 <p>Factors are Rs way of storing categorical information such as eye colour or car type. A factor is something that can only have certain values, and can be ordered (such as <code>low</code>,<code>medium</code>,<code>high</code>) or unordered such as types of fruit.</p>
 <p>Factors are useful as they code string variables such as “red” or “blue” to integer values e.g.&nbsp;1 and 2, which can be used in statistical models and when plotting, but they are confusing as they look like strings.</p>
 <p><strong>Factors look like strings, but behave like integers.</strong></p>
 <p>Historically R converts strings to factors when we load and create data, but it’s often not what we want as a default. Since R version 4.0.0 strings not treated as factors by default.</p>
 </section>
-<section id="sec-data-frames" class="level3" data-number="2.10.3">
-<h3 data-number="2.10.3" class="anchored" data-anchor-id="sec-data-frames"><span class="header-section-number">2.10.3</span> Data frames</h3>
+<section id="sec-data-frames" class="level3" data-number="3.10.3">
+<h3 data-number="3.10.3" class="anchored" data-anchor-id="sec-data-frames"><span class="header-section-number">3.10.3</span> Data frames</h3>
 <p>For data analysis in R, we mostly be using data frames.</p>
 <p>Data frames are two dimensional versions of lists in that they can contain different data types in the same object (unlike matrices or arrays). This is form of storing data we are going to be using and is encountered day-to-day in the library.</p>
 <p>In a data frame each atomic vector type becomes a column, and a data frame is formed by columns of vectors of the same length. Each column element must be of the same type, but the column types can vary.</p>
-<p><a href="#fig-data-frame" class="quarto-xref">Figure&nbsp;<span>2.14</span></a> shows an example data frame we’ll refer to as saved as the object <code>df</code> consisting of three rows and three columns. Each column is a different atomic data type of the same length.</p>
+<p><a href="#fig-data-frame" class="quarto-xref">Figure&nbsp;<span>3.14</span></a> shows an example data frame we’ll refer to as saved as the object <code>df</code> consisting of three rows and three columns. Each column is a different atomic data type of the same length.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-data-frame" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of an example data frame with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.">
@@ -854,7 +860,7 @@ Figure&nbsp;2.13: The base vectors of R includes Lists and NULL vectors in addit
 <img src="img/R-data-frame.png" class="img-fluid figure-img" style="width:50.0%" alt="An image of an example data frame with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.14: An example data frame <code>df</code> with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.
+Figure&nbsp;3.14: An example data frame <code>df</code> with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.
 </figcaption>
 </figure>
 </div>
@@ -912,9 +918,9 @@ Figure&nbsp;2.14: An example data frame <code>df</code> with three rows and thre
 <p>Don’t worry too much about this for now, we won’t be doing this, but it’s worth being aware of this syntax.</p>
 </section>
 </section>
-<section id="sec-plotting-and-exporting-data" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="sec-plotting-and-exporting-data"><span class="header-section-number">2.11</span> Plotting and exporting data</h2>
-<p>One of the most useful and important parts of any data analysis is plotting data and <a href="visualisation.html" class="quarto-xref"><span>Chapter 6</span></a> goes into detail. But to give you an example, we’ll use the <code>ggplot2</code> package as an introduction to automating a task in code, and as a tool for understanding data.</p>
+<section id="sec-plotting-and-exporting-data" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="sec-plotting-and-exporting-data"><span class="header-section-number">3.11</span> Plotting and exporting data</h2>
+<p>One of the most useful and important parts of any data analysis is plotting data and <a href="visualisation.html" class="quarto-xref"><span>Chapter 7</span></a> goes into detail. But to give you an example, we’ll use the <code>ggplot2</code> package as an introduction to automating a task in code, and as a tool for understanding data.</p>
 <p><code>ggplot2</code> implements the <em>grammar of graphics</em>, for describing and building graphs. The idea being that we construct a plot in the following way:</p>
 <ol type="1">
 <li>Call the <code>ggplot()</code> function to create a graph.</li>
@@ -923,7 +929,7 @@ Figure&nbsp;2.14: An example data frame <code>df</code> with three rows and thre
 <li>Then we follow the ggplot function with a <code>+</code> sign to indicate we are going to add more code, followed by a geometric object function, a <code>geom</code> which maps the data to type of plot we want to make e.g.&nbsp;a histogram or scatter plot.</li>
 </ol>
 <p>Don’t worry if this sounds confusing, it becomes clear with practice and all plots follow this grammar.</p>
-<p>We’ll use the <code>pengiuns</code> from the Palmer Penguins (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 2.4.1</span></a>) dataset to the question <em>what is the relationship between body mass and flipper length?</em></p>
+<p>We’ll use the <code>pengiuns</code> from the Palmer Penguins (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>) dataset to the question <em>what is the relationship between body mass and flipper length?</em></p>
 <p>Try <code>?penguins</code> to learn more about the data.</p>
 <ol type="1">
 <li>Penguin mass in grams is in the <code>body_mass_g</code> column.</li>
@@ -993,11 +999,11 @@ Warning messages
 <p>Concretely, in our first example <code>&lt;DATA&gt;</code> was <code>penguins</code>, the <code>&lt;GEOM_FUNCTION&gt;</code> was <code>geom_point()</code> and the arguments we supplies to map our aesthetics <code>&lt;MAPPINGS&gt;</code> were <code>x = body_mass_g, y = flipper_length_mm</code>.</p>
 <p>As we can use this code for any tidy data set, hopefully you are beginning to see how a small amount of code can do a lot.</p>
 </section>
-<section id="exporting-data" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="exporting-data"><span class="header-section-number">2.12</span> Exporting data</h2>
-<p>We’ll spend more time on getting data in and out of our R environment in the <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 3</span></a>, but let’s imagine we wanted to export our plot and the <code>penguin</code> data for a colleague or presentation.</p>
-<section id="readr" class="level3" data-number="2.12.1">
-<h3 data-number="2.12.1" class="anchored" data-anchor-id="readr"><span class="header-section-number">2.12.1</span> readr</h3>
+<section id="exporting-data" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="exporting-data"><span class="header-section-number">3.12</span> Exporting data</h2>
+<p>We’ll spend more time on getting data in and out of our R environment in the <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a>, but let’s imagine we wanted to export our plot and the <code>penguin</code> data for a colleague or presentation.</p>
+<section id="readr" class="level3" data-number="3.12.1">
+<h3 data-number="3.12.1" class="anchored" data-anchor-id="readr"><span class="header-section-number">3.12.1</span> readr</h3>
 <p>To export tibbles and data frames, we’ll use the <code>readr</code> package, and the <code>write_excel_csv()</code> function. This creates a table in comma separated variable format that can opened by spreadsheet software such as excel.</p>
 <p>As it is a function is has round brackets and the main arguments we pass are the object containing the data we want to output and the name of the file and the location we want to write the file to, in this case the <code>outputs</code> folder.</p>
 <p>I’m also going to use the <code>glue</code> package and <code>glue()</code> function combined with base R function <code>Sys.Date()</code> to create a filename which is a character vector using today’s date.</p>
@@ -1037,10 +1043,10 @@ will be 12 years old.</code></pre>
 <p>Note that <code>glue</code> evaluates the expression <code>age+1</code>.</p>
 </div>
 </div>
-<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-03-05.csv. The date in the filename is the date I built this book (2024-03-05)</p>
+<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-03-12.csv. The date in the filename is the date I built this book (2024-03-12)</p>
 </section>
-<section id="ggsave" class="level3" data-number="2.12.2">
-<h3 data-number="2.12.2" class="anchored" data-anchor-id="ggsave"><span class="header-section-number">2.12.2</span> ggsave</h3>
+<section id="ggsave" class="level3" data-number="3.12.2">
+<h3 data-number="3.12.2" class="anchored" data-anchor-id="ggsave"><span class="header-section-number">3.12.2</span> ggsave</h3>
 <p>If we want to save the last plot we made in <code>ggplot2</code> we can use the <a href="https://ggplot2.tidyverse.org/reference/ggsave.html"><code>ggsave()</code></a> function.</p>
 <p>We tell <code>ggsave()</code> the filename, and it will save it as that type depending on how we name the file. For example if we use <code>file.png</code> it will save a png and if we use <code>file.jpeg</code> it will save a <code>jpeg</code>.</p>
 <p>Check out <code>?ggsave</code> or the link above for more arguments we can supply to <code>ggsave()</code>, such as plot width and height, resolution or background colour.</p>
@@ -1052,29 +1058,29 @@ will be 12 years old.</code></pre>
 </div>
 </section>
 </section>
-<section id="sec-help-and-resources" class="level2" data-number="2.13">
-<h2 data-number="2.13" class="anchored" data-anchor-id="sec-help-and-resources"><span class="header-section-number">2.13</span> Help and resources</h2>
-<section id="using-to-access-r-function-help-pages" class="level3" data-number="2.13.1">
-<h3 data-number="2.13.1" class="anchored" data-anchor-id="using-to-access-r-function-help-pages"><span class="header-section-number">2.13.1</span> Using <code>?</code> to access R function help pages</h3>
+<section id="sec-help-and-resources" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="sec-help-and-resources"><span class="header-section-number">3.13</span> Help and resources</h2>
+<section id="using-to-access-r-function-help-pages" class="level3" data-number="3.13.1">
+<h3 data-number="3.13.1" class="anchored" data-anchor-id="using-to-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</h3>
 <p>If you need help with a specific R function, let’s say <code>barplot()</code>, you can type</p>
 <p>the function name without round brackets, with a question mark at the start:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>?barplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="using-google-to-find-r-answers" class="level3" data-number="2.13.2">
-<h3 data-number="2.13.2" class="anchored" data-anchor-id="using-google-to-find-r-answers"><span class="header-section-number">2.13.2</span> Using Google to find R answers</h3>
+<section id="using-google-to-find-r-answers" class="level3" data-number="3.13.2">
+<h3 data-number="3.13.2" class="anchored" data-anchor-id="using-google-to-find-r-answers"><span class="header-section-number">3.13.2</span> Using Google to find R answers</h3>
 <p>A Google or internet search “R &lt;task&gt;” will often either send you to the appropriate package documentation or a helpful forum question that someone else already asked, such as the <a href="https://community.rstudio.com/">RStudio Community</a> or <a href="http://stackoverflow.com/questions/tagged/r">Stack Overflow</a>.</p>
 </section>
-<section id="asking-questions" class="level3" data-number="2.13.3">
-<h3 data-number="2.13.3" class="anchored" data-anchor-id="asking-questions"><span class="header-section-number">2.13.3</span> Asking questions</h3>
+<section id="asking-questions" class="level3" data-number="3.13.3">
+<h3 data-number="3.13.3" class="anchored" data-anchor-id="asking-questions"><span class="header-section-number">3.13.3</span> Asking questions</h3>
 <p>As well as knowing <a href="https://www.tidyverse.org/help/#where-to-ask">where to ask</a>, the key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.</p>
 <p>Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem.</p>
 <p>If possible, try to reduce what doesn’t work to a simple <em>reproducible example</em> otherwise known as a <em>reprex</em>.</p>
 <p>For more information on how to write a reproducible example see <a href="https://www.tidyverse.org/help/#reprex">this article</a> using the <code>reprex</code> package.</p>
 </section>
-<section id="sec-other-resources" class="level3" data-number="2.13.4">
-<h3 data-number="2.13.4" class="anchored" data-anchor-id="sec-other-resources"><span class="header-section-number">2.13.4</span> News, tutorials other online books</h3>
+<section id="sec-other-resources" class="level3" data-number="3.13.4">
+<h3 data-number="3.13.4" class="anchored" data-anchor-id="sec-other-resources"><span class="header-section-number">3.13.4</span> News, tutorials other online books</h3>
 <p><a href="https://rweekly.org/">R weekly</a> provides a round-up of what’s new in R, including packages and tutorials.</p>
 <p>The creators of RStudio have <a href="https://posit.cloud/learn/recipes">Posit recipes</a> to illustrate how to do common data tasks.</p>
 <p><a href="https://www.bigbookofr.com/">The big book of R</a> contains links to many on-line books for learning R across various subject areas.</p>
@@ -1645,13 +1651,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./setting-the-scene.html" class="pagination-link  aria-label=" &lt;span="" the="" scene&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting the scene</span></span>
+      <a href="./markup-languages.html" class="pagination-link  aria-label=" &lt;span="" langauages&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data-wrangling-1.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Data wrangling I</span>">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-wrangling-1.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Data wrangling I</span>">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

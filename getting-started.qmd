@@ -315,11 +315,11 @@ This trade-off I'd characterise as cognitive ease versus flexibility.
 
 Tidy data follows three principals for tabular data as proposed in the Tidy Data paper [@wickham2014]:
 
-1.   Each variable is a column; each column is a variable.
+1.  Each variable is a column; each column is a variable.
 
-2.   Each observation is a row; each row is an observation.
+2.  Each observation is a row; each row is an observation.
 
-3.   Each value is a cell; each cell is a single value.
+3.  Each value is a cell; each cell is a single value.
 
 This is illustrated in @fig-tidy-data using a part of the Palmer Penguins dataset (@sec-palmer-penguins). The eight variables in the columns form an observation for each penguin in every row, and each cell has a single value recorded.
 
@@ -339,9 +339,9 @@ Hadley Wickham explains in [R4DS tidy data](https://r4ds.hadley.nz/data-tidy):
 
 > *Why ensure that your data is tidy? There are two main advantages:*
 >
-> 1.   *There\'s a general advantage to picking one consistent way of storing data. If you have a consistent data structure, it\'s easier to learn the tools that work with it because they have an underlying uniformity.*
+> 1.  *There's a general advantage to picking one consistent way of storing data. If you have a consistent data structure, it's easier to learn the tools that work with it because they have an underlying uniformity.*
 >
-> 2.  *There\'s a specific advantage to placing variables in columns because it allows R\'s vectorized nature to shine.*
+> 2.  *There's a specific advantage to placing variables in columns because it allows R's vectorized nature to shine.*
 
 This will hopefully become apparent in @sec-data-wrangling-i and @sec-data-wrangling-ii.
 

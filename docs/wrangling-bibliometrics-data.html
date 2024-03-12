@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Librarians - 5&nbsp; Wrangling bibliometrics data</title>
+<title>R for Librarians - 6&nbsp; Wrangling bibliometrics data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wrangling-bibliometrics-data.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wrangling-bibliometrics-data.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -164,32 +164,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./markup-languages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./getting-started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-wrangling-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-wrangling-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wrangling-bibliometrics-data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualisation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualisation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualisation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -208,11 +214,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tidying-data" id="toc-tidying-data" class="nav-link active" data-scroll-target="#tidying-data"><span class="header-section-number">5.1</span> Tidying data</a>
+  <li><a href="#tidying-data" id="toc-tidying-data" class="nav-link active" data-scroll-target="#tidying-data"><span class="header-section-number">6.1</span> Tidying data</a>
   <ul class="collapse">
-  <li><a href="#our-workflow" id="toc-our-workflow" class="nav-link" data-scroll-target="#our-workflow"><span class="header-section-number">5.1.1</span> Our workflow</a></li>
-  <li><a href="#importing" id="toc-importing" class="nav-link" data-scroll-target="#importing"><span class="header-section-number">5.1.2</span> Importing</a></li>
-  <li><a href="#lets-fix-the-dates" id="toc-lets-fix-the-dates" class="nav-link" data-scroll-target="#lets-fix-the-dates"><span class="header-section-number">5.1.3</span> Let’s fix the dates</a></li>
+  <li><a href="#our-workflow" id="toc-our-workflow" class="nav-link" data-scroll-target="#our-workflow"><span class="header-section-number">6.1.1</span> Our workflow</a></li>
+  <li><a href="#importing" id="toc-importing" class="nav-link" data-scroll-target="#importing"><span class="header-section-number">6.1.2</span> Importing</a></li>
+  <li><a href="#lets-fix-the-dates" id="toc-lets-fix-the-dates" class="nav-link" data-scroll-target="#lets-fix-the-dates"><span class="header-section-number">6.1.3</span> Let’s fix the dates</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -222,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-wrangling-bibliometrics-data" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></h1>
+<h1 class="title"><span id="sec-wrangling-bibliometrics-data" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></h1>
 </div>
 
 
@@ -260,8 +266,8 @@ Summary
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="tidying-data" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="tidying-data"><span class="header-section-number">5.1</span> Tidying data</h2>
+<section id="tidying-data" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="tidying-data"><span class="header-section-number">6.1</span> Tidying data</h2>
 <p>In this section we’re going to do some more complicated transformations. Let’s remind ourselves of the definition of tidy data:</p>
 <ol type="1">
 <li><p>Each variable must have its own column.</p></li>
@@ -273,8 +279,8 @@ Summary
 <p><em>What makes it untidy?</em></p>
 <p>It’s untidy because here we are interested in the University of Southampton (UoS) affiliations associated with each article. Here, all the individual affiliations for all the institutions affiliated with each paper are combined in a single column rather than their own columns. Therefore the values for each affiliation aren’t in their own cells.</p>
 <p>Hence for the purposes of the question we wish to pose, <em>“Which UoS department is affiliated to each article?”</em> the table is untidy in terms of rules 1 and 3.</p>
-<section id="our-workflow" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="our-workflow"><span class="header-section-number">5.1.1</span> Our workflow</h3>
+<section id="our-workflow" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="our-workflow"><span class="header-section-number">6.1.1</span> Our workflow</h3>
 <p>Let’s consider the steps we need to take to arrive at a table which is tidy and contains the values for each UoS affiliation for each published article:</p>
 <ol type="1">
 <li>Import the table, check it and repair if necessary.</li>
@@ -290,8 +296,8 @@ Summary
 </ol>
 <p>For some articles there may be multiple UoS affiliations, so we may wish to pivot long-to-wide to create a final tidy table with a single row for each article, but columns for each UoS affiliation.</p>
 </section>
-<section id="importing" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="importing"><span class="header-section-number">5.1.2</span> Importing</h3>
+<section id="importing" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="importing"><span class="header-section-number">6.1.2</span> Importing</h3>
 <p>Let’s start with a small data set called <code>OA-compliance-subset-2023-11-29.xlsx</code> from the repository</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the read.xlsx to download and load the excel file into object dat</span></span>
@@ -346,8 +352,8 @@ $ `Hide.Column.-.DOI.Formula`      &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh
 </div>
 </div>
 </section>
-<section id="lets-fix-the-dates" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="lets-fix-the-dates"><span class="header-section-number">5.1.3</span> Let’s fix the dates</h3>
+<section id="lets-fix-the-dates" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="lets-fix-the-dates"><span class="header-section-number">6.1.3</span> Let’s fix the dates</h3>
 <p>We’ll make a new object called <code>dat_repaired</code> and use the <code>mutate</code> function from <code>dpylr</code> along with <code>convert_to_date</code> in the <code>janitor</code> package to convert the number values into dates.</p>
 <p>Then we’ll take a look with the glimpse function and we can see these look like dates in the year-month-day format and are identified as <code>&lt;date&gt;</code> data types.</p>
 <div class="cell">
@@ -963,12 +969,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./data-wrangling-2.html" class="pagination-link  aria-label=" &lt;span="" wrangling="" ii&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./visualisation.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Visualisation</span>">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualisation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./visualisation.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>Visualisation</span>">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualisation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

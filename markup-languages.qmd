@@ -1,0 +1,48 @@
+# Markup Langauages
+
+::: {#chapter-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
+This chapter can be skipped if you just want to learn about R. It introduces markup languages, confusingly called markdown, that encodes text and documents such as the one you are reading.
+
+The relevance here is two-fold:
+
+1. Languages such as R can be integrated with markup languages to do what is called literate programming where one writes code and text in the same document.
+2. Markup languages work with the universal document converter Pandoc, hence working in markdown means one can easily produce outputs in Word, pdf, html etc. all from the same input document. 
+:::
+
+## What is markup?
+
+Wikipedia has detailed pages on the history of typesetting pre and post the invention of computing such as the [Wikipedia page on letter case](https://en.wikipedia.org/wiki/Letter_case) describing how capital letters were often kept in the upper case of the drawers that contained the letters used in the printing press. Hence upper-case meaning capital in typesetting.
+
+Much of this typography jargon naturally got carried over when computers came along, and marking up is both a digital and analogue term. In the analogue sense it is usually an instruction or comment to the author for revisions. In the digital sense marking up is syntax on how to format or structure the text e.g. a heading, line break, **bold** or *italic*. 
+
+Again the [Wikipedia markup languages page](https://en.wikipedia.org/wiki/Markup_language) is great if you want the full details.
+
+::: {.callout-tip .unnumbered appearance="simple" icon="false"}
+As an aside, it's often possible to make sense of computing jargon if you can trace
+the analogue history in the relevant domain. Such as the term layers in computer graphics deriving from 
+layers of paper used in pre-computing design.
+:::
+
+## What is markdown?
+
+So why markdown? 
+
+Readability is the short answer, but again a longer better answer is on the 
+[Markdown Wikipedia page].
+
+
+
+
+## Literate programming
+
+## Different flavours of markdown
+
+### Markdown
+
+### R Markdown
+
+### Github flavoured Markdown
+
+### Quarto Markdown
+
+### Pandoc

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Librarians - References</title>
+<title>R for Librarians - 2&nbsp; Markup Langauages</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./visualisation.html" rel="prev">
+<link href="./getting-started.html" rel="next">
+<link href="./setting-the-scene.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,7 +83,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markup-languages.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -148,7 +130,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markup-languages.html" class="sidebar-item-text sidebar-link">
+  <a href="./markup-languages.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></span></a>
   </div>
 </li>
@@ -184,7 +166,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -194,14 +176,30 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-markup" id="toc-what-is-markup" class="nav-link active" data-scroll-target="#what-is-markup"><span class="header-section-number">2.1</span> What is markup?</a></li>
+  <li><a href="#what-is-markdown" id="toc-what-is-markdown" class="nav-link" data-scroll-target="#what-is-markdown"><span class="header-section-number">2.2</span> What is markdown?</a></li>
+  <li><a href="#literate-programming" id="toc-literate-programming" class="nav-link" data-scroll-target="#literate-programming"><span class="header-section-number">2.3</span> Literate programming</a></li>
+  <li><a href="#different-flavours-of-markdown" id="toc-different-flavours-of-markdown" class="nav-link" data-scroll-target="#different-flavours-of-markdown"><span class="header-section-number">2.4</span> Different flavours of markdown</a>
+  <ul class="collapse">
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown"><span class="header-section-number">2.4.1</span> Markdown</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown"><span class="header-section-number">2.4.2</span> R Markdown</a></li>
+  <li><a href="#github-flavoured-markdown" id="toc-github-flavoured-markdown" class="nav-link" data-scroll-target="#github-flavoured-markdown"><span class="header-section-number">2.4.3</span> Github flavoured Markdown</a></li>
+  <li><a href="#quarto-markdown" id="toc-quarto-markdown" class="nav-link" data-scroll-target="#quarto-markdown"><span class="header-section-number">2.4.4</span> Quarto Markdown</a></li>
+  <li><a href="#pandoc" id="toc-pandoc" class="nav-link" data-scroll-target="#pandoc"><span class="header-section-number">2.4.5</span> Pandoc</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></h1>
 </div>
 
 
@@ -218,19 +216,68 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-ihaka1996" class="csl-entry" role="listitem">
-Ihaka, Ross, and Robert Gentleman. 1996. <span>“R: A Language for Data
-Analysis and Graphics.”</span> <em>Journal of Computational and
-Graphical Statistics</em> 5 (3): 299–314. <a href="https://doi.org/10.2307/1390807">https://doi.org/10.2307/1390807</a>.
+<div id="chapter-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div id="ref-wickham2014" class="csl-entry" role="listitem">
-Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of
-Statistical Software</em> 59 (September): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
+<div class="callout-title-container flex-fill">
+Summary
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>This chapter can be skipped if you just want to learn about R. It introduces markup languages, confusingly called markdown, that encodes text and documents such as the one you are reading.</p>
+<p>The relevance here is two-fold:</p>
+<ol type="1">
+<li>Languages such as R can be integrated with markup languages to do what is called literate programming where one writes code and text in the same document</li>
+<li>Markup languages work with the universal document converter Pandoc, hence working in markdown means one can easily produce outputs in Word, pdf, html etc. all from the same input document.</li>
+</ol>
+</div>
+</div>
+<section id="what-is-markup" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="what-is-markup"><span class="header-section-number">2.1</span> What is markup?</h2>
+<p>Wikipedia has detailed pages on the history of typesetting pre and post the invention of computing such as the <a href="https://en.wikipedia.org/wiki/Letter_case">Wikipedia page on letter case</a> describing how capital letters were often kept in the upper case of the drawers that contained the letters used in the printing press. Hence upper-case meaning capital in typesetting.</p>
+<p>Much of this typography jargon naturally got carried over when computers came along, and marking up is both a digital and analogue term. In the analogue sense it is usually an instruction or comment to the author for revisions. In the digital sense marking up is syntax on how to format or structure the text e.g.&nbsp;a heading, line break, <strong>bold</strong> or <em>italic</em>.</p>
+<p>Again the <a href="https://en.wikipedia.org/wiki/Markup_language">Wikipedia markup languages page</a> is great if you want the full details.</p>
+<div class="unnumbered callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>As an aside, it’s often possible to make sense of computing jargon if you can trace the analogue history in the relevant domain. Such as the term layers in computer graphics deriving from layers of paper used in pre-computing design.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-markdown" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="what-is-markdown"><span class="header-section-number">2.2</span> What is markdown?</h2>
+<p>So why markdown?</p>
+<p>Readability is the short answer, but again a longer better answer is on the [Markdown Wikipedia page].</p>
+</section>
+<section id="literate-programming" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="literate-programming"><span class="header-section-number">2.3</span> Literate programming</h2>
+</section>
+<section id="different-flavours-of-markdown" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="different-flavours-of-markdown"><span class="header-section-number">2.4</span> Different flavours of markdown</h2>
+<section id="markdown" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="markdown"><span class="header-section-number">2.4.1</span> Markdown</h3>
+</section>
+<section id="r-markdown" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">2.4.2</span> R Markdown</h3>
+</section>
+<section id="github-flavoured-markdown" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="github-flavoured-markdown"><span class="header-section-number">2.4.3</span> Github flavoured Markdown</h3>
+</section>
+<section id="quarto-markdown" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="quarto-markdown"><span class="header-section-number">2.4.4</span> Quarto Markdown</h3>
+</section>
+<section id="pandoc" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="pandoc"><span class="header-section-number">2.4.5</span> Pandoc</h3>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -786,11 +833,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./visualisation.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualisation</span></span>
+      <a href="./setting-the-scene.html" class="pagination-link  aria-label=" &lt;span="" the="" scene&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting the scene</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./getting-started.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Getting started</span>">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
