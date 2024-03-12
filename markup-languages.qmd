@@ -1,48 +1,100 @@
-# Markup Langauages
+# Markup Languages {#sec-markup-languages}
 
 ::: {#chapter-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
-This chapter can be skipped if you just want to learn about R. It introduces markup languages, confusingly called markdown, that encodes text and documents such as the one you are reading.
+This chapter can be skipped if you just want to learn about R. It introduces markup languages, confusingly called markdown, that encode text and documents such as the one you are reading.
 
 The relevance here is two-fold:
 
-1. Languages such as R can be integrated with markup languages to do what is called literate programming where one writes code and text in the same document.
-2. Markup languages work with the universal document converter Pandoc, hence working in markdown means one can easily produce outputs in Word, pdf, html etc. all from the same input document. 
+1.  Languages such as R can be integrated with markup languages to do what is called literate programming where one writes code and text in the same document. As opposed to writing code script(s) and report(s) separately. The code and text are evaluated separately, but outputted together.
+2.  Markup languages work with the universal document converter Pandoc, hence working in markdown means one can easily produce outputs in Word, pdf, html etc. all from the same input document.
 :::
 
-## What is markup?
+## What is markup? {#sec-what-is-markup}
 
-Wikipedia has detailed pages on the history of typesetting pre and post the invention of computing such as the [Wikipedia page on letter case](https://en.wikipedia.org/wiki/Letter_case) describing how capital letters were often kept in the upper case of the drawers that contained the letters used in the printing press. Hence upper-case meaning capital in typesetting.
+Wikipedia has detailed pages on the history of typesetting pre and post the invention of computing. For example, the [Wikipedia page on letter case](https://en.wikipedia.org/wiki/Letter_case) describes how capital letters were often kept in the upper case of the drawers that contained the letters used in the printing press. Hence upper-case meaning capital in typesetting.
 
-Much of this typography jargon naturally got carried over when computers came along, and marking up is both a digital and analogue term. In the analogue sense it is usually an instruction or comment to the author for revisions. In the digital sense marking up is syntax on how to format or structure the text e.g. a heading, line break, **bold** or *italic*. 
+Much of this typography jargon naturally got carried over when computers came along, and marking up is both a digital and analogue term.
+
+In the analogue sense markup is usually an instruction or comment to the author for revisions.
+
+In the digital sense marking up is syntax on how to format or structure the text e.g. a heading, line break, **bold** or *italic* when it is rendered. Here you are reading [Quarto markdown](https://quarto.org/docs/authoring/markdown-basics.html) (@sec-) that has been rendered as a html book.
 
 Again the [Wikipedia markup languages page](https://en.wikipedia.org/wiki/Markup_language) is great if you want the full details.
 
+MS Word documents are markup language files in a [XML](https://en.wikipedia.org/wiki/XML) format.
+
 ::: {.callout-tip .unnumbered appearance="simple" icon="false"}
-As an aside, it's often possible to make sense of computing jargon if you can trace
-the analogue history in the relevant domain. Such as the term layers in computer graphics deriving from 
-layers of paper used in pre-computing design.
+As an aside, it's often possible to make sense of computing jargon if you can trace the analogue history in the relevant domain. Such as the term layers in computer graphics deriving from layers of paper used in pre-computing design.
 :::
 
-## What is markdown?
+## What is markdown? {#sec-what-is-markdown}
 
-So why markdown? 
+So why markdown?
 
-Readability is the short answer, but again a longer better answer is on the 
-[Markdown Wikipedia page].
+Readability is the short answer, but again a longer better answer is on the [Markdown Wikipedia page](https://en.wikipedia.org/wiki/Markdown) and the [Markdown project page](https://daringfireball.net/projects/markdown/).
 
+Markdown was created to be human readable and easy to write, as compared with heavier markup languages such as html or xml. And its growing popularity since 2004 and off-shoot flavours of markdown suggest it has been successful.
 
+Below is are examples of markdown source code and outputs, where `#` marks up a first level header `##` marks up the second level header, and `###` marks up the third level header. Bullet points are marked-up with `+` or `-` .
 
++-----------------------------+------------------------------------------+
+| Markdown Syntax             | Output                                   |
++=============================+==========================================+
+| ``` {.markdown .unnumbered} | # A First Level Header {.unnumbered}     |
+| # A First Level Header      |                                          |
+| ```                         |                                          |
++-----------------------------+------------------------------------------+
+| ``` {.markdown .unnumbered} | ## A Second Level Header {.unnumbered}   |
+| ## A Second Level Header    |                                          |
+| ```                         |                                          |
++-----------------------------+------------------------------------------+
+| ``` {.markdown .unnumbered} | ### A Third Level Header {.unnumbered}   |
+| ### A Third Level Header    |                                          |
+| ```                         |                                          |
++-----------------------------+------------------------------------------+
+| ``` markdown                | This is a regular paragraph.             |
+| This is a                   |                                          |
+| regular paragraph.          |                                          |
+| ```                         |                                          |
++-----------------------------+------------------------------------------+
+| ``` markdown                | -   A bullet point                       |
+| - A bullet point            |                                          |
+| ```                         |                                          |
++-----------------------------+------------------------------------------+
+| ``` markdown                | ![Caption](img/bib-box.jpg){width="217"} |
+| ![Caption](bibi.jpg)        |                                          |
+| ```                         |                                          |
++-----------------------------+------------------------------------------+
+
+The heading to this chapter (@sec-markup-languages) is a first level heading and this section has a second level heading (@sec-what-is-markdown). The style e.g. font and colour and output (a html book) is controlled by another document, a configuration file.
 
 ## Literate programming
 
-## Different flavours of markdown
+[Literate programming](https://en.wikipedia.org/wiki/Literate_programming) is a concept
+created by Donald Knuth of  
 
-### Markdown
+## Different flavours of markdown {#sec-markdown-flavours}
 
-### R Markdown
+### Markdown {#sec-original-markdown}
 
-### Github flavoured Markdown
+The [Markdown project page](https://daringfireball.net/projects/markdown/).
 
-### Quarto Markdown
+### Github flavoured markdown {#sec-github-markdown}
 
-### Pandoc
+[Github flavoured markdown](https://github.github.com/gfm/)
+
+### R Markdown {#sec-r-markdown}
+
+[RStudio R Markdown documentation](https://rmarkdown.rstudio.com/index.html) and
+[R Markdown book](https://bookdown.org/yihui/rmarkdown/) and [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/).
+[Stack overflow post explaining the relationshipe between R markdown knitr and pandoc](https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown)
+
+### Quarto markdown {#sec-quarto-markdown}
+
+(Quarto)[https://quarto.org/]
+
+## Publishing outputs with Pandoc {#sec-pandoc}
+
+[Pandoc](https://pandoc.org/) created in 2006 by John MacFarlane to 
+
+RStudio comes bundled with pandoc so there's no need to install it separately (unlesss you want to).

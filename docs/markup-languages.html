@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R for Librarians - 2&nbsp; Markup Langauages</title>
+<title>R for Librarians - 2&nbsp; Markup Languages</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -83,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markup-languages.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markup-languages.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Languages</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -131,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./markup-languages.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Languages</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -180,17 +214,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-markup" id="toc-what-is-markup" class="nav-link active" data-scroll-target="#what-is-markup"><span class="header-section-number">2.1</span> What is markup?</a></li>
-  <li><a href="#what-is-markdown" id="toc-what-is-markdown" class="nav-link" data-scroll-target="#what-is-markdown"><span class="header-section-number">2.2</span> What is markdown?</a></li>
+  <li><a href="#sec-what-is-markup" id="toc-sec-what-is-markup" class="nav-link active" data-scroll-target="#sec-what-is-markup"><span class="header-section-number">2.1</span> What is markup?</a></li>
+  <li><a href="#sec-what-is-markdown" id="toc-sec-what-is-markdown" class="nav-link" data-scroll-target="#sec-what-is-markdown"><span class="header-section-number">2.2</span> What is markdown?</a></li>
   <li><a href="#literate-programming" id="toc-literate-programming" class="nav-link" data-scroll-target="#literate-programming"><span class="header-section-number">2.3</span> Literate programming</a></li>
-  <li><a href="#different-flavours-of-markdown" id="toc-different-flavours-of-markdown" class="nav-link" data-scroll-target="#different-flavours-of-markdown"><span class="header-section-number">2.4</span> Different flavours of markdown</a>
+  <li><a href="#sec-markdown-flavours" id="toc-sec-markdown-flavours" class="nav-link" data-scroll-target="#sec-markdown-flavours"><span class="header-section-number">2.4</span> Different flavours of markdown</a>
   <ul class="collapse">
-  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown"><span class="header-section-number">2.4.1</span> Markdown</a></li>
-  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown"><span class="header-section-number">2.4.2</span> R Markdown</a></li>
-  <li><a href="#github-flavoured-markdown" id="toc-github-flavoured-markdown" class="nav-link" data-scroll-target="#github-flavoured-markdown"><span class="header-section-number">2.4.3</span> Github flavoured Markdown</a></li>
-  <li><a href="#quarto-markdown" id="toc-quarto-markdown" class="nav-link" data-scroll-target="#quarto-markdown"><span class="header-section-number">2.4.4</span> Quarto Markdown</a></li>
-  <li><a href="#pandoc" id="toc-pandoc" class="nav-link" data-scroll-target="#pandoc"><span class="header-section-number">2.4.5</span> Pandoc</a></li>
+  <li><a href="#sec-original-markdown" id="toc-sec-original-markdown" class="nav-link" data-scroll-target="#sec-original-markdown"><span class="header-section-number">2.4.1</span> Markdown</a></li>
+  <li><a href="#sec-github-markdown" id="toc-sec-github-markdown" class="nav-link" data-scroll-target="#sec-github-markdown"><span class="header-section-number">2.4.2</span> Github flavoured markdown</a></li>
+  <li><a href="#sec-r-markdown" id="toc-sec-r-markdown" class="nav-link" data-scroll-target="#sec-r-markdown"><span class="header-section-number">2.4.3</span> R Markdown</a></li>
+  <li><a href="#sec-quarto-markdown" id="toc-sec-quarto-markdown" class="nav-link" data-scroll-target="#sec-quarto-markdown"><span class="header-section-number">2.4.4</span> Quarto markdown</a></li>
   </ul></li>
+  <li><a href="#sec-pandoc" id="toc-sec-pandoc" class="nav-link" data-scroll-target="#sec-pandoc"><span class="header-section-number">2.5</span> Publishing outputs with Pandoc</a></li>
   </ul>
 </nav>
     </div>
@@ -199,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Langauages</span></h1>
+<h1 class="title"><span id="sec-markup-languages" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Languages</span></span></h1>
 </div>
 
 
@@ -226,19 +260,22 @@ Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This chapter can be skipped if you just want to learn about R. It introduces markup languages, confusingly called markdown, that encodes text and documents such as the one you are reading.</p>
+<p>This chapter can be skipped if you just want to learn about R. It introduces markup languages, confusingly called markdown, that encode text and documents such as the one you are reading.</p>
 <p>The relevance here is two-fold:</p>
 <ol type="1">
-<li>Languages such as R can be integrated with markup languages to do what is called literate programming where one writes code and text in the same document</li>
+<li>Languages such as R can be integrated with markup languages to do what is called literate programming where one writes code and text in the same document. As opposed to writing code script(s) and report(s) separately. The code and text are evaluated separately, but outputted together.</li>
 <li>Markup languages work with the universal document converter Pandoc, hence working in markdown means one can easily produce outputs in Word, pdf, html etc. all from the same input document.</li>
 </ol>
 </div>
 </div>
-<section id="what-is-markup" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="what-is-markup"><span class="header-section-number">2.1</span> What is markup?</h2>
-<p>Wikipedia has detailed pages on the history of typesetting pre and post the invention of computing such as the <a href="https://en.wikipedia.org/wiki/Letter_case">Wikipedia page on letter case</a> describing how capital letters were often kept in the upper case of the drawers that contained the letters used in the printing press. Hence upper-case meaning capital in typesetting.</p>
-<p>Much of this typography jargon naturally got carried over when computers came along, and marking up is both a digital and analogue term. In the analogue sense it is usually an instruction or comment to the author for revisions. In the digital sense marking up is syntax on how to format or structure the text e.g.&nbsp;a heading, line break, <strong>bold</strong> or <em>italic</em>.</p>
+<section id="sec-what-is-markup" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-what-is-markup"><span class="header-section-number">2.1</span> What is markup?</h2>
+<p>Wikipedia has detailed pages on the history of typesetting pre and post the invention of computing. For example, the <a href="https://en.wikipedia.org/wiki/Letter_case">Wikipedia page on letter case</a> describes how capital letters were often kept in the upper case of the drawers that contained the letters used in the printing press. Hence upper-case meaning capital in typesetting.</p>
+<p>Much of this typography jargon naturally got carried over when computers came along, and marking up is both a digital and analogue term.</p>
+<p>In the analogue sense markup is usually an instruction or comment to the author for revisions.</p>
+<p>In the digital sense marking up is syntax on how to format or structure the text e.g.&nbsp;a heading, line break, <strong>bold</strong> or <em>italic</em> when it is rendered. Here you are reading <a href="https://quarto.org/docs/authoring/markdown-basics.html">Quarto markdown</a> (<span class="citation" data-cites="sec">(<a href="references.html#ref-sec" role="doc-biblioref"><strong>sec?</strong></a>)</span>-) that has been rendered as a html book.</p>
 <p>Again the <a href="https://en.wikipedia.org/wiki/Markup_language">Wikipedia markup languages page</a> is great if you want the full details.</p>
+<p>MS Word documents are markup language files in a <a href="https://en.wikipedia.org/wiki/XML">XML</a> format.</p>
 <div class="unnumbered callout callout-style-simple callout-tip no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -250,33 +287,89 @@ Summary
 </div>
 </div>
 </section>
-<section id="what-is-markdown" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="what-is-markdown"><span class="header-section-number">2.2</span> What is markdown?</h2>
+<section id="sec-what-is-markdown" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-what-is-markdown"><span class="header-section-number">2.2</span> What is markdown?</h2>
 <p>So why markdown?</p>
-<p>Readability is the short answer, but again a longer better answer is on the [Markdown Wikipedia page].</p>
+<p>Readability is the short answer, but again a longer better answer is on the <a href="https://en.wikipedia.org/wiki/Markdown">Markdown Wikipedia page</a> and the <a href="https://daringfireball.net/projects/markdown/">Markdown project page</a>.</p>
+<p>Markdown was created to be human readable and easy to write, as compared with heavier markup languages such as html or xml. And its growing popularity since 2004 and off-shoot flavours of markdown suggest it has been successful.</p>
+<p>Below is are examples of markdown source code and outputs, where <code>#</code> marks up a first level header <code>##</code> marks up the second level header, and <code>###</code> marks up the third level header. Bullet points are marked-up with <code>+</code> or <code>-</code> .</p>
+<table class="table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Markdown Syntax</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="sourceCode" id="cb1"><pre class="sourceCode markdown unnumbered code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># A First Level Header</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><h1 id="a-first-level-header" class="unnumbered">A First Level Header</h1></td>
+</tr>
+<tr class="even">
+<td><div class="sourceCode" id="cb2"><pre class="sourceCode markdown unnumbered code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## A Second Level Header</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><h2 id="a-second-level-header" class="unnumbered anchored">A Second Level Header</h2></td>
+</tr>
+<tr class="odd">
+<td><div class="sourceCode" id="cb3"><pre class="sourceCode markdown unnumbered code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Third Level Header</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><h3 id="a-third-level-header" class="unnumbered anchored">A Third Level Header</h3></td>
+</tr>
+<tr class="even">
+<td><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>This is a</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>regular paragraph.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td>This is a regular paragraph.</td>
+</tr>
+<tr class="odd">
+<td><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A bullet point</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><ul>
+<li>A bullet point</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="al">![Caption](bibi.jpg)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+<td><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bib-box.jpg" class="img-fluid figure-img" width="217"></p>
+<figcaption>Caption</figcaption>
+</figure>
+</div></td>
+</tr>
+</tbody>
+</table>
+<p>The heading to this chapter (<a href="#sec-markup-languages" class="quarto-xref"><span>Chapter 2</span></a>) is a first level heading and this section has a second level heading (<a href="#sec-what-is-markdown" class="quarto-xref"><span>Section 2.2</span></a>). The style e.g.&nbsp;font and colour and output (a html book) is controlled by another document, a configuration file.</p>
 </section>
 <section id="literate-programming" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="literate-programming"><span class="header-section-number">2.3</span> Literate programming</h2>
+<p><a href="https://en.wikipedia.org/wiki/Literate_programming">Literate programming</a> is a concept created by Donald Knuth of</p>
 </section>
-<section id="different-flavours-of-markdown" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="different-flavours-of-markdown"><span class="header-section-number">2.4</span> Different flavours of markdown</h2>
-<section id="markdown" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="markdown"><span class="header-section-number">2.4.1</span> Markdown</h3>
+<section id="sec-markdown-flavours" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-markdown-flavours"><span class="header-section-number">2.4</span> Different flavours of markdown</h2>
+<section id="sec-original-markdown" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="sec-original-markdown"><span class="header-section-number">2.4.1</span> Markdown</h3>
+<p>The <a href="https://daringfireball.net/projects/markdown/">Markdown project page</a>.</p>
 </section>
-<section id="r-markdown" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">2.4.2</span> R Markdown</h3>
+<section id="sec-github-markdown" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="sec-github-markdown"><span class="header-section-number">2.4.2</span> Github flavoured markdown</h3>
+<p><a href="https://github.github.com/gfm/">Github flavoured markdown</a></p>
 </section>
-<section id="github-flavoured-markdown" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="github-flavoured-markdown"><span class="header-section-number">2.4.3</span> Github flavoured Markdown</h3>
+<section id="sec-r-markdown" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="sec-r-markdown"><span class="header-section-number">2.4.3</span> R Markdown</h3>
+<p><a href="https://rmarkdown.rstudio.com/index.html">RStudio R Markdown documentation</a> and <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown book</a> and <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown cookbook</a>. <a href="https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown">Stack overflow post explaining the relationshipe between R markdown knitr and pandoc</a></p>
 </section>
-<section id="quarto-markdown" class="level3" data-number="2.4.4">
-<h3 data-number="2.4.4" class="anchored" data-anchor-id="quarto-markdown"><span class="header-section-number">2.4.4</span> Quarto Markdown</h3>
+<section id="sec-quarto-markdown" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="sec-quarto-markdown"><span class="header-section-number">2.4.4</span> Quarto markdown</h3>
+<p>(Quarto)[https://quarto.org/]</p>
 </section>
-<section id="pandoc" class="level3" data-number="2.4.5">
-<h3 data-number="2.4.5" class="anchored" data-anchor-id="pandoc"><span class="header-section-number">2.4.5</span> Pandoc</h3>
+</section>
+<section id="sec-pandoc" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-pandoc"><span class="header-section-number">2.5</span> Publishing outputs with Pandoc</h2>
+<p><a href="https://pandoc.org/">Pandoc</a> created in 2006 by John MacFarlane to</p>
+<p>RStudio comes bundled with pandoc so there’s no need to install it separately (unlesss you want to).</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

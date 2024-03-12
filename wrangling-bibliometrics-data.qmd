@@ -19,6 +19,30 @@ library(openxlsx)
 library(janitor)
 ```
 
+## Describing the problem
+
+I'll attempt to describe the problem as I understand it, and then break it down into parts that correspond with @sec-getting-started , @sec-data-wrangling-i and @sec-data-wrangling-ii.
+
+On 2023-11-21 Kate sent me an email with a link to a spreadsheet, here's an excerpt from the email:
+
+> \[A spreadsheet\] is produced from a fortnightly check... for REF and Funder Compliance... the Export Control Team periodically asks us for information about particular staff/institutions/countries and...trying to search in the Affiliations can be very time consuming...
+
+On opening up the spreadsheet I can see that it contains data regarding publications e.g. articles, books or reports. Each row comprises a set of observations for a single publication as per @fig-tidy-data, the title of each publication is in the `Title` column.
+
+Imagine our question from the Export Control Team is: "Which University of Southampton
+
+There are 643 rows and 35 columns. There are lots of empty cells i.e. missing values and I can see that column 14 is the `Affiliations` column.
+
+If I extract the value of the `Affiliations` cell from the first row I can immediately see that it's not a single tidy value, it's a **messy** value with multiple values separated by commas like so:
+
+```         
+School of History and Philosophy of Science, The University of Sydney, Sydney, NSW, Australia; Centre for Philosophy of Natural and Social Science, London School of Economics and Political Science, London, United Kingdom; Department of Philosophy, University of Southampton, Avenue Campus, Southampton, United Kingdom
+```
+
+To be tidy, each comma separated value should be in their own column.
+
+To make matters worse, each cell has a different number of values and the values are inconsistent either in the way a department is named or the information contained. Some cells have author names included for example.
+
 ## Tidying data
 
 In this section we're going to do some more complicated transformations. Let's remind ourselves of the definition of tidy data:
