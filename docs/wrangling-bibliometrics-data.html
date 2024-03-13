@@ -270,17 +270,80 @@ Summary
 <section id="describing-the-problem" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="describing-the-problem"><span class="header-section-number">6.1</span> Describing the problem</h2>
 <p>I’ll attempt to describe the problem as I understand it, and then break it down into parts that correspond with <a href="getting-started.html" class="quarto-xref"><span>Chapter 3</span></a> , <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
-<p>On 2023-11-21 Kate sent me an email with a link to a spreadsheet, here’s an excerpt from the email:</p>
+<p>Here’s an excerpt from an email Kate sent me on 2023-11-21:</p>
 <blockquote class="blockquote">
 <p>[A spreadsheet] is produced from a fortnightly check… for REF and Funder Compliance… the Export Control Team periodically asks us for information about particular staff/institutions/countries and…trying to search in the Affiliations can be very time consuming…</p>
 </blockquote>
-<p>On opening up the spreadsheet I can see that it contains data regarding publications e.g.&nbsp;articles, books or reports. Each row comprises a set of observations for a single publication as per <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, the title of each publication is in the <code>Title</code> column.</p>
-<p>Imagine our question from the Export Control Team is: “Which University of Southampton</p>
-<p>There are 643 rows and 35 columns. There are lots of empty cells i.e.&nbsp;missing values and I can see that column 14 is the <code>Affiliations</code> column.</p>
-<p>If I extract the value of the <code>Affiliations</code> cell from the first row I can immediately see that it’s not a single tidy value, it’s a <strong>messy</strong> value with multiple values separated by commas like so:</p>
-<pre><code>School of History and Philosophy of Science, The University of Sydney, Sydney, NSW, Australia; Centre for Philosophy of Natural and Social Science, London School of Economics and Political Science, London, United Kingdom; Department of Philosophy, University of Southampton, Avenue Campus, Southampton, United Kingdom</code></pre>
-<p>To be tidy, each comma separated value should be in their own column.</p>
-<p>To make matters worse, each cell has a different number of values and the values are inconsistent either in the way a department is named or the information contained. Some cells have author names included for example.</p>
+<p>I downloaded some data as a <code>csv</code> file from <a href="https://www.scopus.com/search/form.uri?display=advanced">Scopus Advanced Search</a> to generate a report for 31 days prior to 2024-03-13 using the following query string:</p>
+<pre><code>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</code></pre>
+<p>I’ll read it in directly from the repository for this book, and use <code>glimpse()</code> to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, the title of each publication is in the <code>Title</code> column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the scopus csv file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>scopus_dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the contents</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scopus_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 483
+Columns: 20
+$ Authors                     &lt;chr&gt; "Liu Z.; Ettabib M.A.; Bowden B.M.; Bartle…
+$ `Author full names`         &lt;chr&gt; "Liu, Zhen (57220604023); Ettabib, Mohamed…
+$ `Author(s) ID`              &lt;chr&gt; "57220604023; 36662229200; 57225044665; 15…
+$ Title                       &lt;chr&gt; "Multiframe-based non-local means denoisin…
+$ Year                        &lt;dbl&gt; 2024, 2024, 2024, 2024, 2024, 2024, 2024, …
+$ `Source title`              &lt;chr&gt; "Spectrochimica Acta - Part A: Molecular a…
+$ DOI                         &lt;chr&gt; "10.1016/j.saa.2024.123931", "10.1113/JP28…
+$ Link                        &lt;chr&gt; "https://www.scopus.com/inward/record.uri?…
+$ Affiliations                &lt;chr&gt; "Zepler Institute for Photonics and Nanoel…
+$ `Authors with affiliations` &lt;chr&gt; "Liu Z., Zepler Institute for Photonics an…
+$ `Funding Details`           &lt;chr&gt; "Defence Science and Technology Laboratory…
+$ `Correspondence Address`    &lt;chr&gt; "Z. Liu; Zepler Institute for Photonics an…
+$ Publisher                   &lt;chr&gt; "Elsevier B.V.", "John Wiley and Sons Inc"…
+$ ISSN                        &lt;chr&gt; "13861425", "00223751", "00298018", "00489…
+$ ISBN                        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ CODEN                       &lt;chr&gt; "SAMCA", "JPHYA", NA, "STEVA", NA, NA, "EN…
+$ `Document Type`             &lt;chr&gt; "Article", "Article", "Article", "Article"…
+$ `Open Access`               &lt;chr&gt; NA, "All Open Access; Hybrid Gold Open Acc…
+$ Source                      &lt;chr&gt; "Scopus", "Scopus", "Scopus", "Scopus", "S…
+$ EID                         &lt;chr&gt; "2-s2.0-85183956855", "2-s2.0-85186478720"…</code></pre>
+</div>
+</div>
+<p>So let’s assume the question here is:</p>
+<blockquote class="blockquote">
+<p>“Which University of Southampton Department(s) are affiliated with each publication?”</p>
+</blockquote>
+<p>The departments are in the <code>Affiliations</code> column. Using two more <code>dplyr</code> verbs, <code>slice()</code> and <code>pull()</code>, let’s look at the first four values (<a href="#lst-slice-affiliation" class="quarto-xref">Listing&nbsp;<span>6.1</span></a>).</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Note how I’ve used an integer vector <code>1:4</code> as the argument to <code>slice()</code> to indicate I want rows 1 to 4, and then the column variable of interest as the argument for <code>pull()</code> to pull out the values for the <code>Affiliations</code> in rows 1 to 4.</p>
+</div>
+</div>
+</div>
+<p>This yields a character vector with four values and I can immediately see that <code>Affiliations</code> does contain not a single tidy value in each cell, it’s a <strong>messy</strong> value with multiple values separated by semi-colons.</p>
+<div class="cell">
+<div id="lst-slice-affiliation" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-slice-affiliation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;6.1: Slice and pull the first four Affiliation values
+</figcaption>
+<div aria-describedby="lst-slice-affiliation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-slice-affiliation"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-slice-affiliation-1"><a href="#lst-slice-affiliation-1" aria-hidden="true" tabindex="-1"></a>scopus_dat <span class="sc">|&gt;</span>         </span>
+<span id="lst-slice-affiliation-2"><a href="#lst-slice-affiliation-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">|&gt;</span>       </span>
+<span id="lst-slice-affiliation-3"><a href="#lst-slice-affiliation-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Affiliations)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Zepler Institute for Photonics and Nanoelectronics, University of Southampton, Southampton, SO17 1BJ, United Kingdom; School of Chemistry, University of Southampton, Southampton, SO17 1BJ, United Kingdom"                                                                                                                                                                                                                               
+[2] "THERMOSENSELAB, Skin Sensing Research Group, School of Health Sciences, The University of Southampton, Southampton, United Kingdom"                                                                                                                                                                                                                                                                                                        
+[3] "Faculty of Engineering and Physical Sciences, University of Southampton, Southampton, SO16 7QF, United Kingdom; Data-Centric Engineering, The Alan Turing Institute, London, NW1 2DB, United Kingdom"                                                                                                                                                                                                                                      
+[4] "School of Ocean and Earth Sciences, National Oceanography Centre Southampton, University of Southampton, Southampton, SO14 3ZH, United Kingdom; Université Paris-Saclay, INRAE, AgroParisTech, UMR ECOSYS, Palaiseau, 91120, France; Jacobs, Bristol, BS2 0ZX, United Kingdom; School of Science, University of Waikato, Tauranga, 3110, New Zealand; Environmental Research Institute, University of Waikato, Hamilton, 3240, New Zealand"</code></pre>
+</div>
+</div>
+<p>To be tidy, each semi-colon separated value should be in their own column.</p>
 </section>
 <section id="tidying-data" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="tidying-data"><span class="header-section-number">6.2</span> Tidying data</h2>
@@ -316,8 +379,8 @@ Summary
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="importing"><span class="header-section-number">6.2.2</span> Importing</h3>
 <p>Let’s start with a small data set called <code>OA-compliance-subset-2023-11-29.xlsx</code> from the repository</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the read.xlsx to download and load the excel file into object dat</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/OA-compliance-subset-2023-11-29.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the read.xlsx to download and load the excel file into object dat</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/OA-compliance-subset-2023-11-29.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Use the <code>glimpse()</code> function from <code>dplyr</code> to take a peak at this data:</p>
 <ol type="1">
@@ -326,7 +389,7 @@ Summary
 <li>There are lots of <code>NA</code> s, which are missing values. This may or may not matter.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 35
@@ -373,10 +436,10 @@ $ `Hide.Column.-.DOI.Formula`      &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh
 <p>We’ll make a new object called <code>dat_repaired</code> and use the <code>mutate</code> function from <code>dpylr</code> along with <code>convert_to_date</code> in the <code>janitor</code> package to convert the number values into dates.</p>
 <p>Then we’ll take a look with the glimpse function and we can see these look like dates in the year-month-day format and are identified as <code>&lt;date&gt;</code> data types.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Report.Date =</span> <span class="fu">convert_to_date</span>(Report.Date),</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Accepted.Date =</span> <span class="fu">convert_to_date</span>(Accepted.Date),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Epublication.Date =</span> <span class="fu">convert_to_date</span>(Epublication.Date))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat_repaired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Report.Date =</span> <span class="fu">convert_to_date</span>(Report.Date),</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Accepted.Date =</span> <span class="fu">convert_to_date</span>(Accepted.Date),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Epublication.Date =</span> <span class="fu">convert_to_date</span>(Epublication.Date))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat_repaired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 35
@@ -418,7 +481,7 @@ $ `Hide.Column.-.DOI.Formula`      &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="sc">|&gt;</span> <span class="fu">select</span>(Affiliations) <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="sc">|&gt;</span> <span class="fu">select</span>(Affiliations) <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Affiliations
 1 Department of Sleep and Human Factors Research, Institute of Aerospace Medicine, German Aerospace Center, Cologne, Germany; Institute of Experimental Epileptology and Cognition Research, University of Bonn Medical Center, Bonn, Germany; Division of Sleep and Circadian Disorders, Department of Medicine, Department of Neurology, Brigham and Women's Hospital, Boston, MA, United States; Division of Sleep Medicine, Harvard Medical School, Boston, MA, United States; Department of Neurology, Eastern Virginia Medical School, Norfolk, VA, United States; School of Psychology, Faculty of Environmental and Life Sciences, University of Southampton, Southampton, United Kingdom; Department of Neurology, Massachusetts General Hospital, Boston, MA, United States

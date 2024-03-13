@@ -33,8 +33,7 @@ I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www
 AF-ID("University of Southampton" 60025225) AND PUBYEAR > 2017 AND PUBYEAR < 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)
 ```
 
-I'll read it in directly from the repository for this book, and use `glimpse()`
-to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per @fig-tidy-data, the title of each publication is in the `Title` column.
+I'll read it in directly from the repository for this book, and use `glimpse()` to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per @fig-tidy-data, the title of each publication is in the `Title` column.
 
 ```{r}
 #| label: load-scopus
@@ -45,19 +44,27 @@ scopus_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/scopus-
 glimpse(scopus_dat)
 ```
 
-So let's assume the question here is "Which University of Southampton Department(s) had author(s) on each publication?"
+So let's assume the question here is:
 
-The departments are in the `Affiliations` column.
+> "Which University of Southampton Department(s) are affiliated with each publication?"
 
-If I extract the value of the `Affiliations` cell from the first row I can immediately see that it's not a single tidy value, it's a **messy** value with multiple values separated by commas like so:
+The departments are in the `Affiliations` column. Using two more `dplyr` verbs, `slice()` and `pull()`, let's look at the first four values (@lst-slice-affiliation).
 
-```         
-School of History and Philosophy of Science, The University of Sydney, Sydney, NSW, Australia; Centre for Philosophy of Natural and Social Science, London School of Economics and Political Science, London, United Kingdom; Department of Philosophy, University of Southampton, Avenue Campus, Southampton, United Kingdom
+::: {.callout-note appearance="simple" icon="false"}
+Note how I've used an integer vector `1:4` as the argument to `slice()` to indicate I want rows 1 to 4, and then the column variable of interest as the argument for `pull()` to pull out the values for the `Affiliations` in rows 1 to 4.
+:::
+
+This yields a character vector with four values and I can immediately see that `Affiliations` does contain not a single tidy value in each cell, it's a **messy** value with multiple values separated by semi-colons.
+
+```{r}
+#| lst-label: lst-slice-affiliation
+#| lst-cap: Slice and pull the first four Affiliation values 
+scopus_dat |>         
+  slice(1:4) |>       
+  pull(Affiliations)  
 ```
 
-To be tidy, each comma separated value should be in their own column.
-
-To make matters worse, each cell has a different number of values and the values are inconsistent either in the way a department is named or the information contained. Some cells have author names included for example.
+To be tidy, each semi-colon separated value should be in their own column.
 
 ## Tidying data
 

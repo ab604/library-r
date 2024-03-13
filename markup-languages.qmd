@@ -17,7 +17,7 @@ Much of this typography jargon naturally got carried over when computers came al
 
 In the analogue sense markup is usually an instruction or comment to the author for revisions.
 
-In the digital sense marking up is syntax on how to format or structure the text e.g. a heading, line break, **bold** or *italic* when it is rendered. Here you are reading [Quarto markdown](https://quarto.org/docs/authoring/markdown-basics.html) (@sec-) that has been rendered as a html book.
+In the digital sense marking up is syntax on how to format or structure the text e.g. a heading, line break, **bold** or *italic* when it is rendered. Here you are reading [Quarto markdown](https://quarto.org/docs/authoring/markdown-basics.html) (@sec-quarto-markdown) that has been rendered as a html book.
 
 Again the [Wikipedia markup languages page](https://en.wikipedia.org/wiki/Markup_language) is great if you want the full details.
 
@@ -70,8 +70,7 @@ The heading to this chapter (@sec-markup-languages) is a first level heading and
 
 ## Literate programming
 
-[Literate programming](https://en.wikipedia.org/wiki/Literate_programming) is a concept
-created by Donald Knuth of  
+[Literate programming](https://en.wikipedia.org/wiki/Literate_programming) is a concept created by Donald Knuth of
 
 ## Different flavours of markdown {#sec-markdown-flavours}
 
@@ -85,16 +84,14 @@ The [Markdown project page](https://daringfireball.net/projects/markdown/).
 
 ### R Markdown {#sec-r-markdown}
 
-[RStudio R Markdown documentation](https://rmarkdown.rstudio.com/index.html) and
-[R Markdown book](https://bookdown.org/yihui/rmarkdown/) and [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/).
-[Stack overflow post explaining the relationshipe between R markdown knitr and pandoc](https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown)
+[RStudio R Markdown documentation](https://rmarkdown.rstudio.com/index.html) and [R Markdown book](https://bookdown.org/yihui/rmarkdown/) and [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/). [Stack overflow post explaining the relationshipe between R markdown knitr and pandoc](https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown)
 
 ### Quarto markdown {#sec-quarto-markdown}
 
-(Quarto)[https://quarto.org/]
+[Quarto](https://quarto.org/)
 
 ## Publishing outputs with Pandoc {#sec-pandoc}
 
-[Pandoc](https://pandoc.org/) created in 2006 by John MacFarlane to 
+[Pandoc](https://pandoc.org/) created in 2006 by John MacFarlane to
 
 RStudio comes bundled with pandoc so there's no need to install it separately (unlesss you want to).
