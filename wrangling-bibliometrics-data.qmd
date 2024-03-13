@@ -33,18 +33,21 @@ I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www
 AF-ID("University of Southampton" 60025225) AND PUBYEAR > 2017 AND PUBYEAR < 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)
 ```
 
-I'll read it in directly from the repository for this book
+I'll read it in directly from the repository for this book, and use `glimpse()`
+to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per @fig-tidy-data, the title of each publication is in the `Title` column.
 
 ```{r}
-scopus_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data"
+#| label: load-scopus
+#| message: false
+# Load the scopus csv file
+scopus_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv")
+# Look at the contents
+glimpse(scopus_dat)
 ```
 
+So let's assume the question here is "Which University of Southampton Department(s) had author(s) on each publication?"
 
-On opening up the spreadsheet I can see that it contains data regarding publications e.g. articles, books or reports. Each row comprises a set of observations for a single publication as per @fig-tidy-data, the title of each publication is in the `Title` column.
-
-Imagine our question from the Export Control Team is: "Which University of Southampton
-
-There are 643 rows and 35 columns. There are lots of empty cells i.e. missing values and I can see that column 14 is the `Affiliations` column.
+The departments are in the `Affiliations` column.
 
 If I extract the value of the `Affiliations` cell from the first row I can immediately see that it's not a single tidy value, it's a **messy** value with multiple values separated by commas like so:
 
