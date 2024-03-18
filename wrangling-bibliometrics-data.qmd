@@ -96,6 +96,19 @@ scopus_dat_long_other <-  scopus_dat_long |>
 ```
 
 
+```{r}
+#| message: false
+departments <- read_csv("https://github.com/ab604/library-r/raw/main/data/faculty-and-department-codes-2024-03-18.csv")
+
+dept_names <- departments |> pull(department_name) |> glue::glue_collapse(sep = "|")
+
+glimpse(dept_names)
+
+soton_depts <- scopus_dat_long_soton |> 
+  mutate(department_name = str_extract(Department,dept_names))
+```
+
+
 ### Our workflow
 
 Let's consider the steps we need to take to arrive at a table which is tidy and contains the values for each UoS affiliation for each published article:
