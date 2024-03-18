@@ -311,7 +311,7 @@ This trade-off I'd characterise as cognitive ease versus flexibility.
 
 [The tidyverse website](https://www.tidyverse.org/) has extensive materials for learning more about the tidyverse. And [Hands on Programming with R](https://rstudio-education.github.io/hopr/) provides a base R view.
 
-## Tidy data
+## Tidy data {#sec-tidy-data}
 
 Tidy data follows three principals for tabular data as proposed in the Tidy Data paper [@wickham2014]:
 

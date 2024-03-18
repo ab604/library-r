@@ -15,7 +15,7 @@ It's time to apply our knowledge to some bibliometrics data.
 #| warning: false
 #| label: load-libraries
 library(tidyverse)
-library(openxlsx)
+#library(openxlsx)
 library(janitor)
 ```
 
@@ -64,34 +64,44 @@ scopus_dat |>
   pull(Affiliations)  
 ```
 
-To be tidy, each semi-colon separated value should be in their own column.
+To be tidy, each semi-colon separated value should be in their own column. So we need to tidy the data (@sec-tidy-data, @fig-tidy-data ).
 
-## Tidying data
+## Tidying the Scopus data
 
-In this section we're going to do some more complicated transformations. Let's remind ourselves of the definition of tidy data:
+Let's break the problem down:
 
-1.  Each variable must have its own column.
+1.  We need a function that separates the affiliations that are in one column into a columns for each affiliation.
+2.  Different articles have different numbers of affiliations, so we will create missing values when we create new columns in the rows where no affiliation exists. We can fix that by changing the shape of the data with a pivot
 
-2.  Each observation must have its own row.
+```{r}
+scopus_dat_wide <- scopus_dat |> 
+  separate_wider_delim(cols = Affiliations, delim = ";", names_sep = "_", 
+                       too_few = "align_start")
 
-3.  Each value must have its own cell.
+glimpse(scopus_dat_wide) 
 
-This can come in two forms: **long** or **wide**
+scopus_dat_long <- scopus_dat_wide |> 
+  pivot_longer(starts_with("Affiliations_"),
+               names_to = "Affiliation_No", 
+               values_to = "Department", 
+               values_drop_na = TRUE)
 
-We'll start with a table of published articles where each row is a set of observations about each article.
+glimpse(scopus_dat_long)
 
-*What makes it untidy?*
+scopus_dat_long_soton <- scopus_dat_long |> 
+  filter(str_detect(Department,"Southampton"))
 
-It's untidy because here we are interested in the University of Southampton (UoS) affiliations associated with each article. Here, all the individual affiliations for all the institutions affiliated with each paper are combined in a single column rather than their own columns. Therefore the values for each affiliation aren't in their own cells.
+scopus_dat_long_other <-  scopus_dat_long |> 
+  filter(!str_detect(Department,"Southampton"))
+```
 
-Hence for the purposes of the question we wish to pose, *"Which UoS department is affiliated to each article?"* the table is untidy in terms of rules 1 and 3.
 
 ### Our workflow
 
 Let's consider the steps we need to take to arrive at a table which is tidy and contains the values for each UoS affiliation for each published article:
 
 1.  Import the table, check it and repair if necessary.
-2.  Seperate the affiliations into a new column (variable) for each affiliation associated with each article.
+2.  Separate the affiliations into a new column (variable) for each affiliation associated with each article.
 
 The articles don't all have the same number of affiliations, so we will have lots of columns with only a few values in. In other words a wide table (lots of columns) but sparsely populated. What we want is a table that has only the UoS affiliation observations.
 

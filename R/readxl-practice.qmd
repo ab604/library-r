@@ -74,3 +74,8 @@ dat_uos <- dat_small_long |> filter(str_detect(Department, "South*ampton"))
 
 dat_uos |> group_by(Department) |> summarise()
 ```
+
+```{r}
+department_names <- read_csv("")
+```
+

@@ -1,0 +1,50 @@
+﻿faculty_name,faculty_code,department_code,department_name
+Faculty of Arts & Humanities,FAH,Arc,Archaeology
+Faculty of Arts & Humanities,FAH,DH,Digital Humanities
+Faculty of Arts & Humanities,FAH,E,English
+Faculty of Arts & Humanities,FAH,F,Film
+Faculty of Arts & Humanities,FAH,H,History
+Faculty of Arts & Humanities,FAH,LCL,"Languages, Cultures and Linguistics"
+Faculty of Arts & Humanities,FAH,Mu,Music
+Faculty of Arts & Humanities,FAH,Ph,Philosophy
+Faculty of Arts & Humanities,FAH,WSA,Winchester School of Art
+Faculty of Environmental and Life Sciences,FELS,BS,Biological Sciences
+Faculty of Environmental and Life Sciences,FELS,GES,Geography & Environmental Science
+Faculty of Environmental and Life Sciences,FELS,HS,Health Sciences
+Faculty of Environmental and Life Sciences,FELS,IES,Institute of Environment & Sustainability
+Faculty of Environmental and Life Sciences,FELS,ILS,Institute for Life Sciences
+Faculty of Environmental and Life Sciences,FELS,OES,Ocean and Earth Science
+Faculty of Environmental and Life Sciences,FELS,Psy,Psychology
+Faculty of Engineering and Physical Sciences,FEPS,Ch,Chemistry
+Faculty of Engineering and Physical Sciences,FEPS,CS,Computer Science
+Faculty of Engineering and Physical Sciences,FEPS,EEE,Electrical & Electronic Engineering
+Faculty of Engineering and Physical Sciences,FEPS,Eng,Engineering
+Faculty of Engineering and Physical Sciences,FEPS,MMI,Marine & Maritime Institute
+Faculty of Engineering and Physical Sciences,FEPS,ORC/ZI,ORC/Zepler Institute
+Faculty of Engineering and Physical Sciences,FEPS,PA,Physics and Astonomy
+Faculty of Engineering and Physical Sciences,FEPS,WSI,Web Science Institute
+Faculty of Medicine,Fmed,CaS,Cancer Sciences
+Faculty of Medicine,Fmed,CES,Clinical and Expermental Sciences
+Faculty of Medicine,Fmed,CIC,Cancer Immunology Centre
+Faculty of Medicine,Fmed,HDH,Human Development and Health
+Faculty of Medicine,Fmed,HEI,Healthcare Enterprise and Innovation
+Faculty of Medicine,Fmed,Med,Medicine
+Faculty of Medicine,Fmed,MRC,MRC Lifecourse
+Faculty of Medicine,Fmed,PPM,Primary Care Population Science & Medical Education
+Faculty of Medicine,Fmed,WI,Wessex Institute
+Faculty of Social Sciences,FSS,Ec,Economics
+Faculty of Social Sciences,FSS,Ger,Gerontology
+Faculty of Social Sciences,FSS,MS,Mathematical Sciences
+Faculty of Social Sciences,FSS,PIR,Politics & IR
+Faculty of Social Sciences,FSS,S3RI,Statistical Science Research Institute
+Faculty of Social Sciences,FSS,SBS,Business School
+Faculty of Social Sciences,FSS,SES,Education School
+Faculty of Social Sciences,FSS,SLS,Law School
+Faculty of Social Sciences,FSS,SSD,Social Statistics & Demography
+Faculty of Social Sciences,FSS,SSPC,"Sociology, Social Policy & Criminiology"
+Others,oos,MC,Malaysia Campus
+Others,oos,Not UoS,Not University of Southampton
+Others,PS,CHEP,Centre for Higher Education Practice
+Others,PS,PE,Public Engagement
+Others,PS,PPS,Public Policy Southampton
+Others,PS,PS,Professional Services
