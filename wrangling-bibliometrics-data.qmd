@@ -46,10 +46,15 @@ AF-ID("University of Southampton" 60025225) AND PUBYEAR > 2017 AND PUBYEAR < 202
 I'll read it in directly from the repository for this book, and use `glimpse()` to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per @fig-tidy-data, the title of each publication is in the `Title` column.
 
 ```{r}
-#| label: load-scopus
+#| label: load-data
 #| message: false
+# Load the Pure excel sheet
+pure_dat <- read_excel("https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.xls")
 # Load the scopus csv file
 scopus_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv")
+# Load the Web of science csv file
+wos_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.csv", skip = 3)
+
 # Look at the contents
 glimpse(scopus_dat)
 ```
@@ -148,8 +153,6 @@ scopus_dat_long_soton <- scopus_dat_long |>
 `https://www.webofscience.com/wos/woscc/summary/1d7d2706-f966-4c7c-8cbd-85de6e118dc2-d8d761f7/relevance/1`
 
 ```{r}
-wos_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.csv", skip = 3)
-
 dat_join <- scopus_dat_long_soton |> left_join(wos_dat, by = "DOI")
 ```
 
