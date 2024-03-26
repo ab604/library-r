@@ -215,12 +215,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#describing-the-problem" id="toc-describing-the-problem" class="nav-link active" data-scroll-target="#describing-the-problem"><span class="header-section-number">6.1</span> Describing the problem</a></li>
-  <li><a href="#tidying-data" id="toc-tidying-data" class="nav-link" data-scroll-target="#tidying-data"><span class="header-section-number">6.2</span> Tidying data</a>
-  <ul class="collapse">
-  <li><a href="#our-workflow" id="toc-our-workflow" class="nav-link" data-scroll-target="#our-workflow"><span class="header-section-number">6.2.1</span> Our workflow</a></li>
-  <li><a href="#importing" id="toc-importing" class="nav-link" data-scroll-target="#importing"><span class="header-section-number">6.2.2</span> Importing</a></li>
-  <li><a href="#lets-fix-the-dates" id="toc-lets-fix-the-dates" class="nav-link" data-scroll-target="#lets-fix-the-dates"><span class="header-section-number">6.2.3</span> Let’s fix the dates</a></li>
-  </ul></li>
+  <li><a href="#tidying-the-scopus-data" id="toc-tidying-the-scopus-data" class="nav-link" data-scroll-target="#tidying-the-scopus-data"><span class="header-section-number">6.2</span> Tidying the Scopus data</a></li>
+  <li><a href="#web-of-science" id="toc-web-of-science" class="nav-link" data-scroll-target="#web-of-science"><span class="header-section-number">6.3</span> Web of science</a></li>
   </ul>
 </nav>
     </div>
@@ -264,7 +260,7 @@ Summary
 <p>It’s time to apply our knowledge to some bibliometrics data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(openxlsx)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="describing-the-problem" class="level2" data-number="6.1">
@@ -274,6 +270,22 @@ Summary
 <blockquote class="blockquote">
 <p>[A spreadsheet] is produced from a fortnightly check… for REF and Funder Compliance… the Export Control Team periodically asks us for information about particular staff/institutions/countries and…trying to search in the Affiliations can be very time consuming…</p>
 </blockquote>
+<p>From what I can see, the overarching problem is this</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<ol type="1">
+<li>There are three data sources: Scoupus, Web of Science and Pure, from which tables about publications are regularly downloaded.</li>
+<li>The data contained in these three tables needs to be joined, and then joined to other data.</li>
+<li>The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.</li>
+</ol>
+</div>
+</div>
+</div>
+<p>I’m not going to be able to cover every step, For some of these steps we need to create our own tables of data e.g a table of department codes or open access codes, as well as download pre-existing data.</p>
 <p>I downloaded some data as a <code>csv</code> file from <a href="https://www.scopus.com/search/form.uri?display=advanced">Scopus Advanced Search</a> to generate a report for 31 days prior to 2024-03-13 using the following query string:</p>
 <pre><code>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</code></pre>
 <p>I’ll read it in directly from the repository for this book, and use <code>glimpse()</code> to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, the title of each publication is in the <code>Title</code> column.</p>
@@ -343,154 +355,108 @@ Listing&nbsp;6.1: Slice and pull the first four Affiliation values
 [4] "School of Ocean and Earth Sciences, National Oceanography Centre Southampton, University of Southampton, Southampton, SO14 3ZH, United Kingdom; Université Paris-Saclay, INRAE, AgroParisTech, UMR ECOSYS, Palaiseau, 91120, France; Jacobs, Bristol, BS2 0ZX, United Kingdom; School of Science, University of Waikato, Tauranga, 3110, New Zealand; Environmental Research Institute, University of Waikato, Hamilton, 3240, New Zealand"</code></pre>
 </div>
 </div>
-<p>To be tidy, each semi-colon separated value should be in their own column.</p>
+<p>To be tidy, each semi-colon separated value should be in their own column. So we need to tidy the data (<a href="getting-started.html#sec-tidy-data" class="quarto-xref"><span>Section 3.7</span></a>, <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a> ).</p>
 </section>
-<section id="tidying-data" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="tidying-data"><span class="header-section-number">6.2</span> Tidying data</h2>
-<p>In this section we’re going to do some more complicated transformations. Let’s remind ourselves of the definition of tidy data:</p>
+<section id="tidying-the-scopus-data" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="tidying-the-scopus-data"><span class="header-section-number">6.2</span> Tidying the Scopus data</h2>
+<p>Let’s break the problem down:</p>
 <ol type="1">
-<li><p>Each variable must have its own column.</p></li>
-<li><p>Each observation must have its own row.</p></li>
-<li><p>Each value must have its own cell.</p></li>
+<li>First let’s separate the multiple affiliations that are in a single column into multiple columns, one for each affiliation. This is in keeping with tidy rule that each value should have it’s own cell.</li>
 </ol>
-<p>This can come in two forms: <strong>long</strong> or <strong>wide</strong></p>
-<p>We’ll start with a table of published articles where each row is a set of observations about each article.</p>
-<p><em>What makes it untidy?</em></p>
-<p>It’s untidy because here we are interested in the University of Southampton (UoS) affiliations associated with each article. Here, all the individual affiliations for all the institutions affiliated with each paper are combined in a single column rather than their own columns. Therefore the values for each affiliation aren’t in their own cells.</p>
-<p>Hence for the purposes of the question we wish to pose, <em>“Which UoS department is affiliated to each article?”</em> the table is untidy in terms of rules 1 and 3.</p>
-<section id="our-workflow" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="our-workflow"><span class="header-section-number">6.2.1</span> Our workflow</h3>
-<p>Let’s consider the steps we need to take to arrive at a table which is tidy and contains the values for each UoS affiliation for each published article:</p>
-<ol type="1">
-<li>Import the table, check it and repair if necessary.</li>
-<li>Seperate the affiliations into a new column (variable) for each affiliation associated with each article.</li>
+<p>We can use <code>tidyr</code> package function <a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html"><code>separate_wider_delim()</code></a>.</p>
+<p><code>separate_wider_delim()</code> takes three necessary arguments, and has several other optional arguments. The necessary ones are a data frame, here that’s <code>scopus_dat</code>. <code>cols</code> the column(s) we are separating, here that’s <code>Affiliations</code> and <code>delim</code> is a string we using as a delimiter to split the values on which as we saw is going to be <code>;</code>.</p>
+<p>As this is going to create new column variables, these need names too and here I provide the string for underscore <code>"_"</code> to <code>names_sep</code> and each new variable will have an underscore and numerical suffix called <code>Affiliations_1</code>, <code>Affiliations_2</code> etc.</p>
+<p>The final argument we’ll use is <code>too_few</code> and we’ll use <code>"align_start"</code> as the value. This means that our departments will first be put in <code>Affiliations_1</code> and adds missing values columns <code>NA</code> in any columns where a row runs out of departments. This ensures all rows have the same number of columns regardless of how many values were in the original Affiliations column. The total number of Affiliation columns will be determined by the article with the most Affiliation values.</p>
+<p>Hence the table will get wider as new columns are created!</p>
+<p>I’ll assign the output to a new data frame object <code>scopus_dat_wide</code>.</p>
+<div class="cell">
+<div id="lst-sep-wide-delim" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-sep-wide-delim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;6.2: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code>separate_wider_delim()</code>.
+</figcaption>
+<div aria-describedby="lst-sep-wide-delim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-sep-wide-delim"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-sep-wide-delim-1"><a href="#lst-sep-wide-delim-1" aria-hidden="true" tabindex="-1"></a>scopus_dat_wide <span class="ot">&lt;-</span> scopus_dat <span class="sc">|&gt;</span> </span>
+<span id="lst-sep-wide-delim-2"><a href="#lst-sep-wide-delim-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> Affiliations, </span>
+<span id="lst-sep-wide-delim-3"><a href="#lst-sep-wide-delim-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">delim =</span> <span class="st">";"</span>, </span>
+<span id="lst-sep-wide-delim-4"><a href="#lst-sep-wide-delim-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_sep =</span> <span class="st">"_"</span>, </span>
+<span id="lst-sep-wide-delim-5"><a href="#lst-sep-wide-delim-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">too_few =</span> <span class="st">"align_start"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+</div>
+<p>I’ll leave it for you to examine, but you should see we have 311 Affiliation variables now, many of the contain missing values <code>NA</code>. We still have 483 rows, but 330 variables in total.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scopus_dat_wide) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>How do we get rid of all those missing values? We can fix that by changing the shape of the data to long with <code>pivot_longer()</code> and dropping any <code>Affiliation</code> values that are <code>NA</code>.</li>
 </ol>
-<p>The articles don’t all have the same number of affiliations, so we will have lots of columns with only a few values in. In other words a wide table (lots of columns) but sparsely populated. What we want is a table that has only the UoS affiliation observations.</p>
-<p>What is our usual trick for obtaining only the observations of interest?</p>
-<p>We <code>filter</code> the rows. But hang on, we can’t do that unless we have the each affiliation in a row, rather spread across lots of columns. So what do?</p>
-<p>Transforming a table so that columns become rows, or rows become columns is called <strong><em>pivoting</em></strong>. Here, having separated the affiliations and created a wide table with a variable for each affiliation we want to pivot from wide-to-long.</p>
-<p>When we pivot wide-to-long, the column names become a new set of observations in a new variable, and the values from each column become another set of observations in a new variable. Everything else is duplicated and hence we end up with lots of rows.</p>
+<p>Concretely, we have 311 Affiliation columns, if we pivot the table such that those column names become values in rows, the values from those columns fill a new single column variable, here <code>Department</code>, and we create a long table (with lots of duplicated information). And we can simply drop any row where the value of <code>Department</code> is <code>NA</code>.</p>
+<p>As we have to say which columns we want to take the values from to fill <code>Department</code> and all our columns of interest begin with <code>Affliation_</code>, we can use the handy <code>dpylr</code> select function <a href="https://dplyr.tidyverse.org/reference/select.html"><code>starts_with()</code></a> to help us.</p>
+<p>The name of each <code>Affiliation_</code> column will be transformed to values in a column I’m going to call <code>Affiliation_No</code>.</p>
+<p>This yields a table with 3722 rows and 21 columns, one more column than we started with in the original <code>scopus_dat</code> table.</p>
+<div class="cell">
+<div id="lst-scopus-pivot-long" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-scopus-pivot-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code>separate_wider_delim()</code>.
+</figcaption>
+<div aria-describedby="lst-scopus-pivot-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-scopus-pivot-long"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-scopus-pivot-long-1"><a href="#lst-scopus-pivot-long-1" aria-hidden="true" tabindex="-1"></a>scopus_dat_long <span class="ot">&lt;-</span> scopus_dat_wide <span class="sc">|&gt;</span> </span>
+<span id="lst-scopus-pivot-long-2"><a href="#lst-scopus-pivot-long-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">starts_with</span>(<span class="st">"Affiliations_"</span>),</span>
+<span id="lst-scopus-pivot-long-3"><a href="#lst-scopus-pivot-long-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Affiliation_No"</span>, </span>
+<span id="lst-scopus-pivot-long-4"><a href="#lst-scopus-pivot-long-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Department"</span>, </span>
+<span id="lst-scopus-pivot-long-5"><a href="#lst-scopus-pivot-long-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+</div>
 <ol start="3" type="1">
-<li>Using <code>pivot_long</code> we create a table on which we can filter the rows for the UoS affiliations.</li>
-</ol>
-<p>For some articles there may be multiple UoS affiliations, so we may wish to pivot long-to-wide to create a final tidy table with a single row for each article, but columns for each UoS affiliation.</p>
-</section>
-<section id="importing" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="importing"><span class="header-section-number">6.2.2</span> Importing</h3>
-<p>Let’s start with a small data set called <code>OA-compliance-subset-2023-11-29.xlsx</code> from the repository</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the read.xlsx to download and load the excel file into object dat</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/OA-compliance-subset-2023-11-29.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Use the <code>glimpse()</code> function from <code>dplyr</code> to take a peak at this data:</p>
-<ol type="1">
-<li>We can see that the table has 20 rows with 35 columns of variables.</li>
-<li>Looking at the data types, we can see the import function parsed two types of data: <code>&lt;chr&gt;</code> character, meaning strings of text and <code>&lt;dbl&gt;</code> double, meaning numerical data. However, looking at the variable names, some are dates and haven’t been identified automatically.</li>
-<li>There are lots of <code>NA</code> s, which are missing values. This may or may not matter.</li>
+<li>But we’re only interested in the University of Southampton affiliations, so many of these rows aren’t of use to us.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 20
-Columns: 35
-$ Faculty                          &lt;chr&gt; "FELS", "FEPS", "FEPS", "FELS", "FSS"…
-$ Report.Date                      &lt;dbl&gt; 45201, 45243, 45201, 45215, 45229, 45…
-$ Ref.OA.Compliance                &lt;chr&gt; "No", "Yes", "Yes", "Yes", "Yes", "Ye…
-$ `Reason.for.Non-Compliance`      &lt;chr&gt; "No Pure Record", NA, NA, NA, NA, NA,…
-$ Time.remaining.to.make.compliant &lt;dbl&gt; 16, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ Notes                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ Authors                          &lt;chr&gt; "Aeschbach D.; Cohen D.A.; Lockyer B.…
-$ Title                            &lt;chr&gt; "Spontaneous attentional failures ref…
-$ Source.Title                     &lt;chr&gt; "Sleep Health", "Frontiers in Artific…
-$ Document.Type                    &lt;chr&gt; "Article", "Conference paper", "Artic…
-$ Publisher                        &lt;chr&gt; "Elsevier Inc.", "IOS Press BV", "Ame…
-$ DOI                              &lt;chr&gt; "10.1016/j.sleh.2023.07.013", "10.323…
-$ Hyperlink.DOI                    &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh.202…
-$ Affiliations                     &lt;chr&gt; "Department of Sleep and Human Factor…
-$ SCH1                             &lt;chr&gt; "PSY", "CS", "PA", "BS", "SES", "PSY"…
-$ SCH2                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ SCH3                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ Accepted.Date                    &lt;chr&gt; "45129", NA, "45156", "11/09/23", "45…
-$ Epublication.Date                &lt;chr&gt; "45176", "45198", "45174", "45196", "…
-$ Publisher.OA                     &lt;chr&gt; "No", "Yes", "No", "Yes", "Yes", "Yes…
-$ Publisher.Licence                &lt;chr&gt; NA, "CC BY-NC", NA, "CC BY", "CC BY",…
-$ PURE.ID                          &lt;chr&gt; "No Record", NA, "143740848", "143621…
-$ Version.in.Pure                  &lt;chr&gt; NA, NA, "Accepted manuscript, Version…
-$ Licence.in.Pure                  &lt;chr&gt; NA, NA, "UoS AM", "CC BY", NA, NA, "C…
-$ Funder.1                         &lt;chr&gt; "N/A", "EPSRC", "N/A", "MRC", "N/A", …
-$ Funder.2                         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, "…
-$ Funder.3                         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ Data.Statement                   &lt;chr&gt; NA, "No", "Yes", "Yes", NA, NA, NA, N…
-$ Rights.Rentention.Statement      &lt;chr&gt; NA, NA, NA, "Yes", NA, NA, NA, NA, NA…
-$ UKRI.Compliant                   &lt;chr&gt; NA, "No", NA, "Yes", NA, NA, NA, NA, …
-$ OA.Status                        &lt;chr&gt; "No", "Gold", "Green", "Gold", "Gold"…
-$ Correspondence.address           &lt;chr&gt; "D. Aeschbach; Department of Sleep an…
-$ UoS.Corresponding.Author         &lt;chr&gt; "No", "No", "Yes", "Yes", "Yes", "No"…
-$ Controlled.Publisher             &lt;chr&gt; "Elsevier", NA, "ACS", NA, NA, "Sprin…
-$ `Hide.Column.-.DOI.Formula`      &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh.202…</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(scopus_dat_long)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>scopus_dat_long_soton <span class="ot">&lt;-</span> scopus_dat_long <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Department,<span class="st">"Southampton"</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#scopus_dat_long_other &lt;-  scopus_dat_long |&gt; </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter(!str_detect(Department,"Southampton"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="lets-fix-the-dates" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="lets-fix-the-dates"><span class="header-section-number">6.2.3</span> Let’s fix the dates</h3>
-<p>We’ll make a new object called <code>dat_repaired</code> and use the <code>mutate</code> function from <code>dpylr</code> along with <code>convert_to_date</code> in the <code>janitor</code> package to convert the number values into dates.</p>
-<p>Then we’ll take a look with the glimpse function and we can see these look like dates in the year-month-day format and are identified as <code>&lt;date&gt;</code> data types.</p>
+<section id="web-of-science" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="web-of-science"><span class="header-section-number">6.3</span> Web of science</h2>
+<p><code>https://www.webofscience.com/wos/woscc/summary/1d7d2706-f966-4c7c-8cbd-85de6e118dc2-d8d761f7/relevance/1</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Report.Date =</span> <span class="fu">convert_to_date</span>(Report.Date),</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Accepted.Date =</span> <span class="fu">convert_to_date</span>(Accepted.Date),</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Epublication.Date =</span> <span class="fu">convert_to_date</span>(Epublication.Date))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat_repaired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 20
-Columns: 35
-$ Faculty                          &lt;chr&gt; "FELS", "FEPS", "FEPS", "FELS", "FSS"…
-$ Report.Date                      &lt;date&gt; 2023-10-02, 2023-11-13, 2023-10-02, …
-$ Ref.OA.Compliance                &lt;chr&gt; "No", "Yes", "Yes", "Yes", "Yes", "Ye…
-$ `Reason.for.Non-Compliance`      &lt;chr&gt; "No Pure Record", NA, NA, NA, NA, NA,…
-$ Time.remaining.to.make.compliant &lt;dbl&gt; 16, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ Notes                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ Authors                          &lt;chr&gt; "Aeschbach D.; Cohen D.A.; Lockyer B.…
-$ Title                            &lt;chr&gt; "Spontaneous attentional failures ref…
-$ Source.Title                     &lt;chr&gt; "Sleep Health", "Frontiers in Artific…
-$ Document.Type                    &lt;chr&gt; "Article", "Conference paper", "Artic…
-$ Publisher                        &lt;chr&gt; "Elsevier Inc.", "IOS Press BV", "Ame…
-$ DOI                              &lt;chr&gt; "10.1016/j.sleh.2023.07.013", "10.323…
-$ Hyperlink.DOI                    &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh.202…
-$ Affiliations                     &lt;chr&gt; "Department of Sleep and Human Factor…
-$ SCH1                             &lt;chr&gt; "PSY", "CS", "PA", "BS", "SES", "PSY"…
-$ SCH2                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ SCH3                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ Accepted.Date                    &lt;date&gt; 2023-07-22, NA, 2023-08-18, 2011-09-…
-$ Epublication.Date                &lt;date&gt; 2023-09-07, 2023-09-29, 2023-09-05, …
-$ Publisher.OA                     &lt;chr&gt; "No", "Yes", "No", "Yes", "Yes", "Yes…
-$ Publisher.Licence                &lt;chr&gt; NA, "CC BY-NC", NA, "CC BY", "CC BY",…
-$ PURE.ID                          &lt;chr&gt; "No Record", NA, "143740848", "143621…
-$ Version.in.Pure                  &lt;chr&gt; NA, NA, "Accepted manuscript, Version…
-$ Licence.in.Pure                  &lt;chr&gt; NA, NA, "UoS AM", "CC BY", NA, NA, "C…
-$ Funder.1                         &lt;chr&gt; "N/A", "EPSRC", "N/A", "MRC", "N/A", …
-$ Funder.2                         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, "…
-$ Funder.3                         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ Data.Statement                   &lt;chr&gt; NA, "No", "Yes", "Yes", NA, NA, NA, N…
-$ Rights.Rentention.Statement      &lt;chr&gt; NA, NA, NA, "Yes", NA, NA, NA, NA, NA…
-$ UKRI.Compliant                   &lt;chr&gt; NA, "No", NA, "Yes", NA, NA, NA, NA, …
-$ OA.Status                        &lt;chr&gt; "No", "Gold", "Green", "Gold", "Gold"…
-$ Correspondence.address           &lt;chr&gt; "D. Aeschbach; Department of Sleep an…
-$ UoS.Corresponding.Author         &lt;chr&gt; "No", "No", "Yes", "Yes", "Yes", "No"…
-$ Controlled.Publisher             &lt;chr&gt; "Elsevier", NA, "ACS", NA, NA, "Sprin…
-$ `Hide.Column.-.DOI.Formula`      &lt;chr&gt; "http://dx.doi.org/10.1016/j.sleh.202…</code></pre>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wos_dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.csv"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 50 Columns: 76
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (8): Title, Authors, Corporate Authors, Source Title, Publication Date,...
+dbl (62): Publication Year, Volume, Issue, Beginning Page, Ending Page, Tota...
+lgl  (6): Editors, Book Editors, Part Number, Supplement, Conference Title, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dat_join <span class="ot">&lt;-</span> scopus_dat_long_soton <span class="sc">|&gt;</span> <span class="fu">left_join</span>(wos_dat, <span class="at">by =</span> <span class="st">"DOI"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dat_repaired <span class="sc">|&gt;</span> <span class="fu">select</span>(Affiliations) <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>departments <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/faculty-and-department-codes-2024-03-18.csv"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dept_names <span class="ot">&lt;-</span> departments <span class="sc">|&gt;</span> <span class="fu">pull</span>(department_name) <span class="sc">|&gt;</span> glue<span class="sc">::</span><span class="fu">glue_collapse</span>(<span class="at">sep =</span> <span class="st">"|"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dept_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Affiliations
-1 Department of Sleep and Human Factors Research, Institute of Aerospace Medicine, German Aerospace Center, Cologne, Germany; Institute of Experimental Epileptology and Cognition Research, University of Bonn Medical Center, Bonn, Germany; Division of Sleep and Circadian Disorders, Department of Medicine, Department of Neurology, Brigham and Women's Hospital, Boston, MA, United States; Division of Sleep Medicine, Harvard Medical School, Boston, MA, United States; Department of Neurology, Eastern Virginia Medical School, Norfolk, VA, United States; School of Psychology, Faculty of Environmental and Life Sciences, University of Southampton, Southampton, United Kingdom; Department of Neurology, Massachusetts General Hospital, Boston, MA, United States
-2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Department of Computer Science, University of Bath, United Kingdom; School of Electronic and Computer Science, University of Southampton, United Kingdom</code></pre>
+<pre><code> 'glue' chr "Archaeology|Digital Humanities|English|Film|History|Languages, Cultures and Linguistics|Music|Philosophy|Winche"| __truncated__</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>soton_depts <span class="ot">&lt;-</span> scopus_dat_long_soton <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">department_name =</span> <span class="fu">str_extract</span>(Department,dept_names))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
