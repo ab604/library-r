@@ -27,6 +27,16 @@ Here's an excerpt from an email Kate sent me on 2023-11-21:
 
 > \[A spreadsheet\] is produced from a fortnightly check... for REF and Funder Compliance... the Export Control Team periodically asks us for information about particular staff/institutions/countries and...trying to search in the Affiliations can be very time consuming...
 
+From what I can see, the overarching problem is this
+
+:::{.callout-note appearance="simple" icon="false"}
+1. There are three data sources: Scoupus, Web of Science and Pure, from which tables about publications are regularly downloaded.
+2. The data contained in these three tables needs to be joined, and then joined to other data.
+3. The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.
+:::
+
+I'm not going to be able to cover every step, For some of these steps we need to create our own tables of data e.g a table of department codes or open access codes, as well as download pre-existing data. 
+
 I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www.scopus.com/search/form.uri?display=advanced) to generate a report for 31 days prior to 2024-03-13 using the following query string:
 
 ```         
@@ -70,29 +80,77 @@ To be tidy, each semi-colon separated value should be in their own column. So we
 
 Let's break the problem down:
 
-1.  We need a function that separates the affiliations that are in one column into a columns for each affiliation.
-2.  Different articles have different numbers of affiliations, so we will create missing values when we create new columns in the rows where no affiliation exists. We can fix that by changing the shape of the data with a pivot
+1.  First let's separate the multiple affiliations that are in a single column into multiple columns, one for each affiliation. This is in keeping with tidy rule that each value should have it's own cell.
+
+We can use `tidyr` package function [`separate_wider_delim()`](https://tidyr.tidyverse.org/reference/separate_wider_delim.html).
+
+`separate_wider_delim()` takes three necessary arguments, and has several other optional arguments. The necessary ones are a data frame, here that's `scopus_dat`. `cols` the column(s) we are separating, here that's `Affiliations` and `delim` is a string we using as a delimiter to split the values on which as we saw is going to be `;`.
+
+As this is going to create new column variables, these need names too and here I provide the string for underscore `"_"` to `names_sep` and each new variable will have an underscore and numerical suffix called `Affiliations_1`, `Affiliations_2` etc.
+
+The final argument we'll use is `too_few` and we'll use `"align_start"` as the value. This means that our departments will first be put in `Affiliations_1` and adds missing values columns `NA` in any columns where a row runs out of departments. This ensures all rows have the same number of columns regardless of how many values were in the original Affiliations column. The total number of Affiliation columns will be determined by the article with the most Affiliation values. 
+
+Hence the table will get wider as new columns are created!
+
+I'll assign the output to a new data frame object `scopus_dat_wide`.
 
 ```{r}
+#| lst-label: lst-sep-wide-delim
+#| lst-cap: Separating the Affiliation values in `scopus_dat` into individual columns using `separate_wider_delim()`. 
 scopus_dat_wide <- scopus_dat |> 
-  separate_wider_delim(cols = Affiliations, delim = ";", names_sep = "_", 
+  separate_wider_delim(cols = Affiliations, 
+                       delim = ";", 
+                       names_sep = "_", 
                        too_few = "align_start")
+```
 
+I'll leave it for you to examine, but you should see we have 311 Affiliation variables now, many of the contain missing values `NA`. We still have 483 rows, but 330 variables in total.
+
+```{r}
+#| eval: false
 glimpse(scopus_dat_wide) 
+```
+
+2. How do we get rid of all those missing values? We can fix that by changing the shape of the data to long with `pivot_longer()` and dropping any `Affiliation` values that are `NA`.
+
+Concretely, we have 311 Affiliation columns, if we pivot the table such that those column names become values in rows, the values from those columns fill a new single column variable, here `Department`, and we create a long table (with lots of duplicated information). And we can simply drop any row where the value of `Department` is `NA`.
+
+As we have to say which columns we want to take the values from to fill `Department` and all our columns of interest begin with `Affliation_`, we can use the handy `dpylr` select function [`starts_with()`](https://dplyr.tidyverse.org/reference/select.html) to help us.
+
+The name of each `Affiliation_` column will be transformed to values in a column I'm going to call `Affiliation_No`.
+
+This yields a table with 3722 rows and 21 columns, one more column than we started with in the original `scopus_dat` table.
+
+```{r}
+#| lst-label: lst-scopus-pivot-long
+#| lst-cap: Separating the Affiliation values in `scopus_dat` into individual columns using `separate_wider_delim()`. 
 
 scopus_dat_long <- scopus_dat_wide |> 
   pivot_longer(starts_with("Affiliations_"),
                names_to = "Affiliation_No", 
                values_to = "Department", 
                values_drop_na = TRUE)
+```
 
-glimpse(scopus_dat_long)
+3. But we're only interested in the University of Southampton affiliations, so many of these rows aren't of use to us.
+
+```{r}
+#glimpse(scopus_dat_long)
 
 scopus_dat_long_soton <- scopus_dat_long |> 
   filter(str_detect(Department,"Southampton"))
 
-scopus_dat_long_other <-  scopus_dat_long |> 
-  filter(!str_detect(Department,"Southampton"))
+#scopus_dat_long_other <-  scopus_dat_long |> 
+ # filter(!str_detect(Department,"Southampton"))
+```
+## Web of science
+
+`https://www.webofscience.com/wos/woscc/summary/1d7d2706-f966-4c7c-8cbd-85de6e118dc2-d8d761f7/relevance/1`
+
+```{r}
+wos_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.csv", skip = 3)
+
+dat_join <- scopus_dat_long_soton |> left_join(wos_dat, by = "DOI")
 ```
 
 
