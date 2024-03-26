@@ -55,14 +55,24 @@ I'll read it in directly from the repository for this book, and use `glimpse()` 
 pure_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.csv")
 # Load the scopus csv file
 scopus_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv")
-# Load the Web of science csv file
-wos_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.csv", skip = 3)
+# Load the Web of science tsv file
+wos_dat <- read_tsv("https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.tsv")
 
 # Look at the contents
 glimpse(pure_dat)
 glimpse(scopus_dat)
 glimpse(wos_dat)
 ```
+
+```{r}
+wos_mut <- wos_dat |> 
+  mutate(department = str_extract(C1,"(?<=Southampton Univ,|Univ Southampton,|Univ Hosp Southampton NHS Fdn Trust,)(.*?)(?=, )"))
+
+wos_mut |> 
+  select(C1, department) |> 
+  view()
+```
+
 
 So let's assume the question here is:
 
