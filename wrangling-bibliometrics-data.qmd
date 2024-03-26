@@ -27,10 +27,13 @@ Here's an excerpt from an email Kate sent me on 2023-11-21:
 
 > \[A spreadsheet\] is produced from a fortnightly check... for REF and Funder Compliance... the Export Control Team periodically asks us for information about particular staff/institutions/countries and...trying to search in the Affiliations can be very time consuming...
 
-From what I can see, the overarching problem is this
+From what I can see, the overarching problem is this:
 
 :::{.callout-note appearance="simple" icon="false"}
-1. There are three data sources: Scoupus, Web of Science and Pure, from which tables about publications are regularly downloaded.
+1. There are three data sources: Scopus, Web of Science and Pure, from which tables about publications are regularly downloaded.
+
+All three tables contain DOIs for the publications, but only Scopus has the UoS department affiliations, and Pure contains the Open Access compliance information
+
 2. The data contained in these three tables needs to be joined, and then joined to other data.
 3. The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.
 :::
@@ -48,15 +51,17 @@ I'll read it in directly from the repository for this book, and use `glimpse()` 
 ```{r}
 #| label: load-data
 #| message: false
-# Load the Pure excel sheet
-pure_dat <- read_excel("https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.xls")
+# Load the Pure csv file
+pure_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.csv")
 # Load the scopus csv file
 scopus_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv")
 # Load the Web of science csv file
 wos_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.csv", skip = 3)
 
 # Look at the contents
+glimpse(pure_dat)
 glimpse(scopus_dat)
+glimpse(wos_dat)
 ```
 
 So let's assume the question here is:
