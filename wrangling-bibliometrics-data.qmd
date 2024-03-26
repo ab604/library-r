@@ -15,7 +15,7 @@ It's time to apply our knowledge to some bibliometrics data.
 #| warning: false
 #| label: load-libraries
 library(tidyverse)
-#library(openxlsx)
+library(readxl)
 library(janitor)
 ```
 
