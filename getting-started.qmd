@@ -626,7 +626,9 @@ Don't worry too much about this for now, we won't be doing this, but it's worth 
 
 ## Plotting and exporting data {#sec-plotting-and-exporting-data}
 
-One of the most useful and important parts of any data analysis is plotting data and @sec-visualisation goes into detail. But to give you an example, we'll use the `ggplot2` package as an introduction to automating a task in code, and as a tool for understanding data.
+<!-- and @sec-visualisation goes into detail -->
+
+One of the most useful and important parts of any data analysis is plotting data. To give you an example, we'll use the `ggplot2` package as an introduction to automating a task in code, and as a tool for understanding data.
 
 `ggplot2` implements the *grammar of graphics*, for describing and building graphs. The idea being that we construct a plot in the following way:
 

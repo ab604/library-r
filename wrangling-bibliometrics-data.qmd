@@ -15,7 +15,6 @@ It's time to apply our knowledge to some bibliometrics data.
 #| warning: false
 #| label: load-libraries
 library(tidyverse)
-library(readxl)
 library(janitor)
 ```
 
@@ -63,6 +62,25 @@ glimpse(pure_dat)
 glimpse(scopus_dat)
 glimpse(wos_dat)
 ```
+
+```{r}
+pure_lipid <- pure_dat |> 
+  filter(`Title of the contribution in original language-5` == "Lipid droplets in steatotic liver disease") 
+
+
+wos_lipid <- wos_dat |> 
+  filter(TI == "Lipid droplets in steatotic liver disease")
+
+scopus_lipid <- scopus_dat |> 
+  filter(Title == "Lipid droplets in steatotic liver disease")
+
+lipid_join <- pure_lipid |> 
+  left_join(wos_dat, by = c(`Title of the contribution in original language-5` = "TI")) |> 
+  left_join(scopus_dat, by = c(`Title of the contribution in original language-5` = "Title"))
+
+glimpse(lipid_join)
+```
+
 
 ```{r}
 wos_mut <- wos_dat |> 
@@ -168,7 +186,7 @@ scopus_dat_long_soton <- scopus_dat_long |>
 `https://www.webofscience.com/wos/woscc/summary/1d7d2706-f966-4c7c-8cbd-85de6e118dc2-d8d761f7/relevance/1`
 
 ```{r}
-dat_join <- scopus_dat_long_soton |> left_join(wos_dat, by = "DOI")
+#dat_join <- scopus_dat_long_soton |> left_join(wos_dat, by = "DOI")
 ```
 
 

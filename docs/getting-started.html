@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -214,12 +214,6 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visualisation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualisation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -302,13 +296,13 @@ div.csl-indent {
 </header>
 
 
-<div id="chapter-02-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<a href="" id="chapter-02-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -470,13 +464,13 @@ Figure&nbsp;3.4: The relative path between the R script <code>analysis-2024-02-2
 <p>A function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in <a href="#sec-packages" class="quarto-xref"><span>Section 3.3</span></a> the function <code>install.packages()</code> requires the name of the package we want to install as arguments.</p>
 <p>Many, if not most, functions can take more than one argument. The creators of the function should have given these defaults for the situation where the user provides only one or some arguments. RStudio should prompt you for the arguments as you type, but if you need to see what they are, use the help function <code>?</code> with the function name in the Console and it will open the help panel or type the function name into the help panel search box.</p>
 <p>For example, to find out all the arguments for <code>install.packages()</code> we’d type <code>?install.packages</code> and press <code>Enter</code>.</p>
-<div id="cowsay" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
+<div class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Try installing the <code>cowsay</code> package
+<a href="" id="cowsay"></a>Try installing the <code>cowsay</code> package
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -627,7 +621,7 @@ Figure&nbsp;3.8: Starting a new R project in RStudio
 <div id="fig-tidy-data" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/tidy-data.png" class="img-fluid figure-img" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell." width="683">
+<img src="img/tidy-data.png" class="img-fluid figure-img" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.9: Some tidy data from the penguin dataset. Every variable has it’s own column, every observation has its own row and every value has its own cell.
@@ -687,13 +681,13 @@ Figure&nbsp;3.10: The atomic R data types that form the building blocks of more 
 </div>
 <p>Note here that we see the use of the assignment operator <code>&lt;-</code> to assign our vector on the right as the object <code>cards</code>. We talk more about that in <a href="#sec-assigning-objects" class="quarto-xref"><span>Section 3.9</span></a>.</p>
 <p>Also note that the output of <code>typeof()</code> is itself a vector of length one and type <code>character</code>.</p>
-<div id="seq" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try creating a vector of integers">
+<div class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try creating a vector of integers">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Try creating a vector of integers
+<a href="" id="seq"></a>Try creating a vector of integers
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -920,7 +914,8 @@ Figure&nbsp;3.14: An example data frame <code>df</code> with three rows and thre
 </section>
 <section id="sec-plotting-and-exporting-data" class="level2" data-number="3.11">
 <h2 data-number="3.11" class="anchored" data-anchor-id="sec-plotting-and-exporting-data"><span class="header-section-number">3.11</span> Plotting and exporting data</h2>
-<p>One of the most useful and important parts of any data analysis is plotting data and <a href="visualisation.html" class="quarto-xref"><span>Chapter 7</span></a> goes into detail. But to give you an example, we’ll use the <code>ggplot2</code> package as an introduction to automating a task in code, and as a tool for understanding data.</p>
+<!-- and @sec-visualisation goes into detail -->
+<p>One of the most useful and important parts of any data analysis is plotting data. To give you an example, we’ll use the <code>ggplot2</code> package as an introduction to automating a task in code, and as a tool for understanding data.</p>
 <p><code>ggplot2</code> implements the <em>grammar of graphics</em>, for describing and building graphs. The idea being that we construct a plot in the following way:</p>
 <ol type="1">
 <li>Call the <code>ggplot()</code> function to create a graph.</li>
@@ -1043,7 +1038,7 @@ will be 12 years old.</code></pre>
 <p>Note that <code>glue</code> evaluates the expression <code>age+1</code>.</p>
 </div>
 </div>
-<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-03-26.csv. The date in the filename is the date I built this book (2024-03-26)</p>
+<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-03-27.csv. The date in the filename is the date I built this book (2024-03-27)</p>
 </section>
 <section id="ggsave" class="level3" data-number="3.12.2">
 <h3 data-number="3.12.2" class="anchored" data-anchor-id="ggsave"><span class="header-section-number">3.12.2</span> ggsave</h3>
@@ -1423,12 +1418,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
