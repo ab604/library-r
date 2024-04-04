@@ -266,10 +266,11 @@ div.csl-indent {
   </ul></li>
   <li><a href="#sec-help-and-resources" id="toc-sec-help-and-resources" class="nav-link" data-scroll-target="#sec-help-and-resources"><span class="header-section-number">3.13</span> Help and resources</a>
   <ul class="collapse">
-  <li><a href="#using-to-access-r-function-help-pages" id="toc-using-to-access-r-function-help-pages" class="nav-link" data-scroll-target="#using-to-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</a></li>
-  <li><a href="#using-google-to-find-r-answers" id="toc-using-google-to-find-r-answers" class="nav-link" data-scroll-target="#using-google-to-find-r-answers"><span class="header-section-number">3.13.2</span> Using Google to find R answers</a></li>
-  <li><a href="#asking-questions" id="toc-asking-questions" class="nav-link" data-scroll-target="#asking-questions"><span class="header-section-number">3.13.3</span> Asking questions</a></li>
-  <li><a href="#sec-other-resources" id="toc-sec-other-resources" class="nav-link" data-scroll-target="#sec-other-resources"><span class="header-section-number">3.13.4</span> News, tutorials other online books</a></li>
+  <li><a href="#sec-access-r-function-help-pages" id="toc-sec-access-r-function-help-pages" class="nav-link" data-scroll-target="#sec-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</a></li>
+  <li><a href="#ai-assistance" id="toc-ai-assistance" class="nav-link" data-scroll-target="#ai-assistance"><span class="header-section-number">3.13.2</span> AI assistance</a></li>
+  <li><a href="#sec-using-google-to-find-r-answers" id="toc-sec-using-google-to-find-r-answers" class="nav-link" data-scroll-target="#sec-using-google-to-find-r-answers"><span class="header-section-number">3.13.3</span> Using Google to find R answers</a></li>
+  <li><a href="#sec-asking-questions" id="toc-sec-asking-questions" class="nav-link" data-scroll-target="#sec-asking-questions"><span class="header-section-number">3.13.4</span> Asking questions</a></li>
+  <li><a href="#sec-other-resources" id="toc-sec-other-resources" class="nav-link" data-scroll-target="#sec-other-resources"><span class="header-section-number">3.13.5</span> News, tutorials other online books</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1055,27 +1056,67 @@ will be 12 years old.</code></pre>
 </section>
 <section id="sec-help-and-resources" class="level2" data-number="3.13">
 <h2 data-number="3.13" class="anchored" data-anchor-id="sec-help-and-resources"><span class="header-section-number">3.13</span> Help and resources</h2>
-<section id="using-to-access-r-function-help-pages" class="level3" data-number="3.13.1">
-<h3 data-number="3.13.1" class="anchored" data-anchor-id="using-to-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</h3>
+<section id="sec-access-r-function-help-pages" class="level3" data-number="3.13.1">
+<h3 data-number="3.13.1" class="anchored" data-anchor-id="sec-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</h3>
 <p>If you need help with a specific R function, let’s say <code>barplot()</code>, you can type</p>
 <p>the function name without round brackets, with a question mark at the start:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>?barplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="using-google-to-find-r-answers" class="level3" data-number="3.13.2">
-<h3 data-number="3.13.2" class="anchored" data-anchor-id="using-google-to-find-r-answers"><span class="header-section-number">3.13.2</span> Using Google to find R answers</h3>
+<section id="ai-assistance" class="level3" data-number="3.13.2">
+<h3 data-number="3.13.2" class="anchored" data-anchor-id="ai-assistance"><span class="header-section-number">3.13.2</span> AI assistance</h3>
+<p>The introduction of <a href="https://openai.com/research/gpt-4">GPT-4</a> and other powerful large language models such as <a href="https://www.anthropic.com/">Claude 3</a> and <a href="https://deepmind.google/technologies/gemini/#introduction">Gemini 1.5</a> since 2023 has meant that these tools are now some of the best ways to get help. with coding At the time of writing I’m still a novice in using them, but I highly recommend Ethan Mollick’s work as a good place to start. He’s written posts on <a href="https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting">writing prompts</a> and has resources such as the <a href="https://www.moreusefulthings.com/prompts">prompt library</a>.</p>
+<p>For example,<a href="#fig-claude-1" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> shows how I prompted Claude 3 to help me reproduce the example I’d already created in <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 4.4.1</span></a>.</p>
+<ol type="1">
+<li>First I told Claude who I wanted it to be: Belle, an R programmer who uses the tidyverse.</li>
+<li>Then I asked my new assistant Belle what I wanted.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-claude-1" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-claude-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/claude-part-1-2024-04-04.png" class="img-fluid figure-img" style="width:50.0%" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-claude-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.15: An example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length &gt;= 50 mm.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Belle gave me a very good answer, but used the pipe operator <code>%&gt;%</code> from <code>magrittr</code> rather than the native R pipe <code>|&gt;</code> (<a href="data-wrangling-1.html#sec-the-pipe" class="quarto-xref"><span>Section 4.2</span></a>). So I asked Belle to change it.</p>
+<p>Belle gets it perfect second time, <a href="#fig-claude-2" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-claude-2" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-claude-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/claude-part-2-2024-04-04.png" class="img-fluid figure-img" style="width:50.0%" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-claude-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.16: An example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length &gt;= 50 mm using the native R pipe operator.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Obviously, user beware! I know this is correct, but you’ll need to check any outputs you get. But hopefully you can see how powerful this is. Another use case would be to input you code and ask your assistant to draft you some documentation. And so on.</p>
+</section>
+<section id="sec-using-google-to-find-r-answers" class="level3" data-number="3.13.3">
+<h3 data-number="3.13.3" class="anchored" data-anchor-id="sec-using-google-to-find-r-answers"><span class="header-section-number">3.13.3</span> Using Google to find R answers</h3>
 <p>A Google or internet search “R &lt;task&gt;” will often either send you to the appropriate package documentation or a helpful forum question that someone else already asked, such as the <a href="https://community.rstudio.com/">RStudio Community</a> or <a href="http://stackoverflow.com/questions/tagged/r">Stack Overflow</a>.</p>
 </section>
-<section id="asking-questions" class="level3" data-number="3.13.3">
-<h3 data-number="3.13.3" class="anchored" data-anchor-id="asking-questions"><span class="header-section-number">3.13.3</span> Asking questions</h3>
+<section id="sec-asking-questions" class="level3" data-number="3.13.4">
+<h3 data-number="3.13.4" class="anchored" data-anchor-id="sec-asking-questions"><span class="header-section-number">3.13.4</span> Asking questions</h3>
 <p>As well as knowing <a href="https://www.tidyverse.org/help/#where-to-ask">where to ask</a>, the key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.</p>
 <p>Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem.</p>
 <p>If possible, try to reduce what doesn’t work to a simple <em>reproducible example</em> otherwise known as a <em>reprex</em>.</p>
 <p>For more information on how to write a reproducible example see <a href="https://www.tidyverse.org/help/#reprex">this article</a> using the <code>reprex</code> package.</p>
 </section>
-<section id="sec-other-resources" class="level3" data-number="3.13.4">
-<h3 data-number="3.13.4" class="anchored" data-anchor-id="sec-other-resources"><span class="header-section-number">3.13.4</span> News, tutorials other online books</h3>
+<section id="sec-other-resources" class="level3" data-number="3.13.5">
+<h3 data-number="3.13.5" class="anchored" data-anchor-id="sec-other-resources"><span class="header-section-number">3.13.5</span> News, tutorials other online books</h3>
 <p><a href="https://rweekly.org/">R weekly</a> provides a round-up of what’s new in R, including packages and tutorials.</p>
 <p>The creators of RStudio have <a href="https://posit.cloud/learn/recipes">Posit recipes</a> to illustrate how to do common data tasks.</p>
 <p><a href="https://www.bigbookofr.com/">The big book of R</a> contains links to many on-line books for learning R across various subject areas.</p>

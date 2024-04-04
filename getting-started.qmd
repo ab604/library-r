@@ -764,7 +764,7 @@ ggsave(
 
 ## Help and resources {#sec-help-and-resources}
 
-### Using `?` to access R function help pages
+### Using `?` to access R function help pages {#sec-access-r-function-help-pages}
 
 If you need help with a specific R function, let's say `barplot()`, you can type
 
@@ -776,11 +776,50 @@ the function name without round brackets, with a question mark at the start:
 ?barplot
 ```
 
-### Using Google to find R answers
+### AI assistance
+
+The introduction of [GPT-4](https://openai.com/research/gpt-4) and other powerful large language models such as [Claude 3](https://www.anthropic.com/) and [Gemini 1.5](https://deepmind.google/technologies/gemini/#introduction) since 2023 has meant that these tools are now some of the best ways to get help. with coding At the time of writing I'm still a novice in using them, but I highly recommend Ethan Mollick's work as a good place to start. He's written posts on [writing prompts](https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting) and has resources such as the [prompt library](https://www.moreusefulthings.com/prompts).
+
+For example,@fig-claude-1 shows how I prompted Claude 3 to help me reproduce the example I'd already created in @sec-filter-rows-with-filter.
+
+1.  First I told Claude who I wanted it to be: Belle, an R programmer who uses the tidyverse.
+2.  Then I asked my new assistant Belle what I wanted.
+
+```{r}
+#| label: fig-claude-1 
+#| echo: false
+#| out-width: 50%
+#| fig-cap: |
+#|   An example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.
+#| fig-alt: |
+#|  A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.
+
+knitr::include_graphics("img/claude-part-1-2024-04-04.png", dpi = 270)
+```
+
+Belle gave me a very good answer, but used the pipe operator `%>%` from `magrittr` rather than the native R pipe `|>` (@sec-the-pipe). So I asked Belle to change it.
+
+Belle gets it perfect second time, @fig-claude-2.
+
+```{r}
+#| label: fig-claude-2 
+#| echo: false
+#| out-width: 50%
+#| fig-cap: |
+#|   An example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.
+#| fig-alt: |
+#|  A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.
+
+knitr::include_graphics("img/claude-part-2-2024-04-04.png", dpi = 270)
+```
+
+Obviously, user beware! I know this is correct, but you'll need to check any outputs you get. But hopefully you can see how powerful this is. Another use case would be to input you code and ask your assistant to draft you some documentation. And so on.
+
+### Using Google to find R answers {#sec-using-google-to-find-r-answers}
 
 A Google or internet search "R \<task\>" will often either send you to the appropriate package documentation or a helpful forum question that someone else already asked, such as the [RStudio Community](https://community.rstudio.com/) or [Stack Overflow](http://stackoverflow.com/questions/tagged/r).
 
-### Asking questions
+### Asking questions {#sec-asking-questions}
 
 As well as knowing [where to ask](https://www.tidyverse.org/help/#where-to-ask), the key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.
 
