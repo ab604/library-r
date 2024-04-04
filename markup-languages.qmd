@@ -113,6 +113,34 @@ As someone who started with LaTeX and then moved to R Markdown I've found it fai
 
 There's nothing wrong with sticking with R Markdown if you prefer it or feel it's too much effort to change. But if you have exisiting R Markdown files and want to switch, you'll find it's fairly easy to convert them into Quarto markdown and may find long term benefits.
 
+We can create a new document in R Studio from the `File` menu and then `New File` displays all the default file types available as shown in @fig-new-doc. Here I highlighted a new `Quarto Document`.  
+
+```{r}
+#| label: fig-new-doc 
+#| echo: false
+#| out-width: 80%
+#| fig-cap: |
+#|   Creating a new document in R Studio from the File menu
+#| fig-alt: |
+#|  A screenshot of the new document menu opened from the file menu in R Studio
+
+knitr::include_graphics("img/new-document-rstudio.png", dpi = 270)
+```
+
+Selecting `Quarto Document` opens a dialogue box as shown in @fig-new-quarto-doc, giving us the opportunity to set various features such as the default output document format or whether we want to create a document or presentation. This can all be changed later, so don't worry if you change your mind. 
+
+```{r}
+#| label: fig-new-quarto-doc 
+#| echo: false
+#| out-width: 80%
+#| fig-cap: |
+#|   Quarto Document dialogue box
+#| fig-alt: |
+#|  A screenshot of the new Quarto Document dialogue box in R Studio
+
+knitr::include_graphics("img/new-quarto-document-rstudio.png", dpi = 270)
+```
+
 ## Publishing outputs with Pandoc {#sec-pandoc}
 
 [Pandoc](https://pandoc.org/) created in 2006 by John MacFarlane to convert one markup format to another, including HTML, XML, MS Word, PDF and all the various flavours of markdown.
