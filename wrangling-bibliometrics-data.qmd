@@ -41,7 +41,7 @@ I'm not going to be able to cover every step, For some of these steps we need to
 
 I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www.scopus.com/search/form.uri?display=advanced) to generate a report for 31 days prior to 2024-03-13 using the following query string:
 
-```         
+```{markdown}        
 AF-ID("University of Southampton" 60025225) AND PUBYEAR > 2017 AND PUBYEAR < 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)
 ```
 
@@ -112,7 +112,7 @@ scopus_dat |>
   pull(Affiliations)  
 ```
 
-To be tidy, each semi-colon separated value should be in their own column. So we need to tidy the data (@sec-tidy-data, @fig-tidy-data ).
+To be tidy, each semi-colon separated value should be in their own column. So we need to tidy the data (@sec-tidy-data, @fig-tidy-data).
 
 ## Tidying the Scopus data
 
@@ -141,6 +141,18 @@ scopus_dat_wide <- scopus_dat |>
                        names_sep = "_", 
                        too_few = "align_start")
 ```
+
+```{r}
+# Split the "Affiliations" column by ";" and create new columns
+data <- scopus_dat %>%
+  mutate(Affiliations = str_split(Affiliations, ";\\s*")) %>%
+  unnest_wider(Affiliations, names_sep = "_") %>%
+  mutate(across(starts_with("Affiliation"), trimws))
+
+# View the updated dataset
+print(data)
+```
+
 
 I'll leave it for you to examine, but you should see we have 311 Affiliation variables now, many of the contain missing values `NA`. We still have 483 rows, but 330 variables in total.
 

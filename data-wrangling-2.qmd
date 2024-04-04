@@ -1,3 +1,215 @@
 # Data wrangling II {#sec-data-wrangling-ii}
 
-Joins and working with strings. To be completed.
+```{r}
+#| label: dw2-set-up
+#| echo: false
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+## Joins
+
+[R4DS joins](https://r4ds.hadley.nz/joins) gives some detailed examples of joining
+tables, but here we'll look at some simpler examples to try build our mental 
+model.
+
+There are two types of join we often encounter:
+
+1. Joins that create new variables in one table by matching observations in another: these are *mutating* joins as per tidyverse verb `mutate` @sec-creating-new-columns-with-mutate.
+2. Joins that *filter* the observations from one table against another, as per 
+tidyverse verb `filter` @sec-filter-rows-with-filter.
+
+## Mutating joins
+
+```{r}
+# Create unique id for each penguin
+numbered_penguins <- penguins |> 
+  mutate(penguin_number = row_number())
+
+# Split the dataset into two tables
+penguins_physical <- numbered_penguins |>
+  select(penguin_number,species, island, bill_length_mm, 
+         bill_depth_mm, flipper_length_mm, body_mass_g)
+
+penguins_info <- numbered_penguins |>
+  select(penguin_number,species, island, year, sex)
+```
+
+```{r}
+# Join the two tables back together as a left join
+penguins_joined <- penguins_physical |>
+  left_join(penguins_info)
+
+# Print the joined dataset
+glimpse(penguins_joined)
+```
+
+## Filtering join
+
+```{r}
+# Create 
+penguins_info_filt <- penguins_info |>
+  filter(year == 2008)
+
+# Perform a filtering join
+penguins_filtered <- penguins_physical |>
+  semi_join(penguins_info_filt)
+
+# Print the filtered dataset
+glimpse(penguins_filtered)
+```
+
+## Strings
+
+```{r}
+cat_names <- c("Whiskers", "Fluffy", "Mittens", "Socks", "Tiger", "Smokey", "Gizmo", "Oreo", "Luna", "Oliver", "Leo", "Milo", "Charlie", "Simba", "Nala", "Felix", "Garfield", "Tigger", "Chloe", "Bella")
+
+words <- c(
+  "abounding",
+  "astounding",
+  "confounding",
+  "resounding",
+  "surrounding",
+  "grounding",
+  "founding",
+  "pounding",
+  "rounding",
+  "sounding",
+  "bounding",
+  "hounding",
+  "mounding",
+  "wounding",
+  "compounding",
+  "expounding",
+  "propounding",
+  "rebounding",
+  "unbounding",
+  "floundering"
+)
+
+str_view(words,"ding")
+
+str_view(words,"bou|rr|ding")
+
+str_detect(cat_names,"[isk]") # Find names with i,s or k
+
+str_count(cat_names,"[isk]")
+
+str_replace(cat_names,"[isk]","-")
+str_replace_all(cat_names,"[isk]","-")
+```
+
+```{r}
+cat_tibble <- tibble(
+  cat_id = str_c("<", cat_names, ">",
+                 sample(c("-M_","-F_"), 
+                        size = length(cat_names), 
+                      replace = TRUE),  
+               sample(3:11, size = length(cat_names), 
+                      replace = TRUE))
+)
+
+cat_tibble
+
+cat_tibble |> 
+  separate_wider_regex(
+    cat_id,
+    patterns = c("<", 
+      name = "[A-Za-z]+", ">-", 
+      sex = ".","_",
+      age = "[0-9]+")
+  )
+```
+```{r}
+#| echo: false
+#| eval: false
+
+library(tibble)
+library(tibble)
+
+cat_dat <- tibble(
+  name = c(
+    "Whiskers", "Mittens", "Fluffy", "Tigger", "Smokey",
+    "Oreo", "Gizmo", "Luna", "Charlie", "Max",
+    "Leo", "Lucy", "Bella", "Simba", "Nala",
+    "Oscar", "Milo", "Kitty", "Felix", "Loki"
+  ),
+  age = sample(1:15, size = 20, replace = TRUE),
+  sex = sample(c("Male", "Female"), size = 20, replace = TRUE),
+  street = sample(
+    c(
+      "Highfield Lane",
+      "Upper Shirley Avenue",
+      "Sherborne Way",
+      "Oxford Street",
+      "Bedford Square"
+    ),
+    size = 20,
+    replace = TRUE
+  ),
+  eye_color = sample(
+    c("Blue", "Green", "Yellow", "Amber"),
+    size = 20,
+    replace = TRUE
+  ),
+  breed = sample(
+    c(
+      "Classic Tabby",
+      "Cornish Rex",
+      "Abyssinian",
+      "Persian",
+      "Bengal",
+      "Russian Blue"
+    ),
+    size = 20,
+    replace = TRUE
+  )
+)
+
+
+
+little_dog_names <- c(
+  "Peanut",
+  "Gizmo",
+  "Mochi",
+  "Ziggy",
+  "Peppa",
+  "Taco",
+  "Biscuit",
+  "Pixie",
+  "Noodle",
+  "Jellybean"
+)
+
+dog_tibble <- tibble(
+  dog_id = str_c("[", little_dog_names, "]",
+                 sample(c(" M "," F "), 
+                        size = length(little_dog_names), 
+                      replace = TRUE),  
+               sample(3:11, size = length(little_dog_names), 
+                      replace = TRUE)))
+
+dog_tibble
+
+dogs <- dog_tibble |> 
+  separate_wider_regex(
+    dog_id,
+    patterns = c("\\[", 
+      name = "[A-Za-z]+", "\\] ", 
+      sex = "."," ",
+      age = "[0-9]+")
+  )
+
+# Extra credit count the number of dogs by age
+dogs |> 
+  group_by(age) |> 
+  summarise(n_dogs = n()) |> 
+  arrange(age)
+
+# Then filter the dogs with the most common 8.
+dogs |> 
+  filter(age == 8)
+```
+

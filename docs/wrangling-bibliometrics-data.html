@@ -283,7 +283,9 @@ Summary
 </div>
 <p>I’m not going to be able to cover every step, For some of these steps we need to create our own tables of data e.g a table of department codes or open access codes, as well as download pre-existing data.</p>
 <p>I downloaded some data as a <code>csv</code> file from <a href="https://www.scopus.com/search/form.uri?display=advanced">Scopus Advanced Search</a> to generate a report for 31 days prior to 2024-03-13 using the following query string:</p>
-<pre><code>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>I’ll read it in directly from the repository for this book, and use <code>glimpse()</code> to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, the title of each publication is in the <code>Title</code> column.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Pure csv file</span></span>
@@ -597,7 +599,7 @@ Listing&nbsp;6.1: Slice and pull the first four Affiliation values
 [4] "School of Ocean and Earth Sciences, National Oceanography Centre Southampton, University of Southampton, Southampton, SO14 3ZH, United Kingdom; Université Paris-Saclay, INRAE, AgroParisTech, UMR ECOSYS, Palaiseau, 91120, France; Jacobs, Bristol, BS2 0ZX, United Kingdom; School of Science, University of Waikato, Tauranga, 3110, New Zealand; Environmental Research Institute, University of Waikato, Hamilton, 3240, New Zealand"</code></pre>
 </div>
 </div>
-<p>To be tidy, each semi-colon separated value should be in their own column. So we need to tidy the data (<a href="getting-started.html#sec-tidy-data" class="quarto-xref"><span>Section 3.7</span></a>, <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a> ).</p>
+<p>To be tidy, each semi-colon separated value should be in their own column. So we need to tidy the data (<a href="getting-started.html#sec-tidy-data" class="quarto-xref"><span>Section 3.7</span></a>, <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>).</p>
 </section>
 <section id="tidying-the-scopus-data" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="tidying-the-scopus-data"><span class="header-section-number">6.2</span> Tidying the Scopus data</h2>
@@ -627,9 +629,41 @@ Listing&nbsp;6.2: Separating the Affiliation values in <code>scopus_dat</code> i
 </figure>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the "Affiliations" column by ";" and create new columns</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> scopus_dat <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Affiliations =</span> <span class="fu">str_split</span>(Affiliations, <span class="st">";</span><span class="sc">\\</span><span class="st">s*"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(Affiliations, <span class="at">names_sep =</span> <span class="st">"_"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"Affiliation"</span>), trimws))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View the updated dataset</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 483 × 330
+   Authors   `Author full names` `Author(s) ID` Title  Year `Source title` DOI  
+   &lt;chr&gt;     &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;
+ 1 Liu Z.; … Liu, Zhen (5722060… 57220604023; … Mult…  2024 Spectrochimic… 10.1…
+ 2 Filinger… Filingeri, Davide … 55413673600; … Ther…  2024 Journal of Ph… 10.1…
+ 3 Festa O.… Festa, Oscar (5735… 57357121400; … Comp…  2024 Ocean Enginee… 10.1…
+ 4 Chirol C… Chirol, C. (571899… 57189933520; … Cree…  2024 Science of th… 10.1…
+ 5 Stoodley… Stoodley, Paul (70… 7003908836; 5… Bioe…  2024 Biofilm        10.1…
+ 6 Tong W.;… Tong, Weihao (5733… 57337088600; … Inve…  2024 Communication… 10.1…
+ 7 Men J.; … Men, Jianan (58093… 58093849400; … The …  2024 Environmental… 10.1…
+ 8 Dunn A.;… Dunn, Abby (575461… 57546197500; … Inve…  2024 Contemporary … 10.1…
+ 9 Walker N… Walker, N.C. (5721… 57218377097; … A ma…  2024 Journal of Th… 10.1…
+10 Arcanjo … Arcanjo, Bruno (57… 57289892800; … Aggr…  2024 IEEE Robotics… 10.1…
+# ℹ 473 more rows
+# ℹ 323 more variables: Link &lt;chr&gt;, Affiliations_1 &lt;chr&gt;, Affiliations_2 &lt;chr&gt;,
+#   Affiliations_3 &lt;chr&gt;, Affiliations_4 &lt;chr&gt;, Affiliations_5 &lt;chr&gt;,
+#   Affiliations_6 &lt;chr&gt;, Affiliations_7 &lt;chr&gt;, Affiliations_8 &lt;chr&gt;,
+#   Affiliations_9 &lt;chr&gt;, Affiliations_10 &lt;chr&gt;, Affiliations_11 &lt;chr&gt;,
+#   Affiliations_12 &lt;chr&gt;, Affiliations_13 &lt;chr&gt;, Affiliations_14 &lt;chr&gt;,
+#   Affiliations_15 &lt;chr&gt;, Affiliations_16 &lt;chr&gt;, Affiliations_17 &lt;chr&gt;, …</code></pre>
+</div>
+</div>
 <p>I’ll leave it for you to examine, but you should see we have 311 Affiliation variables now, many of the contain missing values <code>NA</code>. We still have 483 rows, but 330 variables in total.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scopus_dat_wide) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scopus_dat_wide) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li>How do we get rid of all those missing values? We can fix that by changing the shape of the data to long with <code>pivot_longer()</code> and dropping any <code>Affiliation</code> values that are <code>NA</code>.</li>
@@ -658,32 +692,32 @@ Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> i
 <li>But we’re only interested in the University of Southampton affiliations, so many of these rows aren’t of use to us.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(scopus_dat_long)</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>scopus_dat_long_soton <span class="ot">&lt;-</span> scopus_dat_long <span class="sc">|&gt;</span> </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Department,<span class="st">"Southampton"</span>))</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#scopus_dat_long_other &lt;-  scopus_dat_long |&gt; </span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter(!str_detect(Department,"Southampton"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(scopus_dat_long)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>scopus_dat_long_soton <span class="ot">&lt;-</span> scopus_dat_long <span class="sc">|&gt;</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Department,<span class="st">"Southampton"</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#scopus_dat_long_other &lt;-  scopus_dat_long |&gt; </span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter(!str_detect(Department,"Southampton"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="web-of-science" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="web-of-science"><span class="header-section-number">6.3</span> Web of science</h2>
 <p><code>https://www.webofscience.com/wos/woscc/summary/1d7d2706-f966-4c7c-8cbd-85de6e118dc2-d8d761f7/relevance/1</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dat_join &lt;- scopus_dat_long_soton |&gt; left_join(wos_dat, by = "DOI")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dat_join &lt;- scopus_dat_long_soton |&gt; left_join(wos_dat, by = "DOI")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>departments <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/faculty-and-department-codes-2024-03-18.csv"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>dept_names <span class="ot">&lt;-</span> departments <span class="sc">|&gt;</span> <span class="fu">pull</span>(department_name) <span class="sc">|&gt;</span> glue<span class="sc">::</span><span class="fu">glue_collapse</span>(<span class="at">sep =</span> <span class="st">"|"</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dept_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>departments <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/faculty-and-department-codes-2024-03-18.csv"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>dept_names <span class="ot">&lt;-</span> departments <span class="sc">|&gt;</span> <span class="fu">pull</span>(department_name) <span class="sc">|&gt;</span> glue<span class="sc">::</span><span class="fu">glue_collapse</span>(<span class="at">sep =</span> <span class="st">"|"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dept_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> 'glue' chr "Archaeology|Digital Humanities|English|Film|History|Languages, Cultures and Linguistics|Music|Philosophy|Winche"| __truncated__</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>soton_depts <span class="ot">&lt;-</span> scopus_dat_long_soton <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">department_name =</span> <span class="fu">str_extract</span>(Department,dept_names))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>soton_depts <span class="ot">&lt;-</span> scopus_dat_long_soton <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">department_name =</span> <span class="fu">str_extract</span>(Department,dept_names))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

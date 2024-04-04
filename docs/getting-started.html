@@ -1067,15 +1067,20 @@ will be 12 years old.</code></pre>
 <section id="ai-assistance" class="level3" data-number="3.13.2">
 <h3 data-number="3.13.2" class="anchored" data-anchor-id="ai-assistance"><span class="header-section-number">3.13.2</span> AI assistance</h3>
 <p>The introduction of <a href="https://openai.com/research/gpt-4">GPT-4</a> and other powerful large language models such as <a href="https://www.anthropic.com/">Claude 3</a> and <a href="https://deepmind.google/technologies/gemini/#introduction">Gemini 1.5</a> since 2023 has meant that these tools are now some of the best ways to get help. with coding.</p>
-<p>At the time of writing I’m still a novice in using them, but I highly recommend Ethan Mollick’s work as a good place to start. He’s written posts on <a href="https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting">writing prompts</a> and has resources such as the <a href="https://www.moreusefulthings.com/prompts">prompt library</a>.</p>
+<p>At the time of writing I’m still a novice in using them, but I highly recommend Ethan Mollick’s work as a good place to start. He’s written posts on <a href="https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting">writing prompts</a> and has resources such as the <a href="https://www.moreusefulthings.com/prompts">prompt library</a> for Open AI’s ChatGPT.</p>
+<p>I started with Claude 3 from Anthrophic. One reason I chose Claude is because of its <a href="https://docs.anthropic.com/claude/docs/intro-to-claude">documentation</a> and <a href="https://docs.anthropic.com/claude/prompt-library">prompt library</a>.</p>
 <p>For example, <a href="#fig-claude-1" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> shows how I prompted Claude 3 to help me reproduce the example I’d already created in <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 4.4.1</span></a>.</p>
 <ol type="1">
 <li><p>First I told Claude who I wanted it to be:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>You are an R programmer called Belle and you provide guidance on writing </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>tidyverse code in R. Output should be commented code snippets.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>You are an R programmer called Belle and you provide guidance on writing </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>tidyverse code in R. Output should be commented code snippets.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
 <li><p>Then I asked my new assistant Belle what I wanted:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>Can you show me how filter the palmer penguins dataset for penguins </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>with a bill length greater or equal to 50 mm?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>Can you show me how filter the palmer penguins dataset for penguins </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>with a bill length greater or equal to 50 mm?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">

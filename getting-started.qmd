@@ -780,20 +780,22 @@ the function name without round brackets, with a question mark at the start:
 
 The introduction of [GPT-4](https://openai.com/research/gpt-4) and other powerful large language models such as [Claude 3](https://www.anthropic.com/) and [Gemini 1.5](https://deepmind.google/technologies/gemini/#introduction) since 2023 has meant that these tools are now some of the best ways to get help. with coding.
 
-At the time of writing I'm still a novice in using them, but I highly recommend Ethan Mollick's work as a good place to start. He's written posts on [writing prompts](https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting) and has resources such as the [prompt library](https://www.moreusefulthings.com/prompts).
+At the time of writing I'm still a novice in using them, but I highly recommend Ethan Mollick's work as a good place to start. He's written posts on [writing prompts](https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting) and has resources such as the [prompt library](https://www.moreusefulthings.com/prompts) for Open AI's ChatGPT.
+
+I started with Claude 3 from Anthrophic. One reason I chose Claude is because of its [documentation](https://docs.anthropic.com/claude/docs/intro-to-claude) and [prompt library](https://docs.anthropic.com/claude/prompt-library).
 
 For example, @fig-claude-1 shows how I prompted Claude 3 to help me reproduce the example I'd already created in @sec-filter-rows-with-filter.
 
 1.  First I told Claude who I wanted it to be:
 
-    ``` markdown
+    ```{markdown}
     You are an R programmer called Belle and you provide guidance on writing 
     tidyverse code in R. Output should be commented code snippets.
     ```
 
 2.  Then I asked my new assistant Belle what I wanted:
 
-    ``` markdown
+    ```{markdown}
     Can you show me how filter the palmer penguins dataset for penguins 
     with a bill length greater or equal to 50 mm?
     ```
