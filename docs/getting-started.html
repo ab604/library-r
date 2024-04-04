@@ -1066,7 +1066,8 @@ will be 12 years old.</code></pre>
 </section>
 <section id="ai-assistance" class="level3" data-number="3.13.2">
 <h3 data-number="3.13.2" class="anchored" data-anchor-id="ai-assistance"><span class="header-section-number">3.13.2</span> AI assistance</h3>
-<p>The introduction of <a href="https://openai.com/research/gpt-4">GPT-4</a> and other powerful large language models such as <a href="https://www.anthropic.com/">Claude 3</a> and <a href="https://deepmind.google/technologies/gemini/#introduction">Gemini 1.5</a> since 2023 has meant that these tools are now some of the best ways to get help. with coding At the time of writing I’m still a novice in using them, but I highly recommend Ethan Mollick’s work as a good place to start. He’s written posts on <a href="https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting">writing prompts</a> and has resources such as the <a href="https://www.moreusefulthings.com/prompts">prompt library</a>.</p>
+<p>The introduction of <a href="https://openai.com/research/gpt-4">GPT-4</a> and other powerful large language models such as <a href="https://www.anthropic.com/">Claude 3</a> and <a href="https://deepmind.google/technologies/gemini/#introduction">Gemini 1.5</a> since 2023 has meant that these tools are now some of the best ways to get help. with coding.</p>
+<p>At the time of writing I’m still a novice in using them, but I highly recommend Ethan Mollick’s work as a good place to start. He’s written posts on <a href="https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting">writing prompts</a> and has resources such as the <a href="https://www.moreusefulthings.com/prompts">prompt library</a>.</p>
 <p>For example, <a href="#fig-claude-1" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> shows how I prompted Claude 3 to help me reproduce the example I’d already created in <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 4.4.1</span></a>.</p>
 <ol type="1">
 <li><p>First I told Claude who I wanted it to be:</p>
@@ -1090,7 +1091,7 @@ Figure&nbsp;3.15: An example of using Claude 3 to create a R assistant that then
 </div>
 </div>
 </div>
-<p>Belle gave me a very good answer, but used the pipe operator <code>%&gt;%</code> from <code>magrittr</code> rather than the native R pipe <code>|&gt;</code> (<a href="data-wrangling-1.html#sec-the-pipe" class="quarto-xref"><span>Section 4.2</span></a>). So I asked Belle to change it. (No idea why I’m saying please?!)</p>
+<p>Belle gave me a very good answer, but used the pipe operator <code>%&gt;%</code> from <code>magrittr</code> rather than the native R pipe <code>|&gt;</code> (<a href="data-wrangling-1.html#sec-the-pipe" class="quarto-xref"><span>Section 4.2</span></a>). So I asked Belle to change it. (“Can you” and “please” are probably redundant, but in my learning curve I’ve started by treating the models as people!)</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Can you change this to use the native R pipe please?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Belle gets it perfect second time, <a href="#fig-claude-2" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>.</p>
 <div class="cell">
