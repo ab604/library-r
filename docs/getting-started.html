@@ -1069,15 +1069,19 @@ will be 12 years old.</code></pre>
 <p>The introduction of <a href="https://openai.com/research/gpt-4">GPT-4</a> and other powerful large language models such as <a href="https://www.anthropic.com/">Claude 3</a> and <a href="https://deepmind.google/technologies/gemini/#introduction">Gemini 1.5</a> since 2023 has meant that these tools are now some of the best ways to get help. with coding At the time of writing I’m still a novice in using them, but I highly recommend Ethan Mollick’s work as a good place to start. He’s written posts on <a href="https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting">writing prompts</a> and has resources such as the <a href="https://www.moreusefulthings.com/prompts">prompt library</a>.</p>
 <p>For example,<a href="#fig-claude-1" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> shows how I prompted Claude 3 to help me reproduce the example I’d already created in <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 4.4.1</span></a>.</p>
 <ol type="1">
-<li>First I told Claude who I wanted it to be: Belle, an R programmer who uses the tidyverse.</li>
-<li>Then I asked my new assistant Belle what I wanted.</li>
+<li><p>First I told Claude who I wanted it to be:</p>
+<pre><code>You are an R programmer called Belle and you provide guidance on writing 
+tidyverse code in R. Output should be commented code snippets.</code></pre></li>
+<li><p>Then I asked my new assistant Belle what I wanted:</p>
+<pre><code>Can you show me how filter the palmer penguins dataset for penguins 
+with a bill length greater or equal to 50 mm?</code></pre></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-claude-1" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-claude-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/claude-part-1-2024-04-04.png" class="img-fluid figure-img" style="width:50.0%" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
+<img src="img/claude-part-1-2024-04-04.png" class="img-fluid figure-img" style="width:100.0%" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-claude-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.15: An example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length &gt;= 50 mm.
@@ -1086,14 +1090,15 @@ Figure&nbsp;3.15: An example of using Claude 3 to create a R assistant that then
 </div>
 </div>
 </div>
-<p>Belle gave me a very good answer, but used the pipe operator <code>%&gt;%</code> from <code>magrittr</code> rather than the native R pipe <code>|&gt;</code> (<a href="data-wrangling-1.html#sec-the-pipe" class="quarto-xref"><span>Section 4.2</span></a>). So I asked Belle to change it.</p>
+<p>Belle gave me a very good answer, but used the pipe operator <code>%&gt;%</code> from <code>magrittr</code> rather than the native R pipe <code>|&gt;</code> (<a href="data-wrangling-1.html#sec-the-pipe" class="quarto-xref"><span>Section 4.2</span></a>). So I asked Belle to change it. (No idea why I’m saying please?!)</p>
+<pre><code>Can you change this to use the native R pipe please?</code></pre>
 <p>Belle gets it perfect second time, <a href="#fig-claude-2" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-claude-2" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-claude-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/claude-part-2-2024-04-04.png" class="img-fluid figure-img" style="width:50.0%" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
+<img src="img/claude-part-2-2024-04-04.png" class="img-fluid figure-img" style="width:100.0%" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-claude-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.16: An example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length &gt;= 50 mm using the native R pipe operator.

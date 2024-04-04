@@ -782,13 +782,24 @@ The introduction of [GPT-4](https://openai.com/research/gpt-4) and other powerfu
 
 For example,@fig-claude-1 shows how I prompted Claude 3 to help me reproduce the example I'd already created in @sec-filter-rows-with-filter.
 
-1.  First I told Claude who I wanted it to be: Belle, an R programmer who uses the tidyverse.
-2.  Then I asked my new assistant Belle what I wanted.
+1.  First I told Claude who I wanted it to be:
+
+    ```         
+    You are an R programmer called Belle and you provide guidance on writing 
+    tidyverse code in R. Output should be commented code snippets.
+    ```
+
+2.  Then I asked my new assistant Belle what I wanted:
+
+    ```         
+    Can you show me how filter the palmer penguins dataset for penguins 
+    with a bill length greater or equal to 50 mm?
+    ```
 
 ```{r}
 #| label: fig-claude-1 
 #| echo: false
-#| out-width: 50%
+#| out-width: 100%
 #| fig-cap: |
 #|   An example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.
 #| fig-alt: |
@@ -797,14 +808,18 @@ For example,@fig-claude-1 shows how I prompted Claude 3 to help me reproduce the
 knitr::include_graphics("img/claude-part-1-2024-04-04.png", dpi = 270)
 ```
 
-Belle gave me a very good answer, but used the pipe operator `%>%` from `magrittr` rather than the native R pipe `|>` (@sec-the-pipe). So I asked Belle to change it.
+Belle gave me a very good answer, but used the pipe operator `%>%` from `magrittr` rather than the native R pipe `|>` (@sec-the-pipe). So I asked Belle to change it. (No idea why I'm saying please?!)
+
+```         
+Can you change this to use the native R pipe please?
+```
 
 Belle gets it perfect second time, @fig-claude-2.
 
 ```{r}
 #| label: fig-claude-2 
 #| echo: false
-#| out-width: 50%
+#| out-width: 100%
 #| fig-cap: |
 #|   An example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.
 #| fig-alt: |
