@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#sec-what-is-markup" id="toc-sec-what-is-markup" class="nav-link active" data-scroll-target="#sec-what-is-markup"><span class="header-section-number">2.1</span> What is markup?</a></li>
   <li><a href="#sec-what-is-markdown" id="toc-sec-what-is-markdown" class="nav-link" data-scroll-target="#sec-what-is-markdown"><span class="header-section-number">2.2</span> What is markdown?</a></li>
-  <li><a href="#literate-programming" id="toc-literate-programming" class="nav-link" data-scroll-target="#literate-programming"><span class="header-section-number">2.3</span> Literate programming</a></li>
+  <li><a href="#sec-literate-prog" id="toc-sec-literate-prog" class="nav-link" data-scroll-target="#sec-literate-prog"><span class="header-section-number">2.3</span> Literate programming</a></li>
   <li><a href="#sec-markdown-flavours" id="toc-sec-markdown-flavours" class="nav-link" data-scroll-target="#sec-markdown-flavours"><span class="header-section-number">2.4</span> Different flavours of markdown</a>
   <ul class="collapse">
   <li><a href="#sec-original-markdown" id="toc-sec-original-markdown" class="nav-link" data-scroll-target="#sec-original-markdown"><span class="header-section-number">2.4.1</span> Markdown</a></li>
@@ -244,13 +244,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div id="chapter-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="" id="chapter-summary"></a>Summary
+Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -335,33 +335,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>The heading to this chapter (<a href="#sec-markup-languages" class="quarto-xref"><span>Chapter 2</span></a>) is a first level heading and this section has a second level heading (<a href="#sec-what-is-markdown" class="quarto-xref"><span>Section 2.2</span></a>). The style e.g.&nbsp;font and colour and output (a html book) is controlled by another document, a configuration file.</p>
 </section>
-<section id="literate-programming" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="literate-programming"><span class="header-section-number">2.3</span> Literate programming</h2>
-<p><a href="https://en.wikipedia.org/wiki/Literate_programming">Literate programming</a> is a concept created by Donald Knuth of</p>
+<section id="sec-literate-prog" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-literate-prog"><span class="header-section-number">2.3</span> Literate programming</h2>
+<p><a href="https://en.wikipedia.org/wiki/Literate_programming">Literate programming</a> is a concept created by Donald Knuth of mixing code and prose in the same document. The resulting document can be <em>tangled</em> to run the code and <em>weaved</em> to created a human readable document.</p>
+<p>In practice this looks like chunks of prose such as the one you are reading, mixed with chunks of code such as the one below. The R code chunk calls the in-built R constant called <code>letters</code> that contains the 26 characters of the English alphabet. Code chunks can be set in different ways, to be visible or hidden, to evaluate the code or not, and so on. Here it is set to evaluate and print the output below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>letters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+[20] "t" "u" "v" "w" "x" "y" "z"</code></pre>
+</div>
+</div>
+<p>Try <code>LETTERS</code> to see the diffence between <code>letters</code> and <code>LETTERS</code>.</p>
+<p>Literate programming is a trade-off: it’s slow and verbose, but if written well, easier to understand and amend than traditional scripts. It suits certain tasks such as teaching and report writing. Another benefit is that it’s often possible to use the same input document to create different types of output. For example, the same R Markdown document can be published as webpage, a Word document, a PDF or a PowerPoint presentation with relatively little effort.</p>
+<p>Literate programming can be done with a variety of languages, not just R, Examples of literate programming tools are <a href="https://jupyter.org/">Jupyter</a>, <a href="https://code.visualstudio.com/">VS Code</a>, <a href="https://rmarkdown.rstudio.com/">R Markdown</a> and <a href="https://quarto.org/">Quarto</a>.</p>
 </section>
 <section id="sec-markdown-flavours" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="sec-markdown-flavours"><span class="header-section-number">2.4</span> Different flavours of markdown</h2>
+<p>There are a number of different flavours of markdown. By flavour I mean they all have common aspects, but differences in functionality that have been added to each version. Here are some of the common flavours.</p>
 <section id="sec-original-markdown" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="sec-original-markdown"><span class="header-section-number">2.4.1</span> Markdown</h3>
-<p>The <a href="https://daringfireball.net/projects/markdown/">Markdown project page</a>.</p>
+<p>The original markdown was created by John Gruber in 2004. It contained the syntax for text, images, tables etc. that we saw in <a href="#sec-what-is-markdown" class="quarto-xref"><span>Section 2.2</span></a>. Details on the <a href="https://daringfireball.net/projects/markdown/">Markdown project page</a> and in the <a href="https://www.markdownguide.org/">markdown guide</a>.</p>
 </section>
 <section id="sec-github-markdown" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="sec-github-markdown"><span class="header-section-number">2.4.2</span> Github flavoured markdown</h3>
-<p><a href="https://github.github.com/gfm/">Github flavoured markdown</a></p>
+<p><a href="https://github.github.com/gfm/">Github flavoured markdown</a> is the variant used by the software development platform <a href="www.github.com">Github</a>. Amongst other things, it added code block functionality such as the <code>letters</code> code block in <a href="#sec-literate-prog" class="quarto-xref"><span>Section 2.3</span></a> and strikethrough text.</p>
 </section>
 <section id="sec-r-markdown" class="level3" data-number="2.4.3">
 <h3 data-number="2.4.3" class="anchored" data-anchor-id="sec-r-markdown"><span class="header-section-number">2.4.3</span> R Markdown</h3>
-<p><a href="https://rmarkdown.rstudio.com/index.html">RStudio R Markdown documentation</a> and <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown book</a> and <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown cookbook</a>. <a href="https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown">Stack overflow post explaining the relationshipe between R markdown knitr and pandoc</a></p>
+<p>Unsurpisingly, R Markdown is the version of markdown developed by the creators of RStudio and incorporates lots of functionality for combining markdown and R in the literate programming paradigm (<a href="#sec-literate-prog" class="quarto-xref"><span>Section 2.3</span></a>).</p>
+<p>You can find full details in the <a href="https://rmarkdown.rstudio.com/index.html">RStudio R Markdown documentation</a>, the <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown book</a> and the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown cookbook</a>.</p>
+<p>If you’re interested in more technical detail of how document creation works in R Markdown here’s a <a href="https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown">Stack overflow post explaining the relationship between R markdown knitr and pandoc</a></p>
 </section>
 <section id="sec-quarto-markdown" class="level3" data-number="2.4.4">
 <h3 data-number="2.4.4" class="anchored" data-anchor-id="sec-quarto-markdown"><span class="header-section-number">2.4.4</span> Quarto markdown</h3>
-<p><a href="https://quarto.org/">Quarto</a></p>
+<p><a href="https://quarto.org/">Quarto</a> is created by Posit, the same company that created RStudio. It builds upon R Markdown (<a href="#sec-r-markdown" class="quarto-xref"><span>Section 2.4.3</span></a>), but is designed to be used with a variety of languages and tools for creating technical documents and reports. It simplifies some of the quirks of R Markdown and is supposedly easier for creating dynamic content such as dashboards.</p>
+<p>As someone who started with LaTeX and then moved to R Markdown I’ve found it fairly straightfoward to change to Quarto and prefer it. Quarto comes bundled with RStudio from v2022.07.1, so we’ll use Quarto for our exercises.</p>
+<p>There’s nothing wrong with sticking with R Markdown if you prefer it or feel it’s too much effort to change. But if you have exisiting R Markdown files and want to switch, you’ll find it’s fairly easy to convert them into Quarto markdown and may find long term benefits.</p>
 </section>
 </section>
 <section id="sec-pandoc" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-pandoc"><span class="header-section-number">2.5</span> Publishing outputs with Pandoc</h2>
-<p><a href="https://pandoc.org/">Pandoc</a> created in 2006 by John MacFarlane to</p>
-<p>RStudio comes bundled with pandoc so there’s no need to install it separately (unlesss you want to).</p>
+<p><a href="https://pandoc.org/">Pandoc</a> created in 2006 by John MacFarlane to convert one markup format to another, including HTML, XML, MS Word, PDF and all the various flavours of markdown.</p>
+<p>As mentioned in <a href="#sec-literate-prog" class="quarto-xref"><span>Section 2.3</span></a>, it can be quite time saving to write in a single markdown language and then create the various output documents as required for yourself or your collaborators.</p>
+<p>RStudio comes bundled with pandoc so there’s no need to install it separately (unlesss you want to). Pandoc can be used independently of RStudio if you are willing to learn how to do <a href="https://jeroenjanssens.com/dsatcl/">data science at the command line</a>. Perhaps a problem for another day?!</p>
 
 
 </section>
@@ -692,7 +709,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

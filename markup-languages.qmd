@@ -68,30 +68,55 @@ Below is are examples of markdown source code and outputs, where `#` marks up a 
 
 The heading to this chapter (@sec-markup-languages) is a first level heading and this section has a second level heading (@sec-what-is-markdown). The style e.g. font and colour and output (a html book) is controlled by another document, a configuration file.
 
-## Literate programming
+## Literate programming {#sec-literate-prog}
 
-[Literate programming](https://en.wikipedia.org/wiki/Literate_programming) is a concept created by Donald Knuth of
+[Literate programming](https://en.wikipedia.org/wiki/Literate_programming) is a concept created by Donald Knuth of mixing code and prose in the same document. The resulting document can be *tangled* to run the code and *weaved* to created a human readable document.
+
+In practice this looks like chunks of prose such as the one you are reading, mixed with chunks of code such as the one below. The R code chunk calls the in-built R constant called `letters` that contains the 26 characters of the English alphabet. Code chunks can be set in different ways, to be visible or hidden, to evaluate the code or not, and so on. Here it is set to evaluate and print the output below.
+
+```{r}
+#| label: character-vector
+letters
+```
+
+Try `LETTERS` to see the diffence between `letters` and `LETTERS`.
+
+Literate programming is a trade-off: it's slow and verbose, but if written well, easier to understand and amend than traditional scripts. It suits certain tasks such as teaching and report writing. Another benefit is that it's often possible to use the same input document to create different types of output. For example, the same R Markdown document can be published as webpage, a Word document, a PDF or a PowerPoint presentation with relatively little effort.
+
+Literate programming can be done with a variety of languages, not just R, Examples of literate programming tools are [Jupyter](https://jupyter.org/), [VS Code](https://code.visualstudio.com/), [R Markdown](https://rmarkdown.rstudio.com/) and [Quarto](https://quarto.org/).
 
 ## Different flavours of markdown {#sec-markdown-flavours}
 
+There are a number of different flavours of markdown. By flavour I mean they all have common aspects, but differences in functionality that have been added to each version. Here are some of the common flavours. 
+
 ### Markdown {#sec-original-markdown}
 
-The [Markdown project page](https://daringfireball.net/projects/markdown/).
+The original markdown was created by John Gruber in 2004. It contained the syntax for text, images, tables etc. that we saw in @sec-what-is-markdown. Details on the [Markdown project page](https://daringfireball.net/projects/markdown/) and in the [markdown guide](https://www.markdownguide.org/).
 
 ### Github flavoured markdown {#sec-github-markdown}
 
-[Github flavoured markdown](https://github.github.com/gfm/)
+[Github flavoured markdown](https://github.github.com/gfm/) is the variant used by the software development platform [Github](www.github.com). Amongst other things, it added code block functionality such as the `letters` code block in @sec-literate-prog and strikethrough text.
 
 ### R Markdown {#sec-r-markdown}
 
-[RStudio R Markdown documentation](https://rmarkdown.rstudio.com/index.html) and [R Markdown book](https://bookdown.org/yihui/rmarkdown/) and [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/). [Stack overflow post explaining the relationshipe between R markdown knitr and pandoc](https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown)
+Unsurpisingly, R Markdown is the version of markdown developed by the creators of RStudio and incorporates lots of functionality for combining markdown and R in the literate programming paradigm (@sec-literate-prog). 
+
+You can find full details in the [RStudio R Markdown documentation](https://rmarkdown.rstudio.com/index.html), the [R Markdown book](https://bookdown.org/yihui/rmarkdown/) and the [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/). 
+
+If you're interested in more technical detail of how document creation works in R Markdown here's a [Stack overflow post explaining the relationship between R markdown knitr and pandoc](https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown)
 
 ### Quarto markdown {#sec-quarto-markdown}
 
-[Quarto](https://quarto.org/)
+[Quarto](https://quarto.org/) is created by Posit, the same company that created RStudio. It builds upon R Markdown (@sec-r-markdown), but is designed to be used with a variety of languages and tools for creating technical documents and reports. It simplifies some of the quirks of R Markdown and is supposedly easier for creating dynamic content such as dashboards.
+
+As someone who started with LaTeX and then moved to R Markdown I've found it fairly straightfoward to change to Quarto and prefer it. Quarto comes bundled with RStudio from v2022.07.1, so we'll use Quarto for our exercises.
+
+There's nothing wrong with sticking with R Markdown if you prefer it or feel it's too much effort to change. But if you have exisiting R Markdown files and want to switch, you'll find it's fairly easy to convert them into Quarto markdown and may find long term benefits.
 
 ## Publishing outputs with Pandoc {#sec-pandoc}
 
-[Pandoc](https://pandoc.org/) created in 2006 by John MacFarlane to
+[Pandoc](https://pandoc.org/) created in 2006 by John MacFarlane to convert one markup format to another, including HTML, XML, MS Word, PDF and all the various flavours of markdown.
 
-RStudio comes bundled with pandoc so there's no need to install it separately (unlesss you want to).
+As mentioned in @sec-literate-prog, it can be quite time saving to write in a single markdown language and then create the various output documents as required for yourself or your collaborators.
+
+RStudio comes bundled with pandoc so there's no need to install it separately (unlesss you want to). Pandoc can be used independently of RStudio if you are willing to learn how to do [data science at the command line](https://jeroenjanssens.com/dsatcl/). Perhaps a problem for another day?!
