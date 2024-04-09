@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>R for Librarians - 1&nbsp; Setting the scene</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,7 +18,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -42,8 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -70,16 +65,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -90,13 +80,9 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R for Librarians</a> 
         <div class="sidebar-tools-main">
@@ -116,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
@@ -165,31 +151,27 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-the-challenge" id="toc-sec-the-challenge" class="nav-link active" data-scroll-target="#sec-the-challenge"><span class="header-section-number">1.1</span> The challenge</a>
+<li>
+<a href="#sec-the-challenge" id="toc-sec-the-challenge" class="nav-link active" data-scroll-target="#sec-the-challenge"><span class="header-section-number">1.1</span> The challenge</a>
   <ul class="collapse">
-  <li><a href="#sec-but-why-is-it-worth-doing" id="toc-sec-but-why-is-it-worth-doing" class="nav-link" data-scroll-target="#sec-but-why-is-it-worth-doing"><span class="header-section-number">1.1.1</span> But why is it worth doing?</a></li>
+<li><a href="#sec-but-why-is-it-worth-doing" id="toc-sec-but-why-is-it-worth-doing" class="nav-link" data-scroll-target="#sec-but-why-is-it-worth-doing"><span class="header-section-number">1.1.1</span> But why is it worth doing?</a></li>
   <li><a href="#sec-what-are-we-doing" id="toc-sec-what-are-we-doing" class="nav-link" data-scroll-target="#sec-what-are-we-doing"><span class="header-section-number">1.1.2</span> What are we doing?</a></li>
   <li><a href="#sec-how-are-we-going-to-do-it" id="toc-sec-how-are-we-going-to-do-it" class="nav-link" data-scroll-target="#sec-how-are-we-going-to-do-it"><span class="header-section-number">1.1.3</span> How are we going to do it?</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#sec-if-youre-using-excel-you-are-already-programming" id="toc-sec-if-youre-using-excel-you-are-already-programming" class="nav-link" data-scroll-target="#sec-if-youre-using-excel-you-are-already-programming"><span class="header-section-number">1.2</span> If you’re using Excel you are already programming</a></li>
   <li><a href="#sec-a-little-goes-a-long-way" id="toc-sec-a-little-goes-a-long-way" class="nav-link" data-scroll-target="#sec-a-little-goes-a-long-way"><span class="header-section-number">1.3</span> A little goes a long way</a></li>
-  </ul>
-</nav>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title"><span id="sec-setting-the-scene" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting the scene</span></span></h1>
 </div>
 
@@ -204,10 +186,7 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<div id="chapter-01-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div id="chapter-01-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -220,8 +199,8 @@ Summary
 <p>You can skip this chapter if you want to dive straight into learning R. This chapter is primarily background and philosophy to set the scene before we start using R.</p>
 </div>
 </div>
-<section id="sec-the-challenge" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="sec-the-challenge"><span class="header-section-number">1.1</span> The challenge</h2>
+<section id="sec-the-challenge" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="sec-the-challenge">
+<span class="header-section-number">1.1</span> The challenge</h2>
 <p>New often means difficult, but difficult things are also often worth doing. The quote in <a href="#nte-biostar-quote" class="quarto-xref">Note&nbsp;<span>1.1</span></a> pretty much captures my feelings about the challenge of getting started and learning R:</p>
 <div id="nte-biostar-quote" class="callout callout-style-default callout-note no-icon callout-titled" title="Is programming hard to learn?" data-appearence="minimal">
 <div class="callout-header d-flex align-content-center">
@@ -237,62 +216,52 @@ Note&nbsp;1.1: Is programming hard to learn?
 <p>Source: <a href="https://www.biostarhandbook.com/index.html">The Biostar Handbook</a></p>
 </div>
 </div>
-<section id="sec-but-why-is-it-worth-doing" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="sec-but-why-is-it-worth-doing"><span class="header-section-number">1.1.1</span> But why is it worth doing?</h3>
+<section id="sec-but-why-is-it-worth-doing" class="level3" data-number="1.1.1"><h3 data-number="1.1.1" class="anchored" data-anchor-id="sec-but-why-is-it-worth-doing">
+<span class="header-section-number">1.1.1</span> But why is it worth doing?</h3>
 <ol type="1">
 <li>Maybe it isn’t, but experience is one way to find out.</li>
 <li>My experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting and more complex things.</li>
-</ol>
-</section>
-<section id="sec-what-are-we-doing" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="sec-what-are-we-doing"><span class="header-section-number">1.1.2</span> What are we doing?</h3>
+</ol></section><section id="sec-what-are-we-doing" class="level3" data-number="1.1.2"><h3 data-number="1.1.2" class="anchored" data-anchor-id="sec-what-are-we-doing">
+<span class="header-section-number">1.1.2</span> What are we doing?</h3>
 <p><a href="#fig-workflow" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> shows a version of the data science cycle from <a href="https://r4ds.hadley.nz/whole-game">R4DS</a>. Conceptually, this is what we are mostly doing. In R4DS, all of these steps are done programmatically, but we won’t be trying to do everything here.</p>
-<p>Modeling is beyond our scope here, but you may wish to explore the modeling part of the cycle yourself. For example, check out <a href="https://www.tmwr.org/">Tidy Modeling with R</a>.</p>
+<p>Our focus will be on importing, tidying and transforming data, but you may wish to explore the visualisation and modeling parts of the cycle yourself. For example, check out the <a href="https://r4ds.hadley.nz/data-visualize">visualisation chapter of R4DS</a> and <a href="https://www.tmwr.org/">Tidy Modeling with R</a>.</p>
 <p>As a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.</p>
 <p>In asking and answering those questions we need to learn to transform data and/or visualise our data.</p>
 <p>We then need to communicate our findings back out of our working environment to our colleagues or for our own records.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-workflow" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A diagram displaying the data science cycle: Import -> Tidy ->  Understand  (which has the phases Transform -> Visualize -> Model in a  cycle) -> Communicate. Surrounding all of these is Workflow  Import, Tidy, Transform, and Visualise are highlighted.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/ds-workflow.png" class="img-fluid figure-img" alt="A diagram displaying the data science cycle: Import -> Tidy ->  Understand  (which has the phases Transform -> Visualize -> Model in a  cycle) -> Communicate. Surrounding all of these is Workflow  Import, Tidy, Transform, and Visualise are highlighted." width="2461">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.1: A version of the data science cycle from <a href="https://r4ds.hadley.nz/whole-game">R4DS</a>. We will cover data importing, tidying, transformation and visualisation, but not modeling. Communication of your output is the final part of the workflow.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-<section id="sec-how-are-we-going-to-do-it" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="sec-how-are-we-going-to-do-it"><span class="header-section-number">1.1.3</span> How are we going to do it?</h3>
+</section><section id="sec-how-are-we-going-to-do-it" class="level3" data-number="1.1.3"><h3 data-number="1.1.3" class="anchored" data-anchor-id="sec-how-are-we-going-to-do-it">
+<span class="header-section-number">1.1.3</span> How are we going to do it?</h3>
 <p>As per <a href="#nte-biostar-quote" class="quarto-xref">Note&nbsp;<span>1.1</span></a>, step-by-step and through practice we will learn to think and work in a certain way that may be different to how you have previously worked.</p>
 <p>It may seem all a bit abstract to begin with, but that is part of the point. In learning to generalise from abstractions, one can identify and apply the same concepts to lots of specific problems that may at first seem different, but are either the same or similar.</p>
 <p>Our guiding principles in doing this are:</p>
 <ol type="1">
 <li>Keep the raw data raw.</li>
 <li>Write love letters to our future selves in the form of our code and how we organise and document our data.</li>
-</ol>
-</section>
-</section>
-<section id="sec-if-youre-using-excel-you-are-already-programming" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="sec-if-youre-using-excel-you-are-already-programming"><span class="header-section-number">1.2</span> If you’re using Excel you are already programming</h2>
+</ol></section></section><section id="sec-if-youre-using-excel-you-are-already-programming" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="sec-if-youre-using-excel-you-are-already-programming">
+<span class="header-section-number">1.2</span> If you’re using Excel you are already programming</h2>
 <p>In 2021 Excel became Turing-complete (<a href="#fig-excel-twitter" class="quarto-xref">Figure&nbsp;<span>1.2</span></a>), which is a colloquial way of saying one computing language can approximate another computing language.</p>
 <p>In other words, anything one can do in Python, R, C++ and so on, should also be possible in Excel.</p>
 <p>Hence if you are using Excel, you are already a programmer.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-excel-twitter" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of a tweet from the head of Microsoft announcing that Excel is Turing-complete.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-excel-twitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-excel-twitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/excel-twitter-2021-02-09.png" class="img-fluid figure-img" style="width:80.0%" alt="An image of a tweet from the head of Microsoft announcing that Excel is Turing-complete.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excel-twitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.2: The head of Microsoft announces that Excel is Turing-complete.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -302,9 +271,8 @@ Figure&nbsp;1.2: The head of Microsoft announces that Excel is Turing-complete.
 <p>And vice versa.</p>
 <p>In other languages getting started is harder, but it’s easier to do more complex tasks once some initial learning is done.</p>
 <p>It’s really a question of whether it’s worth the investment learning R, python etc. Hence my comments in <a href="#sec-but-why-is-it-worth-doing" class="quarto-xref"><span>Section 1.1.1</span></a>.</p>
-</section>
-<section id="sec-a-little-goes-a-long-way" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="sec-a-little-goes-a-long-way"><span class="header-section-number">1.3</span> A little goes a long way</h2>
+</section><section id="sec-a-little-goes-a-long-way" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="sec-a-little-goes-a-long-way">
+<span class="header-section-number">1.3</span> A little goes a long way</h2>
 <p>When considering investing in learning, it’s important to know that we don’t need to learn everything. A modest investment does yield large rewards.</p>
 <p>A few hours learning, backed-up with practice can be enough for many people.</p>
 <p>As illustrated in <a href="#fig-pp-spectrum" class="quarto-xref">Figure&nbsp;<span>1.3</span></a> there are a whole spectrum of users from practitioners at one end who are focused on applying some programming tools to their specific problems. Whilst at the other end who develop the programming tools and language itself.</p>
@@ -313,23 +281,18 @@ Figure&nbsp;1.2: The head of Microsoft announces that Excel is Turing-complete.
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pp-spectrum" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A diagram displaying practitioner-programmer spectrum. At one end lies practitioners who use programming tools and at the other end lies developers of programming languages and tools. A circle in-between indicates how individuals may move around on the spectrum.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pp-spectrum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pp-spectrum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/practitioner-programmer.png" class="img-fluid figure-img" alt="A diagram displaying practitioner-programmer spectrum. At one end lies practitioners who use programming tools and at the other end lies developers of programming languages and tools. A circle in-between indicates how individuals may move around on the spectrum." width="2802">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-spectrum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.3: The practitioner-programmer spectrum. At one end lies practitioners who use programming tools and at the other end lies developers of programming languages and tools. The circle in-between indicates how individuals may move around on the spectrum.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -879,10 +842,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link  aria-label=" preface"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link  aria-label=" preface="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
@@ -893,8 +854,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.</p>
 </div>   
@@ -906,8 +866,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

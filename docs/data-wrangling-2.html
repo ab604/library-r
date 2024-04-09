@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>R for Librarians - 5&nbsp; Data wrangling II</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,7 +53,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -76,8 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,16 +99,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -124,13 +114,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R for Librarians</a> 
         <div class="sidebar-tools-main">
@@ -150,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
@@ -199,27 +185,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#joins" id="toc-joins" class="nav-link active" data-scroll-target="#joins"><span class="header-section-number">5.1</span> Joins</a></li>
+<li><a href="#joins" id="toc-joins" class="nav-link active" data-scroll-target="#joins"><span class="header-section-number">5.1</span> Joins</a></li>
   <li><a href="#mutating-joins" id="toc-mutating-joins" class="nav-link" data-scroll-target="#mutating-joins"><span class="header-section-number">5.2</span> Mutating joins</a></li>
   <li><a href="#filtering-join" id="toc-filtering-join" class="nav-link" data-scroll-target="#filtering-join"><span class="header-section-number">5.3</span> Filtering join</a></li>
   <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings"><span class="header-section-number">5.4</span> Strings</a></li>
-  </ul>
-</nav>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title"><span id="sec-data-wrangling-ii" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></h1>
 </div>
 
@@ -234,42 +214,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<section id="joins" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="joins"><span class="header-section-number">5.1</span> Joins</h2>
+</header><section id="joins" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="joins">
+<span class="header-section-number">5.1</span> Joins</h2>
 <p><a href="https://r4ds.hadley.nz/joins">R4DS joins</a> gives some detailed examples of joining tables, but here we’ll look at some simpler examples to try build our mental model.</p>
 <p>There are two types of join we often encounter:</p>
 <ol type="1">
 <li>Joins that create new variables in one table by matching observations in another: these are <em>mutating</em> joins as per tidyverse verb <code>mutate</code> <a href="data-wrangling-1.html#sec-creating-new-columns-with-mutate" class="quarto-xref"><span>Section 4.4.4</span></a>.</li>
 <li>Joins that <em>filter</em> the observations from one table against another, as per tidyverse verb <code>filter</code> <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 4.4.1</span></a>.</li>
-</ol>
-</section>
-<section id="mutating-joins" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="mutating-joins"><span class="header-section-number">5.2</span> Mutating joins</h2>
+</ol></section><section id="mutating-joins" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="mutating-joins">
+<span class="header-section-number">5.2</span> Mutating joins</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create unique id for each penguin</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>numbered_penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">penguin_number =</span> <span class="fu">row_number</span>())</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the dataset into two tables</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>penguins_physical <span class="ot">&lt;-</span> numbered_penguins <span class="sc">|&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(penguin_number,species, island, bill_length_mm, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>         bill_depth_mm, flipper_length_mm, body_mass_g)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>penguins_info <span class="ot">&lt;-</span> numbered_penguins <span class="sc">|&gt;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(penguin_number,species, island, year, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create unique id for each penguin</span></span>
+<span><span class="va">numbered_penguins</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>penguin_number <span class="op">=</span> <span class="fu">row_number</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Split the dataset into two tables</span></span>
+<span><span class="va">penguins_physical</span> <span class="op">&lt;-</span> <span class="va">numbered_penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_number</span>,<span class="va">species</span>, <span class="va">island</span>, <span class="va">bill_length_mm</span>, </span>
+<span>         <span class="va">bill_depth_mm</span>, <span class="va">flipper_length_mm</span>, <span class="va">body_mass_g</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">penguins_info</span> <span class="op">&lt;-</span> <span class="va">numbered_penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_number</span>,<span class="va">species</span>, <span class="va">island</span>, <span class="va">year</span>, <span class="va">sex</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the two tables back together as a left join</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>penguins_joined <span class="ot">&lt;-</span> penguins_physical <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(penguins_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Join the two tables back together as a left join</span></span>
+<span><span class="va">penguins_joined</span> <span class="op">&lt;-</span> <span class="va">penguins_physical</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">penguins_info</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(penguin_number, species, island)`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the joined dataset</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins_joined)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the joined dataset</span></span>
+<span><span class="fu">glimpse</span><span class="op">(</span><span class="va">penguins_joined</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 9
@@ -284,22 +259,21 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…</code></pre>
 </div>
 </div>
-</section>
-<section id="filtering-join" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="filtering-join"><span class="header-section-number">5.3</span> Filtering join</h2>
+</section><section id="filtering-join" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="filtering-join">
+<span class="header-section-number">5.3</span> Filtering join</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>penguins_info_filt <span class="ot">&lt;-</span> penguins_info <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2008</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a filtering join</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>penguins_filtered <span class="ot">&lt;-</span> penguins_physical <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(penguins_info_filt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create </span></span>
+<span><span class="va">penguins_info_filt</span> <span class="op">&lt;-</span> <span class="va">penguins_info</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2008</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform a filtering join</span></span>
+<span><span class="va">penguins_filtered</span> <span class="op">&lt;-</span> <span class="va">penguins_physical</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">semi_join</span><span class="op">(</span><span class="va">penguins_info_filt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(penguin_number, species, island)`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the filtered dataset</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the filtered dataset</span></span>
+<span><span class="fu">glimpse</span><span class="op">(</span><span class="va">penguins_filtered</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 114
 Columns: 7
@@ -312,36 +286,35 @@ $ flipper_length_mm &lt;int&gt; 186, 188, 190, 200, 187, 191, 186, 193, 181, 194
 $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 2850…</code></pre>
 </div>
 </div>
-</section>
-<section id="strings" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="strings"><span class="header-section-number">5.4</span> Strings</h2>
+</section><section id="strings" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="strings">
+<span class="header-section-number">5.4</span> Strings</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cat_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Whiskers"</span>, <span class="st">"Fluffy"</span>, <span class="st">"Mittens"</span>, <span class="st">"Socks"</span>, <span class="st">"Tiger"</span>, <span class="st">"Smokey"</span>, <span class="st">"Gizmo"</span>, <span class="st">"Oreo"</span>, <span class="st">"Luna"</span>, <span class="st">"Oliver"</span>, <span class="st">"Leo"</span>, <span class="st">"Milo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Simba"</span>, <span class="st">"Nala"</span>, <span class="st">"Felix"</span>, <span class="st">"Garfield"</span>, <span class="st">"Tigger"</span>, <span class="st">"Chloe"</span>, <span class="st">"Bella"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>words <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"abounding"</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"astounding"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"confounding"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"resounding"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"surrounding"</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"grounding"</span>,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"founding"</span>,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"pounding"</span>,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rounding"</span>,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sounding"</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"bounding"</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hounding"</span>,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mounding"</span>,</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"wounding"</span>,</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"compounding"</span>,</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"expounding"</span>,</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"propounding"</span>,</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rebounding"</span>,</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"unbounding"</span>,</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"floundering"</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(words,<span class="st">"ding"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Whiskers"</span>, <span class="st">"Fluffy"</span>, <span class="st">"Mittens"</span>, <span class="st">"Socks"</span>, <span class="st">"Tiger"</span>, <span class="st">"Smokey"</span>, <span class="st">"Gizmo"</span>, <span class="st">"Oreo"</span>, <span class="st">"Luna"</span>, <span class="st">"Oliver"</span>, <span class="st">"Leo"</span>, <span class="st">"Milo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Simba"</span>, <span class="st">"Nala"</span>, <span class="st">"Felix"</span>, <span class="st">"Garfield"</span>, <span class="st">"Tigger"</span>, <span class="st">"Chloe"</span>, <span class="st">"Bella"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"abounding"</span>,</span>
+<span>  <span class="st">"astounding"</span>,</span>
+<span>  <span class="st">"confounding"</span>,</span>
+<span>  <span class="st">"resounding"</span>,</span>
+<span>  <span class="st">"surrounding"</span>,</span>
+<span>  <span class="st">"grounding"</span>,</span>
+<span>  <span class="st">"founding"</span>,</span>
+<span>  <span class="st">"pounding"</span>,</span>
+<span>  <span class="st">"rounding"</span>,</span>
+<span>  <span class="st">"sounding"</span>,</span>
+<span>  <span class="st">"bounding"</span>,</span>
+<span>  <span class="st">"hounding"</span>,</span>
+<span>  <span class="st">"mounding"</span>,</span>
+<span>  <span class="st">"wounding"</span>,</span>
+<span>  <span class="st">"compounding"</span>,</span>
+<span>  <span class="st">"expounding"</span>,</span>
+<span>  <span class="st">"propounding"</span>,</span>
+<span>  <span class="st">"rebounding"</span>,</span>
+<span>  <span class="st">"unbounding"</span>,</span>
+<span>  <span class="st">"floundering"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">str_view</span><span class="op">(</span><span class="va">words</span>,<span class="st">"ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] │ aboun&lt;ding&gt;
  [2] │ astoun&lt;ding&gt;
@@ -363,7 +336,7 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 [18] │ reboun&lt;ding&gt;
 [19] │ unboun&lt;ding&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(words,<span class="st">"bou|rr|ding"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">words</span>,<span class="st">"bou|rr|ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] │ a&lt;bou&gt;n&lt;ding&gt;
  [2] │ astoun&lt;ding&gt;
@@ -385,23 +358,23 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 [18] │ re&lt;bou&gt;n&lt;ding&gt;
 [19] │ un&lt;bou&gt;n&lt;ding&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(cat_names,<span class="st">"[isk]"</span>) <span class="co"># Find names with i,s or k</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_detect</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span> <span class="co"># Find names with i,s or k</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE
 [13]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(cat_names,<span class="st">"[isk]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_count</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 4 0 2 2 1 1 1 0 0 1 0 1 1 1 0 1 1 1 0 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(cat_names,<span class="st">"[isk]"</span>,<span class="st">"-"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Wh-skers" "Fluffy"   "M-ttens"  "Soc-s"    "T-ger"    "Smo-ey"  
  [7] "G-zmo"    "Oreo"     "Luna"     "Ol-ver"   "Leo"      "M-lo"    
 [13] "Charl-e"  "S-mba"    "Nala"     "Fel-x"    "Garf-eld" "T-gger"  
 [19] "Chloe"    "Bella"   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(cat_names,<span class="st">"[isk]"</span>,<span class="st">"-"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace_all</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Wh---er-" "Fluffy"   "M-tten-"  "Soc--"    "T-ger"    "Smo-ey"  
  [7] "G-zmo"    "Oreo"     "Luna"     "Ol-ver"   "Leo"      "M-lo"    
@@ -410,81 +383,78 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cat_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cat_id =</span> <span class="fu">str_c</span>(<span class="st">"&lt;"</span>, cat_names, <span class="st">"&gt;"</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"-M_"</span>,<span class="st">"-F_"</span>), </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="fu">length</span>(cat_names), </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">replace =</span> <span class="cn">TRUE</span>),  </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sample</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">size =</span> <span class="fu">length</span>(cat_names), </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>cat_tibble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<span>  cat_id <span class="op">=</span> <span class="fu">str_c</span><span class="op">(</span><span class="st">"&lt;"</span>, <span class="va">cat_names</span>, <span class="st">"&gt;"</span>,</span>
+<span>                 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"-M_"</span>,<span class="st">"-F_"</span><span class="op">)</span>, </span>
+<span>                        size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>, </span>
+<span>                      replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,  </span>
+<span>               <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>, </span>
+<span>                      replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cat_tibble</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 1
    cat_id         
    &lt;chr&gt;          
- 1 &lt;Whiskers&gt;-F_10
+ 1 &lt;Whiskers&gt;-M_9 
  2 &lt;Fluffy&gt;-F_5   
- 3 &lt;Mittens&gt;-M_8  
- 4 &lt;Socks&gt;-M_5    
- 5 &lt;Tiger&gt;-F_10   
- 6 &lt;Smokey&gt;-M_8   
- 7 &lt;Gizmo&gt;-F_4    
- 8 &lt;Oreo&gt;-F_10    
+ 3 &lt;Mittens&gt;-M_9  
+ 4 &lt;Socks&gt;-F_11   
+ 5 &lt;Tiger&gt;-M_4    
+ 6 &lt;Smokey&gt;-M_9   
+ 7 &lt;Gizmo&gt;-F_8    
+ 8 &lt;Oreo&gt;-F_7     
  9 &lt;Luna&gt;-M_11    
-10 &lt;Oliver&gt;-F_6   
-11 &lt;Leo&gt;-M_8      
-12 &lt;Milo&gt;-M_8     
-13 &lt;Charlie&gt;-F_3  
-14 &lt;Simba&gt;-F_5    
-15 &lt;Nala&gt;-F_3     
-16 &lt;Felix&gt;-F_8    
-17 &lt;Garfield&gt;-M_9 
-18 &lt;Tigger&gt;-M_3   
-19 &lt;Chloe&gt;-F_11   
-20 &lt;Bella&gt;-M_6    </code></pre>
+10 &lt;Oliver&gt;-F_7   
+11 &lt;Leo&gt;-M_3      
+12 &lt;Milo&gt;-M_3     
+13 &lt;Charlie&gt;-F_10 
+14 &lt;Simba&gt;-M_4    
+15 &lt;Nala&gt;-M_3     
+16 &lt;Felix&gt;-F_7    
+17 &lt;Garfield&gt;-M_10
+18 &lt;Tigger&gt;-M_9   
+19 &lt;Chloe&gt;-M_9    
+20 &lt;Bella&gt;-M_10   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>cat_tibble <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_regex</span>(</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    cat_id,</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">patterns =</span> <span class="fu">c</span>(<span class="st">"&lt;"</span>, </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">name =</span> <span class="st">"[A-Za-z]+"</span>, <span class="st">"&gt;-"</span>, </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">sex =</span> <span class="st">"."</span>,<span class="st">"_"</span>,</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">age =</span> <span class="st">"[0-9]+"</span>)</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">separate_wider_regex</span><span class="op">(</span></span>
+<span>    <span class="va">cat_id</span>,</span>
+<span>    patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;"</span>, </span>
+<span>      name <span class="op">=</span> <span class="st">"[A-Za-z]+"</span>, <span class="st">"&gt;-"</span>, </span>
+<span>      sex <span class="op">=</span> <span class="st">"."</span>,<span class="st">"_"</span>,</span>
+<span>      age <span class="op">=</span> <span class="st">"[0-9]+"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 3
    name     sex   age  
    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
- 1 Whiskers F     10   
+ 1 Whiskers M     9    
  2 Fluffy   F     5    
- 3 Mittens  M     8    
- 4 Socks    M     5    
- 5 Tiger    F     10   
- 6 Smokey   M     8    
- 7 Gizmo    F     4    
- 8 Oreo     F     10   
+ 3 Mittens  M     9    
+ 4 Socks    F     11   
+ 5 Tiger    M     4    
+ 6 Smokey   M     9    
+ 7 Gizmo    F     8    
+ 8 Oreo     F     7    
  9 Luna     M     11   
-10 Oliver   F     6    
-11 Leo      M     8    
-12 Milo     M     8    
-13 Charlie  F     3    
-14 Simba    F     5    
-15 Nala     F     3    
-16 Felix    F     8    
-17 Garfield M     9    
-18 Tigger   M     3    
-19 Chloe    F     11   
-20 Bella    M     6    </code></pre>
+10 Oliver   F     7    
+11 Leo      M     3    
+12 Milo     M     3    
+13 Charlie  F     10   
+14 Simba    M     4    
+15 Nala     M     3    
+16 Felix    F     7    
+17 Garfield M     10   
+18 Tigger   M     9    
+19 Chloe    M     9    
+20 Bella    M     10   </code></pre>
 </div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1034,10 +1004,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./data-wrangling-1.html" class="pagination-link  aria-label=" &lt;span="" wrangling="" i&lt;="" span&gt;"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./data-wrangling-1.html" class="pagination-link  aria-label=" wrangling="" i="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span>
       </a>          
   </div>
@@ -1048,8 +1016,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.</p>
 </div>   
@@ -1061,8 +1028,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

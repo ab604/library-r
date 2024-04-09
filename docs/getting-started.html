@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>R for Librarians - 3&nbsp; Getting started</title>
 <style>
 code{white-space: pre-wrap;}
@@ -76,7 +73,6 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -96,8 +92,7 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -124,16 +119,11 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -144,13 +134,9 @@ div.csl-indent {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R for Librarians</a> 
         <div class="sidebar-tools-main">
@@ -170,7 +156,7 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
@@ -219,67 +205,75 @@ div.csl-indent {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-what-is-r" id="toc-sec-what-is-r" class="nav-link active" data-scroll-target="#sec-what-is-r"><span class="header-section-number">3.1</span> What is R?</a></li>
-  <li><a href="#sec-rstudio" id="toc-sec-rstudio" class="nav-link" data-scroll-target="#sec-rstudio"><span class="header-section-number">3.2</span> What is RStudio?</a>
+<li><a href="#sec-what-is-r" id="toc-sec-what-is-r" class="nav-link active" data-scroll-target="#sec-what-is-r"><span class="header-section-number">3.1</span> What is R?</a></li>
+  <li>
+<a href="#sec-rstudio" id="toc-sec-rstudio" class="nav-link" data-scroll-target="#sec-rstudio"><span class="header-section-number">3.2</span> What is RStudio?</a>
   <ul class="collapse">
-  <li><a href="#sec-what-is-real" id="toc-sec-what-is-real" class="nav-link" data-scroll-target="#sec-what-is-real"><span class="header-section-number">3.2.1</span> What is real?</a></li>
+<li><a href="#sec-what-is-real" id="toc-sec-what-is-real" class="nav-link" data-scroll-target="#sec-what-is-real"><span class="header-section-number">3.2.1</span> What is real?</a></li>
   <li><a href="#where-am-i" id="toc-where-am-i" class="nav-link" data-scroll-target="#where-am-i"><span class="header-section-number">3.2.2</span> Where am I?</a></li>
   <li><a href="#sec-relative-path" id="toc-sec-relative-path" class="nav-link" data-scroll-target="#sec-relative-path"><span class="header-section-number">3.2.3</span> Relative path from where you are</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#sec-packages" id="toc-sec-packages" class="nav-link" data-scroll-target="#sec-packages"><span class="header-section-number">3.3</span> Installing and loading packages</a></li>
-  <li><a href="#sec-what-is-a-function" id="toc-sec-what-is-a-function" class="nav-link" data-scroll-target="#sec-what-is-a-function"><span class="header-section-number">3.4</span> What is a function and how do I use them?</a>
+  <li>
+<a href="#sec-what-is-a-function" id="toc-sec-what-is-a-function" class="nav-link" data-scroll-target="#sec-what-is-a-function"><span class="header-section-number">3.4</span> What is a function and how do I use them?</a>
   <ul class="collapse">
-  <li><a href="#sec-palmer-penguins" id="toc-sec-palmer-penguins" class="nav-link" data-scroll-target="#sec-palmer-penguins"><span class="header-section-number">3.4.1</span> Introducing the Palmer Penguins</a></li>
-  </ul></li>
-  <li><a href="#sec-a-project-orientated-workflow" id="toc-sec-a-project-orientated-workflow" class="nav-link" data-scroll-target="#sec-a-project-orientated-workflow"><span class="header-section-number">3.5</span> A project orientated workflow</a>
+<li><a href="#sec-palmer-penguins" id="toc-sec-palmer-penguins" class="nav-link" data-scroll-target="#sec-palmer-penguins"><span class="header-section-number">3.4.1</span> Introducing the Palmer Penguins</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sec-a-project-orientated-workflow" id="toc-sec-a-project-orientated-workflow" class="nav-link" data-scroll-target="#sec-a-project-orientated-workflow"><span class="header-section-number">3.5</span> A project orientated workflow</a>
   <ul class="collapse">
-  <li><a href="#sec-r-projects" id="toc-sec-r-projects" class="nav-link" data-scroll-target="#sec-r-projects"><span class="header-section-number">3.5.1</span> RStudio Projects</a></li>
+<li><a href="#sec-r-projects" id="toc-sec-r-projects" class="nav-link" data-scroll-target="#sec-r-projects"><span class="header-section-number">3.5.1</span> RStudio Projects</a></li>
   <li><a href="#sec-names" id="toc-sec-names" class="nav-link" data-scroll-target="#sec-names"><span class="header-section-number">3.5.2</span> Naming things</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#sec-base-r-tidyverse" id="toc-sec-base-r-tidyverse" class="nav-link" data-scroll-target="#sec-base-r-tidyverse"><span class="header-section-number">3.6</span> Base R, the tidyverse and tidy data</a></li>
   <li><a href="#sec-tidy-data" id="toc-sec-tidy-data" class="nav-link" data-scroll-target="#sec-tidy-data"><span class="header-section-number">3.7</span> Tidy data</a></li>
   <li><a href="#sec-atoms" id="toc-sec-atoms" class="nav-link" data-scroll-target="#sec-atoms"><span class="header-section-number">3.8</span> Atoms of R</a></li>
-  <li><a href="#sec-assigning-objects" id="toc-sec-assigning-objects" class="nav-link" data-scroll-target="#sec-assigning-objects"><span class="header-section-number">3.9</span> Assigning objects</a>
+  <li>
+<a href="#sec-assigning-objects" id="toc-sec-assigning-objects" class="nav-link" data-scroll-target="#sec-assigning-objects"><span class="header-section-number">3.9</span> Assigning objects</a>
   <ul class="collapse">
-  <li><a href="#sec-indexing" id="toc-sec-indexing" class="nav-link" data-scroll-target="#sec-indexing"><span class="header-section-number">3.9.1</span> Indexing and sub-setting</a></li>
-  </ul></li>
-  <li><a href="#sec-lists" id="toc-sec-lists" class="nav-link" data-scroll-target="#sec-lists"><span class="header-section-number">3.10</span> Lists, matrices, arrays and data frames</a>
+<li><a href="#sec-indexing" id="toc-sec-indexing" class="nav-link" data-scroll-target="#sec-indexing"><span class="header-section-number">3.9.1</span> Indexing and sub-setting</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sec-lists" id="toc-sec-lists" class="nav-link" data-scroll-target="#sec-lists"><span class="header-section-number">3.10</span> Lists, matrices, arrays and data frames</a>
   <ul class="collapse">
-  <li><a href="#sec-matrices" id="toc-sec-matrices" class="nav-link" data-scroll-target="#sec-matrices"><span class="header-section-number">3.10.1</span> Matrices and arrays</a></li>
+<li><a href="#sec-matrices" id="toc-sec-matrices" class="nav-link" data-scroll-target="#sec-matrices"><span class="header-section-number">3.10.1</span> Matrices and arrays</a></li>
   <li><a href="#sec-categorical-data-aka-factors" id="toc-sec-categorical-data-aka-factors" class="nav-link" data-scroll-target="#sec-categorical-data-aka-factors"><span class="header-section-number">3.10.2</span> Categorical data aka Factors</a></li>
   <li><a href="#sec-data-frames" id="toc-sec-data-frames" class="nav-link" data-scroll-target="#sec-data-frames"><span class="header-section-number">3.10.3</span> Data frames</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#sec-plotting-and-exporting-data" id="toc-sec-plotting-and-exporting-data" class="nav-link" data-scroll-target="#sec-plotting-and-exporting-data"><span class="header-section-number">3.11</span> Plotting and exporting data</a></li>
-  <li><a href="#exporting-data" id="toc-exporting-data" class="nav-link" data-scroll-target="#exporting-data"><span class="header-section-number">3.12</span> Exporting data</a>
+  <li>
+<a href="#exporting-data" id="toc-exporting-data" class="nav-link" data-scroll-target="#exporting-data"><span class="header-section-number">3.12</span> Exporting data</a>
   <ul class="collapse">
-  <li><a href="#readr" id="toc-readr" class="nav-link" data-scroll-target="#readr"><span class="header-section-number">3.12.1</span> readr</a></li>
+<li><a href="#readr" id="toc-readr" class="nav-link" data-scroll-target="#readr"><span class="header-section-number">3.12.1</span> readr</a></li>
   <li><a href="#ggsave" id="toc-ggsave" class="nav-link" data-scroll-target="#ggsave"><span class="header-section-number">3.12.2</span> ggsave</a></li>
-  </ul></li>
-  <li><a href="#sec-help-and-resources" id="toc-sec-help-and-resources" class="nav-link" data-scroll-target="#sec-help-and-resources"><span class="header-section-number">3.13</span> Help and resources</a>
+  </ul>
+</li>
+  <li>
+<a href="#sec-help-and-resources" id="toc-sec-help-and-resources" class="nav-link" data-scroll-target="#sec-help-and-resources"><span class="header-section-number">3.13</span> Help and resources</a>
   <ul class="collapse">
-  <li><a href="#sec-access-r-function-help-pages" id="toc-sec-access-r-function-help-pages" class="nav-link" data-scroll-target="#sec-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</a></li>
+<li><a href="#sec-access-r-function-help-pages" id="toc-sec-access-r-function-help-pages" class="nav-link" data-scroll-target="#sec-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</a></li>
   <li><a href="#ai-assistance" id="toc-ai-assistance" class="nav-link" data-scroll-target="#ai-assistance"><span class="header-section-number">3.13.2</span> AI assistance</a></li>
   <li><a href="#sec-using-google-to-find-r-answers" id="toc-sec-using-google-to-find-r-answers" class="nav-link" data-scroll-target="#sec-using-google-to-find-r-answers"><span class="header-section-number">3.13.3</span> Using Google to find R answers</a></li>
   <li><a href="#sec-asking-questions" id="toc-sec-asking-questions" class="nav-link" data-scroll-target="#sec-asking-questions"><span class="header-section-number">3.13.4</span> Asking questions</a></li>
   <li><a href="#sec-other-resources" id="toc-sec-other-resources" class="nav-link" data-scroll-target="#sec-other-resources"><span class="header-section-number">3.13.5</span> News, tutorials other online books</a></li>
-  </ul></li>
   </ul>
-</nav>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title"><span id="sec-getting-started" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span></h1>
 </div>
 
@@ -294,10 +288,7 @@ div.csl-indent {
   
 
 
-</header>
-
-
-<div id="chapter-02-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div id="chapter-02-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -312,15 +303,14 @@ Summary
 <p>Don’t worry if you don’t get it all in the first pass, that’s why the book and lots of other materials exist, so you can come back here or explore out there.</p>
 </div>
 </div>
-<section id="sec-what-is-r" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sec-what-is-r"><span class="header-section-number">3.1</span> What is R?</h2>
+<section id="sec-what-is-r" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="sec-what-is-r">
+<span class="header-section-number">3.1</span> What is R?</h2>
 <p><strong>R</strong> is a programming language that follows the philosophy laid down by it’s predecessor S. The philosophy being that users begin in an interactive environment where they don’t consciously think of themselves as programming. It was created in 1993, and documented in <span class="citation" data-cites="ihaka1996">(<a href="references.html#ref-ihaka1996" role="doc-biblioref">Ihaka and Gentleman 1996</a>)</span>.</p>
 <p>Reasons R has become popular include that it is both open source and cross platform, and that it has broad functionality, from the analysis of data and creating graphical visualisations and web apps.</p>
 <p>Like all languages though it has limitations, for example the syntax is initially confusing.</p>
 <p><a href="https://jumpingrivers.github.io/meetingsR/">Jumping Rivers</a> maintains a list of useR groups and meetings, such as the <a href="https://rladies.org/">R-Ladies</a> group.</p>
-</section>
-<section id="sec-rstudio" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="sec-rstudio"><span class="header-section-number">3.2</span> What is RStudio?</h2>
+</section><section id="sec-rstudio" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="sec-rstudio">
+<span class="header-section-number">3.2</span> What is RStudio?</h2>
 <p><strong>R is the language and RStudio is software created to facilitate our use of R.</strong> They are installed separately. You don’t need RStudio to use R, but you do need R to used RStudio.</p>
 <p><a href="https://posit.co/products/open-source/rstudio/">RStudio</a> is an interactive development environment (IDE). It can be used to write code, navigate the files found on our computer, inspect the variables we are going to create, and visualize the plots. RStudio can also be used for other languages and other tasks (e.g., version control, developing packages, writing Shiny apps) that are beyond the scope here.</p>
 <p><a href="#fig-rstudio-ide" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> shows the default view of the RStudio. It is divided into “Panes”.</p>
@@ -328,14 +318,12 @@ Summary
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-rstudio-ide" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of the default RStudio interactive development environment, showing the default view of the R console, environment and output panes. These can be rearranged as desired.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-ide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio-ide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/rstudio-view.png" class="img-fluid figure-img" style="width:100.0%" alt="Image of the default RStudio interactive development environment, showing the default view of the R console, environment and output panes. These can be rearranged as desired.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-ide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.1: RStudio is an interactive development environment (IDE). This the default view of the R console, environment and output panes. These can be rearranged as desired.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -357,8 +345,8 @@ Shortcuts
 </div>
 </div>
 <p>Time for another philosophical diversion…</p>
-<section id="sec-what-is-real" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-what-is-real"><span class="header-section-number">3.2.1</span> What is real?</h3>
+<section id="sec-what-is-real" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-what-is-real">
+<span class="header-section-number">3.2.1</span> What is real?</h3>
 <p>At the start, we might consider our environment “real”, that is to say the objects we’ve created/loaded and are using are “real”.</p>
 <p>But it’s much better in the long run to consider our scripts as “real”.</p>
 <div class="callout callout-style-simple callout-important no-icon">
@@ -377,40 +365,36 @@ Shortcuts
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-rstudio-env" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of the RStudio Global Options Save workspace to .RData on exit set to Never.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio-env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/rstudio-options.png" class="img-fluid figure-img" style="width:66.0%" alt="Image of the RStudio Global Options Save workspace to .RData on exit set to Never.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.2: It is recommended to turn off the preservation of workspaces between sessions by setting <code>Save workspace to .RData on exit</code> to <code>Never</code>
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-<section id="where-am-i" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="where-am-i"><span class="header-section-number">3.2.2</span> Where am I?</h3>
+</section><section id="where-am-i" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="where-am-i">
+<span class="header-section-number">3.2.2</span> Where am I?</h3>
 <p>The part of your computer operating system that manages files and directories (aka folders) is called the file system. This dates back to 1969 and the <a href="https://en.wikipedia.org/wiki/Unix_filesystem">Unix filesystem</a>.</p>
 <p>The idea is that we have a rooted tree, as with <a href="https://en.wikipedia.org/wiki/Phylogenetic_tree#Rooted_tree">phylogenetic rooted trees</a> in biology. From the root all other directories and files exist along paths going back to the root as shown in <a href="#fig-absolute-path" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>.</p>
 <p>On Unix based systems such as Apple or Android, the root is denoted with a forward slash <code>/</code>. On Windows the root is a back slash <code>\</code>. The <code>/</code> or <code>\</code> is used to to separate directories along the path, denoting a change in the level of the tree</p>
 <p><strong>Note: in RStudio the path separator and root is always <code>/</code> regardless of the operating system.</strong></p>
-<section id="sec-absolute-path" class="level4" data-number="3.2.2.1">
-<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="sec-absolute-path"><span class="header-section-number">3.2.2.1</span> Absolute path from the root <code>/</code></h4>
+<section id="sec-absolute-path" class="level4" data-number="3.2.2.1"><h4 data-number="3.2.2.1" class="anchored" data-anchor-id="sec-absolute-path">
+<span class="header-section-number">3.2.2.1</span> Absolute path from the root <code>/</code>
+</h4>
 <p><a href="#fig-absolute-path" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> shows the absolute path from the root to folder <code>H</code> as a red line.</p>
 <p>This is just a made-up example, but in text in this would be <code>/B/E/H</code>.</p>
 <p>On a Windows machine the root path may start with the hard drive name e.g.&nbsp;<code>C:/</code> and on an Apple or Linux machine it will just begin <code>/</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-absolute-path" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of an absolute path from the root `/` through sub-folders `B` and `E` to folder `H` is shown by a red line.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-absolute-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-absolute-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/directory-structure.svg" class="img-fluid figure-img" style="width:50.0%" alt="Image of an absolute path from the root `/` through sub-folders `B` and `E` to folder `H` is shown by a red line.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-absolute-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.3: The absolute path from the root <code>/</code> through sub-folders <code>B</code> and <code>E</code> to folder <code>H</code> is shown by the red line.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -420,15 +404,13 @@ Figure&nbsp;3.3: The absolute path from the root <code>/</code> through sub-fold
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>In the R console, the function <code>getwd()</code> will show your current working directory as an absolute path from the root.</p>
+<p>In the R console, the function <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> will show your current working directory as an absolute path from the root.</p>
 <p>The path is also shown at the top of the R console.</p>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="sec-relative-path" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="sec-relative-path"><span class="header-section-number">3.2.3</span> Relative path from where you are</h3>
+</section></section><section id="sec-relative-path" class="level3" data-number="3.2.3"><h3 data-number="3.2.3" class="anchored" data-anchor-id="sec-relative-path">
+<span class="header-section-number">3.2.3</span> Relative path from where you are</h3>
 <p>We can also consider relative paths, paths that are relative to each file or folder rather than the root.</p>
 <p>Imagine I have project called <code>penguin-project</code> and I have a script in the <code>R</code> folder that analyses data in a spreadsheet in the <code>data</code> folder.</p>
 <p><a href="#fig-relative-path" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> shows the relative path between <code>analysis-2024-02-27.R</code> and the spreadsheet <code>survey-2024-02-27.csv</code>.</p>
@@ -437,34 +419,29 @@ Figure&nbsp;3.3: The absolute path from the root <code>/</code> through sub-fold
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-relative-path" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of a line indicating a relative path between a R script `analysis-2024-02-27.R` in the R folder and the spreadsheet `survey-2024-02-27.csv` used by the R script in the data folder.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-relative-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-relative-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/relative-path.svg" class="img-fluid figure-img" style="width:100.0%" alt="Image of a line indicating a relative path between a R script `analysis-2024-02-27.R` in the R folder and the spreadsheet `survey-2024-02-27.csv` used by the R script in the data folder.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-relative-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.4: The relative path between the R script <code>analysis-2024-02-27.R</code> in the R folder and the and the spreadsheet <code>survey-2024-02-27.csv</code> used by the R script in the data folder is shown in red.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="sec-packages" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="sec-packages"><span class="header-section-number">3.3</span> Installing and loading packages</h2>
+</section></section><section id="sec-packages" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="sec-packages">
+<span class="header-section-number">3.3</span> Installing and loading packages</h2>
 <p>Packages are collections of functions, and a function is a piece of code written to perform a specific task, such as installing a package.</p>
-<p>Therefore, the function <code>install.packages()</code> is a piece of code written to perform the task of installing packages.</p>
+<p>Therefore, the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> is a piece of code written to perform the task of installing packages.</p>
 <p>We use the function by typing <code>install.packages("tidyverse")</code> with the name of the package in quotes inside the round brackets.</p>
 <p>Here the package is <code>tidyverse</code>. Using the console panel to type this and pressing <code>Enter</code> will run the function.</p>
 <p>We of course need to know the name of the packages we are interested in.</p>
-<p>Once a package is installed we need to load it into our environment to use it. Loading packages is performed using the <code>library()</code> function. As with installation, we put the name of the package - the argument for our function - that we want to load in between the round brackets like so <code>library(tidyverse)</code>.</p>
+<p>Once a package is installed we need to load it into our environment to use it. Loading packages is performed using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function. As with installation, we put the name of the package - the argument for our function - that we want to load in between the round brackets like so <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>.</p>
 <p>As before this can be done on the console, but we will usually load packages as part of script. <em>Note that we don’t need the quotes for the library function.</em></p>
-</section>
-<section id="sec-what-is-a-function" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="sec-what-is-a-function"><span class="header-section-number">3.4</span> What is a function and how do I use them?</h2>
-<p>A function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in <a href="#sec-packages" class="quarto-xref"><span>Section 3.3</span></a> the function <code>install.packages()</code> requires the name of the package we want to install as arguments.</p>
+</section><section id="sec-what-is-a-function" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="sec-what-is-a-function">
+<span class="header-section-number">3.4</span> What is a function and how do I use them?</h2>
+<p>A function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in <a href="#sec-packages" class="quarto-xref"><span>Section 3.3</span></a> the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> requires the name of the package we want to install as arguments.</p>
 <p>Many, if not most, functions can take more than one argument. The creators of the function should have given these defaults for the situation where the user provides only one or some arguments. RStudio should prompt you for the arguments as you type, but if you need to see what they are, use the help function <code>?</code> with the function name in the Console and it will open the help panel or type the function name into the help panel search box.</p>
-<p>For example, to find out all the arguments for <code>install.packages()</code> we’d type <code>?install.packages</code> and press <code>Enter</code>.</p>
+<p>For example, to find out all the arguments for <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> we’d type <code><a href="https://rdrr.io/r/utils/install.packages.html">?install.packages</a></code> and press <code>Enter</code>.</p>
 <div id="cowsay" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -475,7 +452,7 @@ Try installing the <code>cowsay</code> package
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Install and load <code>cowsay</code> with the <code>install.packages()</code> and <code>library()</code> functions. <code>cowsay</code> has one function called <code>say()</code> that you can use to create messages with animals.</p>
+<p>Install and load <code>cowsay</code> with the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> and <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> functions. <code>cowsay</code> has one function called <code>say()</code> that you can use to create messages with animals.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -492,39 +469,35 @@ documentation for the say() function.
 </div>
 </div>
 </div>
-<section id="sec-palmer-penguins" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="sec-palmer-penguins"><span class="header-section-number">3.4.1</span> Introducing the Palmer Penguins</h3>
+<section id="sec-palmer-penguins" class="level3" data-number="3.4.1"><h3 data-number="3.4.1" class="anchored" data-anchor-id="sec-palmer-penguins">
+<span class="header-section-number">3.4.1</span> Introducing the Palmer Penguins</h3>
 <p>The <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package is a dataset curated by Allison Horst of data on three penguin species from the <a href="https://pallter.marine.rutgers.edu/">Palmer Station in Antarctica</a> (<a href="#fig-palmer-penguins-hex" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-palmer-penguins-hex" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-palmer-penguins-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-palmer-penguins-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/palmerpenguins.png" class="img-fluid figure-img" style="width:33.0%" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-palmer-penguins-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.5: Hex sticker of the <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package curated by Allison Horst showing the Chinstrap, Gentoo and Adélie penguins.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>It’s a great dataset for getting started with and you can install it like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"palmerpenguins"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The three penguins species are the Chinstrap, Gentoo and Adélie penguins (<a href="#fig-palmer-penguins" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-palmer-penguins" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-palmer-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-palmer-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/penguins.png" class="img-fluid figure-img" style="width:80.0%" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-palmer-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.6: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie penguins.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -532,21 +505,17 @@ Figure&nbsp;3.6: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie 
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-culmen" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-culmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-culmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/culmen_depth.png" class="img-fluid figure-img" style="width:66.0%" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-culmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.7: Artwork by @allison_horst of the culman of a Gentoo penguin.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="sec-a-project-orientated-workflow" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="sec-a-project-orientated-workflow"><span class="header-section-number">3.5</span> A project orientated workflow</h2>
+</section></section><section id="sec-a-project-orientated-workflow" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="sec-a-project-orientated-workflow">
+<span class="header-section-number">3.5</span> A project orientated workflow</h2>
 <p>This section is all about how to use R and RStudio to <em>“maximize effectiveness and reduce frustration.”</em></p>
 <p>The above quote is from <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">Jenny Bryan’s article</a> about a project orientated workflow.</p>
 <p>The main point here is that how you do things, <strong>the workflow</strong>, should not be mixed up with the <strong>product of the workflow</strong> itself.</p>
@@ -562,35 +531,33 @@ Figure&nbsp;3.7: Artwork by @allison_horst of the culman of a Gentoo penguin.
 <p>Likewise we can’t share environments directly, but we can share the code that creates the environment.</p>
 <p>If we organise our analysis into self-contained projects that hold everything needed to perform the analysis. These projects can be shared across machines and the analysis recreated, and thus the workflow is kept separate from the product.</p>
 <p>What does this look like in practice?</p>
-<section id="sec-r-projects" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-r-projects"><span class="header-section-number">3.5.1</span> RStudio Projects</h3>
+<section id="sec-r-projects" class="level3" data-number="3.5.1"><h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-r-projects">
+<span class="header-section-number">3.5.1</span> RStudio Projects</h3>
 <p>Step one is to use an interactive development environment such as RStudio rather than using R on its own for your analysis.</p>
 <p>RStudio contains a facility to keep all files associated with a particular analysis together called, as you might expect from <a href="#sec-a-project-orientated-workflow" class="quarto-xref"><span>Section 3.5</span></a>, a Project.</p>
 <p>Creating a Project creates a file <code>.Rproj</code> containing all the information associated with your analysis including the Project location (allowing you to quickly navigate to it), and optionally preserves custom settings and open files to make it easier to resume work after a break. This is also super helpful if you are working on multiple projects as you can switch between them at a click.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-create-project" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of the new R project menu in RStudio">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/create-project.png" class="img-fluid figure-img" style="width:66.0%" alt="An image of the new R project menu in RStudio">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.8: Starting a new R project in RStudio
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>These the steps for creating an <code>Project</code> in a new folder:</p>
 <ul>
 <li>Start R Studio (presentation of R Studio -below- should happen here)</li>
-<li>Under the <code>File</code> menu, click on <code>New project</code>, choose <code>New directory</code>, then <code>Empty project</code></li>
+<li>Under the <code>File</code> menu, click on <code>New project</code>, choose <code>New directory</code>, then <code>Empty project</code>
+</li>
 <li>Enter a name for this new folder (aka directory), and choose a convenient location for it. This will be your <strong>working directory</strong> for the project.</li>
-<li>Click on <code>Create project</code></li>
-</ul>
-</section>
-<section id="sec-names" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-names"><span class="header-section-number">3.5.2</span> Naming things</h3>
+<li>Click on <code>Create project</code>
+</li>
+</ul></section><section id="sec-names" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-names">
+<span class="header-section-number">3.5.2</span> Naming things</h3>
 <p><a href="https://ropensci.org/blog/2017/12/08/rprofile-jenny-bryan/">Jenny Bryan</a> also has three principles for <a href="http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf">naming things</a> that are well worth remembering.</p>
 <p>When you names something, a file or an object, ideally it should be:</p>
 <ol type="1">
@@ -599,17 +566,14 @@ Figure&nbsp;3.8: Starting a new R project in RStudio
 <li>Plays well with default ordering (numerical or date order)</li>
 </ol>
 <p>We’ll see examples of this as we go along.</p>
-</section>
-</section>
-<section id="sec-base-r-tidyverse" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="sec-base-r-tidyverse"><span class="header-section-number">3.6</span> Base R, the tidyverse and tidy data</h2>
+</section></section><section id="sec-base-r-tidyverse" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="sec-base-r-tidyverse">
+<span class="header-section-number">3.6</span> Base R, the tidyverse and tidy data</h2>
 <p>Base R is everything that comes included when you install the R language, whereas <a href="https://www.tidyverse.org/">the tidyverse</a> has have to be installed in addition to base R. The tidyverse eight core packages that are loaded when the tidyverse library is loaded, but installs a number of other tidyverse packages that can be load separately using the library function.</p>
 <p>The key difference between base R and the tidyverse is that the tidyverse uses functions named as verbs with a single purpose, whereas base R syntax can be used for multiple purposes.</p>
 <p>This trade-off I’d characterise as cognitive ease versus flexibility.</p>
 <p><a href="https://www.tidyverse.org/">The tidyverse website</a> has extensive materials for learning more about the tidyverse. And <a href="https://rstudio-education.github.io/hopr/">Hands on Programming with R</a> provides a base R view.</p>
-</section>
-<section id="sec-tidy-data" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="sec-tidy-data"><span class="header-section-number">3.7</span> Tidy data</h2>
+</section><section id="sec-tidy-data" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="sec-tidy-data">
+<span class="header-section-number">3.7</span> Tidy data</h2>
 <p>Tidy data follows three principals for tabular data as proposed in the Tidy Data paper <span class="citation" data-cites="wickham2014">(<a href="references.html#ref-wickham2014" role="doc-biblioref">Wickham 2014</a>)</span>:</p>
 <ol type="1">
 <li><p>Each variable is a column; each column is a variable.</p></li>
@@ -620,14 +584,12 @@ Figure&nbsp;3.8: Starting a new R project in RStudio
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-tidy-data" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/tidy-data.png" class="img-fluid figure-img" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell." width="683">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.9: Some tidy data from the penguin dataset. Every variable has it’s own column, every observation has its own row and every value has its own cell.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -640,48 +602,46 @@ Figure&nbsp;3.9: Some tidy data from the penguin dataset. Every variable has it�
 </ol>
 </blockquote>
 <p>This will hopefully become apparent in <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
-</section>
-<section id="sec-atoms" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="sec-atoms"><span class="header-section-number">3.8</span> Atoms of R</h2>
+</section><section id="sec-atoms" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="sec-atoms">
+<span class="header-section-number">3.8</span> Atoms of R</h2>
 <p>Having set ourselves up in RStudio, let’s turn our attention to the language of R itself.</p>
 <p>The basic building blocks of how R stores data are called atomic vector types. It’s from these atoms that more complex structures are built. Atomic vectors have one dimension, just like a single row or a single column in a spreadsheet.</p>
 <p>These are the building blocks of more complex data containers such as data frame (<a href="#sec-data-frames" class="quarto-xref"><span>Section 3.10.3</span></a>) containing the penguin dataset (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>).</p>
 <p>The four main atoms of R are:</p>
 <ul>
 <li>Doubles: regular numbers, +ve or -ve and with or without decimal places. AKA numerics.</li>
-<li>Integers: whole numbers, specified with an upper-case L, e.g.&nbsp;<code>int &lt;- 2L</code></li>
+<li>Integers: whole numbers, specified with an upper-case L, e.g.&nbsp;<code>int &lt;- 2L</code>
+</li>
 <li>Characters: Strings of text</li>
 <li>Logicals: these store <code>TRUE</code>‘s and <code>FALSE</code>’s’ which are useful for comparisons.</li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-r-atoms" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of atomic R data types: doubles, integers, characters and logicals.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-r-atoms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-r-atoms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/R-atomic-vectors.png" class="img-fluid figure-img" style="width:50.0%" alt="An image of atomic R data types: doubles, integers, characters and logicals.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-atoms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.10: The atomic R data types that form the building blocks of more complex data containers.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Let’s make a character vector and check the atomic vector type, using the <code>typeof()</code>. This also introduces a very important R function <code>c()</code>. This lower case c stands for <strong>combine</strong>. So when we have several objects e.g.&nbsp;words or numbers, we can combine them into a vector the length of the number of objects, as illustrated here for a pack of cards:</p>
+<p>Let’s make a character vector and check the atomic vector type, using the <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code>. This also introduces a very important R function <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. This lower case c stands for <strong>combine</strong>. So when we have several objects e.g.&nbsp;words or numbers, we can combine them into a vector the length of the number of objects, as illustrated here for a pack of cards:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cards <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ace"</span>, <span class="st">"king"</span>, <span class="st">"queen"</span>, <span class="st">"jack"</span>, <span class="st">"ten"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>cards</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cards</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ace"</span>, <span class="st">"king"</span>, <span class="st">"queen"</span>, <span class="st">"jack"</span>, <span class="st">"ten"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cards</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ace"   "king"  "queen" "jack"  "ten"  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(cards)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cards</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
 <p>Note here that we see the use of the assignment operator <code>&lt;-</code> to assign our vector on the right as the object <code>cards</code>. We talk more about that in <a href="#sec-assigning-objects" class="quarto-xref"><span>Section 3.9</span></a>.</p>
-<p>Also note that the output of <code>typeof()</code> is itself a vector of length one and type <code>character</code>.</p>
+<p>Also note that the output of <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> is itself a vector of length one and type <code>character</code>.</p>
 <div id="seq" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try creating a vector of integers">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -692,30 +652,27 @@ Try creating a vector of integers
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use the <code>seq()</code> function to create a vector of numbers from 1 to 10, and <code>typeof()</code> to examine the vector type.</p>
-<p>Remember to use <code>?seq</code> if you want to learn more about the function.</p>
+<p>Use the <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> function to create a vector of numbers from 1 to 10, and <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> to examine the vector type.</p>
+<p>Remember to use <code><a href="https://rdrr.io/r/base/seq.html">?seq</a></code> if you want to learn more about the function.</p>
 </div>
 </div>
-</section>
-<section id="sec-assigning-objects" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="sec-assigning-objects"><span class="header-section-number">3.9</span> Assigning objects</h2>
+</section><section id="sec-assigning-objects" class="level2" data-number="3.9"><h2 data-number="3.9" class="anchored" data-anchor-id="sec-assigning-objects">
+<span class="header-section-number">3.9</span> Assigning objects</h2>
 <p>Objects are how we store data inside the R environment. We assign labels to objects using the assignment operator <code>&lt;-</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mass_kg <span class="ot">&lt;-</span> <span class="dv">55</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mass_kg</span> <span class="op">&lt;-</span> <span class="fl">55</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Read this as <em>“mass_kg is assigned to value 55”</em> in your head. A subtle but important point here is that the object is 55 and the value remains 55 regardless of the label we assign to it.</p>
 <p>In fact we could assign more than one label to the same object. Another way to think about this is that Bibi is a cat (<a href="#fig-bibi-object" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>), and remains a cat even if I call her Pickle when she’s being naughty.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-bibi-object" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of a cat being assigned the name Bibi to illustrate how the name does not change the data type of the object.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bibi-object-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bibi-object-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/bibi-data.png" class="img-fluid figure-img" style="width:80.0%" alt="An image of a cat being assigned the name Bibi to illustrate how the name does not change the data type of the object.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bibi-object-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.11: Bibi is of data type cat regardless of her name.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -726,39 +683,39 @@ Figure&nbsp;3.11: Bibi is of data type cat regardless of her name.
 <p>So here we’ve used the name to indicate its value represents a mass in kilograms. Look in your environment pane and you’ll see the <code>mass_kg</code> object containing the (data) value 55.</p>
 <p>We can inspect an object by typing it’s name:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mass_kg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mass_kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 55</code></pre>
 </div>
 </div>
 <p>What’s wrong here?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mass_KG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mass_KG</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>Error: object 'mass_KG' not found</code></p>
 <p>This error illustrates that typos matter, everything must be precise and <code>mass_KG</code> is not the same as <code>mass_kg</code>. <code>mass_KG</code> doesn’t exist, hence the error.</p>
-<p>Let’s use <code>seq()</code> to create a <strong>seq</strong>uence of numbers, and at the same time practice tab completion.</p>
-<p>Start typing <code>se</code> in the console and you should see a list of functions appear, add <code>q</code> to shorten the list, then use the up and down arrow to highlight the function of interest <code>seq()</code> and hit Tab to select. This is tab completion.</p>
+<p>Let’s use <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> to create a <strong>seq</strong>uence of numbers, and at the same time practice tab completion.</p>
+<p>Start typing <code>se</code> in the console and you should see a list of functions appear, add <code>q</code> to shorten the list, then use the up and down arrow to highlight the function of interest <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> and hit Tab to select. This is tab completion.</p>
 <p>RStudio puts the cursor between the parentheses to prompt us to enter some arguments. Here we’ll use 1 as the start and 10 as the end:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 </div>
 <p>If we left off a parentheses to close the function, then when we hit enter we’ll see a <code>+</code> indicating RStudio is expecting further code. We either add the missing part or press Escape to cancel the code.</p>
-<p>Let’s call a function and make an assignment at the same time. Here we’ll use the base R function <code>seq()</code> which takes three arguments: <code>from</code>, <code>to</code> and <code>by</code>.</p>
+<p>Let’s call a function and make an assignment at the same time. Here we’ll use the base R function <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> which takes three arguments: <code>from</code>, <code>to</code> and <code>by</code>.</p>
 <p>Read the following code as <em>“assign my_sequence to an object that stores a sequence of numbers from 2 to 20 by intervals of 2</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_sequence <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_sequence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">20</span>,<span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This time nothing was returned to the console, but we now have an object called <code>my_sequence</code> in our environment.</p>
-<section id="sec-indexing" class="level3" data-number="3.9.1">
-<h3 data-number="3.9.1" class="anchored" data-anchor-id="sec-indexing"><span class="header-section-number">3.9.1</span> Indexing and sub-setting</h3>
+<section id="sec-indexing" class="level3" data-number="3.9.1"><h3 data-number="3.9.1" class="anchored" data-anchor-id="sec-indexing">
+<span class="header-section-number">3.9.1</span> Indexing and sub-setting</h3>
 <p>If we want to access and subset elements of <code>my_sequence</code> we use square brackets <code>[]</code> and the index number. Indexing in R starts at 1 such that 1 is the index of the first element in the sequence, element 1 having the the value of 2.</p>
 <p>For example element five would be subset by:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>my_sequence[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_sequence</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
@@ -766,21 +723,19 @@ Figure&nbsp;3.11: Bibi is of data type cat regardless of her name.
 <p>Here the number five is the index of the vector, not the value of the fifth element. The value of the fifth element is 10.</p>
 <p>And returning multiple elements uses a colon <code>:</code>, like so</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_sequence[<span class="dv">5</span><span class="sc">:</span><span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_sequence</span><span class="op">[</span><span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 12 14 16</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="sec-lists" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="sec-lists"><span class="header-section-number">3.10</span> Lists, matrices, arrays and data frames</h2>
+</section></section><section id="sec-lists" class="level2" data-number="3.10"><h2 data-number="3.10" class="anchored" data-anchor-id="sec-lists">
+<span class="header-section-number">3.10</span> Lists, matrices, arrays and data frames</h2>
 <p>Lists also group data into one dimensional sets of data. The difference being that list group objects instead of individual values, such as several atomic vectors.</p>
 <p>For example, let’s make a list containing a vector of numbers and a character vector</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>list_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">110</span>,<span class="st">"R"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>list_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">list_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">110</span>,<span class="st">"R"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">list_1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
@@ -803,14 +758,12 @@ Figure&nbsp;3.11: Bibi is of data type cat regardless of her name.
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-list-index" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image a tweet by Hadley Wickham showing pepper pots to indicate how indexing in lists works">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-list-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-list-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/indexing.png" class="img-fluid figure-img" style="width:80.0%" alt="An image a tweet by Hadley Wickham showing pepper pots to indicate how indexing in lists works">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-list-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.12: List indexing by Hadley Wickham
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -818,31 +771,27 @@ Figure&nbsp;3.12: List indexing by Hadley Wickham
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-r-vectors" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of the base vectors of R which includes Lists and Null vectors in addition to the atomic vectors.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-r-vectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-r-vectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/R-vectors.png" class="img-fluid figure-img" style="width:66.0%" alt="An image of the base vectors of R which includes Lists and Null vectors in addition to the atomic vectors.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-vectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.13: The base vectors of R includes Lists and NULL vectors in addition to the atomic vectors.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-<section id="sec-matrices" class="level3" data-number="3.10.1">
-<h3 data-number="3.10.1" class="anchored" data-anchor-id="sec-matrices"><span class="header-section-number">3.10.1</span> Matrices and arrays</h3>
+<section id="sec-matrices" class="level3" data-number="3.10.1"><h3 data-number="3.10.1" class="anchored" data-anchor-id="sec-matrices">
+<span class="header-section-number">3.10.1</span> Matrices and arrays</h3>
 <p>Atomic vectors have one dimension, one row or one column. Matrices are an object type that store data of the same type in a two dimensional array like a table.</p>
 <p>Whereas arrays can have N dimensions, which makes them hard to imagine. We won’t be using these either, but they are also valid R objects</p>
-</section>
-<section id="sec-categorical-data-aka-factors" class="level3" data-number="3.10.2">
-<h3 data-number="3.10.2" class="anchored" data-anchor-id="sec-categorical-data-aka-factors"><span class="header-section-number">3.10.2</span> Categorical data aka Factors</h3>
+</section><section id="sec-categorical-data-aka-factors" class="level3" data-number="3.10.2"><h3 data-number="3.10.2" class="anchored" data-anchor-id="sec-categorical-data-aka-factors">
+<span class="header-section-number">3.10.2</span> Categorical data aka Factors</h3>
 <p>Factors are Rs way of storing categorical information such as eye colour or car type. A factor is something that can only have certain values, and can be ordered (such as <code>low</code>,<code>medium</code>,<code>high</code>) or unordered such as types of fruit.</p>
 <p>Factors are useful as they code string variables such as “red” or “blue” to integer values e.g.&nbsp;1 and 2, which can be used in statistical models and when plotting, but they are confusing as they look like strings.</p>
 <p><strong>Factors look like strings, but behave like integers.</strong></p>
 <p>Historically R converts strings to factors when we load and create data, but it’s often not what we want as a default. Since R version 4.0.0 strings not treated as factors by default.</p>
-</section>
-<section id="sec-data-frames" class="level3" data-number="3.10.3">
-<h3 data-number="3.10.3" class="anchored" data-anchor-id="sec-data-frames"><span class="header-section-number">3.10.3</span> Data frames</h3>
+</section><section id="sec-data-frames" class="level3" data-number="3.10.3"><h3 data-number="3.10.3" class="anchored" data-anchor-id="sec-data-frames">
+<span class="header-section-number">3.10.3</span> Data frames</h3>
 <p>For data analysis in R, we mostly be using data frames.</p>
 <p>Data frames are two dimensional versions of lists in that they can contain different data types in the same object (unlike matrices or arrays). This is form of storing data we are going to be using and is encountered day-to-day in the library.</p>
 <p>In a data frame each atomic vector type becomes a column, and a data frame is formed by columns of vectors of the same length. Each column element must be of the same type, but the column types can vary.</p>
@@ -850,24 +799,22 @@ Figure&nbsp;3.13: The base vectors of R includes Lists and NULL vectors in addit
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-data-frame" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of an example data frame with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-data-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/R-data-frame.png" class="img-fluid figure-img" style="width:50.0%" alt="An image of an example data frame with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.14: An example data frame <code>df</code> with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">numeric_vector =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">3</span>), </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">character_vector =</span> <span class="fu">c</span>(<span class="st">"S"</span>,<span class="st">"A"</span>,<span class="st">"U"</span>),</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">logical_vector =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>), </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>numeric_vector <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">7</span>,<span class="fl">3</span><span class="op">)</span>, </span>
+<span>                 character_vector <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"S"</span>,<span class="st">"A"</span>,<span class="st">"U"</span><span class="op">)</span>,</span>
+<span>                 logical_vector <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span><span class="op">)</span>, </span>
+<span>                 stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  numeric_vector character_vector logical_vector
 1              1                S           TRUE
@@ -879,13 +826,13 @@ Figure&nbsp;3.14: An example data frame <code>df</code> with three rows and thre
 <p>Here’s what the code to make the same data frame as before as a tibble looks like. Note how we get more information from a tibble when it is returned to the Console, it tells us what the dimensions are, and what type of vectors it contains.</p>
 <p>Note that I have to load the <code>tibble</code> package as it is not a base R function. Also note the difference in the way the information about <code>df</code> and <code>tbl_df</code> are displayed.</p>
 <div class="cell" data-labels="make-tibble">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>tbl_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">numeric_vector =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">3</span>), </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">character_vector =</span> <span class="fu">c</span>(<span class="st">"S"</span>,<span class="st">"A"</span>,<span class="st">"U"</span>),</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">logical_vector =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>tbl_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tbl_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>numeric_vector <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">7</span>,<span class="fl">3</span><span class="op">)</span>, </span>
+<span>                 character_vector <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"S"</span>,<span class="st">"A"</span>,<span class="st">"U"</span><span class="op">)</span>,</span>
+<span>                 logical_vector <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tbl_df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   numeric_vector character_vector logical_vector
@@ -899,52 +846,49 @@ Figure&nbsp;3.14: An example data frame <code>df</code> with three rows and thre
 <p>For example <code>df[1,2]</code> means <strong>return the value of <code>df</code> row 1, column 2</strong>. This corresponds with the value <code>A</code>.</p>
 <p>We can also use the colon operator to choose several rows or columns, and by leaving the row or column blank we return all rows or all columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset rows 1 and 2 of column 1</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset rows 1 and 2 of column 1</span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset all rows of column 3</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df[,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset all rows of column 3</span></span>
+<span><span class="va">df</span><span class="op">[</span>,<span class="fl">3</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE  TRUE</code></pre>
 </div>
 </div>
 <p>Don’t worry too much about this for now, we won’t be doing this, but it’s worth being aware of this syntax.</p>
-</section>
-</section>
-<section id="sec-plotting-and-exporting-data" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="sec-plotting-and-exporting-data"><span class="header-section-number">3.11</span> Plotting and exporting data</h2>
+</section></section><section id="sec-plotting-and-exporting-data" class="level2" data-number="3.11"><h2 data-number="3.11" class="anchored" data-anchor-id="sec-plotting-and-exporting-data">
+<span class="header-section-number">3.11</span> Plotting and exporting data</h2>
 <!-- and @sec-visualisation goes into detail -->
 <p>One of the most useful and important parts of any data analysis is plotting data. To give you an example, we’ll use the <code>ggplot2</code> package as an introduction to automating a task in code, and as a tool for understanding data.</p>
 <p><code>ggplot2</code> implements the <em>grammar of graphics</em>, for describing and building graphs. The idea being that we construct a plot in the following way:</p>
 <ol type="1">
-<li>Call the <code>ggplot()</code> function to create a graph.</li>
-<li>Pass our data as the first argument to the <code>ggplot()</code> function.</li>
-<li>Then pass some arguments to the aesthetics function <code>aes()</code> inside the <code>gpplot()</code> which tell ggplot how to plot the data e.g.&nbsp;which data goes on the x and y axis.</li>
+<li>Call the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function to create a graph.</li>
+<li>Pass our data as the first argument to the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function.</li>
+<li>Then pass some arguments to the aesthetics function <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> inside the <code>gpplot()</code> which tell ggplot how to plot the data e.g.&nbsp;which data goes on the x and y axis.</li>
 <li>Then we follow the ggplot function with a <code>+</code> sign to indicate we are going to add more code, followed by a geometric object function, a <code>geom</code> which maps the data to type of plot we want to make e.g.&nbsp;a histogram or scatter plot.</li>
 </ol>
 <p>Don’t worry if this sounds confusing, it becomes clear with practice and all plots follow this grammar.</p>
 <p>We’ll use the <code>pengiuns</code> from the Palmer Penguins (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>) dataset to the question <em>what is the relationship between body mass and flipper length?</em></p>
-<p>Try <code>?penguins</code> to learn more about the data.</p>
+<p>Try <code><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">?penguins</a></code> to learn more about the data.</p>
 <ol type="1">
 <li>Penguin mass in grams is in the <code>body_mass_g</code> column.</li>
 <li>Flipper length is in the <code>flipper_length_mm</code> column.</li>
 </ol>
 <p>To create a plot of penguin mass <code>body_mass_g</code> (x-axis) against flipper length <code>flipper_length_mm</code> (y-axis) we do the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins) <span class="sc">+</span> </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="getting-started_files/figure-html/penguin-plot-1-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="getting-started_files/figure-html/penguin-plot-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -966,21 +910,20 @@ Warning messages
 </div>
 </div>
 <p>Our initial plot shows as we might expect, bigger penguins have bigger flippers.</p>
-<p>Now try extending this code to include to add a <code>colour</code> aesthetic to the the <code>aes()</code> function, let <code>colour = species</code>, so we can see the different sizes of the penguin species.</p>
+<p>Now try extending this code to include to add a <code>colour</code> aesthetic to the the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> function, let <code>colour = species</code>, so we can see the different sizes of the penguin species.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins) <span class="sc">+</span> </span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm, </span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">colour =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, </span>
+<span>                           colour <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="getting-started_files/figure-html/penguin-plot-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="getting-started_files/figure-html/penguin-plot-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -992,24 +935,23 @@ Warning messages
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Concretely, in our first example <code>&lt;DATA&gt;</code> was <code>penguins</code>, the <code>&lt;GEOM_FUNCTION&gt;</code> was <code>geom_point()</code> and the arguments we supplies to map our aesthetics <code>&lt;MAPPINGS&gt;</code> were <code>x = body_mass_g, y = flipper_length_mm</code>.</p>
+<p>Concretely, in our first example <code>&lt;DATA&gt;</code> was <code>penguins</code>, the <code>&lt;GEOM_FUNCTION&gt;</code> was <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> and the arguments we supplies to map our aesthetics <code>&lt;MAPPINGS&gt;</code> were <code>x = body_mass_g, y = flipper_length_mm</code>.</p>
 <p>As we can use this code for any tidy data set, hopefully you are beginning to see how a small amount of code can do a lot.</p>
-</section>
-<section id="exporting-data" class="level2" data-number="3.12">
-<h2 data-number="3.12" class="anchored" data-anchor-id="exporting-data"><span class="header-section-number">3.12</span> Exporting data</h2>
+</section><section id="exporting-data" class="level2" data-number="3.12"><h2 data-number="3.12" class="anchored" data-anchor-id="exporting-data">
+<span class="header-section-number">3.12</span> Exporting data</h2>
 <p>We’ll spend more time on getting data in and out of our R environment in the <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a>, but let’s imagine we wanted to export our plot and the <code>penguin</code> data for a colleague or presentation.</p>
-<section id="readr" class="level3" data-number="3.12.1">
-<h3 data-number="3.12.1" class="anchored" data-anchor-id="readr"><span class="header-section-number">3.12.1</span> readr</h3>
+<section id="readr" class="level3" data-number="3.12.1"><h3 data-number="3.12.1" class="anchored" data-anchor-id="readr">
+<span class="header-section-number">3.12.1</span> readr</h3>
 <p>To export tibbles and data frames, we’ll use the <code>readr</code> package, and the <code>write_excel_csv()</code> function. This creates a table in comma separated variable format that can opened by spreadsheet software such as excel.</p>
 <p>As it is a function is has round brackets and the main arguments we pass are the object containing the data we want to output and the name of the file and the location we want to write the file to, in this case the <code>outputs</code> folder.</p>
-<p>I’m also going to use the <code>glue</code> package and <code>glue()</code> function combined with base R function <code>Sys.Date()</code> to create a filename which is a character vector using today’s date.</p>
-<p>So the syntax here is of one function nested inside another function: <code>write_excel_csv(&lt;data&gt;, glue(&lt;output-file&gt;))</code> and <code>glue()</code> has a third function <code>Sys.Date()</code> called from within it too. So it’s a bit confusing at first.</p>
+<p>I’m also going to use the <code>glue</code> package and <code><a href="https://glue.tidyverse.org/reference/glue.html">glue()</a></code> function combined with base R function <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> to create a filename which is a character vector using today’s date.</p>
+<p>So the syntax here is of one function nested inside another function: <code>write_excel_csv(&lt;data&gt;, glue(&lt;output-file&gt;))</code> and <code><a href="https://glue.tidyverse.org/reference/glue.html">glue()</a></code> has a third function <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> called from within it too. So it’s a bit confusing at first.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Write csv file to outputs folder with today's date</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_excel_csv</span>(penguins, </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">glue</span>(<span class="st">"outputs/penguin-data-{Sys.Date()}.csv"</span>)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://glue.tidyverse.org/">glue</a></span><span class="op">)</span></span>
+<span><span class="co"># Write csv file to outputs folder with today's date</span></span>
+<span><span class="fu">write_excel_csv</span><span class="op">(</span><span class="va">penguins</span>, </span>
+<span>                <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"outputs/penguin-data-{Sys.Date()}.csv"</span><span class="op">)</span></span>
+<span>                <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="unnumbered callout callout-style-simple callout-tip callout-titled" title="`glue`  evaluation">
 <div class="callout-header d-flex align-content-center">
@@ -1022,15 +964,15 @@ Warning messages
 </div>
 <div class="callout-body-container callout-body">
 <p>We’ve not seen this syntax before, but <a href="https://glue.tidyverse.org/"><code>glue</code></a> is a tidyverse package for working with strings.</p>
-<p>Using curly brackets <code>{}</code> the <code>glue()</code> function will paste together and evaluate values from R objects with strings of characters.</p>
+<p>Using curly brackets <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> the <code><a href="https://glue.tidyverse.org/reference/glue.html">glue()</a></code> function will paste together and evaluate values from R objects with strings of characters.</p>
 <p>This has lots of uses, but to aid your understanding here’s an example where I create two single value vectors, one character and the other integer for Bibi the cat and then use <code>glue</code> to insert them into a sentence.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">"Bibi"</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">11</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glue</span>(<span class="st">"My neighbour's cat is called {name} and this year she </span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="st">     will be {age+1} years old."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://glue.tidyverse.org/">glue</a></span><span class="op">)</span></span>
+<span><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Bibi"</span></span>
+<span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">11</span></span>
+<span></span>
+<span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"My neighbour's cat is called {name} and this year she </span></span>
+<span><span class="st">     will be {age+1} years old."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>My neighbour's cat is called Bibi and this year she 
 will be 12 years old.</code></pre>
@@ -1039,60 +981,58 @@ will be 12 years old.</code></pre>
 <p>Note that <code>glue</code> evaluates the expression <code>age+1</code>.</p>
 </div>
 </div>
-<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-04-04.csv. The date in the filename is the date I built this book (2024-04-04)</p>
-</section>
-<section id="ggsave" class="level3" data-number="3.12.2">
-<h3 data-number="3.12.2" class="anchored" data-anchor-id="ggsave"><span class="header-section-number">3.12.2</span> ggsave</h3>
+<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-04-09.csv. The date in the filename is the date I built this book (2024-04-09)</p>
+</section><section id="ggsave" class="level3" data-number="3.12.2"><h3 data-number="3.12.2" class="anchored" data-anchor-id="ggsave">
+<span class="header-section-number">3.12.2</span> ggsave</h3>
 <p>If we want to save the last plot we made in <code>ggplot2</code> we can use the <a href="https://ggplot2.tidyverse.org/reference/ggsave.html"><code>ggsave()</code></a> function.</p>
-<p>We tell <code>ggsave()</code> the filename, and it will save it as that type depending on how we name the file. For example if we use <code>file.png</code> it will save a png and if we use <code>file.jpeg</code> it will save a <code>jpeg</code>.</p>
-<p>Check out <code>?ggsave</code> or the link above for more arguments we can supply to <code>ggsave()</code>, such as plot width and height, resolution or background colour.</p>
-<p>To save our last plot for example using <code>glue()</code> again to automatically provide the date.</p>
+<p>We tell <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> the filename, and it will save it as that type depending on how we name the file. For example if we use <code>file.png</code> it will save a png and if we use <code>file.jpeg</code> it will save a <code>jpeg</code>.</p>
+<p>Check out <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">?ggsave</a></code> or the link above for more arguments we can supply to <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>, such as plot width and height, resolution or background colour.</p>
+<p>To save our last plot for example using <code><a href="https://glue.tidyverse.org/reference/glue.html">glue()</a></code> again to automatically provide the date.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue</span>(<span class="st">"outputs/penguins-mass-vs-flipper-plot-{Sys.Date()}.png"</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"outputs/penguins-mass-vs-flipper-plot-{Sys.Date()}.png"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="sec-help-and-resources" class="level2" data-number="3.13">
-<h2 data-number="3.13" class="anchored" data-anchor-id="sec-help-and-resources"><span class="header-section-number">3.13</span> Help and resources</h2>
-<section id="sec-access-r-function-help-pages" class="level3" data-number="3.13.1">
-<h3 data-number="3.13.1" class="anchored" data-anchor-id="sec-access-r-function-help-pages"><span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</h3>
-<p>If you need help with a specific R function, let’s say <code>barplot()</code>, you can type</p>
+</section></section><section id="sec-help-and-resources" class="level2" data-number="3.13"><h2 data-number="3.13" class="anchored" data-anchor-id="sec-help-and-resources">
+<span class="header-section-number">3.13</span> Help and resources</h2>
+<section id="sec-access-r-function-help-pages" class="level3" data-number="3.13.1"><h3 data-number="3.13.1" class="anchored" data-anchor-id="sec-access-r-function-help-pages">
+<span class="header-section-number">3.13.1</span> Using <code>?</code> to access R function help pages</h3>
+<p>If you need help with a specific R function, let’s say <code><a href="https://rdrr.io/r/graphics/barplot.html">barplot()</a></code>, you can type</p>
 <p>the function name without round brackets, with a question mark at the start:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>?barplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">barplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="ai-assistance" class="level3" data-number="3.13.2">
-<h3 data-number="3.13.2" class="anchored" data-anchor-id="ai-assistance"><span class="header-section-number">3.13.2</span> AI assistance</h3>
+</section><section id="ai-assistance" class="level3" data-number="3.13.2"><h3 data-number="3.13.2" class="anchored" data-anchor-id="ai-assistance">
+<span class="header-section-number">3.13.2</span> AI assistance</h3>
 <p>The introduction of <a href="https://openai.com/research/gpt-4">GPT-4</a> and other powerful large language models such as <a href="https://www.anthropic.com/">Claude 3</a> and <a href="https://deepmind.google/technologies/gemini/#introduction">Gemini 1.5</a> since 2023 has meant that these tools are now some of the best ways to get help. with coding.</p>
 <p>At the time of writing I’m still a novice in using them, but I highly recommend Ethan Mollick’s work as a good place to start. He’s written posts on <a href="https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting">writing prompts</a> and has resources such as the <a href="https://www.moreusefulthings.com/prompts">prompt library</a> for Open AI’s ChatGPT.</p>
 <p>I started with Claude 3 from Anthrophic. One reason I chose Claude is because of its <a href="https://docs.anthropic.com/claude/docs/intro-to-claude">documentation</a> and <a href="https://docs.anthropic.com/claude/prompt-library">prompt library</a>.</p>
 <p>For example, <a href="#fig-claude-1" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> shows how I prompted Claude 3 to help me reproduce the example I’d already created in <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 4.4.1</span></a>.</p>
 <ol type="1">
-<li><p>First I told Claude who I wanted it to be:</p>
+<li>
+<p>First I told Claude who I wanted it to be:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>You are an R programmer called Belle and you provide guidance on writing </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>tidyverse code in R. Output should be commented code snippets.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p>Then I asked my new assistant Belle what I wanted:</p>
+</div>
+</li>
+<li>
+<p>Then I asked my new assistant Belle what I wanted:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>Can you show me how filter the palmer penguins dataset for penguins </span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>with a bill length greater or equal to 50 mm?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+</div>
+</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-claude-1" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-claude-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-claude-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/claude-part-1-2024-04-04.png" class="img-fluid figure-img" style="width:100.0%" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-claude-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.15: An example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length &gt;= 50 mm.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -1102,32 +1042,27 @@ Figure&nbsp;3.15: An example of using Claude 3 to create a R assistant that then
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-claude-2" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-claude-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-claude-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/claude-part-2-2024-04-04.png" class="img-fluid figure-img" style="width:100.0%" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-claude-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.16: An example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length &gt;= 50 mm using the native R pipe operator.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Obviously, user beware! I know this is correct, but you’ll need to check any outputs you get. But hopefully you can see how powerful this is. Another use case would be to input you code and ask your assistant to draft you some documentation. And so on.</p>
-</section>
-<section id="sec-using-google-to-find-r-answers" class="level3" data-number="3.13.3">
-<h3 data-number="3.13.3" class="anchored" data-anchor-id="sec-using-google-to-find-r-answers"><span class="header-section-number">3.13.3</span> Using Google to find R answers</h3>
+</section><section id="sec-using-google-to-find-r-answers" class="level3" data-number="3.13.3"><h3 data-number="3.13.3" class="anchored" data-anchor-id="sec-using-google-to-find-r-answers">
+<span class="header-section-number">3.13.3</span> Using Google to find R answers</h3>
 <p>A Google or internet search “R &lt;task&gt;” will often either send you to the appropriate package documentation or a helpful forum question that someone else already asked, such as the <a href="https://community.rstudio.com/">RStudio Community</a> or <a href="http://stackoverflow.com/questions/tagged/r">Stack Overflow</a>.</p>
-</section>
-<section id="sec-asking-questions" class="level3" data-number="3.13.4">
-<h3 data-number="3.13.4" class="anchored" data-anchor-id="sec-asking-questions"><span class="header-section-number">3.13.4</span> Asking questions</h3>
+</section><section id="sec-asking-questions" class="level3" data-number="3.13.4"><h3 data-number="3.13.4" class="anchored" data-anchor-id="sec-asking-questions">
+<span class="header-section-number">3.13.4</span> Asking questions</h3>
 <p>As well as knowing <a href="https://www.tidyverse.org/help/#where-to-ask">where to ask</a>, the key to get help from someone is for them to grasp your problem rapidly. You should make it as easy as possible to pinpoint where the issue might be.</p>
 <p>Try to use the correct words to describe your problem. For instance, a package is not the same thing as a library. Most people will understand what you meant, but others have really strong feelings about the difference in meaning. The key point is that it can make things confusing for people trying to help you. Be as precise as possible when describing your problem.</p>
 <p>If possible, try to reduce what doesn’t work to a simple <em>reproducible example</em> otherwise known as a <em>reprex</em>.</p>
 <p>For more information on how to write a reproducible example see <a href="https://www.tidyverse.org/help/#reprex">this article</a> using the <code>reprex</code> package.</p>
-</section>
-<section id="sec-other-resources" class="level3" data-number="3.13.5">
-<h3 data-number="3.13.5" class="anchored" data-anchor-id="sec-other-resources"><span class="header-section-number">3.13.5</span> News, tutorials other online books</h3>
+</section><section id="sec-other-resources" class="level3" data-number="3.13.5"><h3 data-number="3.13.5" class="anchored" data-anchor-id="sec-other-resources">
+<span class="header-section-number">3.13.5</span> News, tutorials other online books</h3>
 <p><a href="https://rweekly.org/">R weekly</a> provides a round-up of what’s new in R, including packages and tutorials.</p>
 <p>The creators of RStudio have <a href="https://posit.cloud/learn/recipes">Posit recipes</a> to illustrate how to do common data tasks.</p>
 <p><a href="https://www.bigbookofr.com/">The big book of R</a> contains links to many on-line books for learning R across various subject areas.</p>
@@ -1141,11 +1076,7 @@ Ihaka, Ross, and Robert Gentleman. 1996. <span>“R: A Language for Data Analysi
 Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (September): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
 </div>
 </div>
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1695,10 +1626,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./markup-languages.html" class="pagination-link  aria-label=" &lt;span="" languages&lt;="" span&gt;"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./markup-languages.html" class="pagination-link  aria-label=" languages="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Languages</span></span>
       </a>          
   </div>
@@ -1709,8 +1638,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.</p>
 </div>   
@@ -1722,8 +1650,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

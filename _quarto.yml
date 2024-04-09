@@ -28,6 +28,7 @@ bibliography: references.bib
 
 format:
   html:
+    code-link: true
     link-external-icon: true
     link-external-newwindow: true
     theme:

@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>R for Librarians - 4&nbsp; Data wrangling I</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,7 +53,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -76,8 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -103,19 +98,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+}</script><link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
 <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -126,13 +115,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R for Librarians</a> 
         <div class="sidebar-tools-main">
@@ -152,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
@@ -201,41 +186,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-spreadsheets" id="toc-sec-spreadsheets" class="nav-link active" data-scroll-target="#sec-spreadsheets"><span class="header-section-number">4.1</span> Organising your data in spreadsheets</a>
+<li>
+<a href="#sec-spreadsheets" id="toc-sec-spreadsheets" class="nav-link active" data-scroll-target="#sec-spreadsheets"><span class="header-section-number">4.1</span> Organising your data in spreadsheets</a>
   <ul class="collapse">
-  <li><a href="#plain-formats-and-excel-files" id="toc-plain-formats-and-excel-files" class="nav-link" data-scroll-target="#plain-formats-and-excel-files"><span class="header-section-number">4.1.1</span> Plain formats and Excel files</a></li>
-  </ul></li>
+<li><a href="#plain-formats-and-excel-files" id="toc-plain-formats-and-excel-files" class="nav-link" data-scroll-target="#plain-formats-and-excel-files"><span class="header-section-number">4.1.1</span> Plain formats and Excel files</a></li>
+  </ul>
+</li>
   <li><a href="#sec-the-pipe" id="toc-sec-the-pipe" class="nav-link" data-scroll-target="#sec-the-pipe"><span class="header-section-number">4.2</span> The pipe <code>|&gt;</code></a></li>
   <li><a href="#sec-introducing-dplyr" id="toc-sec-introducing-dplyr" class="nav-link" data-scroll-target="#sec-introducing-dplyr"><span class="header-section-number">4.3</span> Introducing <code>dplyr</code></a></li>
-  <li><a href="#sec-the-four-most-common-dplyr-verbs" id="toc-sec-the-four-most-common-dplyr-verbs" class="nav-link" data-scroll-target="#sec-the-four-most-common-dplyr-verbs"><span class="header-section-number">4.4</span> The four most common <code>dplyr</code> verbs</a>
+  <li>
+<a href="#sec-the-four-most-common-dplyr-verbs" id="toc-sec-the-four-most-common-dplyr-verbs" class="nav-link" data-scroll-target="#sec-the-four-most-common-dplyr-verbs"><span class="header-section-number">4.4</span> The four most common <code>dplyr</code> verbs</a>
   <ul class="collapse">
-  <li><a href="#sec-filter-rows-with-filter" id="toc-sec-filter-rows-with-filter" class="nav-link" data-scroll-target="#sec-filter-rows-with-filter"><span class="header-section-number">4.4.1</span> Filter rows with <code>filter()</code></a></li>
+<li><a href="#sec-filter-rows-with-filter" id="toc-sec-filter-rows-with-filter" class="nav-link" data-scroll-target="#sec-filter-rows-with-filter"><span class="header-section-number">4.4.1</span> Filter rows with <code>filter()</code></a></li>
   <li><a href="#sec-arranging-rows-with-arrange" id="toc-sec-arranging-rows-with-arrange" class="nav-link" data-scroll-target="#sec-arranging-rows-with-arrange"><span class="header-section-number">4.4.2</span> Arranging rows with <code>arrange()</code></a></li>
   <li><a href="#sec-selecting-columns-with-select" id="toc-sec-selecting-columns-with-select" class="nav-link" data-scroll-target="#sec-selecting-columns-with-select"><span class="header-section-number">4.4.3</span> Selecting columns with <code>select()</code></a></li>
   <li><a href="#sec-creating-new-columns-with-mutate" id="toc-sec-creating-new-columns-with-mutate" class="nav-link" data-scroll-target="#sec-creating-new-columns-with-mutate"><span class="header-section-number">4.4.4</span> Creating new columns with <code>mutate()</code></a></li>
-  </ul></li>
-  <li><a href="#sec-creating-grouped-summaries" id="toc-sec-creating-grouped-summaries" class="nav-link" data-scroll-target="#sec-creating-grouped-summaries"><span class="header-section-number">4.5</span> Creating grouped summaries with <code>dplyr</code></a>
-  <ul class="collapse">
-  <li><a href="#using-group_by-and-summarise-together" id="toc-using-group_by-and-summarise-together" class="nav-link" data-scroll-target="#using-group_by-and-summarise-together"><span class="header-section-number">4.5.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</a></li>
-  </ul></li>
-  <li><a href="#pivots" id="toc-pivots" class="nav-link" data-scroll-target="#pivots"><span class="header-section-number">4.6</span> Pivots</a></li>
   </ul>
-</nav>
+</li>
+  <li>
+<a href="#sec-creating-grouped-summaries" id="toc-sec-creating-grouped-summaries" class="nav-link" data-scroll-target="#sec-creating-grouped-summaries"><span class="header-section-number">4.5</span> Creating grouped summaries with <code>dplyr</code></a>
+  <ul class="collapse">
+<li><a href="#using-group_by-and-summarise-together" id="toc-using-group_by-and-summarise-together" class="nav-link" data-scroll-target="#using-group_by-and-summarise-together"><span class="header-section-number">4.5.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</a></li>
+  </ul>
+</li>
+  <li><a href="#pivots" id="toc-pivots" class="nav-link" data-scroll-target="#pivots"><span class="header-section-number">4.6</span> Pivots</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title"><span id="sec-data-wrangling-i" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></h1>
 </div>
 
@@ -250,10 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<div id="chapter-03-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div id="chapter-03-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -263,21 +245,20 @@ Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This chapter covers some common tasks for working with tabular data using the tidyverse. The tasks are filtering for rows of interest, arranging the rows, selecting columns of interest, creating new columns, creating grouped summaries of the table, and re-shaping (aka pivoting) the table.</p>
+<p>This chapter covers some common tasks for working with tabular data using the tidyverse packages <code>dplyr</code> and <code>tidyr</code>. The tasks are filtering for rows of interest, arranging the rows, selecting columns of interest, creating new columns, creating grouped summaries of the table, and re-shaping (aka pivoting) the table.</p>
 </div>
 </div>
-<section id="sec-spreadsheets" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="sec-spreadsheets"><span class="header-section-number">4.1</span> Organising your data in spreadsheets</h2>
+<section id="sec-spreadsheets" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-spreadsheets">
+<span class="header-section-number">4.1</span> Organising your data in spreadsheets</h2>
 <p><a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Data Organization in Spreadsheets by Karl W. Broman &amp; Kara H. Woo</a> is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.</p>
-<section id="plain-formats-and-excel-files" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="plain-formats-and-excel-files"><span class="header-section-number">4.1.1</span> Plain formats and Excel files</h3>
+<section id="plain-formats-and-excel-files" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="plain-formats-and-excel-files">
+<span class="header-section-number">4.1.1</span> Plain formats and Excel files</h3>
 <p>File formats like <code>.csv</code> and <code>.tsv</code>, comma separated variables and tab separated variables respectively are plain text files. That is to say they contain only the data, as text information, and are the simplest and most convenient way to share data as lots of software, including Excel, can read and interpret them.</p>
 <p>Excel files saves files into its own proprietary format <code>.xls</code> or <code>.xlsx</code> that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse <code>readxl</code> package is the place to start: <a href="https://readxl.tidyverse.org/">readxl homepage</a>.</p>
-<p>When we install the tidyverse packages, <code>readxl</code> is installed, but not loaded by default when we load <code>library(tidyverse)</code> so we have to load it separately, <code>library(readxl)</code>.</p>
-</section>
-</section>
-<section id="sec-the-pipe" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="sec-the-pipe"><span class="header-section-number">4.2</span> The pipe <code>|&gt;</code></h2>
+<p>When we install the tidyverse packages, <code>readxl</code> is installed, but not loaded by default when we load <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> so we have to load it separately, <code><a href="https://readxl.tidyverse.org">library(readxl)</a></code>.</p>
+</section></section><section id="sec-the-pipe" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sec-the-pipe">
+<span class="header-section-number">4.2</span> The pipe <code>|&gt;</code>
+</h2>
 <p>The pipe operator <code>|&gt;</code> allows you to combine operations by passing the output of an object or function to another. It will make more sense why this is a good thing once we start writing code, but you can think of it as a coding adverb such as <em>then</em>.</p>
 <p>In the example below, the <code>penguins</code> data frame is piped to the <code>count</code> function from <code>dplyr</code> (<a href="#sec-introducing-dplyr" class="quarto-xref"><span>Section 4.3</span></a>) which has the <code>species</code> column as its argument.</p>
 <p>Think of it as: <em>Return the penguins table <strong>then</strong> count how many rows there are for each different penguin species</em>.</p>
@@ -294,8 +275,8 @@ Pipe style
 <div class="callout-body-container callout-body">
 <p>The recommended pipe style is a space before a pipe and the pipe to be the last thing on a line, like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species       n
@@ -312,43 +293,39 @@ Pipe style
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pipe" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of the settings for the native pipe `|>` option in RStudio.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/R-native-pipe.PNG" class="img-fluid figure-img" alt="An image of the settings for the native pipe `|>` option in RStudio." width="400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.1: Setting the native pipe <code>|&gt;</code> option in RStudio
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>The shortcut for the pipe operator is <code>Ctl+Shift+M</code> on Windows or <code>Cmd+Shift+M</code> on a Mac.</p>
-</section>
-<section id="sec-introducing-dplyr" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="sec-introducing-dplyr"><span class="header-section-number">4.3</span> Introducing <code>dplyr</code></h2>
+</section><section id="sec-introducing-dplyr" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-introducing-dplyr">
+<span class="header-section-number">4.3</span> Introducing <code>dplyr</code>
+</h2>
 <p><a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> <em>“is a grammar of data manipulation”</em>. Concretely, it’s a package of functions from the tidyverse that have been created for tasks that require manipulation of data stored in data frames <a href="getting-started.html#sec-data-frames" class="quarto-xref"><span>Section 3.10.3</span></a>.</p>
 <p>As mentioned in <a href="getting-started.html#sec-base-r-tidyverse" class="quarto-xref"><span>Section 3.6</span></a>, the grammar is the naming of the functions as verbs. Personally, I find this parallel between R code and human language makes things cognitively easier for me. I can describe what I want to do using natural language and translate it easily into tidyverse code.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dplyr-name" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-name-github.png" class="img-fluid figure-img" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers." width="484">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.2: <a href="https://github.com/tidyverse/dplyr/issues/1857">Why is it called <code>dplyr</code>?</a>
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-<section id="sec-the-four-most-common-dplyr-verbs" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="sec-the-four-most-common-dplyr-verbs"><span class="header-section-number">4.4</span> The four most common <code>dplyr</code> verbs</h2>
+</section><section id="sec-the-four-most-common-dplyr-verbs" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="sec-the-four-most-common-dplyr-verbs">
+<span class="header-section-number">4.4</span> The four most common <code>dplyr</code> verbs</h2>
 <p>We’ll use the four most common verbs in <code>dplyr</code> to examine the Palmer Penguins data (<a href="getting-started.html#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>).</p>
-<section id="sec-filter-rows-with-filter" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="sec-filter-rows-with-filter"><span class="header-section-number">4.4.1</span> Filter rows with <code>filter()</code></h3>
+<section id="sec-filter-rows-with-filter" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="sec-filter-rows-with-filter">
+<span class="header-section-number">4.4.1</span> Filter rows with <code>filter()</code>
+</h3>
 <p>To remind you, the <code>penguins</code> data frame has 344 rows (<a href="getting-started.html#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>). Each row contains a set of observations contained in the columns for a single penguin from one of three species (<a href="getting-started.html#fig-palmer-penguins" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>) living on one of three islands.</p>
 <p>So if for example we wanted to <em>filter</em> the data frame for only the rows of penguins with a bills longer or equal to 50 mm, we would use the <code>filter</code> function as shown in <a href="#fig-filter" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>.</p>
 <p>The function takes the <code>penguins</code> data frame object as the first argument. Either within the parentheses or via a pipe.</p>
@@ -358,23 +335,21 @@ Figure&nbsp;4.2: <a href="https://github.com/tidyverse/dplyr/issues/1857">Why is
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-filter" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` data frame via a pipe.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-filter-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` data frame via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.3: The <code>dplyr filter</code> function. The filter function returns rows from your data frame that satisfy your filter expression as <code>TRUE</code>. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data frame via a pipe.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Here is the code, note that I’ve piped the output to the dplyr <a href="https://dplyr.tidyverse.org/reference/glimpse.html"><code>glimpse()</code></a> function which prints a transposed summary of the filtered data frame contents to the console.</p>
-<p>Instead of a table of 344 penguins, we’ve returned a data frame with the 57 penguins (rows) that have bills equal or longer than 50 mm, but we still have 8 columns (variables) as <code>filter()</code> only acts on the rows.</p>
+<p>Instead of a table of 344 penguins, we’ve returned a data frame with the 57 penguins (rows) that have bills equal or longer than 50 mm, but we still have 8 columns (variables) as <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> only acts on the rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;=</span> <span class="dv">50</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">bill_length_mm</span> <span class="op">&gt;=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 57
 Columns: 8
@@ -389,41 +364,269 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 </div>
 </div>
 <p>Filtering can be done using multiple columns and expressions. See the official <a href="https://dplyr.tidyverse.org/reference/filter.html">filter documentation</a> for more complex examples.</p>
-</section>
-<section id="sec-arranging-rows-with-arrange" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="sec-arranging-rows-with-arrange"><span class="header-section-number">4.4.2</span> Arranging rows with <code>arrange()</code></h3>
+</section><section id="sec-arranging-rows-with-arrange" class="level3" data-number="4.4.2"><h3 data-number="4.4.2" class="anchored" data-anchor-id="sec-arranging-rows-with-arrange">
+<span class="header-section-number">4.4.2</span> Arranging rows with <code>arrange()</code>
+</h3>
 <p>Another row verb is <code>arrange()</code> which as the name suggests <em>arranges the rows</em> according to column values (<a href="#fig-arrange" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> ).</p>
-<p>Here I’ll pipe the <code>penguins</code> data frame to the base R <code>head()</code> function, which returns the first six rows by default. Again I am returning the output to the console.</p>
+<p>Here I’ll pipe the <code>penguins</code> data frame to the base R <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function, which returns the first six rows by default. Again I am returning the output to the console.</p>
 <p>I’ve formatted the output slightly here to highlight <code>flipper_length_mm</code> in red, so it may look a bit different to your output. We can see that row four is one of the two rows with missing values (indicated by <code>NA</code>) that we first encountered as a warning when we plotted this data (<a href="getting-started.html#sec-plotting-and-exporting-data" class="quarto-xref"><span>Section 3.11</span></a>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-b321e7de{}.cl-b314583a{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-b3145844{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-b31961ae{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-b31961b8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-b3198cc4{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cc5{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cce{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198ccf{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cd0{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cd1{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cd8{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cd9{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cda{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cdb{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198ce2{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198ce3{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198ce4{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cec{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198ced{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cee{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cf6{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198cf7{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198d00{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198d01{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198d02{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198d03{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198d04{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3198d0a{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-b321e7de"><thead><tr style="overflow-wrap:break-word;"><th class="cl-b3198cc4"><p class="cl-b31961ae"><span class="cl-b314583a">species</span></p></th><th class="cl-b3198cc5"><p class="cl-b31961ae"><span class="cl-b314583a">island</span></p></th><th class="cl-b3198cce"><p class="cl-b31961b8"><span class="cl-b314583a">bill_length_mm</span></p></th><th class="cl-b3198ccf"><p class="cl-b31961b8"><span class="cl-b314583a">bill_depth_mm</span></p></th><th class="cl-b3198cd0"><p class="cl-b31961b8"><span class="cl-b314583a">flipper_length_mm</span></p></th><th class="cl-b3198cd1"><p class="cl-b31961b8"><span class="cl-b314583a">body_mass_g</span></p></th><th class="cl-b3198cd8"><p class="cl-b31961ae"><span class="cl-b314583a">sex</span></p></th><th class="cl-b3198cd9"><p class="cl-b31961b8"><span class="cl-b314583a">year</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-b3198cda"><p class="cl-b31961ae"><span class="cl-b314583a">Adelie</span></p></td><td class="cl-b3198cdb"><p class="cl-b31961ae"><span class="cl-b314583a">Torgersen</span></p></td><td class="cl-b3198ce2"><p class="cl-b31961b8"><span class="cl-b314583a">391</span></p></td><td class="cl-b3198ce3"><p class="cl-b31961b8"><span class="cl-b314583a">187</span></p></td><td class="cl-b3198ce4"><p class="cl-b31961b8"><span class="cl-b3145844">181</span></p></td><td class="cl-b3198cec"><p class="cl-b31961b8"><span class="cl-b314583a">3750</span></p></td><td class="cl-b3198ced"><p class="cl-b31961ae"><span class="cl-b314583a">male</span></p></td><td class="cl-b3198cee"><p class="cl-b31961b8"><span class="cl-b314583a">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3198cda"><p class="cl-b31961ae"><span class="cl-b314583a">Adelie</span></p></td><td class="cl-b3198cdb"><p class="cl-b31961ae"><span class="cl-b314583a">Torgersen</span></p></td><td class="cl-b3198ce2"><p class="cl-b31961b8"><span class="cl-b314583a">395</span></p></td><td class="cl-b3198ce3"><p class="cl-b31961b8"><span class="cl-b314583a">174</span></p></td><td class="cl-b3198ce4"><p class="cl-b31961b8"><span class="cl-b3145844">186</span></p></td><td class="cl-b3198cec"><p class="cl-b31961b8"><span class="cl-b314583a">3800</span></p></td><td class="cl-b3198ced"><p class="cl-b31961ae"><span class="cl-b314583a">female</span></p></td><td class="cl-b3198cee"><p class="cl-b31961b8"><span class="cl-b314583a">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3198cda"><p class="cl-b31961ae"><span class="cl-b314583a">Adelie</span></p></td><td class="cl-b3198cdb"><p class="cl-b31961ae"><span class="cl-b314583a">Torgersen</span></p></td><td class="cl-b3198ce2"><p class="cl-b31961b8"><span class="cl-b314583a">403</span></p></td><td class="cl-b3198ce3"><p class="cl-b31961b8"><span class="cl-b314583a">180</span></p></td><td class="cl-b3198ce4"><p class="cl-b31961b8"><span class="cl-b3145844">195</span></p></td><td class="cl-b3198cec"><p class="cl-b31961b8"><span class="cl-b314583a">3250</span></p></td><td class="cl-b3198ced"><p class="cl-b31961ae"><span class="cl-b314583a">female</span></p></td><td class="cl-b3198cee"><p class="cl-b31961b8"><span class="cl-b314583a">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3198cda"><p class="cl-b31961ae"><span class="cl-b314583a">Adelie</span></p></td><td class="cl-b3198cdb"><p class="cl-b31961ae"><span class="cl-b314583a">Torgersen</span></p></td><td class="cl-b3198ce2"><p class="cl-b31961b8"><span class="cl-b314583a">NA</span></p></td><td class="cl-b3198ce3"><p class="cl-b31961b8"><span class="cl-b314583a">NA</span></p></td><td class="cl-b3198ce4"><p class="cl-b31961b8"><span class="cl-b3145844">NA</span></p></td><td class="cl-b3198cec"><p class="cl-b31961b8"><span class="cl-b314583a">NA</span></p></td><td class="cl-b3198ced"><p class="cl-b31961ae"><span class="cl-b314583a">NA</span></p></td><td class="cl-b3198cee"><p class="cl-b31961b8"><span class="cl-b314583a">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3198cda"><p class="cl-b31961ae"><span class="cl-b314583a">Adelie</span></p></td><td class="cl-b3198cdb"><p class="cl-b31961ae"><span class="cl-b314583a">Torgersen</span></p></td><td class="cl-b3198ce2"><p class="cl-b31961b8"><span class="cl-b314583a">367</span></p></td><td class="cl-b3198ce3"><p class="cl-b31961b8"><span class="cl-b314583a">193</span></p></td><td class="cl-b3198ce4"><p class="cl-b31961b8"><span class="cl-b3145844">193</span></p></td><td class="cl-b3198cec"><p class="cl-b31961b8"><span class="cl-b314583a">3450</span></p></td><td class="cl-b3198ced"><p class="cl-b31961ae"><span class="cl-b314583a">female</span></p></td><td class="cl-b3198cee"><p class="cl-b31961b8"><span class="cl-b314583a">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3198cf6"><p class="cl-b31961ae"><span class="cl-b314583a">Adelie</span></p></td><td class="cl-b3198cf7"><p class="cl-b31961ae"><span class="cl-b314583a">Torgersen</span></p></td><td class="cl-b3198d00"><p class="cl-b31961b8"><span class="cl-b314583a">393</span></p></td><td class="cl-b3198d01"><p class="cl-b31961b8"><span class="cl-b314583a">206</span></p></td><td class="cl-b3198d02"><p class="cl-b31961b8"><span class="cl-b3145844">190</span></p></td><td class="cl-b3198d03"><p class="cl-b31961b8"><span class="cl-b314583a">3650</span></p></td><td class="cl-b3198d04"><p class="cl-b31961ae"><span class="cl-b314583a">male</span></p></td><td class="cl-b3198d0a"><p class="cl-b31961b8"><span class="cl-b314583a">2007</span></p></td></tr></tbody></table></div>
+<div class="tabwid">
+<style>.cl-92e2093a{}.cl-92d41e10{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-92d41e24{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-92d995a2{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-92d995b6{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-92d9bcda{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bcdb{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bce4{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bce5{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bce6{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bcee{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bcef{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bcf0{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bcf1{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bcf8{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bcf9{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bcfa{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd02{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd03{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd04{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd05{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd0c{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd0d{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd0e{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd0f{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd16{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd20{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd21{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-92d9bd2a{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-92e2093a">
+<thead><tr style="overflow-wrap:break-word;">
+<th class="cl-92d9bcda"><p class="cl-92d995a2"><span class="cl-92d41e10">species</span></p></th>
+<th class="cl-92d9bcdb"><p class="cl-92d995a2"><span class="cl-92d41e10">island</span></p></th>
+<th class="cl-92d9bce4"><p class="cl-92d995b6"><span class="cl-92d41e10">bill_length_mm</span></p></th>
+<th class="cl-92d9bce5"><p class="cl-92d995b6"><span class="cl-92d41e10">bill_depth_mm</span></p></th>
+<th class="cl-92d9bce6"><p class="cl-92d995b6"><span class="cl-92d41e10">flipper_length_mm</span></p></th>
+<th class="cl-92d9bcee"><p class="cl-92d995b6"><span class="cl-92d41e10">body_mass_g</span></p></th>
+<th class="cl-92d9bcef"><p class="cl-92d995a2"><span class="cl-92d41e10">sex</span></p></th>
+<th class="cl-92d9bcf0"><p class="cl-92d995b6"><span class="cl-92d41e10">year</span></p></th>
+</tr></thead>
+<tbody>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-92d9bcf1"><p class="cl-92d995a2"><span class="cl-92d41e10">Adelie</span></p></td>
+<td class="cl-92d9bcf8"><p class="cl-92d995a2"><span class="cl-92d41e10">Torgersen</span></p></td>
+<td class="cl-92d9bcf9"><p class="cl-92d995b6"><span class="cl-92d41e10">391</span></p></td>
+<td class="cl-92d9bcfa"><p class="cl-92d995b6"><span class="cl-92d41e10">187</span></p></td>
+<td class="cl-92d9bd02"><p class="cl-92d995b6"><span class="cl-92d41e24">181</span></p></td>
+<td class="cl-92d9bd03"><p class="cl-92d995b6"><span class="cl-92d41e10">3750</span></p></td>
+<td class="cl-92d9bd04"><p class="cl-92d995a2"><span class="cl-92d41e10">male</span></p></td>
+<td class="cl-92d9bd05"><p class="cl-92d995b6"><span class="cl-92d41e10">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-92d9bcf1"><p class="cl-92d995a2"><span class="cl-92d41e10">Adelie</span></p></td>
+<td class="cl-92d9bcf8"><p class="cl-92d995a2"><span class="cl-92d41e10">Torgersen</span></p></td>
+<td class="cl-92d9bcf9"><p class="cl-92d995b6"><span class="cl-92d41e10">395</span></p></td>
+<td class="cl-92d9bcfa"><p class="cl-92d995b6"><span class="cl-92d41e10">174</span></p></td>
+<td class="cl-92d9bd02"><p class="cl-92d995b6"><span class="cl-92d41e24">186</span></p></td>
+<td class="cl-92d9bd03"><p class="cl-92d995b6"><span class="cl-92d41e10">3800</span></p></td>
+<td class="cl-92d9bd04"><p class="cl-92d995a2"><span class="cl-92d41e10">female</span></p></td>
+<td class="cl-92d9bd05"><p class="cl-92d995b6"><span class="cl-92d41e10">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-92d9bcf1"><p class="cl-92d995a2"><span class="cl-92d41e10">Adelie</span></p></td>
+<td class="cl-92d9bcf8"><p class="cl-92d995a2"><span class="cl-92d41e10">Torgersen</span></p></td>
+<td class="cl-92d9bcf9"><p class="cl-92d995b6"><span class="cl-92d41e10">403</span></p></td>
+<td class="cl-92d9bcfa"><p class="cl-92d995b6"><span class="cl-92d41e10">180</span></p></td>
+<td class="cl-92d9bd02"><p class="cl-92d995b6"><span class="cl-92d41e24">195</span></p></td>
+<td class="cl-92d9bd03"><p class="cl-92d995b6"><span class="cl-92d41e10">3250</span></p></td>
+<td class="cl-92d9bd04"><p class="cl-92d995a2"><span class="cl-92d41e10">female</span></p></td>
+<td class="cl-92d9bd05"><p class="cl-92d995b6"><span class="cl-92d41e10">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-92d9bcf1"><p class="cl-92d995a2"><span class="cl-92d41e10">Adelie</span></p></td>
+<td class="cl-92d9bcf8"><p class="cl-92d995a2"><span class="cl-92d41e10">Torgersen</span></p></td>
+<td class="cl-92d9bcf9"><p class="cl-92d995b6"><span class="cl-92d41e10">NA</span></p></td>
+<td class="cl-92d9bcfa"><p class="cl-92d995b6"><span class="cl-92d41e10">NA</span></p></td>
+<td class="cl-92d9bd02"><p class="cl-92d995b6"><span class="cl-92d41e24">NA</span></p></td>
+<td class="cl-92d9bd03"><p class="cl-92d995b6"><span class="cl-92d41e10">NA</span></p></td>
+<td class="cl-92d9bd04"><p class="cl-92d995a2"><span class="cl-92d41e10">NA</span></p></td>
+<td class="cl-92d9bd05"><p class="cl-92d995b6"><span class="cl-92d41e10">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-92d9bcf1"><p class="cl-92d995a2"><span class="cl-92d41e10">Adelie</span></p></td>
+<td class="cl-92d9bcf8"><p class="cl-92d995a2"><span class="cl-92d41e10">Torgersen</span></p></td>
+<td class="cl-92d9bcf9"><p class="cl-92d995b6"><span class="cl-92d41e10">367</span></p></td>
+<td class="cl-92d9bcfa"><p class="cl-92d995b6"><span class="cl-92d41e10">193</span></p></td>
+<td class="cl-92d9bd02"><p class="cl-92d995b6"><span class="cl-92d41e24">193</span></p></td>
+<td class="cl-92d9bd03"><p class="cl-92d995b6"><span class="cl-92d41e10">3450</span></p></td>
+<td class="cl-92d9bd04"><p class="cl-92d995a2"><span class="cl-92d41e10">female</span></p></td>
+<td class="cl-92d9bd05"><p class="cl-92d995b6"><span class="cl-92d41e10">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-92d9bd0c"><p class="cl-92d995a2"><span class="cl-92d41e10">Adelie</span></p></td>
+<td class="cl-92d9bd0d"><p class="cl-92d995a2"><span class="cl-92d41e10">Torgersen</span></p></td>
+<td class="cl-92d9bd0e"><p class="cl-92d995b6"><span class="cl-92d41e10">393</span></p></td>
+<td class="cl-92d9bd0f"><p class="cl-92d995b6"><span class="cl-92d41e10">206</span></p></td>
+<td class="cl-92d9bd16"><p class="cl-92d995b6"><span class="cl-92d41e24">190</span></p></td>
+<td class="cl-92d9bd20"><p class="cl-92d995b6"><span class="cl-92d41e10">3650</span></p></td>
+<td class="cl-92d9bd21"><p class="cl-92d995a2"><span class="cl-92d41e10">male</span></p></td>
+<td class="cl-92d9bd2a"><p class="cl-92d995b6"><span class="cl-92d41e10">2007</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>Next I add another line of code using <code>arrange(flipper_length_mm)</code> to sort the rows according to the values in this column. It defaults to ascending order.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(flipper_length_mm) <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">flipper_length_mm</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-b3718154{}.cl-b366cbec{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-b366cbf6{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-b36ad584{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-b36ad58e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-b36aef1a{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef24{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef2e{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef2f{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef30{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef38{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef39{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef3a{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef3b{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef42{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef43{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef44{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef4c{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef4d{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef4e{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef56{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef57{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef58{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef59{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef60{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef61{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef62{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef63{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef6a{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef6b{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef6c{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef6d{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef74{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef75{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef76{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef77{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b36aef7e{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-b3718154"><thead><tr style="overflow-wrap:break-word;"><th class="cl-b36aef1a"><p class="cl-b36ad584"><span class="cl-b366cbec">species</span></p></th><th class="cl-b36aef24"><p class="cl-b36ad584"><span class="cl-b366cbec">island</span></p></th><th class="cl-b36aef2e"><p class="cl-b36ad58e"><span class="cl-b366cbec">bill_length_mm</span></p></th><th class="cl-b36aef2f"><p class="cl-b36ad58e"><span class="cl-b366cbec">bill_depth_mm</span></p></th><th class="cl-b36aef30"><p class="cl-b36ad58e"><span class="cl-b366cbec">flipper_length_mm</span></p></th><th class="cl-b36aef38"><p class="cl-b36ad58e"><span class="cl-b366cbec">body_mass_g</span></p></th><th class="cl-b36aef39"><p class="cl-b36ad584"><span class="cl-b366cbec">sex</span></p></th><th class="cl-b36aef3a"><p class="cl-b36ad58e"><span class="cl-b366cbec">year</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-b36aef3b"><p class="cl-b36ad584"><span class="cl-b366cbec">Adelie</span></p></td><td class="cl-b36aef42"><p class="cl-b36ad584"><span class="cl-b366cbec">Biscoe</span></p></td><td class="cl-b36aef43"><p class="cl-b36ad58e"><span class="cl-b366cbec">379</span></p></td><td class="cl-b36aef44"><p class="cl-b36ad58e"><span class="cl-b366cbec">186</span></p></td><td class="cl-b36aef4c"><p class="cl-b36ad58e"><span class="cl-b366cbf6">172</span></p></td><td class="cl-b36aef4d"><p class="cl-b36ad58e"><span class="cl-b366cbec">3150</span></p></td><td class="cl-b36aef4e"><p class="cl-b36ad584"><span class="cl-b366cbec">female</span></p></td><td class="cl-b36aef56"><p class="cl-b36ad58e"><span class="cl-b366cbec">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b36aef3b"><p class="cl-b36ad584"><span class="cl-b366cbec">Adelie</span></p></td><td class="cl-b36aef42"><p class="cl-b36ad584"><span class="cl-b366cbec">Biscoe</span></p></td><td class="cl-b36aef43"><p class="cl-b36ad58e"><span class="cl-b366cbec">378</span></p></td><td class="cl-b36aef44"><p class="cl-b36ad58e"><span class="cl-b366cbec">183</span></p></td><td class="cl-b36aef4c"><p class="cl-b36ad58e"><span class="cl-b366cbf6">174</span></p></td><td class="cl-b36aef4d"><p class="cl-b36ad58e"><span class="cl-b366cbec">3400</span></p></td><td class="cl-b36aef4e"><p class="cl-b36ad584"><span class="cl-b366cbec">female</span></p></td><td class="cl-b36aef56"><p class="cl-b36ad58e"><span class="cl-b366cbec">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b36aef57"><p class="cl-b36ad584"><span class="cl-b366cbec">Adelie</span></p></td><td class="cl-b36aef58"><p class="cl-b36ad584"><span class="cl-b366cbec">Torgersen</span></p></td><td class="cl-b36aef59"><p class="cl-b36ad58e"><span class="cl-b366cbec">402</span></p></td><td class="cl-b36aef60"><p class="cl-b36ad58e"><span class="cl-b366cbec">170</span></p></td><td class="cl-b36aef61"><p class="cl-b36ad58e"><span class="cl-b366cbf6">176</span></p></td><td class="cl-b36aef62"><p class="cl-b36ad58e"><span class="cl-b366cbec">3450</span></p></td><td class="cl-b36aef63"><p class="cl-b36ad584"><span class="cl-b366cbec">female</span></p></td><td class="cl-b36aef6a"><p class="cl-b36ad58e"><span class="cl-b366cbec">2009</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b36aef3b"><p class="cl-b36ad584"><span class="cl-b366cbec">Adelie</span></p></td><td class="cl-b36aef42"><p class="cl-b36ad584"><span class="cl-b366cbec">Dream</span></p></td><td class="cl-b36aef43"><p class="cl-b36ad58e"><span class="cl-b366cbec">395</span></p></td><td class="cl-b36aef44"><p class="cl-b36ad58e"><span class="cl-b366cbec">167</span></p></td><td class="cl-b36aef4c"><p class="cl-b36ad58e"><span class="cl-b366cbf6">178</span></p></td><td class="cl-b36aef4d"><p class="cl-b36ad58e"><span class="cl-b366cbec">3250</span></p></td><td class="cl-b36aef4e"><p class="cl-b36ad584"><span class="cl-b366cbec">female</span></p></td><td class="cl-b36aef56"><p class="cl-b36ad58e"><span class="cl-b366cbec">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b36aef3b"><p class="cl-b36ad584"><span class="cl-b366cbec">Adelie</span></p></td><td class="cl-b36aef42"><p class="cl-b36ad584"><span class="cl-b366cbec">Dream</span></p></td><td class="cl-b36aef43"><p class="cl-b36ad58e"><span class="cl-b366cbec">372</span></p></td><td class="cl-b36aef44"><p class="cl-b36ad58e"><span class="cl-b366cbec">181</span></p></td><td class="cl-b36aef4c"><p class="cl-b36ad58e"><span class="cl-b366cbf6">178</span></p></td><td class="cl-b36aef4d"><p class="cl-b36ad58e"><span class="cl-b366cbec">3900</span></p></td><td class="cl-b36aef4e"><p class="cl-b36ad584"><span class="cl-b366cbec">male</span></p></td><td class="cl-b36aef56"><p class="cl-b36ad58e"><span class="cl-b366cbec">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b36aef6b"><p class="cl-b36ad584"><span class="cl-b366cbec">Adelie</span></p></td><td class="cl-b36aef6c"><p class="cl-b36ad584"><span class="cl-b366cbec">Dream</span></p></td><td class="cl-b36aef6d"><p class="cl-b36ad58e"><span class="cl-b366cbec">331</span></p></td><td class="cl-b36aef74"><p class="cl-b36ad58e"><span class="cl-b366cbec">161</span></p></td><td class="cl-b36aef75"><p class="cl-b36ad58e"><span class="cl-b366cbf6">178</span></p></td><td class="cl-b36aef76"><p class="cl-b36ad58e"><span class="cl-b366cbec">2900</span></p></td><td class="cl-b36aef77"><p class="cl-b36ad584"><span class="cl-b366cbec">female</span></p></td><td class="cl-b36aef7e"><p class="cl-b36ad58e"><span class="cl-b366cbec">2008</span></p></td></tr></tbody></table></div>
+<div class="tabwid">
+<style>.cl-933c7438{}.cl-9330410e{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-93304118{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-9334e024{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9334e02e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9335156c{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93351576{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93351577{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93351580{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93351581{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93351582{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9335158a{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9335158b{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9335158c{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93351594{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93351595{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93351596{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9335159e{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9335159f{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515a0{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515a1{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515a8{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515a9{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515aa{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515ab{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515b2{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515b3{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515b4{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515bc{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515bd{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515be{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515bf{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515c6{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515c7{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515c8{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515c9{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-933515d0{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-933c7438">
+<thead><tr style="overflow-wrap:break-word;">
+<th class="cl-9335156c"><p class="cl-9334e024"><span class="cl-9330410e">species</span></p></th>
+<th class="cl-93351576"><p class="cl-9334e024"><span class="cl-9330410e">island</span></p></th>
+<th class="cl-93351577"><p class="cl-9334e02e"><span class="cl-9330410e">bill_length_mm</span></p></th>
+<th class="cl-93351580"><p class="cl-9334e02e"><span class="cl-9330410e">bill_depth_mm</span></p></th>
+<th class="cl-93351581"><p class="cl-9334e02e"><span class="cl-9330410e">flipper_length_mm</span></p></th>
+<th class="cl-93351582"><p class="cl-9334e02e"><span class="cl-9330410e">body_mass_g</span></p></th>
+<th class="cl-9335158a"><p class="cl-9334e024"><span class="cl-9330410e">sex</span></p></th>
+<th class="cl-9335158b"><p class="cl-9334e02e"><span class="cl-9330410e">year</span></p></th>
+</tr></thead>
+<tbody>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-9335158c"><p class="cl-9334e024"><span class="cl-9330410e">Adelie</span></p></td>
+<td class="cl-93351594"><p class="cl-9334e024"><span class="cl-9330410e">Biscoe</span></p></td>
+<td class="cl-93351595"><p class="cl-9334e02e"><span class="cl-9330410e">379</span></p></td>
+<td class="cl-93351596"><p class="cl-9334e02e"><span class="cl-9330410e">186</span></p></td>
+<td class="cl-9335159e"><p class="cl-9334e02e"><span class="cl-93304118">172</span></p></td>
+<td class="cl-9335159f"><p class="cl-9334e02e"><span class="cl-9330410e">3150</span></p></td>
+<td class="cl-933515a0"><p class="cl-9334e024"><span class="cl-9330410e">female</span></p></td>
+<td class="cl-933515a1"><p class="cl-9334e02e"><span class="cl-9330410e">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-9335158c"><p class="cl-9334e024"><span class="cl-9330410e">Adelie</span></p></td>
+<td class="cl-93351594"><p class="cl-9334e024"><span class="cl-9330410e">Biscoe</span></p></td>
+<td class="cl-93351595"><p class="cl-9334e02e"><span class="cl-9330410e">378</span></p></td>
+<td class="cl-93351596"><p class="cl-9334e02e"><span class="cl-9330410e">183</span></p></td>
+<td class="cl-9335159e"><p class="cl-9334e02e"><span class="cl-93304118">174</span></p></td>
+<td class="cl-9335159f"><p class="cl-9334e02e"><span class="cl-9330410e">3400</span></p></td>
+<td class="cl-933515a0"><p class="cl-9334e024"><span class="cl-9330410e">female</span></p></td>
+<td class="cl-933515a1"><p class="cl-9334e02e"><span class="cl-9330410e">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-933515a8"><p class="cl-9334e024"><span class="cl-9330410e">Adelie</span></p></td>
+<td class="cl-933515a9"><p class="cl-9334e024"><span class="cl-9330410e">Torgersen</span></p></td>
+<td class="cl-933515aa"><p class="cl-9334e02e"><span class="cl-9330410e">402</span></p></td>
+<td class="cl-933515ab"><p class="cl-9334e02e"><span class="cl-9330410e">170</span></p></td>
+<td class="cl-933515b2"><p class="cl-9334e02e"><span class="cl-93304118">176</span></p></td>
+<td class="cl-933515b3"><p class="cl-9334e02e"><span class="cl-9330410e">3450</span></p></td>
+<td class="cl-933515b4"><p class="cl-9334e024"><span class="cl-9330410e">female</span></p></td>
+<td class="cl-933515bc"><p class="cl-9334e02e"><span class="cl-9330410e">2009</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-9335158c"><p class="cl-9334e024"><span class="cl-9330410e">Adelie</span></p></td>
+<td class="cl-93351594"><p class="cl-9334e024"><span class="cl-9330410e">Dream</span></p></td>
+<td class="cl-93351595"><p class="cl-9334e02e"><span class="cl-9330410e">395</span></p></td>
+<td class="cl-93351596"><p class="cl-9334e02e"><span class="cl-9330410e">167</span></p></td>
+<td class="cl-9335159e"><p class="cl-9334e02e"><span class="cl-93304118">178</span></p></td>
+<td class="cl-9335159f"><p class="cl-9334e02e"><span class="cl-9330410e">3250</span></p></td>
+<td class="cl-933515a0"><p class="cl-9334e024"><span class="cl-9330410e">female</span></p></td>
+<td class="cl-933515a1"><p class="cl-9334e02e"><span class="cl-9330410e">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-9335158c"><p class="cl-9334e024"><span class="cl-9330410e">Adelie</span></p></td>
+<td class="cl-93351594"><p class="cl-9334e024"><span class="cl-9330410e">Dream</span></p></td>
+<td class="cl-93351595"><p class="cl-9334e02e"><span class="cl-9330410e">372</span></p></td>
+<td class="cl-93351596"><p class="cl-9334e02e"><span class="cl-9330410e">181</span></p></td>
+<td class="cl-9335159e"><p class="cl-9334e02e"><span class="cl-93304118">178</span></p></td>
+<td class="cl-9335159f"><p class="cl-9334e02e"><span class="cl-9330410e">3900</span></p></td>
+<td class="cl-933515a0"><p class="cl-9334e024"><span class="cl-9330410e">male</span></p></td>
+<td class="cl-933515a1"><p class="cl-9334e02e"><span class="cl-9330410e">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-933515bd"><p class="cl-9334e024"><span class="cl-9330410e">Adelie</span></p></td>
+<td class="cl-933515be"><p class="cl-9334e024"><span class="cl-9330410e">Dream</span></p></td>
+<td class="cl-933515bf"><p class="cl-9334e02e"><span class="cl-9330410e">331</span></p></td>
+<td class="cl-933515c6"><p class="cl-9334e02e"><span class="cl-9330410e">161</span></p></td>
+<td class="cl-933515c7"><p class="cl-9334e02e"><span class="cl-93304118">178</span></p></td>
+<td class="cl-933515c8"><p class="cl-9334e02e"><span class="cl-9330410e">2900</span></p></td>
+<td class="cl-933515c9"><p class="cl-9334e024"><span class="cl-9330410e">female</span></p></td>
+<td class="cl-933515d0"><p class="cl-9334e02e"><span class="cl-9330410e">2008</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>To arrange for descending order, I need to use the <code>desc()</code> function in combination with <code>arrange()</code> like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(flipper_length_mm)) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-b3b3976a{}.cl-b3a7f842{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-b3a7f84c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-b3ac6d28{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-b3ac6d32{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-b3ac8d58{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d62{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d63{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d6c{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d6d{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d6e{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d76{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d77{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d78{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d80{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d81{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d82{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d83{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d8a{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d8b{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d8c{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d94{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d95{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d9e{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8d9f{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8da8{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8da9{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8daa{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b3ac8db2{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-b3b3976a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-b3ac8d58"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">species</span></p></th><th class="cl-b3ac8d62"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">island</span></p></th><th class="cl-b3ac8d63"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">bill_length_mm</span></p></th><th class="cl-b3ac8d6c"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">bill_depth_mm</span></p></th><th class="cl-b3ac8d6d"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">flipper_length_mm</span></p></th><th class="cl-b3ac8d6e"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">body_mass_g</span></p></th><th class="cl-b3ac8d76"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">sex</span></p></th><th class="cl-b3ac8d77"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">year</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-b3ac8d78"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Gentoo</span></p></td><td class="cl-b3ac8d80"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Biscoe</span></p></td><td class="cl-b3ac8d81"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">543</span></p></td><td class="cl-b3ac8d82"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">157</span></p></td><td class="cl-b3ac8d83"><p class="cl-b3ac6d32"><span class="cl-b3a7f84c">231</span></p></td><td class="cl-b3ac8d8a"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">5650</span></p></td><td class="cl-b3ac8d8b"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">male</span></p></td><td class="cl-b3ac8d8c"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">2008</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3ac8d78"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Gentoo</span></p></td><td class="cl-b3ac8d80"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Biscoe</span></p></td><td class="cl-b3ac8d81"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">500</span></p></td><td class="cl-b3ac8d82"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">163</span></p></td><td class="cl-b3ac8d83"><p class="cl-b3ac6d32"><span class="cl-b3a7f84c">230</span></p></td><td class="cl-b3ac8d8a"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">5700</span></p></td><td class="cl-b3ac8d8b"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">male</span></p></td><td class="cl-b3ac8d8c"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3ac8d78"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Gentoo</span></p></td><td class="cl-b3ac8d80"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Biscoe</span></p></td><td class="cl-b3ac8d81"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">596</span></p></td><td class="cl-b3ac8d82"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">170</span></p></td><td class="cl-b3ac8d83"><p class="cl-b3ac6d32"><span class="cl-b3a7f84c">230</span></p></td><td class="cl-b3ac8d8a"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">6050</span></p></td><td class="cl-b3ac8d8b"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">male</span></p></td><td class="cl-b3ac8d8c"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">2007</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3ac8d78"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Gentoo</span></p></td><td class="cl-b3ac8d80"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Biscoe</span></p></td><td class="cl-b3ac8d81"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">498</span></p></td><td class="cl-b3ac8d82"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">168</span></p></td><td class="cl-b3ac8d83"><p class="cl-b3ac6d32"><span class="cl-b3a7f84c">230</span></p></td><td class="cl-b3ac8d8a"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">5700</span></p></td><td class="cl-b3ac8d8b"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">male</span></p></td><td class="cl-b3ac8d8c"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">2008</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3ac8d78"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Gentoo</span></p></td><td class="cl-b3ac8d80"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Biscoe</span></p></td><td class="cl-b3ac8d81"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">486</span></p></td><td class="cl-b3ac8d82"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">160</span></p></td><td class="cl-b3ac8d83"><p class="cl-b3ac6d32"><span class="cl-b3a7f84c">230</span></p></td><td class="cl-b3ac8d8a"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">5800</span></p></td><td class="cl-b3ac8d8b"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">male</span></p></td><td class="cl-b3ac8d8c"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">2008</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b3ac8d94"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Gentoo</span></p></td><td class="cl-b3ac8d95"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">Biscoe</span></p></td><td class="cl-b3ac8d9e"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">521</span></p></td><td class="cl-b3ac8d9f"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">170</span></p></td><td class="cl-b3ac8da8"><p class="cl-b3ac6d32"><span class="cl-b3a7f84c">230</span></p></td><td class="cl-b3ac8da9"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">5550</span></p></td><td class="cl-b3ac8daa"><p class="cl-b3ac6d28"><span class="cl-b3a7f842">male</span></p></td><td class="cl-b3ac8db2"><p class="cl-b3ac6d32"><span class="cl-b3a7f842">2009</span></p></td></tr></tbody></table></div>
+<div class="tabwid">
+<style>.cl-9383511e{}.cl-937766c4{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-937766d8{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-937c04e0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-937c04f4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-937c220e{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2218{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2222{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2223{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2224{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c222c{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c222d{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2236{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2237{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2240{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2241{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2242{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2243{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c224a{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c224b{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2254{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2255{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2256{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2257{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c225e{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2268{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c2269{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c226a{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-937c226b{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-9383511e">
+<thead><tr style="overflow-wrap:break-word;">
+<th class="cl-937c220e"><p class="cl-937c04e0"><span class="cl-937766c4">species</span></p></th>
+<th class="cl-937c2218"><p class="cl-937c04e0"><span class="cl-937766c4">island</span></p></th>
+<th class="cl-937c2222"><p class="cl-937c04f4"><span class="cl-937766c4">bill_length_mm</span></p></th>
+<th class="cl-937c2223"><p class="cl-937c04f4"><span class="cl-937766c4">bill_depth_mm</span></p></th>
+<th class="cl-937c2224"><p class="cl-937c04f4"><span class="cl-937766c4">flipper_length_mm</span></p></th>
+<th class="cl-937c222c"><p class="cl-937c04f4"><span class="cl-937766c4">body_mass_g</span></p></th>
+<th class="cl-937c222d"><p class="cl-937c04e0"><span class="cl-937766c4">sex</span></p></th>
+<th class="cl-937c2236"><p class="cl-937c04f4"><span class="cl-937766c4">year</span></p></th>
+</tr></thead>
+<tbody>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-937c2237"><p class="cl-937c04e0"><span class="cl-937766c4">Gentoo</span></p></td>
+<td class="cl-937c2240"><p class="cl-937c04e0"><span class="cl-937766c4">Biscoe</span></p></td>
+<td class="cl-937c2241"><p class="cl-937c04f4"><span class="cl-937766c4">543</span></p></td>
+<td class="cl-937c2242"><p class="cl-937c04f4"><span class="cl-937766c4">157</span></p></td>
+<td class="cl-937c2243"><p class="cl-937c04f4"><span class="cl-937766d8">231</span></p></td>
+<td class="cl-937c224a"><p class="cl-937c04f4"><span class="cl-937766c4">5650</span></p></td>
+<td class="cl-937c224b"><p class="cl-937c04e0"><span class="cl-937766c4">male</span></p></td>
+<td class="cl-937c2254"><p class="cl-937c04f4"><span class="cl-937766c4">2008</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-937c2237"><p class="cl-937c04e0"><span class="cl-937766c4">Gentoo</span></p></td>
+<td class="cl-937c2240"><p class="cl-937c04e0"><span class="cl-937766c4">Biscoe</span></p></td>
+<td class="cl-937c2241"><p class="cl-937c04f4"><span class="cl-937766c4">500</span></p></td>
+<td class="cl-937c2242"><p class="cl-937c04f4"><span class="cl-937766c4">163</span></p></td>
+<td class="cl-937c2243"><p class="cl-937c04f4"><span class="cl-937766d8">230</span></p></td>
+<td class="cl-937c224a"><p class="cl-937c04f4"><span class="cl-937766c4">5700</span></p></td>
+<td class="cl-937c224b"><p class="cl-937c04e0"><span class="cl-937766c4">male</span></p></td>
+<td class="cl-937c2254"><p class="cl-937c04f4"><span class="cl-937766c4">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-937c2237"><p class="cl-937c04e0"><span class="cl-937766c4">Gentoo</span></p></td>
+<td class="cl-937c2240"><p class="cl-937c04e0"><span class="cl-937766c4">Biscoe</span></p></td>
+<td class="cl-937c2241"><p class="cl-937c04f4"><span class="cl-937766c4">596</span></p></td>
+<td class="cl-937c2242"><p class="cl-937c04f4"><span class="cl-937766c4">170</span></p></td>
+<td class="cl-937c2243"><p class="cl-937c04f4"><span class="cl-937766d8">230</span></p></td>
+<td class="cl-937c224a"><p class="cl-937c04f4"><span class="cl-937766c4">6050</span></p></td>
+<td class="cl-937c224b"><p class="cl-937c04e0"><span class="cl-937766c4">male</span></p></td>
+<td class="cl-937c2254"><p class="cl-937c04f4"><span class="cl-937766c4">2007</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-937c2237"><p class="cl-937c04e0"><span class="cl-937766c4">Gentoo</span></p></td>
+<td class="cl-937c2240"><p class="cl-937c04e0"><span class="cl-937766c4">Biscoe</span></p></td>
+<td class="cl-937c2241"><p class="cl-937c04f4"><span class="cl-937766c4">498</span></p></td>
+<td class="cl-937c2242"><p class="cl-937c04f4"><span class="cl-937766c4">168</span></p></td>
+<td class="cl-937c2243"><p class="cl-937c04f4"><span class="cl-937766d8">230</span></p></td>
+<td class="cl-937c224a"><p class="cl-937c04f4"><span class="cl-937766c4">5700</span></p></td>
+<td class="cl-937c224b"><p class="cl-937c04e0"><span class="cl-937766c4">male</span></p></td>
+<td class="cl-937c2254"><p class="cl-937c04f4"><span class="cl-937766c4">2008</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-937c2237"><p class="cl-937c04e0"><span class="cl-937766c4">Gentoo</span></p></td>
+<td class="cl-937c2240"><p class="cl-937c04e0"><span class="cl-937766c4">Biscoe</span></p></td>
+<td class="cl-937c2241"><p class="cl-937c04f4"><span class="cl-937766c4">486</span></p></td>
+<td class="cl-937c2242"><p class="cl-937c04f4"><span class="cl-937766c4">160</span></p></td>
+<td class="cl-937c2243"><p class="cl-937c04f4"><span class="cl-937766d8">230</span></p></td>
+<td class="cl-937c224a"><p class="cl-937c04f4"><span class="cl-937766c4">5800</span></p></td>
+<td class="cl-937c224b"><p class="cl-937c04e0"><span class="cl-937766c4">male</span></p></td>
+<td class="cl-937c2254"><p class="cl-937c04f4"><span class="cl-937766c4">2008</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-937c2255"><p class="cl-937c04e0"><span class="cl-937766c4">Gentoo</span></p></td>
+<td class="cl-937c2256"><p class="cl-937c04e0"><span class="cl-937766c4">Biscoe</span></p></td>
+<td class="cl-937c2257"><p class="cl-937c04f4"><span class="cl-937766c4">521</span></p></td>
+<td class="cl-937c225e"><p class="cl-937c04f4"><span class="cl-937766c4">170</span></p></td>
+<td class="cl-937c2268"><p class="cl-937c04f4"><span class="cl-937766d8">230</span></p></td>
+<td class="cl-937c2269"><p class="cl-937c04f4"><span class="cl-937766c4">5550</span></p></td>
+<td class="cl-937c226a"><p class="cl-937c04e0"><span class="cl-937766c4">male</span></p></td>
+<td class="cl-937c226b"><p class="cl-937c04f4"><span class="cl-937766c4">2009</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>Further guidance about <code>arrange()</code> from <a href="https://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange">R4DS</a>:</p>
@@ -433,41 +636,37 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-arrange" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-arrange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-arrange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-arrange-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arrange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.4: The <code>dplyr arrange</code> function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-<section id="sec-selecting-columns-with-select" class="level3" data-number="4.4.3">
-<h3 data-number="4.4.3" class="anchored" data-anchor-id="sec-selecting-columns-with-select"><span class="header-section-number">4.4.3</span> Selecting columns with <code>select()</code></h3>
+</section><section id="sec-selecting-columns-with-select" class="level3" data-number="4.4.3"><h3 data-number="4.4.3" class="anchored" data-anchor-id="sec-selecting-columns-with-select">
+<span class="header-section-number">4.4.3</span> Selecting columns with <code>select()</code>
+</h3>
 <p>Often your data contains variables you don’t need for the analysis you are performing, or you want to subset them to share with others. To select only the ones you need, or explore subsets of the variables, the <code>select()</code> verb enables you to keep only the columns of interest.</p>
 <p><a href="#fig-select" class="quarto-xref">Figure&nbsp;<span>4.5</span></a> shows the use of <code>select()</code> to choose only the <code>island</code> and <code>year</code> columns, with or without the pipe.</p>
 <p>Selecting the variables contained in the columns can be done in various ways. For example, by the column number, the variable name or by range. Check the help function <code>?select</code> for more options.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-select" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-select-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-select-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-select-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-select-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.5: The <code>dplyr select</code> function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Let’s do this a couple of ways, first reminding ourselves of what the columns are using <code>glimpse()</code>. I’ll continue with the piped approach.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 8
@@ -484,9 +683,9 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>So we can see the eight column names and that <code>island</code> is column 2 and <code>year</code> is column 8.</p>
 <p>Let’s select by name:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(island, year) <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">island</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 2
@@ -496,9 +695,9 @@ $ year   &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,
 </div>
 <p>By column number:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">2</span>,<span class="dv">8</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="fl">2</span>,<span class="fl">8</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 2
@@ -508,10 +707,10 @@ $ year   &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,
 </div>
 <p>By negative selection using the minus sign <code>-</code> to exclude the columns we don’t want:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>species,<span class="sc">-</span>bill_length_mm, <span class="sc">-</span>bill_depth_mm,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span>flipper_length_mm,<span class="sc">-</span>body_mass_g, <span class="sc">-</span>sex) <span class="sc">|&gt;</span> </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">species</span>,<span class="op">-</span><span class="va">bill_length_mm</span>, <span class="op">-</span><span class="va">bill_depth_mm</span>,</span>
+<span>         <span class="op">-</span><span class="va">flipper_length_mm</span>,<span class="op">-</span><span class="va">body_mass_g</span>, <span class="op">-</span><span class="va">sex</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 2
@@ -520,55 +719,102 @@ $ year   &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,
 </div>
 </div>
 <p>See the <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code> documentation</a> for other approaches for using select such as renaming columns, reordering the columns or picking variables with selection helper functions.</p>
-</section>
-<section id="sec-creating-new-columns-with-mutate" class="level3" data-number="4.4.4">
-<h3 data-number="4.4.4" class="anchored" data-anchor-id="sec-creating-new-columns-with-mutate"><span class="header-section-number">4.4.4</span> Creating new columns with <code>mutate()</code></h3>
-<p>Another common task is to create a new variable or variables, often from existing data within the data frame. For this we use the <code>mutate()</code> verb. It follows the same syntax as for <code>filter()</code>, <code>arrange()</code> and <code>select()</code> in that the first argument is the dataset, and the subsequent arguments are the new variables we wish to create (<a href="#fig-mutate" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>).</p>
+</section><section id="sec-creating-new-columns-with-mutate" class="level3" data-number="4.4.4"><h3 data-number="4.4.4" class="anchored" data-anchor-id="sec-creating-new-columns-with-mutate">
+<span class="header-section-number">4.4.4</span> Creating new columns with <code>mutate()</code>
+</h3>
+<p>Another common task is to create a new variable or variables, often from existing data within the data frame. For this we use the <code>mutate()</code> verb. It follows the same syntax as for <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, <code>arrange()</code> and <code>select()</code> in that the first argument is the dataset, and the subsequent arguments are the new variables we wish to create (<a href="#fig-mutate" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-mutate" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-mutate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mutate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-mutate-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mutate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.6: The <code>dplyr mutate</code> function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called <code>body_mass_kg</code> in the Palmer Penguins data.frame by dividing the values in the <code>body_mass_g</code> column by 1000 and storing the answer in new variable <code>body_mass_kg</code>. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Here I’ll use the piped syntax again and <code>glimpse()</code> on the output to create a new variable for penguin body mass in kilograms called <code>body_mass_kg</code> from the existing body mass in grams variable by dividing by 1,000 using <code>mutate()</code>.</p>
-<p>I’m also going to use <code>select()</code> to select only the <code>species</code>, <code>body_mass_g</code> and new variable <code>body_mass_kg</code> and then <code>head()</code> to view the first six rows to make the output a bit easier to read.</p>
+<p>I’m also going to use <code>select()</code> to select only the <code>species</code>, <code>body_mass_g</code> and new variable <code>body_mass_kg</code> and then <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> to view the first six rows to make the output a bit easier to read.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_kg =</span> body_mass_g<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, body_mass_g, body_mass_kg) <span class="sc">|&gt;</span> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>body_mass_kg <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">/</span><span class="fl">1000</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">species</span>, <span class="va">body_mass_g</span>, <span class="va">body_mass_kg</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-b41a280e{}.cl-b40d94fe{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-b40d9512{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 92, 132, 1.00);background-color:transparent;}.cl-b40d9513{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-b412730c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-b4127320{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-b4129120{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b412912a{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b412912b{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b4129134{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b4129135{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b412913e{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b412913f{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b4129148{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b4129152{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b4129153{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b412915c{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-b412915d{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-b41a280e"><thead><tr style="overflow-wrap:break-word;"><th class="cl-b4129120"><p class="cl-b412730c"><span class="cl-b40d94fe">species</span></p></th><th class="cl-b412912a"><p class="cl-b412730c"><span class="cl-b40d94fe">island</span></p></th><th class="cl-b412912b"><p class="cl-b4127320"><span class="cl-b40d94fe">body_mass_g</span></p></th><th class="cl-b4129134"><p class="cl-b4127320"><span class="cl-b40d94fe">body_mass_kg</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-b4129135"><p class="cl-b412730c"><span class="cl-b40d94fe">Adelie</span></p></td><td class="cl-b412913e"><p class="cl-b412730c"><span class="cl-b40d94fe">Torgersen</span></p></td><td class="cl-b412913f"><p class="cl-b4127320"><span class="cl-b40d9512">3750</span></p></td><td class="cl-b4129148"><p class="cl-b4127320"><span class="cl-b40d9513">3.75</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b4129135"><p class="cl-b412730c"><span class="cl-b40d94fe">Adelie</span></p></td><td class="cl-b412913e"><p class="cl-b412730c"><span class="cl-b40d94fe">Torgersen</span></p></td><td class="cl-b412913f"><p class="cl-b4127320"><span class="cl-b40d9512">3800</span></p></td><td class="cl-b4129148"><p class="cl-b4127320"><span class="cl-b40d9513">3.80</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b4129135"><p class="cl-b412730c"><span class="cl-b40d94fe">Adelie</span></p></td><td class="cl-b412913e"><p class="cl-b412730c"><span class="cl-b40d94fe">Torgersen</span></p></td><td class="cl-b412913f"><p class="cl-b4127320"><span class="cl-b40d9512">3250</span></p></td><td class="cl-b4129148"><p class="cl-b4127320"><span class="cl-b40d9513">3.25</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b4129135"><p class="cl-b412730c"><span class="cl-b40d94fe">Adelie</span></p></td><td class="cl-b412913e"><p class="cl-b412730c"><span class="cl-b40d94fe">Torgersen</span></p></td><td class="cl-b412913f"><p class="cl-b4127320"><span class="cl-b40d9512">NA</span></p></td><td class="cl-b4129148"><p class="cl-b4127320"><span class="cl-b40d9513">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b4129135"><p class="cl-b412730c"><span class="cl-b40d94fe">Adelie</span></p></td><td class="cl-b412913e"><p class="cl-b412730c"><span class="cl-b40d94fe">Torgersen</span></p></td><td class="cl-b412913f"><p class="cl-b4127320"><span class="cl-b40d9512">3450</span></p></td><td class="cl-b4129148"><p class="cl-b4127320"><span class="cl-b40d9513">3.45</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-b4129152"><p class="cl-b412730c"><span class="cl-b40d94fe">Adelie</span></p></td><td class="cl-b4129153"><p class="cl-b412730c"><span class="cl-b40d94fe">Torgersen</span></p></td><td class="cl-b412915c"><p class="cl-b4127320"><span class="cl-b40d9512">3650</span></p></td><td class="cl-b412915d"><p class="cl-b4127320"><span class="cl-b40d9513">3.65</span></p></td></tr></tbody></table></div>
+<div class="tabwid">
+<style>.cl-93f37d36{}.cl-93e6ebfc{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-93e6ec06{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 92, 132, 1.00);background-color:transparent;}.cl-93e6ec10{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-93eb7bd6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-93eb7be0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-93eb9abc{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9ac6{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9ac7{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9ad0{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9ad1{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9ada{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9adb{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9adc{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9add{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9ae4{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9ae5{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93eb9ae6{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-93f37d36">
+<thead><tr style="overflow-wrap:break-word;">
+<th class="cl-93eb9abc"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">species</span></p></th>
+<th class="cl-93eb9ac6"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">island</span></p></th>
+<th class="cl-93eb9ac7"><p class="cl-93eb7be0"><span class="cl-93e6ebfc">body_mass_g</span></p></th>
+<th class="cl-93eb9ad0"><p class="cl-93eb7be0"><span class="cl-93e6ebfc">body_mass_kg</span></p></th>
+</tr></thead>
+<tbody>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-93eb9ad1"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Adelie</span></p></td>
+<td class="cl-93eb9ada"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Torgersen</span></p></td>
+<td class="cl-93eb9adb"><p class="cl-93eb7be0"><span class="cl-93e6ec06">3750</span></p></td>
+<td class="cl-93eb9adc"><p class="cl-93eb7be0"><span class="cl-93e6ec10">3.75</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-93eb9ad1"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Adelie</span></p></td>
+<td class="cl-93eb9ada"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Torgersen</span></p></td>
+<td class="cl-93eb9adb"><p class="cl-93eb7be0"><span class="cl-93e6ec06">3800</span></p></td>
+<td class="cl-93eb9adc"><p class="cl-93eb7be0"><span class="cl-93e6ec10">3.80</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-93eb9ad1"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Adelie</span></p></td>
+<td class="cl-93eb9ada"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Torgersen</span></p></td>
+<td class="cl-93eb9adb"><p class="cl-93eb7be0"><span class="cl-93e6ec06">3250</span></p></td>
+<td class="cl-93eb9adc"><p class="cl-93eb7be0"><span class="cl-93e6ec10">3.25</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-93eb9ad1"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Adelie</span></p></td>
+<td class="cl-93eb9ada"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Torgersen</span></p></td>
+<td class="cl-93eb9adb"><p class="cl-93eb7be0"><span class="cl-93e6ec06">NA</span></p></td>
+<td class="cl-93eb9adc"><p class="cl-93eb7be0"><span class="cl-93e6ec10">NA</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-93eb9ad1"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Adelie</span></p></td>
+<td class="cl-93eb9ada"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Torgersen</span></p></td>
+<td class="cl-93eb9adb"><p class="cl-93eb7be0"><span class="cl-93e6ec06">3450</span></p></td>
+<td class="cl-93eb9adc"><p class="cl-93eb7be0"><span class="cl-93e6ec10">3.45</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-93eb9add"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Adelie</span></p></td>
+<td class="cl-93eb9ae4"><p class="cl-93eb7bd6"><span class="cl-93e6ebfc">Torgersen</span></p></td>
+<td class="cl-93eb9ae5"><p class="cl-93eb7be0"><span class="cl-93e6ec06">3650</span></p></td>
+<td class="cl-93eb9ae6"><p class="cl-93eb7be0"><span class="cl-93e6ec10">3.65</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-</section>
-</section>
-<section id="sec-creating-grouped-summaries" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="sec-creating-grouped-summaries"><span class="header-section-number">4.5</span> Creating grouped summaries with <code>dplyr</code></h2>
+</div>
+</section></section><section id="sec-creating-grouped-summaries" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="sec-creating-grouped-summaries">
+<span class="header-section-number">4.5</span> Creating grouped summaries with <code>dplyr</code>
+</h2>
+<p>Another powerful feature of <code>dplyr</code> is it’s ability to summarise the entire dataset in a single row.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_mass_g =</span> <span class="fu">mean</span>(body_mass_g,<span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n_penguins =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">summarise</span><span class="op">(</span>mean_mass_g <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  mean_mass_g n_penguins
-        &lt;dbl&gt;      &lt;int&gt;
-1       4202.        344</code></pre>
+<pre><code># A tibble: 1 × 1
+  mean_mass_g
+        &lt;dbl&gt;
+1       4202.</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_mass_g =</span> <span class="fu">mean</span>(body_mass_g,<span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n_penguins =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">summarise</span><span class="op">(</span>mean_mass_g <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, </span>
+<span>            n_penguins <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   species   mean_mass_g n_penguins
@@ -578,48 +824,125 @@ Figure&nbsp;4.6: The <code>dplyr mutate</code> function. The mutate function cre
 3 Gentoo          5076.        124</code></pre>
 </div>
 </div>
-<section id="using-group_by-and-summarise-together" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="using-group_by-and-summarise-together"><span class="header-section-number">4.5.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</h3>
-</section>
-</section>
-<section id="pivots" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="pivots"><span class="header-section-number">4.6</span> Pivots</h2>
+<section id="using-group_by-and-summarise-together" class="level3" data-number="4.5.1"><h3 data-number="4.5.1" class="anchored" data-anchor-id="using-group_by-and-summarise-together">
+<span class="header-section-number">4.5.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</h3>
+<p>Calculating the average bill length and depth for each species</p>
+<p>pipe the <code>penguins</code> dataset into the <code>group_by()</code> function, which groups the data by the <code>species</code> variable. - We then use the <code>summarise()</code> function to calculate the average bill length and depth for each species using <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>. - The <code>na.rm = TRUE</code> argument is used to remove any missing values before calculating the means.</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate the average bill length and depth for each species</span></span>
+<span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarise</span><span class="op">(</span></span>
+<span>    avg_bill_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    avg_bill_depth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_depth_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  species   avg_bill_length avg_bill_depth
+  &lt;fct&gt;               &lt;dbl&gt;          &lt;dbl&gt;
+1 Adelie               38.8           18.3
+2 Chinstrap            48.8           18.4
+3 Gentoo               47.5           15.0</code></pre>
+</div>
+</div>
+<p>Count the number of penguins by island and sex. We start with the <code>penguins</code> dataset and pipe it into the <code>group_by()</code> function to group the data by both <code>island</code> and <code>sex</code> variables. As before, we then use the <code>summarise()</code> function along with <code>n()</code> to count the number of penguins in each group.</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Count the number of penguins by island and sex</span></span>
+<span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">island</span>, <span class="va">sex</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarise</span><span class="op">(</span>mean_mass_g <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">body_mass_g</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, </span>
+<span>            n_penguins <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 4
+# Groups:   island [3]
+  island    sex    mean_mass_g n_penguins
+  &lt;fct&gt;     &lt;fct&gt;        &lt;dbl&gt;      &lt;int&gt;
+1 Biscoe    female       4319.         80
+2 Biscoe    male         5105.         83
+3 Biscoe    &lt;NA&gt;         4588.          5
+4 Dream     female       3446.         61
+5 Dream     male         3987.         62
+6 Dream     &lt;NA&gt;         2975           1
+7 Torgersen female       3396.         24
+8 Torgersen male         4035.         23
+9 Torgersen &lt;NA&gt;         3681.          5</code></pre>
+</div>
+</div>
+</section></section><section id="pivots" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="pivots">
+<span class="header-section-number">4.6</span> Pivots</h2>
 <p>Data can be untidy in different ways. One way might be that the values are in the variable names. Or perhaps the reverse is true and you’d like the values to be column names.</p>
-<p>Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use <code>pivot_longer()</code> and if one pivots a table to increase the number of columns one would use <code>pivot_wider()</code> (<a href="#fig-pivot" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> and <a href="#fig-pivot-animation" class="quarto-xref">Figure&nbsp;<span>4.8</span></a>).</p>
+<p>Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use the <a href="https://tidyr.tidyverse.org/index.html"><code>tidyr</code> package</a> function <code>pivot_longer()</code> and if one pivots a table to increase the number of columns one would use <code>pivot_wider()</code> (<a href="#fig-pivot" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> and <a href="#fig-pivot-animation" class="quarto-xref">Figure&nbsp;<span>4.8</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pivot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="pivot">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/pivot-penguins.png" class="img-fluid figure-img" alt="pivot" width="1422">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.7: pivot
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pivot-animation" class="quarto-figure quarto-figure-center quarto-float anchored" alt="pivot">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pivot-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pivot-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/tidyr-pivoting.gif" class="img-fluid figure-img" alt="pivot">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.8: pivot
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Pivot the data longer</span></span>
+<span><span class="va">penguins_long</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">species</span>,<span class="va">island</span>,<span class="va">sex</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">pivot_longer</span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="va">species</span><span class="op">:</span><span class="va">sex</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="st">"key"</span>,</span>
+<span>    values_to <span class="op">=</span> <span class="st">"val"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="fu">glimpse</span><span class="op">(</span><span class="va">penguins_long</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,032
+Columns: 2
+$ key &lt;chr&gt; "species", "island", "sex", "species", "island", "sex", "species",…
+$ val &lt;fct&gt; Adelie, Torgersen, male, Adelie, Torgersen, female, Adelie, Torger…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Pivot the data wider</span></span>
+<span><span class="va">penguins_wide</span> <span class="op">&lt;-</span> <span class="va">penguins_long</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">pivot_wider</span><span class="op">(</span></span>
+<span>    names_from <span class="op">=</span> <span class="st">"key"</span>,</span>
+<span>    values_from <span class="op">=</span> <span class="st">"val"</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Values from `val` are not uniquely identified; output will contain list-cols.
+• Use `values_fn = list` to suppress this warning.
+• Use `values_fn = {summary_fun}` to summarise duplicates.
+• Use the following dplyr code to identify duplicates.
+  {data} %&gt;%
+  dplyr::group_by(key) %&gt;%
+  dplyr::summarise(n = dplyr::n(), .groups = "drop") %&gt;%
+  dplyr::filter(n &gt; 1L)</code></pre>
+</div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">penguins_wide</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1
+Columns: 3
+$ species &lt;list&gt; &lt;Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+$ island  &lt;list&gt; &lt;Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torge…
+$ sex     &lt;list&gt; &lt;male, female, female, NA, female, male, female, male, NA, NA…</code></pre>
 </div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1169,10 +1492,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./getting-started.html" class="pagination-link  aria-label=" &lt;span="" started&lt;="" span&gt;"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./getting-started.html" class="pagination-link  aria-label=" started="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span>
       </a>          
   </div>
@@ -1183,8 +1504,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.</p>
 </div>   
@@ -1196,8 +1516,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

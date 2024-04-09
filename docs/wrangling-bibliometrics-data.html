@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>R for Librarians - 6&nbsp; Wrangling bibliometrics data</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,7 +53,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -76,8 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,16 +99,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -124,13 +114,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R for Librarians</a> 
         <div class="sidebar-tools-main">
@@ -150,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
@@ -199,26 +185,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#describing-the-problem" id="toc-describing-the-problem" class="nav-link active" data-scroll-target="#describing-the-problem"><span class="header-section-number">6.1</span> Describing the problem</a></li>
+<li><a href="#describing-the-problem" id="toc-describing-the-problem" class="nav-link active" data-scroll-target="#describing-the-problem"><span class="header-section-number">6.1</span> Describing the problem</a></li>
   <li><a href="#tidying-the-scopus-data" id="toc-tidying-the-scopus-data" class="nav-link" data-scroll-target="#tidying-the-scopus-data"><span class="header-section-number">6.2</span> Tidying the Scopus data</a></li>
   <li><a href="#web-of-science" id="toc-web-of-science" class="nav-link" data-scroll-target="#web-of-science"><span class="header-section-number">6.3</span> Web of science</a></li>
-  </ul>
-</nav>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title"><span id="sec-wrangling-bibliometrics-data" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></h1>
 </div>
 
@@ -233,10 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<p><strong>WORK IN PROGRESS</strong></p>
+</header><p><strong>WORK IN PROGRESS</strong></p>
 <div id="bibliometrics-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -253,11 +230,11 @@ Summary
 </div>
 <p>It’s time to apply our knowledge to some bibliometrics data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="describing-the-problem" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="describing-the-problem"><span class="header-section-number">6.1</span> Describing the problem</h2>
+<section id="describing-the-problem" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="describing-the-problem">
+<span class="header-section-number">6.1</span> Describing the problem</h2>
 <p>I’ll attempt to describe the problem as I understand it, and then break it down into parts that correspond with <a href="getting-started.html" class="quarto-xref"><span>Chapter 3</span></a> , <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 <p>Here’s an excerpt from an email Kate sent me on 2023-11-21:</p>
 <blockquote class="blockquote">
@@ -286,17 +263,17 @@ Summary
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>I’ll read it in directly from the repository for this book, and use <code>glimpse()</code> to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, the title of each publication is in the <code>Title</code> column.</p>
+<p>I’ll read it in directly from the repository for this book, and use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, the title of each publication is in the <code>Title</code> column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Pure csv file</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pure_dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.csv"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the scopus csv file</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>scopus_dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Web of science tsv file</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>wos_dat <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.tsv"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the contents</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(pure_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the Pure csv file</span></span>
+<span><span class="va">pure_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.csv"</span><span class="op">)</span></span>
+<span><span class="co"># Load the scopus csv file</span></span>
+<span><span class="va">scopus_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv"</span><span class="op">)</span></span>
+<span><span class="co"># Load the Web of science tsv file</span></span>
+<span><span class="va">wos_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.tsv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Look at the contents</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">pure_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,186
 Columns: 21
@@ -322,7 +299,7 @@ $ `Event-18`                                                               &lt;c
 $ `Title of the host publication in original language-19`                  &lt;chr&gt; …
 $ `Type-20`                                                                &lt;chr&gt; …</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scopus_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">scopus_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 483
 Columns: 20
@@ -347,7 +324,7 @@ $ `Open Access`               &lt;chr&gt; NA, "All Open Access; Hybrid Gold Open
 $ Source                      &lt;chr&gt; "Scopus", "Scopus", "Scopus", "Scopus", "S…
 $ EID                         &lt;chr&gt; "2-s2.0-85183956855", "2-s2.0-85186478720"…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(wos_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wos_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 50
 Columns: 71
@@ -425,21 +402,21 @@ $ UT &lt;chr&gt; "WOS:001175218400001", "WOS:001170495400001", "WOS:001187496600
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pure_lipid <span class="ot">&lt;-</span> pure_dat <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Title of the contribution in original language-5</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span>) </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>wos_lipid <span class="ot">&lt;-</span> wos_dat <span class="sc">|&gt;</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TI <span class="sc">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>scopus_lipid <span class="ot">&lt;-</span> scopus_dat <span class="sc">|&gt;</span> </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Title <span class="sc">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>lipid_join <span class="ot">&lt;-</span> pure_lipid <span class="sc">|&gt;</span> </span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wos_dat, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Title of the contribution in original language-5</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"TI"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(scopus_dat, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Title of the contribution in original language-5</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Title"</span>))</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lipid_join)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_lipid</span> <span class="op">&lt;-</span> <span class="va">pure_dat</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">`Title of the contribution in original language-5`</span> <span class="op">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span><span class="op">)</span> </span>
+<span></span>
+<span></span>
+<span><span class="va">wos_lipid</span> <span class="op">&lt;-</span> <span class="va">wos_dat</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">TI</span> <span class="op">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">scopus_lipid</span> <span class="op">&lt;-</span> <span class="va">scopus_dat</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Title</span> <span class="op">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lipid_join</span> <span class="op">&lt;-</span> <span class="va">pure_lipid</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wos_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"TI"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">scopus_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"Title"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">lipid_join</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1
 Columns: 110
@@ -556,39 +533,37 @@ $ EID                                                                      &lt;c
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>wos_mut <span class="ot">&lt;-</span> wos_dat <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">department =</span> <span class="fu">str_extract</span>(C1,<span class="st">"(?&lt;=Southampton Univ,|Univ Southampton,|Univ Hosp Southampton NHS Fdn Trust,)(.*?)(?=, )"</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>wos_mut <span class="sc">|&gt;</span> </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(C1, department) <span class="sc">|&gt;</span> </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wos_mut</span> <span class="op">&lt;-</span> <span class="va">wos_dat</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>department <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">C1</span>,<span class="st">"(?&lt;=Southampton Univ,|Univ Southampton,|Univ Hosp Southampton NHS Fdn Trust,)(.*?)(?=, )"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">wos_mut</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">C1</span>, <span class="va">department</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/view.html">view</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So let’s assume the question here is:</p>
 <blockquote class="blockquote">
 <p>“Which University of Southampton Department(s) are affiliated with each publication?”</p>
 </blockquote>
-<p>The departments are in the <code>Affiliations</code> column. Using two more <code>dplyr</code> verbs, <code>slice()</code> and <code>pull()</code>, let’s look at the first four values (<a href="#lst-slice-affiliation" class="quarto-xref">Listing&nbsp;<span>6.1</span></a>).</p>
+<p>The departments are in the <code>Affiliations</code> column. Using two more <code>dplyr</code> verbs, <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code>, let’s look at the first four values (<a href="#lst-slice-affiliation" class="quarto-xref">Listing&nbsp;<span>6.1</span></a>).</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Note how I’ve used an integer vector <code>1:4</code> as the argument to <code>slice()</code> to indicate I want rows 1 to 4, and then the column variable of interest as the argument for <code>pull()</code> to pull out the values for the <code>Affiliations</code> in rows 1 to 4.</p>
+<p>Note how I’ve used an integer vector <code>1:4</code> as the argument to <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice()</a></code> to indicate I want rows 1 to 4, and then the column variable of interest as the argument for <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> to pull out the values for the <code>Affiliations</code> in rows 1 to 4.</p>
 </div>
 </div>
 </div>
 <p>This yields a character vector with four values and I can immediately see that <code>Affiliations</code> does contain not a single tidy value in each cell, it’s a <strong>messy</strong> value with multiple values separated by semi-colons.</p>
 <div class="cell">
 <div id="lst-slice-affiliation" class="r cell-code listing quarto-float">
-<figure class="quarto-float quarto-float-lst figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-slice-affiliation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-slice-affiliation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.1: Slice and pull the first four Affiliation values
-</figcaption>
-<div aria-describedby="lst-slice-affiliation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="sourceCode cell-code" id="lst-slice-affiliation"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-slice-affiliation-1"><a href="#lst-slice-affiliation-1" aria-hidden="true" tabindex="-1"></a>scopus_dat <span class="sc">|&gt;</span>         </span>
-<span id="lst-slice-affiliation-2"><a href="#lst-slice-affiliation-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">|&gt;</span>       </span>
-<span id="lst-slice-affiliation-3"><a href="#lst-slice-affiliation-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Affiliations)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</figcaption><div aria-describedby="lst-slice-affiliation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-slice-affiliation"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">scopus_dat</span> <span class="op">|&gt;</span>         </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span>       </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">Affiliations</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
@@ -600,44 +575,41 @@ Listing&nbsp;6.1: Slice and pull the first four Affiliation values
 </div>
 </div>
 <p>To be tidy, each semi-colon separated value should be in their own column. So we need to tidy the data (<a href="getting-started.html#sec-tidy-data" class="quarto-xref"><span>Section 3.7</span></a>, <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>).</p>
-</section>
-<section id="tidying-the-scopus-data" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="tidying-the-scopus-data"><span class="header-section-number">6.2</span> Tidying the Scopus data</h2>
+</section><section id="tidying-the-scopus-data" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="tidying-the-scopus-data">
+<span class="header-section-number">6.2</span> Tidying the Scopus data</h2>
 <p>Let’s break the problem down:</p>
 <ol type="1">
 <li>First let’s separate the multiple affiliations that are in a single column into multiple columns, one for each affiliation. This is in keeping with tidy rule that each value should have it’s own cell.</li>
 </ol>
 <p>We can use <code>tidyr</code> package function <a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html"><code>separate_wider_delim()</code></a>.</p>
-<p><code>separate_wider_delim()</code> takes three necessary arguments, and has several other optional arguments. The necessary ones are a data frame, here that’s <code>scopus_dat</code>. <code>cols</code> the column(s) we are separating, here that’s <code>Affiliations</code> and <code>delim</code> is a string we using as a delimiter to split the values on which as we saw is going to be <code>;</code>.</p>
+<p><code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> takes three necessary arguments, and has several other optional arguments. The necessary ones are a data frame, here that’s <code>scopus_dat</code>. <code>cols</code> the column(s) we are separating, here that’s <code>Affiliations</code> and <code>delim</code> is a string we using as a delimiter to split the values on which as we saw is going to be <code>;</code>.</p>
 <p>As this is going to create new column variables, these need names too and here I provide the string for underscore <code>"_"</code> to <code>names_sep</code> and each new variable will have an underscore and numerical suffix called <code>Affiliations_1</code>, <code>Affiliations_2</code> etc.</p>
 <p>The final argument we’ll use is <code>too_few</code> and we’ll use <code>"align_start"</code> as the value. This means that our departments will first be put in <code>Affiliations_1</code> and adds missing values columns <code>NA</code> in any columns where a row runs out of departments. This ensures all rows have the same number of columns regardless of how many values were in the original Affiliations column. The total number of Affiliation columns will be determined by the article with the most Affiliation values.</p>
 <p>Hence the table will get wider as new columns are created!</p>
 <p>I’ll assign the output to a new data frame object <code>scopus_dat_wide</code>.</p>
 <div class="cell">
 <div id="lst-sep-wide-delim" class="r cell-code listing quarto-float">
-<figure class="quarto-float quarto-float-lst figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-sep-wide-delim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;6.2: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code>separate_wider_delim()</code>.
-</figcaption>
-<div aria-describedby="lst-sep-wide-delim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="sourceCode cell-code" id="lst-sep-wide-delim"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-sep-wide-delim-1"><a href="#lst-sep-wide-delim-1" aria-hidden="true" tabindex="-1"></a>scopus_dat_wide <span class="ot">&lt;-</span> scopus_dat <span class="sc">|&gt;</span> </span>
-<span id="lst-sep-wide-delim-2"><a href="#lst-sep-wide-delim-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> Affiliations, </span>
-<span id="lst-sep-wide-delim-3"><a href="#lst-sep-wide-delim-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">delim =</span> <span class="st">";"</span>, </span>
-<span id="lst-sep-wide-delim-4"><a href="#lst-sep-wide-delim-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_sep =</span> <span class="st">"_"</span>, </span>
-<span id="lst-sep-wide-delim-5"><a href="#lst-sep-wide-delim-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">too_few =</span> <span class="st">"align_start"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-sep-wide-delim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;6.2: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code>.
+</figcaption><div aria-describedby="lst-sep-wide-delim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-sep-wide-delim"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">scopus_dat_wide</span> <span class="op">&lt;-</span> <span class="va">scopus_dat</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>, </span>
+<span>                       delim <span class="op">=</span> <span class="st">";"</span>, </span>
+<span>                       names_sep <span class="op">=</span> <span class="st">"_"</span>, </span>
+<span>                       too_few <span class="op">=</span> <span class="st">"align_start"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the "Affiliations" column by ";" and create new columns</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> scopus_dat <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Affiliations =</span> <span class="fu">str_split</span>(Affiliations, <span class="st">";</span><span class="sc">\\</span><span class="st">s*"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(Affiliations, <span class="at">names_sep =</span> <span class="st">"_"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"Affiliation"</span>), trimws))</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View the updated dataset</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Split the "Affiliations" column by ";" and create new columns</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">scopus_dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Affiliations <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">Affiliations</span>, <span class="st">";\\s*"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">Affiliations</span>, names_sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Affiliation"</span><span class="op">)</span>, <span class="va">trimws</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View the updated dataset</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 483 × 330
    Authors   `Author full names` `Author(s) ID` Title  Year `Source title` DOI  
@@ -663,10 +635,10 @@ Listing&nbsp;6.2: Separating the Affiliation values in <code>scopus_dat</code> i
 </div>
 <p>I’ll leave it for you to examine, but you should see we have 311 Affiliation variables now, many of the contain missing values <code>NA</code>. We still have 483 rows, but 330 variables in total.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scopus_dat_wide) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">scopus_dat_wide</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>How do we get rid of all those missing values? We can fix that by changing the shape of the data to long with <code>pivot_longer()</code> and dropping any <code>Affiliation</code> values that are <code>NA</code>.</li>
+<li>How do we get rid of all those missing values? We can fix that by changing the shape of the data to long with <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and dropping any <code>Affiliation</code> values that are <code>NA</code>.</li>
 </ol>
 <p>Concretely, we have 311 Affiliation columns, if we pivot the table such that those column names become values in rows, the values from those columns fill a new single column variable, here <code>Department</code>, and we create a long table (with lots of duplicated information). And we can simply drop any row where the value of <code>Department</code> is <code>NA</code>.</p>
 <p>As we have to say which columns we want to take the values from to fill <code>Department</code> and all our columns of interest begin with <code>Affliation_</code>, we can use the handy <code>dpylr</code> select function <a href="https://dplyr.tidyverse.org/reference/select.html"><code>starts_with()</code></a> to help us.</p>
@@ -674,16 +646,14 @@ Listing&nbsp;6.2: Separating the Affiliation values in <code>scopus_dat</code> i
 <p>This yields a table with 3722 rows and 21 columns, one more column than we started with in the original <code>scopus_dat</code> table.</p>
 <div class="cell">
 <div id="lst-scopus-pivot-long" class="r cell-code listing quarto-float">
-<figure class="quarto-float quarto-float-lst figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-scopus-pivot-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code>separate_wider_delim()</code>.
-</figcaption>
-<div aria-describedby="lst-scopus-pivot-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="sourceCode cell-code" id="lst-scopus-pivot-long"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-scopus-pivot-long-1"><a href="#lst-scopus-pivot-long-1" aria-hidden="true" tabindex="-1"></a>scopus_dat_long <span class="ot">&lt;-</span> scopus_dat_wide <span class="sc">|&gt;</span> </span>
-<span id="lst-scopus-pivot-long-2"><a href="#lst-scopus-pivot-long-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">starts_with</span>(<span class="st">"Affiliations_"</span>),</span>
-<span id="lst-scopus-pivot-long-3"><a href="#lst-scopus-pivot-long-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Affiliation_No"</span>, </span>
-<span id="lst-scopus-pivot-long-4"><a href="#lst-scopus-pivot-long-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Department"</span>, </span>
-<span id="lst-scopus-pivot-long-5"><a href="#lst-scopus-pivot-long-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-scopus-pivot-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code>.
+</figcaption><div aria-describedby="lst-scopus-pivot-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-scopus-pivot-long"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">scopus_dat_long</span> <span class="op">&lt;-</span> <span class="va">scopus_dat_wide</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Affiliations_"</span><span class="op">)</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="st">"Affiliation_No"</span>, </span>
+<span>               values_to <span class="op">=</span> <span class="st">"Department"</span>, </span>
+<span>               values_drop_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
@@ -692,39 +662,35 @@ Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> i
 <li>But we’re only interested in the University of Southampton affiliations, so many of these rows aren’t of use to us.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(scopus_dat_long)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>scopus_dat_long_soton <span class="ot">&lt;-</span> scopus_dat_long <span class="sc">|&gt;</span> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Department,<span class="st">"Southampton"</span>))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#scopus_dat_long_other &lt;-  scopus_dat_long |&gt; </span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter(!str_detect(Department,"Southampton"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#glimpse(scopus_dat_long)</span></span>
+<span></span>
+<span><span class="va">scopus_dat_long_soton</span> <span class="op">&lt;-</span> <span class="va">scopus_dat_long</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">Department</span>,<span class="st">"Southampton"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#scopus_dat_long_other &lt;-  scopus_dat_long |&gt; </span></span>
+<span> <span class="co"># filter(!str_detect(Department,"Southampton"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="web-of-science" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="web-of-science"><span class="header-section-number">6.3</span> Web of science</h2>
+</section><section id="web-of-science" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="web-of-science">
+<span class="header-section-number">6.3</span> Web of science</h2>
 <p><code>https://www.webofscience.com/wos/woscc/summary/1d7d2706-f966-4c7c-8cbd-85de6e118dc2-d8d761f7/relevance/1</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dat_join &lt;- scopus_dat_long_soton |&gt; left_join(wos_dat, by = "DOI")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#dat_join &lt;- scopus_dat_long_soton |&gt; left_join(wos_dat, by = "DOI")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>departments <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/ab604/library-r/raw/main/data/faculty-and-department-codes-2024-03-18.csv"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>dept_names <span class="ot">&lt;-</span> departments <span class="sc">|&gt;</span> <span class="fu">pull</span>(department_name) <span class="sc">|&gt;</span> glue<span class="sc">::</span><span class="fu">glue_collapse</span>(<span class="at">sep =</span> <span class="st">"|"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dept_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">departments</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/faculty-and-department-codes-2024-03-18.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dept_names</span> <span class="op">&lt;-</span> <span class="va">departments</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">department_name</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue_collapse.html">glue_collapse</a></span><span class="op">(</span>sep <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dept_names</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> 'glue' chr "Archaeology|Digital Humanities|English|Film|History|Languages, Cultures and Linguistics|Music|Philosophy|Winche"| __truncated__</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>soton_depts <span class="ot">&lt;-</span> scopus_dat_long_soton <span class="sc">|&gt;</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">department_name =</span> <span class="fu">str_extract</span>(Department,dept_names))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">soton_depts</span> <span class="op">&lt;-</span> <span class="va">scopus_dat_long_soton</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>department_name <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">Department</span>,<span class="va">dept_names</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1274,10 +1240,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./data-wrangling-2.html" class="pagination-link  aria-label=" &lt;span="" wrangling="" ii&lt;="" span&gt;"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./data-wrangling-2.html" class="pagination-link  aria-label=" wrangling="" ii="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span>
       </a>          
   </div>
@@ -1288,8 +1252,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.</p>
 </div>   
@@ -1301,8 +1264,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>
