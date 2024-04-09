@@ -1,0 +1,206 @@
+---
+title: "Exercises"
+author: "Alistair Bailey"
+---
+
+## Importing data
+
+
+
+## Filter
+
+Exercise 1:
+```R
+# Exercise 1: Filter books published after the year 2000
+books |>
+  filter(year > 2000)
+```
+
+Exercise 2:
+```R
+# Exercise 2: Filter non-fiction books with more than 500 pages
+books |>
+  filter(type == "Non-fiction", pages > 500)
+```
+
+Exercise 3:
+```R
+# Exercise 3: Filter fiction books in the "Literature" genre published before 1900 or after 2000
+books |>
+  filter(
+    type == "Fiction",
+    genre == "Literature",
+    year < 1900 | year > 2000
+  )
+```
+
+Explanations:
+
+1. Exercise 1 is a simple filtering task that requires the user to filter books published after the year 2000. The user needs to use the `filter()` function with the condition `year > 2000`.
+
+2. Exercise 2 is slightly more challenging as it involves filtering based on multiple conditions. The user needs to filter non-fiction books with more than 500 pages. They should use the `filter()` function with the conditions `type == "Non-fiction"` and `pages > 500`, separated by a comma.
+
+3. Exercise 3 is the most complex among the three exercises. It requires the user to filter fiction books in the "Literature" genre that were published either before 1900 or after 2000. The user needs to use the `filter()` function with multiple conditions: `type == "Fiction"`, `genre == "Literature"`, and `year < 1900 | year > 2000`. The `|` operator represents the logical OR condition.
+
+These exercises gradually increase in difficulty, testing the user's understanding of the `filter()` function, logical operators, and combining multiple conditions.
+
+## Select
+
+Exercise 1:
+```R
+# Exercise 1: Select the title and year columns
+books |>
+  select(title, year)
+```
+
+Exercise 2:
+```R
+# Exercise 2: Select the columns from title to pages
+books |>
+  select(title:pages)
+```
+
+Exercise 3:
+```R
+# Exercise 3: Select the title column and all columns that end with "er"
+books |>
+  select(title, ends_with("er"))
+```
+
+Explanations:
+
+1. Exercise 1 is a straightforward task that requires the user to select specific columns by name. The user needs to use the `select()` function and provide the column names `title` and `year` as arguments.
+
+2. Exercise 2 introduces the concept of selecting a range of columns. The user needs to select all columns from `title` to `pages` using the colon (`:`) operator within the `select()` function.
+
+3. Exercise 3 combines selecting a specific column and using a helper function to select columns based on a pattern. The user needs to select the `title` column explicitly and then use the `ends_with()` helper function within `select()` to select all columns that end with the string "er".
+
+These exercises test the user's understanding of the `select()` function, including selecting specific columns, selecting a range of columns, and using helper functions to select columns based on patterns.
+
+## Mutate
+
+Exercise 1:
+```R
+# Exercise 1: Create a new column called "publication_date" by pasting the "year" and "publisher" columns
+books |>
+  mutate(publication_date = paste(year, publisher, sep = ", "))
+```
+
+Exercise 2:
+```R
+# Exercise 2: Create a new column called "pages_category" based on the number of pages
+books |>
+  mutate(pages_category = case_when(
+    pages < 300 ~ "Short",
+    pages >= 300 & pages < 500 ~ "Medium",
+    pages >= 500 ~ "Long"
+  ))
+```
+
+Exercise 3:
+```R
+# Exercise 3: Create new columns "title_length" and "title_words" based on the "title" column
+books |>
+  mutate(
+    title_length = nchar(title),
+    title_words = str_count(title, "\\w+")
+  )
+```
+
+Explanations:
+
+1. Exercise 1 introduces the basic usage of `mutate()` to create a new column. The user needs to create a new column called "publication_date" by combining the "year" and "publisher" columns using the `paste()` function with a separator (`, `).
+
+2. Exercise 2 demonstrates the use of `case_when()` within `mutate()` to create a new column based on conditional logic. The user needs to create a new column called "pages_category" that categorizes books as "Short" (less than 300 pages), "Medium" (between 300 and 499 pages), or "Long" (500 pages or more) based on the number of pages.
+
+3. Exercise 3 involves creating multiple new columns using `mutate()` and applying functions to existing columns. The user needs to create two new columns: "title_length" (the number of characters in the title) using the `nchar()` function, and "title_words" (the number of words in the title) using the `str_count()` function from the `stringr` package to count the number of word characters.
+
+These exercises test the user's understanding of the `mutate()` function, including creating new columns, using conditional logic with `case_when()`, and applying functions to existing columns to derive new information.
+
+## Combining filter, select and mutate
+
+Exercise 1:
+```R
+# Exercise 1: Filter fiction books, select the title and pages columns, and create a new column "pages_per_year"
+books |>
+  filter(type == "Fiction") |>
+  select(title, pages, year) |>
+  mutate(pages_per_year = pages / (2023 - year))
+```
+
+Exercise 2:
+```R
+# Exercise 2: Filter books with more than 500 pages, select the title, genre, and publisher columns, and create a new column "title_length"
+books |>
+  filter(pages > 500) |>
+  select(title, genre, publisher) |>
+  mutate(title_length = nchar(title))
+```
+
+Exercise 3:
+```R
+# Exercise 3: Filter non-fiction books published after 2000, select the title, pages, and year columns, and create new columns "decade" and "pages_category"
+books |>
+  filter(type == "Non-fiction", year > 2000) |>
+  select(title, pages, year) |>
+  mutate(
+    decade = paste0(floor(year / 10) * 10, "s"),
+    pages_category = case_when(
+      pages < 300 ~ "Short",
+      pages >= 300 & pages < 500 ~ "Medium",
+      pages >= 500 ~ "Long"
+    )
+  )
+```
+
+Explanations:
+
+1. Exercise 1 combines `filter()`, `select()`, and `mutate()` functions. The user needs to filter fiction books, select the "title", "pages", and "year" columns, and create a new column called "pages_per_year" by dividing the number of pages by the difference between the current year (2023) and the publication year.
+
+2. Exercise 2 involves filtering books with more than 500 pages, selecting the "title", "genre", and "publisher" columns, and creating a new column called "title_length" using the `nchar()` function to calculate the number of characters in the title.
+
+3. Exercise 3 requires the user to filter non-fiction books published after 2000, select the "title", "pages", and "year" columns, and create two new columns: "decade" (the decade of publication using the `floor()` function and concatenating "s" to the result) and "pages_category" (categorizing books as "Short", "Medium", or "Long" based on the number of pages using `case_when()`).
+
+These exercises combine the concepts learned in the previous exercises and test the user's ability to chain multiple functions together using the pipe operator (`|>`). They involve filtering data based on conditions, selecting specific columns, and creating new columns using various functions and conditional logic.
+
+## Grouped summaries
+
+Exercise 1:
+```R
+# Exercise 1: Calculate the average number of pages for each book type
+books |>
+  group_by(type) |>
+  summarise(avg_pages = mean(pages))
+```
+
+Exercise 2:
+```R
+# Exercise 2: Find the longest book title for each genre and publisher combination
+books |>
+  select(title, genre, publisher) |>
+  mutate(title_length = nchar(title)) |>
+  group_by(genre, publisher) |>
+  summarise(longest_title = max(title_length))
+```
+
+Exercise 3:
+```R
+# Exercise 3: Calculate the total number of pages and the count of books for each genre, considering only fiction books published after 1990
+books |>
+  filter(type == "Fiction", year > 1990) |>
+  group_by(genre) |>
+  summarise(
+    total_pages = sum(pages),
+    book_count = n()
+  )
+```
+
+Explanations:
+
+1. Exercise 1 demonstrates the basic usage of `group_by()` and `summarise()`. The user needs to group the books by the "type" column and calculate the average number of pages for each book type using the `mean()` function within `summarise()`.
+
+2. Exercise 2 combines `select()`, `mutate()`, `group_by()`, and `summarise()`. The user needs to select the "title", "genre", and "publisher" columns, create a new column "title_length" using `mutate()` and the `nchar()` function, group the data by "genre" and "publisher", and find the longest book title for each group using `summarise()` and the `max()` function.
+
+3. Exercise 3 involves filtering, grouping, and summarizing data. The user needs to filter fiction books published after 1990, group the filtered data by the "genre" column, and calculate the total number of pages using `sum(pages)` and the count of books using `n()` for each genre within the `summarise()` function.
+
+These exercises test the user's understanding of grouping data using `group_by()`, summarizing data using `summarise()`, and combining these functions with other data manipulation functions like `filter()`, `select()`, and `mutate()`. They involve grouping data based on specific columns, calculating aggregate measures, and applying filters and transformations to the data before grouping and summarizing.

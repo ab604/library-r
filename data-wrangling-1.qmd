@@ -1,7 +1,7 @@
 # Data wrangling I {#sec-data-wrangling-i}
 
 ::: {#chapter-03-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
-This chapter covers some common tasks for working with tabular data using the tidyverse. The tasks are filtering for rows of interest, arranging the rows, selecting columns of interest, creating new columns, creating grouped summaries of the table, and re-shaping (aka pivoting) the table.
+This chapter covers some common tasks for working with tabular data using the tidyverse packages `dplyr` and `tidyr`. The tasks are filtering for rows of interest, arranging the rows, selecting columns of interest, creating new columns, creating grouped summaries of the table, and re-shaping (aka pivoting) the table.
 :::
 
 ```{r}
@@ -10,6 +10,7 @@ This chapter covers some common tasks for working with tabular data using the ti
 #| echo: false
 library(palmerpenguins)
 library(dplyr)
+library(tidyr)
 library(flextable)
 ```
 
@@ -334,26 +335,57 @@ penguins |>
 
 ## Creating grouped summaries with `dplyr` {#sec-creating-grouped-summaries}
 
+Another powerful feature of `dplyr` is it's ability to summarise the entire
+dataset in a single row. 
+
 ```{r}
 #| label: penguin-summary
 penguins |> 
-  summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), n_penguins = n())
+  summarise(mean_mass_g = mean(body_mass_g, na.rm = TRUE))
 ```
 
 ```{r}
 #| label: penguin--grouped-summary
 penguins |> 
   group_by(species) |> 
-  summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), n_penguins = n())
+  summarise(mean_mass_g = mean(body_mass_g, na.rm = TRUE), 
+            n_penguins = n())
 ```
 
 ### Using `group_by()` and `summarise()` together
 
+Calculating the average bill length and depth for each species
+
+pipe the `penguins` dataset into the `group_by()` function, which groups the data by the `species` variable.
+- We then use the `summarise()` function to calculate the average bill length and depth for each species using `mean()`.
+- The `na.rm = TRUE` argument is used to remove any missing values before calculating the means.
+
+
+```{r}
+# Calculate the average bill length and depth for each species
+penguins |>
+  group_by(species) |>
+  summarise(
+    avg_bill_length = mean(bill_length_mm, na.rm = TRUE),
+    avg_bill_depth = mean(bill_depth_mm, na.rm = TRUE)
+  )
+```
+
+Count the number of penguins by island and sex. We start with the `penguins` dataset and pipe it into the `group_by()` function to group the data by both `island` and `sex` variables. As before, we then use the `summarise()` function along with `n()` to count the number of penguins in each group.
+
+```{r}
+#| message: false
+# Count the number of penguins by island and sex
+penguins |>
+  group_by(island, sex) |>
+  summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), 
+            n_penguins = n())
+```
 ## Pivots
 
 Data can be untidy in different ways. One way might be that the values are in the variable names. Or perhaps the reverse is true and you'd like the values to be column names.
 
-Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use `pivot_longer()` and if one pivots a table to increase the number of columns one would use `pivot_wider()` (@fig-pivot and @fig-pivot-animation).
+Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use the [`tidyr` package](https://tidyr.tidyverse.org/index.html) function `pivot_longer()` and if one pivots a table to increase the number of columns one would use `pivot_wider()` (@fig-pivot and @fig-pivot-animation).
 
 ```{r}
 #| label: fig-pivot 
@@ -377,4 +409,28 @@ knitr::include_graphics("img/pivot-penguins.png", dpi = 270)
 #|  pivot
 
 knitr::include_graphics("img/tidyr-pivoting.gif", dpi = 270)
+```
+
+```{r}
+# Pivot the data longer
+penguins_long <- penguins |>
+  select(species,island,sex) |> 
+  pivot_longer(
+    cols = species:sex,
+    names_to = "key",
+    values_to = "val"
+  )
+
+glimpse(penguins_long)
+```
+
+```{r}
+# Pivot the data wider
+penguins_wide <- penguins_long |>
+  pivot_wider(
+    names_from = "key",
+    values_from = "val"
+  )
+
+glimpse(penguins_wide)
 ```
