@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.4.549">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Alistair Bailey">
-<title>R for Librarians Exercises</title>
+<title>R for Librarians dplyr Exercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">R for Librarians Exercises</h1>
+<h1 class="title">R for Librarians <code>dplyr</code> Exercises</h1>
 </div>
 
 
@@ -97,7 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="importing-and-inspecting-data" class="level2"><h2 class="anchored" data-anchor-id="importing-and-inspecting-data">Importing and inspecting data</h2>
-<p>Import the data contained in csv file to an object called <code>books</code> from: <a href="https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv" class="uri">https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv</a></p>
+<p>Exercise 1: Import the data contained in csv file to an object called <code>books</code> from: <a href="https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv" class="uri">https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv</a></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -112,18 +112,21 @@ Tip
 </div>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">books</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 1: Import the data contained in csv file to an object called `books`</span></span>
+<span><span class="va">books</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>How many books (rows) and how many variables are there?</p>
+<p>Exercise 2: How many books (rows) and how many variables are there?</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 95 books with 6 colummns</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: How many books (rows) and how many variables are there?</span></span>
+<span><span class="co"># 95 books with 6 colummns</span></span>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">books</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>How many different genres and types are there?</p>
+<p>Exercise 3: How many different genres and types are there?</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Eight genres</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: How many different genres and types are there?</span></span>
+<span><span class="co"># Eight genres</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">distinct</span><span class="op">(</span><span class="va">genre</span><span class="op">)</span></span>
 <span><span class="co"># 2 types</span></span>
@@ -131,9 +134,10 @@ Tip
 <span>  <span class="fu">distinct</span><span class="op">(</span><span class="va">type</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>What is the range of publication dates?</p>
+<p>Exercise 4: What is the range of publication dates?</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">books</span> <span class="op">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 4: What is the range of publication dates?</span></span>
+<span><span class="va">books</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">reframe</span><span class="op">(</span>pub_year_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -145,87 +149,147 @@ Tip
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;</span> <span class="fl">2000</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Exercise 2:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Filter non-fiction books with more than 500 pages</span></span>
+<p>Exercise 2: Filter non-fiction books with more than 500 pages</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Filter non-fiction books with more than 500 pages</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"Non-fiction"</span>, <span class="va">pages</span> <span class="op">&gt;</span> <span class="fl">500</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Exercise 3:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Filter fiction books in the "Literature" genre published before 1900 or after 2000</span></span>
+</details>
+</div>
+<p>Exercise 3: Filter fiction books in the “Literature” genre published before 1900 or after 2000</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Filter fiction books in the "Literature" genre published before 1900 or after 2000</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span></span>
 <span>    <span class="va">type</span> <span class="op">==</span> <span class="st">"Fiction"</span>,</span>
 <span>    <span class="va">genre</span> <span class="op">==</span> <span class="st">"Literature"</span>,</span>
 <span>    <span class="va">year</span> <span class="op">&lt;</span> <span class="fl">1900</span> <span class="op">|</span> <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">2000</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Filter exercises explanations">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Filter exercises explanations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Explanations:</p>
 <ol type="1">
 <li><p>Exercise 1 is a simple filtering task that requires the user to filter books published after the year 2000. The user needs to use the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function with the condition <code>year &gt; 2000</code>.</p></li>
 <li><p>Exercise 2 is slightly more challenging as it involves filtering based on multiple conditions. The user needs to filter non-fiction books with more than 500 pages. They should use the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function with the conditions <code>type == "Non-fiction"</code> and <code>pages &gt; 500</code>, separated by a comma.</p></li>
 <li><p>Exercise 3 is the most complex among the three exercises. It requires the user to filter fiction books in the “Literature” genre that were published either before 1900 or after 2000. The user needs to use the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function with multiple conditions: <code>type == "Fiction"</code>, <code>genre == "Literature"</code>, and <code>year &lt; 1900 | year &gt; 2000</code>. The <code>|</code> operator represents the logical OR condition.</p></li>
 </ol>
-<p>These exercises gradually increase in difficulty, testing the user’s understanding of the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function, logical operators, and combining multiple conditions.</p>
+</div>
+</div>
+</div>
 </section><section id="select" class="level2"><h2 class="anchored" data-anchor-id="select">Select</h2>
-<p>Exercise 1:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 1: Select the title and year columns</span></span>
+<p>Exercise 1: Select the title and year columns</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 1: Select the title and year columns</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="va">year</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Exercise 2:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Select the columns from title to pages</span></span>
+</details>
+</div>
+<p>Exercise 2: Select the columns from title to pages</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Select the columns from title to pages</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span><span class="op">:</span><span class="va">pages</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Exercise 3:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Select the title column and all columns that end with "er"</span></span>
+</details>
+</div>
+<p>Exercise 3: Select the title column and all columns that end with “er”</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Select the title column and all columns that end with "er"</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="fu">ends_with</span><span class="op">(</span><span class="st">"er"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Explanations:</p>
+</details>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Select exercises explanations">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Select exercises explanations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>Exercise 1 is a straightforward task that requires the user to select specific columns by name. The user needs to use the <code>select()</code> function and provide the column names <code>title</code> and <code>year</code> as arguments.</p></li>
 <li><p>Exercise 2 introduces the concept of selecting a range of columns. The user needs to select all columns from <code>title</code> to <code>pages</code> using the colon (<code>:</code>) operator within the <code>select()</code> function.</p></li>
 <li><p>Exercise 3 combines selecting a specific column and using a helper function to select columns based on a pattern. The user needs to select the <code>title</code> column explicitly and then use the <code>ends_with()</code> helper function within <code>select()</code> to select all columns that end with the string “er”.</p></li>
 </ol>
-<p>These exercises test the user’s understanding of the <code>select()</code> function, including selecting specific columns, selecting a range of columns, and using helper functions to select columns based on patterns.</p>
+</div>
+</div>
+</div>
 </section><section id="mutate" class="level2"><h2 class="anchored" data-anchor-id="mutate">Mutate</h2>
-<p>Exercise 1:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 1: Create a new column called "publication_date" by pasting the "year" and "publisher" columns</span></span>
+<p>Exercise 1: Create new columns “title_letters” and “title_words” based on the “title” column, that count the numbers of letters and words in the title respectively.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Create new columns "title_letters" and "title_words" based on the </span></span>
+<span><span class="co"># "title" column, that count the numbers of letters and words in the title </span></span>
+<span><span class="co"># respectively.</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>publication_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">publisher</span>, sep <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Exercise 2:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Create a new column called "pages_category" based on the number of pages</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    title_letters <span class="op">=</span> <span class="fu">str_count</span><span class="op">(</span><span class="va">title</span><span class="op">)</span>,</span>
+<span>    title_words <span class="op">=</span> <span class="fu">str_count</span><span class="op">(</span><span class="va">title</span>, <span class="st">"\\w+"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>,<span class="va">title_letters</span>, <span class="va">title_words</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Exercise 2: Create a new column called “book_length” based on the number of pages. Categories should be, “Short” when pages &lt; 300, “Medium” when pages &lt;= 300 &amp; &gt;= 500, and “Long” when pages &gt;= 500.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Create a new column called "pages_category" based on the number </span></span>
+<span><span class="co"># of pages</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>pages_category <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>book_length <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
 <span>    <span class="va">pages</span> <span class="op">&lt;</span> <span class="fl">300</span> <span class="op">~</span> <span class="st">"Short"</span>,</span>
 <span>    <span class="va">pages</span> <span class="op">&gt;=</span> <span class="fl">300</span> <span class="op">&amp;</span> <span class="va">pages</span> <span class="op">&lt;</span> <span class="fl">500</span> <span class="op">~</span> <span class="st">"Medium"</span>,</span>
 <span>    <span class="va">pages</span> <span class="op">&gt;=</span> <span class="fl">500</span> <span class="op">~</span> <span class="st">"Long"</span></span>
-<span>  <span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Exercise 3:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Create new columns "title_length" and "title_words" based on the "title" column</span></span>
-<span><span class="va">books</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span></span>
-<span>    title_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span>,</span>
-<span>    title_words <span class="op">=</span> <span class="fu">str_count</span><span class="op">(</span><span class="va">title</span>, <span class="st">"\\w+"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Explanations:</p>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="va">pages</span>, <span class="va">book_length</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Mutate exercises explanations">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mutate exercises explanations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>Exercise 1 introduces the basic usage of <code>mutate()</code> to create a new column. The user needs to create a new column called “publication_date” by combining the “year” and “publisher” columns using the <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> function with a separator (<code>,</code>).</p></li>
-<li><p>Exercise 2 demonstrates the use of <code>case_when()</code> within <code>mutate()</code> to create a new column based on conditional logic. The user needs to create a new column called “pages_category” that categorizes books as “Short” (less than 300 pages), “Medium” (between 300 and 499 pages), or “Long” (500 pages or more) based on the number of pages.</p></li>
-<li><p>Exercise 3 involves creating multiple new columns using <code>mutate()</code> and applying functions to existing columns. The user needs to create two new columns: “title_length” (the number of characters in the title) using the <code><a href="https://rdrr.io/r/base/nchar.html">nchar()</a></code> function, and “title_words” (the number of words in the title) using the <code>str_count()</code> function from the <code>stringr</code> package to count the number of word characters.</p></li>
+<li><p>Exercise 1 involves creating multiple new columns using <code>mutate()</code> and applying functions to existing columns. The user needs to create two new columns: “title_letters” (the number of characters in the title) using the <code>str_count()</code> function, and “title_words” (the number of words in the title) using the <code>str_count()</code> function with the additional argument <code>"\\w+"</code> from the <code>stringr</code> package to count the number of word characters.</p></li>
+<li><p>Exercise 2 demonstrates the use of <code>case_when()</code> within <code>mutate()</code> to create a new column based on conditional logic. The user needs to create a new column called “book_length” that categorizes books as “Short” (less than 300 pages), “Medium” (between 300 and 499 pages), or “Long” (500 pages or more) based on the number of pages.</p></li>
 </ol>
-<p>These exercises test the user’s understanding of the <code>mutate()</code> function, including creating new columns, using conditional logic with <code>case_when()</code>, and applying functions to existing columns to derive new information.</p>
+</div>
+</div>
+</div>
 </section><section id="combining-filter-select-and-mutate" class="level2"><h2 class="anchored" data-anchor-id="combining-filter-select-and-mutate">Combining filter, select and mutate</h2>
 <p>Exercise 1:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 1: Filter fiction books, select the title and pages columns, and create a new column "pages_per_year"</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 1: Filter fiction books, select the title and pages columns, and create a new column "pages_per_year"</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"Fiction"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="va">pages</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>pages_per_year <span class="op">=</span> <span class="va">pages</span> <span class="op">/</span> <span class="op">(</span><span class="fl">2023</span> <span class="op">-</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Exercise 2:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Filter books with more than 500 pages, select the title, genre, and publisher columns, and create a new column "title_length"</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Filter books with more than 500 pages, select the title, genre, and publisher columns, and create a new column "title_length"</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">pages</span> <span class="op">&gt;</span> <span class="fl">500</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="va">genre</span>, <span class="va">publisher</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>title_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Exercise 3:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Filter non-fiction books published after 2000, select the title, pages, and year columns, and create new columns "decade" and "pages_category"</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Filter non-fiction books published after 2000, select the title, pages, and year columns, and create new columns "decade" and "pages_category"</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"Non-fiction"</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">2000</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="va">pages</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -246,19 +310,19 @@ Tip
 <p>These exercises combine the concepts learned in the previous exercises and test the user’s ability to chain multiple functions together using the pipe operator (<code>|&gt;</code>). They involve filtering data based on conditions, selecting specific columns, and creating new columns using various functions and conditional logic.</p>
 </section><section id="grouped-summaries" class="level2"><h2 class="anchored" data-anchor-id="grouped-summaries">Grouped summaries</h2>
 <p>Exercise 1:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 1: Calculate the average number of pages for each book type</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 1: Calculate the average number of pages for each book type</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">type</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>avg_pages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pages</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Exercise 2:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Find the longest book title for each genre and publisher combination</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 2: Find the longest book title for each genre and publisher combination</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">title</span>, <span class="va">genre</span>, <span class="va">publisher</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>title_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span>, <span class="va">publisher</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>longest_title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">title_length</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Exercise 3:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Calculate the total number of pages and the count of books for each genre, considering only fiction books published after 1990</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Exercise 3: Calculate the total number of pages and the count of books for each genre, considering only fiction books published after 1990</span></span>
 <span><span class="va">books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"Fiction"</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1990</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">genre</span><span class="op">)</span> <span class="op">|&gt;</span></span>

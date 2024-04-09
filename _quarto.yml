@@ -29,6 +29,7 @@ bibliography: references.bib
 format:
   html:
     code-link: true
+    cache: false
     link-external-icon: true
     link-external-newwindow: true
     theme:
@@ -38,4 +39,4 @@ format:
    # documentclass: scrreprt
 
 editor: visual
-code-annotations: below
+# code-annotations: below

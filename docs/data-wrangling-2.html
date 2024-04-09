@@ -397,26 +397,26 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 <pre><code># A tibble: 20 × 1
    cat_id         
    &lt;chr&gt;          
- 1 &lt;Whiskers&gt;-M_9 
- 2 &lt;Fluffy&gt;-F_5   
- 3 &lt;Mittens&gt;-M_9  
+ 1 &lt;Whiskers&gt;-F_3 
+ 2 &lt;Fluffy&gt;-M_7   
+ 3 &lt;Mittens&gt;-M_3  
  4 &lt;Socks&gt;-F_11   
- 5 &lt;Tiger&gt;-M_4    
- 6 &lt;Smokey&gt;-M_9   
- 7 &lt;Gizmo&gt;-F_8    
- 8 &lt;Oreo&gt;-F_7     
- 9 &lt;Luna&gt;-M_11    
-10 &lt;Oliver&gt;-F_7   
-11 &lt;Leo&gt;-M_3      
-12 &lt;Milo&gt;-M_3     
-13 &lt;Charlie&gt;-F_10 
+ 5 &lt;Tiger&gt;-M_7    
+ 6 &lt;Smokey&gt;-F_7   
+ 7 &lt;Gizmo&gt;-F_11   
+ 8 &lt;Oreo&gt;-M_11    
+ 9 &lt;Luna&gt;-F_11    
+10 &lt;Oliver&gt;-F_4   
+11 &lt;Leo&gt;-M_5      
+12 &lt;Milo&gt;-M_6     
+13 &lt;Charlie&gt;-F_7  
 14 &lt;Simba&gt;-M_4    
-15 &lt;Nala&gt;-M_3     
-16 &lt;Felix&gt;-F_7    
-17 &lt;Garfield&gt;-M_10
-18 &lt;Tigger&gt;-M_9   
-19 &lt;Chloe&gt;-M_9    
-20 &lt;Bella&gt;-M_10   </code></pre>
+15 &lt;Nala&gt;-F_8     
+16 &lt;Felix&gt;-M_10   
+17 &lt;Garfield&gt;-M_11
+18 &lt;Tigger&gt;-M_3   
+19 &lt;Chloe&gt;-F_8    
+20 &lt;Bella&gt;-F_8    </code></pre>
 </div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">separate_wider_regex</span><span class="op">(</span></span>
@@ -430,26 +430,26 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 <pre><code># A tibble: 20 × 3
    name     sex   age  
    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
- 1 Whiskers M     9    
- 2 Fluffy   F     5    
- 3 Mittens  M     9    
+ 1 Whiskers F     3    
+ 2 Fluffy   M     7    
+ 3 Mittens  M     3    
  4 Socks    F     11   
- 5 Tiger    M     4    
- 6 Smokey   M     9    
- 7 Gizmo    F     8    
- 8 Oreo     F     7    
- 9 Luna     M     11   
-10 Oliver   F     7    
-11 Leo      M     3    
-12 Milo     M     3    
-13 Charlie  F     10   
+ 5 Tiger    M     7    
+ 6 Smokey   F     7    
+ 7 Gizmo    F     11   
+ 8 Oreo     M     11   
+ 9 Luna     F     11   
+10 Oliver   F     4    
+11 Leo      M     5    
+12 Milo     M     6    
+13 Charlie  F     7    
 14 Simba    M     4    
-15 Nala     M     3    
-16 Felix    F     7    
-17 Garfield M     10   
-18 Tigger   M     9    
-19 Chloe    M     9    
-20 Bella    M     10   </code></pre>
+15 Nala     F     8    
+16 Felix    M     10   
+17 Garfield M     11   
+18 Tigger   M     3    
+19 Chloe    F     8    
+20 Bella    F     8    </code></pre>
 </div>
 </div>
 

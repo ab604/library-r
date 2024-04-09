@@ -1,13 +1,17 @@
 ---
-title: "R for Librarians Exercises"
+title: "R for Librarians `dplyr` Exercises"
 author: "Alistair Bailey"
 date: last-modified
 date-format: "[Last Updated on] YYYY-MM-DD"
 format: html
 code-fold: true
 code-link: true
+knitr:
+  opts_chunk:
+    results: hide
 execute: 
-  eval: false
+  eval: true
+  cache: true
 ---
 
 ```{r}
@@ -19,7 +23,7 @@ library(tidyverse)
 
 ## Importing and inspecting data
 
-Import the data contained in csv file to an object called `books` from: <https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv>
+Exercise 1: Import the data contained in csv file to an object called `books` from: <https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv>
 
 ::: callout-tip
 You can read data directly from paths to on-line datasets with `read_csv()` as you 
@@ -29,21 +33,24 @@ would for locally stored `csv` files.
 ```{r}
 #| label: import-books
 #| message: false
+# Exercise 1: Import the data contained in csv file to an object called `books`
 books <- read_csv("https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv")
 ```
 
-How many books (rows) and how many variables are there?
+Exercise 2: How many books (rows) and how many variables are there?
 
 ```{r}
 #| label: glimpse-books
+# Exercise 2: How many books (rows) and how many variables are there?
 # 95 books with 6 colummns
 glimpse(books)
 ```
 
-How many different genres and types are there?
+Exercise 3: How many different genres and types are there?
 
 ```{r}
 #| label: books-genres
+# Exercise 3: How many different genres and types are there?
 # Eight genres
 books |> 
   distinct(genre)
@@ -52,10 +59,11 @@ books |>
   distinct(type)
 ```
 
-What is the range of publication dates?
+Exercise 4: What is the range of publication dates?
 
 ```{r}
 #| label: books-range
+# Exercise 4: What is the range of publication dates?
 books |> 
   reframe(pub_year_range = range(year))
 ```
@@ -66,23 +74,25 @@ books |>
 Exercise 1: Filter books published after the year 2000
 
 ```{r}
-#| label: filter-ex-1
+#| label: filter-1
 # Exercise 1: Filter books published after the year 2000
 books |>
   filter(year > 2000)
 ```
 
-Exercise 2:
+Exercise 2: Filter non-fiction books with more than 500 pages
 
-``` r
+```{r}
+#| label: filter-2
 # Exercise 2: Filter non-fiction books with more than 500 pages
 books |>
   filter(type == "Non-fiction", pages > 500)
 ```
 
-Exercise 3:
+Exercise 3: Filter fiction books in the "Literature" genre published before 1900 or after 2000
 
-``` r
+```{r}
+#| label: filter-3
 # Exercise 3: Filter fiction books in the "Literature" genre published before 1900 or after 2000
 books |>
   filter(
@@ -92,6 +102,7 @@ books |>
   )
 ```
 
+::: {.callout-note title="Filter exercises explanations" collapse="true"}
 Explanations:
 
 1.  Exercise 1 is a simple filtering task that requires the user to filter books published after the year 2000. The user needs to use the `filter()` function with the condition `year > 2000`.
@@ -99,87 +110,85 @@ Explanations:
 2.  Exercise 2 is slightly more challenging as it involves filtering based on multiple conditions. The user needs to filter non-fiction books with more than 500 pages. They should use the `filter()` function with the conditions `type == "Non-fiction"` and `pages > 500`, separated by a comma.
 
 3.  Exercise 3 is the most complex among the three exercises. It requires the user to filter fiction books in the "Literature" genre that were published either before 1900 or after 2000. The user needs to use the `filter()` function with multiple conditions: `type == "Fiction"`, `genre == "Literature"`, and `year < 1900 | year > 2000`. The `|` operator represents the logical OR condition.
-
-These exercises gradually increase in difficulty, testing the user's understanding of the `filter()` function, logical operators, and combining multiple conditions.
+:::
 
 ## Select
 
-Exercise 1:
+Exercise 1: Select the title and year columns
 
-``` r
+```{r}
+#| label: select-1
 # Exercise 1: Select the title and year columns
 books |>
   select(title, year)
 ```
 
-Exercise 2:
+Exercise 2: Select the columns from title to pages
 
-``` r
+```{r}
+#| label: select-2
 # Exercise 2: Select the columns from title to pages
 books |>
   select(title:pages)
 ```
 
-Exercise 3:
+Exercise 3: Select the title column and all columns that end with "er"
 
-``` r
+```{r}
+#| label: select-3
 # Exercise 3: Select the title column and all columns that end with "er"
 books |>
   select(title, ends_with("er"))
 ```
 
-Explanations:
-
+::: {.callout-note title="Select exercises explanations" collapse="true"}
 1.  Exercise 1 is a straightforward task that requires the user to select specific columns by name. The user needs to use the `select()` function and provide the column names `title` and `year` as arguments.
 
 2.  Exercise 2 introduces the concept of selecting a range of columns. The user needs to select all columns from `title` to `pages` using the colon (`:`) operator within the `select()` function.
 
 3.  Exercise 3 combines selecting a specific column and using a helper function to select columns based on a pattern. The user needs to select the `title` column explicitly and then use the `ends_with()` helper function within `select()` to select all columns that end with the string "er".
-
-These exercises test the user's understanding of the `select()` function, including selecting specific columns, selecting a range of columns, and using helper functions to select columns based on patterns.
+:::
 
 ## Mutate
 
-Exercise 1:
+Exercise 1: Create new columns "title_letters" and "title_words" based on the "title" column, that count the numbers of letters and words in the title respectively.
 
-``` r
-# Exercise 1: Create a new column called "publication_date" by pasting the "year" and "publisher" columns
+```{r}
+#| label: mutate-1
+# Exercise 2: Create new columns "title_letters" and "title_words" based on the 
+# "title" column, that count the numbers of letters and words in the title 
+# respectively.
 books |>
-  mutate(publication_date = paste(year, publisher, sep = ", "))
+  mutate(
+    title_letters = str_count(title),
+    title_words = str_count(title, "\\w+")) |> 
+  select(title,title_letters, title_words)
 ```
 
-Exercise 2:
+Exercise 2: Create a new column called "book_length" based on the number of pages.
+Categories should be, "Short" when pages < 300, "Medium" when pages <= 300 & >= 500, 
+and "Long" when pages >= 500.
 
-``` r
-# Exercise 2: Create a new column called "pages_category" based on the number of pages
+```{r}
+#| label: mutate-2
+# Exercise 2: Create a new column called "pages_category" based on the number 
+# of pages
 books |>
-  mutate(pages_category = case_when(
+  mutate(book_length = case_when(
     pages < 300 ~ "Short",
     pages >= 300 & pages < 500 ~ "Medium",
     pages >= 500 ~ "Long"
-  ))
+  )) |> 
+  select(title, pages, book_length)
 ```
 
-Exercise 3:
 
-``` r
-# Exercise 3: Create new columns "title_length" and "title_words" based on the "title" column
-books |>
-  mutate(
-    title_length = nchar(title),
-    title_words = str_count(title, "\\w+")
-  )
-```
+::: {.callout-note title="Mutate exercises explanations" collapse="true"}
 
-Explanations:
+1.  Exercise 1 involves creating multiple new columns using `mutate()` and applying functions to existing columns. The user needs to create two new columns: "title_letters" (the number of characters in the title) using the `str_count()` function, and "title_words" (the number of words in the title) using the `str_count()` function with the additional argument `"\\w+"` from the `stringr` package to count the number of word characters.
 
-1.  Exercise 1 introduces the basic usage of `mutate()` to create a new column. The user needs to create a new column called "publication_date" by combining the "year" and "publisher" columns using the `paste()` function with a separator (`,`).
-
-2.  Exercise 2 demonstrates the use of `case_when()` within `mutate()` to create a new column based on conditional logic. The user needs to create a new column called "pages_category" that categorizes books as "Short" (less than 300 pages), "Medium" (between 300 and 499 pages), or "Long" (500 pages or more) based on the number of pages.
-
-3.  Exercise 3 involves creating multiple new columns using `mutate()` and applying functions to existing columns. The user needs to create two new columns: "title_length" (the number of characters in the title) using the `nchar()` function, and "title_words" (the number of words in the title) using the `str_count()` function from the `stringr` package to count the number of word characters.
-
-These exercises test the user's understanding of the `mutate()` function, including creating new columns, using conditional logic with `case_when()`, and applying functions to existing columns to derive new information.
+2.  Exercise 2 demonstrates the use of `case_when()` within `mutate()` to create a new column based on conditional logic. The user needs to create a new column called "book_length" that categorizes books as "Short" (less than 300 pages), "Medium" (between 300 and 499 pages), or "Long" (500 pages or more) based on the number of pages.
+:::
 
 ## Combining filter, select and mutate
 
