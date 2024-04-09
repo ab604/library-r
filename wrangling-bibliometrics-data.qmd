@@ -28,20 +28,20 @@ Here's an excerpt from an email Kate sent me on 2023-11-21:
 
 From what I can see, the overarching problem is this:
 
-:::{.callout-note appearance="simple" icon="false"}
-1. There are three data sources: Scopus, Web of Science and Pure, from which tables about publications are regularly downloaded.
+::: {.callout-note appearance="simple" icon="false"}
+1.  There are three data sources: Scopus, Web of Science and Pure, from which tables about publications are regularly downloaded.
 
 All three tables contain DOIs for the publications, but only Scopus has the UoS department affiliations, and Pure contains the Open Access compliance information
 
-2. The data contained in these three tables needs to be joined, and then joined to other data.
-3. The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.
+2.  The data contained in these three tables needs to be joined, and then joined to other data.
+3.  The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.
 :::
 
-I'm not going to be able to cover every step, For some of these steps we need to create our own tables of data e.g a table of department codes or open access codes, as well as download pre-existing data. 
+I'm not going to be able to cover every step, For some of these steps we need to create our own tables of data e.g a table of department codes or open access codes, as well as download pre-existing data.
 
 I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www.scopus.com/search/form.uri?display=advanced) to generate a report for 31 days prior to 2024-03-13 using the following query string:
 
-```{markdown}        
+```{markdown}
 AF-ID("University of Southampton" 60025225) AND PUBYEAR > 2017 AND PUBYEAR < 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)
 ```
 
@@ -81,7 +81,6 @@ lipid_join <- pure_lipid |>
 glimpse(lipid_join)
 ```
 
-
 ```{r}
 wos_mut <- wos_dat |> 
   mutate(department = str_extract(C1,"(?<=Southampton Univ,|Univ Southampton,|Univ Hosp Southampton NHS Fdn Trust,)(.*?)(?=, )"))
@@ -90,7 +89,6 @@ wos_mut |>
   select(C1, department) |> 
   view()
 ```
-
 
 So let's assume the question here is:
 
@@ -126,7 +124,7 @@ We can use `tidyr` package function [`separate_wider_delim()`](https://tidyr.tid
 
 As this is going to create new column variables, these need names too and here I provide the string for underscore `"_"` to `names_sep` and each new variable will have an underscore and numerical suffix called `Affiliations_1`, `Affiliations_2` etc.
 
-The final argument we'll use is `too_few` and we'll use `"align_start"` as the value. This means that our departments will first be put in `Affiliations_1` and adds missing values columns `NA` in any columns where a row runs out of departments. This ensures all rows have the same number of columns regardless of how many values were in the original Affiliations column. The total number of Affiliation columns will be determined by the article with the most Affiliation values. 
+The final argument we'll use is `too_few` and we'll use `"align_start"` as the value. This means that our departments will first be put in `Affiliations_1` and adds missing values columns `NA` in any columns where a row runs out of departments. This ensures all rows have the same number of columns regardless of how many values were in the original Affiliations column. The total number of Affiliation columns will be determined by the article with the most Affiliation values.
 
 Hence the table will get wider as new columns are created!
 
@@ -153,7 +151,6 @@ data <- scopus_dat %>%
 print(data)
 ```
 
-
 I'll leave it for you to examine, but you should see we have 311 Affiliation variables now, many of the contain missing values `NA`. We still have 483 rows, but 330 variables in total.
 
 ```{r}
@@ -161,7 +158,7 @@ I'll leave it for you to examine, but you should see we have 311 Affiliation var
 glimpse(scopus_dat_wide) 
 ```
 
-2. How do we get rid of all those missing values? We can fix that by changing the shape of the data to long with `pivot_longer()` and dropping any `Affiliation` values that are `NA`.
+2.  How do we get rid of all those missing values? We can fix that by changing the shape of the data to long with `pivot_longer()` and dropping any `Affiliation` values that are `NA`.
 
 Concretely, we have 311 Affiliation columns, if we pivot the table such that those column names become values in rows, the values from those columns fill a new single column variable, here `Department`, and we create a long table (with lots of duplicated information). And we can simply drop any row where the value of `Department` is `NA`.
 
@@ -182,7 +179,7 @@ scopus_dat_long <- scopus_dat_wide |>
                values_drop_na = TRUE)
 ```
 
-3. But we're only interested in the University of Southampton affiliations, so many of these rows aren't of use to us.
+3.  But we're only interested in the University of Southampton affiliations, so many of these rows aren't of use to us.
 
 ```{r}
 #glimpse(scopus_dat_long)
@@ -193,6 +190,7 @@ scopus_dat_long_soton <- scopus_dat_long |>
 #scopus_dat_long_other <-  scopus_dat_long |> 
  # filter(!str_detect(Department,"Southampton"))
 ```
+
 ## Web of science
 
 `https://www.webofscience.com/wos/woscc/summary/1d7d2706-f966-4c7c-8cbd-85de6e118dc2-d8d761f7/relevance/1`
@@ -200,7 +198,6 @@ scopus_dat_long_soton <- scopus_dat_long |>
 ```{r}
 #dat_join <- scopus_dat_long_soton |> left_join(wos_dat, by = "DOI")
 ```
-
 
 ```{r}
 #| message: false

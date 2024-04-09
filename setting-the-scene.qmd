@@ -23,7 +23,7 @@ Source: [The Biostar Handbook](https://www.biostarhandbook.com/index.html)
 
 @fig-workflow shows a version of the data science cycle from [R4DS](https://r4ds.hadley.nz/whole-game). Conceptually, this is what we are mostly doing. In R4DS, all of these steps are done programmatically, but we won't be trying to do everything here.
 
-Modeling is beyond our scope here, but you may wish to explore the modeling part of the cycle yourself. For example, check out [Tidy Modeling with R](https://www.tmwr.org/).
+Our focus will be on importing, tidying and transforming data, but you may wish to explore the visualisation and modeling parts of the cycle yourself. For example, check out the [visualisation chapter of R4DS](https://r4ds.hadley.nz/data-visualize) and [Tidy Modeling with R](https://www.tmwr.org/).
 
 As a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.
 
