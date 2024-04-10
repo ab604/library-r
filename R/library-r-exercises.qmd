@@ -26,8 +26,7 @@ library(tidyverse)
 Exercise 1: Import the data contained in csv file to an object called `books` from: <https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv>
 
 ::: callout-tip
-You can read data directly from paths to on-line datasets with `read_csv()` as you 
-would for locally stored `csv` files.
+You can read data directly from paths to on-line datasets with `read_csv()` as you would for locally stored `csv` files.
 :::
 
 ```{r}
@@ -67,7 +66,6 @@ Exercise 4: What is the range of publication dates?
 books |> 
   reframe(pub_year_range = range(year))
 ```
-
 
 ## Filter
 
@@ -165,9 +163,7 @@ books |>
   select(title,title_letters, title_words)
 ```
 
-Exercise 2: Create a new column called "book_length" based on the number of pages.
-Categories should be, "Short" when pages < 300, "Medium" when pages <= 300 & >= 500, 
-and "Long" when pages >= 500.
+Exercise 2: Create a new column called "book_length" based on the number of pages. Categories should be, "Short" when pages \< 300, "Medium" when pages \<= 300 & \>= 500, and "Long" when pages \>= 500.
 
 ```{r}
 #| label: mutate-2
@@ -182,9 +178,7 @@ books |>
   select(title, pages, book_length)
 ```
 
-
 ::: {.callout-note title="Mutate exercises explanations" collapse="true"}
-
 1.  Exercise 1 involves creating multiple new columns using `mutate()` and applying functions to existing columns. The user needs to create two new columns: "title_letters" (the number of characters in the title) using the `str_count()` function, and "title_words" (the number of words in the title) using the `str_count()` function with the additional argument `"\\w+"` from the `stringr` package to count the number of word characters.
 
 2.  Exercise 2 demonstrates the use of `case_when()` within `mutate()` to create a new column based on conditional logic. The user needs to create a new column called "book_length" that categorizes books as "Short" (less than 300 pages), "Medium" (between 300 and 499 pages), or "Long" (500 pages or more) based on the number of pages.
