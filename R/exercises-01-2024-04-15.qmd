@@ -1,0 +1,120 @@
+---
+title: "R for Librarians Introduction Exercises"
+author: "Alistair Bailey"
+date: last-modified
+date-format: "[Last Updated on] YYYY-MM-DD"
+format: html
+code-fold: true
+code-link: true
+knitr:
+  opts_chunk:
+    results: hide
+execute: 
+  eval: true
+  cache: true
+---
+
+```{r}
+#| label: set-up
+#| message: false
+#| echo: false
+library(tidyverse)
+```
+
+### Exploring RStudio
+
+1 . Find the keyboard shortcuts menu:
+
+Tools \> Keyboard shortcuts help
+
+2.  Change the appearance to something different.
+
+### Installing packages and using functions
+
+3 .Install cowsay and make a cat say "U openz ur research to me, I openz my hear to U"
+
+```{r}
+#| label: cowsay 
+#| eval: false
+install.packages("cowsay")
+library(cowsay)
+
+# Make a cat declare their love of open access publishing
+say("U openz ur research to me, I openz my hear to U", by = "cat")
+```
+
+4.  Roundhouse
+
+```{r}
+#| label: roundhouse
+#| eval: false
+install.packages("roundhouse")
+library(roundhouse)
+random_fact()
+kick()
+```
+
+5.  Open the help files for:
+
+-   function `animals()` from the `cowsay` package
+-   function `punch()` from the `roundhouse` pacakage
+
+```{r}
+#| label: help-pages
+#| eval: false
+?cowsay::animals
+?roundhouse::punch
+```
+
+### Creating folders
+
+Assuming we have created a project called `library-r`:
+
+5.  Create a folder called `R` and folder called `outputs` in your project folder
+
+## Palmer penguins
+
+Load the Palmer Penguins library if it's not already loaded.
+
+### Palmer penguins dataset
+
+1.  Find out about the `penguins` dataset:
+
+-   what is it?
+-   and what data types does it contain?
+
+### Vectors and assignment
+
+1.  Create a character vector of your name and assign it to an object called my_name
+
+    ```{r}
+    #| label: my-name
+    #| eval: false
+    my_name <- "Alistair"
+    ```
+
+2.  Pass my_name to cowsay as an argument. Chose whatever animal you wish
+
+    ```{r}
+    #| label: my_name
+    #| eval: false
+
+    say(my_name, by = "monkey")
+    ```
+
+3.  Create a sequence of numbers from 1 to 10 and assign it to an object called my_seq
+
+    ```{r}
+    #| label: my-seq
+    #| eval: false
+    my_seq <- seq(1:10)
+    ```
+
+### Data frames/tibble
+
+1.  Make a character vector of three names
+2.  Make a numeric vector of three numbers
+3.  Make a factor vector of three fruit
+4.  Combine into a data frame.
+
+

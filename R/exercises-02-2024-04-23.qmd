@@ -1,0 +1,67 @@
+---
+title: "R for Librarians Week 2 Exercises"
+author: "Alistair Bailey"
+date: last-modified
+date-format: "[Last Updated on] YYYY-MM-DD"
+format: html
+code-fold: true
+code-link: true
+knitr:
+  opts_chunk:
+    results: hide
+execute: 
+  eval: true
+  cache: true
+---
+
+```{r}
+#| label: set-up
+#| message: false
+#| echo: false
+library(tidyverse)
+library(palmerpenguins)
+library(glue)
+```
+
+## Warm-up
+
+1.  Create a Quarto markdown project called `r-week-02` and edit the default document it opens to use for our work today and save it a new folder called `R`.
+2.  From the console pane, install the `palmerpenguins` package (feel free to Google or look back at last weeks workbook to see how to do this).
+3.  Create a code chunk in the editor pane to load the `palmerpenguins` package. Label the chunk `set-up`.
+
+## Exercises
+
+### Vectors and assignment
+
+1.  Create a character vector of your name and assign it to an object called my_name
+
+    ```{r}
+    #| label: my-name
+    #| eval: false
+    my_name <- "Alistair"
+    ```
+
+2.  Pass my_name to cowsay as an argument. Chose whatever animal you wish
+
+    ```{r}
+    #| label: my_name
+    #| eval: false
+
+    say(my_name, by = "monkey")
+    ```
+
+3.  Create a sequence of numbers from 1 to 10 and assign it to an object called my_seq
+
+    ```{r}
+    #| label: my-seq
+    #| eval: false
+    my_seq <- seq(1:10)
+    ```
+
+4.  Compare the `dplyr` package `glimpse()` function and the base R `str()` function for summarizing the contents `penguins` data.
+
+```{r}
+#| label: summarise-functions
+glimpse(penguins)
+str(penguins)
+```
