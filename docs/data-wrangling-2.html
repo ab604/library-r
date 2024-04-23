@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.549">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>R for Librarians - 5&nbsp; Data wrangling II</title>
 <style>
@@ -119,7 +119,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R for Librarians</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ab604/library-r" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -196,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mutating-joins" id="toc-mutating-joins" class="nav-link" data-scroll-target="#mutating-joins"><span class="header-section-number">5.2</span> Mutating joins</a></li>
   <li><a href="#filtering-join" id="toc-filtering-join" class="nav-link" data-scroll-target="#filtering-join"><span class="header-section-number">5.3</span> Filtering join</a></li>
   <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings"><span class="header-section-number">5.4</span> Strings</a></li>
-  </ul></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/ab604/library-r/edit/main/data-wrangling-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -221,34 +222,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Joins that create new variables in one table by matching observations in another: these are <em>mutating</em> joins as per tidyverse verb <code>mutate</code> <a href="data-wrangling-1.html#sec-creating-new-columns-with-mutate" class="quarto-xref"><span>Section 4.4.4</span></a>.</li>
 <li>Joins that <em>filter</em> the observations from one table against another, as per tidyverse verb <code>filter</code> <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 4.4.1</span></a>.</li>
+</ol>
+<p><code>dplyr</code> has six join functions.</p>
+<p>Mutating joins:</p>
+<ol type="1">
+<li>
+<strong>Left Join</strong>: Returns all rows from the left table and the matched rows from the right table. <code>left_join()</code>
+</li>
+<li>
+<strong>Right Join</strong>: Similar to left join, but returns all rows from the right table and the matched rows from the left table. <code>right_join()</code>
+</li>
+<li>
+<strong>Full Join</strong>: Returns all rows from both tables, with null values in the columns where there are no matches. <code>full_join()</code>
+</li>
+</ol>
+<p>Filtering joins:</p>
+<ol start="4" type="1">
+<li>
+<strong>Inner Join</strong>: Returns only the rows that have matches in both tables. <code>inner_join()</code>
+</li>
+<li>
+<strong>Semi Join</strong>: Returns only the rows from the left table that have matches in the right table. <code>semi_join()</code>
+</li>
+<li>
+<strong>Anti Join</strong>: Returns only the rows from the left table that do not have matches in the right table. <code>anti_join()</code>
+</li>
 </ol></section><section id="mutating-joins" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="mutating-joins">
 <span class="header-section-number">5.2</span> Mutating joins</h2>
+<p>To demonstrate a mutating join using the <code>penguins</code> data, I first use <code>mutate</code> to create a unique identifier variable for each penguin from the row number called <code>penguin_id</code>, and assign this to a new dataframe <code>numbered_penguins</code>.</p>
+<p>Then I use <code>numbered_penguins</code> to create two new dataframes using <code>select</code>:</p>
+<ul>
+<li>
+<code>penguins_physical</code> is a dataframe containing physical characteristics of penguins (e.g., bill length, flipper length, body mass).</li>
+<li>
+<code>penguins_info</code> is a dataframe containing other information about penguins (e.g., species, island, year, sex).</li>
+</ul>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create unique id for each penguin</span></span>
 <span><span class="va">numbered_penguins</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>penguin_number <span class="op">=</span> <span class="fu">row_number</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>penguin_id <span class="op">=</span> <span class="fu">row_number</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Split the dataset into two tables</span></span>
 <span><span class="va">penguins_physical</span> <span class="op">&lt;-</span> <span class="va">numbered_penguins</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_number</span>,<span class="va">species</span>, <span class="va">island</span>, <span class="va">bill_length_mm</span>, </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_id</span>,<span class="va">species</span>, <span class="va">island</span>, <span class="va">bill_length_mm</span>, </span>
 <span>         <span class="va">bill_depth_mm</span>, <span class="va">flipper_length_mm</span>, <span class="va">body_mass_g</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">penguins_info</span> <span class="op">&lt;-</span> <span class="va">numbered_penguins</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_number</span>,<span class="va">species</span>, <span class="va">island</span>, <span class="va">year</span>, <span class="va">sex</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_id</span>,<span class="va">species</span>, <span class="va">island</span>, <span class="va">year</span>, <span class="va">sex</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>The common key that we can use to join these tables back together is the <code>penguin_id</code> variable. The mutation part is the creation of new variables when two tables are joined to create a single table.</p>
+<p>Here we’ll use the <code>left_join()</code> function to combine the two dataframes <code>penguins_physical</code> and <code>penguins_info</code> based on the <code>penguin_number</code> column, which is common to both dataframes.</p>
+<p>We assign the result to a new dataframe, <code>penguins_joined</code>, which contains all the columns from <code>penguins_physical</code> and the matching columns from <code>penguins_info</code>.</p>
+<p>The <code>left_join</code> function returns all records from the left dataframe (<code>penguins_physical</code>) and the matching records from the right dataframe (<code>penguins_info</code>). If there were no matches in the right dataframe, the result will contain null values for the right dataframe’s columns.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Join the two tables back together as a left join</span></span>
 <span><span class="va">penguins_joined</span> <span class="op">&lt;-</span> <span class="va">penguins_physical</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">penguins_info</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(penguin_number, species, island)`</code></pre>
+<pre><code>Joining with `by = join_by(penguin_id, species, island)`</code></pre>
 </div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the joined dataset</span></span>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">penguins_joined</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 9
-$ penguin_number    &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ penguin_id        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
 $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
 $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
 $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
@@ -261,23 +299,30 @@ $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, 
 </div>
 </section><section id="filtering-join" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="filtering-join">
 <span class="header-section-number">5.3</span> Filtering join</h2>
+<p>Here we’ll do a filtering join, a semi-join.</p>
+<p>First I’ll filter the <code>penguins_info</code> I created just for the data from the year 2008:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create </span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a dataframe for penguins only for the year 2008</span></span>
 <span><span class="va">penguins_info_filt</span> <span class="op">&lt;-</span> <span class="va">penguins_info</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2008</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Perform a filtering join</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2008</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we do a semi-join between the <code>penguins_physical</code> table and the filtered <code>penguins_info_filt</code> table.</p>
+<p>A semi-join returns only the rows from <code>penguins_physical</code> that have a match in <code>penguins_info_filt</code>, effectively filtering the physical characteristics of penguins to only include those from 2008. This joins data from 114 rows of the 344 rows in the <code>penguins_physical</code>.</p>
+<p>As we didn’t explicitly tell the function which variables to use, we got a message tells us it joined <code>by = join_by(penguin_id, species, island)</code></p>
+<p>I’ve assigned the resulting table to a new dataframe: <code>penguins_filtered</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perform a filtering join</span></span>
 <span><span class="va">penguins_filtered</span> <span class="op">&lt;-</span> <span class="va">penguins_physical</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">semi_join</span><span class="op">(</span><span class="va">penguins_info_filt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(penguin_number, species, island)`</code></pre>
+<pre><code>Joining with `by = join_by(penguin_id, species, island)`</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the filtered dataset</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the filtered dataset</span></span>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">penguins_filtered</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 114
 Columns: 7
-$ penguin_number    &lt;int&gt; 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, …
+$ penguin_id        &lt;int&gt; 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, …
 $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
 $ island            &lt;fct&gt; Biscoe, Biscoe, Biscoe, Biscoe, Biscoe, Biscoe, Bisc…
 $ bill_length_mm    &lt;dbl&gt; 39.6, 40.1, 35.0, 42.0, 34.5, 41.4, 39.0, 40.6, 36.5…
@@ -288,8 +333,9 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 </div>
 </section><section id="strings" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="strings">
 <span class="header-section-number">5.4</span> Strings</h2>
+<p>Character vectors</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Whiskers"</span>, <span class="st">"Fluffy"</span>, <span class="st">"Mittens"</span>, <span class="st">"Socks"</span>, <span class="st">"Tiger"</span>, <span class="st">"Smokey"</span>, <span class="st">"Gizmo"</span>, <span class="st">"Oreo"</span>, <span class="st">"Luna"</span>, <span class="st">"Oliver"</span>, <span class="st">"Leo"</span>, <span class="st">"Milo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Simba"</span>, <span class="st">"Nala"</span>, <span class="st">"Felix"</span>, <span class="st">"Garfield"</span>, <span class="st">"Tigger"</span>, <span class="st">"Chloe"</span>, <span class="st">"Bella"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Whiskers"</span>, <span class="st">"Fluffy"</span>, <span class="st">"Mittens"</span>, <span class="st">"Socks"</span>, <span class="st">"Tiger"</span>, <span class="st">"Smokey"</span>, <span class="st">"Gizmo"</span>, <span class="st">"Oreo"</span>, <span class="st">"Luna"</span>, <span class="st">"Oliver"</span>, <span class="st">"Leo"</span>, <span class="st">"Milo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Simba"</span>, <span class="st">"Nala"</span>, <span class="st">"Felix"</span>, <span class="st">"Garfield"</span>, <span class="st">"Tigger"</span>, <span class="st">"Chloe"</span>, <span class="st">"Bella"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"abounding"</span>,</span>
@@ -336,7 +382,7 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 [18] │ reboun&lt;ding&gt;
 [19] │ unboun&lt;ding&gt;</code></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">words</span>,<span class="st">"bou|rr|ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">words</span>,<span class="st">"bou|rr|ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] │ a&lt;bou&gt;n&lt;ding&gt;
  [2] │ astoun&lt;ding&gt;
@@ -358,23 +404,23 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 [18] │ re&lt;bou&gt;n&lt;ding&gt;
 [19] │ un&lt;bou&gt;n&lt;ding&gt;</code></pre>
 </div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_detect</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span> <span class="co"># Find names with i,s or k</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_detect</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span> <span class="co"># Find names with i,s or k</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE
 [13]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_count</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_count</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 4 0 2 2 1 1 1 0 0 1 0 1 1 1 0 1 1 1 0 0</code></pre>
 </div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Wh-skers" "Fluffy"   "M-ttens"  "Soc-s"    "T-ger"    "Smo-ey"  
  [7] "G-zmo"    "Oreo"     "Luna"     "Ol-ver"   "Leo"      "M-lo"    
 [13] "Charl-e"  "S-mba"    "Nala"     "Fel-x"    "Garf-eld" "T-gger"  
 [19] "Chloe"    "Bella"   </code></pre>
 </div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace_all</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace_all</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Wh---er-" "Fluffy"   "M-tten-"  "Soc--"    "T-ger"    "Smo-ey"  
  [7] "G-zmo"    "Oreo"     "Luna"     "Ol-ver"   "Leo"      "M-lo"    
@@ -383,7 +429,7 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
 <span>  cat_id <span class="op">=</span> <span class="fu">str_c</span><span class="op">(</span><span class="st">"&lt;"</span>, <span class="va">cat_names</span>, <span class="st">"&gt;"</span>,</span>
 <span>                 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"-M_"</span>,<span class="st">"-F_"</span><span class="op">)</span>, </span>
 <span>                        size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>, </span>
@@ -395,30 +441,30 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 <span><span class="va">cat_tibble</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 1
-   cat_id        
-   &lt;chr&gt;         
- 1 &lt;Whiskers&gt;-M_7
- 2 &lt;Fluffy&gt;-F_4  
- 3 &lt;Mittens&gt;-M_6 
- 4 &lt;Socks&gt;-M_4   
- 5 &lt;Tiger&gt;-F_8   
- 6 &lt;Smokey&gt;-F_3  
- 7 &lt;Gizmo&gt;-M_8   
- 8 &lt;Oreo&gt;-M_4    
- 9 &lt;Luna&gt;-M_10   
-10 &lt;Oliver&gt;-M_10 
-11 &lt;Leo&gt;-M_6     
-12 &lt;Milo&gt;-M_4    
-13 &lt;Charlie&gt;-F_8 
-14 &lt;Simba&gt;-M_9   
-15 &lt;Nala&gt;-F_5    
-16 &lt;Felix&gt;-F_6   
-17 &lt;Garfield&gt;-M_8
-18 &lt;Tigger&gt;-F_3  
-19 &lt;Chloe&gt;-F_7   
-20 &lt;Bella&gt;-M_10  </code></pre>
+   cat_id         
+   &lt;chr&gt;          
+ 1 &lt;Whiskers&gt;-F_9 
+ 2 &lt;Fluffy&gt;-M_7   
+ 3 &lt;Mittens&gt;-M_4  
+ 4 &lt;Socks&gt;-F_3    
+ 5 &lt;Tiger&gt;-F_5    
+ 6 &lt;Smokey&gt;-M_11  
+ 7 &lt;Gizmo&gt;-M_6    
+ 8 &lt;Oreo&gt;-M_8     
+ 9 &lt;Luna&gt;-M_4     
+10 &lt;Oliver&gt;-M_3   
+11 &lt;Leo&gt;-F_7      
+12 &lt;Milo&gt;-F_11    
+13 &lt;Charlie&gt;-F_11 
+14 &lt;Simba&gt;-M_11   
+15 &lt;Nala&gt;-M_9     
+16 &lt;Felix&gt;-F_10   
+17 &lt;Garfield&gt;-F_10
+18 &lt;Tigger&gt;-M_10  
+19 &lt;Chloe&gt;-F_11   
+20 &lt;Bella&gt;-F_8    </code></pre>
 </div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">separate_wider_regex</span><span class="op">(</span></span>
 <span>    <span class="va">cat_id</span>,</span>
 <span>    patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;"</span>, </span>
@@ -430,26 +476,26 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 <pre><code># A tibble: 20 × 3
    name     sex   age  
    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
- 1 Whiskers M     7    
- 2 Fluffy   F     4    
- 3 Mittens  M     6    
- 4 Socks    M     4    
- 5 Tiger    F     8    
- 6 Smokey   F     3    
- 7 Gizmo    M     8    
- 8 Oreo     M     4    
- 9 Luna     M     10   
-10 Oliver   M     10   
-11 Leo      M     6    
-12 Milo     M     4    
-13 Charlie  F     8    
-14 Simba    M     9    
-15 Nala     F     5    
-16 Felix    F     6    
-17 Garfield M     8    
-18 Tigger   F     3    
-19 Chloe    F     7    
-20 Bella    M     10   </code></pre>
+ 1 Whiskers F     9    
+ 2 Fluffy   M     7    
+ 3 Mittens  M     4    
+ 4 Socks    F     3    
+ 5 Tiger    F     5    
+ 6 Smokey   M     11   
+ 7 Gizmo    M     6    
+ 8 Oreo     M     8    
+ 9 Luna     M     4    
+10 Oliver   M     3    
+11 Leo      F     7    
+12 Milo     F     11   
+13 Charlie  F     11   
+14 Simba    M     11   
+15 Nala     M     9    
+16 Felix    F     10   
+17 Garfield F     10   
+18 Tigger   M     10   
+19 Chloe    F     11   
+20 Bella    F     8    </code></pre>
 </div>
 </div>
 
@@ -779,7 +825,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1017,7 +1068,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ab604/library-r/edit/main/data-wrangling-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

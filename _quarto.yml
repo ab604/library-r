@@ -13,6 +13,9 @@ book:
         This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.
       right: |
         This book was built with <a href="https://quarto.org/">Quarto</a>.
+  repo-url: https://github.com/ab604/library-r
+  repo-branch: main
+  repo-actions: [edit, issue]
   chapters:
     - index.qmd
     - setting-the-scene.qmd

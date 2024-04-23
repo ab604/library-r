@@ -3,9 +3,14 @@ title: "R for Librarians Week 2 Exercises"
 author: "Alistair Bailey"
 date: last-modified
 date-format: "[Last Updated on] YYYY-MM-DD"
-format: html
-code-fold: true
-code-link: true
+format: 
+    html:
+      code-fold: true
+      code-link: true
+    pdf:
+      toc: true
+      number-sections: true
+      colorlinks: true
 knitr:
   opts_chunk:
     results: hide
@@ -41,8 +46,16 @@ library(glue)
     my_name <- "Alistair"
     ```
 
+2.  Pass my_name to cowsay as an argument. Chose whatever animal you wish
 
-2.  Create a sequence of numbers from 1 to 10 and assign it to an object called my_seq
+    ```{r}
+    #| label: my_name
+    #| eval: false
+
+    say(my_name, by = "monkey")
+    ```
+
+3.  Create a sequence of numbers from 1 to 10 and assign it to an object called my_seq
 
     ```{r}
     #| label: my-seq
@@ -50,7 +63,7 @@ library(glue)
     my_seq <- seq(1:10)
     ```
 
-3.  Compare the `dplyr` package `glimpse()` function and the base R `str()` function for summarizing the contents `penguins` data.
+4.  Compare the `dplyr` package `glimpse()` function and the base R `str()` function for summarizing the contents `penguins` data.
 
 ```{r}
 #| label: summarise-functions

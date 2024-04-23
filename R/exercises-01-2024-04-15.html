@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.549">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Alistair Bailey">
 <title>R for Librarians Introduction Exercises</title>
@@ -65,10 +65,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="exercises-01-2024-04-15_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="exercises-01-2024-04-15_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 </head>
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="..\exercises-01-2024-04-15.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">R for Librarians Introduction Exercises</h1>
 </div>
@@ -87,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last Updated on 2024-04-16</p>
+      <p class="date">Last Updated on 2024-04-23</p>
     </div>
   </div>
   
@@ -117,8 +118,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"roundhouse"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bgreenwell/roundhouse">roundhouse</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/roundhouse/man/random_fact.html">random_fact</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/roundhouse/man/kick.html">kick</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">random_fact</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">kick</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="5" type="1">
@@ -126,11 +127,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <ul>
 <li>function <code><a href="https://rdrr.io/pkg/cowsay/man/animals.html">animals()</a></code> from the <code>cowsay</code> package</li>
-<li>function <code><a href="https://rdrr.io/pkg/roundhouse/man/punch.html">punch()</a></code> from the <code>roundhouse</code> pacakage</li>
+<li>function <code>punch()</code> from the <code>roundhouse</code> pacakage</li>
 </ul>
 <div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="fu">cowsay</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/cowsay/man/animals.html">animals</a></span></span>
-<span><span class="op">?</span><span class="fu">roundhouse</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/roundhouse/man/punch.html">punch</a></span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">?</span><span class="fu">roundhouse</span><span class="fu">::</span><span class="va">punch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="creating-folders" class="level3"><h3 class="anchored" data-anchor-id="creating-folders">Creating folders</h3>
@@ -336,7 +337,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

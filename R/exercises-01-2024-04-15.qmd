@@ -3,9 +3,14 @@ title: "R for Librarians Introduction Exercises"
 author: "Alistair Bailey"
 date: last-modified
 date-format: "[Last Updated on] YYYY-MM-DD"
-format: html
-code-fold: true
-code-link: true
+format: 
+    html:
+      code-fold: true
+      code-link: true
+    pdf:
+      toc: true
+      number-sections: true
+      colorlinks: true
 knitr:
   opts_chunk:
     results: hide
@@ -116,5 +121,3 @@ Load the Palmer Penguins library if it's not already loaded.
 2.  Make a numeric vector of three numbers
 3.  Make a factor vector of three fruit
 4.  Combine into a data frame.
-
-

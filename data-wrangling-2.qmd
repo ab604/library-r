@@ -17,23 +17,54 @@ There are two types of join we often encounter:
 1.  Joins that create new variables in one table by matching observations in another: these are *mutating* joins as per tidyverse verb `mutate` @sec-creating-new-columns-with-mutate.
 2.  Joins that *filter* the observations from one table against another, as per tidyverse verb `filter` @sec-filter-rows-with-filter.
 
+`dplyr` has six join functions.
+
+Mutating joins:
+
+1.  **Left Join**: Returns all rows from the left table and the matched rows from the right table. `left_join()`
+2.  **Right Join**: Similar to left join, but returns all rows from the right table and the matched rows from the left table. `right_join()`
+3.  **Full Join**: Returns all rows from both tables, with null values in the columns where there are no matches. `full_join()`
+
+Filtering joins:
+
+4.  **Inner Join**: Returns only the rows that have matches in both tables. `inner_join()`
+5.  **Semi Join**: Returns only the rows from the left table that have matches in the right table. `semi_join()`
+6.  **Anti Join**: Returns only the rows from the left table that do not have matches in the right table. `anti_join()`
+
 ## Mutating joins
 
+To demonstrate a mutating join using the `penguins` data, I first use `mutate` to create a unique identifier variable for each penguin from the row number called `penguin_id`, and assign this to a new dataframe `numbered_penguins`.
+
+Then I use `numbered_penguins` to create two new dataframes using `select`:
+
+-   `penguins_physical` is a dataframe containing physical characteristics of penguins (e.g., bill length, flipper length, body mass).
+-   `penguins_info` is a dataframe containing other information about penguins (e.g., species, island, year, sex).
+
 ```{r}
+#| label: split-penguins
 # Create unique id for each penguin
 numbered_penguins <- penguins |> 
-  mutate(penguin_number = row_number())
+  mutate(penguin_id = row_number())
 
 # Split the dataset into two tables
 penguins_physical <- numbered_penguins |>
-  select(penguin_number,species, island, bill_length_mm, 
+  select(penguin_id,species, island, bill_length_mm, 
          bill_depth_mm, flipper_length_mm, body_mass_g)
 
 penguins_info <- numbered_penguins |>
-  select(penguin_number,species, island, year, sex)
+  select(penguin_id,species, island, year, sex)
 ```
 
+The common key that we can use to join these tables back together is the `penguin_id` variable. The mutation part is the creation of new variables when two tables are joined to create a single table.
+
+Here we'll use the `left_join()` function to combine the two dataframes `penguins_physical` and `penguins_info` based on the `penguin_number` column, which is common to both dataframes.
+
+We assign the result to a new dataframe, `penguins_joined`, which contains all the columns from `penguins_physical` and the matching columns from `penguins_info`.
+
+The `left_join` function returns all records from the left dataframe (`penguins_physical`) and the matching records from the right dataframe (`penguins_info`). If there were no matches in the right dataframe, the result will contain null values for the right dataframe's columns.
+
 ```{r}
+#| label: left-join
 # Join the two tables back together as a left join
 penguins_joined <- penguins_physical |>
   left_join(penguins_info)
@@ -44,11 +75,27 @@ glimpse(penguins_joined)
 
 ## Filtering join
 
+Here we'll do a filtering join, a semi-join.
+
+First I'll filter the `penguins_info` I created just for the data from the year 2008:
+
 ```{r}
-# Create 
+#| label: penguins-2008
+# Create a dataframe for penguins only for the year 2008
 penguins_info_filt <- penguins_info |>
   filter(year == 2008)
+```
 
+Then we do a semi-join between the `penguins_physical` table and the filtered `penguins_info_filt` table.
+
+A semi-join returns only the rows from `penguins_physical` that have a match in `penguins_info_filt`, effectively filtering the physical characteristics of penguins to only include those from 2008. This joins data from 114 rows of the 344 rows in the `penguins_physical`.
+
+As we didn't explicitly tell the function which variables to use, we got a message tells us it joined `by = join_by(penguin_id, species, island)`
+
+I've assigned the resulting table to a new dataframe: `penguins_filtered`.
+
+```{r}
+#| label: penguins-semi-join
 # Perform a filtering join
 penguins_filtered <- penguins_physical |>
   semi_join(penguins_info_filt)
@@ -58,6 +105,8 @@ glimpse(penguins_filtered)
 ```
 
 ## Strings
+
+Character vectors
 
 ```{r}
 cat_names <- c("Whiskers", "Fluffy", "Mittens", "Socks", "Tiger", "Smokey", "Gizmo", "Oreo", "Luna", "Oliver", "Leo", "Milo", "Charlie", "Simba", "Nala", "Felix", "Garfield", "Tigger", "Chloe", "Bella")

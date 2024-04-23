@@ -408,26 +408,36 @@ knitr::include_graphics("img/pivot-penguins.png", dpi = 270)
 knitr::include_graphics("img/tidyr-pivoting.gif", dpi = 270)
 ```
 
-To demonstrate the pivot as in @fig-pivot and @fig-pivot-animation, we need a unique
-identifier for each row which I'll create  a variable called `id` using `mutatae` and the `dplyr` function `row_number()` which as you might guess, counts the row number and
-returns an integer.
+To demonstrate the pivot as in @fig-pivot and @fig-pivot-animation, we need a unique identifier for each row which I'll create a variable called `id` using `mutatae` and the `dplyr` function `row_number()` which as you might guess, counts the row number and returns an integer.
+
+We pivot longer by transforming column variable names, here: `species` , `island` and `sex` into values stored in a new variable that I've named `key`.
+
+The existing values from those columns are placed in the cells of a new variable I've called `val`.
+
+In this way the table gets longer as there are now three rows for the data about each penguin, hence the `id` column I created for each penguin has three repeating values, one for each row corresponding with the original columns.
 
 ```{r}
+#| label: pivot-long
 # Pivot the data longer
 penguins_long <- penguins |>
   # Add id column from row number to create a unique identifier
   mutate(id = row_number()) |> 
-  select(species, island,sex,id) |> 
+  select(species, island, sex, id) |> 
   pivot_longer(
     cols = species:sex,
     names_to = "key",
     values_to = "val"
   )
 
-glimpse(penguins_long)
+glimpse(penguins_long)  
 ```
 
+To pivot from long to wide, we reverse the procedure by using values in `key` to create variable names for columns and populate the columns with the values from our `val` column.
+
+This returns us to one row per penguin, with four columns.
+
 ```{r}
+#| label: pivot-wide
 # Pivot the data wider
 penguins_wide <- penguins_long |> 
   pivot_wider(
@@ -437,3 +447,5 @@ penguins_wide <- penguins_long |>
 
 glimpse(penguins_wide)
 ```
+
+The trick with pivots is trying to understand which column variables you transform into as values to pivot longer. Or which values you want to become variables to pivot wider. If often takes a couple of attempts to get it right.
