@@ -8,18 +8,14 @@ library(tidyverse)
 library(palmerpenguins)
 ```
 
-
 ## Joins
 
-[R4DS joins](https://r4ds.hadley.nz/joins) gives some detailed examples of joining
-tables, but here we'll look at some simpler examples to try build our mental 
-model.
+[R4DS joins](https://r4ds.hadley.nz/joins) gives some detailed examples of joining tables, but here we'll look at some simpler examples to try build our mental model.
 
 There are two types of join we often encounter:
 
-1. Joins that create new variables in one table by matching observations in another: these are *mutating* joins as per tidyverse verb `mutate` @sec-creating-new-columns-with-mutate.
-2. Joins that *filter* the observations from one table against another, as per 
-tidyverse verb `filter` @sec-filter-rows-with-filter.
+1.  Joins that create new variables in one table by matching observations in another: these are *mutating* joins as per tidyverse verb `mutate` @sec-creating-new-columns-with-mutate.
+2.  Joins that *filter* the observations from one table against another, as per tidyverse verb `filter` @sec-filter-rows-with-filter.
 
 ## Mutating joins
 
@@ -122,6 +118,7 @@ cat_tibble |>
       age = "[0-9]+")
   )
 ```
+
 ```{r}
 #| echo: false
 #| eval: false
@@ -212,4 +209,3 @@ dogs |>
 dogs |> 
   filter(age == 8)
 ```
-

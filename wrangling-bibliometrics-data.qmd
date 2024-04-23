@@ -142,9 +142,9 @@ scopus_dat_wide <- scopus_dat |>
 
 ```{r}
 # Split the "Affiliations" column by ";" and create new columns
-data <- scopus_dat %>%
-  mutate(Affiliations = str_split(Affiliations, ";\\s*")) %>%
-  unnest_wider(Affiliations, names_sep = "_") %>%
+data <- scopus_dat |> 
+  mutate(Affiliations = str_split(Affiliations, ";\\s*")) |>
+  unnest_wider(Affiliations, names_sep = "_") |>
   mutate(across(starts_with("Affiliation"), trimws))
 
 # View the updated dataset
