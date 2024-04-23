@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>R for Librarians - 5&nbsp; Data wrangling II</title>
 <style>
@@ -395,28 +395,28 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 <span><span class="va">cat_tibble</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 1
-   cat_id         
-   &lt;chr&gt;          
- 1 &lt;Whiskers&gt;-F_3 
- 2 &lt;Fluffy&gt;-M_7   
- 3 &lt;Mittens&gt;-M_3  
- 4 &lt;Socks&gt;-F_11   
- 5 &lt;Tiger&gt;-M_7    
- 6 &lt;Smokey&gt;-F_7   
- 7 &lt;Gizmo&gt;-F_11   
- 8 &lt;Oreo&gt;-M_11    
- 9 &lt;Luna&gt;-F_11    
-10 &lt;Oliver&gt;-F_4   
-11 &lt;Leo&gt;-M_5      
-12 &lt;Milo&gt;-M_6     
-13 &lt;Charlie&gt;-F_7  
-14 &lt;Simba&gt;-M_4    
-15 &lt;Nala&gt;-F_8     
-16 &lt;Felix&gt;-M_10   
-17 &lt;Garfield&gt;-M_11
-18 &lt;Tigger&gt;-M_3   
-19 &lt;Chloe&gt;-F_8    
-20 &lt;Bella&gt;-F_8    </code></pre>
+   cat_id        
+   &lt;chr&gt;         
+ 1 &lt;Whiskers&gt;-M_7
+ 2 &lt;Fluffy&gt;-F_4  
+ 3 &lt;Mittens&gt;-M_6 
+ 4 &lt;Socks&gt;-M_4   
+ 5 &lt;Tiger&gt;-F_8   
+ 6 &lt;Smokey&gt;-F_3  
+ 7 &lt;Gizmo&gt;-M_8   
+ 8 &lt;Oreo&gt;-M_4    
+ 9 &lt;Luna&gt;-M_10   
+10 &lt;Oliver&gt;-M_10 
+11 &lt;Leo&gt;-M_6     
+12 &lt;Milo&gt;-M_4    
+13 &lt;Charlie&gt;-F_8 
+14 &lt;Simba&gt;-M_9   
+15 &lt;Nala&gt;-F_5    
+16 &lt;Felix&gt;-F_6   
+17 &lt;Garfield&gt;-M_8
+18 &lt;Tigger&gt;-F_3  
+19 &lt;Chloe&gt;-F_7   
+20 &lt;Bella&gt;-M_10  </code></pre>
 </div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">separate_wider_regex</span><span class="op">(</span></span>
@@ -430,26 +430,26 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 <pre><code># A tibble: 20 × 3
    name     sex   age  
    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
- 1 Whiskers F     3    
- 2 Fluffy   M     7    
- 3 Mittens  M     3    
- 4 Socks    F     11   
- 5 Tiger    M     7    
- 6 Smokey   F     7    
- 7 Gizmo    F     11   
- 8 Oreo     M     11   
- 9 Luna     F     11   
-10 Oliver   F     4    
-11 Leo      M     5    
-12 Milo     M     6    
-13 Charlie  F     7    
-14 Simba    M     4    
-15 Nala     F     8    
-16 Felix    M     10   
-17 Garfield M     11   
-18 Tigger   M     3    
-19 Chloe    F     8    
-20 Bella    F     8    </code></pre>
+ 1 Whiskers M     7    
+ 2 Fluffy   F     4    
+ 3 Mittens  M     6    
+ 4 Socks    M     4    
+ 5 Tiger    F     8    
+ 6 Smokey   F     3    
+ 7 Gizmo    M     8    
+ 8 Oreo     M     4    
+ 9 Luna     M     10   
+10 Oliver   M     10   
+11 Leo      M     6    
+12 Milo     M     4    
+13 Charlie  F     8    
+14 Simba    M     9    
+15 Nala     F     5    
+16 Felix    F     6    
+17 Garfield M     8    
+18 Tigger   F     3    
+19 Chloe    F     7    
+20 Bella    M     10   </code></pre>
 </div>
 </div>
 
@@ -779,12 +779,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

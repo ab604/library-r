@@ -128,7 +128,7 @@ Filtering can be done using multiple columns and expressions. See the official [
 
 ### Arranging rows with `arrange()` {#sec-arranging-rows-with-arrange}
 
-Another row verb is `arrange()` which as the name suggests *arranges the rows* according to column values (@fig-arrange ).
+Another row verb is `arrange()` which as the name suggests *arranges the rows* according to column values (@fig-arrange).
 
 Here I'll pipe the `penguins` data frame to the base R `head()` function, which returns the first six rows by default. Again I am returning the output to the console.
 
@@ -335,8 +335,7 @@ penguins |>
 
 ## Creating grouped summaries with `dplyr` {#sec-creating-grouped-summaries}
 
-Another powerful feature of `dplyr` is it's ability to summarise the entire
-dataset in a single row. 
+Another powerful feature of `dplyr` is it's ability to summarise the entire dataset in a single row.
 
 ```{r}
 #| label: penguin-summary
@@ -356,10 +355,7 @@ penguins |>
 
 Calculating the average bill length and depth for each species
 
-pipe the `penguins` dataset into the `group_by()` function, which groups the data by the `species` variable.
-- We then use the `summarise()` function to calculate the average bill length and depth for each species using `mean()`.
-- The `na.rm = TRUE` argument is used to remove any missing values before calculating the means.
-
+pipe the `penguins` dataset into the `group_by()` function, which groups the data by the `species` variable. - We then use the `summarise()` function to calculate the average bill length and depth for each species using `mean()`. - The `na.rm = TRUE` argument is used to remove any missing values before calculating the means.
 
 ```{r}
 # Calculate the average bill length and depth for each species
@@ -381,6 +377,7 @@ penguins |>
   summarise(mean_mass_g = mean(body_mass_g,na.rm = TRUE), 
             n_penguins = n())
 ```
+
 ## Pivots
 
 Data can be untidy in different ways. One way might be that the values are in the variable names. Or perhaps the reverse is true and you'd like the values to be column names.
@@ -411,10 +408,16 @@ knitr::include_graphics("img/pivot-penguins.png", dpi = 270)
 knitr::include_graphics("img/tidyr-pivoting.gif", dpi = 270)
 ```
 
+To demonstrate the pivot as in @fig-pivot and @fig-pivot-animation, we need a unique
+identifier for each row which I'll create  a variable called `id` using `mutatae` and the `dplyr` function `row_number()` which as you might guess, counts the row number and
+returns an integer.
+
 ```{r}
 # Pivot the data longer
 penguins_long <- penguins |>
-  select(species,island,sex) |> 
+  # Add id column from row number to create a unique identifier
+  mutate(id = row_number()) |> 
+  select(species, island,sex,id) |> 
   pivot_longer(
     cols = species:sex,
     names_to = "key",
@@ -426,7 +429,7 @@ glimpse(penguins_long)
 
 ```{r}
 # Pivot the data wider
-penguins_wide <- penguins_long |>
+penguins_wide <- penguins_long |> 
   pivot_wider(
     names_from = "key",
     values_from = "val"
