@@ -196,7 +196,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#joins" id="toc-joins" class="nav-link active" data-scroll-target="#joins"><span class="header-section-number">5.1</span> Joins</a></li>
   <li><a href="#mutating-joins" id="toc-mutating-joins" class="nav-link" data-scroll-target="#mutating-joins"><span class="header-section-number">5.2</span> Mutating joins</a></li>
   <li><a href="#filtering-join" id="toc-filtering-join" class="nav-link" data-scroll-target="#filtering-join"><span class="header-section-number">5.3</span> Filtering join</a></li>
-  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings"><span class="header-section-number">5.4</span> Strings</a></li>
+  <li>
+<a href="#strings-and-characters" id="toc-strings-and-characters" class="nav-link" data-scroll-target="#strings-and-characters"><span class="header-section-number">5.4</span> Strings and characters</a>
+  <ul class="collapse">
+<li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="header-section-number">5.4.1</span> Regular expressions</a></li>
+  <li><a href="#getting-started-with-stringr" id="toc-getting-started-with-stringr" class="nav-link" data-scroll-target="#getting-started-with-stringr"><span class="header-section-number">5.4.2</span> Getting started with <code>stringr</code></a></li>
+  </ul>
+</li>
+  <li><a href="#string-replacement" id="toc-string-replacement" class="nav-link" data-scroll-target="#string-replacement"><span class="header-section-number">5.5</span> String Replacement</a></li>
+  <li><a href="#creating-the-cat_tibble" id="toc-creating-the-cat_tibble" class="nav-link" data-scroll-target="#creating-the-cat_tibble"><span class="header-section-number">6</span> Creating the <code>cat_tibble</code></a></li>
+  <li><a href="#separating-the-cat_id-column-into-multiple-columns" id="toc-separating-the-cat_id-column-into-multiple-columns" class="nav-link" data-scroll-target="#separating-the-cat_id-column-into-multiple-columns"><span class="header-section-number">7</span> Separating the <code>cat_id</code> column into multiple columns</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ab604/library-r/edit/main/data-wrangling-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -331,13 +340,61 @@ $ flipper_length_mm &lt;int&gt; 186, 188, 190, 200, 187, 191, 186, 193, 181, 194
 $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 2850…</code></pre>
 </div>
 </div>
-</section><section id="strings" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="strings">
-<span class="header-section-number">5.4</span> Strings</h2>
-<p>Character vectors</p>
+</section><section id="strings-and-characters" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="strings-and-characters">
+<span class="header-section-number">5.4</span> Strings and characters</h2>
+<p>The terms strings and characters are often used interchangeably, but a character is technically a single symbol or glyph, such as <strong>&amp;</strong> or <strong>a</strong>, or even 🙀. And a sequence of characters and/or symbols form a string.</p>
+<p>In R to create character vector, we enclose the characters forming the string in quotes. For example, <code>"hello"</code> is a string, and each individual character within it (<code>h</code>, <code>e</code>, <code>l</code>, <code>l</code>, <code>o</code>) is a character. <code>"hello"</code> is a character vector of length 1 as there is one string of five characters.</p>
+<p><code>"hello world"</code> is also a character vector of length 1 as the white space also counts as a character.</p>
+<p>However using combine function <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> to create <code>c("hello", "world")</code> would create a character vector of length 2 as we have now created <code>"hello"</code> and <code>"world"</code> as separate strings.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Single or double quotes?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Single or double quotes?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Both single <code>'</code> or double <code>"</code> are allowed, but for consistent style I’d recommend double, unless your string itself contains multiple <code>"</code> as per the <a href="https://style.tidyverse.org/syntax.html#character-vectors">tidyverse style guide</a>.</p>
+</div>
+</div>
+<section id="regular-expressions" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="regular-expressions">
+<span class="header-section-number">5.4.1</span> Regular expressions</h3>
+<p>A <strong>regular expression</strong> (regex) is a pattern used to match and manipulate strings. It’s like a really powerful “find and replace” tool, but has completely unintuitive syntax!</p>
+<p>You can use regex to specify a pattern, and then use that pattern to search for matches in a string. Once matched, we can extract or manipulate the strings in conjunction with other functions.</p>
+<p><code>stringr</code> is the tidyverse package for working with strings and regex. Many of the <code>stringr</code> functions allow us to avoid explicitly worrying about writing a regex, but we can always create a regex if needed.</p>
+<p>Regex patterns consist of special characters, such as <code>.</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, <code>(</code>, <code>)</code>, and <code>\</code>. These characters have special meanings, like “any character” ( <code>.</code> ), “zero or more” ( <code>*</code> ), or “start of string” ( <code>^</code> ). You can combine these characters to create complex patterns to match specific strings.</p>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Escaping regex special characters with backslash">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Escaping regex special characters with backslash
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because characters such dot <code>.</code> or asterisk <code>*</code> have special meaning in regex, if you want to treat them literally as a dot or asterisk, we have to <em>escape</em> their meta meaning.</p>
+<p>To escape we use a backslash <code>\</code> before the special character such that to treat a dot as a dot we would write <code>\.</code> in our regex.</p>
+</div>
+</div>
+</section><section id="getting-started-with-stringr" class="level3" data-number="5.4.2"><h3 data-number="5.4.2" class="anchored" data-anchor-id="getting-started-with-stringr">
+<span class="header-section-number">5.4.2</span> Getting started with <code>stringr</code>
+</h3>
+<p>To explore <code>stringr</code> we’ll create a couple of character vectors: Two character vectors are defined:</p>
+<ol type="1">
+<li>
+<code>cat_names</code>: a character vector of 20 strings of cat names</li>
+<li>
+<code>ding_words</code>: a character vector of 20 words, all ending with <code>ding</code>.</li>
+</ol>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Whiskers"</span>, <span class="st">"Fluffy"</span>, <span class="st">"Mittens"</span>, <span class="st">"Socks"</span>, <span class="st">"Tiger"</span>, <span class="st">"Smokey"</span>, <span class="st">"Gizmo"</span>, <span class="st">"Oreo"</span>, <span class="st">"Luna"</span>, <span class="st">"Oliver"</span>, <span class="st">"Leo"</span>, <span class="st">"Milo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Simba"</span>, <span class="st">"Nala"</span>, <span class="st">"Felix"</span>, <span class="st">"Garfield"</span>, <span class="st">"Tigger"</span>, <span class="st">"Chloe"</span>, <span class="st">"Bella"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Twenty cat names</span></span>
+<span><span class="va">cat_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Whiskers"</span>, <span class="st">"Fluffy"</span>, <span class="st">"Mittens"</span>, <span class="st">"Socks"</span>, <span class="st">"Tiger"</span>, <span class="st">"Smokey"</span>, <span class="st">"Gizmo"</span>, <span class="st">"Oreo"</span>, <span class="st">"Luna"</span>, <span class="st">"Oliver"</span>, <span class="st">"Leo"</span>, <span class="st">"Milo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Simba"</span>, <span class="st">"Nala"</span>, <span class="st">"Felix"</span>, <span class="st">"Garfield"</span>, <span class="st">"Tigger"</span>, <span class="st">"Chloe"</span>, <span class="st">"Bella"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span><span class="co"># Twenty words ending in "ding"</span></span>
+<span><span class="va">ding_words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"abounding"</span>,</span>
 <span>  <span class="st">"astounding"</span>,</span>
 <span>  <span class="st">"confounding"</span>,</span>
@@ -358,9 +415,18 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 <span>  <span class="st">"rebounding"</span>,</span>
 <span>  <span class="st">"unbounding"</span>,</span>
 <span>  <span class="st">"floundering"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">str_view</span><span class="op">(</span><span class="va">words</span>,<span class="st">"ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can start with the <code>str_view</code> function from the <code>stringr</code> package to search for patterns in the <code>words</code> vector. It returns a visual representation of the matches.</p>
+<ul>
+<li>
+<code>str_view(words, "ding")</code>: searches for words containing the substring “ding”</li>
+<li>
+<code>str_view(ding_words, "bou|rr")</code>: searches for words containing the substrings “bou” or “rr”. The vertical bar <code>|</code> here is a special regex character that represent the Boolean OR operator.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># View the string "ding" </span></span>
+<span><span class="fu">str_view</span><span class="op">(</span><span class="va">ding_words</span>,<span class="st">"ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] │ aboun&lt;ding&gt;
  [2] │ astoun&lt;ding&gt;
@@ -382,45 +448,96 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 [18] │ reboun&lt;ding&gt;
 [19] │ unboun&lt;ding&gt;</code></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">words</span>,<span class="st">"bou|rr|ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># View the string "bou" or "rr"</span></span>
+<span><span class="fu">str_view</span><span class="op">(</span><span class="va">ding_words</span>,<span class="st">"bou|rr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] │ a&lt;bou&gt;n&lt;ding&gt;
- [2] │ astoun&lt;ding&gt;
- [3] │ confoun&lt;ding&gt;
- [4] │ resoun&lt;ding&gt;
- [5] │ su&lt;rr&gt;oun&lt;ding&gt;
- [6] │ groun&lt;ding&gt;
- [7] │ foun&lt;ding&gt;
- [8] │ poun&lt;ding&gt;
- [9] │ roun&lt;ding&gt;
-[10] │ soun&lt;ding&gt;
-[11] │ &lt;bou&gt;n&lt;ding&gt;
-[12] │ houn&lt;ding&gt;
-[13] │ moun&lt;ding&gt;
-[14] │ woun&lt;ding&gt;
-[15] │ compoun&lt;ding&gt;
-[16] │ expoun&lt;ding&gt;
-[17] │ propoun&lt;ding&gt;
-[18] │ re&lt;bou&gt;n&lt;ding&gt;
-[19] │ un&lt;bou&gt;n&lt;ding&gt;</code></pre>
+<pre><code> [1] │ a&lt;bou&gt;nding
+ [5] │ su&lt;rr&gt;ounding
+[11] │ &lt;bou&gt;nding
+[18] │ re&lt;bou&gt;nding
+[19] │ un&lt;bou&gt;nding</code></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_detect</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span> <span class="co"># Find names with i,s or k</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Square brackets enable us to pass mulitple characters to match. If we use <code>[isk]</code> with <code>cat_names</code> it will match any of these three characters <code>i</code>, <code>s</code> and <code>k</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE
-[13]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
+<pre><code> [1] │ Wh&lt;i&gt;&lt;s&gt;&lt;k&gt;er&lt;s&gt;
+ [3] │ M&lt;i&gt;tten&lt;s&gt;
+ [4] │ Soc&lt;k&gt;&lt;s&gt;
+ [5] │ T&lt;i&gt;ger
+ [6] │ Smo&lt;k&gt;ey
+ [7] │ G&lt;i&gt;zmo
+[10] │ Ol&lt;i&gt;ver
+[12] │ M&lt;i&gt;lo
+[13] │ Charl&lt;i&gt;e
+[14] │ S&lt;i&gt;mba
+[16] │ Fel&lt;i&gt;x
+[17] │ Garf&lt;i&gt;eld
+[18] │ T&lt;i&gt;gger</code></pre>
 </div>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_count</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can invert the pattern by using the negation symbol <code>^</code> at the inside our brackets. Now we match everything that isn’t <code>i</code>, <code>s</code>, or <code>k</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[^isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] │ &lt;W&gt;&lt;h&gt;isk&lt;e&gt;&lt;r&gt;s
+ [2] │ &lt;F&gt;&lt;l&gt;&lt;u&gt;&lt;f&gt;&lt;f&gt;&lt;y&gt;
+ [3] │ &lt;M&gt;i&lt;t&gt;&lt;t&gt;&lt;e&gt;&lt;n&gt;s
+ [4] │ &lt;S&gt;&lt;o&gt;&lt;c&gt;ks
+ [5] │ &lt;T&gt;i&lt;g&gt;&lt;e&gt;&lt;r&gt;
+ [6] │ &lt;S&gt;&lt;m&gt;&lt;o&gt;k&lt;e&gt;&lt;y&gt;
+ [7] │ &lt;G&gt;i&lt;z&gt;&lt;m&gt;&lt;o&gt;
+ [8] │ &lt;O&gt;&lt;r&gt;&lt;e&gt;&lt;o&gt;
+ [9] │ &lt;L&gt;&lt;u&gt;&lt;n&gt;&lt;a&gt;
+[10] │ &lt;O&gt;&lt;l&gt;i&lt;v&gt;&lt;e&gt;&lt;r&gt;
+[11] │ &lt;L&gt;&lt;e&gt;&lt;o&gt;
+[12] │ &lt;M&gt;i&lt;l&gt;&lt;o&gt;
+[13] │ &lt;C&gt;&lt;h&gt;&lt;a&gt;&lt;r&gt;&lt;l&gt;i&lt;e&gt;
+[14] │ &lt;S&gt;i&lt;m&gt;&lt;b&gt;&lt;a&gt;
+[15] │ &lt;N&gt;&lt;a&gt;&lt;l&gt;&lt;a&gt;
+[16] │ &lt;F&gt;&lt;e&gt;&lt;l&gt;i&lt;x&gt;
+[17] │ &lt;G&gt;&lt;a&gt;&lt;r&gt;&lt;f&gt;i&lt;e&gt;&lt;l&gt;&lt;d&gt;
+[18] │ &lt;T&gt;i&lt;g&gt;&lt;g&gt;&lt;e&gt;&lt;r&gt;
+[19] │ &lt;C&gt;&lt;h&gt;&lt;l&gt;&lt;o&gt;&lt;e&gt;
+[20] │ &lt;B&gt;&lt;e&gt;&lt;l&gt;&lt;l&gt;&lt;a&gt;</code></pre>
+</div>
+</div>
+<section id="pattern-matching-and-counting" class="level4" data-number="5.4.2.1"><h4 data-number="5.4.2.1" class="anchored" data-anchor-id="pattern-matching-and-counting">
+<span class="header-section-number">5.4.2.1</span> Pattern Matching and Counting</h4>
+<p>The <code>str_detect</code> function is used to identify elements in the <code>cat_names</code> vector that contain the pattern “[isk]” (i.e., the characters “i”, “s”, or “k”).</p>
+<ul>
+<li>
+<code>str_detect(cat_names, "[isk]")</code>: returns a logical vector indicating which names contain the pattern</li>
+<li>
+<code>str_count(cat_names, "[isk]")</code>: counts the number of occurrences of the pattern in each name</li>
+</ul></section></section></section><section id="string-replacement" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="string-replacement">
+<span class="header-section-number">5.5</span> String Replacement</h2>
+<p>The <code>str_replace</code> and <code>str_replace_all</code> functions are used to replace occurrences of the pattern “[isk]” in the <code>cat_names</code> vector with a hyphen (-).</p>
+<ul>
+<li>
+<code>str_replace(cat_names, "[isk]", "-")</code>: replaces the first occurrence of the pattern in each name</li>
+<li>
+<code>str_replace_all(cat_names, "[isk]", "-")</code>: replaces all occurrences of the pattern in each name</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_detect</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"(isk)"</span><span class="op">)</span> <span class="co"># Find names with i,s or k</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_count</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 4 0 2 2 1 1 1 0 0 1 0 1 1 1 0 1 1 1 0 0</code></pre>
 </div>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Wh-skers" "Fluffy"   "M-ttens"  "Soc-s"    "T-ger"    "Smo-ey"  
  [7] "G-zmo"    "Oreo"     "Luna"     "Ol-ver"   "Leo"      "M-lo"    
 [13] "Charl-e"  "S-mba"    "Nala"     "Fel-x"    "Garf-eld" "T-gger"  
 [19] "Chloe"    "Bella"   </code></pre>
 </div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace_all</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace_all</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Wh---er-" "Fluffy"   "M-tten-"  "Soc--"    "T-ger"    "Smo-ey"  
  [7] "G-zmo"    "Oreo"     "Luna"     "Ol-ver"   "Leo"      "M-lo"    
@@ -428,47 +545,41 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 [19] "Chloe"    "Bella"   </code></pre>
 </div>
 </div>
+</section><section id="creating-the-cat_tibble" class="level1" data-number="6"><h1 data-number="6">
+<span class="header-section-number">6</span> Creating the <code>cat_tibble</code>
+</h1>
+<p>The code creates a <code>cat_tibble</code> dataframe with a single column <code>cat_id</code>. The <code>str_c</code> function is used to concatenate strings. We’re creating a string that looks like <code>&lt;name&gt;-sex_age&gt;</code>, where:</p>
+<ul>
+<li>
+<code>&lt;</code> is the literal character</li>
+<li>
+<code>cat_names</code> is the vector of cat names</li>
+<li>
+<code>&gt;</code> is the literal character</li>
+<li>
+<code>sample(c("-M_","-F_"), ...)</code> generates a random sex indicator (-M_ for male or -F_ for female) for each cat</li>
+<li>
+<code>sample(3:11, ...)</code> generates a random age (between 3 and 11) for each cat</li>
+</ul>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
 <span>  cat_id <span class="op">=</span> <span class="fu">str_c</span><span class="op">(</span><span class="st">"&lt;"</span>, <span class="va">cat_names</span>, <span class="st">"&gt;"</span>,</span>
-<span>                 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"-M_"</span>,<span class="st">"-F_"</span><span class="op">)</span>, </span>
-<span>                        size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>, </span>
-<span>                      replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,  </span>
-<span>               <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>, </span>
+<span>                 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"-M_"</span>,<span class="st">"-F_"</span><span class="op">)</span>,</span>
+<span>                        size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>,</span>
+<span>                      replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>               <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>,</span>
 <span>                      replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">cat_tibble</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 1
-   cat_id         
-   &lt;chr&gt;          
- 1 &lt;Whiskers&gt;-F_9 
- 2 &lt;Fluffy&gt;-M_7   
- 3 &lt;Mittens&gt;-M_4  
- 4 &lt;Socks&gt;-F_3    
- 5 &lt;Tiger&gt;-F_5    
- 6 &lt;Smokey&gt;-M_11  
- 7 &lt;Gizmo&gt;-M_6    
- 8 &lt;Oreo&gt;-M_8     
- 9 &lt;Luna&gt;-M_4     
-10 &lt;Oliver&gt;-M_3   
-11 &lt;Leo&gt;-F_7      
-12 &lt;Milo&gt;-F_11    
-13 &lt;Charlie&gt;-F_11 
-14 &lt;Simba&gt;-M_11   
-15 &lt;Nala&gt;-M_9     
-16 &lt;Felix&gt;-F_10   
-17 &lt;Garfield&gt;-F_10
-18 &lt;Tigger&gt;-M_10  
-19 &lt;Chloe&gt;-F_11   
-20 &lt;Bella&gt;-F_8    </code></pre>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span> </span>
+</section><section id="separating-the-cat_id-column-into-multiple-columns" class="level1" data-number="7"><h1 data-number="7">
+<span class="header-section-number">7</span> Separating the <code>cat_id</code> column into multiple columns</h1>
+<p>We use the <code>separate_wider_regex</code> function from the <code>tidyr</code> package to split the <code>cat_id</code> column into separate columns based on regular expression patterns.</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">separate_wider_regex</span><span class="op">(</span></span>
 <span>    <span class="va">cat_id</span>,</span>
-<span>    patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;"</span>, </span>
-<span>      name <span class="op">=</span> <span class="st">"[A-Za-z]+"</span>, <span class="st">"&gt;-"</span>, </span>
+<span>    patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;"</span>,</span>
+<span>      name <span class="op">=</span> <span class="st">"[A-Za-z]+"</span>, <span class="st">"&gt;-"</span>,</span>
 <span>      sex <span class="op">=</span> <span class="st">"."</span>,<span class="st">"_"</span>,</span>
 <span>      age <span class="op">=</span> <span class="st">"[0-9]+"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -476,28 +587,42 @@ $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 
 <pre><code># A tibble: 20 × 3
    name     sex   age  
    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
- 1 Whiskers F     9    
- 2 Fluffy   M     7    
- 3 Mittens  M     4    
- 4 Socks    F     3    
- 5 Tiger    F     5    
+ 1 Whiskers F     10   
+ 2 Fluffy   F     8    
+ 3 Mittens  F     11   
+ 4 Socks    M     8    
+ 5 Tiger    M     9    
  6 Smokey   M     11   
- 7 Gizmo    M     6    
- 8 Oreo     M     8    
+ 7 Gizmo    M     10   
+ 8 Oreo     M     11   
  9 Luna     M     4    
-10 Oliver   M     3    
-11 Leo      F     7    
-12 Milo     F     11   
-13 Charlie  F     11   
-14 Simba    M     11   
-15 Nala     M     9    
-16 Felix    F     10   
-17 Garfield F     10   
+10 Oliver   F     4    
+11 Leo      F     5    
+12 Milo     M     3    
+13 Charlie  F     5    
+14 Simba    F     8    
+15 Nala     F     11   
+16 Felix    M     3    
+17 Garfield F     3    
 18 Tigger   M     10   
-19 Chloe    F     11   
-20 Bella    F     8    </code></pre>
+19 Chloe    M     6    
+20 Bella    M     5    </code></pre>
 </div>
 </div>
+<p>The <code>patterns</code> argument is a named vector defining the regular expression patterns to extract from the <code>cat_id</code> column. Specifically:</p>
+<ul>
+<li>
+<code>&lt;</code> matches the literal <code>&lt;</code> character</li>
+<li>
+<code>name = "[A-Za-z]+"</code> extracts one or more alphabetic characters (the cat’s name)</li>
+<li>
+<code>"&gt;-"</code> matches the literal <code>&gt;-</code> characters</li>
+<li>
+<code>sex = ".","_"</code> extracts a single character (<code>.</code>) followed by an underscore (<code>_</code>) to indicate the sex (M or F)</li>
+<li>
+<code>age = "[0-9]+"</code> extracts one or more digits (the cat’s age)</li>
+</ul>
+<p>The resulting dataframe will have separate columns for <code>name</code>, <code>sex</code>, and <code>age</code>, extracted from the original <code>cat_id</code> column.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

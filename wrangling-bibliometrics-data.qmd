@@ -29,11 +29,12 @@ Here's an excerpt from an email Kate sent me on 2023-11-21:
 From what I can see, the overarching problem is this:
 
 ::: {.callout-note appearance="simple" icon="false"}
-1.  There are three data sources: Scopus, Web of Science and Pure, from which tables about publications are regularly downloaded.
+1.  There are three data sources: Scopus, Web of Science and Pure, from which tables about publications are regularly downloaded:
 
-All three tables contain DOIs for the publications, but only Scopus has the UoS department affiliations, and Pure contains the Open Access compliance information
+    All three tables contain DOIs for the publications, but only Scopus has the UoS department affiliations, and Pure contains the Open Access compliance information
 
 2.  The data contained in these three tables needs to be joined, and then joined to other data.
+
 3.  The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.
 :::
 
@@ -41,7 +42,7 @@ I'm not going to be able to cover every step, For some of these steps we need to
 
 I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www.scopus.com/search/form.uri?display=advanced) to generate a report for 31 days prior to 2024-03-13 using the following query string:
 
-```{markdown}
+``` markdown
 AF-ID("University of Southampton" 60025225) AND PUBYEAR > 2017 AND PUBYEAR < 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)
 ```
 

@@ -788,14 +788,14 @@ For example, @fig-claude-1 shows how I prompted Claude 3 to help me reproduce th
 
 1.  First I told Claude who I wanted it to be:
 
-    ```{markdown}
+    ```{.markdown}
     You are an R programmer called Belle and you provide guidance on writing 
     tidyverse code in R. Output should be commented code snippets.
     ```
 
 2.  Then I asked my new assistant Belle what I wanted:
 
-    ```{markdown}
+    ```{.markdown}
     Can you show me how filter the palmer penguins dataset for penguins 
     with a bill length greater or equal to 50 mm?
     ```

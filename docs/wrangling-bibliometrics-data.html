@@ -249,21 +249,19 @@ Summary
 </div>
 <div class="callout-body-container">
 <ol type="1">
-<li>There are three data sources: Scopus, Web of Science and Pure, from which tables about publications are regularly downloaded.</li>
-</ol>
+<li>
+<p>There are three data sources: Scopus, Web of Science and Pure, from which tables about publications are regularly downloaded:</p>
 <p>All three tables contain DOIs for the publications, but only Scopus has the UoS department affiliations, and Pure contains the Open Access compliance information</p>
-<ol start="2" type="1">
-<li>The data contained in these three tables needs to be joined, and then joined to other data.</li>
-<li>The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.</li>
+</li>
+<li><p>The data contained in these three tables needs to be joined, and then joined to other data.</p></li>
+<li><p>The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.</p></li>
 </ol>
 </div>
 </div>
 </div>
 <p>I’m not going to be able to cover every step, For some of these steps we need to create our own tables of data e.g a table of department codes or open access codes, as well as download pre-existing data.</p>
 <p>I downloaded some data as a <code>csv</code> file from <a href="https://www.scopus.com/search/form.uri?display=advanced">Scopus Advanced Search</a> to generate a report for 31 days prior to 2024-03-13 using the following query string:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I’ll read it in directly from the repository for this book, and use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per <a href="getting-started.html#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, the title of each publication is in the <code>Title</code> column.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the Pure csv file</span></span>

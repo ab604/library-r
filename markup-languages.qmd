@@ -87,7 +87,7 @@ Literate programming can be done with a variety of languages, not just R, Exampl
 
 ## Different flavours of markdown {#sec-markdown-flavours}
 
-There are a number of different flavours of markdown. By flavour I mean they all have common aspects, but differences in functionality that have been added to each version. Here are some of the common flavours. 
+There are a number of different flavours of markdown. By flavour I mean they all have common aspects, but differences in functionality that have been added to each version. Here are some of the common flavours.
 
 ### Markdown {#sec-original-markdown}
 
@@ -99,9 +99,9 @@ The original markdown was created by John Gruber in 2004. It contained the synta
 
 ### R Markdown {#sec-r-markdown}
 
-Unsurpisingly, R Markdown is the version of markdown developed by the creators of RStudio and incorporates lots of functionality for combining markdown and R in the literate programming paradigm (@sec-literate-prog). 
+Unsurpisingly, R Markdown is the version of markdown developed by the creators of RStudio and incorporates lots of functionality for combining markdown and R in the literate programming paradigm (@sec-literate-prog).
 
-You can find full details in the [RStudio R Markdown documentation](https://rmarkdown.rstudio.com/index.html), the [R Markdown book](https://bookdown.org/yihui/rmarkdown/) and the [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/). 
+You can find full details in the [RStudio R Markdown documentation](https://rmarkdown.rstudio.com/index.html), the [R Markdown book](https://bookdown.org/yihui/rmarkdown/) and the [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
 If you're interested in more technical detail of how document creation works in R Markdown here's a [Stack overflow post explaining the relationship between R markdown knitr and pandoc](https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown)
 
@@ -113,7 +113,7 @@ As someone who started with LaTeX and then moved to R Markdown I've found it fai
 
 There's nothing wrong with sticking with R Markdown if you prefer it or feel it's too much effort to change. But if you have exisiting R Markdown files and want to switch, you'll find it's fairly easy to convert them into Quarto markdown and may find long term benefits.
 
-We can create a new document in R Studio from the `File` menu and then `New File` displays all the default file types available as shown in @fig-new-doc. Here I highlighted a new `Quarto Document`.  
+We can create a new document in R Studio from the `File` menu and then `New File` displays all the default file types available as shown in @fig-new-doc. Here I highlighted a new `Quarto Document`.
 
 ```{r}
 #| label: fig-new-doc 
@@ -127,7 +127,7 @@ We can create a new document in R Studio from the `File` menu and then `New File
 knitr::include_graphics("img/new-document-rstudio.png", dpi = 270)
 ```
 
-Selecting `Quarto Document` opens a dialogue box as shown in @fig-new-quarto-doc, giving us the opportunity to set various features such as the default output document format or whether we want to create a document or presentation. This can all be changed later, so don't worry if you change your mind. 
+Selecting `Quarto Document` opens a dialogue box as shown in @fig-new-quarto-doc, giving us the opportunity to set various features such as the default output document format or whether we want to create a document or presentation. This can all be changed later, so don't worry if you change your mind.
 
 ```{r}
 #| label: fig-new-quarto-doc 
