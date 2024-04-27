@@ -72,8 +72,13 @@ $link-color:                $success !default;
   color: $marine2;
 }
 
-.cell-output {
-  background-color: white;
+.downlit.sourceCode {
+  background-color: #696969;
+  border-radius: 4px;
+}
+
+.cell-output-stdout {
+  background-color: #F5F5F5;
   border-radius: 4px;
 }
 
