@@ -188,6 +188,11 @@ scopus_dat_long <- scopus_dat_wide |>
 scopus_dat_long_soton <- scopus_dat_long |> 
   filter(str_detect(Department,"Southampton"))
 
+scopus_dat_long_china <- scopus_dat_long |> 
+  filter(str_detect(Department,"China"))
+
+#scopus_dat_long_china |> distinct(DOI) |> tally()
+
 #scopus_dat_long_other <-  scopus_dat_long |> 
  # filter(!str_detect(Department,"Southampton"))
 ```
