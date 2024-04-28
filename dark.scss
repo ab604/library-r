@@ -72,6 +72,16 @@ $link-color:                $success !default;
   color: $marine2;
 }
 
+.sourceCode.markdown.code-with-copy {
+  background-color: #696969;
+  border-radius: 4px;
+}
+
+.sourceCode {
+  background-color: #696969;
+  border-radius: 4px;
+}
+
 .downlit.sourceCode {
   background-color: #696969;
   border-radius: 4px;
