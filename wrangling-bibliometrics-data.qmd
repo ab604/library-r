@@ -41,19 +41,17 @@ From what I can see, the overarching problem is this:
 
 Having spent a bit of time looking at the different data, I can see this is a problem that requires a mixture of several `dpylr` and `tidyr` functions. I can also see that this problem cannot be entirely automated as some of the data needed is not in the three tables.
 
-To join tables we need common variables between tables: these will be the publication title and the 
-digital object identifier (DOI), **but these will have different names** so we need to account for that.
+To join tables we need common variables between tables: these will be the publication title and the digital object identifier (DOI), **but these will have different names** so we need to account for that.
 
 ## Downloading the bibliometrics data {#sec-downloading-the-bibliometrics-data}
 
-Here I have three example datasets and identify the common variables by which we might 
-join them.
+Here I have three example datasets and identify the common variables by which we might join them.
 
-### Pure data
+### Pure data {#sec-pure-data}
 
 I don't have Admin access to [Pure](https://pure.soton.ac.uk) so Kate had to send me some data which I saved as a `csv` file for us to use, but the process once logged into Pure is:
 
--   Go to report definitions on the side menu, click on Managed report definitions – Add as favourite the compliance reporting link.
+-   Go to report definitions on the side menu, click on Managed report definitions -- Add as favourite the compliance reporting link.
 
 -   Click on \[ComplianceReporting\] Articles/Conferences Open Access Data for Current + Previous Year. It will open in a new window.
 
@@ -61,13 +59,12 @@ I don't have Admin access to [Pure](https://pure.soton.ac.uk) so Kate had to sen
 
 -   Click on the downloaded file and save to your folder.
 
-I then opened the file in Excel and saved it as a csv so that we can load the example 
-Pure data directly from the repository of this book.
+I then opened the file in Excel and saved it as a csv so that we can load the example Pure data directly from the repository of this book.
 
-The table has 5,186 rows and 21 columns: 
+The table has 5,186 rows and 21 columns:
 
-+ The DOI is in `Electronic version(s) of this work > DOI (Digital Object Identifier)-0`
-+ The publication title is `Title of the contribution in original language-5`
+-   The DOI is in `Electronic version(s) of this work > DOI (Digital Object Identifier)-0`
+-   The publication title is `Title of the contribution in original language-5`
 
 ```{r}
 #| label: pure-data
@@ -79,8 +76,7 @@ pure_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/pure-2024
 glimpse(pure_dat)
 ```
 
-
-### Scopus data
+### Scopus data {#sec-scopus-data}
 
 I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www.scopus.com/search/form.uri?display=advanced) to generate a report for 31 days prior to 2024-03-13 using the following query string:
 
@@ -90,12 +86,11 @@ AF-ID("University of Southampton" 60025225) AND PUBYEAR > 2017 AND PUBYEAR < 202
 
 As before, I saved it so that we can load the example Scopus data directly from the repository of this book.
 
-The table has 483 rows and 20 columns: 
+The table has 483 rows and 20 columns:
 
-+ The title of each publication is in the `Title` column.
-+ The DOI is in the `DOI` column
-+ `Affiliations` contains the all institution departments, separated by semi-colons. Hence we have multiple values in each cell. 
-
+-   The title of each publication is in the `Title` column.
+-   The DOI is in the `DOI` column
+-   `Affiliations` contains the all institution departments, separated by semi-colons. Hence we have multiple values in each cell.
 
 ```{r}
 #| label: scopus-data
@@ -107,42 +102,41 @@ scopus_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/scopus-
 glimpse(scopus_dat)
 ```
 
-### Web of Science data
+### Web of Science data {#sec-web-of-science-data}
 
 I followed these steps to download Web of Science (WoS) data on 2024-03-26 as a `tsv` file.
 
 On [Web of Science](https://www.webofscience.com/wos/woscc/basic-search):
 
-+ Under documents select AFFILIATIONS and UNIVERSITY OF SOUTHAMPTON (Note that the computer may remember the last search).
+-   Under documents select AFFILIATIONS and UNIVERSITY OF SOUTHAMPTON (Note that the computer may remember the last search).
 
-+ Click on Add date range – select Publication date down arrow and select Custom. Enter date range – last date of report drawn and current date eg. 2022-04-04 to 2022-04-25 and click search.
+-   Click on Add date range -- select Publication date down arrow and select Custom. Enter date range -- last date of report drawn and current date eg. 2022-04-04 to 2022-04-25 and click search.
 
-+ Limit the results to 2018 onwards.
+-   Limit the results to 2018 onwards.
 
-+ Click on Document Types and select the following categories and click on Refine.
+-   Click on Document Types and select the following categories and click on Refine.
 
-  1. Articles
+    1.  Articles
 
-  2. Early access
+    2.  Early access
 
-  3. Review articles
+    3.  Review articles
 
-  4. Editorial materials
+    4.  Editorial materials
 
-  5. Proceeding papers
+    5.  Proceeding papers
 
-  6. Letter
+    6.  Letter
 
-+ Click EXPORT – select Tab delimited file. New window will open. Select All records. Under Record Content - select Full Record. Click Export.
+-   Click EXPORT -- select Tab delimited file. New window will open. Select All records. Under Record Content - select Full Record. Click Export.
 
 As before, I saved it so that we can load the example WoS data directly from the repository of this book.
 
 It has 50 rows with 71 columns all with [two letter field tags](https://images.webofknowledge.com/images/help/WOS/hs_wos_fieldtags.html)
 
-+ The title of each publication is in the `TI` column.
-+ The DOI is in the `DI` column
-+ `C1` is the field tag for Author address which also contains institution department information, but as
-with the Scopus data it contains multiple values in each cell separated by `;`.
+-   The title of each publication is in the `TI` column.
+-   The DOI is in the `DI` column
+-   `C1` is the field tag for Author address which also contains institution department information, but as with the Scopus data it contains multiple values in each cell.
 
 ```{r}
 #| label: wos-data
@@ -154,10 +148,10 @@ wos_dat <- read_tsv("https://github.com/ab604/library-r/raw/main/data/web-of-sci
 glimpse(wos_dat)
 ```
 
-## Make it simple
+## Make it simple {#sec-make-it-simple}
 
-To make it simple, lets use a single entry from each table to understand how we might 
-tackle the whole data set.
+
+To make it simple - well simpler! - lets use a single entry from each table to understand how we might tackle the whole data set.
 
 Manual inspection tells me that all three tables have a publication entitled, `Lipid droplets in steatotic liver disease` with a DOI of `10.1097/MCO.0000000000000993`.
 
@@ -182,24 +176,17 @@ dim_desc(scopus_lipid)
 dim_desc(wos_lipid)
 ```
 
-### Joining the small table
+### Joining the small table {#sec-joining-the-small-table}
 
-We have a choice about whether to join the tables first or deal with the problem of having 
-multiple values in the `Affiliation` and `C1` cells first?
+We have a choice about whether to join the tables first or deal with the problem of having multiple values in the `Affiliation` and `C1` cells first?
 
-Let's do the joins first. This is an easier problem, but also as joining also filters, it
-reduces the number of rows and therefore when it comes to the full data, it reduces the amount of departments we need to tidy.
+Let's do the joins first. This is an easier problem, but also as joining also filters, it reduces the number of rows and therefore when it comes to the full data, it reduces the amount of departments we need to tidy.
 
-We'll use our single row `pure_lipid` object to perform filtering joins on the full `scopus_dat` and
-`wos_dat` data using `left_join()` as per @sec-filtering-join.
+We'll use our single row `pure_lipid` object to perform filtering joins on the full `scopus_dat` and `wos_dat` data using `left_join()` as per @sec-filtering-join.
 
-As the variables for title and DOI have different names we have to explicitly tell the join function
-how to map these variables using `by` and passing character vectors stating the mapping 
-as below. I'm using two pipes and doing both joins prior to assigning a new object `lipid_join`.
+As the variables for title and DOI have different names we have to explicitly tell the join function how to map these variables using `by` and passing character vectors stating the mapping as below. I'm using two pipes and doing both joins prior to assigning a new object `lipid_join`.
 
-We start with 1 row and 21 variables in `pure_lipid` and join on two variables, meaning we add 
-18 variables from `scopus_dat` and 69 variables from `wos_dat` to create a table with 
-1 row and 21 + 18 + 69 = 108 columns.
+We start with 1 row and 21 variables in `pure_lipid` and join on two variables, meaning we add 18 variables from `scopus_dat` and 69 variables from `wos_dat` to create a table with 1 row and 21 + 18 + 69 = 108 columns.
 
 ```{r}
 #| label: lipid-join
@@ -213,11 +200,9 @@ lipid_join <- pure_lipid |>
 dim_desc(lipid_join)
 ```
 
-### Separating the departments
+### Separating the Scopus Affiliations {#sec-separating-the-scopus-affiliations}
 
-I'll use select to look at `Affiliations` column in `lipid_join`, and we can see there are three
-`;` separating three values for departments: two are University of Southampton and
-one is from the University of Pennsylvania.
+I'll use `select` to look at `Affiliations` column in `lipid_join` that originates in the Scopus data, and we can see there are three `;` separating three values for departments: two are University of Southampton and one is from the University of Pennsylvania.
 
 ```{r}
 #| lst-label: lst-lipid-affiliations
@@ -225,17 +210,19 @@ one is from the University of Pennsylvania.
 lipid_join |> 
   select(Affiliations) |> 
   flextable() |> 
+  font(part = "all", fontname = "Consolas") |>
+  bg(bg = "white", part = "all") |> 
   autofit()
 ```
 
-We can use `separate_wider_delim()` to split these three departments on the  `;`.
+We can use `separate_wider_delim()` to split these three departments on the `;`.
 
 We will provide the following arguments to the function:
 
-+ `cols = Affiliations` this tells the function which column to separate into individual variables.
-+ `delim = ";"` this tells the function to split on the semi-colon. Note we supply a string.
-+ `names_sep = "_"` this automatically creates new names based on the original variable, `Affiliations` separated by `_` and numbered sequentially. 
-+ `too_few = "align_start"` this we don't need now, but when we have different numbers of departments in each row, it will number them from 1 and create `NA` cells if there are empty cells.
+-   `cols = Affiliations` this tells the function which column to separate into individual variables.
+-   `delim = ";"` this tells the function to split on the semi-colon. Note we supply a string.
+-   `names_sep = "_"` this automatically creates new names based on the original variable, `Affiliations` separated by `_` and numbered sequentially.
+-   `too_few = "align_start"` this we don't need now, but when we have different numbers of departments in each row, it will number them from 1 and create `NA` cells if there are empty cells.
 
 I'm not assigning an object as I want to see how this looks.
 
@@ -247,12 +234,13 @@ lipid_join |>
   separate_wider_delim(cols = Affiliations,
                        names_sep = "_",
                        delim = ";") |> 
-  glimpse()
+  flextable() |> 
+  font(part = "all", fontname = "Consolas") |>
+  bg(bg = "white", part = "all") |> 
+  autofit()
 ```
 
-That seems to work, so lets assign the output to a new object `lipid_wide`. We
-expect to add two new columns, `lipid_join` has 108 columns, we expect `lipid_wide`
-to have 110 columns.
+That seems to work, so lets assign the output to a new object `lipid_wide`. We expect to add two new columns, `lipid_join` has 108 columns, we expect `lipid_wide` to have 110 columns.
 
 ```{r}
 #| lst-label: lst-sep-wide-lipid
@@ -267,138 +255,220 @@ lipid_wide <- lipid_join |>
 dim_desc(lipid_wide) 
 ```
 
+### Separating the Web of Science `C1` column {#sec-separating-the-wos-affiliations}
+
+As described in @sec-web-of-science-data, `C1` is the field tag for Author address which also contains institution department information, but as with the Scopus data this column contains multiple values in each cell.
+
+To make matters worse, the values for the departments aren't separated using a simple delimiter.
+
+Let's look `C1` in `lipid_wide`:
 
 ```{r}
-lipid_mut <- lipid_wide |> 
-  mutate(department = str_extract(C1,"(?<=Southampton Univ,|Univ Southampton,|Univ Hosp Southampton NHS Fdn Trust,)(.*?)(?=, )"))
+#| lst-label: lst-lipid-C1
+lipid_wide |> 
+  select(C1) |> 
+  flextable() |> 
+  autofit()
 
-lipid_mut |> 
-  select(C1, department, starts_with("Affiliations_")) |> view() 
+```
+What we've got are `;` between the names in the square brackets **and** after each country.
 
-wos_mut <- wos_dat |> 
-  mutate(department = str_extract(C1,"(?<=Southampton Univ,|Univ Southampton,|Univ Hosp Southampton NHS Fdn Trust,)(.*?)(?=, )"))
+My solution here is to break the problem down into steps:
 
-wos_mut |> 
-  select(C1, department) |> 
-  view()
+1. Separate as before using the `;` delimiter. This will yield columns that have names or addresses, each column name starts `C1_`.
+
+2. Pivot the table to be longer such that the names of the new columns `C1_1`, `C1_2` etc. from step 1 become rows in default variable `name` and values populate default variable `value`. 
+
+3. Next, extract the string with the University of Southampton information from each row to a new variable called `department`. Not every row has University of Southampton information and this will create empty values.
+
+4. Filter out all the rows with empty `department` values.
+
+5. Pivot the table wider again creating columns with names from the `name` variable populated
+with values from the `department` variable.
+
+This should mean we have a table with just the University of Southampton affiliations from Web of Science in columns prefixed `C1_`
+
+Simple, huh?! It's much more concise in code.
+
+#### Step 1: Separate `C1` 
+
+As before, we separate using `separate_wider_delim()` using `;` as the delimiter.
+
+This time we end up with 7 columns as there are `;` between author names and country.
+
+```{r}
+#| lst-label: lipid-wide-2
+#| lst-cap: separate using `separate_wider_delim()` using `;` as the delimiter. This time we end up with 7 columns as there are `;` between author names and country.
+lipid_wide_2 <- lipid_wide |> 
+  separate_wider_delim(cols = C1, 
+                       delim = ";", 
+                       names_sep = "_", 
+                       too_few = "align_start")
+
+# Check the output
+lipid_wide_2 |> 
+  select(starts_with("C1")) |> 
+  glimpse()
 ```
 
-So let's assume the question here is:
+#### Steps 2: Pivot longer
 
-> "Which University of Southampton Department(s) are affiliated with each publication?"
-
-The departments are in the `Affiliations` column. Using two more `dplyr` verbs, `slice()` and `pull()`, let's look at the first four values (@lst-slice-affiliation).
-
-::: {.callout-note appearance="simple" icon="false"}
-Note how I've used an integer vector `1:4` as the argument to `slice()` to indicate I want rows 1 to 4, and then the column variable of interest as the argument for `pull()` to pull out the values for the `Affiliations` in rows 1 to 4.
-:::
-
-This yields a character vector with four values and I can immediately see that `Affiliations` does contain not a single tidy value in each cell, it's a **messy** value with multiple values separated by semi-colons.
+Next we `pivot_longer()` and take advantage of `starts_with()` using character 
+vector `"C1_"` as the argument to pivot on all the columns from step 1. The output is
+assigned to `lipid_wide_3`
 
 ```{r}
-#| lst-label: lst-slice-affiliation
-#| lst-cap: Slice and pull the first four Affiliation values 
-scopus_dat |>         
-  slice(1:4) |>       
-  pull(Affiliations)  
+#| lst-label: lipid-wide-345
+#| lst-cap: separate using `separate_wider_delim()` using `;` as the delimiter. This time we end up with 7 columns as there are `;` between author names and country.
+lipid_wide_3 <- lipid_wide_2 |> 
+  pivot_longer(cols = starts_with("C1"))
 ```
 
-To be tidy, each semi-colon separated value should be in their own column. So we need to tidy the data (@sec-tidy-data, @fig-tidy-data).
+#### Steps 3 and 4 : Extract the University of Southampton department and filter
 
-## Tidying the Scopus data
+Then we use `mutate()` to create a new variable `department` based on
+`str_extract()` on the `value` variable with a regex passed as a string. 
 
-Let's break the problem down:
+I created the regex pattern using Generative AI giving it the string `[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev & Hlth, Southampton, England;` and a prompt:
 
-1.  First let's separate the multiple affiliations that are in a single column into multiple columns, one for each affiliation. This is in keeping with tidy rule that each value should have it's own cell.
+```{.markdown}
+"write a regex to capture the text after ']' and before ', Southampton, England'"
+```
 
-We can use `tidyr` package function [`separate_wider_delim()`](https://tidyr.tidyverse.org/reference/separate_wider_delim.html).
+I pipe this to `filter` with argument `!is.na()` that means *"if NOT an empty value"* for `department` to filter out rows with value `NA` for `department`. 
 
-`separate_wider_delim()` takes three necessary arguments, and has several other optional arguments. The necessary ones are a data frame, here that's `scopus_dat`. `cols` the column(s) we are separating, here that's `Affiliations` and `delim` is a string we using as a delimiter to split the values on which as we saw is going to be `;`.
+I pipe this to `select` and use negative selection to drop the `value` column created in the pivot longer as we no longer need it.
 
-As this is going to create new column variables, these need names too and here I provide the string for underscore `"_"` to `names_sep` and each new variable will have an underscore and numerical suffix called `Affiliations_1`, `Affiliations_2` etc.
-
-The final argument we'll use is `too_few` and we'll use `"align_start"` as the value. This means that our departments will first be put in `Affiliations_1` and adds missing values columns `NA` in any columns where a row runs out of departments. This ensures all rows have the same number of columns regardless of how many values were in the original Affiliations column. The total number of Affiliation columns will be determined by the article with the most Affiliation values.
-
-Hence the table will get wider as new columns are created!
-
-I'll assign the output to a new data frame object `scopus_dat_wide`.
+The output is assigned to `lipid_wide_4`. 
 
 ```{r}
-#| lst-label: lst-sep-wide-delim
-#| lst-cap: Separating the Affiliation values in `scopus_dat` into individual columns using `separate_wider_delim()`. 
-scopus_dat_wide <- scopus_dat |> 
+lipid_wide_4 <- lipid_wide_3 |> 
+  mutate(department = str_extract(value,"(?<=(\\]))(.+?)(?=, Southampton, England)")) |> 
+  filter(!is.na(department)) |> 
+  select(-value)
+```
+
+### Step 5 : Pivot wider
+
+Finally, we pivot wider taking the names from the `name` column and filling the 
+columns with the values from `department`. The output is saved in `lipid_wide_5`.
+
+This returns the `lipid_wide` table, but with the University of Southampton departments
+originally in `C1` in column now in columns prefixed `C1_`
+
+```{r}
+lipid_wide_5 <- lipid_wide_4 |> 
+  pivot_wider(names_from = name, values_from = department)
+
+# 
+dim_desc(lipid_wide_5)
+```
+
+Let's look at 
+
+```{r}
+lipid_wide_5 |> 
+  select(1, 6, starts_with("C1_"), starts_with("Affiliations_")) |> 
+  flextable() |> 
+  font(part = "all", fontname = "Consolas") |>
+  bg(bg = "white", part = "all") |> 
+  autofit()
+
+```
+
+## Whole game
+
+Let's do that again, but for the whole table and in fewer parts
+
+### Join Scopus and Wos tables to the Pure table
+
+```{r}
+pure_join <- pure_dat |> 
+  left_join(scopus_dat, by = c(`Title of the contribution in original language-5` = "Title",
+                               `Electronic version(s) of this work > DOI (Digital Object Identifier)-0` = "DOI")) |> 
+  left_join(wos_dat, by = c(`Title of the contribution in original language-5` = "TI" , 
+                           `Electronic version(s) of this work > DOI (Digital Object Identifier)-0` = "DI"))
+
+# Print number of rows and columns with dim_desc()
+dim_desc(pure_join)
+```
+
+### Separate the Scopus Affiliations
+
+```{r}
+pure_wide <- pure_join |> 
   separate_wider_delim(cols = Affiliations, 
                        delim = ";", 
                        names_sep = "_", 
                        too_few = "align_start")
+
+# Print number of rows and columns with dim_desc()
+dim_desc(pure_wide) 
 ```
 
-```{r}
-# Split the "Affiliations" column by ";" and create new columns
-data <- scopus_dat |> 
-  mutate(Affiliations = str_split(Affiliations, ";\\s*")) |>
-  unnest_wider(Affiliations, names_sep = "_") |>
-  mutate(across(starts_with("Affiliation"), trimws))
+As an extra step, I'm going to use the same pivot trick to get
+rid of any Scopus affiliations that aren't University of Southampton.
 
-# View the updated dataset
-print(data)
+### Separate the WoS Affiliations
+
+```{r}
+pure_wider <- pure_wide |> 
+  separate_wider_delim(cols = C1, 
+                       delim = ";", 
+                       names_sep = "_", 
+                       too_few = "align_start")
+
+
+pure_long <- pure_wider |> 
+  pivot_longer(cols = starts_with("C1_")) |> 
+  mutate(department = str_extract(value,"(?<=(\\]))(.+?)(?=, Southampton, England)")) |> 
+  select(-value)
+
+pure_table <- pure_long |> 
+  pivot_wider(names_from = name, values_from = department)
+
+
+dim_desc(pure_table)
 ```
 
-I'll leave it for you to examine, but you should see we have 311 Affiliation variables now, many of the contain missing values `NA`. We still have 483 rows, but 330 variables in total.
+Deal with the missing values and keep just the rows with Southampton affiliations.
 
 ```{r}
-#| eval: false
-glimpse(scopus_dat_wide) 
-```
-
-2.  How do we get rid of all those missing values? We can fix that by changing the shape of the data to long with `pivot_longer()` and dropping any `Affiliation` values that are `NA`.
-
-Concretely, we have 311 Affiliation columns, if we pivot the table such that those column names become values in rows, the values from those columns fill a new single column variable, here `Department`, and we create a long table (with lots of duplicated information). And we can simply drop any row where the value of `Department` is `NA`.
-
-As we have to say which columns we want to take the values from to fill `Department` and all our columns of interest begin with `Affliation_`, we can use the handy `dpylr` select function [`starts_with()`](https://dplyr.tidyverse.org/reference/select.html) to help us.
-
-The name of each `Affiliation_` column will be transformed to values in a column I'm going to call `Affiliation_No`.
-
-This yields a table with 3722 rows and 21 columns, one more column than we started with in the original `scopus_dat` table.
-
-```{r}
-#| lst-label: lst-scopus-pivot-long
-#| lst-cap: Separating the Affiliation values in `scopus_dat` into individual columns using `separate_wider_delim()`. 
-
-scopus_dat_long <- scopus_dat_wide |> 
-  pivot_longer(starts_with("Affiliations_"),
-               names_to = "Affiliation_No", 
-               values_to = "Department", 
+pure_table_clean <- pure_table |> 
+  pivot_longer(c(starts_with("Affiliations_"),starts_with("C1_")),
+               values_to = "department", 
                values_drop_na = TRUE)
 ```
 
-3.  But we're only interested in the University of Southampton affiliations, so many of these rows aren't of use to us.
+Do a grouped summary using only Southampton
 
 ```{r}
-#glimpse(scopus_dat_long)
-
-scopus_dat_long_soton <- scopus_dat_long |> 
-  filter(str_detect(Department,"Southampton"))
-
-scopus_dat_long_china <- scopus_dat_long |> 
-  filter(str_detect(Department,"China"))
-
-#scopus_dat_long_china |> distinct(DOI) |> tally()
-
-#scopus_dat_long_other <-  scopus_dat_long |> 
- # filter(!str_detect(Department,"Southampton"))
+pure_table_clean |> 
+  filter(str_detect(department,"Southampton")) |> 
+  rename(title = `Title of the contribution in original language-5`) |> 
+  group_by(title, `Open Access status-13`) |> 
+  summarise(department) |> 
+  view()
 ```
 
-## Web of science
+```
 
-`https://www.webofscience.com/wos/woscc/summary/1d7d2706-f966-4c7c-8cbd-85de6e118dc2-d8d761f7/relevance/1`
 
 ```{r}
-#dat_join <- scopus_dat_long_soton |> left_join(wos_dat, by = "DOI")
+pure_table |> 
+  select(1, 6, starts_with("C1_"), starts_with("Affiliations_")) |>
+  view()
+  #flextable() |> 
+  #font(part = "all", fontname = "Consolas") |>
+  #bg(bg = "white", part = "all") |> 
+  #autofit()
+
 ```
 
 ```{r}
 #| message: false
+#| eval: false
+#| echo: false
 departments <- read_csv("https://github.com/ab604/library-r/raw/main/data/faculty-and-department-codes-2024-03-18.csv")
 
 dept_names <- departments |> pull(department_name) |> glue::glue_collapse(sep = "|")

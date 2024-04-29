@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.549">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>R for Librarians - 5&nbsp; Data wrangling II</title>
 <style>
@@ -587,26 +587,26 @@ Escaping regex special characters with backslash
 <pre><code># A tibble: 20 × 3
    name     sex   age  
    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
- 1 Whiskers F     9    
- 2 Fluffy   F     3    
- 3 Mittens  M     8    
- 4 Socks    F     4    
- 5 Tiger    F     9    
- 6 Smokey   F     4    
- 7 Gizmo    M     7    
- 8 Oreo     M     6    
- 9 Luna     M     5    
-10 Oliver   F     4    
-11 Leo      F     8    
+ 1 Whiskers M     9    
+ 2 Fluffy   M     9    
+ 3 Mittens  M     10   
+ 4 Socks    M     3    
+ 5 Tiger    F     4    
+ 6 Smokey   M     6    
+ 7 Gizmo    M     6    
+ 8 Oreo     M     10   
+ 9 Luna     M     10   
+10 Oliver   F     3    
+11 Leo      F     3    
 12 Milo     M     10   
-13 Charlie  M     8    
-14 Simba    F     10   
-15 Nala     F     8    
+13 Charlie  F     7    
+14 Simba    M     11   
+15 Nala     M     3    
 16 Felix    M     4    
-17 Garfield F     5    
-18 Tigger   M     4    
-19 Chloe    M     9    
-20 Bella    M     5    </code></pre>
+17 Garfield F     9    
+18 Tigger   M     10   
+19 Chloe    M     10   
+20 Bella    M     10   </code></pre>
 </div>
 </div>
 <p>The <code>patterns</code> argument is a named vector defining the regular expression patterns to extract from the <code>cat_id</code> column. Specifically:</p>
@@ -950,7 +950,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
