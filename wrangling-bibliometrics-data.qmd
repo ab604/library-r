@@ -437,7 +437,8 @@ Deal with the missing values and keep just the rows with Southampton affiliation
 pure_table_clean <- pure_table |> 
   pivot_longer(c(starts_with("Affiliations_"),starts_with("C1_")),
                values_to = "department", 
-               values_drop_na = TRUE)
+               values_drop_na = TRUE) |> 
+  mutate(department = str_trim(department))
 ```
 
 Do a grouped summary using only Southampton
