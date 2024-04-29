@@ -16,9 +16,10 @@ It's time to apply our knowledge to some bibliometrics data.
 #| label: load-libraries
 library(tidyverse)
 library(janitor)
+library(flextable)
 ```
 
-## Describing the problem
+## Describing the problem {#sec-describing-the-problem}
 
 I'll attempt to describe the problem as I understand it, and then break it down into parts that correspond with @sec-getting-started , @sec-data-wrangling-i and @sec-data-wrangling-ii.
 
@@ -38,7 +39,48 @@ From what I can see, the overarching problem is this:
 3.  The final output is a table indicating the open access status, funding body compliance status and University department affiliation for each publication.
 :::
 
-I'm not going to be able to cover every step, For some of these steps we need to create our own tables of data e.g a table of department codes or open access codes, as well as download pre-existing data.
+Having spent a bit of time looking at the different data, I can see this is a problem that requires a mixture of several `dpylr` and `tidyr` functions. I can also see that this problem cannot be entirely automated as some of the data needed is not in the three tables.
+
+To join tables we need common variables between tables: these will be the publication title and the 
+digital object identifier (DOI), **but these will have different names** so we need to account for that.
+
+## Downloading the bibliometrics data {#sec-downloading-the-bibliometrics-data}
+
+Here I have three example datasets and identify the common variables by which we might 
+join them.
+
+### Pure data
+
+I don't have Admin access to [Pure](https://pure.soton.ac.uk) so Kate had to send me some data which I saved as a `csv` file for us to use, but the process once logged into Pure is:
+
+-   Go to report definitions on the side menu, click on Managed report definitions – Add as favourite the compliance reporting link.
+
+-   Click on \[ComplianceReporting\] Articles/Conferences Open Access Data for Current + Previous Year. It will open in a new window.
+
+-   Click on XLS at the bottom of the window to create the report. The report will be generated. Click on Download XLS.
+
+-   Click on the downloaded file and save to your folder.
+
+I then opened the file in Excel and saved it as a csv so that we can load the example 
+Pure data directly from the repository of this book.
+
+The table has 5,186 rows and 21 columns: 
+
++ The DOI is in `Electronic version(s) of this work > DOI (Digital Object Identifier)-0`
++ The publication title is `Title of the contribution in original language-5`
+
+```{r}
+#| label: pure-data
+#| message: false
+# Load the Pure csv file
+pure_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.csv")
+
+# Inspect the contents
+glimpse(pure_dat)
+```
+
+
+### Scopus data
 
 I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www.scopus.com/search/form.uri?display=advanced) to generate a report for 31 days prior to 2024-03-13 using the following query string:
 
@@ -46,43 +88,193 @@ I downloaded some data as a `csv` file from [Scopus Advanced Search](https://www
 AF-ID("University of Southampton" 60025225) AND PUBYEAR > 2017 AND PUBYEAR < 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)
 ```
 
-I'll read it in directly from the repository for this book, and use `glimpse()` to look at the contents. It has 483 rows and 20 columns, each row comprises a set of observations for a single publication as per @fig-tidy-data, the title of each publication is in the `Title` column.
+As before, I saved it so that we can load the example Scopus data directly from the repository of this book.
+
+The table has 483 rows and 20 columns: 
+
++ The title of each publication is in the `Title` column.
++ The DOI is in the `DOI` column
++ `Affiliations` contains the all institution departments, separated by semi-colons. Hence we have multiple values in each cell. 
+
 
 ```{r}
-#| label: load-data
+#| label: scopus-data
 #| message: false
-# Load the Pure csv file
-pure_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.csv")
 # Load the scopus csv file
 scopus_dat <- read_csv("https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv")
+
+# Inspect the contents
+glimpse(scopus_dat)
+```
+
+### Web of Science data
+
+I followed these steps to download Web of Science (WoS) data on 2024-03-26 as a `tsv` file.
+
+On [Web of Science](https://www.webofscience.com/wos/woscc/basic-search):
+
++ Under documents select AFFILIATIONS and UNIVERSITY OF SOUTHAMPTON (Note that the computer may remember the last search).
+
++ Click on Add date range – select Publication date down arrow and select Custom. Enter date range – last date of report drawn and current date eg. 2022-04-04 to 2022-04-25 and click search.
+
++ Limit the results to 2018 onwards.
+
++ Click on Document Types and select the following categories and click on Refine.
+
+  1. Articles
+
+  2. Early access
+
+  3. Review articles
+
+  4. Editorial materials
+
+  5. Proceeding papers
+
+  6. Letter
+
++ Click EXPORT – select Tab delimited file. New window will open. Select All records. Under Record Content - select Full Record. Click Export.
+
+As before, I saved it so that we can load the example WoS data directly from the repository of this book.
+
+It has 50 rows with 71 columns all with [two letter field tags](https://images.webofknowledge.com/images/help/WOS/hs_wos_fieldtags.html)
+
++ The title of each publication is in the `TI` column.
++ The DOI is in the `DI` column
++ `C1` is the field tag for Author address which also contains institution department information, but as
+with the Scopus data it contains multiple values in each cell separated by `;`.
+
+```{r}
+#| label: wos-data
+#| message: false
 # Load the Web of science tsv file
 wos_dat <- read_tsv("https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.tsv")
 
-# Look at the contents
-glimpse(pure_dat)
-glimpse(scopus_dat)
+# Inspect at the contents
 glimpse(wos_dat)
 ```
 
+## Make it simple
+
+To make it simple, lets use a single entry from each table to understand how we might 
+tackle the whole data set.
+
+Manual inspection tells me that all three tables have a publication entitled, `Lipid droplets in steatotic liver disease` with a DOI of `10.1097/MCO.0000000000000993`.
+
+Using `filter` I extract the corresponding row from each table to inspect them.
+
 ```{r}
+#| label: lipid-dat
+# Pure title variable is `Title of the contribution in original language-5`
 pure_lipid <- pure_dat |> 
-  filter(`Title of the contribution in original language-5` == "Lipid droplets in steatotic liver disease") 
-
-
+  filter(`Title of the contribution in original language-5` == 
+           "Lipid droplets in steatotic liver disease") 
+#  Scopus title variable is Title
+scopus_lipid <- scopus_dat |> 
+  filter(Title == "Lipid droplets in steatotic liver disease")
+# WoS title variable is TI
 wos_lipid <- wos_dat |> 
   filter(TI == "Lipid droplets in steatotic liver disease")
 
-scopus_lipid <- scopus_dat |> 
-  filter(Title == "Lipid droplets in steatotic liver disease")
-
-lipid_join <- pure_lipid |> 
-  left_join(wos_dat, by = c(`Title of the contribution in original language-5` = "TI")) |> 
-  left_join(scopus_dat, by = c(`Title of the contribution in original language-5` = "Title"))
-
-glimpse(lipid_join)
+# Print number of rows and columns with dim_desc()
+dim_desc(pure_lipid)
+dim_desc(scopus_lipid)
+dim_desc(wos_lipid)
 ```
 
+### Joining the small table
+
+We have a choice about whether to join the tables first or deal with the problem of having 
+multiple values in the `Affiliation` and `C1` cells first?
+
+Let's do the joins first. This is an easier problem, but also as joining also filters, it
+reduces the number of rows and therefore when it comes to the full data, it reduces the amount of departments we need to tidy.
+
+We'll use our single row `pure_lipid` object to perform filtering joins on the full `scopus_dat` and
+`wos_dat` data using `left_join()` as per @sec-filtering-join.
+
+As the variables for title and DOI have different names we have to explicitly tell the join function
+how to map these variables using `by` and passing character vectors stating the mapping 
+as below. I'm using two pipes and doing both joins prior to assigning a new object `lipid_join`.
+
+We start with 1 row and 21 variables in `pure_lipid` and join on two variables, meaning we add 
+18 variables from `scopus_dat` and 69 variables from `wos_dat` to create a table with 
+1 row and 21 + 18 + 69 = 108 columns.
+
 ```{r}
+#| label: lipid-join
+lipid_join <- pure_lipid |> 
+  left_join(scopus_dat, by = c(`Title of the contribution in original language-5` = "Title",
+                               `Electronic version(s) of this work > DOI (Digital Object Identifier)-0` = "DOI")) |> 
+  left_join(wos_dat, by = c(`Title of the contribution in original language-5` = "TI" , 
+                           `Electronic version(s) of this work > DOI (Digital Object Identifier)-0` = "DI"))
+
+# Print number of rows and columns with dim_desc()
+dim_desc(lipid_join)
+```
+
+### Separating the departments
+
+I'll use select to look at `Affiliations` column in `lipid_join`, and we can see there are three
+`;` separating three values for departments: two are University of Southampton and
+one is from the University of Pennsylvania.
+
+```{r}
+#| lst-label: lst-lipid-affiliations
+#| lst-cap: Use `select` to see how many values are in the `Affiliations` cell
+lipid_join |> 
+  select(Affiliations) |> 
+  flextable() |> 
+  autofit()
+```
+
+We can use `separate_wider_delim()` to split these three departments on the  `;`.
+
+We will provide the following arguments to the function:
+
++ `cols = Affiliations` this tells the function which column to separate into individual variables.
++ `delim = ";"` this tells the function to split on the semi-colon. Note we supply a string.
++ `names_sep = "_"` this automatically creates new names based on the original variable, `Affiliations` separated by `_` and numbered sequentially. 
++ `too_few = "align_start"` this we don't need now, but when we have different numbers of departments in each row, it will number them from 1 and create `NA` cells if there are empty cells.
+
+I'm not assigning an object as I want to see how this looks.
+
+```{r}
+#| lst-label: lst-lipid-separate-wider
+#| lst-cap: Separating the Affiliation values in `lipid_join` into individual columns using `separate_wider_delim()`
+lipid_join |> 
+  select(Affiliations) |> 
+  separate_wider_delim(cols = Affiliations,
+                       names_sep = "_",
+                       delim = ";") |> 
+  glimpse()
+```
+
+That seems to work, so lets assign the output to a new object `lipid_wide`. We
+expect to add two new columns, `lipid_join` has 108 columns, we expect `lipid_wide`
+to have 110 columns.
+
+```{r}
+#| lst-label: lst-sep-wide-lipid
+#| lst-cap: Separating the Affiliation values in `scopus_dat` into individual columns using `separate_wider_delim()` and creating a new object. 
+lipid_wide <- lipid_join |> 
+  separate_wider_delim(cols = Affiliations, 
+                       delim = ";", 
+                       names_sep = "_", 
+                       too_few = "align_start")
+
+# Print number of rows and columns with dim_desc()
+dim_desc(lipid_wide) 
+```
+
+
+```{r}
+lipid_mut <- lipid_wide |> 
+  mutate(department = str_extract(C1,"(?<=Southampton Univ,|Univ Southampton,|Univ Hosp Southampton NHS Fdn Trust,)(.*?)(?=, )"))
+
+lipid_mut |> 
+  select(C1, department, starts_with("Affiliations_")) |> view() 
+
 wos_mut <- wos_dat |> 
   mutate(department = str_extract(C1,"(?<=Southampton Univ,|Univ Southampton,|Univ Hosp Southampton NHS Fdn Trust,)(.*?)(?=, )"))
 

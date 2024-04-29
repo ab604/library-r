@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>R for Librarians - 5&nbsp; Data wrangling II</title>
 <style>
@@ -193,17 +193,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#joins" id="toc-joins" class="nav-link active" data-scroll-target="#joins"><span class="header-section-number">5.1</span> Joins</a></li>
-  <li><a href="#mutating-joins" id="toc-mutating-joins" class="nav-link" data-scroll-target="#mutating-joins"><span class="header-section-number">5.2</span> Mutating joins</a></li>
-  <li><a href="#filtering-join" id="toc-filtering-join" class="nav-link" data-scroll-target="#filtering-join"><span class="header-section-number">5.3</span> Filtering join</a></li>
+<li><a href="#sec-joins" id="toc-sec-joins" class="nav-link active" data-scroll-target="#sec-joins"><span class="header-section-number">5.1</span> Joins</a></li>
+  <li><a href="#sec-mutating-joins" id="toc-sec-mutating-joins" class="nav-link" data-scroll-target="#sec-mutating-joins"><span class="header-section-number">5.2</span> Mutating joins</a></li>
+  <li><a href="#sec-filtering-join" id="toc-sec-filtering-join" class="nav-link" data-scroll-target="#sec-filtering-join"><span class="header-section-number">5.3</span> Filtering join</a></li>
   <li>
-<a href="#strings-and-characters" id="toc-strings-and-characters" class="nav-link" data-scroll-target="#strings-and-characters"><span class="header-section-number">5.4</span> Strings and characters</a>
+<a href="#sec-strings-and-characters" id="toc-sec-strings-and-characters" class="nav-link" data-scroll-target="#sec-strings-and-characters"><span class="header-section-number">5.4</span> Strings and characters</a>
   <ul class="collapse">
-<li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="header-section-number">5.4.1</span> Regular expressions</a></li>
-  <li><a href="#getting-started-with-stringr" id="toc-getting-started-with-stringr" class="nav-link" data-scroll-target="#getting-started-with-stringr"><span class="header-section-number">5.4.2</span> Getting started with <code>stringr</code></a></li>
+<li><a href="#sec-regular-expressions" id="toc-sec-regular-expressions" class="nav-link" data-scroll-target="#sec-regular-expressions"><span class="header-section-number">5.4.1</span> Regular expressions</a></li>
+  <li><a href="#sec-getting-started-with-stringr" id="toc-sec-getting-started-with-stringr" class="nav-link" data-scroll-target="#sec-getting-started-with-stringr"><span class="header-section-number">5.4.2</span> Getting started with <code>stringr</code></a></li>
   </ul>
 </li>
-  <li><a href="#string-replacement" id="toc-string-replacement" class="nav-link" data-scroll-target="#string-replacement"><span class="header-section-number">5.5</span> String Replacement</a></li>
+  <li><a href="#sec-string-replacement" id="toc-sec-string-replacement" class="nav-link" data-scroll-target="#sec-string-replacement"><span class="header-section-number">5.5</span> String Replacement</a></li>
   <li><a href="#creating-the-cat_tibble" id="toc-creating-the-cat_tibble" class="nav-link" data-scroll-target="#creating-the-cat_tibble"><span class="header-section-number">6</span> Creating the <code>cat_tibble</code></a></li>
   <li><a href="#separating-the-cat_id-column-into-multiple-columns" id="toc-separating-the-cat_id-column-into-multiple-columns" class="nav-link" data-scroll-target="#separating-the-cat_id-column-into-multiple-columns"><span class="header-section-number">7</span> Separating the <code>cat_id</code> column into multiple columns</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ab604/library-r/edit/main/data-wrangling-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -224,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="joins" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="joins">
+</header><section id="sec-joins" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-joins">
 <span class="header-section-number">5.1</span> Joins</h2>
 <p><a href="https://r4ds.hadley.nz/joins">R4DS joins</a> gives some detailed examples of joining tables, but here we’ll look at some simpler examples to try build our mental model.</p>
 <p>There are two types of join we often encounter:</p>
@@ -256,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <strong>Anti Join</strong>: Returns only the rows from the left table that do not have matches in the right table. <code>anti_join()</code>
 </li>
-</ol></section><section id="mutating-joins" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="mutating-joins">
+</ol></section><section id="sec-mutating-joins" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-mutating-joins">
 <span class="header-section-number">5.2</span> Mutating joins</h2>
 <p>To demonstrate a mutating join using the <code>penguins</code> data, I first use <code>mutate</code> to create a unique identifier variable for each penguin from the row number called <code>penguin_id</code>, and assign this to a new dataframe <code>numbered_penguins</code>.</p>
 <p>Then I use <code>numbered_penguins</code> to create two new dataframes using <code>select</code>:</p>
@@ -306,7 +306,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…</code></pre>
 </div>
 </div>
-</section><section id="filtering-join" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="filtering-join">
+</section><section id="sec-filtering-join" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="sec-filtering-join">
 <span class="header-section-number">5.3</span> Filtering join</h2>
 <p>Here we’ll do a filtering join, a semi-join.</p>
 <p>First I’ll filter the <code>penguins_info</code> I created just for the data from the year 2008:</p>
@@ -340,7 +340,7 @@ $ flipper_length_mm &lt;int&gt; 186, 188, 190, 200, 187, 191, 186, 193, 181, 194
 $ body_mass_g       &lt;int&gt; 3500, 4300, 3450, 4050, 2900, 3700, 3550, 3800, 2850…</code></pre>
 </div>
 </div>
-</section><section id="strings-and-characters" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="strings-and-characters">
+</section><section id="sec-strings-and-characters" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-strings-and-characters">
 <span class="header-section-number">5.4</span> Strings and characters</h2>
 <p>The terms strings and characters are often used interchangeably, but a character is technically a single symbol or glyph, such as <strong>&amp;</strong> or <strong>a</strong>, or even 🙀. And a sequence of characters and/or symbols form a string.</p>
 <p>In R to create character vector, we enclose the characters forming the string in quotes. For example, <code>"hello"</code> is a string, and each individual character within it (<code>h</code>, <code>e</code>, <code>l</code>, <code>l</code>, <code>o</code>) is a character. <code>"hello"</code> is a character vector of length 1 as there is one string of five characters.</p>
@@ -359,7 +359,7 @@ Single or double quotes?
 <p>Both single <code>'</code> or double <code>"</code> are allowed, but for consistent style I’d recommend double, unless your string itself contains multiple <code>"</code> as per the <a href="https://style.tidyverse.org/syntax.html#character-vectors">tidyverse style guide</a>.</p>
 </div>
 </div>
-<section id="regular-expressions" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="regular-expressions">
+<section id="sec-regular-expressions" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="sec-regular-expressions">
 <span class="header-section-number">5.4.1</span> Regular expressions</h3>
 <p>A <strong>regular expression</strong> (regex) is a pattern used to match and manipulate strings. It’s like a really powerful “find and replace” tool, but has completely unintuitive syntax!</p>
 <p>You can use regex to specify a pattern, and then use that pattern to search for matches in a string. Once matched, we can extract or manipulate the strings in conjunction with other functions.</p>
@@ -379,7 +379,7 @@ Escaping regex special characters with backslash
 <p>To escape we use a backslash <code>\</code> before the special character such that to treat a dot as a dot we would write <code>\.</code> in our regex.</p>
 </div>
 </div>
-</section><section id="getting-started-with-stringr" class="level3" data-number="5.4.2"><h3 data-number="5.4.2" class="anchored" data-anchor-id="getting-started-with-stringr">
+</section><section id="sec-getting-started-with-stringr" class="level3" data-number="5.4.2"><h3 data-number="5.4.2" class="anchored" data-anchor-id="sec-getting-started-with-stringr">
 <span class="header-section-number">5.4.2</span> Getting started with <code>stringr</code>
 </h3>
 <p>To explore <code>stringr</code> we’ll create a couple of character vectors: Two character vectors are defined:</p>
@@ -503,7 +503,7 @@ Escaping regex special characters with backslash
 [20] │ &lt;B&gt;&lt;e&gt;&lt;l&gt;&lt;l&gt;&lt;a&gt;</code></pre>
 </div>
 </div>
-<section id="pattern-matching-and-counting" class="level4" data-number="5.4.2.1"><h4 data-number="5.4.2.1" class="anchored" data-anchor-id="pattern-matching-and-counting">
+<section id="sec-pattern-matching-and-counting" class="level4" data-number="5.4.2.1"><h4 data-number="5.4.2.1" class="anchored" data-anchor-id="sec-pattern-matching-and-counting">
 <span class="header-section-number">5.4.2.1</span> Pattern Matching and Counting</h4>
 <p>The <code>str_detect</code> function is used to identify elements in the <code>cat_names</code> vector that contain the pattern “[isk]” (i.e., the characters “i”, “s”, or “k”).</p>
 <ul>
@@ -511,7 +511,7 @@ Escaping regex special characters with backslash
 <code>str_detect(cat_names, "[isk]")</code>: returns a logical vector indicating which names contain the pattern</li>
 <li>
 <code>str_count(cat_names, "[isk]")</code>: counts the number of occurrences of the pattern in each name</li>
-</ul></section></section></section><section id="string-replacement" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="string-replacement">
+</ul></section></section></section><section id="sec-string-replacement" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="sec-string-replacement">
 <span class="header-section-number">5.5</span> String Replacement</h2>
 <p>The <code>str_replace</code> and <code>str_replace_all</code> functions are used to replace occurrences of the pattern “[isk]” in the <code>cat_names</code> vector with a hyphen (-).</p>
 <ul>
@@ -587,26 +587,26 @@ Escaping regex special characters with backslash
 <pre><code># A tibble: 20 × 3
    name     sex   age  
    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
- 1 Whiskers F     10   
- 2 Fluffy   F     8    
- 3 Mittens  F     5    
- 4 Socks    F     6    
- 5 Tiger    F     5    
- 6 Smokey   M     10   
- 7 Gizmo    F     3    
- 8 Oreo     F     5    
- 9 Luna     F     7    
-10 Oliver   F     8    
-11 Leo      M     11   
+ 1 Whiskers F     9    
+ 2 Fluffy   F     3    
+ 3 Mittens  M     8    
+ 4 Socks    F     4    
+ 5 Tiger    F     9    
+ 6 Smokey   F     4    
+ 7 Gizmo    M     7    
+ 8 Oreo     M     6    
+ 9 Luna     M     5    
+10 Oliver   F     4    
+11 Leo      F     8    
 12 Milo     M     10   
-13 Charlie  M     5    
-14 Simba    M     5    
+13 Charlie  M     8    
+14 Simba    F     10   
 15 Nala     F     8    
-16 Felix    F     10   
-17 Garfield F     3    
-18 Tigger   F     5    
-19 Chloe    M     10   
-20 Bella    F     3    </code></pre>
+16 Felix    M     4    
+17 Garfield F     5    
+18 Tigger   M     4    
+19 Chloe    M     9    
+20 Bella    M     5    </code></pre>
 </div>
 </div>
 <p>The <code>patterns</code> argument is a named vector defining the regular expression patterns to extract from the <code>cat_id</code> column. Specifically:</p>
@@ -950,12 +950,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
