@@ -447,22 +447,8 @@ pure_table_clean |>
   filter(str_detect(department,"Southampton")) |> 
   rename(title = `Title of the contribution in original language-5`) |> 
   group_by(title, `Open Access status-13`) |> 
-  summarise(department) |> 
-  view()
-```
-
-```
-
-
-```{r}
-pure_table |> 
-  select(1, 6, starts_with("C1_"), starts_with("Affiliations_")) |>
-  view()
-  #flextable() |> 
-  #font(part = "all", fontname = "Consolas") |>
-  #bg(bg = "white", part = "all") |> 
-  #autofit()
-
+  reframe(department) |> 
+  slice(1:10)
 ```
 
 ```{r}
