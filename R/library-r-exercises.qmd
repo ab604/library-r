@@ -8,10 +8,10 @@ format:
       code-fold: true
       code-link: true
       embed-resources: true
-    pdf:
-      toc: true
-      number-sections: true
-      colorlinks: true
+    # pdf:
+    #   toc: true
+    #   number-sections: true
+    #   colorlinks: true
 knitr:
   opts_chunk:
     results: hide
