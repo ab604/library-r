@@ -26,9 +26,11 @@ execute:
 library(tidyverse)
 ```
 
+All these exercises use `dplyr` from the tidyverse, but in addition to reading the book, you may have to Google or ask an AI assistance for help with some of these exercises.
+
 ## Importing and inspecting data
 
-Exercise 1: Import the data contained in csv file to an object called `books` from: <https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv>
+Exercise 1: Import the data contained in csv file to an object called `books` from: <https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-30.csv>
 
 ::: callout-tip
 You can read data directly from paths to on-line datasets with `read_csv()` as you would for locally stored `csv` files.
@@ -38,7 +40,7 @@ You can read data directly from paths to on-line datasets with `read_csv()` as y
 #| label: import-books
 #| message: false
 # Exercise 1: Import the data contained in csv file to an object called `books`
-books <- read_csv("https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-09.csv")
+books <- read_csv("https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-30.csv")
 ```
 
 Exercise 2: How many books (rows) and how many variables are there?
@@ -46,7 +48,7 @@ Exercise 2: How many books (rows) and how many variables are there?
 ```{r}
 #| label: glimpse-books
 # Exercise 2: How many books (rows) and how many variables are there?
-# 95 books with 6 colummns
+# 90 books with 6 colummns
 glimpse(books)
 ```
 
@@ -55,7 +57,7 @@ Exercise 3: How many different genres and types are there?
 ```{r}
 #| label: books-genres
 # Exercise 3: How many different genres and types are there?
-# Eight genres
+# 7 genres
 books |> 
   distinct(genre)
 # 2 types
@@ -193,7 +195,8 @@ books |>
 
 Exercise 1:
 
-``` r
+```{r}
+#| label: combined-01
 # Exercise 1: Filter fiction books, select the title and pages columns, and create a new column "pages_per_year"
 books |>
   filter(type == "Fiction") |>
@@ -203,7 +206,8 @@ books |>
 
 Exercise 2:
 
-``` r
+```{r}
+#| label: combined-02
 # Exercise 2: Filter books with more than 500 pages, select the title, genre, and publisher columns, and create a new column "title_length"
 books |>
   filter(pages > 500) |>
@@ -213,7 +217,8 @@ books |>
 
 Exercise 3:
 
-``` r
+```{r}
+#| label: combined-03
 # Exercise 3: Filter non-fiction books published after 2000, select the title, pages, and year columns, and create new columns "decade" and "pages_category"
 books |>
   filter(type == "Non-fiction", year > 2000) |>
@@ -228,6 +233,7 @@ books |>
   )
 ```
 
+::: {.callout-note title="Combined verb exercises explanations" collapse="true"}
 Explanations:
 
 1.  Exercise 1 combines `filter()`, `select()`, and `mutate()` functions. The user needs to filter fiction books, select the "title", "pages", and "year" columns, and create a new column called "pages_per_year" by dividing the number of pages by the difference between the current year (2023) and the publication year.
@@ -237,12 +243,15 @@ Explanations:
 3.  Exercise 3 requires the user to filter non-fiction books published after 2000, select the "title", "pages", and "year" columns, and create two new columns: "decade" (the decade of publication using the `floor()` function and concatenating "s" to the result) and "pages_category" (categorizing books as "Short", "Medium", or "Long" based on the number of pages using `case_when()`).
 
 These exercises combine the concepts learned in the previous exercises and test the user's ability to chain multiple functions together using the pipe operator (`|>`). They involve filtering data based on conditions, selecting specific columns, and creating new columns using various functions and conditional logic.
+:::
 
 ## Grouped summaries
 
 Exercise 1:
 
-``` r
+```{r}
+#| label: summarise-01
+#| message: false
 # Exercise 1: Calculate the average number of pages for each book type
 books |>
   group_by(type) |>
@@ -251,7 +260,9 @@ books |>
 
 Exercise 2:
 
-``` r
+```{r}
+#| label: summarise-02
+#| message: false
 # Exercise 2: Find the longest book title for each genre and publisher combination
 books |>
   select(title, genre, publisher) |>
@@ -262,7 +273,9 @@ books |>
 
 Exercise 3:
 
-``` r
+```{r}
+#| label: summarise-03
+#| message: false
 # Exercise 3: Calculate the total number of pages and the count of books for each genre, considering only fiction books published after 1990
 books |>
   filter(type == "Fiction", year > 1990) |>
@@ -273,6 +286,7 @@ books |>
   )
 ```
 
+::: {.callout-note title="Grouped summaries exercises explanations" collapse="true"}
 Explanations:
 
 1.  Exercise 1 demonstrates the basic usage of `group_by()` and `summarise()`. The user needs to group the books by the "type" column and calculate the average number of pages for each book type using the `mean()` function within `summarise()`.
@@ -281,4 +295,5 @@ Explanations:
 
 3.  Exercise 3 involves filtering, grouping, and summarizing data. The user needs to filter fiction books published after 1990, group the filtered data by the "genre" column, and calculate the total number of pages using `sum(pages)` and the count of books using `n()` for each genre within the `summarise()` function.
 
-These exercises test the user's understanding of grouping data using `group_by()`, summarizing data using `summarise()`, and combining these functions with other data manipulation functions like `filter()`, `select()`, and `mutate()`. They involve grouping data based on specific columns, calculating aggregate measures, and applying filters and transformations to the data before grouping and summarizing.
+These exercises test the user's understanding of grouping data using `group_by()`, summarizing data using `summarise()`, and combining these functions with other data manipulation functions like `filter()`, `select()`, and `mutate()`. They involve grouping data based on specific columns, calculating aggregate measures, and applying filters and transformations to the data before grouping and summarising.
+:::
