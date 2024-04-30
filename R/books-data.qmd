@@ -1,0 +1,27 @@
+---
+title: "Books data"
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+books <- read_csv("../data/books-2024-04-09.csv")
+```
+
+```{r}
+books |> 
+  filter(genre != "Cooking") |>  #distinct(genre)
+  write_csv("../data/books-2024-04-30.csv") # 90 books, 7 genres
+```
+
+```{r}
+books_more <- read_csv("../data/books-2024-04-10.csv")
+
+books_more |> 
+  filter(genre != "Cooking") |> # 86 books, 7 genres 
+  write_csv("../data/books-02-2024-04-30.csv")
+  #view() |> 
+  #distinct(genre)
+```
