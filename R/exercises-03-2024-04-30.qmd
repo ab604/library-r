@@ -1,0 +1,62 @@
+---
+title: "R for Librarians Week 3 Warm-up Exercises"
+author: "Alistair Bailey"
+date: last-modified
+date-format: "[Last Updated on] YYYY-MM-DD"
+format: 
+    html:
+      code-fold: true
+      code-link: true
+    pdf:
+      toc: true
+      number-sections: true
+      colorlinks: true
+knitr:
+  opts_chunk:
+    results: hide
+execute: 
+  eval: true
+  cache: true
+---
+
+```{r}
+#| label: set-up
+#| message: false
+#| echo: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Warm-up
+
+1.  Create a Quarto markdown project called `r-week-03` and edit the default document it opens to use for our work today and save it.
+
+2.  Create a code chunk in the editor pane to load the `tidyverse` and `palmerpenguins` packages. Label the chunk `set-up`.
+
+```{r}
+#| label: set-up-show
+#| eval: false
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+3. Create a code chunk and pipe the `penguins` object to the function `glimpse()` and execute the code.
+
+```{r}
+#| label: glimpse
+#| eval: false
+penguins |> 
+  glimpse()
+```
+
+
+4. Write and run some code that filters the `penguins` data for flipper less than to 180 mm. 
+
+```{r}
+#| label: filter-bill
+#| eval: false
+penguins |> 
+  filter(flipper_length_mm < 180)
+```
+
