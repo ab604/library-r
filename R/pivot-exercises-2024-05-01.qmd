@@ -1,0 +1,74 @@
+---
+title: "R for Librarians `dplyr` Exercises"
+author: "Alistair Bailey"
+date: last-modified
+date-format: "[Last Updated on] YYYY-MM-DD"
+format: 
+    html:
+      code-fold: true
+      code-link: true
+      embed-resources: true
+    # pdf:
+    #   toc: true
+    #   number-sections: true
+    #   colorlinks: true
+knitr:
+  opts_chunk:
+    results: hide
+execute: 
+  eval: true
+  cache: true
+---
+
+Use the `tidyr` data: https://tidyr.tidyverse.org/reference/index.html#data
+
+```{r}
+#| label: set-up
+#| message: false
+library(tidyverse)
+```
+
+```{r}
+#| label: relig-income
+#| message: false
+relig_income <- relig_income
+
+relig_income
+```
+
+
+### Exercise 1: Pivot Longer
+
+```{r}
+relig_income |> 
+  pivot_longer(
+    cols = -religion, 
+    names_to = "income", 
+    values_to = "count"
+  )
+```
+
+Your turn! Use the `pivot_longer()` function to transform the `penguins` dataset from wide to long format. Then, try to reconstruct the original dataset from the long format.
+
+### Exercise 2: Pivot Wide to Long
+
+```{r}
+penguins |>
+  pivot_longer(-species, names_to = "trait", values_to = "value") |>
+  pivot_wider(id_cols = species, names_from = "trait", values_from = "value") |>
+  head()
+```
+
+In this exercise, you'll use the `pivot_longer()` and `pivot_wider()` functions to transform the `penguins` dataset from long to wide format to long to wide format. Can you figure out how to get back to the original long format from the wide format?
+
+### Exercise 3: Summarise and Pivot
+
+```{r}
+penguins |>
+  group_by(species) |>
+  summarise(avg_bill_length_mm = mean(culmen_length_mm)) |>
+  pivot_wider(names_from = species, values_from = avg_bill_length_mm) |>
+  head()
+```
+
+In this exercise, you'll create a pivot table using the `group_by()` and `summarise()` functions. Then, use the `pivot_wider()` function to transform the data from long to wide format. Finally, reflect on how the resulting table could be useful in your analysis.
