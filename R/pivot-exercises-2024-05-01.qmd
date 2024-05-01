@@ -20,7 +20,8 @@ execute:
   cache: true
 ---
 
-Use the `tidyr` data: https://tidyr.tidyverse.org/reference/index.html#data
+Use the `tidyr` data: https://tidyr.tidyverse.org/reference/index.html#data and
+https://nycflights13.tidyverse.org/ data
 
 ```{r}
 #| label: set-up
