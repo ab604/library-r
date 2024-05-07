@@ -4,13 +4,16 @@
 #| label: dw2-set-up
 #| echo: false
 #| message: false
+set.seed(1792) # For reproducibility
 library(tidyverse)
 library(palmerpenguins)
 ```
 
 ## Joins {#sec-joins}
 
-[R4DS joins](https://r4ds.hadley.nz/joins) gives some detailed examples of joining tables, but here we'll look at some simpler examples to try build our mental model.
+We often want to join tables together based upon a variable or variables common to each table, **called a key or keys**, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (@sec-scopus-data, @sec-web-of-science-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.
+
+[R4DS joins](https://r4ds.hadley.nz/joins) gives some detailed examples of joining tables, but here we'll look at some simpler examples to try build our mental model about how to join tables.
 
 There are two types of join we often encounter:
 
@@ -35,37 +38,40 @@ Filtering joins:
 
 To demonstrate a mutating join using the `penguins` data, I first use `mutate` to create a unique identifier variable for each penguin from the row number called `penguin_id`, and assign this to a new dataframe `numbered_penguins`.
 
-Then I use `numbered_penguins` to create two new dataframes using `select`:
+Then I use `numbered_penguins` to create two new dataframes using `select` (@lst-split-penguins) :
 
 -   `penguins_physical` is a dataframe containing physical characteristics of penguins (e.g., bill length, flipper length, body mass).
 -   `penguins_info` is a dataframe containing other information about penguins (e.g., species, island, year, sex).
 
 ```{r}
-#| label: split-penguins
+#| lst-label: lst-split-penguins
+#| lst-cap: Create unique id for each penguin and split the penguins data into two tables, one with physical measurements, the other with the remaining variables.
 # Create unique id for each penguin
 numbered_penguins <- penguins |> 
   mutate(penguin_id = row_number())
 
 # Split the dataset into two tables
 penguins_physical <- numbered_penguins |>
-  select(penguin_id,species, island, bill_length_mm, 
+  select(penguin_id, bill_length_mm, 
          bill_depth_mm, flipper_length_mm, body_mass_g)
 
 penguins_info <- numbered_penguins |>
-  select(penguin_id,species, island, year, sex)
+  select(penguin_id, species, island, year, sex)
 ```
 
 The common key that we can use to join these tables back together is the `penguin_id` variable. The mutation part is the creation of new variables when two tables are joined to create a single table.
 
 Here we'll use the `left_join()` function to combine the two dataframes `penguins_physical` and `penguins_info` based on the `penguin_number` column, which is common to both dataframes.
 
-We assign the result to a new dataframe, `penguins_joined`, which contains all the columns from `penguins_physical` and the matching columns from `penguins_info`.
+We assign the result to a new dataframe, `penguins_joined`, which contains all the columns from `penguins_physical` keyed to `penguin_id` from `penguins_info`.
 
 The `left_join` function returns all records from the left dataframe (`penguins_physical`) and the matching records from the right dataframe (`penguins_info`). If there were no matches in the right dataframe, the result will contain null values for the right dataframe's columns.
 
+As we didn't explicitly tell the function which variables to use, we got a message tells us it joined `by = join_by(penguin_id)`.
+
 ```{r}
-#| label: left-join
-# Join the two tables back together as a left join
+#| lst-label: lst-left-join
+#| lst-cap: Join the two penguins back together with a mutating left join
 penguins_joined <- penguins_physical |>
   left_join(penguins_info)
 
@@ -80,23 +86,23 @@ Here we'll do a filtering join, a semi-join.
 First I'll filter the `penguins_info` I created just for the data from the year 2008:
 
 ```{r}
-#| label: penguins-2008
-# Create a dataframe for penguins only for the year 2008
+#| lst-label: lst-penguins-2008
+#| lst-cap: Create a dataframe for penguins only for the year 2008
 penguins_info_filt <- penguins_info |>
   filter(year == 2008)
 ```
 
-Then we do a semi-join between the `penguins_physical` table and the filtered `penguins_info_filt` table.
+Then we do a semi-join between the `penguins_physical` table and the filtered `penguins_info_filt` table. We still use the `penguin_id` as the key.
 
 A semi-join returns only the rows from `penguins_physical` that have a match in `penguins_info_filt`, effectively filtering the physical characteristics of penguins to only include those from 2008. This joins data from 114 rows of the 344 rows in the `penguins_physical`.
 
-As we didn't explicitly tell the function which variables to use, we got a message tells us it joined `by = join_by(penguin_id, species, island)`
+As we didn't explicitly tell the function which variables to use, we got a message tells us it joined `by = join_by(penguin_id)`
 
 I've assigned the resulting table to a new dataframe: `penguins_filtered`.
 
 ```{r}
-#| label: penguins-semi-join
-# Perform a filtering join
+#| lst-label: lst-penguins-semi-join
+#| lst-cap: Perform a filtering semi join that returns only the rows from `penguins_physical` that match the rows in `penguins_info_filt`
 penguins_filtered <- penguins_physical |>
   semi_join(penguins_info_filt)
 
@@ -118,6 +124,8 @@ However using combine function `c()` to create `c("hello", "world")` would creat
 Both single `'` or double `"` are allowed, but for consistent style I'd recommend double, unless your string itself contains multiple `"` as per the [tidyverse style guide](https://style.tidyverse.org/syntax.html#character-vectors).
 :::
 
+Frequently we are dealing with data in the form of character vectors or strings which we need to match or extract, such as the affiliation of an author for a journal article in Scopus data (@sec-scopus-data). `stringr` is a tidyverse package of functions specifically for these tasks, and more generally we use regular expressions to match strings.
+
 ### Regular expressions {#sec-regular-expressions}
 
 A **regular expression** (regex) is a pattern used to match and manipulate strings. It's like a really powerful "find and replace" tool, but has completely unintuitive syntax!
@@ -136,17 +144,13 @@ To escape we use a backslash `\` before the special character such that to treat
 
 ### Getting started with `stringr` {#sec-getting-started-with-stringr}
 
-To explore `stringr` we'll create a couple of character vectors: Two character vectors are defined:
+To explore `stringr` we'll create a couple of character vectors:
 
-1.  `cat_names`: a character vector of 20 strings of cat names
-2.  `ding_words`: a character vector of 20 words, all ending with `ding`.
+1.  `ding_words`: a character vector of 20 words, all ending with `ding` using the `c()` function (@lst-ding-strings).
 
 ```{r}
-#| label: strings
-# Twenty cat names
-cat_names <- c("Whiskers", "Fluffy", "Mittens", "Socks", "Tiger", "Smokey", "Gizmo", "Oreo", "Luna", "Oliver", "Leo", "Milo", "Charlie", "Simba", "Nala", "Felix", "Garfield", "Tigger", "Chloe", "Bella")
-
-# Twenty words ending in "ding"
+#| lst-label: lst-ding-strings
+#| lst-cap: "Create a character vector of twenty words ending in 'ding'"
 ding_words <- c(
   "abounding",
   "astounding",
@@ -171,81 +175,143 @@ ding_words <- c(
 )
 ```
 
-We can start with the `str_view` function from the `stringr` package to search for patterns in the `words` vector. It returns a visual representation of the matches.
-
--   `str_view(words, "ding")`: searches for words containing the substring "ding"
--   `str_view(ding_words, "bou|rr")`: searches for words containing the substrings "bou" or "rr". The vertical bar `|` here is a special regex character that represent the Boolean OR operator.
+2.  `cat_names`: a character vector of 20 strings of cat names using the `c()` function (@lst-cat-strings)
 
 ```{r}
-#| label: str-view-words
-# View the string "ding" 
+#| lst-label: lst-cat-strings
+#| lst-cap: Create a character vector of twenty cat names
+cat_names <-
+  c(
+    "Whiskers",
+    "Fluffy",
+    "Mittens",
+    "Socks",
+    "Tiger",
+    "Smokey",
+    "Gizmo",
+    "Oreo",
+    "Luna",
+    "Oliver",
+    "Leo",
+    "Milo",
+    "Charlie",
+    "Simba",
+    "Nala",
+    "Felix",
+    "Garfield",
+    "Tigger",
+    "Chloe",
+    "Bella"
+  )
+```
+
+#### Pattern Matching and Viewing {#sec-pattern-matching-and-viewing}
+
+`str_view` is a function from the `stringr` package to search for patterns in the `words` vector. It returns a visual representation of the matches.
+
+`str_view(words, "ding")`: searches for words containing the substring "ding" (@lst-str-view-words).
+
+```{r}
+#| lst-label: lst-str-view-words
+#| lst-cap: "View the string 'ding' in `ding_words`"
 str_view(ding_words,"ding")
+```
 
-# View the string "bou" or "rr"
+`str_view(ding_words, "bou|rr")`: searches for words containing the substrings "bou" or "rr". The vertical bar `|` here is a special regex character that represent the Boolean OR operator (@lst-str-view-or).
+
+```{r}
+#| lst-label: lst-str-view-or
+#| lst-cap: "View the string 'bou' or 'rr' in `ding_words`"
 str_view(ding_words,"bou|rr")
-```
-
-Square brackets enable us to pass mulitple characters to match. If we use `[isk]` with `cat_names` it will match any of these three characters `i`, `s` and `k`:
-
-```{r}
-str_view(cat_names,"[isk]")
-```
-
-We can invert the pattern by using the negation symbol `^` at the inside our brackets. Now we match everything that isn't `i`, `s`, or `k`.
-
-```{r}
-str_view(cat_names,"[^isk]")
 ```
 
 #### Pattern Matching and Counting {#sec-pattern-matching-and-counting}
 
-The `str_detect` function is used to identify elements in the `cat_names` vector that contain the pattern "\[isk\]" (i.e., the characters "i", "s", or "k").
+`str_detect` is a function is used to identify elements in the `cat_names` vector that contain the pattern "\[isk\]" (i.e., the characters "i", "s", or "k").
 
--   `str_detect(cat_names, "[isk]")`: returns a logical vector indicating which names contain the pattern
--   `str_count(cat_names, "[isk]")`: counts the number of occurrences of the pattern in each name
+`str_detect(cat_names, "[isk]")`: returns a logical vector (`TRUE` or `FALSE`)indicating which names contain the pattern (@lst-string-detect):
+
+```{r}
+#| lst-label: lst-string-detect
+#| lst-cap: Find whether cat names contain i,s or k is TRUE or FALSE
+str_detect(cat_names,"(isk)") 
+```
+
+`str_count(cat_names, "[isk]")`: counts the number of occurrences of the pattern in each name (@lst-count-patterns):
+
+```{r}
+#| lst-label: lst-count-patterns
+#| lst-cap: Count how many occurrences of i, s or k in each cat name
+str_count(cat_names,"[isk]")
+```
 
 ## String Replacement {#sec-string-replacement}
 
-The `str_replace` and `str_replace_all` functions are used to replace occurrences of the pattern "\[isk\]" in the `cat_names` vector with a hyphen (-).
+Having briefly looked at some of the ways we match strings, we can then replace them using the `str_replace` and `str_replace_all` functions.
 
--   `str_replace(cat_names, "[isk]", "-")`: replaces the first occurrence of the pattern in each name
--   `str_replace_all(cat_names, "[isk]", "-")`: replaces all occurrences of the pattern in each name
+Here we use to replace `str_replace` and `str_replace_all` to match the pattern "\[isk\]" in the `cat_names` vector and replace it with a dash (-):
+
+`str_replace(cat_names, "[isk]", "-")`: replaces the first occurrence of the pattern in each name, that is the first occurrence of either `i`,`s` or `k` (@lst-str-replace):
 
 ```{r}
-str_detect(cat_names,"(isk)") # Find names with i,s or k
-
-str_count(cat_names,"[isk]")
-
+#| lst-label: lst-str-replace
+#| lst-cap: Replace the first occurrence of i, s, or k in each name with a dash 
 str_replace(cat_names,"[isk]","-") 
+```
+
+`str_replace_all(cat_names, "[isk]", "-")`: replaces all occurrences of the pattern in each name, that is all occurances of either `i`,`s` or `k` (@lst-str-replace-all):
+
+```{r}
+#| lst-label: lst-str-replace-all
+#| lst-cap: Replaces all occurances of either i,s or k in each cat name
 str_replace_all(cat_names,"[isk]","-")
 ```
 
-# Creating the `cat_tibble`
+## Creating the `cat_tibble`
 
-The code creates a `cat_tibble` dataframe with a single column `cat_id`. The `str_c` function is used to concatenate strings. We're creating a string that looks like `<name>-sex_age>`, where:
+To demonstrate using `stringr` and regular expressions to match a pattern in order to split a single column variable into two column variables as we will for the bibliometrics data (@sec-separating-the-scopus-affiliations, @sec-separating-the-wos-affiliations) let's make a new cat based table called `cat_tibble`.
+
+The code in @lst-cat-tibble creates `cat_tibble` a tibble dataframe with a single column `cat_id`.
+
+Here we use the `str_c` function to concatenate strings. We're creating a string that looks like `<name>-sex_age>`, e.g. `<Whiskers>-M_5` where:
 
 -   `<` is the literal character
 -   `cat_names` is the vector of cat names
 -   `>` is the literal character
--   `sample(c("-M_","-F_"), ...)` generates a random sex indicator (-M\_ for male or -F\_ for female) for each cat
+-   `sample(c("-M_","-F_"), ...)` generates a random sex indicator (`-M_` for male or `-F_` for female) for each cat
 -   `sample(3:11, ...)` generates a random age (between 3 and 11) for each cat
+-   We pass the arguments `size = length(cat_names), replace = TRUE` to the `sample()` function to indicate we want the same number of values as the length of the `cat_names` vector, which is 20 names long.
 
 ```{r}
+#| lst-label: lst-cat-tibble
+#| lst-cap: Creating the cat tibble
 cat_tibble <- tibble(
   cat_id = str_c("<", cat_names, ">",
                  sample(c("-M_","-F_"),
                         size = length(cat_names),
                       replace = TRUE),
-               sample(3:11, size = length(cat_names),
+               sample(3:15, size = length(cat_names),
                       replace = TRUE))
 )
 ```
 
-# Separating the `cat_id` column into multiple columns
-
-We use the `separate_wider_regex` function from the `tidyr` package to split the `cat_id` column into separate columns based on regular expression patterns.
+Let's inspect the our new table @lst-view-cat-tibble :
 
 ```{r}
+#| lst-label: lst-view-cat-tibble
+#| lst-cap: View the `cat_tibble`
+cat_tibble
+```
+
+# Separating the `cat_id` column into multiple columns
+
+Having created a table with a single variable that combines name, sex and age into a single variable `cat_id` (@lst-view-cat-tibble), it would be much more useful to have these as three separate variables: `name`, `sex`, and `age`.
+
+We can do this using the `separate_wider_regex` function from the `tidyr` package to split the `cat_id` column into separate columns based on regular expression patterns (@lst-wide-cat).
+
+```{r}
+#| lst-label: lst-wide-cat
+#| lst-cap: Separate `cat_tibble` wider by regex.
 cat_tibble |>
   separate_wider_regex(
     cat_id,
@@ -256,100 +322,15 @@ cat_tibble |>
   )
 ```
 
-The `patterns` argument is a named vector defining the regular expression patterns to extract from the `cat_id` column. Specifically:
+The `patterns` argument is a named character vector created with the `c()` function defining the regular expression patterns to match and new variables to created by extracting strings from the `cat_id` column. **We must match the whole pattern, including strings we don't want.**
 
--   `<` matches the literal `<` character
--   `name = "[A-Za-z]+"` extracts one or more alphabetic characters (the cat's name)
--   `">-"` matches the literal `>-` characters
--   `sex = ".","_"` extracts a single character (`.`) followed by an underscore (`_`) to indicate the sex (M or F)
--   `age = "[0-9]+"` extracts one or more digits (the cat's age)
+Specifically:
 
-The resulting dataframe will have separate columns for `name`, `sex`, and `age`, extracted from the original `cat_id` column.
+-   `<` matches the literal `<` character, we don't want this, so we don't name it
+-   `name = "[A-Za-z]+"` extracts one or more alphabetic characters (the cat's name) to a new variable `name`.
+-   `">-"` matches the literal `>-` characters, we don't want this, so we don't name it.
+-   `sex = ".",`extracts the next single character (`.`) to a new variable called `sex`. Here it's `M` or `F` to indicate the sex of the cat.
+-   `"_"` matches the literal underscore character (`_`), we don't want this, so we don't name it.
+-   `age = "[0-9]+"` extracts one or more digits to a new variable called `age`.
 
-```{r}
-#| echo: false
-#| eval: false
-
-cat_dat <- tibble(
-  name = c(
-    "Whiskers", "Mittens", "Fluffy", "Tigger", "Smokey",
-    "Oreo", "Gizmo", "Luna", "Charlie", "Max",
-    "Leo", "Lucy", "Bella", "Simba", "Nala",
-    "Oscar", "Milo", "Kitty", "Felix", "Loki"
-  ),
-  age = sample(1:15, size = 20, replace = TRUE),
-  sex = sample(c("Male", "Female"), size = 20, replace = TRUE),
-  street = sample(
-    c(
-      "Highfield Lane",
-      "Upper Shirley Avenue",
-      "Sherborne Way",
-      "Oxford Street",
-      "Bedford Square"
-    ),
-    size = 20,
-    replace = TRUE
-  ),
-  eye_color = sample(
-    c("Blue", "Green", "Yellow", "Amber"),
-    size = 20,
-    replace = TRUE
-  ),
-  breed = sample(
-    c(
-      "Classic Tabby",
-      "Cornish Rex",
-      "Abyssinian",
-      "Persian",
-      "Bengal",
-      "Russian Blue"
-    ),
-    size = 20,
-    replace = TRUE
-  )
-)
-
-
-
-little_dog_names <- c(
-  "Peanut",
-  "Gizmo",
-  "Mochi",
-  "Ziggy",
-  "Peppa",
-  "Taco",
-  "Biscuit",
-  "Pixie",
-  "Noodle",
-  "Jellybean"
-)
-
-dog_tibble <- tibble(
-  dog_id = str_c("[", little_dog_names, "]",
-                 sample(c(" M "," F "), 
-                        size = length(little_dog_names), 
-                      replace = TRUE),  
-               sample(3:11, size = length(little_dog_names), 
-                      replace = TRUE)))
-
-dog_tibble
-
-dogs <- dog_tibble |> 
-  separate_wider_regex(
-    dog_id,
-    patterns = c("\\[", 
-      name = "[A-Za-z]+", "\\] ", 
-      sex = "."," ",
-      age = "[0-9]+")
-  )
-
-# Extra credit count the number of dogs by age
-dogs |> 
-  group_by(age) |> 
-  summarise(n_dogs = n()) |> 
-  arrange(age)
-
-# Then filter the dogs with the most common 8.
-dogs |> 
-  filter(age == 8)
-```
+With these tools we can now tackle the bibliometrics data.

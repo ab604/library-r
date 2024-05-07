@@ -204,8 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul>
 </li>
   <li><a href="#sec-string-replacement" id="toc-sec-string-replacement" class="nav-link" data-scroll-target="#sec-string-replacement"><span class="header-section-number">5.5</span> String Replacement</a></li>
-  <li><a href="#creating-the-cat_tibble" id="toc-creating-the-cat_tibble" class="nav-link" data-scroll-target="#creating-the-cat_tibble"><span class="header-section-number">6</span> Creating the <code>cat_tibble</code></a></li>
-  <li><a href="#separating-the-cat_id-column-into-multiple-columns" id="toc-separating-the-cat_id-column-into-multiple-columns" class="nav-link" data-scroll-target="#separating-the-cat_id-column-into-multiple-columns"><span class="header-section-number">7</span> Separating the <code>cat_id</code> column into multiple columns</a></li>
+  <li><a href="#creating-the-cat_tibble" id="toc-creating-the-cat_tibble" class="nav-link" data-scroll-target="#creating-the-cat_tibble"><span class="header-section-number">5.6</span> Creating the <code>cat_tibble</code></a></li>
+  <li><a href="#separating-the-cat_id-column-into-multiple-columns" id="toc-separating-the-cat_id-column-into-multiple-columns" class="nav-link" data-scroll-target="#separating-the-cat_id-column-into-multiple-columns"><span class="header-section-number">6</span> Separating the <code>cat_id</code> column into multiple columns</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ab604/library-r/edit/main/data-wrangling-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -226,7 +226,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><section id="sec-joins" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-joins">
 <span class="header-section-number">5.1</span> Joins</h2>
-<p><a href="https://r4ds.hadley.nz/joins">R4DS joins</a> gives some detailed examples of joining tables, but here we’ll look at some simpler examples to try build our mental model.</p>
+<p>We often want to join tables together based upon a variable or variables common to each table, <strong>called a key or keys</strong>, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (<a href="wrangling-bibliometrics-data.html#sec-scopus-data" class="quarto-xref"><span>Section 6.2.2</span></a>, <a href="wrangling-bibliometrics-data.html#sec-web-of-science-data" class="quarto-xref"><span>Section 6.2.3</span></a>) in order to further transform the data or answer a question that cannot easily be answered from each table alone.</p>
+<p><a href="https://r4ds.hadley.nz/joins">R4DS joins</a> gives some detailed examples of joining tables, but here we’ll look at some simpler examples to try build our mental model about how to join tables.</p>
 <p>There are two types of join we often encounter:</p>
 <ol type="1">
 <li>Joins that create new variables in one table by matching observations in another: these are <em>mutating</em> joins as per tidyverse verb <code>mutate</code> <a href="data-wrangling-1.html#sec-creating-new-columns-with-mutate" class="quarto-xref"><span>Section 4.4.4</span></a>.</li>
@@ -259,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol></section><section id="sec-mutating-joins" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-mutating-joins">
 <span class="header-section-number">5.2</span> Mutating joins</h2>
 <p>To demonstrate a mutating join using the <code>penguins</code> data, I first use <code>mutate</code> to create a unique identifier variable for each penguin from the row number called <code>penguin_id</code>, and assign this to a new dataframe <code>numbered_penguins</code>.</p>
-<p>Then I use <code>numbered_penguins</code> to create two new dataframes using <code>select</code>:</p>
+<p>Then I use <code>numbered_penguins</code> to create two new dataframes using <code>select</code> (<a href="#lst-split-penguins" class="quarto-xref">Listing&nbsp;<span>5.1</span></a>) :</p>
 <ul>
 <li>
 <code>penguins_physical</code> is a dataframe containing physical characteristics of penguins (e.g., bill length, flipper length, body mass).</li>
@@ -267,41 +268,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <code>penguins_info</code> is a dataframe containing other information about penguins (e.g., species, island, year, sex).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create unique id for each penguin</span></span>
+<div id="lst-split-penguins" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-split-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.1: Create unique id for each penguin and split the penguins data into two tables, one with physical measurements, the other with the remaining variables.
+</figcaption><div aria-describedby="lst-split-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-split-penguins"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create unique id for each penguin</span></span>
 <span><span class="va">numbered_penguins</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>penguin_id <span class="op">=</span> <span class="fu">row_number</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Split the dataset into two tables</span></span>
 <span><span class="va">penguins_physical</span> <span class="op">&lt;-</span> <span class="va">numbered_penguins</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_id</span>,<span class="va">species</span>, <span class="va">island</span>, <span class="va">bill_length_mm</span>, </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_id</span>, <span class="va">bill_length_mm</span>, </span>
 <span>         <span class="va">bill_depth_mm</span>, <span class="va">flipper_length_mm</span>, <span class="va">body_mass_g</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">penguins_info</span> <span class="op">&lt;-</span> <span class="va">numbered_penguins</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_id</span>,<span class="va">species</span>, <span class="va">island</span>, <span class="va">year</span>, <span class="va">sex</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">penguin_id</span>, <span class="va">species</span>, <span class="va">island</span>, <span class="va">year</span>, <span class="va">sex</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 </div>
 <p>The common key that we can use to join these tables back together is the <code>penguin_id</code> variable. The mutation part is the creation of new variables when two tables are joined to create a single table.</p>
 <p>Here we’ll use the <code>left_join()</code> function to combine the two dataframes <code>penguins_physical</code> and <code>penguins_info</code> based on the <code>penguin_number</code> column, which is common to both dataframes.</p>
-<p>We assign the result to a new dataframe, <code>penguins_joined</code>, which contains all the columns from <code>penguins_physical</code> and the matching columns from <code>penguins_info</code>.</p>
+<p>We assign the result to a new dataframe, <code>penguins_joined</code>, which contains all the columns from <code>penguins_physical</code> keyed to <code>penguin_id</code> from <code>penguins_info</code>.</p>
 <p>The <code>left_join</code> function returns all records from the left dataframe (<code>penguins_physical</code>) and the matching records from the right dataframe (<code>penguins_info</code>). If there were no matches in the right dataframe, the result will contain null values for the right dataframe’s columns.</p>
+<p>As we didn’t explicitly tell the function which variables to use, we got a message tells us it joined <code>by = join_by(penguin_id)</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Join the two tables back together as a left join</span></span>
-<span><span class="va">penguins_joined</span> <span class="op">&lt;-</span> <span class="va">penguins_physical</span> <span class="op">|&gt;</span></span>
+<div id="lst-left-join" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-left-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.2: Join the two penguins back together with a mutating left join
+</figcaption><div aria-describedby="lst-left-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-left-join"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_joined</span> <span class="op">&lt;-</span> <span class="va">penguins_physical</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">penguins_info</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(penguin_id, species, island)`</code></pre>
 </div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the joined dataset</span></span>
+</figure>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(penguin_id)`</code></pre>
+</div>
+<div id="lst-left-join" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-left-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.3: Join the two penguins back together with a mutating left join
+</figcaption><div aria-describedby="lst-left-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-left-join"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the joined dataset</span></span>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">penguins_joined</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 9
 $ penguin_id        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
-$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
-$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
 $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
 $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
 $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
 $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
 $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
 $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…</code></pre>
 </div>
@@ -311,29 +333,46 @@ $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, 
 <p>Here we’ll do a filtering join, a semi-join.</p>
 <p>First I’ll filter the <code>penguins_info</code> I created just for the data from the year 2008:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a dataframe for penguins only for the year 2008</span></span>
-<span><span class="va">penguins_info_filt</span> <span class="op">&lt;-</span> <span class="va">penguins_info</span> <span class="op">|&gt;</span></span>
+<div id="lst-penguins-2008" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-penguins-2008-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.4: Create a dataframe for penguins only for the year 2008
+</figcaption><div aria-describedby="lst-penguins-2008-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-penguins-2008"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_info_filt</span> <span class="op">&lt;-</span> <span class="va">penguins_info</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2008</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then we do a semi-join between the <code>penguins_physical</code> table and the filtered <code>penguins_info_filt</code> table.</p>
+</figure>
+</div>
+</div>
+<p>Then we do a semi-join between the <code>penguins_physical</code> table and the filtered <code>penguins_info_filt</code> table. We still use the <code>penguin_id</code> as the key.</p>
 <p>A semi-join returns only the rows from <code>penguins_physical</code> that have a match in <code>penguins_info_filt</code>, effectively filtering the physical characteristics of penguins to only include those from 2008. This joins data from 114 rows of the 344 rows in the <code>penguins_physical</code>.</p>
-<p>As we didn’t explicitly tell the function which variables to use, we got a message tells us it joined <code>by = join_by(penguin_id, species, island)</code></p>
+<p>As we didn’t explicitly tell the function which variables to use, we got a message tells us it joined <code>by = join_by(penguin_id)</code></p>
 <p>I’ve assigned the resulting table to a new dataframe: <code>penguins_filtered</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perform a filtering join</span></span>
-<span><span class="va">penguins_filtered</span> <span class="op">&lt;-</span> <span class="va">penguins_physical</span> <span class="op">|&gt;</span></span>
+<div id="lst-penguins-semi-join" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-penguins-semi-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.5: Perform a filtering semi join that returns only the rows from <code>penguins_physical</code> that match the rows in <code>penguins_info_filt</code>
+</figcaption><div aria-describedby="lst-penguins-semi-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-penguins-semi-join"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_filtered</span> <span class="op">&lt;-</span> <span class="va">penguins_physical</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">semi_join</span><span class="op">(</span><span class="va">penguins_info_filt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(penguin_id, species, island)`</code></pre>
 </div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the filtered dataset</span></span>
+</figure>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(penguin_id)`</code></pre>
+</div>
+<div id="lst-penguins-semi-join" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-penguins-semi-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.6: Perform a filtering semi join that returns only the rows from <code>penguins_physical</code> that match the rows in <code>penguins_info_filt</code>
+</figcaption><div aria-describedby="lst-penguins-semi-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-penguins-semi-join"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Print the filtered dataset</span></span>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">penguins_filtered</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 114
-Columns: 7
+Columns: 5
 $ penguin_id        &lt;int&gt; 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, …
-$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
-$ island            &lt;fct&gt; Biscoe, Biscoe, Biscoe, Biscoe, Biscoe, Biscoe, Bisc…
 $ bill_length_mm    &lt;dbl&gt; 39.6, 40.1, 35.0, 42.0, 34.5, 41.4, 39.0, 40.6, 36.5…
 $ bill_depth_mm     &lt;dbl&gt; 17.7, 18.9, 17.9, 19.5, 18.1, 18.6, 17.5, 18.8, 16.6…
 $ flipper_length_mm &lt;int&gt; 186, 188, 190, 200, 187, 191, 186, 193, 181, 194, 18…
@@ -359,6 +398,7 @@ Single or double quotes?
 <p>Both single <code>'</code> or double <code>"</code> are allowed, but for consistent style I’d recommend double, unless your string itself contains multiple <code>"</code> as per the <a href="https://style.tidyverse.org/syntax.html#character-vectors">tidyverse style guide</a>.</p>
 </div>
 </div>
+<p>Frequently we are dealing with data in the form of character vectors or strings which we need to match or extract, such as the affiliation of an author for a journal article in Scopus data (<a href="wrangling-bibliometrics-data.html#sec-scopus-data" class="quarto-xref"><span>Section 6.2.2</span></a>). <code>stringr</code> is a tidyverse package of functions specifically for these tasks, and more generally we use regular expressions to match strings.</p>
 <section id="sec-regular-expressions" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="sec-regular-expressions">
 <span class="header-section-number">5.4.1</span> Regular expressions</h3>
 <p>A <strong>regular expression</strong> (regex) is a pattern used to match and manipulate strings. It’s like a really powerful “find and replace” tool, but has completely unintuitive syntax!</p>
@@ -382,19 +422,17 @@ Escaping regex special characters with backslash
 </section><section id="sec-getting-started-with-stringr" class="level3" data-number="5.4.2"><h3 data-number="5.4.2" class="anchored" data-anchor-id="sec-getting-started-with-stringr">
 <span class="header-section-number">5.4.2</span> Getting started with <code>stringr</code>
 </h3>
-<p>To explore <code>stringr</code> we’ll create a couple of character vectors: Two character vectors are defined:</p>
+<p>To explore <code>stringr</code> we’ll create a couple of character vectors:</p>
 <ol type="1">
 <li>
-<code>cat_names</code>: a character vector of 20 strings of cat names</li>
-<li>
-<code>ding_words</code>: a character vector of 20 words, all ending with <code>ding</code>.</li>
+<code>ding_words</code>: a character vector of 20 words, all ending with <code>ding</code> using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function (<a href="#lst-ding-strings" class="quarto-xref">Listing&nbsp;<span>5.7</span></a>).</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Twenty cat names</span></span>
-<span><span class="va">cat_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Whiskers"</span>, <span class="st">"Fluffy"</span>, <span class="st">"Mittens"</span>, <span class="st">"Socks"</span>, <span class="st">"Tiger"</span>, <span class="st">"Smokey"</span>, <span class="st">"Gizmo"</span>, <span class="st">"Oreo"</span>, <span class="st">"Luna"</span>, <span class="st">"Oliver"</span>, <span class="st">"Leo"</span>, <span class="st">"Milo"</span>, <span class="st">"Charlie"</span>, <span class="st">"Simba"</span>, <span class="st">"Nala"</span>, <span class="st">"Felix"</span>, <span class="st">"Garfield"</span>, <span class="st">"Tigger"</span>, <span class="st">"Chloe"</span>, <span class="st">"Bella"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Twenty words ending in "ding"</span></span>
-<span><span class="va">ding_words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<div id="lst-ding-strings" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-ding-strings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.7: Create a character vector of twenty words ending in ‘ding’
+</figcaption><div aria-describedby="lst-ding-strings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-ding-strings"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ding_words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"abounding"</span>,</span>
 <span>  <span class="st">"astounding"</span>,</span>
 <span>  <span class="st">"confounding"</span>,</span>
@@ -417,16 +455,58 @@ Escaping regex special characters with backslash
 <span>  <span class="st">"floundering"</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can start with the <code>str_view</code> function from the <code>stringr</code> package to search for patterns in the <code>words</code> vector. It returns a visual representation of the matches.</p>
-<ul>
+</figure>
+</div>
+</div>
+<ol start="2" type="1">
 <li>
-<code>str_view(words, "ding")</code>: searches for words containing the substring “ding”</li>
-<li>
-<code>str_view(ding_words, "bou|rr")</code>: searches for words containing the substrings “bou” or “rr”. The vertical bar <code>|</code> here is a special regex character that represent the Boolean OR operator.</li>
-</ul>
+<code>cat_names</code>: a character vector of 20 strings of cat names using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function (<a href="#lst-cat-strings" class="quarto-xref">Listing&nbsp;<span>5.8</span></a>)</li>
+</ol>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># View the string "ding" </span></span>
-<span><span class="fu">str_view</span><span class="op">(</span><span class="va">ding_words</span>,<span class="st">"ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="lst-cat-strings" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-cat-strings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.8: Create a character vector of twenty cat names
+</figcaption><div aria-describedby="lst-cat-strings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-cat-strings"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_names</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Whiskers"</span>,</span>
+<span>    <span class="st">"Fluffy"</span>,</span>
+<span>    <span class="st">"Mittens"</span>,</span>
+<span>    <span class="st">"Socks"</span>,</span>
+<span>    <span class="st">"Tiger"</span>,</span>
+<span>    <span class="st">"Smokey"</span>,</span>
+<span>    <span class="st">"Gizmo"</span>,</span>
+<span>    <span class="st">"Oreo"</span>,</span>
+<span>    <span class="st">"Luna"</span>,</span>
+<span>    <span class="st">"Oliver"</span>,</span>
+<span>    <span class="st">"Leo"</span>,</span>
+<span>    <span class="st">"Milo"</span>,</span>
+<span>    <span class="st">"Charlie"</span>,</span>
+<span>    <span class="st">"Simba"</span>,</span>
+<span>    <span class="st">"Nala"</span>,</span>
+<span>    <span class="st">"Felix"</span>,</span>
+<span>    <span class="st">"Garfield"</span>,</span>
+<span>    <span class="st">"Tigger"</span>,</span>
+<span>    <span class="st">"Chloe"</span>,</span>
+<span>    <span class="st">"Bella"</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+</div>
+<section id="sec-pattern-matching-and-viewing" class="level4" data-number="5.4.2.1"><h4 data-number="5.4.2.1" class="anchored" data-anchor-id="sec-pattern-matching-and-viewing">
+<span class="header-section-number">5.4.2.1</span> Pattern Matching and Viewing</h4>
+<p><code>str_view</code> is a function from the <code>stringr</code> package to search for patterns in the <code>words</code> vector. It returns a visual representation of the matches.</p>
+<p><code>str_view(words, "ding")</code>: searches for words containing the substring “ding” (<a href="#lst-str-view-words" class="quarto-xref">Listing&nbsp;<span>5.9</span></a>).</p>
+<div class="cell">
+<div id="lst-str-view-words" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-str-view-words-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.9: View the string ‘ding’ in <code>ding_words</code>
+</figcaption><div aria-describedby="lst-str-view-words-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-str-view-words"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">ding_words</span>,<span class="st">"ding"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] │ aboun&lt;ding&gt;
  [2] │ astoun&lt;ding&gt;
@@ -448,8 +528,17 @@ Escaping regex special characters with backslash
 [18] │ reboun&lt;ding&gt;
 [19] │ unboun&lt;ding&gt;</code></pre>
 </div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># View the string "bou" or "rr"</span></span>
-<span><span class="fu">str_view</span><span class="op">(</span><span class="va">ding_words</span>,<span class="st">"bou|rr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>str_view(ding_words, "bou|rr")</code>: searches for words containing the substrings “bou” or “rr”. The vertical bar <code>|</code> here is a special regex character that represent the Boolean OR operator (<a href="#lst-str-view-or" class="quarto-xref">Listing&nbsp;<span>5.10</span></a>).</p>
+<div class="cell">
+<div id="lst-str-view-or" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-str-view-or-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.10: View the string ‘bou’ or ‘rr’ in <code>ding_words</code>
+</figcaption><div aria-describedby="lst-str-view-or-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-str-view-or"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">ding_words</span>,<span class="st">"bou|rr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] │ a&lt;bou&gt;nding
  [5] │ su&lt;rr&gt;ounding
@@ -458,86 +547,69 @@ Escaping regex special characters with backslash
 [19] │ un&lt;bou&gt;nding</code></pre>
 </div>
 </div>
-<p>Square brackets enable us to pass mulitple characters to match. If we use <code>[isk]</code> with <code>cat_names</code> it will match any of these three characters <code>i</code>, <code>s</code> and <code>k</code>:</p>
+</section><section id="sec-pattern-matching-and-counting" class="level4" data-number="5.4.2.2"><h4 data-number="5.4.2.2" class="anchored" data-anchor-id="sec-pattern-matching-and-counting">
+<span class="header-section-number">5.4.2.2</span> Pattern Matching and Counting</h4>
+<p><code>str_detect</code> is a function is used to identify elements in the <code>cat_names</code> vector that contain the pattern “[isk]” (i.e., the characters “i”, “s”, or “k”).</p>
+<p><code>str_detect(cat_names, "[isk]")</code>: returns a logical vector (<code>TRUE</code> or <code>FALSE</code>)indicating which names contain the pattern (<a href="#lst-string-detect" class="quarto-xref">Listing&nbsp;<span>5.11</span></a>):</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] │ Wh&lt;i&gt;&lt;s&gt;&lt;k&gt;er&lt;s&gt;
- [3] │ M&lt;i&gt;tten&lt;s&gt;
- [4] │ Soc&lt;k&gt;&lt;s&gt;
- [5] │ T&lt;i&gt;ger
- [6] │ Smo&lt;k&gt;ey
- [7] │ G&lt;i&gt;zmo
-[10] │ Ol&lt;i&gt;ver
-[12] │ M&lt;i&gt;lo
-[13] │ Charl&lt;i&gt;e
-[14] │ S&lt;i&gt;mba
-[16] │ Fel&lt;i&gt;x
-[17] │ Garf&lt;i&gt;eld
-[18] │ T&lt;i&gt;gger</code></pre>
+<div id="lst-string-detect" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-string-detect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.11: Find whether cat names contain i,s or k is TRUE or FALSE
+</figcaption><div aria-describedby="lst-string-detect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-string-detect"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_detect</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"(isk)"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</figure>
 </div>
-<p>We can invert the pattern by using the negation symbol <code>^</code> at the inside our brackets. Now we match everything that isn’t <code>i</code>, <code>s</code>, or <code>k</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_view</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[^isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] │ &lt;W&gt;&lt;h&gt;isk&lt;e&gt;&lt;r&gt;s
- [2] │ &lt;F&gt;&lt;l&gt;&lt;u&gt;&lt;f&gt;&lt;f&gt;&lt;y&gt;
- [3] │ &lt;M&gt;i&lt;t&gt;&lt;t&gt;&lt;e&gt;&lt;n&gt;s
- [4] │ &lt;S&gt;&lt;o&gt;&lt;c&gt;ks
- [5] │ &lt;T&gt;i&lt;g&gt;&lt;e&gt;&lt;r&gt;
- [6] │ &lt;S&gt;&lt;m&gt;&lt;o&gt;k&lt;e&gt;&lt;y&gt;
- [7] │ &lt;G&gt;i&lt;z&gt;&lt;m&gt;&lt;o&gt;
- [8] │ &lt;O&gt;&lt;r&gt;&lt;e&gt;&lt;o&gt;
- [9] │ &lt;L&gt;&lt;u&gt;&lt;n&gt;&lt;a&gt;
-[10] │ &lt;O&gt;&lt;l&gt;i&lt;v&gt;&lt;e&gt;&lt;r&gt;
-[11] │ &lt;L&gt;&lt;e&gt;&lt;o&gt;
-[12] │ &lt;M&gt;i&lt;l&gt;&lt;o&gt;
-[13] │ &lt;C&gt;&lt;h&gt;&lt;a&gt;&lt;r&gt;&lt;l&gt;i&lt;e&gt;
-[14] │ &lt;S&gt;i&lt;m&gt;&lt;b&gt;&lt;a&gt;
-[15] │ &lt;N&gt;&lt;a&gt;&lt;l&gt;&lt;a&gt;
-[16] │ &lt;F&gt;&lt;e&gt;&lt;l&gt;i&lt;x&gt;
-[17] │ &lt;G&gt;&lt;a&gt;&lt;r&gt;&lt;f&gt;i&lt;e&gt;&lt;l&gt;&lt;d&gt;
-[18] │ &lt;T&gt;i&lt;g&gt;&lt;g&gt;&lt;e&gt;&lt;r&gt;
-[19] │ &lt;C&gt;&lt;h&gt;&lt;l&gt;&lt;o&gt;&lt;e&gt;
-[20] │ &lt;B&gt;&lt;e&gt;&lt;l&gt;&lt;l&gt;&lt;a&gt;</code></pre>
-</div>
-</div>
-<section id="sec-pattern-matching-and-counting" class="level4" data-number="5.4.2.1"><h4 data-number="5.4.2.1" class="anchored" data-anchor-id="sec-pattern-matching-and-counting">
-<span class="header-section-number">5.4.2.1</span> Pattern Matching and Counting</h4>
-<p>The <code>str_detect</code> function is used to identify elements in the <code>cat_names</code> vector that contain the pattern “[isk]” (i.e., the characters “i”, “s”, or “k”).</p>
-<ul>
-<li>
-<code>str_detect(cat_names, "[isk]")</code>: returns a logical vector indicating which names contain the pattern</li>
-<li>
-<code>str_count(cat_names, "[isk]")</code>: counts the number of occurrences of the pattern in each name</li>
-</ul></section></section></section><section id="sec-string-replacement" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="sec-string-replacement">
-<span class="header-section-number">5.5</span> String Replacement</h2>
-<p>The <code>str_replace</code> and <code>str_replace_all</code> functions are used to replace occurrences of the pattern “[isk]” in the <code>cat_names</code> vector with a hyphen (-).</p>
-<ul>
-<li>
-<code>str_replace(cat_names, "[isk]", "-")</code>: replaces the first occurrence of the pattern in each name</li>
-<li>
-<code>str_replace_all(cat_names, "[isk]", "-")</code>: replaces all occurrences of the pattern in each name</li>
-</ul>
-<div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_detect</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"(isk)"</span><span class="op">)</span> <span class="co"># Find names with i,s or k</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_count</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>str_count(cat_names, "[isk]")</code>: counts the number of occurrences of the pattern in each name (<a href="#lst-count-patterns" class="quarto-xref">Listing&nbsp;<span>5.12</span></a>):</p>
+<div class="cell">
+<div id="lst-count-patterns" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-count-patterns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.12: Count how many occurrences of i, s or k in each cat name
+</figcaption><div aria-describedby="lst-count-patterns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-count-patterns"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_count</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 4 0 2 2 1 1 1 0 0 1 0 1 1 1 0 1 1 1 0 0</code></pre>
 </div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section></section><section id="sec-string-replacement" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="sec-string-replacement">
+<span class="header-section-number">5.5</span> String Replacement</h2>
+<p>Having briefly looked at some of the ways we match strings, we can then replace them using the <code>str_replace</code> and <code>str_replace_all</code> functions.</p>
+<p>Here we use to replace <code>str_replace</code> and <code>str_replace_all</code> to match the pattern “[isk]” in the <code>cat_names</code> vector and replace it with a dash (-):</p>
+<p><code>str_replace(cat_names, "[isk]", "-")</code>: replaces the first occurrence of the pattern in each name, that is the first occurrence of either <code>i</code>,<code>s</code> or <code>k</code> (<a href="#lst-str-replace" class="quarto-xref">Listing&nbsp;<span>5.13</span></a>):</p>
+<div class="cell">
+<div id="lst-str-replace" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-str-replace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.13: Replace the first occurrence of i, s, or k in each name with a dash
+</figcaption><div aria-describedby="lst-str-replace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-str-replace"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Wh-skers" "Fluffy"   "M-ttens"  "Soc-s"    "T-ger"    "Smo-ey"  
  [7] "G-zmo"    "Oreo"     "Luna"     "Ol-ver"   "Leo"      "M-lo"    
 [13] "Charl-e"  "S-mba"    "Nala"     "Fel-x"    "Garf-eld" "T-gger"  
 [19] "Chloe"    "Bella"   </code></pre>
 </div>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace_all</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>str_replace_all(cat_names, "[isk]", "-")</code>: replaces all occurrences of the pattern in each name, that is all occurances of either <code>i</code>,<code>s</code> or <code>k</code> (<a href="#lst-str-replace-all" class="quarto-xref">Listing&nbsp;<span>5.14</span></a>):</p>
+<div class="cell">
+<div id="lst-str-replace-all" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-str-replace-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.14: Replaces all occurances of either i,s or k in each cat name
+</figcaption><div aria-describedby="lst-str-replace-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-str-replace-all"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">str_replace_all</span><span class="op">(</span><span class="va">cat_names</span>,<span class="st">"[isk]"</span>,<span class="st">"-"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Wh---er-" "Fluffy"   "M-tten-"  "Soc--"    "T-ger"    "Smo-ey"  
  [7] "G-zmo"    "Oreo"     "Luna"     "Ol-ver"   "Leo"      "M-lo"    
@@ -545,10 +617,12 @@ Escaping regex special characters with backslash
 [19] "Chloe"    "Bella"   </code></pre>
 </div>
 </div>
-</section><section id="creating-the-cat_tibble" class="level1" data-number="6"><h1 data-number="6">
-<span class="header-section-number">6</span> Creating the <code>cat_tibble</code>
-</h1>
-<p>The code creates a <code>cat_tibble</code> dataframe with a single column <code>cat_id</code>. The <code>str_c</code> function is used to concatenate strings. We’re creating a string that looks like <code>&lt;name&gt;-sex_age&gt;</code>, where:</p>
+</section><section id="creating-the-cat_tibble" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="creating-the-cat_tibble">
+<span class="header-section-number">5.6</span> Creating the <code>cat_tibble</code>
+</h2>
+<p>To demonstrate using <code>stringr</code> and regular expressions to match a pattern in order to split a single column variable into two column variables as we will for the bibliometrics data (<a href="wrangling-bibliometrics-data.html#sec-separating-the-scopus-affiliations" class="quarto-xref"><span>Section 6.3.2</span></a>, <a href="wrangling-bibliometrics-data.html#sec-separating-the-wos-affiliations" class="quarto-xref"><span>Section 6.3.3</span></a>) let’s make a new cat based table called <code>cat_tibble</code>.</p>
+<p>The code in <a href="#lst-cat-tibble" class="quarto-xref">Listing&nbsp;<span>5.15</span></a> creates <code>cat_tibble</code> a tibble dataframe with a single column <code>cat_id</code>.</p>
+<p>Here we use the <code>str_c</code> function to concatenate strings. We’re creating a string that looks like <code>&lt;name&gt;-sex_age&gt;</code>, e.g.&nbsp;<code>&lt;Whiskers&gt;-M_5</code> where:</p>
 <ul>
 <li>
 <code>&lt;</code> is the literal character</li>
@@ -557,25 +631,74 @@ Escaping regex special characters with backslash
 <li>
 <code>&gt;</code> is the literal character</li>
 <li>
-<code>sample(c("-M_","-F_"), ...)</code> generates a random sex indicator (-M_ for male or -F_ for female) for each cat</li>
+<code>sample(c("-M_","-F_"), ...)</code> generates a random sex indicator (<code>-M_</code> for male or <code>-F_</code> for female) for each cat</li>
 <li>
 <code>sample(3:11, ...)</code> generates a random age (between 3 and 11) for each cat</li>
+<li>We pass the arguments <code>size = length(cat_names), replace = TRUE</code> to the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function to indicate we want the same number of values as the length of the <code>cat_names</code> vector, which is 20 names long.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<div id="lst-cat-tibble" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-cat-tibble-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.15: Creating the cat tibble
+</figcaption><div aria-describedby="lst-cat-tibble-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-cat-tibble"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
 <span>  cat_id <span class="op">=</span> <span class="fu">str_c</span><span class="op">(</span><span class="st">"&lt;"</span>, <span class="va">cat_names</span>, <span class="st">"&gt;"</span>,</span>
 <span>                 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"-M_"</span>,<span class="st">"-F_"</span><span class="op">)</span>,</span>
 <span>                        size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>,</span>
 <span>                      replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>               <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">11</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>,</span>
+<span>               <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">15</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span>,</span>
 <span>                      replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="separating-the-cat_id-column-into-multiple-columns" class="level1" data-number="7"><h1 data-number="7">
-<span class="header-section-number">7</span> Separating the <code>cat_id</code> column into multiple columns</h1>
-<p>We use the <code>separate_wider_regex</code> function from the <code>tidyr</code> package to split the <code>cat_id</code> column into separate columns based on regular expression patterns.</p>
+</figure>
+</div>
+</div>
+<p>Let’s inspect the our new table <a href="#lst-view-cat-tibble" class="quarto-xref">Listing&nbsp;<span>5.16</span></a> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span></span>
+<div id="lst-view-cat-tibble" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-view-cat-tibble-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;5.16: View the <code>cat_tibble</code>
+</figcaption><div aria-describedby="lst-view-cat-tibble-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-view-cat-tibble"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 1
+   cat_id        
+   &lt;chr&gt;         
+ 1 &lt;Whiskers&gt;-F_7
+ 2 &lt;Fluffy&gt;-M_15 
+ 3 &lt;Mittens&gt;-M_9 
+ 4 &lt;Socks&gt;-F_11  
+ 5 &lt;Tiger&gt;-M_5   
+ 6 &lt;Smokey&gt;-F_13 
+ 7 &lt;Gizmo&gt;-F_13  
+ 8 &lt;Oreo&gt;-M_10   
+ 9 &lt;Luna&gt;-M_7    
+10 &lt;Oliver&gt;-F_12 
+11 &lt;Leo&gt;-M_3     
+12 &lt;Milo&gt;-M_7    
+13 &lt;Charlie&gt;-M_10
+14 &lt;Simba&gt;-F_9   
+15 &lt;Nala&gt;-F_5    
+16 &lt;Felix&gt;-F_6   
+17 &lt;Garfield&gt;-F_8
+18 &lt;Tigger&gt;-F_10 
+19 &lt;Chloe&gt;-F_3   
+20 &lt;Bella&gt;-F_13  </code></pre>
+</div>
+</div>
+</section><section id="separating-the-cat_id-column-into-multiple-columns" class="level1" data-number="6"><h1 data-number="6">
+<span class="header-section-number">6</span> Separating the <code>cat_id</code> column into multiple columns</h1>
+<p>Having created a table with a single variable that combines name, sex and age into a single variable <code>cat_id</code> (<a href="#lst-view-cat-tibble" class="quarto-xref">Listing&nbsp;<span>5.16</span></a>), it would be much more useful to have these as three separate variables: <code>name</code>, <code>sex</code>, and <code>age</code>.</p>
+<p>We can do this using the <code>separate_wider_regex</code> function from the <code>tidyr</code> package to split the <code>cat_id</code> column into separate columns based on regular expression patterns (<a href="#lst-wide-cat" class="quarto-xref">Listing&nbsp;<span>6.1</span></a>).</p>
+<div class="cell">
+<div id="lst-wide-cat" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-wide-cat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;6.1: Separate <code>cat_tibble</code> wider by regex.
+</figcaption><div aria-describedby="lst-wide-cat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-wide-cat"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cat_tibble</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">separate_wider_regex</span><span class="op">(</span></span>
 <span>    <span class="va">cat_id</span>,</span>
 <span>    patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;"</span>,</span>
@@ -583,46 +706,52 @@ Escaping regex special characters with backslash
 <span>      sex <span class="op">=</span> <span class="st">"."</span>,<span class="st">"_"</span>,</span>
 <span>      age <span class="op">=</span> <span class="st">"[0-9]+"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 3
    name     sex   age  
    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
- 1 Whiskers F     3    
- 2 Fluffy   M     8    
- 3 Mittens  M     8    
- 4 Socks    M     6    
- 5 Tiger    F     5    
- 6 Smokey   F     4    
- 7 Gizmo    M     8    
- 8 Oreo     F     10   
- 9 Luna     F     6    
-10 Oliver   F     10   
-11 Leo      M     10   
-12 Milo     F     6    
-13 Charlie  M     11   
-14 Simba    F     4    
+ 1 Whiskers F     7    
+ 2 Fluffy   M     15   
+ 3 Mittens  M     9    
+ 4 Socks    F     11   
+ 5 Tiger    M     5    
+ 6 Smokey   F     13   
+ 7 Gizmo    F     13   
+ 8 Oreo     M     10   
+ 9 Luna     M     7    
+10 Oliver   F     12   
+11 Leo      M     3    
+12 Milo     M     7    
+13 Charlie  M     10   
+14 Simba    F     9    
 15 Nala     F     5    
-16 Felix    M     7    
-17 Garfield M     8    
-18 Tigger   F     6    
-19 Chloe    F     4    
-20 Bella    F     8    </code></pre>
+16 Felix    F     6    
+17 Garfield F     8    
+18 Tigger   F     10   
+19 Chloe    F     3    
+20 Bella    F     13   </code></pre>
 </div>
 </div>
-<p>The <code>patterns</code> argument is a named vector defining the regular expression patterns to extract from the <code>cat_id</code> column. Specifically:</p>
+<p>The <code>patterns</code> argument is a named character vector created with the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function defining the regular expression patterns to match and new variables to created by extracting strings from the <code>cat_id</code> column. <strong>We must match the whole pattern, including strings we don’t want.</strong></p>
+<p>Specifically:</p>
 <ul>
 <li>
-<code>&lt;</code> matches the literal <code>&lt;</code> character</li>
+<code>&lt;</code> matches the literal <code>&lt;</code> character, we don’t want this, so we don’t name it</li>
 <li>
-<code>name = "[A-Za-z]+"</code> extracts one or more alphabetic characters (the cat’s name)</li>
+<code>name = "[A-Za-z]+"</code> extracts one or more alphabetic characters (the cat’s name) to a new variable <code>name</code>.</li>
 <li>
-<code>"&gt;-"</code> matches the literal <code>&gt;-</code> characters</li>
+<code>"&gt;-"</code> matches the literal <code>&gt;-</code> characters, we don’t want this, so we don’t name it.</li>
 <li>
-<code>sex = ".","_"</code> extracts a single character (<code>.</code>) followed by an underscore (<code>_</code>) to indicate the sex (M or F)</li>
+<code>sex = ".",</code>extracts the next single character (<code>.</code>) to a new variable called <code>sex</code>. Here it’s <code>M</code> or <code>F</code> to indicate the sex of the cat.</li>
 <li>
-<code>age = "[0-9]+"</code> extracts one or more digits (the cat’s age)</li>
+<code>"_"</code> matches the literal underscore character (<code>_</code>), we don’t want this, so we don’t name it.</li>
+<li>
+<code>age = "[0-9]+"</code> extracts one or more digits to a new variable called <code>age</code>.</li>
 </ul>
-<p>The resulting dataframe will have separate columns for <code>name</code>, <code>sex</code>, and <code>age</code>, extracted from the original <code>cat_id</code> column.</p>
+<p>With these tools we can now tackle the bibliometrics data.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

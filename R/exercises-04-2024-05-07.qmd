@@ -1,0 +1,119 @@
+---
+title: "R for Librarians Week 4 Warm-up Exercises"
+author: "Alistair Bailey"
+date: last-modified
+date-format: "[Last Updated on] YYYY-MM-DD"
+format: 
+    html:
+      code-fold: true
+      code-link: true
+    pdf:
+      toc: true
+      number-sections: true
+      colorlinks: true
+knitr:
+  opts_chunk:
+    results: hide
+execute: 
+  eval: true
+  cache: true
+---
+
+```{r}
+#| label: set-up
+#| message: false
+#| echo: false
+library(tidyverse)
+#library(palmerpenguins)
+```
+
+## Warm-up
+
+
+```{r}
+#| echo: false
+#| eval: false
+
+cat_dat <- tibble(
+  name = c(
+    "Whiskers", "Mittens", "Fluffy", "Tigger", "Smokey",
+    "Oreo", "Gizmo", "Luna", "Charlie", "Max",
+    "Leo", "Lucy", "Bella", "Simba", "Nala",
+    "Oscar", "Milo", "Kitty", "Felix", "Loki"
+  ),
+  age = sample(1:15, size = 20, replace = TRUE),
+  sex = sample(c("Male", "Female"), size = 20, replace = TRUE),
+  street = sample(
+    c(
+      "Highfield Lane",
+      "Upper Shirley Avenue",
+      "Sherborne Way",
+      "Oxford Street",
+      "Bedford Square"
+    ),
+    size = 20,
+    replace = TRUE
+  ),
+  eye_color = sample(
+    c("Blue", "Green", "Yellow", "Amber"),
+    size = 20,
+    replace = TRUE
+  ),
+  breed = sample(
+    c(
+      "Classic Tabby",
+      "Cornish Rex",
+      "Abyssinian",
+      "Persian",
+      "Bengal",
+      "Russian Blue"
+    ),
+    size = 20,
+    replace = TRUE
+  )
+)
+
+
+
+little_dog_names <- c(
+  "Peanut",
+  "Gizmo",
+  "Mochi",
+  "Ziggy",
+  "Peppa",
+  "Taco",
+  "Biscuit",
+  "Pixie",
+  "Noodle",
+  "Jellybean"
+)
+
+dog_tibble <- tibble(
+  dog_id = str_c("[", little_dog_names, "]",
+                 sample(c(" M "," F "), 
+                        size = length(little_dog_names), 
+                      replace = TRUE),  
+               sample(3:11, size = length(little_dog_names), 
+                      replace = TRUE)))
+
+dog_tibble
+
+dogs <- dog_tibble |> 
+  separate_wider_regex(
+    dog_id,
+    patterns = c("\\[", 
+      name = "[A-Za-z]+", "\\] ", 
+      sex = "."," ",
+      age = "[0-9]+")
+  )
+
+# Extra credit count the number of dogs by age
+dogs |> 
+  group_by(age) |> 
+  summarise(n_dogs = n()) |> 
+  arrange(age)
+
+# Then filter the dogs with the most common 8.
+dogs |> 
+  filter(age == 8)
+```

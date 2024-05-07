@@ -52,3 +52,9 @@ To solve the bibliometrics problem we need to know about:
 -   Once we have enough knowledge we can apply it to bigger problems.
 
 ## Where are we? And how shall we get to where we need to be? {.center}
+
+## [Some options]{.vonrestoff} {.center}
+
++ We could go back spend more time on importing data, data types and assigning objects, dplyr transformations.
++ We could pick up where we left off and proceed to joins and strings
++ We could work through the real problem
