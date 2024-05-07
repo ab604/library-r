@@ -1,0 +1,54 @@
+---
+title: "R for librarians:\n\nrecap and review"
+author: "Alistair Bailey"
+date: last-modified
+date-format: "[Last updated on] YYYY-MM-DD" 
+---
+
+# [A step back:]{.vonrestoff} Why is learning difficult? {.center}
+
+## [Try memorising these two things]{.vonrestoff} {.center}
+
+-   8543210987654321
+
+-   The sun is shining bright
+
+## [Both things had 16 elements]{.vonrestoff} {.center}
+
+::: incremental
+-   Which one can you recall?
+-   The sentence was in chunks and we have long term memory about the rules of natural language, less so for long numbers.
+:::
+
+## [Working memory is small,]{.vonrestoff} long term memory is effectively infinite {.center}
+
+## [Solving a new problem requires both types of memory]{.vonrestoff} {.center}
+
+::: incremental
+-   We can hold chunks of information in working memory, between 4 and 7 (the problem)
+-   We can store rules and processes in long term memory (knowledge)
+:::
+
+## [Why is that relevant?]{.vonrestoff}
+
+To solve the bibliometrics problem we need to know about:
+
+1.  Setting up a (Quarto) project in RStudio and understanding where our files and folder are, and the difference between what an environment and a script is.
+
+2.  How to assign objects, what different data types are, what a data frame is.
+
+3.  What functions are and how to use them.
+
+4.  How to transform and join tables, and why.
+
+5.  How to work with strings.
+
+## Until we have enough R knowledge we can't solve the bibliometrics problem because we can't hold enough information in working memory to learn both simultaneously {.center}
+
+## [What's the solution?]{.vonrestoff} {.center}
+
+-   Break things into small chunks and turn small problems into knowledge via practice (spaced repetition)
+
+-   Once we have enough knowledge we can apply it to bigger problems.
+
+# Where are we? {.center}
