@@ -51,4 +51,4 @@ To solve the bibliometrics problem we need to know about:
 
 -   Once we have enough knowledge we can apply it to bigger problems.
 
-# Where are we? {.center}
+## Where are we? And how shall we get to where we need to be? {.center}
