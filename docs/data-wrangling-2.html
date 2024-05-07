@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><section id="sec-joins" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-joins">
 <span class="header-section-number">5.1</span> Joins</h2>
-<p>We often want to join tables together based upon a variable or variables common to each table, <strong>called a key or keys</strong>, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (<a href="wrangling-bibliometrics-data.html#sec-scopus-data" class="quarto-xref"><span>Section 6.2.2</span></a>, <a href="wrangling-bibliometrics-data.html#sec-web-of-science-data" class="quarto-xref"><span>Section 6.2.3</span></a>) in order to further transform the data or answer a question that cannot easily be answered from each table alone.</p>
+<p>We often want to join tables together <strong>based upon a variable or variables common to each table, called a key or keys</strong>, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (<a href="wrangling-bibliometrics-data.html#sec-scopus-data" class="quarto-xref"><span>Section 6.2.2</span></a>, <a href="wrangling-bibliometrics-data.html#sec-web-of-science-data" class="quarto-xref"><span>Section 6.2.3</span></a>) in order to further transform the data or answer a question that cannot easily be answered from each table alone.</p>
 <p><a href="https://r4ds.hadley.nz/joins">R4DS joins</a> gives some detailed examples of joining tables, but here we’ll look at some simpler examples to try build our mental model about how to join tables.</p>
 <p>There are two types of join we often encounter:</p>
 <ol type="1">
@@ -288,7 +288,7 @@ Listing&nbsp;5.1: Create unique id for each penguin and split the penguins data 
 </div>
 </div>
 <p>The common key that we can use to join these tables back together is the <code>penguin_id</code> variable. The mutation part is the creation of new variables when two tables are joined to create a single table.</p>
-<p>Here we’ll use the <code>left_join()</code> function to combine the two dataframes <code>penguins_physical</code> and <code>penguins_info</code> based on the <code>penguin_number</code> column, which is common to both dataframes.</p>
+<p>Here we’ll use the <code>left_join()</code> function to combine the two dataframes <code>penguins_physical</code> and <code>penguins_info</code> based on the <code>penguin_number</code> column, which is common to both dataframes (<a href="#lst-left-join" class="quarto-xref">Listing&nbsp;<span>5.3</span></a>).</p>
 <p>We assign the result to a new dataframe, <code>penguins_joined</code>, which contains all the columns from <code>penguins_physical</code> keyed to <code>penguin_id</code> from <code>penguins_info</code>.</p>
 <p>The <code>left_join</code> function returns all records from the left dataframe (<code>penguins_physical</code>) and the matching records from the right dataframe (<code>penguins_info</code>). If there were no matches in the right dataframe, the result will contain null values for the right dataframe’s columns.</p>
 <p>As we didn’t explicitly tell the function which variables to use, we got a message tells us it joined <code>by = join_by(penguin_id)</code>.</p>
@@ -344,7 +344,7 @@ Listing&nbsp;5.4: Create a dataframe for penguins only for the year 2008
 </div>
 </div>
 <p>Then we do a semi-join between the <code>penguins_physical</code> table and the filtered <code>penguins_info_filt</code> table. We still use the <code>penguin_id</code> as the key.</p>
-<p>A semi-join returns only the rows from <code>penguins_physical</code> that have a match in <code>penguins_info_filt</code>, effectively filtering the physical characteristics of penguins to only include those from 2008. This joins data from 114 rows of the 344 rows in the <code>penguins_physical</code>.</p>
+<p>A semi-join returns only the rows from <code>penguins_physical</code> that have a match in <code>penguins_info_filt</code>, effectively filtering the physical characteristics of penguins to only include those from 2008. This joins data from 114 rows of the 344 rows in the <code>penguins_physical</code> (<a href="#lst-penguins-semi-join" class="quarto-xref">Listing&nbsp;<span>5.6</span></a>).</p>
 <p>As we didn’t explicitly tell the function which variables to use, we got a message tells us it joined <code>by = join_by(penguin_id)</code></p>
 <p>I’ve assigned the resulting table to a new dataframe: <code>penguins_filtered</code>.</p>
 <div class="cell">
@@ -692,7 +692,7 @@ Listing&nbsp;5.16: View the <code>cat_tibble</code>
 </section><section id="separating-the-cat_id-column-into-multiple-columns" class="level1" data-number="6"><h1 data-number="6">
 <span class="header-section-number">6</span> Separating the <code>cat_id</code> column into multiple columns</h1>
 <p>Having created a table with a single variable that combines name, sex and age into a single variable <code>cat_id</code> (<a href="#lst-view-cat-tibble" class="quarto-xref">Listing&nbsp;<span>5.16</span></a>), it would be much more useful to have these as three separate variables: <code>name</code>, <code>sex</code>, and <code>age</code>.</p>
-<p>We can do this using the <code>separate_wider_regex</code> function from the <code>tidyr</code> package to split the <code>cat_id</code> column into separate columns based on regular expression patterns (<a href="#lst-wide-cat" class="quarto-xref">Listing&nbsp;<span>6.1</span></a>).</p>
+<p>We can do this using the <code>separate_wider_regex()</code> function from the <code>tidyr</code> package to split the <code>cat_id</code> column into separate columns based on regular expression patterns (<a href="#lst-wide-cat" class="quarto-xref">Listing&nbsp;<span>6.1</span></a>).</p>
 <div class="cell">
 <div id="lst-wide-cat" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-wide-cat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

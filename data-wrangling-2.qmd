@@ -11,7 +11,7 @@ library(palmerpenguins)
 
 ## Joins {#sec-joins}
 
-We often want to join tables together based upon a variable or variables common to each table, **called a key or keys**, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (@sec-scopus-data, @sec-web-of-science-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.
+We often want to join tables together **based upon a variable or variables common to each table, called a key or keys**, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (@sec-scopus-data, @sec-web-of-science-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.
 
 [R4DS joins](https://r4ds.hadley.nz/joins) gives some detailed examples of joining tables, but here we'll look at some simpler examples to try build our mental model about how to join tables.
 
@@ -61,7 +61,7 @@ penguins_info <- numbered_penguins |>
 
 The common key that we can use to join these tables back together is the `penguin_id` variable. The mutation part is the creation of new variables when two tables are joined to create a single table.
 
-Here we'll use the `left_join()` function to combine the two dataframes `penguins_physical` and `penguins_info` based on the `penguin_number` column, which is common to both dataframes.
+Here we'll use the `left_join()` function to combine the two dataframes `penguins_physical` and `penguins_info` based on the `penguin_number` column, which is common to both dataframes (@lst-left-join).
 
 We assign the result to a new dataframe, `penguins_joined`, which contains all the columns from `penguins_physical` keyed to `penguin_id` from `penguins_info`.
 
@@ -94,7 +94,7 @@ penguins_info_filt <- penguins_info |>
 
 Then we do a semi-join between the `penguins_physical` table and the filtered `penguins_info_filt` table. We still use the `penguin_id` as the key.
 
-A semi-join returns only the rows from `penguins_physical` that have a match in `penguins_info_filt`, effectively filtering the physical characteristics of penguins to only include those from 2008. This joins data from 114 rows of the 344 rows in the `penguins_physical`.
+A semi-join returns only the rows from `penguins_physical` that have a match in `penguins_info_filt`, effectively filtering the physical characteristics of penguins to only include those from 2008. This joins data from 114 rows of the 344 rows in the `penguins_physical` (@lst-penguins-semi-join).
 
 As we didn't explicitly tell the function which variables to use, we got a message tells us it joined `by = join_by(penguin_id)`
 
@@ -307,7 +307,7 @@ cat_tibble
 
 Having created a table with a single variable that combines name, sex and age into a single variable `cat_id` (@lst-view-cat-tibble), it would be much more useful to have these as three separate variables: `name`, `sex`, and `age`.
 
-We can do this using the `separate_wider_regex` function from the `tidyr` package to split the `cat_id` column into separate columns based on regular expression patterns (@lst-wide-cat).
+We can do this using the `separate_wider_regex()` function from the `tidyr` package to split the `cat_id` column into separate columns based on regular expression patterns (@lst-wide-cat).
 
 ```{r}
 #| lst-label: lst-wide-cat
