@@ -8,11 +8,12 @@ The bibliometrics team have a spreadsheet detailing published journal articles f
 Here we go through the process of wrangling the data to answer this question and produce some summary statistics.
 :::
 
-It's time to apply our knowledge to some bibliometrics data.
+It's time to apply our knowledge to some bibliometrics data. Before we begin, I'll assume we've got the `tidyverse` loaded into our environment in RStudio.
 
 ```{r}
 #| message: false
 #| warning: false
+#| echo: false
 #| label: load-libraries
 library(tidyverse)
 library(janitor)

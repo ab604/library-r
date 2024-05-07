@@ -253,12 +253,7 @@ Summary
 <p>Here we go through the process of wrangling the data to answer this question and produce some summary statistics.</p>
 </div>
 </div>
-<p>It’s time to apply our knowledge to some bibliometrics data.</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ardata-fr.github.io/flextable-book/">flextable</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>It’s time to apply our knowledge to some bibliometrics data. Before we begin, I’ll assume we’ve got the <code>tidyverse</code> loaded into our environment in RStudio.</p>
 <section id="sec-describing-the-problem" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="sec-describing-the-problem">
 <span class="header-section-number">6.1</span> Describing the problem</h2>
 <p>I’ll attempt to describe the problem as I understand it, and then break it down into parts that correspond with <a href="getting-started.html" class="quarto-xref"><span>Chapter 3</span></a> , <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
@@ -307,11 +302,11 @@ Summary
 </li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the Pure csv file</span></span>
-<span><span class="va">pure_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.csv"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the Pure csv file</span></span>
+<span><span class="va">pure_dat</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Inspect the contents</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">pure_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">glimpse</span><span class="op">(</span><span class="va">pure_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,186
 Columns: 21
@@ -341,7 +336,7 @@ $ `Type-20`                                                                &lt;c
 </section><section id="sec-scopus-data" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-scopus-data">
 <span class="header-section-number">6.2.2</span> Scopus data</h3>
 <p>I downloaded some data as a <code>csv</code> file from <a href="https://www.scopus.com/search/form.uri?display=advanced">Scopus Advanced Search</a> to generate a report for 31 days prior to 2024-03-13 using the following query string:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As before, I saved it so that we can load the example Scopus data directly from the repository of this book.</p>
 <p>The table has 483 rows and 20 columns:</p>
 <ul>
@@ -351,11 +346,11 @@ $ `Type-20`                                                                &lt;c
 <code>Affiliations</code> contains the all institution departments, separated by semi-colons. Hence we have multiple values in each cell.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the scopus csv file</span></span>
-<span><span class="va">scopus_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the scopus csv file</span></span>
+<span><span class="va">scopus_dat</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Inspect the contents</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">scopus_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">glimpse</span><span class="op">(</span><span class="va">scopus_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 483
 Columns: 20
@@ -411,11 +406,11 @@ $ EID                         &lt;chr&gt; "2-s2.0-85183956855", "2-s2.0-85186478
 <code>C1</code> is the field tag for Author address which also contains institution department information, but as with the Scopus data it contains multiple values in each cell.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the Web of science tsv file</span></span>
-<span><span class="va">wos_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.tsv"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the Web of science tsv file</span></span>
+<span><span class="va">wos_dat</span> <span class="op">&lt;-</span> <span class="fu">read_tsv</span><span class="op">(</span><span class="st">"https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.tsv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Inspect at the contents</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wos_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">glimpse</span><span class="op">(</span><span class="va">wos_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 50
 Columns: 71
@@ -498,27 +493,27 @@ $ UT &lt;chr&gt; "WOS:001175218400001", "WOS:001170495400001", "WOS:001187496600
 <p>Manual inspection tells me that all three tables have a publication entitled, <code>Lipid droplets in steatotic liver disease</code> with a DOI of <code>10.1097/MCO.0000000000000993</code>.</p>
 <p>Using <code>filter</code> I extract the corresponding row from each table to inspect them.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Pure title variable is `Title of the contribution in original language-5`</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Pure title variable is `Title of the contribution in original language-5`</span></span>
 <span><span class="va">pure_lipid</span> <span class="op">&lt;-</span> <span class="va">pure_dat</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">`Title of the contribution in original language-5`</span> <span class="op">==</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">`Title of the contribution in original language-5`</span> <span class="op">==</span> </span>
 <span>           <span class="st">"Lipid droplets in steatotic liver disease"</span><span class="op">)</span> </span>
 <span><span class="co">#  Scopus title variable is Title</span></span>
 <span><span class="va">scopus_lipid</span> <span class="op">&lt;-</span> <span class="va">scopus_dat</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Title</span> <span class="op">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Title</span> <span class="op">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span><span class="op">)</span></span>
 <span><span class="co"># WoS title variable is TI</span></span>
 <span><span class="va">wos_lipid</span> <span class="op">&lt;-</span> <span class="va">wos_dat</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">TI</span> <span class="op">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">TI</span> <span class="op">==</span> <span class="st">"Lipid droplets in steatotic liver disease"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Print number of rows and columns with dim_desc()</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">pure_lipid</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">pure_lipid</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "[1 x 21]"</code></pre>
 </div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">scopus_lipid</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">scopus_lipid</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "[1 x 20]"</code></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">wos_lipid</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">wos_lipid</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "[1 x 71]"</code></pre>
 </div>
@@ -527,18 +522,18 @@ $ UT &lt;chr&gt; "WOS:001175218400001", "WOS:001170495400001", "WOS:001187496600
 <span class="header-section-number">6.3.1</span> Joining the small table</h3>
 <p>We have a choice about whether to join the tables first or deal with the problem of having multiple values in the <code>Affiliation</code> and <code>C1</code> cells first?</p>
 <p>Let’s do the joins first. This is an easier problem, but also as joining also filters, it reduces the number of rows and therefore when it comes to the full data, it reduces the amount of departments we need to tidy.</p>
-<p>We’ll use our single row <code>pure_lipid</code> object to perform filtering joins on the full <code>scopus_dat</code> and <code>wos_dat</code> data using <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> as per <a href="data-wrangling-2.html#sec-filtering-join" class="quarto-xref"><span>Section 5.3</span></a>.</p>
+<p>We’ll use our single row <code>pure_lipid</code> object to perform filtering joins on the full <code>scopus_dat</code> and <code>wos_dat</code> data using <code>left_join()</code> as per <a href="data-wrangling-2.html#sec-filtering-join" class="quarto-xref"><span>Section 5.3</span></a>.</p>
 <p>As the variables for title and DOI have different names we have to explicitly tell the join function how to map these variables using <code>by</code> and passing character vectors stating the mapping as below. I’m using two pipes and doing both joins prior to assigning a new object <code>lipid_join</code>.</p>
 <p>We start with 1 row and 21 variables in <code>pure_lipid</code> and join on two variables, meaning we add 18 variables from <code>scopus_dat</code> and 69 variables from <code>wos_dat</code> to create a table with 1 row and 21 + 18 + 69 = 108 columns.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_join</span> <span class="op">&lt;-</span> <span class="va">pure_lipid</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">scopus_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"Title"</span>,</span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_join</span> <span class="op">&lt;-</span> <span class="va">pure_lipid</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">scopus_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"Title"</span>,</span>
 <span>                               `Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0` <span class="op">=</span> <span class="st">"DOI"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wos_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"TI"</span> , </span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">wos_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"TI"</span> , </span>
 <span>                           `Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0` <span class="op">=</span> <span class="st">"DI"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Print number of rows and columns with dim_desc()</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">lipid_join</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">lipid_join</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "[1 x 108]"</code></pre>
 </div>
@@ -552,25 +547,25 @@ $ UT &lt;chr&gt; "WOS:001175218400001", "WOS:001170495400001", "WOS:001187496600
 Listing&nbsp;6.1: Use <code>select</code> to see how many values are in the <code>Affiliations</code> cell
 </figcaption><div aria-describedby="lst-lipid-affiliations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode" id="lst-lipid-affiliations"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_join</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Affiliations</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/flextable.html">flextable</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/font.html">font</a></span><span class="op">(</span>part <span class="op">=</span> <span class="st">"all"</span>, fontname <span class="op">=</span> <span class="st">"Consolas"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/bg.html">bg</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"white"</span>, part <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/autofit.html">autofit</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">Affiliations</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">flextable</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">font</span><span class="op">(</span>part <span class="op">=</span> <span class="st">"all"</span>, fontname <span class="op">=</span> <span class="st">"Consolas"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">bg</span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"white"</span>, part <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">autofit</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-a7115b02{}.cl-a705858e{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a70b12ce{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a70b2dfe{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a70b2e08{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-a7115b02">
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-a70b2dfe"><p class="cl-a70b12ce"><span class="cl-a705858e">Affiliations</span></p></th></tr></thead>
-<tbody><tr style="overflow-wrap:break-word;"><td class="cl-a70b2e08"><p class="cl-a70b12ce"><span class="cl-a705858e">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom; National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom; Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td></tr></tbody>
+<style>.cl-939e9d56{}.cl-939251e0{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9398241c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-93984262{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9398426c{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-939e9d56">
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-93984262"><p class="cl-9398241c"><span class="cl-939251e0">Affiliations</span></p></th></tr></thead>
+<tbody><tr style="overflow-wrap:break-word;"><td class="cl-9398426c"><p class="cl-9398241c"><span class="cl-939251e0">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom; National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom; Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td></tr></tbody>
 </table>
 </div>
 </div>
 </div>
-<p>We can use <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> to split these three departments on the <code>;</code>.</p>
+<p>We can use <code>separate_wider_delim()</code> to split these three departments on the <code>;</code>.</p>
 <p>We will provide the following arguments to the function:</p>
 <ul>
 <li>
@@ -586,33 +581,33 @@ Listing&nbsp;6.1: Use <code>select</code> to see how many values are in the <cod
 <div class="cell">
 <div id="lst-lipid-separate-wider" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-lipid-separate-wider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;6.2: Separating the Affiliation values in <code>lipid_join</code> into individual columns using <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code>
+Listing&nbsp;6.2: Separating the Affiliation values in <code>lipid_join</code> into individual columns using <code>separate_wider_delim()</code>
 </figcaption><div aria-describedby="lst-lipid-separate-wider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode" id="lst-lipid-separate-wider"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_join</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Affiliations</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>,</span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">Affiliations</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">separate_wider_delim</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>,</span>
 <span>                       names_sep <span class="op">=</span> <span class="st">"_"</span>,</span>
 <span>                       delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/flextable.html">flextable</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/font.html">font</a></span><span class="op">(</span>part <span class="op">=</span> <span class="st">"all"</span>, fontname <span class="op">=</span> <span class="st">"Consolas"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/bg.html">bg</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"white"</span>, part <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/autofit.html">autofit</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">flextable</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">font</span><span class="op">(</span>part <span class="op">=</span> <span class="st">"all"</span>, fontname <span class="op">=</span> <span class="st">"Consolas"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">bg</span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"white"</span>, part <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">autofit</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-a735aaac{}.cl-a72a9838{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a72fd60e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a72ff008{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a72ff012{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a72ff013{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a72ff01c{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a72ff01d{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a72ff01e{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-a735aaac">
+<style>.cl-93c2bc22{}.cl-93b6a46e{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-93bc07e2{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-93bc25c4{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25ce{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25cf{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25d8{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25e2{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25e3{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-93c2bc22">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-a72ff008"><p class="cl-a72fd60e"><span class="cl-a72a9838">Affiliations_1</span></p></th>
-<th class="cl-a72ff012"><p class="cl-a72fd60e"><span class="cl-a72a9838">Affiliations_2</span></p></th>
-<th class="cl-a72ff013"><p class="cl-a72fd60e"><span class="cl-a72a9838">Affiliations_3</span></p></th>
+<th class="cl-93bc25c4"><p class="cl-93bc07e2"><span class="cl-93b6a46e">Affiliations_1</span></p></th>
+<th class="cl-93bc25ce"><p class="cl-93bc07e2"><span class="cl-93b6a46e">Affiliations_2</span></p></th>
+<th class="cl-93bc25cf"><p class="cl-93bc07e2"><span class="cl-93b6a46e">Affiliations_3</span></p></th>
 </tr></thead>
 <tbody><tr style="overflow-wrap:break-word;">
-<td class="cl-a72ff01c"><p class="cl-a72fd60e"><span class="cl-a72a9838">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
-<td class="cl-a72ff01d"><p class="cl-a72fd60e"><span class="cl-a72a9838"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
-<td class="cl-a72ff01e"><p class="cl-a72fd60e"><span class="cl-a72a9838"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
+<td class="cl-93bc25d8"><p class="cl-93bc07e2"><span class="cl-93b6a46e">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
+<td class="cl-93bc25e2"><p class="cl-93bc07e2"><span class="cl-93b6a46e"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
+<td class="cl-93bc25e3"><p class="cl-93bc07e2"><span class="cl-93b6a46e"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
 </tr></tbody>
 </table>
 </div>
@@ -622,16 +617,16 @@ Listing&nbsp;6.2: Separating the Affiliation values in <code>lipid_join</code> i
 <div class="cell">
 <div id="lst-sep-wide-lipid" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-sep-wide-lipid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> and creating a new object.
+Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code>separate_wider_delim()</code> and creating a new object.
 </figcaption><div aria-describedby="lst-sep-wide-lipid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode" id="lst-sep-wide-lipid"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide</span> <span class="op">&lt;-</span> <span class="va">lipid_join</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>, </span>
+<span>  <span class="fu">separate_wider_delim</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>, </span>
 <span>                       delim <span class="op">=</span> <span class="st">";"</span>, </span>
 <span>                       names_sep <span class="op">=</span> <span class="st">"_"</span>, </span>
 <span>                       too_few <span class="op">=</span> <span class="st">"align_start"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Print number of rows and columns with dim_desc()</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">lipid_wide</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">lipid_wide</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
@@ -646,15 +641,15 @@ Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> i
 <p>Let’s look <code>C1</code> in <code>lipid_wide</code>:</p>
 <div class="cell">
 <div class="sourceCode" id="lst-lipid-C1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">C1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/flextable.html">flextable</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/autofit.html">autofit</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">C1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">flextable</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">autofit</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-a75ce4d2{}.cl-a7525f08{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a7567958{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a756917c{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7569186{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-a75ce4d2">
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-a756917c"><p class="cl-a7567958"><span class="cl-a7525f08">C1</span></p></th></tr></thead>
-<tbody><tr style="overflow-wrap:break-word;"><td class="cl-a7569186"><p class="cl-a7567958"><span class="cl-a7525f08">[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Hosp Southampton Natl Hlth Serv Fdn Trust, Southampton, England; [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Genet, Philadelphia, PA 19104 USA</span></p></td></tr></tbody>
+<style>.cl-93eaa098{}.cl-93dfb5a2{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-93e41962{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-93e43546{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93e43550{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-93eaa098">
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-93e43546"><p class="cl-93e41962"><span class="cl-93dfb5a2">C1</span></p></th></tr></thead>
+<tbody><tr style="overflow-wrap:break-word;"><td class="cl-93e43550"><p class="cl-93e41962"><span class="cl-93dfb5a2">[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Hosp Southampton Natl Hlth Serv Fdn Trust, Southampton, England; [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Genet, Philadelphia, PA 19104 USA</span></p></td></tr></tbody>
 </table>
 </div>
 </div>
@@ -673,19 +668,19 @@ Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> i
 <section id="step-1-separate-c1" class="level4" data-number="6.3.3.1"><h4 data-number="6.3.3.1" class="anchored" data-anchor-id="step-1-separate-c1">
 <span class="header-section-number">6.3.3.1</span> Step 1: Separate <code>C1</code>
 </h4>
-<p>As before, we separate using <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> using <code>;</code> as the delimiter.</p>
+<p>As before, we separate using <code>separate_wider_delim()</code> using <code>;</code> as the delimiter.</p>
 <p>This time we end up with 7 columns as there are <code>;</code> between author names and country.</p>
 <div class="cell">
 <div class="sourceCode" id="lipid-wide-2" data-lst-cap="separate using `separate_wider_delim()` using `;` as the delimiter. This time we end up with 7 columns as there are `;` between author names and country."><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_2</span> <span class="op">&lt;-</span> <span class="va">lipid_wide</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">C1</span>, </span>
+<span>  <span class="fu">separate_wider_delim</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">C1</span>, </span>
 <span>                       delim <span class="op">=</span> <span class="st">";"</span>, </span>
 <span>                       names_sep <span class="op">=</span> <span class="st">"_"</span>, </span>
 <span>                       too_few <span class="op">=</span> <span class="st">"align_start"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Check the output</span></span>
 <span><span class="va">lipid_wide_2</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"C1"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="fu">starts_with</span><span class="op">(</span><span class="st">"C1"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1
 Columns: 7
@@ -700,70 +695,70 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 </div>
 </section><section id="steps-2-pivot-longer" class="level4" data-number="6.3.3.2"><h4 data-number="6.3.3.2" class="anchored" data-anchor-id="steps-2-pivot-longer">
 <span class="header-section-number">6.3.3.2</span> Steps 2: Pivot longer</h4>
-<p>Next we <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and take advantage of <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code> using character vector <code>"C1_"</code> as the argument to pivot on all the columns from step 1. The output is assigned to <code>lipid_wide_3</code></p>
+<p>Next we <code>pivot_longer()</code> and take advantage of <code>starts_with()</code> using character vector <code>"C1_"</code> as the argument to pivot on all the columns from step 1. The output is assigned to <code>lipid_wide_3</code></p>
 <div class="cell">
 <div class="sourceCode" id="lipid-wide-345" data-lst-cap="separate using `separate_wider_delim()` using `;` as the delimiter. This time we end up with 7 columns as there are `;` between author names and country."><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_3</span> <span class="op">&lt;-</span> <span class="va">lipid_wide_2</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"C1"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu">starts_with</span><span class="op">(</span><span class="st">"C1"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="steps-3-and-4-extract-the-university-of-southampton-department-and-filter" class="level4" data-number="6.3.3.3"><h4 data-number="6.3.3.3" class="anchored" data-anchor-id="steps-3-and-4-extract-the-university-of-southampton-department-and-filter">
 <span class="header-section-number">6.3.3.3</span> Steps 3 and 4 : Extract the University of Southampton department and filter</h4>
-<p>Then we use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to create a new variable <code>department</code> based on <code><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract()</a></code> on the <code>value</code> variable with a regex passed as a string.</p>
+<p>Then we use <code>mutate()</code> to create a new variable <code>department</code> based on <code>str_extract()</code> on the <code>value</code> variable with a regex passed as a string.</p>
 <p>I created the regex pattern using Generative AI giving it the string <code>[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth, Southampton, England;</code> and a prompt:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>"write a regex to capture the text after ']' and before ', Southampton, England'"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>"write a regex to capture the text after ']' and before ', Southampton, England'"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I pipe this to <code>filter</code> with argument <code>!is.na()</code> that means <em>“if NOT an empty value”</em> for <code>department</code> to filter out rows with value <code>NA</code> for <code>department</code>.</p>
 <p>I pipe this to <code>select</code> and use negative selection to drop the <code>value</code> column created in the pivot longer as we no longer need it.</p>
 <p>The output is assigned to <code>lipid_wide_4</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_4</span> <span class="op">&lt;-</span> <span class="va">lipid_wide_3</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>department <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">value</span>,<span class="st">"(?&lt;=(\\]))(.+?)(?=, Southampton, England)"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">department</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">value</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_4</span> <span class="op">&lt;-</span> <span class="va">lipid_wide_3</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>department <span class="op">=</span> <span class="fu">str_extract</span><span class="op">(</span><span class="va">value</span>,<span class="st">"(?&lt;=(\\]))(.+?)(?=, Southampton, England)"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">department</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">value</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="step-5-pivot-wider" class="level3" data-number="6.3.4"><h3 data-number="6.3.4" class="anchored" data-anchor-id="step-5-pivot-wider">
 <span class="header-section-number">6.3.4</span> Step 5 : Pivot wider</h3>
 <p>Finally, we pivot wider taking the names from the <code>name</code> column and filling the columns with the values from <code>department</code>. The output is saved in <code>lipid_wide_5</code>.</p>
 <p>This returns the <code>lipid_wide</code> table, but with the University of Southampton departments originally in <code>C1</code> in column now in columns prefixed <code>C1_</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_5</span> <span class="op">&lt;-</span> <span class="va">lipid_wide_4</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">name</span>, values_from <span class="op">=</span> <span class="va">department</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_5</span> <span class="op">&lt;-</span> <span class="va">lipid_wide_4</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">name</span>, values_from <span class="op">=</span> <span class="va">department</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># </span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">lipid_wide_5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">lipid_wide_5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "[1 x 112]"</code></pre>
 </div>
 </div>
 <p>Let’s look at</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_5</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"C1_"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Affiliations_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/flextable.html">flextable</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/font.html">font</a></span><span class="op">(</span>part <span class="op">=</span> <span class="st">"all"</span>, fontname <span class="op">=</span> <span class="st">"Consolas"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/bg.html">bg</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"white"</span>, part <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/autofit.html">autofit</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_5</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span>, <span class="fu">starts_with</span><span class="op">(</span><span class="st">"C1_"</span><span class="op">)</span>, <span class="fu">starts_with</span><span class="op">(</span><span class="st">"Affiliations_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">flextable</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">font</span><span class="op">(</span>part <span class="op">=</span> <span class="st">"all"</span>, fontname <span class="op">=</span> <span class="st">"Consolas"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">bg</span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"white"</span>, part <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">autofit</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-a7a98a1c{}.cl-a79dcf60{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a7a21aca{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a7a23f14{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f1e{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f1f{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f28{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f29{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f32{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f3c{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f3d{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f3e{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f46{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f50{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f51{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f5a{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a7a23f5b{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-a7a98a1c">
+<style>.cl-94385b12{}.cl-942cda9e{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9431570e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-94317216{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317220{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431722a{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431722b{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431722c{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317234{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317235{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431723e{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317248{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317249{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431724a{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317252{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317253{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317254{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-94385b12">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-a7a23f14"><p class="cl-a7a21aca"><span class="cl-a79dcf60">Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0</span></p></th>
-<th class="cl-a7a23f1e"><p class="cl-a7a21aca"><span class="cl-a79dcf60">Title of the contribution in original language-5</span></p></th>
-<th class="cl-a7a23f1e"><p class="cl-a7a21aca"><span class="cl-a79dcf60">C1_2</span></p></th>
-<th class="cl-a7a23f1f"><p class="cl-a7a21aca"><span class="cl-a79dcf60">C1_4</span></p></th>
-<th class="cl-a7a23f28"><p class="cl-a7a21aca"><span class="cl-a79dcf60">C1_6</span></p></th>
-<th class="cl-a7a23f29"><p class="cl-a7a21aca"><span class="cl-a79dcf60">Affiliations_1</span></p></th>
-<th class="cl-a7a23f32"><p class="cl-a7a21aca"><span class="cl-a79dcf60">Affiliations_2</span></p></th>
-<th class="cl-a7a23f3c"><p class="cl-a7a21aca"><span class="cl-a79dcf60">Affiliations_3</span></p></th>
+<th class="cl-94317216"><p class="cl-9431570e"><span class="cl-942cda9e">Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0</span></p></th>
+<th class="cl-94317220"><p class="cl-9431570e"><span class="cl-942cda9e">Title of the contribution in original language-5</span></p></th>
+<th class="cl-94317220"><p class="cl-9431570e"><span class="cl-942cda9e">C1_2</span></p></th>
+<th class="cl-9431722a"><p class="cl-9431570e"><span class="cl-942cda9e">C1_4</span></p></th>
+<th class="cl-9431722b"><p class="cl-9431570e"><span class="cl-942cda9e">C1_6</span></p></th>
+<th class="cl-9431722c"><p class="cl-9431570e"><span class="cl-942cda9e">Affiliations_1</span></p></th>
+<th class="cl-94317234"><p class="cl-9431570e"><span class="cl-942cda9e">Affiliations_2</span></p></th>
+<th class="cl-94317235"><p class="cl-9431570e"><span class="cl-942cda9e">Affiliations_3</span></p></th>
 </tr></thead>
 <tbody><tr style="overflow-wrap:break-word;">
-<td class="cl-a7a23f3d"><p class="cl-a7a21aca"><span class="cl-a79dcf60">10.1097/MCO.0000000000000993</span></p></td>
-<td class="cl-a7a23f3e"><p class="cl-a7a21aca"><span class="cl-a79dcf60">Lipid droplets in steatotic liver disease</span></p></td>
-<td class="cl-a7a23f3e"><p class="cl-a7a21aca"><span class="cl-a79dcf60"> Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth</span></p></td>
-<td class="cl-a7a23f46"><p class="cl-a7a21aca"><span class="cl-a79dcf60"> Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr</span></p></td>
-<td class="cl-a7a23f50"><p class="cl-a7a21aca"><span class="cl-a79dcf60"> Univ Hosp Southampton Natl Hlth Serv Fdn Trust</span></p></td>
-<td class="cl-a7a23f51"><p class="cl-a7a21aca"><span class="cl-a79dcf60">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
-<td class="cl-a7a23f5a"><p class="cl-a7a21aca"><span class="cl-a79dcf60"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
-<td class="cl-a7a23f5b"><p class="cl-a7a21aca"><span class="cl-a79dcf60"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
+<td class="cl-9431723e"><p class="cl-9431570e"><span class="cl-942cda9e">10.1097/MCO.0000000000000993</span></p></td>
+<td class="cl-94317248"><p class="cl-9431570e"><span class="cl-942cda9e">Lipid droplets in steatotic liver disease</span></p></td>
+<td class="cl-94317248"><p class="cl-9431570e"><span class="cl-942cda9e"> Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth</span></p></td>
+<td class="cl-94317249"><p class="cl-9431570e"><span class="cl-942cda9e"> Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr</span></p></td>
+<td class="cl-9431724a"><p class="cl-9431570e"><span class="cl-942cda9e"> Univ Hosp Southampton Natl Hlth Serv Fdn Trust</span></p></td>
+<td class="cl-94317252"><p class="cl-9431570e"><span class="cl-942cda9e">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
+<td class="cl-94317253"><p class="cl-9431570e"><span class="cl-942cda9e"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
+<td class="cl-94317254"><p class="cl-9431570e"><span class="cl-942cda9e"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
 </tr></tbody>
 </table>
 </div>
@@ -775,14 +770,14 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 <section id="join-scopus-and-wos-tables-to-the-pure-table" class="level3" data-number="6.4.1"><h3 data-number="6.4.1" class="anchored" data-anchor-id="join-scopus-and-wos-tables-to-the-pure-table">
 <span class="header-section-number">6.4.1</span> Join Scopus and Wos tables to the Pure table</h3>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_join</span> <span class="op">&lt;-</span> <span class="va">pure_dat</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">scopus_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"Title"</span>,</span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_join</span> <span class="op">&lt;-</span> <span class="va">pure_dat</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">scopus_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"Title"</span>,</span>
 <span>                               `Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0` <span class="op">=</span> <span class="st">"DOI"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wos_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"TI"</span> , </span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">wos_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"TI"</span> , </span>
 <span>                           `Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0` <span class="op">=</span> <span class="st">"DI"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Print number of rows and columns with dim_desc()</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">pure_join</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">pure_join</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "[5,187 x 108]"</code></pre>
 </div>
@@ -790,14 +785,14 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 </section><section id="separate-the-scopus-affiliations" class="level3" data-number="6.4.2"><h3 data-number="6.4.2" class="anchored" data-anchor-id="separate-the-scopus-affiliations">
 <span class="header-section-number">6.4.2</span> Separate the Scopus Affiliations</h3>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_wide</span> <span class="op">&lt;-</span> <span class="va">pure_join</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>, </span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_wide</span> <span class="op">&lt;-</span> <span class="va">pure_join</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">separate_wider_delim</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>, </span>
 <span>                       delim <span class="op">=</span> <span class="st">";"</span>, </span>
 <span>                       names_sep <span class="op">=</span> <span class="st">"_"</span>, </span>
 <span>                       too_few <span class="op">=</span> <span class="st">"align_start"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Print number of rows and columns with dim_desc()</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">pure_wide</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">pure_wide</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "[5,187 x 185]"</code></pre>
 </div>
@@ -806,43 +801,43 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 </section><section id="separate-the-wos-affiliations" class="level3" data-number="6.4.3"><h3 data-number="6.4.3" class="anchored" data-anchor-id="separate-the-wos-affiliations">
 <span class="header-section-number">6.4.3</span> Separate the WoS Affiliations</h3>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_wider</span> <span class="op">&lt;-</span> <span class="va">pure_wide</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">C1</span>, </span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_wider</span> <span class="op">&lt;-</span> <span class="va">pure_wide</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">separate_wider_delim</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">C1</span>, </span>
 <span>                       delim <span class="op">=</span> <span class="st">";"</span>, </span>
 <span>                       names_sep <span class="op">=</span> <span class="st">"_"</span>, </span>
 <span>                       too_few <span class="op">=</span> <span class="st">"align_start"</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="va">pure_long</span> <span class="op">&lt;-</span> <span class="va">pure_wider</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"C1_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>department <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">value</span>,<span class="st">"(?&lt;=(\\]))(.+?)(?=, Southampton, England)"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">value</span><span class="op">)</span></span>
+<span>  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu">starts_with</span><span class="op">(</span><span class="st">"C1_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>department <span class="op">=</span> <span class="fu">str_extract</span><span class="op">(</span><span class="va">value</span>,<span class="st">"(?&lt;=(\\]))(.+?)(?=, Southampton, England)"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">value</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">pure_table</span> <span class="op">&lt;-</span> <span class="va">pure_long</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">name</span>, values_from <span class="op">=</span> <span class="va">department</span><span class="op">)</span></span>
+<span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">name</span>, values_from <span class="op">=</span> <span class="va">department</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/dim_desc.html">dim_desc</a></span><span class="op">(</span><span class="va">pure_table</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">dim_desc</span><span class="op">(</span><span class="va">pure_table</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "[5,187 x 193]"</code></pre>
 </div>
 </div>
 <p>Deal with the missing values and keep just the rows with Southampton affiliations.</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_table_clean</span> <span class="op">&lt;-</span> <span class="va">pure_table</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Affiliations_"</span><span class="op">)</span>,<span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"C1_"</span><span class="op">)</span><span class="op">)</span>,</span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_table_clean</span> <span class="op">&lt;-</span> <span class="va">pure_table</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">pivot_longer</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">starts_with</span><span class="op">(</span><span class="st">"Affiliations_"</span><span class="op">)</span>,<span class="fu">starts_with</span><span class="op">(</span><span class="st">"C1_"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>               values_to <span class="op">=</span> <span class="st">"department"</span>, </span>
 <span>               values_drop_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>department <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">department</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">mutate</span><span class="op">(</span>department <span class="op">=</span> <span class="fu">str_trim</span><span class="op">(</span><span class="va">department</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Do a grouped summary using only Southampton</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_table_clean</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">department</span>,<span class="st">"Southampton"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">`Title of the contribution in original language-5`</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">`Open Access status-13`</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html">reframe</a></span><span class="op">(</span><span class="va">department</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_table_clean</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">str_detect</span><span class="op">(</span><span class="va">department</span>,<span class="st">"Southampton"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">rename</span><span class="op">(</span>title <span class="op">=</span> <span class="va">`Title of the contribution in original language-5`</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">title</span>, <span class="va">`Open Access status-13`</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">reframe</span><span class="op">(</span><span class="va">department</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
    title                                       Open Access status-1…¹ department
