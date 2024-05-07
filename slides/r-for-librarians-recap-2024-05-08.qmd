@@ -11,7 +11,9 @@ date-format: "[Last updated on] YYYY-MM-DD"
 
 -   8543210987654321
 
+::: incremental
 -   The sun is shining bright
+:::
 
 ## [Both things had 16 elements]{.vonrestoff} {.center}
 
@@ -55,6 +57,6 @@ To solve the bibliometrics problem we need to know about:
 
 ## [Some options]{.vonrestoff} {.center}
 
-+ We could go back spend more time on importing data, data types and assigning objects, dplyr transformations.
-+ We could pick up where we left off and proceed to joins and strings
-+ We could work through the real problem
+-   We could go back spend more time on importing data, data types and assigning objects, dplyr transformations.
+-   We could pick up where we left off and proceed to joins and strings
+-   We could work through the real problem
