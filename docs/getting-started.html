@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>R for Librarians - 3&nbsp; Getting started</title>
 <style>
@@ -80,7 +80,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data-wrangling-1.html" rel="next">
+<link href="./importing-data.html" rel="next">
 <link href="./markup-languages.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -183,20 +183,26 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./importing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./data-wrangling-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-wrangling-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wrangling-bibliometrics-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -289,13 +295,13 @@ div.csl-indent {
   
 
 
-</header><div id="chapter-02-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<a href="" id="chapter-02-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -443,13 +449,13 @@ Figure&nbsp;3.4: The relative path between the R script <code>analysis-2024-02-2
 <p>A function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in <a href="#sec-packages" class="quarto-xref"><span>Section 3.3</span></a> the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> requires the name of the package we want to install as arguments.</p>
 <p>Many, if not most, functions can take more than one argument. The creators of the function should have given these defaults for the situation where the user provides only one or some arguments. RStudio should prompt you for the arguments as you type, but if you need to see what they are, use the help function <code>?</code> with the function name in the Console and it will open the help panel or type the function name into the help panel search box.</p>
 <p>For example, to find out all the arguments for <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> we’d type <code><a href="https://rdrr.io/r/utils/install.packages.html">?install.packages</a></code> and press <code>Enter</code>.</p>
-<div id="cowsay" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
+<div class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Try installing the <code>cowsay</code> package
+<a href="" id="cowsay"></a>Try installing the <code>cowsay</code> package
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -559,6 +565,7 @@ Figure&nbsp;3.8: Starting a new R project in RStudio
 </li>
 </ul></section><section id="sec-names" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-names">
 <span class="header-section-number">3.5.2</span> Naming things</h3>
+<p>R has rules about what constitutes a valid name. A syntactic name must contain letters, digits, <code>.</code> and <code>_</code> but cannot begin with a digit or underscore. There are also certain reserved names such as <code>TRUE</code> that cannot be used. A name that breaks these rules is non-syntactic. For details see <a href="https://adv-r.hadley.nz/names-values.html#non-syntactic">Non-syntactic names is Advanced R</a>.</p>
 <p><a href="https://ropensci.org/blog/2017/12/08/rprofile-jenny-bryan/">Jenny Bryan</a> also has three principles for <a href="http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf">naming things</a> that are well worth remembering.</p>
 <p>When you names something, a file or an object, ideally it should be:</p>
 <ol type="1">
@@ -586,7 +593,7 @@ Figure&nbsp;3.8: Starting a new R project in RStudio
 <div class="cell-output-display">
 <div id="fig-tidy-data" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/tidy-data.png" class="img-fluid figure-img" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell." width="683">
+<img src="img/tidy-data.png" class="img-fluid figure-img" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.9: Some tidy data from the penguin dataset. Every variable has it’s own column, every observation has its own row and every value has its own cell.
@@ -602,7 +609,7 @@ Figure&nbsp;3.9: Some tidy data from the penguin dataset. Every variable has it�
 <li><p><em>There’s a specific advantage to placing variables in columns because it allows R’s vectorized nature to shine.</em></p></li>
 </ol>
 </blockquote>
-<p>This will hopefully become apparent in <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<p>This will hopefully become apparent in <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 5</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
 </section><section id="sec-atoms" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="sec-atoms">
 <span class="header-section-number">3.8</span> Atoms of R</h2>
 <p>Having set ourselves up in RStudio, let’s turn our attention to the language of R itself.</p>
@@ -643,13 +650,13 @@ Figure&nbsp;3.10: The atomic R data types that form the building blocks of more 
 </div>
 <p>Note here that we see the use of the assignment operator <code>&lt;-</code> to assign our vector on the right as the object <code>cards</code>. We talk more about that in <a href="#sec-assigning-objects" class="quarto-xref"><span>Section 3.9</span></a>.</p>
 <p>Also note that the output of <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> is itself a vector of length one and type <code>character</code>.</p>
-<div id="seq" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try creating a vector of integers">
+<div class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try creating a vector of integers">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Try creating a vector of integers
+<a href="" id="seq"></a>Try creating a vector of integers
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -940,7 +947,7 @@ Warning messages
 <p>As we can use this code for any tidy data set, hopefully you are beginning to see how a small amount of code can do a lot.</p>
 </section><section id="exporting-data" class="level2" data-number="3.12"><h2 data-number="3.12" class="anchored" data-anchor-id="exporting-data">
 <span class="header-section-number">3.12</span> Exporting data</h2>
-<p>We’ll spend more time on getting data in and out of our R environment in the <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a>, but let’s imagine we wanted to export our plot and the <code>penguin</code> data for a colleague or presentation.</p>
+<p>We’ll spend more time on getting data in and out of our R environment in the <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 5</span></a>, but let’s imagine we wanted to export our plot and the <code>penguin</code> data for a colleague or presentation.</p>
 <section id="readr" class="level3" data-number="3.12.1"><h3 data-number="3.12.1" class="anchored" data-anchor-id="readr">
 <span class="header-section-number">3.12.1</span> readr</h3>
 <p>To export tibbles and data frames, we’ll use the <code>readr</code> package, and the <code>write_excel_csv()</code> function. This creates a table in comma separated variable format that can opened by spreadsheet software such as excel.</p>
@@ -982,7 +989,7 @@ will be 12 years old.</code></pre>
 <p>Note that <code>glue</code> evaluates the expression <code>age+1</code>.</p>
 </div>
 </div>
-<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-05-07.csv. The date in the filename is the date I built this book (2024-05-07)</p>
+<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-05-08.csv. The date in the filename is the date I built this book (2024-05-08)</p>
 </section><section id="ggsave" class="level3" data-number="3.12.2"><h3 data-number="3.12.2" class="anchored" data-anchor-id="ggsave">
 <span class="header-section-number">3.12.2</span> ggsave</h3>
 <p>If we want to save the last plot we made in <code>ggplot2</code> we can use the <a href="https://ggplot2.tidyverse.org/reference/ggsave.html"><code>ggsave()</code></a> function.</p>
@@ -1008,7 +1015,7 @@ will be 12 years old.</code></pre>
 <p>The introduction of <a href="https://openai.com/research/gpt-4">GPT-4</a> and other powerful large language models such as <a href="https://www.anthropic.com/">Claude 3</a> and <a href="https://deepmind.google/technologies/gemini/#introduction">Gemini 1.5</a> since 2023 has meant that these tools are now some of the best ways to get help. with coding.</p>
 <p>At the time of writing I’m still a novice in using them, but I highly recommend Ethan Mollick’s work as a good place to start. He’s written posts on <a href="https://www.oneusefulthing.org/p/working-with-ai-two-paths-to-prompting">writing prompts</a> and has resources such as the <a href="https://www.moreusefulthings.com/prompts">prompt library</a> for Open AI’s ChatGPT.</p>
 <p>I started with Claude 3 from Anthrophic. One reason I chose Claude is because of its <a href="https://docs.anthropic.com/claude/docs/intro-to-claude">documentation</a> and <a href="https://docs.anthropic.com/claude/prompt-library">prompt library</a>.</p>
-<p>For example, <a href="#fig-claude-1" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> shows how I prompted Claude 3 to help me reproduce the example I’d already created in <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 4.4.1</span></a>.</p>
+<p>For example, <a href="#fig-claude-1" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> shows how I prompted Claude 3 to help me reproduce the example I’d already created in <a href="data-wrangling-1.html#sec-filter-rows-with-filter" class="quarto-xref"><span>Section 5.3.1</span></a>.</p>
 <ol type="1">
 <li>
 <p>First I told Claude who I wanted it to be:</p>
@@ -1033,7 +1040,7 @@ Figure&nbsp;3.15: An example of using Claude 3 to create a R assistant that then
 </div>
 </div>
 </div>
-<p>Belle gave me a very good answer, but used the pipe operator <code>%&gt;%</code> from <code>magrittr</code> rather than the native R pipe <code>|&gt;</code> (<a href="data-wrangling-1.html#sec-the-pipe" class="quarto-xref"><span>Section 4.2</span></a>). So I asked Belle to change it. (“Can you” and “please” are probably redundant, but in my learning curve I’ve started by treating the models as people!)</p>
+<p>Belle gave me a very good answer, but used the pipe operator <code>%&gt;%</code> from <code>magrittr</code> rather than the native R pipe <code>|&gt;</code> (<a href="data-wrangling-1.html#sec-the-pipe" class="quarto-xref"><span>Section 5.1</span></a>). So I asked Belle to change it. (“Can you” and “please” are probably redundant, but in my learning curve I’ve started by treating the models as people!)</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Can you change this to use the native R pipe please?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Belle gets it perfect second time, <a href="#fig-claude-2" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>.</p>
 <div class="cell">
@@ -1398,12 +1405,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1629,8 +1631,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data-wrangling-1.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Data wrangling I</span>">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./importing-data.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Importing and exporting data</span>">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

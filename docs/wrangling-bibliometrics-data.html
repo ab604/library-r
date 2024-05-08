@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>R for Librarians - 6&nbsp; Wrangling bibliometrics data</title>
+<title>R for Librarians - 7&nbsp; Wrangling bibliometrics data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wrangling-bibliometrics-data.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wrangling-bibliometrics-data.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -164,20 +164,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./importing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./data-wrangling-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-wrangling-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wrangling-bibliometrics-data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -194,37 +200,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#sec-describing-the-problem" id="toc-sec-describing-the-problem" class="nav-link active" data-scroll-target="#sec-describing-the-problem"><span class="header-section-number">6.1</span> Describing the problem</a></li>
+<li><a href="#sec-describing-the-problem" id="toc-sec-describing-the-problem" class="nav-link active" data-scroll-target="#sec-describing-the-problem"><span class="header-section-number">7.1</span> Describing the problem</a></li>
   <li>
-<a href="#sec-downloading-the-bibliometrics-data" id="toc-sec-downloading-the-bibliometrics-data" class="nav-link" data-scroll-target="#sec-downloading-the-bibliometrics-data"><span class="header-section-number">6.2</span> Downloading the bibliometrics data</a>
+<a href="#sec-downloading-the-bibliometrics-data" id="toc-sec-downloading-the-bibliometrics-data" class="nav-link" data-scroll-target="#sec-downloading-the-bibliometrics-data"><span class="header-section-number">7.2</span> Downloading the bibliometrics data</a>
   <ul class="collapse">
-<li><a href="#sec-pure-data" id="toc-sec-pure-data" class="nav-link" data-scroll-target="#sec-pure-data"><span class="header-section-number">6.2.1</span> Pure data</a></li>
-  <li><a href="#sec-scopus-data" id="toc-sec-scopus-data" class="nav-link" data-scroll-target="#sec-scopus-data"><span class="header-section-number">6.2.2</span> Scopus data</a></li>
-  <li><a href="#sec-web-of-science-data" id="toc-sec-web-of-science-data" class="nav-link" data-scroll-target="#sec-web-of-science-data"><span class="header-section-number">6.2.3</span> Web of Science data</a></li>
+<li><a href="#sec-pure-data" id="toc-sec-pure-data" class="nav-link" data-scroll-target="#sec-pure-data"><span class="header-section-number">7.2.1</span> Pure data</a></li>
+  <li><a href="#sec-scopus-data" id="toc-sec-scopus-data" class="nav-link" data-scroll-target="#sec-scopus-data"><span class="header-section-number">7.2.2</span> Scopus data</a></li>
+  <li><a href="#sec-web-of-science-data" id="toc-sec-web-of-science-data" class="nav-link" data-scroll-target="#sec-web-of-science-data"><span class="header-section-number">7.2.3</span> Web of Science data</a></li>
   </ul>
 </li>
   <li>
-<a href="#sec-make-it-simple" id="toc-sec-make-it-simple" class="nav-link" data-scroll-target="#sec-make-it-simple"><span class="header-section-number">6.3</span> Make it simple</a>
+<a href="#sec-make-it-simple" id="toc-sec-make-it-simple" class="nav-link" data-scroll-target="#sec-make-it-simple"><span class="header-section-number">7.3</span> Make it simple</a>
   <ul class="collapse">
-<li><a href="#sec-joining-the-small-table" id="toc-sec-joining-the-small-table" class="nav-link" data-scroll-target="#sec-joining-the-small-table"><span class="header-section-number">6.3.1</span> Joining the small table</a></li>
-  <li><a href="#sec-separating-the-scopus-affiliations" id="toc-sec-separating-the-scopus-affiliations" class="nav-link" data-scroll-target="#sec-separating-the-scopus-affiliations"><span class="header-section-number">6.3.2</span> Separating the Scopus Affiliations</a></li>
-  <li><a href="#sec-separating-the-wos-affiliations" id="toc-sec-separating-the-wos-affiliations" class="nav-link" data-scroll-target="#sec-separating-the-wos-affiliations"><span class="header-section-number">6.3.3</span> Separating the Web of Science <code>C1</code> column</a></li>
-  <li><a href="#step-5-pivot-wider" id="toc-step-5-pivot-wider" class="nav-link" data-scroll-target="#step-5-pivot-wider"><span class="header-section-number">6.3.4</span> Step 5 : Pivot wider</a></li>
+<li><a href="#sec-joining-the-small-table" id="toc-sec-joining-the-small-table" class="nav-link" data-scroll-target="#sec-joining-the-small-table"><span class="header-section-number">7.3.1</span> Joining the small table</a></li>
+  <li><a href="#sec-separating-the-scopus-affiliations" id="toc-sec-separating-the-scopus-affiliations" class="nav-link" data-scroll-target="#sec-separating-the-scopus-affiliations"><span class="header-section-number">7.3.2</span> Separating the Scopus Affiliations</a></li>
+  <li><a href="#sec-separating-the-wos-affiliations" id="toc-sec-separating-the-wos-affiliations" class="nav-link" data-scroll-target="#sec-separating-the-wos-affiliations"><span class="header-section-number">7.3.3</span> Separating the Web of Science <code>C1</code> column</a></li>
+  <li><a href="#step-5-pivot-wider" id="toc-step-5-pivot-wider" class="nav-link" data-scroll-target="#step-5-pivot-wider"><span class="header-section-number">7.3.4</span> Step 5 : Pivot wider</a></li>
   </ul>
 </li>
   <li>
-<a href="#whole-game" id="toc-whole-game" class="nav-link" data-scroll-target="#whole-game"><span class="header-section-number">6.4</span> Whole game</a>
+<a href="#whole-game" id="toc-whole-game" class="nav-link" data-scroll-target="#whole-game"><span class="header-section-number">7.4</span> Whole game</a>
   <ul class="collapse">
-<li><a href="#join-scopus-and-wos-tables-to-the-pure-table" id="toc-join-scopus-and-wos-tables-to-the-pure-table" class="nav-link" data-scroll-target="#join-scopus-and-wos-tables-to-the-pure-table"><span class="header-section-number">6.4.1</span> Join Scopus and Wos tables to the Pure table</a></li>
-  <li><a href="#separate-the-scopus-affiliations" id="toc-separate-the-scopus-affiliations" class="nav-link" data-scroll-target="#separate-the-scopus-affiliations"><span class="header-section-number">6.4.2</span> Separate the Scopus Affiliations</a></li>
-  <li><a href="#separate-the-wos-affiliations" id="toc-separate-the-wos-affiliations" class="nav-link" data-scroll-target="#separate-the-wos-affiliations"><span class="header-section-number">6.4.3</span> Separate the WoS Affiliations</a></li>
+<li><a href="#join-scopus-and-wos-tables-to-the-pure-table" id="toc-join-scopus-and-wos-tables-to-the-pure-table" class="nav-link" data-scroll-target="#join-scopus-and-wos-tables-to-the-pure-table"><span class="header-section-number">7.4.1</span> Join Scopus and Wos tables to the Pure table</a></li>
+  <li><a href="#separate-the-scopus-affiliations" id="toc-separate-the-scopus-affiliations" class="nav-link" data-scroll-target="#separate-the-scopus-affiliations"><span class="header-section-number">7.4.2</span> Separate the Scopus Affiliations</a></li>
+  <li><a href="#separate-the-wos-affiliations" id="toc-separate-the-wos-affiliations" class="nav-link" data-scroll-target="#separate-the-wos-affiliations"><span class="header-section-number">7.4.3</span> Separate the WoS Affiliations</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ab604/library-r/edit/main/wrangling-bibliometrics-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-wrangling-bibliometrics-data" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></h1>
+<h1 class="title"><span id="sec-wrangling-bibliometrics-data" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></h1>
 </div>
 
 
@@ -239,13 +245,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><p><strong>WORK IN PROGRESS</strong></p>
-<div id="bibliometrics-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<a href="" id="bibliometrics-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -254,9 +260,9 @@ Summary
 </div>
 </div>
 <p>It’s time to apply our knowledge to some bibliometrics data. Before we begin, I’ll assume we’ve got the <code>tidyverse</code> loaded into our environment in RStudio.</p>
-<section id="sec-describing-the-problem" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="sec-describing-the-problem">
-<span class="header-section-number">6.1</span> Describing the problem</h2>
-<p>I’ll attempt to describe the problem as I understand it, and then break it down into parts that correspond with <a href="getting-started.html" class="quarto-xref"><span>Chapter 3</span></a> , <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<section id="sec-describing-the-problem" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="sec-describing-the-problem">
+<span class="header-section-number">7.1</span> Describing the problem</h2>
+<p>I’ll attempt to describe the problem as I understand it, and then break it down into parts that correspond with <a href="getting-started.html" class="quarto-xref"><span>Chapter 3</span></a> , <a href="data-wrangling-1.html" class="quarto-xref"><span>Chapter 5</span></a> and <a href="data-wrangling-2.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
 <p>Here’s an excerpt from an email Kate sent me on 2023-11-21:</p>
 <blockquote class="blockquote">
 <p>[A spreadsheet] is produced from a fortnightly check… for REF and Funder Compliance… the Export Control Team periodically asks us for information about particular staff/institutions/countries and…trying to search in the Affiliations can be very time consuming…</p>
@@ -281,11 +287,11 @@ Summary
 </div>
 <p>Having spent a bit of time looking at the different data, I can see this is a problem that requires a mixture of several <code>dpylr</code> and <code>tidyr</code> functions. I can also see that this problem cannot be entirely automated as some of the data needed is not in the three tables.</p>
 <p>To join tables we need common variables between tables: these will be the publication title and the digital object identifier (DOI), <strong>but these will have different names</strong> so we need to account for that.</p>
-</section><section id="sec-downloading-the-bibliometrics-data" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="sec-downloading-the-bibliometrics-data">
-<span class="header-section-number">6.2</span> Downloading the bibliometrics data</h2>
+</section><section id="sec-downloading-the-bibliometrics-data" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="sec-downloading-the-bibliometrics-data">
+<span class="header-section-number">7.2</span> Downloading the bibliometrics data</h2>
 <p>Here I have three example datasets and identify the common variables by which we might join them.</p>
-<section id="sec-pure-data" class="level3" data-number="6.2.1"><h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-pure-data">
-<span class="header-section-number">6.2.1</span> Pure data</h3>
+<section id="sec-pure-data" class="level3" data-number="7.2.1"><h3 data-number="7.2.1" class="anchored" data-anchor-id="sec-pure-data">
+<span class="header-section-number">7.2.1</span> Pure data</h3>
 <p>I don’t have Admin access to <a href="https://pure.soton.ac.uk">Pure</a> so Kate had to send me some data which I saved as a <code>csv</code> file for us to use, but the process once logged into Pure is:</p>
 <ul>
 <li><p>Go to report definitions on the side menu, click on Managed report definitions – Add as favourite the compliance reporting link.</p></li>
@@ -333,8 +339,8 @@ $ `Title of the host publication in original language-19`                  &lt;c
 $ `Type-20`                                                                &lt;chr&gt; …</code></pre>
 </div>
 </div>
-</section><section id="sec-scopus-data" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-scopus-data">
-<span class="header-section-number">6.2.2</span> Scopus data</h3>
+</section><section id="sec-scopus-data" class="level3" data-number="7.2.2"><h3 data-number="7.2.2" class="anchored" data-anchor-id="sec-scopus-data">
+<span class="header-section-number">7.2.2</span> Scopus data</h3>
 <p>I downloaded some data as a <code>csv</code> file from <a href="https://www.scopus.com/search/form.uri?display=advanced">Scopus Advanced Search</a> to generate a report for 31 days prior to 2024-03-13 using the following query string:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>AF-ID("University of Southampton" 60025225) AND PUBYEAR &gt; 2017 AND PUBYEAR &lt; 2025 AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"re" ) OR LIMIT-TO ( DOCTYPE,"cp" ) OR LIMIT-TO ( DOCTYPE,"ed" ) OR LIMIT-TO ( DOCTYPE,"le" ) ) AND RECENT(31)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As before, I saved it so that we can load the example Scopus data directly from the repository of this book.</p>
@@ -376,8 +382,8 @@ $ Source                      &lt;chr&gt; "Scopus", "Scopus", "Scopus", "Scopus"
 $ EID                         &lt;chr&gt; "2-s2.0-85183956855", "2-s2.0-85186478720"…</code></pre>
 </div>
 </div>
-</section><section id="sec-web-of-science-data" class="level3" data-number="6.2.3"><h3 data-number="6.2.3" class="anchored" data-anchor-id="sec-web-of-science-data">
-<span class="header-section-number">6.2.3</span> Web of Science data</h3>
+</section><section id="sec-web-of-science-data" class="level3" data-number="7.2.3"><h3 data-number="7.2.3" class="anchored" data-anchor-id="sec-web-of-science-data">
+<span class="header-section-number">7.2.3</span> Web of Science data</h3>
 <p>I followed these steps to download Web of Science (WoS) data on 2024-03-26 as a <code>tsv</code> file.</p>
 <p>On <a href="https://www.webofscience.com/wos/woscc/basic-search">Web of Science</a>:</p>
 <ul>
@@ -487,8 +493,8 @@ $ DA &lt;date&gt; 2024-03-26, 2024-03-26, 2024-03-26, 2024-03-26, 2024-03-26, 20
 $ UT &lt;chr&gt; "WOS:001175218400001", "WOS:001170495400001", "WOS:001187496600001"…</code></pre>
 </div>
 </div>
-</section></section><section id="sec-make-it-simple" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="sec-make-it-simple">
-<span class="header-section-number">6.3</span> Make it simple</h2>
+</section></section><section id="sec-make-it-simple" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="sec-make-it-simple">
+<span class="header-section-number">7.3</span> Make it simple</h2>
 <p>To make it simple - well simpler! - lets use a single entry from each table to understand how we might tackle the whole data set.</p>
 <p>Manual inspection tells me that all three tables have a publication entitled, <code>Lipid droplets in steatotic liver disease</code> with a DOI of <code>10.1097/MCO.0000000000000993</code>.</p>
 <p>Using <code>filter</code> I extract the corresponding row from each table to inspect them.</p>
@@ -518,11 +524,11 @@ $ UT &lt;chr&gt; "WOS:001175218400001", "WOS:001170495400001", "WOS:001187496600
 <pre><code>[1] "[1 x 71]"</code></pre>
 </div>
 </div>
-<section id="sec-joining-the-small-table" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="sec-joining-the-small-table">
-<span class="header-section-number">6.3.1</span> Joining the small table</h3>
+<section id="sec-joining-the-small-table" class="level3" data-number="7.3.1"><h3 data-number="7.3.1" class="anchored" data-anchor-id="sec-joining-the-small-table">
+<span class="header-section-number">7.3.1</span> Joining the small table</h3>
 <p>We have a choice about whether to join the tables first or deal with the problem of having multiple values in the <code>Affiliation</code> and <code>C1</code> cells first?</p>
 <p>Let’s do the joins first. This is an easier problem, but also as joining also filters, it reduces the number of rows and therefore when it comes to the full data, it reduces the amount of departments we need to tidy.</p>
-<p>We’ll use our single row <code>pure_lipid</code> object to perform filtering joins on the full <code>scopus_dat</code> and <code>wos_dat</code> data using <code>left_join()</code> as per <a href="data-wrangling-2.html#sec-filtering-join" class="quarto-xref"><span>Section 5.3</span></a>.</p>
+<p>We’ll use our single row <code>pure_lipid</code> object to perform filtering joins on the full <code>scopus_dat</code> and <code>wos_dat</code> data using <code>left_join()</code> as per <a href="data-wrangling-2.html#sec-filtering-join" class="quarto-xref"><span>Section 6.3</span></a>.</p>
 <p>As the variables for title and DOI have different names we have to explicitly tell the join function how to map these variables using <code>by</code> and passing character vectors stating the mapping as below. I’m using two pipes and doing both joins prior to assigning a new object <code>lipid_join</code>.</p>
 <p>We start with 1 row and 21 variables in <code>pure_lipid</code> and join on two variables, meaning we add 18 variables from <code>scopus_dat</code> and 69 variables from <code>wos_dat</code> to create a table with 1 row and 21 + 18 + 69 = 108 columns.</p>
 <div class="cell">
@@ -538,13 +544,13 @@ $ UT &lt;chr&gt; "WOS:001175218400001", "WOS:001170495400001", "WOS:001187496600
 <pre><code>[1] "[1 x 108]"</code></pre>
 </div>
 </div>
-</section><section id="sec-separating-the-scopus-affiliations" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-separating-the-scopus-affiliations">
-<span class="header-section-number">6.3.2</span> Separating the Scopus Affiliations</h3>
+</section><section id="sec-separating-the-scopus-affiliations" class="level3" data-number="7.3.2"><h3 data-number="7.3.2" class="anchored" data-anchor-id="sec-separating-the-scopus-affiliations">
+<span class="header-section-number">7.3.2</span> Separating the Scopus Affiliations</h3>
 <p>I’ll use <code>select</code> to look at <code>Affiliations</code> column in <code>lipid_join</code> that originates in the Scopus data, and we can see there are three <code>;</code> separating three values for departments: two are University of Southampton and one is from the University of Pennsylvania.</p>
 <div class="cell">
 <div id="lst-lipid-affiliations" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-lipid-affiliations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;6.1: Use <code>select</code> to see how many values are in the <code>Affiliations</code> cell
+Listing&nbsp;7.1: Use <code>select</code> to see how many values are in the <code>Affiliations</code> cell
 </figcaption><div aria-describedby="lst-lipid-affiliations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode" id="lst-lipid-affiliations"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_join</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">Affiliations</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -557,10 +563,10 @@ Listing&nbsp;6.1: Use <code>select</code> to see how many values are in the <cod
 </div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-939e9d56{}.cl-939251e0{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9398241c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-93984262{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9398426c{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-939e9d56">
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-93984262"><p class="cl-9398241c"><span class="cl-939251e0">Affiliations</span></p></th></tr></thead>
-<tbody><tr style="overflow-wrap:break-word;"><td class="cl-9398426c"><p class="cl-9398241c"><span class="cl-939251e0">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom; National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom; Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td></tr></tbody>
+<style>.cl-884e9492{}.cl-8846c0dc{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-884a5a9e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-884a6cbe{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-884a6cc8{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-884e9492">
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-884a6cbe"><p class="cl-884a5a9e"><span class="cl-8846c0dc">Affiliations</span></p></th></tr></thead>
+<tbody><tr style="overflow-wrap:break-word;"><td class="cl-884a6cc8"><p class="cl-884a5a9e"><span class="cl-8846c0dc">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom; National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom; Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td></tr></tbody>
 </table>
 </div>
 </div>
@@ -581,7 +587,7 @@ Listing&nbsp;6.1: Use <code>select</code> to see how many values are in the <cod
 <div class="cell">
 <div id="lst-lipid-separate-wider" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-lipid-separate-wider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;6.2: Separating the Affiliation values in <code>lipid_join</code> into individual columns using <code>separate_wider_delim()</code>
+Listing&nbsp;7.2: Separating the Affiliation values in <code>lipid_join</code> into individual columns using <code>separate_wider_delim()</code>
 </figcaption><div aria-describedby="lst-lipid-separate-wider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode" id="lst-lipid-separate-wider"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_join</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">Affiliations</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -597,17 +603,17 @@ Listing&nbsp;6.2: Separating the Affiliation values in <code>lipid_join</code> i
 </div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-93c2bc22{}.cl-93b6a46e{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-93bc07e2{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-93bc25c4{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25ce{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25cf{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25d8{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25e2{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93bc25e3{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-93c2bc22">
+<style>.cl-886448c8{}.cl-885de0f0{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-886051fa{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-886060be{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-886060c8{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-886060c9{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-886060d2{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-886060d3{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-886060dc{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-886448c8">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-93bc25c4"><p class="cl-93bc07e2"><span class="cl-93b6a46e">Affiliations_1</span></p></th>
-<th class="cl-93bc25ce"><p class="cl-93bc07e2"><span class="cl-93b6a46e">Affiliations_2</span></p></th>
-<th class="cl-93bc25cf"><p class="cl-93bc07e2"><span class="cl-93b6a46e">Affiliations_3</span></p></th>
+<th class="cl-886060be"><p class="cl-886051fa"><span class="cl-885de0f0">Affiliations_1</span></p></th>
+<th class="cl-886060c8"><p class="cl-886051fa"><span class="cl-885de0f0">Affiliations_2</span></p></th>
+<th class="cl-886060c9"><p class="cl-886051fa"><span class="cl-885de0f0">Affiliations_3</span></p></th>
 </tr></thead>
 <tbody><tr style="overflow-wrap:break-word;">
-<td class="cl-93bc25d8"><p class="cl-93bc07e2"><span class="cl-93b6a46e">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
-<td class="cl-93bc25e2"><p class="cl-93bc07e2"><span class="cl-93b6a46e"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
-<td class="cl-93bc25e3"><p class="cl-93bc07e2"><span class="cl-93b6a46e"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
+<td class="cl-886060d2"><p class="cl-886051fa"><span class="cl-885de0f0">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
+<td class="cl-886060d3"><p class="cl-886051fa"><span class="cl-885de0f0"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
+<td class="cl-886060dc"><p class="cl-886051fa"><span class="cl-885de0f0"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
 </tr></tbody>
 </table>
 </div>
@@ -617,7 +623,7 @@ Listing&nbsp;6.2: Separating the Affiliation values in <code>lipid_join</code> i
 <div class="cell">
 <div id="lst-sep-wide-lipid" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-sep-wide-lipid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code>separate_wider_delim()</code> and creating a new object.
+Listing&nbsp;7.3: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code>separate_wider_delim()</code> and creating a new object.
 </figcaption><div aria-describedby="lst-sep-wide-lipid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode" id="lst-sep-wide-lipid"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide</span> <span class="op">&lt;-</span> <span class="va">lipid_join</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">separate_wider_delim</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>, </span>
@@ -634,9 +640,9 @@ Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> i
 <pre><code>[1] "[1 x 110]"</code></pre>
 </div>
 </div>
-</section><section id="sec-separating-the-wos-affiliations" class="level3" data-number="6.3.3"><h3 data-number="6.3.3" class="anchored" data-anchor-id="sec-separating-the-wos-affiliations">
-<span class="header-section-number">6.3.3</span> Separating the Web of Science <code>C1</code> column</h3>
-<p>As described in <a href="#sec-web-of-science-data" class="quarto-xref"><span>Section 6.2.3</span></a>, <code>C1</code> is the field tag for Author address which also contains institution department information, but as with the Scopus data this column contains multiple values in each cell.</p>
+</section><section id="sec-separating-the-wos-affiliations" class="level3" data-number="7.3.3"><h3 data-number="7.3.3" class="anchored" data-anchor-id="sec-separating-the-wos-affiliations">
+<span class="header-section-number">7.3.3</span> Separating the Web of Science <code>C1</code> column</h3>
+<p>As described in <a href="#sec-web-of-science-data" class="quarto-xref"><span>Section 7.2.3</span></a>, <code>C1</code> is the field tag for Author address which also contains institution department information, but as with the Scopus data this column contains multiple values in each cell.</p>
 <p>To make matters worse, the values for the departments aren’t separated using a simple delimiter.</p>
 <p>Let’s look <code>C1</code> in <code>lipid_wide</code>:</p>
 <div class="cell">
@@ -646,10 +652,10 @@ Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> i
 <span>  <span class="fu">autofit</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-93eaa098{}.cl-93dfb5a2{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-93e41962{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-93e43546{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-93e43550{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-93eaa098">
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-93e43546"><p class="cl-93e41962"><span class="cl-93dfb5a2">C1</span></p></th></tr></thead>
-<tbody><tr style="overflow-wrap:break-word;"><td class="cl-93e43550"><p class="cl-93e41962"><span class="cl-93dfb5a2">[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Hosp Southampton Natl Hlth Serv Fdn Trust, Southampton, England; [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Genet, Philadelphia, PA 19104 USA</span></p></td></tr></tbody>
+<style>.cl-887b9726{}.cl-88755366{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8877d08c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8877deba{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8877dec4{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-887b9726">
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-8877deba"><p class="cl-8877d08c"><span class="cl-88755366">C1</span></p></th></tr></thead>
+<tbody><tr style="overflow-wrap:break-word;"><td class="cl-8877dec4"><p class="cl-8877d08c"><span class="cl-88755366">[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Hosp Southampton Natl Hlth Serv Fdn Trust, Southampton, England; [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Genet, Philadelphia, PA 19104 USA</span></p></td></tr></tbody>
 </table>
 </div>
 </div>
@@ -665,8 +671,8 @@ Listing&nbsp;6.3: Separating the Affiliation values in <code>scopus_dat</code> i
 </ol>
 <p>This should mean we have a table with just the University of Southampton affiliations from Web of Science in columns prefixed <code>C1_</code></p>
 <p>Simple, huh?! It’s much more concise in code.</p>
-<section id="step-1-separate-c1" class="level4" data-number="6.3.3.1"><h4 data-number="6.3.3.1" class="anchored" data-anchor-id="step-1-separate-c1">
-<span class="header-section-number">6.3.3.1</span> Step 1: Separate <code>C1</code>
+<section id="step-1-separate-c1" class="level4" data-number="7.3.3.1"><h4 data-number="7.3.3.1" class="anchored" data-anchor-id="step-1-separate-c1">
+<span class="header-section-number">7.3.3.1</span> Step 1: Separate <code>C1</code>
 </h4>
 <p>As before, we separate using <code>separate_wider_delim()</code> using <code>;</code> as the delimiter.</p>
 <p>This time we end up with 7 columns as there are <code>;</code> between author names and country.</p>
@@ -693,15 +699,15 @@ $ C1_6 &lt;chr&gt; " Scorletti, Eleonora] Univ Hosp Southampton Natl Hlth Serv F
 $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Genet, …</code></pre>
 </div>
 </div>
-</section><section id="steps-2-pivot-longer" class="level4" data-number="6.3.3.2"><h4 data-number="6.3.3.2" class="anchored" data-anchor-id="steps-2-pivot-longer">
-<span class="header-section-number">6.3.3.2</span> Steps 2: Pivot longer</h4>
+</section><section id="steps-2-pivot-longer" class="level4" data-number="7.3.3.2"><h4 data-number="7.3.3.2" class="anchored" data-anchor-id="steps-2-pivot-longer">
+<span class="header-section-number">7.3.3.2</span> Steps 2: Pivot longer</h4>
 <p>Next we <code>pivot_longer()</code> and take advantage of <code>starts_with()</code> using character vector <code>"C1_"</code> as the argument to pivot on all the columns from step 1. The output is assigned to <code>lipid_wide_3</code></p>
 <div class="cell">
 <div class="sourceCode" id="lipid-wide-345" data-lst-cap="separate using `separate_wider_delim()` using `;` as the delimiter. This time we end up with 7 columns as there are `;` between author names and country."><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lipid_wide_3</span> <span class="op">&lt;-</span> <span class="va">lipid_wide_2</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu">starts_with</span><span class="op">(</span><span class="st">"C1"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="steps-3-and-4-extract-the-university-of-southampton-department-and-filter" class="level4" data-number="6.3.3.3"><h4 data-number="6.3.3.3" class="anchored" data-anchor-id="steps-3-and-4-extract-the-university-of-southampton-department-and-filter">
-<span class="header-section-number">6.3.3.3</span> Steps 3 and 4 : Extract the University of Southampton department and filter</h4>
+</section><section id="steps-3-and-4-extract-the-university-of-southampton-department-and-filter" class="level4" data-number="7.3.3.3"><h4 data-number="7.3.3.3" class="anchored" data-anchor-id="steps-3-and-4-extract-the-university-of-southampton-department-and-filter">
+<span class="header-section-number">7.3.3.3</span> Steps 3 and 4 : Extract the University of Southampton department and filter</h4>
 <p>Then we use <code>mutate()</code> to create a new variable <code>department</code> based on <code>str_extract()</code> on the <code>value</code> variable with a regex passed as a string.</p>
 <p>I created the regex pattern using Generative AI giving it the string <code>[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth, Southampton, England;</code> and a prompt:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>"write a regex to capture the text after ']' and before ', Southampton, England'"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -714,8 +720,8 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">department</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">value</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="step-5-pivot-wider" class="level3" data-number="6.3.4"><h3 data-number="6.3.4" class="anchored" data-anchor-id="step-5-pivot-wider">
-<span class="header-section-number">6.3.4</span> Step 5 : Pivot wider</h3>
+</section></section><section id="step-5-pivot-wider" class="level3" data-number="7.3.4"><h3 data-number="7.3.4" class="anchored" data-anchor-id="step-5-pivot-wider">
+<span class="header-section-number">7.3.4</span> Step 5 : Pivot wider</h3>
 <p>Finally, we pivot wider taking the names from the <code>name</code> column and filling the columns with the values from <code>department</code>. The output is saved in <code>lipid_wide_5</code>.</p>
 <p>This returns the <code>lipid_wide</code> table, but with the University of Southampton departments originally in <code>C1</code> in column now in columns prefixed <code>C1_</code></p>
 <div class="cell">
@@ -738,37 +744,37 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 <span>  <span class="fu">autofit</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-94385b12{}.cl-942cda9e{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9431570e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-94317216{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317220{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431722a{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431722b{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431722c{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317234{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317235{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431723e{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317248{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317249{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9431724a{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317252{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317253{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94317254{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-94385b12">
+<style>.cl-88a8960e{}.cl-88a28a5c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-88a4c376{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-88a4d1ae{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1b8{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1c2{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1c3{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1c4{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1cc{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1cd{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1d6{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1d7{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1d8{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1e0{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1e1{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1ea{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88a4d1eb{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-88a8960e">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-94317216"><p class="cl-9431570e"><span class="cl-942cda9e">Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0</span></p></th>
-<th class="cl-94317220"><p class="cl-9431570e"><span class="cl-942cda9e">Title of the contribution in original language-5</span></p></th>
-<th class="cl-94317220"><p class="cl-9431570e"><span class="cl-942cda9e">C1_2</span></p></th>
-<th class="cl-9431722a"><p class="cl-9431570e"><span class="cl-942cda9e">C1_4</span></p></th>
-<th class="cl-9431722b"><p class="cl-9431570e"><span class="cl-942cda9e">C1_6</span></p></th>
-<th class="cl-9431722c"><p class="cl-9431570e"><span class="cl-942cda9e">Affiliations_1</span></p></th>
-<th class="cl-94317234"><p class="cl-9431570e"><span class="cl-942cda9e">Affiliations_2</span></p></th>
-<th class="cl-94317235"><p class="cl-9431570e"><span class="cl-942cda9e">Affiliations_3</span></p></th>
+<th class="cl-88a4d1ae"><p class="cl-88a4c376"><span class="cl-88a28a5c">Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0</span></p></th>
+<th class="cl-88a4d1b8"><p class="cl-88a4c376"><span class="cl-88a28a5c">Title of the contribution in original language-5</span></p></th>
+<th class="cl-88a4d1b8"><p class="cl-88a4c376"><span class="cl-88a28a5c">C1_2</span></p></th>
+<th class="cl-88a4d1c2"><p class="cl-88a4c376"><span class="cl-88a28a5c">C1_4</span></p></th>
+<th class="cl-88a4d1c3"><p class="cl-88a4c376"><span class="cl-88a28a5c">C1_6</span></p></th>
+<th class="cl-88a4d1c4"><p class="cl-88a4c376"><span class="cl-88a28a5c">Affiliations_1</span></p></th>
+<th class="cl-88a4d1cc"><p class="cl-88a4c376"><span class="cl-88a28a5c">Affiliations_2</span></p></th>
+<th class="cl-88a4d1cd"><p class="cl-88a4c376"><span class="cl-88a28a5c">Affiliations_3</span></p></th>
 </tr></thead>
 <tbody><tr style="overflow-wrap:break-word;">
-<td class="cl-9431723e"><p class="cl-9431570e"><span class="cl-942cda9e">10.1097/MCO.0000000000000993</span></p></td>
-<td class="cl-94317248"><p class="cl-9431570e"><span class="cl-942cda9e">Lipid droplets in steatotic liver disease</span></p></td>
-<td class="cl-94317248"><p class="cl-9431570e"><span class="cl-942cda9e"> Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth</span></p></td>
-<td class="cl-94317249"><p class="cl-9431570e"><span class="cl-942cda9e"> Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr</span></p></td>
-<td class="cl-9431724a"><p class="cl-9431570e"><span class="cl-942cda9e"> Univ Hosp Southampton Natl Hlth Serv Fdn Trust</span></p></td>
-<td class="cl-94317252"><p class="cl-9431570e"><span class="cl-942cda9e">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
-<td class="cl-94317253"><p class="cl-9431570e"><span class="cl-942cda9e"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
-<td class="cl-94317254"><p class="cl-9431570e"><span class="cl-942cda9e"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
+<td class="cl-88a4d1d6"><p class="cl-88a4c376"><span class="cl-88a28a5c">10.1097/MCO.0000000000000993</span></p></td>
+<td class="cl-88a4d1d7"><p class="cl-88a4c376"><span class="cl-88a28a5c">Lipid droplets in steatotic liver disease</span></p></td>
+<td class="cl-88a4d1d7"><p class="cl-88a4c376"><span class="cl-88a28a5c"> Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth</span></p></td>
+<td class="cl-88a4d1d8"><p class="cl-88a4c376"><span class="cl-88a28a5c"> Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr</span></p></td>
+<td class="cl-88a4d1e0"><p class="cl-88a4c376"><span class="cl-88a28a5c"> Univ Hosp Southampton Natl Hlth Serv Fdn Trust</span></p></td>
+<td class="cl-88a4d1e1"><p class="cl-88a4c376"><span class="cl-88a28a5c">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
+<td class="cl-88a4d1ea"><p class="cl-88a4c376"><span class="cl-88a28a5c"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
+<td class="cl-88a4d1eb"><p class="cl-88a4c376"><span class="cl-88a28a5c"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
 </tr></tbody>
 </table>
 </div>
 </div>
 </div>
-</section></section><section id="whole-game" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="whole-game">
-<span class="header-section-number">6.4</span> Whole game</h2>
+</section></section><section id="whole-game" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="whole-game">
+<span class="header-section-number">7.4</span> Whole game</h2>
 <p>Let’s do that again, but for the whole table and in fewer parts</p>
-<section id="join-scopus-and-wos-tables-to-the-pure-table" class="level3" data-number="6.4.1"><h3 data-number="6.4.1" class="anchored" data-anchor-id="join-scopus-and-wos-tables-to-the-pure-table">
-<span class="header-section-number">6.4.1</span> Join Scopus and Wos tables to the Pure table</h3>
+<section id="join-scopus-and-wos-tables-to-the-pure-table" class="level3" data-number="7.4.1"><h3 data-number="7.4.1" class="anchored" data-anchor-id="join-scopus-and-wos-tables-to-the-pure-table">
+<span class="header-section-number">7.4.1</span> Join Scopus and Wos tables to the Pure table</h3>
 <div class="cell">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_join</span> <span class="op">&lt;-</span> <span class="va">pure_dat</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">scopus_dat</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`Title of the contribution in original language-5` <span class="op">=</span> <span class="st">"Title"</span>,</span>
@@ -782,8 +788,8 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 <pre><code>[1] "[5,187 x 108]"</code></pre>
 </div>
 </div>
-</section><section id="separate-the-scopus-affiliations" class="level3" data-number="6.4.2"><h3 data-number="6.4.2" class="anchored" data-anchor-id="separate-the-scopus-affiliations">
-<span class="header-section-number">6.4.2</span> Separate the Scopus Affiliations</h3>
+</section><section id="separate-the-scopus-affiliations" class="level3" data-number="7.4.2"><h3 data-number="7.4.2" class="anchored" data-anchor-id="separate-the-scopus-affiliations">
+<span class="header-section-number">7.4.2</span> Separate the Scopus Affiliations</h3>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_wide</span> <span class="op">&lt;-</span> <span class="va">pure_join</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">separate_wider_delim</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Affiliations</span>, </span>
@@ -798,8 +804,8 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 </div>
 </div>
 <p>As an extra step, I’m going to use the same pivot trick to get rid of any Scopus affiliations that aren’t University of Southampton.</p>
-</section><section id="separate-the-wos-affiliations" class="level3" data-number="6.4.3"><h3 data-number="6.4.3" class="anchored" data-anchor-id="separate-the-wos-affiliations">
-<span class="header-section-number">6.4.3</span> Separate the WoS Affiliations</h3>
+</section><section id="separate-the-wos-affiliations" class="level3" data-number="7.4.3"><h3 data-number="7.4.3" class="anchored" data-anchor-id="separate-the-wos-affiliations">
+<span class="header-section-number">7.4.3</span> Separate the WoS Affiliations</h3>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pure_wider</span> <span class="op">&lt;-</span> <span class="va">pure_wide</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">separate_wider_delim</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">C1</span>, </span>
@@ -1182,12 +1188,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1409,7 +1410,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./data-wrangling-2.html" class="pagination-link  aria-label=" wrangling="" ii="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

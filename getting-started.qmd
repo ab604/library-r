@@ -291,6 +291,8 @@ These the steps for creating an `Project` in a new folder:
 
 ### Naming things {#sec-names}
 
+R has rules about what constitutes a valid name. A syntactic name must contain letters, digits, `.` and `_` but cannot begin with a digit or underscore. There are also certain reserved names such as `TRUE` that cannot be used. A name that breaks these rules is non-syntactic. For details see [Non-syntactic names is Advanced R](https://adv-r.hadley.nz/names-values.html#non-syntactic).
+
 [Jenny Bryan](https://ropensci.org/blog/2017/12/08/rprofile-jenny-bryan/) also has three principles for [naming things](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf) that are well worth remembering.
 
 When you names something, a file or an object, ideally it should be:

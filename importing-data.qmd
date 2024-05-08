@@ -4,4 +4,106 @@
 This chapter covers importing tabular data from plain text files and spreadsheets using the tidyverse packages `readr` and `readxl`. And exporting data using `readr` and `writexl`.
 :::
 
-## Plain 
+```{r}
+#| label: set-up
+#| message: false
+#| echo: false
+library(palmerpenguins)
+library(tidyverse)
+library(janitor)
+library(flextable)
+library(readr)
+library(readxl)
+library(writexl)
+```
+
+For detailed advice and examples, I direct you to two sections of R4DS, [data import](https://r4ds.hadley.nz/data-import) and [spreadsheets](https://r4ds.hadley.nz/spreadsheets).
+
+## Organising your data in spreadsheets {#sec-spreadsheets}
+
+[Data Organization in Spreadsheets by Karl W. Broman & Kara H. Woo](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.
+
+As per previous discussion about naming things (@sec-names), the recommendation for naming variables (column names) is to use [snake case](https://developer.mozilla.org/en-US/docs/Glossary/Snake_case). This means replacing spaces with underscores `_` and typically using lower case only. So for example, the non-syntactic variable `Student ID` in snake case would be `student_id`.
+
+## Plain text files {#sec-plain-text}
+
+Plain text separated by a delimiter, often a comma, tab or space. That is to say they contain only the data, as text information. File formats `.csv` and `.tsv` indicate comma separated variables and tab separated variables respectively.
+
+Here is some comma separated variable `csv` data about some books in it's raw state:
+
+``` markdown
+title,type,genre,pages,year,publisher
+Plenty,Non-fiction,Cookery,288,2010,Chronicle Books
+In a Sunburned Country,Non-fiction,Travel,335,2000,Broadway Books
+The Catcher in the Rye,Fiction,Literature,234,1951,"Little, Brown and Company"
+A Time of Gifts,Non-fiction,Travel,321,1977,John Murray
+```
+
+Here is the same data formatted as a table:
+
+```{r}
+#| echo: false
+#| message: false
+books <- read_csv("data/books-2024-04-30.csv")
+
+books |> 
+slice(1:5) |> 
+flextable() |> 
+autofit()
+```
+
+### Importing plain text {#sec-importing-plain-text}
+
+```{r}
+#| lst-label: lst-import-csv
+#| lst-cap: "Importing a plain text csv file from the `data` folder and assigning it to an object called `books`"
+#| eval: false
+books <- read_csv("data/books-2024-04-30.csv")
+```
+
+### Exporting plain text {#sec-exporting-plain-text}
+
+```{r}
+#| lst-label: lst-write-csv
+#| lst-cap: "Writing the `penguins` data to a csv file in the data folder with `write_csv`"
+#| eval: false
+penguins |> 
+write_csv("data/palmer-penguins-data.csv")
+```
+
+
+## Excel spreadsheets {#sec-excel}
+
+Excel files saves files into its own proprietary format `.xls` or `.xlsx` that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse `readxl` package is the place to start: [readxl homepage](https://readxl.tidyverse.org/).
+
+When we install the tidyverse packages, `readxl` is installed, but not loaded by default when we load `library(tidyverse)` so we have to load it separately, `library(readxl)`.
+
+For exporting to MS Excel, `writexl` from [R open science writexl](https://docs.ropensci.org/writexl/) has to be installed separately
+
+```{r}
+#| eval: false
+#| lst-label: lst-writexl
+#| lst-cap: Install writexl package from ROpenSci for writing to MS Excel
+install.packages("writexl")
+```
+
+### Importing Excel sheets {#sec-importing-excel-sheets}
+
+```{r}
+#| lst-label: lst-import-xl
+#| lst-cap: "Importing a Excel file from the `data` folder and assigning it to an object called `books`"
+#| eval: false
+books_xl <- read_xlsx("data/books-2024-05-08.xlsx")
+```
+
+### Exporting Excel sheets {#sec-exporting-excel-sheets}
+
+```{r}
+#| lst-label: lst-write-xl
+#| lst-cap: "Writing the `penguins` data to a csv file in the data folder with `write_csv`"
+#| eval: false
+penguins |> 
+write_xlsx("data/palmer-penguins-data.xlsx")
+```
+
+## Cleaning names {#sec-cleaning-names}

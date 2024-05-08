@@ -14,18 +14,6 @@ library(tidyr)
 library(flextable)
 ```
 
-## Organising your data in spreadsheets {#sec-spreadsheets}
-
-[Data Organization in Spreadsheets by Karl W. Broman & Kara H. Woo](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.
-
-### Plain formats and Excel files
-
-File formats like `.csv` and `.tsv`, comma separated variables and tab separated variables respectively are plain text files. That is to say they contain only the data, as text information, and are the simplest and most convenient way to share data as lots of software, including Excel, can read and interpret them.
-
-Excel files saves files into its own proprietary format `.xls` or `.xlsx` that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse `readxl` package is the place to start: [readxl homepage](https://readxl.tidyverse.org/).
-
-When we install the tidyverse packages, `readxl` is installed, but not loaded by default when we load `library(tidyverse)` so we have to load it separately, `library(readxl)`.
-
 ## The pipe `|>` {#sec-the-pipe}
 
 The pipe operator `|>` allows you to combine operations by passing the output of an object or function to another. It will make more sense why this is a good thing once we start writing code, but you can think of it as a coding adverb such as *then*.

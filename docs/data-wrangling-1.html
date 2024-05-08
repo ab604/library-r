@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>R for Librarians - 4&nbsp; Data wrangling I</title>
+<title>R for Librarians - 5&nbsp; Data wrangling I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./data-wrangling-2.html" rel="next">
-<link href="./getting-started.html" rel="prev">
+<link href="./importing-data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-wrangling-1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-wrangling-1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -164,20 +164,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./importing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./data-wrangling-1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-wrangling-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wrangling-bibliometrics-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -194,35 +200,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li>
-<a href="#sec-spreadsheets" id="toc-sec-spreadsheets" class="nav-link active" data-scroll-target="#sec-spreadsheets"><span class="header-section-number">4.1</span> Organising your data in spreadsheets</a>
-  <ul class="collapse">
-<li><a href="#plain-formats-and-excel-files" id="toc-plain-formats-and-excel-files" class="nav-link" data-scroll-target="#plain-formats-and-excel-files"><span class="header-section-number">4.1.1</span> Plain formats and Excel files</a></li>
-  </ul>
-</li>
-  <li><a href="#sec-the-pipe" id="toc-sec-the-pipe" class="nav-link" data-scroll-target="#sec-the-pipe"><span class="header-section-number">4.2</span> The pipe <code>|&gt;</code></a></li>
-  <li><a href="#sec-introducing-dplyr" id="toc-sec-introducing-dplyr" class="nav-link" data-scroll-target="#sec-introducing-dplyr"><span class="header-section-number">4.3</span> Introducing <code>dplyr</code></a></li>
+<li><a href="#sec-the-pipe" id="toc-sec-the-pipe" class="nav-link active" data-scroll-target="#sec-the-pipe"><span class="header-section-number">5.1</span> The pipe <code>|&gt;</code></a></li>
+  <li><a href="#sec-introducing-dplyr" id="toc-sec-introducing-dplyr" class="nav-link" data-scroll-target="#sec-introducing-dplyr"><span class="header-section-number">5.2</span> Introducing <code>dplyr</code></a></li>
   <li>
-<a href="#sec-the-four-most-common-dplyr-verbs" id="toc-sec-the-four-most-common-dplyr-verbs" class="nav-link" data-scroll-target="#sec-the-four-most-common-dplyr-verbs"><span class="header-section-number">4.4</span> The four most common <code>dplyr</code> verbs</a>
+<a href="#sec-the-four-most-common-dplyr-verbs" id="toc-sec-the-four-most-common-dplyr-verbs" class="nav-link" data-scroll-target="#sec-the-four-most-common-dplyr-verbs"><span class="header-section-number">5.3</span> The four most common <code>dplyr</code> verbs</a>
   <ul class="collapse">
-<li><a href="#sec-filter-rows-with-filter" id="toc-sec-filter-rows-with-filter" class="nav-link" data-scroll-target="#sec-filter-rows-with-filter"><span class="header-section-number">4.4.1</span> Filter rows with <code>filter()</code></a></li>
-  <li><a href="#sec-arranging-rows-with-arrange" id="toc-sec-arranging-rows-with-arrange" class="nav-link" data-scroll-target="#sec-arranging-rows-with-arrange"><span class="header-section-number">4.4.2</span> Arranging rows with <code>arrange()</code></a></li>
-  <li><a href="#sec-selecting-columns-with-select" id="toc-sec-selecting-columns-with-select" class="nav-link" data-scroll-target="#sec-selecting-columns-with-select"><span class="header-section-number">4.4.3</span> Selecting columns with <code>select()</code></a></li>
-  <li><a href="#sec-creating-new-columns-with-mutate" id="toc-sec-creating-new-columns-with-mutate" class="nav-link" data-scroll-target="#sec-creating-new-columns-with-mutate"><span class="header-section-number">4.4.4</span> Creating new columns with <code>mutate()</code></a></li>
+<li><a href="#sec-filter-rows-with-filter" id="toc-sec-filter-rows-with-filter" class="nav-link" data-scroll-target="#sec-filter-rows-with-filter"><span class="header-section-number">5.3.1</span> Filter rows with <code>filter()</code></a></li>
+  <li><a href="#sec-arranging-rows-with-arrange" id="toc-sec-arranging-rows-with-arrange" class="nav-link" data-scroll-target="#sec-arranging-rows-with-arrange"><span class="header-section-number">5.3.2</span> Arranging rows with <code>arrange()</code></a></li>
+  <li><a href="#sec-selecting-columns-with-select" id="toc-sec-selecting-columns-with-select" class="nav-link" data-scroll-target="#sec-selecting-columns-with-select"><span class="header-section-number">5.3.3</span> Selecting columns with <code>select()</code></a></li>
+  <li><a href="#sec-creating-new-columns-with-mutate" id="toc-sec-creating-new-columns-with-mutate" class="nav-link" data-scroll-target="#sec-creating-new-columns-with-mutate"><span class="header-section-number">5.3.4</span> Creating new columns with <code>mutate()</code></a></li>
   </ul>
 </li>
   <li>
-<a href="#sec-creating-grouped-summaries" id="toc-sec-creating-grouped-summaries" class="nav-link" data-scroll-target="#sec-creating-grouped-summaries"><span class="header-section-number">4.5</span> Creating grouped summaries with <code>dplyr</code></a>
+<a href="#sec-creating-grouped-summaries" id="toc-sec-creating-grouped-summaries" class="nav-link" data-scroll-target="#sec-creating-grouped-summaries"><span class="header-section-number">5.4</span> Creating grouped summaries with <code>dplyr</code></a>
   <ul class="collapse">
-<li><a href="#using-group_by-and-summarise-together" id="toc-using-group_by-and-summarise-together" class="nav-link" data-scroll-target="#using-group_by-and-summarise-together"><span class="header-section-number">4.5.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</a></li>
+<li><a href="#using-group_by-and-summarise-together" id="toc-using-group_by-and-summarise-together" class="nav-link" data-scroll-target="#using-group_by-and-summarise-together"><span class="header-section-number">5.4.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</a></li>
   </ul>
 </li>
-  <li><a href="#pivots" id="toc-pivots" class="nav-link" data-scroll-target="#pivots"><span class="header-section-number">4.6</span> Pivots</a></li>
+  <li><a href="#pivots" id="toc-pivots" class="nav-link" data-scroll-target="#pivots"><span class="header-section-number">5.5</span> Pivots</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ab604/library-r/edit/main/data-wrangling-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-data-wrangling-i" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></h1>
+<h1 class="title"><span id="sec-data-wrangling-i" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span></h1>
 </div>
 
 
@@ -236,32 +236,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div id="chapter-03-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<a href="" id="chapter-03-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>This chapter covers some common tasks for working with tabular data using the tidyverse packages <code>dplyr</code> and <code>tidyr</code>. The tasks are filtering for rows of interest, arranging the rows, selecting columns of interest, creating new columns, creating grouped summaries of the table, and re-shaping (aka pivoting) the table.</p>
 </div>
 </div>
-<section id="sec-spreadsheets" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-spreadsheets">
-<span class="header-section-number">4.1</span> Organising your data in spreadsheets</h2>
-<p><a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Data Organization in Spreadsheets by Karl W. Broman &amp; Kara H. Woo</a> is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.</p>
-<section id="plain-formats-and-excel-files" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="plain-formats-and-excel-files">
-<span class="header-section-number">4.1.1</span> Plain formats and Excel files</h3>
-<p>File formats like <code>.csv</code> and <code>.tsv</code>, comma separated variables and tab separated variables respectively are plain text files. That is to say they contain only the data, as text information, and are the simplest and most convenient way to share data as lots of software, including Excel, can read and interpret them.</p>
-<p>Excel files saves files into its own proprietary format <code>.xls</code> or <code>.xlsx</code> that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse <code>readxl</code> package is the place to start: <a href="https://readxl.tidyverse.org/">readxl homepage</a>.</p>
-<p>When we install the tidyverse packages, <code>readxl</code> is installed, but not loaded by default when we load <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> so we have to load it separately, <code><a href="https://readxl.tidyverse.org">library(readxl)</a></code>.</p>
-</section></section><section id="sec-the-pipe" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sec-the-pipe">
-<span class="header-section-number">4.2</span> The pipe <code>|&gt;</code>
+<section id="sec-the-pipe" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-the-pipe">
+<span class="header-section-number">5.1</span> The pipe <code>|&gt;</code>
 </h2>
 <p>The pipe operator <code>|&gt;</code> allows you to combine operations by passing the output of an object or function to another. It will make more sense why this is a good thing once we start writing code, but you can think of it as a coding adverb such as <em>then</em>.</p>
-<p>In the example below, the <code>penguins</code> data frame is piped to the <code>count</code> function from <code>dplyr</code> (<a href="#sec-introducing-dplyr" class="quarto-xref"><span>Section 4.3</span></a>) which has the <code>species</code> column as its argument.</p>
+<p>In the example below, the <code>penguins</code> data frame is piped to the <code>count</code> function from <code>dplyr</code> (<a href="#sec-introducing-dplyr" class="quarto-xref"><span>Section 5.2</span></a>) which has the <code>species</code> column as its argument.</p>
 <p>Think of it as: <em>Return the penguins table <strong>then</strong> count how many rows there are for each different penguin species</em>.</p>
 <p><strong>Note</strong> that as I am not assigning the output to an object with <code>&lt;-</code> (<a href="getting-started.html#sec-assigning-objects" class="quarto-xref"><span>Section 3.9</span></a>) the output is returned to the console.</p>
 <div class="unnumbered callout callout-style-simple callout-tip callout-titled" title="Pipe style">
@@ -290,22 +282,22 @@ Pipe style
 <p>This makes reading and adding new steps easier.</p>
 </div>
 </div>
-<p>The pipe <code>|&gt;</code> was added to R as of version 4.1.0 , you may see the <code>%&gt;%</code> pipe from the <code>magrittr</code> package sometimes, but it’s simpler to use the native version. However, you may need to check the native pipe is enabled in the <code>Options</code> (<a href="#fig-pipe" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>).</p>
+<p>The pipe <code>|&gt;</code> was added to R as of version 4.1.0 , you may see the <code>%&gt;%</code> pipe from the <code>magrittr</code> package sometimes, but it’s simpler to use the native version. However, you may need to check the native pipe is enabled in the <code>Options</code> (<a href="#fig-pipe" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pipe" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of the settings for the native pipe `|>` option in RStudio.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/R-native-pipe.PNG" class="img-fluid figure-img" alt="An image of the settings for the native pipe `|>` option in RStudio." width="400">
+<img src="img/R-native-pipe.PNG" class="img-fluid figure-img" alt="An image of the settings for the native pipe `|>` option in RStudio.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: Setting the native pipe <code>|&gt;</code> option in RStudio
+Figure&nbsp;5.1: Setting the native pipe <code>|&gt;</code> option in RStudio
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>The shortcut for the pipe operator is <code>Ctl+Shift+M</code> on Windows or <code>Cmd+Shift+M</code> on a Mac.</p>
-</section><section id="sec-introducing-dplyr" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-introducing-dplyr">
-<span class="header-section-number">4.3</span> Introducing <code>dplyr</code>
+</section><section id="sec-introducing-dplyr" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-introducing-dplyr">
+<span class="header-section-number">5.2</span> Introducing <code>dplyr</code>
 </h2>
 <p><a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> <em>“is a grammar of data manipulation”</em>. Concretely, it’s a package of functions from the tidyverse that have been created for tasks that require manipulation of data stored in data frames <a href="getting-started.html#sec-data-frames" class="quarto-xref"><span>Section 3.10.3</span></a>.</p>
 <p>As mentioned in <a href="getting-started.html#sec-base-r-tidyverse" class="quarto-xref"><span>Section 3.6</span></a>, the grammar is the naming of the functions as verbs. Personally, I find this parallel between R code and human language makes things cognitively easier for me. I can describe what I want to do using natural language and translate it easily into tidyverse code.</p>
@@ -313,22 +305,22 @@ Figure&nbsp;4.1: Setting the native pipe <code>|&gt;</code> option in RStudio
 <div class="cell-output-display">
 <div id="fig-dplyr-name" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/dplyr-name-github.png" class="img-fluid figure-img" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers." width="484">
+<img src="img/dplyr-name-github.png" class="img-fluid figure-img" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.2: <a href="https://github.com/tidyverse/dplyr/issues/1857">Why is it called <code>dplyr</code>?</a>
+Figure&nbsp;5.2: <a href="https://github.com/tidyverse/dplyr/issues/1857">Why is it called <code>dplyr</code>?</a>
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="sec-the-four-most-common-dplyr-verbs" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="sec-the-four-most-common-dplyr-verbs">
-<span class="header-section-number">4.4</span> The four most common <code>dplyr</code> verbs</h2>
+</section><section id="sec-the-four-most-common-dplyr-verbs" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="sec-the-four-most-common-dplyr-verbs">
+<span class="header-section-number">5.3</span> The four most common <code>dplyr</code> verbs</h2>
 <p>We’ll use the four most common verbs in <code>dplyr</code> to examine the Palmer Penguins data (<a href="getting-started.html#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>).</p>
-<section id="sec-filter-rows-with-filter" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="sec-filter-rows-with-filter">
-<span class="header-section-number">4.4.1</span> Filter rows with <code>filter()</code>
+<section id="sec-filter-rows-with-filter" class="level3" data-number="5.3.1"><h3 data-number="5.3.1" class="anchored" data-anchor-id="sec-filter-rows-with-filter">
+<span class="header-section-number">5.3.1</span> Filter rows with <code>filter()</code>
 </h3>
 <p>To remind you, the <code>penguins</code> data frame has 344 rows (<a href="getting-started.html#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>). Each row contains a set of observations contained in the columns for a single penguin from one of three species (<a href="getting-started.html#fig-palmer-penguins" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>) living on one of three islands.</p>
-<p>So if for example we wanted to <em>filter</em> the data frame for only the rows of penguins with a bills longer or equal to 50 mm, we would use the <code>filter</code> function as shown in <a href="#fig-filter" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>.</p>
+<p>So if for example we wanted to <em>filter</em> the data frame for only the rows of penguins with a bills longer or equal to 50 mm, we would use the <code>filter</code> function as shown in <a href="#fig-filter" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
 <p>The function takes the <code>penguins</code> data frame object as the first argument. Either within the parentheses or via a pipe.</p>
 <p>The second argument is the column (variable) we wish to filter on, in this case <code>bill_length_mm</code> and a logical expression (evaluates as <code>TRUE</code> or <code>FALSE</code>) that is the filter.</p>
 <p>Here the expression is greater or equal to 50 <code>&gt;= 50</code>.</p>
@@ -340,7 +332,7 @@ Figure&nbsp;4.2: <a href="https://github.com/tidyverse/dplyr/issues/1857">Why is
 <img src="img/dplyr-filter-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` data frame via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.3: The <code>dplyr filter</code> function. The filter function returns rows from your data frame that satisfy your filter expression as <code>TRUE</code>. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data frame via a pipe.
+Figure&nbsp;5.3: The <code>dplyr filter</code> function. The filter function returns rows from your data frame that satisfy your filter expression as <code>TRUE</code>. Here it will return all Palmer Penguins with a bill longer or equal to 50 mm. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data frame via a pipe.
 </figcaption></figure>
 </div>
 </div>
@@ -365,10 +357,10 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 </div>
 </div>
 <p>Filtering can be done using multiple columns and expressions. See the official <a href="https://dplyr.tidyverse.org/reference/filter.html">filter documentation</a> for more complex examples.</p>
-</section><section id="sec-arranging-rows-with-arrange" class="level3" data-number="4.4.2"><h3 data-number="4.4.2" class="anchored" data-anchor-id="sec-arranging-rows-with-arrange">
-<span class="header-section-number">4.4.2</span> Arranging rows with <code>arrange()</code>
+</section><section id="sec-arranging-rows-with-arrange" class="level3" data-number="5.3.2"><h3 data-number="5.3.2" class="anchored" data-anchor-id="sec-arranging-rows-with-arrange">
+<span class="header-section-number">5.3.2</span> Arranging rows with <code>arrange()</code>
 </h3>
-<p>Another row verb is <code>arrange()</code> which as the name suggests <em>arranges the rows</em> according to column values (<a href="#fig-arrange" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>).</p>
+<p>Another row verb is <code>arrange()</code> which as the name suggests <em>arranges the rows</em> according to column values (<a href="#fig-arrange" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>).</p>
 <p>Here I’ll pipe the <code>penguins</code> data frame to the base R <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function, which returns the first six rows by default. Again I am returning the output to the console.</p>
 <p>I’ve formatted the output slightly here to highlight <code>flipper_length_mm</code> in red, so it may look a bit different to your output. We can see that row four is one of the two rows with missing values (indicated by <code>NA</code>) that we first encountered as a warning when we plotted this data (<a href="getting-started.html#sec-plotting-and-exporting-data" class="quarto-xref"><span>Section 3.11</span></a>).</p>
 <div class="cell">
@@ -378,78 +370,78 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-9c5cb2f6{}.cl-9c514b3c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9c514b46{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-9c55d512{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9c55d526{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9c55f2f4{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f2fe{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f2ff{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f308{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f309{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f312{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f313{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f314{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f315{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f31c{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f31d{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f326{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f327{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f328{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f330{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f331{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f332{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f33a{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f33b{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f33c{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f344{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f345{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f346{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9c55f347{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-9c5cb2f6">
+<style>.cl-802db9e6{}.cl-8025dd98{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8025ddac{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-802898f8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-80289902{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8028a9b0{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9b1{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9b2{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ba{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9bb{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9bc{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9bd{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9c4{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9c5{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9c6{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ce{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9cf{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9d0{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9d1{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9d8{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9d9{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9e2{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9e3{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9e4{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ec{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ed{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ee{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ef{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9f0{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-802db9e6">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-9c55f2f4"><p class="cl-9c55d512"><span class="cl-9c514b3c">species</span></p></th>
-<th class="cl-9c55f2fe"><p class="cl-9c55d512"><span class="cl-9c514b3c">island</span></p></th>
-<th class="cl-9c55f2ff"><p class="cl-9c55d526"><span class="cl-9c514b3c">bill_length_mm</span></p></th>
-<th class="cl-9c55f308"><p class="cl-9c55d526"><span class="cl-9c514b3c">bill_depth_mm</span></p></th>
-<th class="cl-9c55f309"><p class="cl-9c55d526"><span class="cl-9c514b3c">flipper_length_mm</span></p></th>
-<th class="cl-9c55f312"><p class="cl-9c55d526"><span class="cl-9c514b3c">body_mass_g</span></p></th>
-<th class="cl-9c55f313"><p class="cl-9c55d512"><span class="cl-9c514b3c">sex</span></p></th>
-<th class="cl-9c55f314"><p class="cl-9c55d526"><span class="cl-9c514b3c">year</span></p></th>
+<th class="cl-8028a9b0"><p class="cl-802898f8"><span class="cl-8025dd98">species</span></p></th>
+<th class="cl-8028a9b1"><p class="cl-802898f8"><span class="cl-8025dd98">island</span></p></th>
+<th class="cl-8028a9b2"><p class="cl-80289902"><span class="cl-8025dd98">bill_length_mm</span></p></th>
+<th class="cl-8028a9ba"><p class="cl-80289902"><span class="cl-8025dd98">bill_depth_mm</span></p></th>
+<th class="cl-8028a9bb"><p class="cl-80289902"><span class="cl-8025dd98">flipper_length_mm</span></p></th>
+<th class="cl-8028a9bc"><p class="cl-80289902"><span class="cl-8025dd98">body_mass_g</span></p></th>
+<th class="cl-8028a9bd"><p class="cl-802898f8"><span class="cl-8025dd98">sex</span></p></th>
+<th class="cl-8028a9c4"><p class="cl-80289902"><span class="cl-8025dd98">year</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9c55f315"><p class="cl-9c55d512"><span class="cl-9c514b3c">Adelie</span></p></td>
-<td class="cl-9c55f31c"><p class="cl-9c55d512"><span class="cl-9c514b3c">Torgersen</span></p></td>
-<td class="cl-9c55f31d"><p class="cl-9c55d526"><span class="cl-9c514b3c">391</span></p></td>
-<td class="cl-9c55f326"><p class="cl-9c55d526"><span class="cl-9c514b3c">187</span></p></td>
-<td class="cl-9c55f327"><p class="cl-9c55d526"><span class="cl-9c514b46">181</span></p></td>
-<td class="cl-9c55f328"><p class="cl-9c55d526"><span class="cl-9c514b3c">3750</span></p></td>
-<td class="cl-9c55f330"><p class="cl-9c55d512"><span class="cl-9c514b3c">male</span></p></td>
-<td class="cl-9c55f331"><p class="cl-9c55d526"><span class="cl-9c514b3c">2007</span></p></td>
+<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
+<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
+<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">391</span></p></td>
+<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">187</span></p></td>
+<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">181</span></p></td>
+<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">3750</span></p></td>
+<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">male</span></p></td>
+<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9c55f315"><p class="cl-9c55d512"><span class="cl-9c514b3c">Adelie</span></p></td>
-<td class="cl-9c55f31c"><p class="cl-9c55d512"><span class="cl-9c514b3c">Torgersen</span></p></td>
-<td class="cl-9c55f31d"><p class="cl-9c55d526"><span class="cl-9c514b3c">395</span></p></td>
-<td class="cl-9c55f326"><p class="cl-9c55d526"><span class="cl-9c514b3c">174</span></p></td>
-<td class="cl-9c55f327"><p class="cl-9c55d526"><span class="cl-9c514b46">186</span></p></td>
-<td class="cl-9c55f328"><p class="cl-9c55d526"><span class="cl-9c514b3c">3800</span></p></td>
-<td class="cl-9c55f330"><p class="cl-9c55d512"><span class="cl-9c514b3c">female</span></p></td>
-<td class="cl-9c55f331"><p class="cl-9c55d526"><span class="cl-9c514b3c">2007</span></p></td>
+<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
+<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
+<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">395</span></p></td>
+<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">174</span></p></td>
+<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">186</span></p></td>
+<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">3800</span></p></td>
+<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">female</span></p></td>
+<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9c55f315"><p class="cl-9c55d512"><span class="cl-9c514b3c">Adelie</span></p></td>
-<td class="cl-9c55f31c"><p class="cl-9c55d512"><span class="cl-9c514b3c">Torgersen</span></p></td>
-<td class="cl-9c55f31d"><p class="cl-9c55d526"><span class="cl-9c514b3c">403</span></p></td>
-<td class="cl-9c55f326"><p class="cl-9c55d526"><span class="cl-9c514b3c">180</span></p></td>
-<td class="cl-9c55f327"><p class="cl-9c55d526"><span class="cl-9c514b46">195</span></p></td>
-<td class="cl-9c55f328"><p class="cl-9c55d526"><span class="cl-9c514b3c">3250</span></p></td>
-<td class="cl-9c55f330"><p class="cl-9c55d512"><span class="cl-9c514b3c">female</span></p></td>
-<td class="cl-9c55f331"><p class="cl-9c55d526"><span class="cl-9c514b3c">2007</span></p></td>
+<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
+<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
+<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">403</span></p></td>
+<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">180</span></p></td>
+<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">195</span></p></td>
+<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">3250</span></p></td>
+<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">female</span></p></td>
+<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9c55f315"><p class="cl-9c55d512"><span class="cl-9c514b3c">Adelie</span></p></td>
-<td class="cl-9c55f31c"><p class="cl-9c55d512"><span class="cl-9c514b3c">Torgersen</span></p></td>
-<td class="cl-9c55f31d"><p class="cl-9c55d526"><span class="cl-9c514b3c">NA</span></p></td>
-<td class="cl-9c55f326"><p class="cl-9c55d526"><span class="cl-9c514b3c">NA</span></p></td>
-<td class="cl-9c55f327"><p class="cl-9c55d526"><span class="cl-9c514b46">NA</span></p></td>
-<td class="cl-9c55f328"><p class="cl-9c55d526"><span class="cl-9c514b3c">NA</span></p></td>
-<td class="cl-9c55f330"><p class="cl-9c55d512"><span class="cl-9c514b3c">NA</span></p></td>
-<td class="cl-9c55f331"><p class="cl-9c55d526"><span class="cl-9c514b3c">2007</span></p></td>
+<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
+<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
+<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">NA</span></p></td>
+<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">NA</span></p></td>
+<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">NA</span></p></td>
+<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">NA</span></p></td>
+<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">NA</span></p></td>
+<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9c55f315"><p class="cl-9c55d512"><span class="cl-9c514b3c">Adelie</span></p></td>
-<td class="cl-9c55f31c"><p class="cl-9c55d512"><span class="cl-9c514b3c">Torgersen</span></p></td>
-<td class="cl-9c55f31d"><p class="cl-9c55d526"><span class="cl-9c514b3c">367</span></p></td>
-<td class="cl-9c55f326"><p class="cl-9c55d526"><span class="cl-9c514b3c">193</span></p></td>
-<td class="cl-9c55f327"><p class="cl-9c55d526"><span class="cl-9c514b46">193</span></p></td>
-<td class="cl-9c55f328"><p class="cl-9c55d526"><span class="cl-9c514b3c">3450</span></p></td>
-<td class="cl-9c55f330"><p class="cl-9c55d512"><span class="cl-9c514b3c">female</span></p></td>
-<td class="cl-9c55f331"><p class="cl-9c55d526"><span class="cl-9c514b3c">2007</span></p></td>
+<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
+<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
+<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">367</span></p></td>
+<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">193</span></p></td>
+<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">193</span></p></td>
+<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">3450</span></p></td>
+<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">female</span></p></td>
+<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9c55f332"><p class="cl-9c55d512"><span class="cl-9c514b3c">Adelie</span></p></td>
-<td class="cl-9c55f33a"><p class="cl-9c55d512"><span class="cl-9c514b3c">Torgersen</span></p></td>
-<td class="cl-9c55f33b"><p class="cl-9c55d526"><span class="cl-9c514b3c">393</span></p></td>
-<td class="cl-9c55f33c"><p class="cl-9c55d526"><span class="cl-9c514b3c">206</span></p></td>
-<td class="cl-9c55f344"><p class="cl-9c55d526"><span class="cl-9c514b46">190</span></p></td>
-<td class="cl-9c55f345"><p class="cl-9c55d526"><span class="cl-9c514b3c">3650</span></p></td>
-<td class="cl-9c55f346"><p class="cl-9c55d512"><span class="cl-9c514b3c">male</span></p></td>
-<td class="cl-9c55f347"><p class="cl-9c55d526"><span class="cl-9c514b3c">2007</span></p></td>
+<td class="cl-8028a9e2"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
+<td class="cl-8028a9e3"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
+<td class="cl-8028a9e4"><p class="cl-80289902"><span class="cl-8025dd98">393</span></p></td>
+<td class="cl-8028a9ec"><p class="cl-80289902"><span class="cl-8025dd98">206</span></p></td>
+<td class="cl-8028a9ed"><p class="cl-80289902"><span class="cl-8025ddac">190</span></p></td>
+<td class="cl-8028a9ee"><p class="cl-80289902"><span class="cl-8025dd98">3650</span></p></td>
+<td class="cl-8028a9ef"><p class="cl-802898f8"><span class="cl-8025dd98">male</span></p></td>
+<td class="cl-8028a9f0"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -465,78 +457,78 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-9cb001b8{}.cl-9ca46d80{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9ca46d8a{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-9ca89ffe{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9ca8a008{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9ca8bea8{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8beb2{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bebc{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bebd{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf0c{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf0d{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf16{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf17{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf20{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf2a{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf2b{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf2c{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf34{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf35{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf36{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf37{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf38{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf3e{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf3f{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf48{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf49{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf4a{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf4b{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf52{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf53{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf54{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf55{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf5c{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf5d{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf5e{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf5f{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9ca8bf66{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-9cb001b8">
+<style>.cl-805cb7aa{}.cl-8056683c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-80566846{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-8058bb32{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8058bb3c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8058cbc2{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbcc{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbcd{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbce{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbd6{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbd7{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbe0{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbe1{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbe2{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbe3{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbea{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbeb{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbec{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf4{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf5{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf6{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf7{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf8{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbfe{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbff{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc00{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc01{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc08{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc09{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc0a{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc12{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc13{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc14{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc15{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc1c{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc1d{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc1e{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-805cb7aa">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-9ca8bea8"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">species</span></p></th>
-<th class="cl-9ca8beb2"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">island</span></p></th>
-<th class="cl-9ca8bebc"><p class="cl-9ca8a008"><span class="cl-9ca46d80">bill_length_mm</span></p></th>
-<th class="cl-9ca8bebd"><p class="cl-9ca8a008"><span class="cl-9ca46d80">bill_depth_mm</span></p></th>
-<th class="cl-9ca8bf0c"><p class="cl-9ca8a008"><span class="cl-9ca46d80">flipper_length_mm</span></p></th>
-<th class="cl-9ca8bf0d"><p class="cl-9ca8a008"><span class="cl-9ca46d80">body_mass_g</span></p></th>
-<th class="cl-9ca8bf16"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">sex</span></p></th>
-<th class="cl-9ca8bf17"><p class="cl-9ca8a008"><span class="cl-9ca46d80">year</span></p></th>
+<th class="cl-8058cbc2"><p class="cl-8058bb32"><span class="cl-8056683c">species</span></p></th>
+<th class="cl-8058cbcc"><p class="cl-8058bb32"><span class="cl-8056683c">island</span></p></th>
+<th class="cl-8058cbcd"><p class="cl-8058bb3c"><span class="cl-8056683c">bill_length_mm</span></p></th>
+<th class="cl-8058cbce"><p class="cl-8058bb3c"><span class="cl-8056683c">bill_depth_mm</span></p></th>
+<th class="cl-8058cbd6"><p class="cl-8058bb3c"><span class="cl-8056683c">flipper_length_mm</span></p></th>
+<th class="cl-8058cbd7"><p class="cl-8058bb3c"><span class="cl-8056683c">body_mass_g</span></p></th>
+<th class="cl-8058cbe0"><p class="cl-8058bb32"><span class="cl-8056683c">sex</span></p></th>
+<th class="cl-8058cbe1"><p class="cl-8058bb3c"><span class="cl-8056683c">year</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9ca8bf20"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Adelie</span></p></td>
-<td class="cl-9ca8bf2a"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Biscoe</span></p></td>
-<td class="cl-9ca8bf2b"><p class="cl-9ca8a008"><span class="cl-9ca46d80">379</span></p></td>
-<td class="cl-9ca8bf2c"><p class="cl-9ca8a008"><span class="cl-9ca46d80">186</span></p></td>
-<td class="cl-9ca8bf34"><p class="cl-9ca8a008"><span class="cl-9ca46d8a">172</span></p></td>
-<td class="cl-9ca8bf35"><p class="cl-9ca8a008"><span class="cl-9ca46d80">3150</span></p></td>
-<td class="cl-9ca8bf36"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">female</span></p></td>
-<td class="cl-9ca8bf37"><p class="cl-9ca8a008"><span class="cl-9ca46d80">2007</span></p></td>
+<td class="cl-8058cbe2"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
+<td class="cl-8058cbe3"><p class="cl-8058bb32"><span class="cl-8056683c">Biscoe</span></p></td>
+<td class="cl-8058cbea"><p class="cl-8058bb3c"><span class="cl-8056683c">379</span></p></td>
+<td class="cl-8058cbeb"><p class="cl-8058bb3c"><span class="cl-8056683c">186</span></p></td>
+<td class="cl-8058cbec"><p class="cl-8058bb3c"><span class="cl-80566846">172</span></p></td>
+<td class="cl-8058cbf4"><p class="cl-8058bb3c"><span class="cl-8056683c">3150</span></p></td>
+<td class="cl-8058cbf5"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
+<td class="cl-8058cbf6"><p class="cl-8058bb3c"><span class="cl-8056683c">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9ca8bf20"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Adelie</span></p></td>
-<td class="cl-9ca8bf2a"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Biscoe</span></p></td>
-<td class="cl-9ca8bf2b"><p class="cl-9ca8a008"><span class="cl-9ca46d80">378</span></p></td>
-<td class="cl-9ca8bf2c"><p class="cl-9ca8a008"><span class="cl-9ca46d80">183</span></p></td>
-<td class="cl-9ca8bf34"><p class="cl-9ca8a008"><span class="cl-9ca46d8a">174</span></p></td>
-<td class="cl-9ca8bf35"><p class="cl-9ca8a008"><span class="cl-9ca46d80">3400</span></p></td>
-<td class="cl-9ca8bf36"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">female</span></p></td>
-<td class="cl-9ca8bf37"><p class="cl-9ca8a008"><span class="cl-9ca46d80">2007</span></p></td>
+<td class="cl-8058cbe2"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
+<td class="cl-8058cbe3"><p class="cl-8058bb32"><span class="cl-8056683c">Biscoe</span></p></td>
+<td class="cl-8058cbea"><p class="cl-8058bb3c"><span class="cl-8056683c">378</span></p></td>
+<td class="cl-8058cbeb"><p class="cl-8058bb3c"><span class="cl-8056683c">183</span></p></td>
+<td class="cl-8058cbec"><p class="cl-8058bb3c"><span class="cl-80566846">174</span></p></td>
+<td class="cl-8058cbf4"><p class="cl-8058bb3c"><span class="cl-8056683c">3400</span></p></td>
+<td class="cl-8058cbf5"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
+<td class="cl-8058cbf6"><p class="cl-8058bb3c"><span class="cl-8056683c">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9ca8bf38"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Adelie</span></p></td>
-<td class="cl-9ca8bf3e"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Torgersen</span></p></td>
-<td class="cl-9ca8bf3f"><p class="cl-9ca8a008"><span class="cl-9ca46d80">402</span></p></td>
-<td class="cl-9ca8bf48"><p class="cl-9ca8a008"><span class="cl-9ca46d80">170</span></p></td>
-<td class="cl-9ca8bf49"><p class="cl-9ca8a008"><span class="cl-9ca46d8a">176</span></p></td>
-<td class="cl-9ca8bf4a"><p class="cl-9ca8a008"><span class="cl-9ca46d80">3450</span></p></td>
-<td class="cl-9ca8bf4b"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">female</span></p></td>
-<td class="cl-9ca8bf52"><p class="cl-9ca8a008"><span class="cl-9ca46d80">2009</span></p></td>
+<td class="cl-8058cbf7"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
+<td class="cl-8058cbf8"><p class="cl-8058bb32"><span class="cl-8056683c">Torgersen</span></p></td>
+<td class="cl-8058cbfe"><p class="cl-8058bb3c"><span class="cl-8056683c">402</span></p></td>
+<td class="cl-8058cbff"><p class="cl-8058bb3c"><span class="cl-8056683c">170</span></p></td>
+<td class="cl-8058cc00"><p class="cl-8058bb3c"><span class="cl-80566846">176</span></p></td>
+<td class="cl-8058cc01"><p class="cl-8058bb3c"><span class="cl-8056683c">3450</span></p></td>
+<td class="cl-8058cc08"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
+<td class="cl-8058cc09"><p class="cl-8058bb3c"><span class="cl-8056683c">2009</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9ca8bf20"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Adelie</span></p></td>
-<td class="cl-9ca8bf2a"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Dream</span></p></td>
-<td class="cl-9ca8bf2b"><p class="cl-9ca8a008"><span class="cl-9ca46d80">395</span></p></td>
-<td class="cl-9ca8bf2c"><p class="cl-9ca8a008"><span class="cl-9ca46d80">167</span></p></td>
-<td class="cl-9ca8bf34"><p class="cl-9ca8a008"><span class="cl-9ca46d8a">178</span></p></td>
-<td class="cl-9ca8bf35"><p class="cl-9ca8a008"><span class="cl-9ca46d80">3250</span></p></td>
-<td class="cl-9ca8bf36"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">female</span></p></td>
-<td class="cl-9ca8bf37"><p class="cl-9ca8a008"><span class="cl-9ca46d80">2007</span></p></td>
+<td class="cl-8058cbe2"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
+<td class="cl-8058cbe3"><p class="cl-8058bb32"><span class="cl-8056683c">Dream</span></p></td>
+<td class="cl-8058cbea"><p class="cl-8058bb3c"><span class="cl-8056683c">395</span></p></td>
+<td class="cl-8058cbeb"><p class="cl-8058bb3c"><span class="cl-8056683c">167</span></p></td>
+<td class="cl-8058cbec"><p class="cl-8058bb3c"><span class="cl-80566846">178</span></p></td>
+<td class="cl-8058cbf4"><p class="cl-8058bb3c"><span class="cl-8056683c">3250</span></p></td>
+<td class="cl-8058cbf5"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
+<td class="cl-8058cbf6"><p class="cl-8058bb3c"><span class="cl-8056683c">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9ca8bf20"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Adelie</span></p></td>
-<td class="cl-9ca8bf2a"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Dream</span></p></td>
-<td class="cl-9ca8bf2b"><p class="cl-9ca8a008"><span class="cl-9ca46d80">372</span></p></td>
-<td class="cl-9ca8bf2c"><p class="cl-9ca8a008"><span class="cl-9ca46d80">181</span></p></td>
-<td class="cl-9ca8bf34"><p class="cl-9ca8a008"><span class="cl-9ca46d8a">178</span></p></td>
-<td class="cl-9ca8bf35"><p class="cl-9ca8a008"><span class="cl-9ca46d80">3900</span></p></td>
-<td class="cl-9ca8bf36"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">male</span></p></td>
-<td class="cl-9ca8bf37"><p class="cl-9ca8a008"><span class="cl-9ca46d80">2007</span></p></td>
+<td class="cl-8058cbe2"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
+<td class="cl-8058cbe3"><p class="cl-8058bb32"><span class="cl-8056683c">Dream</span></p></td>
+<td class="cl-8058cbea"><p class="cl-8058bb3c"><span class="cl-8056683c">372</span></p></td>
+<td class="cl-8058cbeb"><p class="cl-8058bb3c"><span class="cl-8056683c">181</span></p></td>
+<td class="cl-8058cbec"><p class="cl-8058bb3c"><span class="cl-80566846">178</span></p></td>
+<td class="cl-8058cbf4"><p class="cl-8058bb3c"><span class="cl-8056683c">3900</span></p></td>
+<td class="cl-8058cbf5"><p class="cl-8058bb32"><span class="cl-8056683c">male</span></p></td>
+<td class="cl-8058cbf6"><p class="cl-8058bb3c"><span class="cl-8056683c">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9ca8bf53"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Adelie</span></p></td>
-<td class="cl-9ca8bf54"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">Dream</span></p></td>
-<td class="cl-9ca8bf55"><p class="cl-9ca8a008"><span class="cl-9ca46d80">331</span></p></td>
-<td class="cl-9ca8bf5c"><p class="cl-9ca8a008"><span class="cl-9ca46d80">161</span></p></td>
-<td class="cl-9ca8bf5d"><p class="cl-9ca8a008"><span class="cl-9ca46d8a">178</span></p></td>
-<td class="cl-9ca8bf5e"><p class="cl-9ca8a008"><span class="cl-9ca46d80">2900</span></p></td>
-<td class="cl-9ca8bf5f"><p class="cl-9ca89ffe"><span class="cl-9ca46d80">female</span></p></td>
-<td class="cl-9ca8bf66"><p class="cl-9ca8a008"><span class="cl-9ca46d80">2008</span></p></td>
+<td class="cl-8058cc0a"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
+<td class="cl-8058cc12"><p class="cl-8058bb32"><span class="cl-8056683c">Dream</span></p></td>
+<td class="cl-8058cc13"><p class="cl-8058bb3c"><span class="cl-8056683c">331</span></p></td>
+<td class="cl-8058cc14"><p class="cl-8058bb3c"><span class="cl-8056683c">161</span></p></td>
+<td class="cl-8058cc15"><p class="cl-8058bb3c"><span class="cl-80566846">178</span></p></td>
+<td class="cl-8058cc1c"><p class="cl-8058bb3c"><span class="cl-8056683c">2900</span></p></td>
+<td class="cl-8058cc1d"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
+<td class="cl-8058cc1e"><p class="cl-8058bb3c"><span class="cl-8056683c">2008</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -552,78 +544,78 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-9cf3c830{}.cl-9ce6b712{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9ce6b71c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-9ceb641a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9ceb6424{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9cebbfd2{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebbfdc{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebbfe6{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebbfe7{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebbfe8{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebbff0{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebbff1{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebbffa{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc004{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc005{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc006{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc00e{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc00f{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc010{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc018{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc019{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc01a{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc022{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc023{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc024{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc02c{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc02d{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc02e{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9cebc036{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-9cf3c830">
+<style>.cl-808260ea{}.cl-807bad2c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-807bad36{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-807df38e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-807df38f{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-807e02de{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02df{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02e0{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02e8{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02e9{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02ea{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02eb{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02f2{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02f3{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02f4{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02fc{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02fd{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02fe{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02ff{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0306{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0307{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0310{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0311{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0312{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0313{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e031a{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e031b{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e031c{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e031d{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-808260ea">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-9cebbfd2"><p class="cl-9ceb641a"><span class="cl-9ce6b712">species</span></p></th>
-<th class="cl-9cebbfdc"><p class="cl-9ceb641a"><span class="cl-9ce6b712">island</span></p></th>
-<th class="cl-9cebbfe6"><p class="cl-9ceb6424"><span class="cl-9ce6b712">bill_length_mm</span></p></th>
-<th class="cl-9cebbfe7"><p class="cl-9ceb6424"><span class="cl-9ce6b712">bill_depth_mm</span></p></th>
-<th class="cl-9cebbfe8"><p class="cl-9ceb6424"><span class="cl-9ce6b712">flipper_length_mm</span></p></th>
-<th class="cl-9cebbff0"><p class="cl-9ceb6424"><span class="cl-9ce6b712">body_mass_g</span></p></th>
-<th class="cl-9cebbff1"><p class="cl-9ceb641a"><span class="cl-9ce6b712">sex</span></p></th>
-<th class="cl-9cebbffa"><p class="cl-9ceb6424"><span class="cl-9ce6b712">year</span></p></th>
+<th class="cl-807e02de"><p class="cl-807df38e"><span class="cl-807bad2c">species</span></p></th>
+<th class="cl-807e02df"><p class="cl-807df38e"><span class="cl-807bad2c">island</span></p></th>
+<th class="cl-807e02e0"><p class="cl-807df38f"><span class="cl-807bad2c">bill_length_mm</span></p></th>
+<th class="cl-807e02e8"><p class="cl-807df38f"><span class="cl-807bad2c">bill_depth_mm</span></p></th>
+<th class="cl-807e02e9"><p class="cl-807df38f"><span class="cl-807bad2c">flipper_length_mm</span></p></th>
+<th class="cl-807e02ea"><p class="cl-807df38f"><span class="cl-807bad2c">body_mass_g</span></p></th>
+<th class="cl-807e02eb"><p class="cl-807df38e"><span class="cl-807bad2c">sex</span></p></th>
+<th class="cl-807e02f2"><p class="cl-807df38f"><span class="cl-807bad2c">year</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9cebc004"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Gentoo</span></p></td>
-<td class="cl-9cebc005"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Biscoe</span></p></td>
-<td class="cl-9cebc006"><p class="cl-9ceb6424"><span class="cl-9ce6b712">543</span></p></td>
-<td class="cl-9cebc00e"><p class="cl-9ceb6424"><span class="cl-9ce6b712">157</span></p></td>
-<td class="cl-9cebc00f"><p class="cl-9ceb6424"><span class="cl-9ce6b71c">231</span></p></td>
-<td class="cl-9cebc010"><p class="cl-9ceb6424"><span class="cl-9ce6b712">5650</span></p></td>
-<td class="cl-9cebc018"><p class="cl-9ceb641a"><span class="cl-9ce6b712">male</span></p></td>
-<td class="cl-9cebc019"><p class="cl-9ceb6424"><span class="cl-9ce6b712">2008</span></p></td>
+<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
+<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
+<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">543</span></p></td>
+<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">157</span></p></td>
+<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">231</span></p></td>
+<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">5650</span></p></td>
+<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
+<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2008</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9cebc004"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Gentoo</span></p></td>
-<td class="cl-9cebc005"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Biscoe</span></p></td>
-<td class="cl-9cebc006"><p class="cl-9ceb6424"><span class="cl-9ce6b712">500</span></p></td>
-<td class="cl-9cebc00e"><p class="cl-9ceb6424"><span class="cl-9ce6b712">163</span></p></td>
-<td class="cl-9cebc00f"><p class="cl-9ceb6424"><span class="cl-9ce6b71c">230</span></p></td>
-<td class="cl-9cebc010"><p class="cl-9ceb6424"><span class="cl-9ce6b712">5700</span></p></td>
-<td class="cl-9cebc018"><p class="cl-9ceb641a"><span class="cl-9ce6b712">male</span></p></td>
-<td class="cl-9cebc019"><p class="cl-9ceb6424"><span class="cl-9ce6b712">2007</span></p></td>
+<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
+<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
+<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">500</span></p></td>
+<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">163</span></p></td>
+<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
+<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">5700</span></p></td>
+<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
+<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9cebc004"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Gentoo</span></p></td>
-<td class="cl-9cebc005"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Biscoe</span></p></td>
-<td class="cl-9cebc006"><p class="cl-9ceb6424"><span class="cl-9ce6b712">596</span></p></td>
-<td class="cl-9cebc00e"><p class="cl-9ceb6424"><span class="cl-9ce6b712">170</span></p></td>
-<td class="cl-9cebc00f"><p class="cl-9ceb6424"><span class="cl-9ce6b71c">230</span></p></td>
-<td class="cl-9cebc010"><p class="cl-9ceb6424"><span class="cl-9ce6b712">6050</span></p></td>
-<td class="cl-9cebc018"><p class="cl-9ceb641a"><span class="cl-9ce6b712">male</span></p></td>
-<td class="cl-9cebc019"><p class="cl-9ceb6424"><span class="cl-9ce6b712">2007</span></p></td>
+<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
+<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
+<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">596</span></p></td>
+<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">170</span></p></td>
+<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
+<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">6050</span></p></td>
+<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
+<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9cebc004"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Gentoo</span></p></td>
-<td class="cl-9cebc005"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Biscoe</span></p></td>
-<td class="cl-9cebc006"><p class="cl-9ceb6424"><span class="cl-9ce6b712">498</span></p></td>
-<td class="cl-9cebc00e"><p class="cl-9ceb6424"><span class="cl-9ce6b712">168</span></p></td>
-<td class="cl-9cebc00f"><p class="cl-9ceb6424"><span class="cl-9ce6b71c">230</span></p></td>
-<td class="cl-9cebc010"><p class="cl-9ceb6424"><span class="cl-9ce6b712">5700</span></p></td>
-<td class="cl-9cebc018"><p class="cl-9ceb641a"><span class="cl-9ce6b712">male</span></p></td>
-<td class="cl-9cebc019"><p class="cl-9ceb6424"><span class="cl-9ce6b712">2008</span></p></td>
+<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
+<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
+<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">498</span></p></td>
+<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">168</span></p></td>
+<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
+<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">5700</span></p></td>
+<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
+<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2008</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9cebc004"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Gentoo</span></p></td>
-<td class="cl-9cebc005"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Biscoe</span></p></td>
-<td class="cl-9cebc006"><p class="cl-9ceb6424"><span class="cl-9ce6b712">486</span></p></td>
-<td class="cl-9cebc00e"><p class="cl-9ceb6424"><span class="cl-9ce6b712">160</span></p></td>
-<td class="cl-9cebc00f"><p class="cl-9ceb6424"><span class="cl-9ce6b71c">230</span></p></td>
-<td class="cl-9cebc010"><p class="cl-9ceb6424"><span class="cl-9ce6b712">5800</span></p></td>
-<td class="cl-9cebc018"><p class="cl-9ceb641a"><span class="cl-9ce6b712">male</span></p></td>
-<td class="cl-9cebc019"><p class="cl-9ceb6424"><span class="cl-9ce6b712">2008</span></p></td>
+<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
+<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
+<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">486</span></p></td>
+<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">160</span></p></td>
+<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
+<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">5800</span></p></td>
+<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
+<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2008</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9cebc01a"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Gentoo</span></p></td>
-<td class="cl-9cebc022"><p class="cl-9ceb641a"><span class="cl-9ce6b712">Biscoe</span></p></td>
-<td class="cl-9cebc023"><p class="cl-9ceb6424"><span class="cl-9ce6b712">521</span></p></td>
-<td class="cl-9cebc024"><p class="cl-9ceb6424"><span class="cl-9ce6b712">170</span></p></td>
-<td class="cl-9cebc02c"><p class="cl-9ceb6424"><span class="cl-9ce6b71c">230</span></p></td>
-<td class="cl-9cebc02d"><p class="cl-9ceb6424"><span class="cl-9ce6b712">5550</span></p></td>
-<td class="cl-9cebc02e"><p class="cl-9ceb641a"><span class="cl-9ce6b712">male</span></p></td>
-<td class="cl-9cebc036"><p class="cl-9ceb6424"><span class="cl-9ce6b712">2009</span></p></td>
+<td class="cl-807e0310"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
+<td class="cl-807e0311"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
+<td class="cl-807e0312"><p class="cl-807df38f"><span class="cl-807bad2c">521</span></p></td>
+<td class="cl-807e0313"><p class="cl-807df38f"><span class="cl-807bad2c">170</span></p></td>
+<td class="cl-807e031a"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
+<td class="cl-807e031b"><p class="cl-807df38f"><span class="cl-807bad2c">5550</span></p></td>
+<td class="cl-807e031c"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
+<td class="cl-807e031d"><p class="cl-807df38f"><span class="cl-807bad2c">2009</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -641,16 +633,16 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 <img src="img/dplyr-arrange-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arrange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.4: The <code>dplyr arrange</code> function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
+Figure&nbsp;5.4: The <code>dplyr arrange</code> function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="sec-selecting-columns-with-select" class="level3" data-number="4.4.3"><h3 data-number="4.4.3" class="anchored" data-anchor-id="sec-selecting-columns-with-select">
-<span class="header-section-number">4.4.3</span> Selecting columns with <code>select()</code>
+</section><section id="sec-selecting-columns-with-select" class="level3" data-number="5.3.3"><h3 data-number="5.3.3" class="anchored" data-anchor-id="sec-selecting-columns-with-select">
+<span class="header-section-number">5.3.3</span> Selecting columns with <code>select()</code>
 </h3>
 <p>Often your data contains variables you don’t need for the analysis you are performing, or you want to subset them to share with others. To select only the ones you need, or explore subsets of the variables, the <code>select()</code> verb enables you to keep only the columns of interest.</p>
-<p><a href="#fig-select" class="quarto-xref">Figure&nbsp;<span>4.5</span></a> shows the use of <code>select()</code> to choose only the <code>island</code> and <code>year</code> columns, with or without the pipe.</p>
+<p><a href="#fig-select" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> shows the use of <code>select()</code> to choose only the <code>island</code> and <code>year</code> columns, with or without the pipe.</p>
 <p>Selecting the variables contained in the columns can be done in various ways. For example, by the column number, the variable name or by range. Check the help function <code>?select</code> for more options.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -659,7 +651,7 @@ Figure&nbsp;4.4: The <code>dplyr arrange</code> function. The arrange function o
 <img src="img/dplyr-select-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-select-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.5: The <code>dplyr select</code> function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
+Figure&nbsp;5.5: The <code>dplyr select</code> function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
 </figcaption></figure>
 </div>
 </div>
@@ -720,10 +712,10 @@ $ year   &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,
 </div>
 </div>
 <p>See the <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code> documentation</a> for other approaches for using select such as renaming columns, reordering the columns or picking variables with selection helper functions.</p>
-</section><section id="sec-creating-new-columns-with-mutate" class="level3" data-number="4.4.4"><h3 data-number="4.4.4" class="anchored" data-anchor-id="sec-creating-new-columns-with-mutate">
-<span class="header-section-number">4.4.4</span> Creating new columns with <code>mutate()</code>
+</section><section id="sec-creating-new-columns-with-mutate" class="level3" data-number="5.3.4"><h3 data-number="5.3.4" class="anchored" data-anchor-id="sec-creating-new-columns-with-mutate">
+<span class="header-section-number">5.3.4</span> Creating new columns with <code>mutate()</code>
 </h3>
-<p>Another common task is to create a new variable or variables, often from existing data within the data frame. For this we use the <code>mutate()</code> verb. It follows the same syntax as for <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, <code>arrange()</code> and <code>select()</code> in that the first argument is the dataset, and the subsequent arguments are the new variables we wish to create (<a href="#fig-mutate" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>).</p>
+<p>Another common task is to create a new variable or variables, often from existing data within the data frame. For this we use the <code>mutate()</code> verb. It follows the same syntax as for <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, <code>arrange()</code> and <code>select()</code> in that the first argument is the dataset, and the subsequent arguments are the new variables we wish to create (<a href="#fig-mutate" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-mutate" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
@@ -731,7 +723,7 @@ $ year   &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,
 <img src="img/dplyr-mutate-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mutate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.6: The <code>dplyr mutate</code> function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called <code>body_mass_kg</code> in the Palmer Penguins data.frame by dividing the values in the <code>body_mass_g</code> column by 1000 and storing the answer in new variable <code>body_mass_kg</code>. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
+Figure&nbsp;5.6: The <code>dplyr mutate</code> function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called <code>body_mass_kg</code> in the Palmer Penguins data.frame by dividing the values in the <code>body_mass_g</code> column by 1000 and storing the answer in new variable <code>body_mass_kg</code>. The function can either be used by providing the <code>penguins</code> data.frame as the first argument to the function or by passing the <code>penguins</code> data.frame via a pipe.
 </figcaption></figure>
 </div>
 </div>
@@ -747,58 +739,58 @@ Figure&nbsp;4.6: The <code>dplyr mutate</code> function. The mutate function cre
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-9d5863ee{}.cl-9d4eee7c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9d4eee86{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 92, 132, 1.00);background-color:transparent;}.cl-9d4eee87{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-9d52c11e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9d52c128{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9d52ddf2{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52ddfc{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52ddfd{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de06{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de07{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de10{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de11{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de12{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de13{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de1a{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de1b{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9d52de1c{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-9d5863ee">
+<style>.cl-80c4fb1c{}.cl-80bed49e{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-80bed49f{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 92, 132, 1.00);background-color:transparent;}.cl-80bed4a8{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-80c11ace{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-80c11ad8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-80c12820{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1282a{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1282b{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1282c{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12834{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12835{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12836{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12837{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1283e{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1283f{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12840{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12848{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-80c4fb1c">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-9d52ddf2"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">species</span></p></th>
-<th class="cl-9d52ddfc"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">island</span></p></th>
-<th class="cl-9d52ddfd"><p class="cl-9d52c128"><span class="cl-9d4eee7c">body_mass_g</span></p></th>
-<th class="cl-9d52de06"><p class="cl-9d52c128"><span class="cl-9d4eee7c">body_mass_kg</span></p></th>
+<th class="cl-80c12820"><p class="cl-80c11ace"><span class="cl-80bed49e">species</span></p></th>
+<th class="cl-80c1282a"><p class="cl-80c11ace"><span class="cl-80bed49e">island</span></p></th>
+<th class="cl-80c1282b"><p class="cl-80c11ad8"><span class="cl-80bed49e">body_mass_g</span></p></th>
+<th class="cl-80c1282c"><p class="cl-80c11ad8"><span class="cl-80bed49e">body_mass_kg</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9d52de07"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Adelie</span></p></td>
-<td class="cl-9d52de10"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Torgersen</span></p></td>
-<td class="cl-9d52de11"><p class="cl-9d52c128"><span class="cl-9d4eee86">3750</span></p></td>
-<td class="cl-9d52de12"><p class="cl-9d52c128"><span class="cl-9d4eee87">3.75</span></p></td>
+<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
+<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
+<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">3750</span></p></td>
+<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.75</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9d52de07"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Adelie</span></p></td>
-<td class="cl-9d52de10"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Torgersen</span></p></td>
-<td class="cl-9d52de11"><p class="cl-9d52c128"><span class="cl-9d4eee86">3800</span></p></td>
-<td class="cl-9d52de12"><p class="cl-9d52c128"><span class="cl-9d4eee87">3.80</span></p></td>
+<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
+<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
+<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">3800</span></p></td>
+<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.80</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9d52de07"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Adelie</span></p></td>
-<td class="cl-9d52de10"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Torgersen</span></p></td>
-<td class="cl-9d52de11"><p class="cl-9d52c128"><span class="cl-9d4eee86">3250</span></p></td>
-<td class="cl-9d52de12"><p class="cl-9d52c128"><span class="cl-9d4eee87">3.25</span></p></td>
+<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
+<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
+<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">3250</span></p></td>
+<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.25</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9d52de07"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Adelie</span></p></td>
-<td class="cl-9d52de10"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Torgersen</span></p></td>
-<td class="cl-9d52de11"><p class="cl-9d52c128"><span class="cl-9d4eee86">NA</span></p></td>
-<td class="cl-9d52de12"><p class="cl-9d52c128"><span class="cl-9d4eee87">NA</span></p></td>
+<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
+<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
+<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">NA</span></p></td>
+<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">NA</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9d52de07"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Adelie</span></p></td>
-<td class="cl-9d52de10"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Torgersen</span></p></td>
-<td class="cl-9d52de11"><p class="cl-9d52c128"><span class="cl-9d4eee86">3450</span></p></td>
-<td class="cl-9d52de12"><p class="cl-9d52c128"><span class="cl-9d4eee87">3.45</span></p></td>
+<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
+<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
+<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">3450</span></p></td>
+<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.45</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-9d52de13"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Adelie</span></p></td>
-<td class="cl-9d52de1a"><p class="cl-9d52c11e"><span class="cl-9d4eee7c">Torgersen</span></p></td>
-<td class="cl-9d52de1b"><p class="cl-9d52c128"><span class="cl-9d4eee86">3650</span></p></td>
-<td class="cl-9d52de1c"><p class="cl-9d52c128"><span class="cl-9d4eee87">3.65</span></p></td>
+<td class="cl-80c1283e"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
+<td class="cl-80c1283f"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
+<td class="cl-80c12840"><p class="cl-80c11ad8"><span class="cl-80bed49f">3650</span></p></td>
+<td class="cl-80c12848"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.65</span></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-</section></section><section id="sec-creating-grouped-summaries" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="sec-creating-grouped-summaries">
-<span class="header-section-number">4.5</span> Creating grouped summaries with <code>dplyr</code>
+</section></section><section id="sec-creating-grouped-summaries" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-creating-grouped-summaries">
+<span class="header-section-number">5.4</span> Creating grouped summaries with <code>dplyr</code>
 </h2>
 <p>Another powerful feature of <code>dplyr</code> is it’s ability to summarise the entire dataset in a single row.</p>
 <div class="cell">
@@ -825,8 +817,8 @@ Figure&nbsp;4.6: The <code>dplyr mutate</code> function. The mutate function cre
 3 Gentoo          5076.        124</code></pre>
 </div>
 </div>
-<section id="using-group_by-and-summarise-together" class="level3" data-number="4.5.1"><h3 data-number="4.5.1" class="anchored" data-anchor-id="using-group_by-and-summarise-together">
-<span class="header-section-number">4.5.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</h3>
+<section id="using-group_by-and-summarise-together" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="using-group_by-and-summarise-together">
+<span class="header-section-number">5.4.1</span> Using <code>group_by()</code> and <code>summarise()</code> together</h3>
 <p>Calculating the average bill length and depth for each species</p>
 <p>pipe the <code>penguins</code> dataset into the <code>group_by()</code> function, which groups the data by the <code>species</code> variable. - We then use the <code>summarise()</code> function to calculate the average bill length and depth for each species using <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>. - The <code>na.rm = TRUE</code> argument is used to remove any missing values before calculating the means.</p>
 <div class="cell">
@@ -869,18 +861,18 @@ Figure&nbsp;4.6: The <code>dplyr mutate</code> function. The mutate function cre
 9 Torgersen &lt;NA&gt;         3681.          5</code></pre>
 </div>
 </div>
-</section></section><section id="pivots" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="pivots">
-<span class="header-section-number">4.6</span> Pivots</h2>
+</section></section><section id="pivots" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="pivots">
+<span class="header-section-number">5.5</span> Pivots</h2>
 <p>Data can be untidy in different ways. One way might be that the values are in the variable names. Or perhaps the reverse is true and you’d like the values to be column names.</p>
-<p>Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use the <a href="https://tidyr.tidyverse.org/index.html"><code>tidyr</code> package</a> function <code>pivot_longer()</code> and if one pivots a table to increase the number of columns one would use <code>pivot_wider()</code> (<a href="#fig-pivot" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> and <a href="#fig-pivot-animation" class="quarto-xref">Figure&nbsp;<span>4.8</span></a>).</p>
+<p>Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use the <a href="https://tidyr.tidyverse.org/index.html"><code>tidyr</code> package</a> function <code>pivot_longer()</code> and if one pivots a table to increase the number of columns one would use <code>pivot_wider()</code> (<a href="#fig-pivot" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> and <a href="#fig-pivot-animation" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pivot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="pivot">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/pivot-penguins.png" class="img-fluid figure-img" alt="pivot" width="1422">
+<img src="img/pivot-penguins.png" class="img-fluid figure-img" alt="pivot">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.7: pivot
+Figure&nbsp;5.7: pivot
 </figcaption></figure>
 </div>
 </div>
@@ -892,12 +884,12 @@ Figure&nbsp;4.7: pivot
 <img src="img/tidyr-pivoting.gif" class="img-fluid figure-img" alt="pivot">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.8: pivot
+Figure&nbsp;5.8: pivot
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>To demonstrate the pivot as in <a href="#fig-pivot" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> and <a href="#fig-pivot-animation" class="quarto-xref">Figure&nbsp;<span>4.8</span></a>, we need a unique identifier for each row which I’ll create a variable called <code>id</code> using <code>mutatae</code> and the <code>dplyr</code> function <code>row_number()</code> which as you might guess, counts the row number and returns an integer.</p>
+<p>To demonstrate the pivot as in <a href="#fig-pivot" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> and <a href="#fig-pivot-animation" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>, we need a unique identifier for each row which I’ll create a variable called <code>id</code> using <code>mutatae</code> and the <code>dplyr</code> function <code>row_number()</code> which as you might guess, counts the row number and returns an integer.</p>
 <p>We pivot longer by transforming column variable names, here: <code>species</code> , <code>island</code> and <code>sex</code> into values stored in a new variable that I’ve named <code>key</code>.</p>
 <p>The existing values from those columns are placed in the cells of a new variable I’ve called <code>val</code>.</p>
 <p>In this way the table gets longer as there are now three rows for the data about each penguin, hence the <code>id</code> column I created for each penguin has three repeating values, one for each row corresponding with the original columns.</p>
@@ -1270,12 +1262,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1496,13 +1483,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./getting-started.html" class="pagination-link  aria-label=" started="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span>
+      <a href="./importing-data.html" class="pagination-link  aria-label=" and="" exporting="" data="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data-wrangling-2.html" class="pagination-link" aria-label="<span class='chapter-number'>5</span>&nbsp; <span class='chapter-title'>Data wrangling II</span>">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-wrangling-2.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Data wrangling II</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.537">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>R for Librarians - 1&nbsp; Setting the scene</title>
+<title>R for Librarians - 4&nbsp; Importing and exporting data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,6 +17,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -26,8 +60,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./markup-languages.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./data-wrangling-1.html" rel="next">
+<link href="./getting-started.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -64,7 +98,8 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
+}</script><link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
 </head>
 <body class="nav-sidebar floating">
 
@@ -73,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setting-the-scene.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting the scene</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./importing-data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -111,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setting-the-scene.html" class="sidebar-item-text sidebar-link active">
+  <a href="./setting-the-scene.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting the scene</span></span></a>
   </div>
 </li>
@@ -129,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./importing-data.html" class="sidebar-item-text sidebar-link">
+  <a href="./importing-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span></a>
   </div>
 </li>
@@ -165,21 +200,27 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li>
-<a href="#sec-the-challenge" id="toc-sec-the-challenge" class="nav-link active" data-scroll-target="#sec-the-challenge"><span class="header-section-number">1.1</span> The challenge</a>
+<li><a href="#sec-spreadsheets" id="toc-sec-spreadsheets" class="nav-link active" data-scroll-target="#sec-spreadsheets"><span class="header-section-number">4.1</span> Organising your data in spreadsheets</a></li>
+  <li>
+<a href="#sec-plain-text" id="toc-sec-plain-text" class="nav-link" data-scroll-target="#sec-plain-text"><span class="header-section-number">4.2</span> Plain text files</a>
   <ul class="collapse">
-<li><a href="#sec-but-why-is-it-worth-doing" id="toc-sec-but-why-is-it-worth-doing" class="nav-link" data-scroll-target="#sec-but-why-is-it-worth-doing"><span class="header-section-number">1.1.1</span> But why is it worth doing?</a></li>
-  <li><a href="#sec-what-are-we-doing" id="toc-sec-what-are-we-doing" class="nav-link" data-scroll-target="#sec-what-are-we-doing"><span class="header-section-number">1.1.2</span> What are we doing?</a></li>
-  <li><a href="#sec-how-are-we-going-to-do-it" id="toc-sec-how-are-we-going-to-do-it" class="nav-link" data-scroll-target="#sec-how-are-we-going-to-do-it"><span class="header-section-number">1.1.3</span> How are we going to do it?</a></li>
+<li><a href="#sec-importing-plain-text" id="toc-sec-importing-plain-text" class="nav-link" data-scroll-target="#sec-importing-plain-text"><span class="header-section-number">4.2.1</span> Importing plain text</a></li>
+  <li><a href="#sec-exporting-plain-text" id="toc-sec-exporting-plain-text" class="nav-link" data-scroll-target="#sec-exporting-plain-text"><span class="header-section-number">4.2.2</span> Exporting plain text</a></li>
   </ul>
 </li>
-  <li><a href="#sec-if-youre-using-excel-you-are-already-programming" id="toc-sec-if-youre-using-excel-you-are-already-programming" class="nav-link" data-scroll-target="#sec-if-youre-using-excel-you-are-already-programming"><span class="header-section-number">1.2</span> If you’re using Excel you are already programming</a></li>
-  <li><a href="#sec-a-little-goes-a-long-way" id="toc-sec-a-little-goes-a-long-way" class="nav-link" data-scroll-target="#sec-a-little-goes-a-long-way"><span class="header-section-number">1.3</span> A little goes a long way</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/ab604/library-r/edit/main/setting-the-scene.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <li>
+<a href="#sec-excel" id="toc-sec-excel" class="nav-link" data-scroll-target="#sec-excel"><span class="header-section-number">4.3</span> Excel spreadsheets</a>
+  <ul class="collapse">
+<li><a href="#sec-importing-excel-sheets" id="toc-sec-importing-excel-sheets" class="nav-link" data-scroll-target="#sec-importing-excel-sheets"><span class="header-section-number">4.3.1</span> Importing Excel sheets</a></li>
+  <li><a href="#sec-exporting-excel-sheets" id="toc-sec-exporting-excel-sheets" class="nav-link" data-scroll-target="#sec-exporting-excel-sheets"><span class="header-section-number">4.3.2</span> Exporting Excel sheets</a></li>
+  </ul>
+</li>
+  <li><a href="#sec-cleaning-names" id="toc-sec-cleaning-names" class="nav-link" data-scroll-target="#sec-cleaning-names"><span class="header-section-number">4.4</span> Cleaning names</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/ab604/library-r/edit/main/importing-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-setting-the-scene" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting the scene</span></span></h1>
+<h1 class="title"><span id="sec-import" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span></h1>
 </div>
 
 
@@ -199,104 +240,154 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="" id="chapter-01-summary"></a>Summary
+<a href="" id="chapter-04-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can skip this chapter if you want to dive straight into learning R. This chapter is primarily background and philosophy to set the scene before we start using R.</p>
+<p>This chapter covers importing tabular data from plain text files and spreadsheets using the tidyverse packages <code>readr</code> and <code>readxl</code>. And exporting data using <code>readr</code> and <code>writexl</code>.</p>
 </div>
 </div>
-<section id="sec-the-challenge" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="sec-the-challenge">
-<span class="header-section-number">1.1</span> The challenge</h2>
-<p>New often means difficult, but difficult things are also often worth doing. The quote in <a href="#nte-biostar-quote" class="quarto-xref">Note&nbsp;<span>1.1</span></a> pretty much captures my feelings about the challenge of getting started and learning R:</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Is programming hard to learn?" data-appearence="minimal">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<a href="" id="nte-biostar-quote"></a>Note&nbsp;1.1: Is programming hard to learn?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>“…programming in general…is primarily about learning to think a certain way - to decompose a problem into very simple steps each of which can be easily solved. Some people have an affinity to this – they will pick it up faster, while others will need more practice.”</p>
-<p>Source: <a href="https://www.biostarhandbook.com/index.html">The Biostar Handbook</a></p>
-</div>
-</div>
-<section id="sec-but-why-is-it-worth-doing" class="level3" data-number="1.1.1"><h3 data-number="1.1.1" class="anchored" data-anchor-id="sec-but-why-is-it-worth-doing">
-<span class="header-section-number">1.1.1</span> But why is it worth doing?</h3>
-<ol type="1">
-<li>Maybe it isn’t, but experience is one way to find out.</li>
-<li>My experience is that in the long term, it saves me time and frees up time from doing boring repetitive tasks for doing more interesting and more complex things.</li>
-</ol></section><section id="sec-what-are-we-doing" class="level3" data-number="1.1.2"><h3 data-number="1.1.2" class="anchored" data-anchor-id="sec-what-are-we-doing">
-<span class="header-section-number">1.1.2</span> What are we doing?</h3>
-<p><a href="#fig-workflow" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> shows a version of the data science cycle from <a href="https://r4ds.hadley.nz/whole-game">R4DS</a>. Conceptually, this is what we are mostly doing. In R4DS, all of these steps are done programmatically, but we won’t be trying to do everything here.</p>
-<p>Our focus will be on importing, tidying and transforming data, but you may wish to explore the visualisation and modeling parts of the cycle yourself. For example, check out the <a href="https://r4ds.hadley.nz/data-visualize">visualisation chapter of R4DS</a> and <a href="https://www.tmwr.org/">Tidy Modeling with R</a>.</p>
-<p>As a librarian, your data is likely to be in a spreadsheet. We need to learn how to import that data into an environment where we can work with it and explore questions.</p>
-<p>In asking and answering those questions we need to learn to transform data and/or visualise our data.</p>
-<p>We then need to communicate our findings back out of our working environment to our colleagues or for our own records.</p>
+<p>For detailed advice and examples, I direct you to two sections of R4DS, <a href="https://r4ds.hadley.nz/data-import">data import</a> and <a href="https://r4ds.hadley.nz/spreadsheets">spreadsheets</a>.</p>
+<section id="sec-spreadsheets" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-spreadsheets">
+<span class="header-section-number">4.1</span> Organising your data in spreadsheets</h2>
+<p><a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Data Organization in Spreadsheets by Karl W. Broman &amp; Kara H. Woo</a> is full of practical advice and context. It is well worth reading for helping you think about best practices for organising your data for yourself, and when working with others.</p>
+<p>As per previous discussion about naming things (<a href="getting-started.html#sec-names" class="quarto-xref"><span>Section 3.5.2</span></a>), the recommendation for naming variables (column names) is to use <a href="https://developer.mozilla.org/en-US/docs/Glossary/Snake_case">snake case</a>. This means replacing spaces with underscores <code>_</code> and typically using lower case only. So for example, the non-syntactic variable <code>Student ID</code> in snake case would be <code>student_id</code>.</p>
+</section><section id="sec-plain-text" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sec-plain-text">
+<span class="header-section-number">4.2</span> Plain text files</h2>
+<p>Plain text separated by a delimiter, often a comma, tab or space. That is to say they contain only the data, as text information. File formats <code>.csv</code> and <code>.tsv</code> indicate comma separated variables and tab separated variables respectively.</p>
+<p>Here is some comma separated variable <code>csv</code> data about some books in it’s raw state:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>title,type,genre,pages,year,publisher</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Plenty,Non-fiction,Cookery,288,2010,Chronicle Books</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>In a Sunburned Country,Non-fiction,Travel,335,2000,Broadway Books</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>The Catcher in the Rye,Fiction,Literature,234,1951,"Little, Brown and Company"</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>A Time of Gifts,Non-fiction,Travel,321,1977,John Murray</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is the same data formatted as a table:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-workflow" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A diagram displaying the data science cycle: Import -> Tidy ->  Understand  (which has the phases Transform -> Visualize -> Model in a  cycle) -> Communicate. Surrounding all of these is Workflow  Import, Tidy, Transform, and Visualise are highlighted.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/ds-workflow.png" class="img-fluid figure-img" alt="A diagram displaying the data science cycle: Import -> Tidy ->  Understand  (which has the phases Transform -> Visualize -> Model in a  cycle) -> Communicate. Surrounding all of these is Workflow  Import, Tidy, Transform, and Visualise are highlighted.">
+<div class="tabwid">
+<style>.cl-7d72cde0{}.cl-7d6c0eec{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7d6e9f68{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7d6e9f7c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7d6eb2aa{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2ab{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2b4{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2b5{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2b6{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2be{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2bf{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2c0{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2c8{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2c9{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2ca{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2d2{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2d3{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2d4{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2d5{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2dc{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2dd{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2e6{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2e7{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2e8{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2e9{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2f0{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2f1{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2f2{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-7d72cde0">
+<thead><tr style="overflow-wrap:break-word;">
+<th class="cl-7d6eb2aa"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">title</span></p></th>
+<th class="cl-7d6eb2ab"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">type</span></p></th>
+<th class="cl-7d6eb2b4"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">genre</span></p></th>
+<th class="cl-7d6eb2b5"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">pages</span></p></th>
+<th class="cl-7d6eb2b6"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">year</span></p></th>
+<th class="cl-7d6eb2be"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">publisher</span></p></th>
+</tr></thead>
+<tbody>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-7d6eb2bf"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Plenty</span></p></td>
+<td class="cl-7d6eb2c0"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Non-fiction</span></p></td>
+<td class="cl-7d6eb2c8"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Cookery</span></p></td>
+<td class="cl-7d6eb2c9"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">288</span></p></td>
+<td class="cl-7d6eb2ca"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">2,010</span></p></td>
+<td class="cl-7d6eb2d2"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Chronicle Books</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-7d6eb2bf"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">In a Sunburned Country</span></p></td>
+<td class="cl-7d6eb2c0"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Non-fiction</span></p></td>
+<td class="cl-7d6eb2c8"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Travel</span></p></td>
+<td class="cl-7d6eb2c9"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">335</span></p></td>
+<td class="cl-7d6eb2ca"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">2,000</span></p></td>
+<td class="cl-7d6eb2d2"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Broadway Books</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-7d6eb2bf"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">The Catcher in the Rye</span></p></td>
+<td class="cl-7d6eb2c0"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Fiction</span></p></td>
+<td class="cl-7d6eb2c8"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Literature</span></p></td>
+<td class="cl-7d6eb2c9"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">234</span></p></td>
+<td class="cl-7d6eb2ca"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">1,951</span></p></td>
+<td class="cl-7d6eb2d2"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Little, Brown and Company</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-7d6eb2d3"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">A Time of Gifts</span></p></td>
+<td class="cl-7d6eb2d4"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Non-fiction</span></p></td>
+<td class="cl-7d6eb2d5"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Travel</span></p></td>
+<td class="cl-7d6eb2dc"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">321</span></p></td>
+<td class="cl-7d6eb2dd"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">1,977</span></p></td>
+<td class="cl-7d6eb2e6"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">John Murray</span></p></td>
+</tr>
+<tr style="overflow-wrap:break-word;">
+<td class="cl-7d6eb2e7"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">In Patagonia</span></p></td>
+<td class="cl-7d6eb2e8"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Non-fiction</span></p></td>
+<td class="cl-7d6eb2e9"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Travel</span></p></td>
+<td class="cl-7d6eb2f0"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">204</span></p></td>
+<td class="cl-7d6eb2f1"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">1,977</span></p></td>
+<td class="cl-7d6eb2f2"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Jonathan Cape</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: A version of the data science cycle from <a href="https://r4ds.hadley.nz/whole-game">R4DS</a>. We will cover data importing, tidying, transformation and visualisation, but not modeling. Communication of your output is the final part of the workflow.
-</figcaption></figure>
 </div>
 </div>
-</div>
-</section><section id="sec-how-are-we-going-to-do-it" class="level3" data-number="1.1.3"><h3 data-number="1.1.3" class="anchored" data-anchor-id="sec-how-are-we-going-to-do-it">
-<span class="header-section-number">1.1.3</span> How are we going to do it?</h3>
-<p>As per <a href="#nte-biostar-quote" class="quarto-xref">Note&nbsp;<span>1.1</span></a>, step-by-step and through practice we will learn to think and work in a certain way that may be different to how you have previously worked.</p>
-<p>It may seem all a bit abstract to begin with, but that is part of the point. In learning to generalise from abstractions, one can identify and apply the same concepts to lots of specific problems that may at first seem different, but are either the same or similar.</p>
-<p>Our guiding principles in doing this are:</p>
-<ol type="1">
-<li>Keep the raw data raw.</li>
-<li>Write love letters to our future selves in the form of our code and how we organise and document our data.</li>
-</ol></section></section><section id="sec-if-youre-using-excel-you-are-already-programming" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="sec-if-youre-using-excel-you-are-already-programming">
-<span class="header-section-number">1.2</span> If you’re using Excel you are already programming</h2>
-<p>In 2021 Excel became Turing-complete (<a href="#fig-excel-twitter" class="quarto-xref">Figure&nbsp;<span>1.2</span></a>), which is a colloquial way of saying one computing language can approximate another computing language.</p>
-<p>In other words, anything one can do in Python, R, C++ and so on, should also be possible in Excel.</p>
-<p>Hence if you are using Excel, you are already a programmer.</p>
+<section id="sec-importing-plain-text" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="sec-importing-plain-text">
+<span class="header-section-number">4.2.1</span> Importing plain text</h3>
 <div class="cell">
-<div class="cell-output-display">
-<div id="fig-excel-twitter" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of a tweet from the head of Microsoft announcing that Excel is Turing-complete.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-excel-twitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/excel-twitter-2021-02-09.png" class="img-fluid figure-img" style="width:80.0%" alt="An image of a tweet from the head of Microsoft announcing that Excel is Turing-complete.">
+<div id="lst-import-csv" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-import-csv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;4.1: Importing a plain text csv file from the <code>data</code> folder and assigning it to an object called <code>books</code>
+</figcaption><div aria-describedby="lst-import-csv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-import-csv"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">books</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/books-2024-04-30.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excel-twitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.2: The head of Microsoft announces that Excel is Turing-complete.
-</figcaption></figure>
-</div>
+</figure>
 </div>
 </div>
-<p>Gordon Shotwell wrote a blog post called <a href="https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html">R for Excel Users</a> that discusses the <a href="https://blog.shotwell.ca/posts/2017-02-02-r-for-excel-users/index.html#four-fundamental-differences-between-r-and-excel">differences between Excel and R</a>. Perhaps the biggest conceptual difference is that in Excel one is programming with the raw data - which conflicts with the guiding principles of keeping the raw data separate from the code (<a href="#sec-how-are-we-going-to-do-it" class="quarto-xref"><span>Section 1.1.3</span></a>).</p>
-<p>With most languages, the file(s) holding the data are separate from the file(s) that contains the code.</p>
-<p>On the one hand programming with the raw data makes it easy to get started in Excel, but on the other hand it gets harder as the complexity of what you are trying to do increases.</p>
-<p>And vice versa.</p>
-<p>In other languages getting started is harder, but it’s easier to do more complex tasks once some initial learning is done.</p>
-<p>It’s really a question of whether it’s worth the investment learning R, python etc. Hence my comments in <a href="#sec-but-why-is-it-worth-doing" class="quarto-xref"><span>Section 1.1.1</span></a>.</p>
-</section><section id="sec-a-little-goes-a-long-way" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="sec-a-little-goes-a-long-way">
-<span class="header-section-number">1.3</span> A little goes a long way</h2>
-<p>When considering investing in learning, it’s important to know that we don’t need to learn everything. A modest investment does yield large rewards.</p>
-<p>A few hours learning, backed-up with practice can be enough for many people.</p>
-<p>As illustrated in <a href="#fig-pp-spectrum" class="quarto-xref">Figure&nbsp;<span>1.3</span></a> there are a whole spectrum of users from practitioners at one end who are focused on applying some programming tools to their specific problems. Whilst at the other end who develop the programming tools and language itself.</p>
-<p>In reality one may move around on that spectrum as ones needs and interests change over time.</p>
-<!--# Practioner-Programmer goes here -->
+</section><section id="sec-exporting-plain-text" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="sec-exporting-plain-text">
+<span class="header-section-number">4.2.2</span> Exporting plain text</h3>
 <div class="cell">
-<div class="cell-output-display">
-<div id="fig-pp-spectrum" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A diagram displaying practitioner-programmer spectrum. At one end lies practitioners who use programming tools and at the other end lies developers of programming languages and tools. A circle in-between indicates how individuals may move around on the spectrum.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pp-spectrum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/practitioner-programmer.png" class="img-fluid figure-img" alt="A diagram displaying practitioner-programmer spectrum. At one end lies practitioners who use programming tools and at the other end lies developers of programming languages and tools. A circle in-between indicates how individuals may move around on the spectrum.">
+<div id="lst-write-csv" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-write-csv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;4.2: Writing the <code>penguins</code> data to a csv file in the data folder with <code>write_csv</code>
+</figcaption><div aria-describedby="lst-write-csv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-write-csv"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu">write_csv</span><span class="op">(</span><span class="st">"data/palmer-penguins-data.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-spectrum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.3: The practitioner-programmer spectrum. At one end lies practitioners who use programming tools and at the other end lies developers of programming languages and tools. The circle in-between indicates how individuals may move around on the spectrum.
-</figcaption></figure>
+</figure>
 </div>
 </div>
+</section></section><section id="sec-excel" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-excel">
+<span class="header-section-number">4.3</span> Excel spreadsheets</h2>
+<p>Excel files saves files into its own proprietary format <code>.xls</code> or <code>.xlsx</code> that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse <code>readxl</code> package is the place to start: <a href="https://readxl.tidyverse.org/">readxl homepage</a>.</p>
+<p>When we install the tidyverse packages, <code>readxl</code> is installed, but not loaded by default when we load <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> so we have to load it separately, <code><a href="https://readxl.tidyverse.org">library(readxl)</a></code>.</p>
+<p>For exporting to MS Excel, <code>writexl</code> from <a href="https://docs.ropensci.org/writexl/">R open science writexl</a> has to be installed separately</p>
+<div class="cell">
+<div id="lst-writexl" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-writexl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;4.3: Install writexl package from ROpenSci for writing to MS Excel
+</figcaption><div aria-describedby="lst-writexl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-writexl"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"writexl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</figure>
+</div>
+</div>
+<section id="sec-importing-excel-sheets" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="sec-importing-excel-sheets">
+<span class="header-section-number">4.3.1</span> Importing Excel sheets</h3>
+<div class="cell">
+<div id="lst-import-xl" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-import-xl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;4.4: Importing a Excel file from the <code>data</code> folder and assigning it to an object called <code>books</code>
+</figcaption><div aria-describedby="lst-import-xl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-import-xl"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">books_xl</span> <span class="op">&lt;-</span> <span class="fu">read_xlsx</span><span class="op">(</span><span class="st">"data/books-2024-05-08.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+</div>
+</section><section id="sec-exporting-excel-sheets" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="sec-exporting-excel-sheets">
+<span class="header-section-number">4.3.2</span> Exporting Excel sheets</h3>
+<div class="cell">
+<div id="lst-write-xl" class="r cell-code listing quarto-float">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-write-xl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;4.5: Writing the <code>penguins</code> data to a csv file in the data folder with <code>write_csv</code>
+</figcaption><div aria-describedby="lst-write-xl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-write-xl"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu">write_xlsx</span><span class="op">(</span><span class="st">"data/palmer-penguins-data.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+</div>
+</section></section><section id="sec-cleaning-names" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="sec-cleaning-names">
+<span class="header-section-number">4.4</span> Cleaning names</h2>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -845,13 +936,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link  aria-label=" preface="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./getting-started.html" class="pagination-link  aria-label=" started="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./markup-languages.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Markup Languages</span>">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Languages</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-wrangling-1.html" class="pagination-link" aria-label="<span class='chapter-number'>5</span>&nbsp; <span class='chapter-title'>Data wrangling I</span>">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -862,7 +953,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ab604/library-r/edit/main/setting-the-scene.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ab604/library-r/edit/main/importing-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ab604/library-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

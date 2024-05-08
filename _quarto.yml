@@ -21,6 +21,7 @@ book:
     - setting-the-scene.qmd
     - markup-languages.qmd
     - getting-started.qmd
+    - importing-data.qmd
     - data-wrangling-1.qmd
     - data-wrangling-2.qmd
     - wrangling-bibliometrics-data.qmd
