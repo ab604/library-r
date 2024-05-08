@@ -1,5 +1,9 @@
 # Data wrangling II {#sec-data-wrangling-ii}
 
+::: {#chapter-04-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
+This chapter covers further tasks for working with tabular data using the tidyverse packages `dplyr`, `tidyr` and `stringr`. These tasks are joining tables and working with strings to transform and tidy data.
+:::
+
 ```{r}
 #| label: dw2-set-up
 #| echo: false

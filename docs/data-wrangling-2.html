@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>R for Librarians - 5&nbsp; Data wrangling II</title>
 <style>
@@ -224,9 +224,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="sec-joins" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-joins">
+</header><div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="" id="chapter-04-summary"></a>Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This chapter covers further tasks for working with tabular data using the tidyverse packages <code>dplyr</code>, <code>tidyr</code> and <code>stringr</code>. These tasks are joining tables and working with strings to transform and tidy data.</p>
+</div>
+</div>
+<section id="sec-joins" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-joins">
 <span class="header-section-number">5.1</span> Joins</h2>
-<p>We often want to join tables together <strong>based upon a variable or variables common to each table, called a key or keys</strong>, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (<a href="wrangling-bibliometrics-data.html#sec-scopus-data" class="quarto-xref"><span>Section 6.2.2</span></a>, <a href="wrangling-bibliometrics-data.html#sec-web-of-science-data" class="quarto-xref"><span>Section 6.2.3</span></a>) in order to further transform the data or answer a question that cannot easily be answered from each table alone.</p>
+<p>We often want to join tables together <strong>based upon a variable or variables common to each table, called a key or keys</strong>, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (<span class="quarto-unresolved-ref">?sec-scopus-data</span>, <span class="quarto-unresolved-ref">?sec-web-of-science-data</span>) in order to further transform the data or answer a question that cannot easily be answered from each table alone.</p>
 <p><a href="https://r4ds.hadley.nz/joins">R4DS joins</a> gives some detailed examples of joining tables, but here we’ll look at some simpler examples to try build our mental model about how to join tables.</p>
 <p>There are two types of join we often encounter:</p>
 <ol type="1">
@@ -398,7 +411,7 @@ Single or double quotes?
 <p>Both single <code>'</code> or double <code>"</code> are allowed, but for consistent style I’d recommend double, unless your string itself contains multiple <code>"</code> as per the <a href="https://style.tidyverse.org/syntax.html#character-vectors">tidyverse style guide</a>.</p>
 </div>
 </div>
-<p>Frequently we are dealing with data in the form of character vectors or strings which we need to match or extract, such as the affiliation of an author for a journal article in Scopus data (<a href="wrangling-bibliometrics-data.html#sec-scopus-data" class="quarto-xref"><span>Section 6.2.2</span></a>). <code>stringr</code> is a tidyverse package of functions specifically for these tasks, and more generally we use regular expressions to match strings.</p>
+<p>Frequently we are dealing with data in the form of character vectors or strings which we need to match or extract, such as the affiliation of an author for a journal article in Scopus data (<span class="quarto-unresolved-ref">?sec-scopus-data</span>). <code>stringr</code> is a tidyverse package of functions specifically for these tasks, and more generally we use regular expressions to match strings.</p>
 <section id="sec-regular-expressions" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="sec-regular-expressions">
 <span class="header-section-number">5.4.1</span> Regular expressions</h3>
 <p>A <strong>regular expression</strong> (regex) is a pattern used to match and manipulate strings. It’s like a really powerful “find and replace” tool, but has completely unintuitive syntax!</p>
@@ -620,7 +633,7 @@ Listing&nbsp;5.14: Replaces all occurances of either i,s or k in each cat name
 </section><section id="creating-the-cat_tibble" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="creating-the-cat_tibble">
 <span class="header-section-number">5.6</span> Creating the <code>cat_tibble</code>
 </h2>
-<p>To demonstrate using <code>stringr</code> and regular expressions to match a pattern in order to split a single column variable into two column variables as we will for the bibliometrics data (<a href="wrangling-bibliometrics-data.html#sec-separating-the-scopus-affiliations" class="quarto-xref"><span>Section 6.3.2</span></a>, <a href="wrangling-bibliometrics-data.html#sec-separating-the-wos-affiliations" class="quarto-xref"><span>Section 6.3.3</span></a>) let’s make a new cat based table called <code>cat_tibble</code>.</p>
+<p>To demonstrate using <code>stringr</code> and regular expressions to match a pattern in order to split a single column variable into two column variables as we will for the bibliometrics data (<span class="quarto-unresolved-ref">?sec-separating-the-scopus-affiliations</span>, <span class="quarto-unresolved-ref">?sec-separating-the-wos-affiliations</span>) let’s make a new cat based table called <code>cat_tibble</code>.</p>
 <p>The code in <a href="#lst-cat-tibble" class="quarto-xref">Listing&nbsp;<span>5.15</span></a> creates <code>cat_tibble</code> a tibble dataframe with a single column <code>cat_id</code>.</p>
 <p>Here we use the <code>str_c</code> function to concatenate strings. We’re creating a string that looks like <code>&lt;name&gt;-sex_age&gt;</code>, e.g.&nbsp;<code>&lt;Whiskers&gt;-M_5</code> where:</p>
 <ul>
@@ -1079,12 +1092,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
