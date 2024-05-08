@@ -15,7 +15,7 @@ library(palmerpenguins)
 
 ## Joins {#sec-joins}
 
-We often want to join tables together **based upon a variable or variables common to each table, called a key or keys**, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (@sec-scopus-data , @sec-web-of-science-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.
+We often want to join tables together **based upon a variable or variables common to each table, called a key or keys**, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (@sec-downloading-the-bibliometrics-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.
 
 [R4DS joins](https://r4ds.hadley.nz/joins) gives some detailed examples of joining tables, but here we'll look at some simpler examples to try build our mental model about how to join tables.
 
@@ -128,7 +128,7 @@ However using combine function `c()` to create `c("hello", "world")` would creat
 Both single `'` or double `"` are allowed, but for consistent style I'd recommend double, unless your string itself contains multiple `"` as per the [tidyverse style guide](https://style.tidyverse.org/syntax.html#character-vectors).
 :::
 
-Frequently we are dealing with data in the form of character vectors or strings which we need to match or extract, such as the affiliation of an author for a journal article in Scopus data (@sec-scopus-data). `stringr` is a tidyverse package of functions specifically for these tasks, and more generally we use regular expressions to match strings.
+Frequently we are dealing with data in the form of character vectors or strings which we need to match or extract, such as the affiliation of an author for a journal article in Scopus data. `stringr` is a tidyverse package of functions specifically for these tasks, and more generally we use regular expressions to match strings.
 
 ### Regular expressions {#sec-regular-expressions}
 
@@ -273,7 +273,7 @@ str_replace_all(cat_names,"[isk]","-")
 
 ## Creating the `cat_tibble`
 
-To demonstrate using `stringr` and regular expressions to match a pattern in order to split a single column variable into two column variables as we will for the bibliometrics data (@sec-separating-the-scopus-affiliations, @sec-separating-the-wos-affiliations) let's make a new cat based table called `cat_tibble`.
+To demonstrate using `stringr` and regular expressions to match a pattern in order to split a single column variable into two column variables as we will for the bibliometrics data let's make a new cat based table called `cat_tibble`.
 
 The code in @lst-cat-tibble creates `cat_tibble` a tibble dataframe with a single column `cat_id`.
 
