@@ -314,7 +314,7 @@
     "href": "data-wrangling-2.html",
     "title": "5  Data wrangling II",
     "section": "",
-    "text": "5.1 Joins\nWe often want to join tables together based upon a variable or variables common to each table, called a key or keys, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (?sec-scopus-data, ?sec-web-of-science-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.\nR4DS joins gives some detailed examples of joining tables, but here we’ll look at some simpler examples to try build our mental model about how to join tables.\nThere are two types of join we often encounter:\ndplyr has six join functions.\nMutating joins:\nFiltering joins:",
+    "text": "5.1 Joins\nWe often want to join tables together based upon a variable or variables common to each table, called a key or keys, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (?sec-scopus-data , ?sec-web-of-science-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.\nR4DS joins gives some detailed examples of joining tables, but here we’ll look at some simpler examples to try build our mental model about how to join tables.\nThere are two types of join we often encounter:\ndplyr has six join functions.\nMutating joins:\nFiltering joins:",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data wrangling II</span>"
     ]

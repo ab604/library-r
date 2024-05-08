@@ -15,7 +15,7 @@ library(palmerpenguins)
 
 ## Joins {#sec-joins}
 
-We often want to join tables together **based upon a variable or variables common to each table, called a key or keys**, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (@sec-scopus-data, @sec-web-of-science-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.
+We often want to join tables together **based upon a variable or variables common to each table, called a key or keys**, such as the digital object identifier (DOI) that is present in tables downloaded from both Scopus and Web of Science (@sec-scopus-data , @sec-web-of-science-data) in order to further transform the data or answer a question that cannot easily be answered from each table alone.
 
 [R4DS joins](https://r4ds.hadley.nz/joins) gives some detailed examples of joining tables, but here we'll look at some simpler examples to try build our mental model about how to join tables.
 

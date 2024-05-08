@@ -1,1 +1,7 @@
-# Importing data {#sec-import}
+# Importing and exporting data {#sec-import}
+
+::: {#chapter-04-summary .callout-important .unnumbered title="Summary" appearance="simple" icon="false"}
+This chapter covers importing tabular data from plain text files and spreadsheets using the tidyverse packages `readr` and `readxl`. And exporting data using `readr` and `writexl`.
+:::
+
+## Plain 

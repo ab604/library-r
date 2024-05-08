@@ -151,7 +151,6 @@ glimpse(wos_dat)
 
 ## Make it simple {#sec-make-it-simple}
 
-
 To make it simple - well simpler! - lets use a single entry from each table to understand how we might tackle the whole data set.
 
 Manual inspection tells me that all three tables have a publication entitled, `Lipid droplets in steatotic liver disease` with a DOI of `10.1097/MCO.0000000000000993`.
@@ -272,26 +271,26 @@ lipid_wide |>
   autofit()
 
 ```
+
 What we've got are `;` between the names in the square brackets **and** after each country.
 
 My solution here is to break the problem down into steps:
 
-1. Separate as before using the `;` delimiter. This will yield columns that have names or addresses, each column name starts `C1_`.
+1.  Separate as before using the `;` delimiter. This will yield columns that have names or addresses, each column name starts `C1_`.
 
-2. Pivot the table to be longer such that the names of the new columns `C1_1`, `C1_2` etc. from step 1 become rows in default variable `name` and values populate default variable `value`. 
+2.  Pivot the table to be longer such that the names of the new columns `C1_1`, `C1_2` etc. from step 1 become rows in default variable `name` and values populate default variable `value`.
 
-3. Next, extract the string with the University of Southampton information from each row to a new variable called `department`. Not every row has University of Southampton information and this will create empty values.
+3.  Next, extract the string with the University of Southampton information from each row to a new variable called `department`. Not every row has University of Southampton information and this will create empty values.
 
-4. Filter out all the rows with empty `department` values.
+4.  Filter out all the rows with empty `department` values.
 
-5. Pivot the table wider again creating columns with names from the `name` variable populated
-with values from the `department` variable.
+5.  Pivot the table wider again creating columns with names from the `name` variable populated with values from the `department` variable.
 
 This should mean we have a table with just the University of Southampton affiliations from Web of Science in columns prefixed `C1_`
 
 Simple, huh?! It's much more concise in code.
 
-#### Step 1: Separate `C1` 
+#### Step 1: Separate `C1`
 
 As before, we separate using `separate_wider_delim()` using `;` as the delimiter.
 
@@ -314,9 +313,7 @@ lipid_wide_2 |>
 
 #### Steps 2: Pivot longer
 
-Next we `pivot_longer()` and take advantage of `starts_with()` using character 
-vector `"C1_"` as the argument to pivot on all the columns from step 1. The output is
-assigned to `lipid_wide_3`
+Next we `pivot_longer()` and take advantage of `starts_with()` using character vector `"C1_"` as the argument to pivot on all the columns from step 1. The output is assigned to `lipid_wide_3`
 
 ```{r}
 #| lst-label: lipid-wide-345
@@ -327,20 +324,19 @@ lipid_wide_3 <- lipid_wide_2 |>
 
 #### Steps 3 and 4 : Extract the University of Southampton department and filter
 
-Then we use `mutate()` to create a new variable `department` based on
-`str_extract()` on the `value` variable with a regex passed as a string. 
+Then we use `mutate()` to create a new variable `department` based on `str_extract()` on the `value` variable with a regex passed as a string.
 
 I created the regex pattern using Generative AI giving it the string `[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev & Hlth, Southampton, England;` and a prompt:
 
-```{.markdown}
+``` markdown
 "write a regex to capture the text after ']' and before ', Southampton, England'"
 ```
 
-I pipe this to `filter` with argument `!is.na()` that means *"if NOT an empty value"* for `department` to filter out rows with value `NA` for `department`. 
+I pipe this to `filter` with argument `!is.na()` that means *"if NOT an empty value"* for `department` to filter out rows with value `NA` for `department`.
 
 I pipe this to `select` and use negative selection to drop the `value` column created in the pivot longer as we no longer need it.
 
-The output is assigned to `lipid_wide_4`. 
+The output is assigned to `lipid_wide_4`.
 
 ```{r}
 lipid_wide_4 <- lipid_wide_3 |> 
@@ -351,11 +347,9 @@ lipid_wide_4 <- lipid_wide_3 |>
 
 ### Step 5 : Pivot wider
 
-Finally, we pivot wider taking the names from the `name` column and filling the 
-columns with the values from `department`. The output is saved in `lipid_wide_5`.
+Finally, we pivot wider taking the names from the `name` column and filling the columns with the values from `department`. The output is saved in `lipid_wide_5`.
 
-This returns the `lipid_wide` table, but with the University of Southampton departments
-originally in `C1` in column now in columns prefixed `C1_`
+This returns the `lipid_wide` table, but with the University of Southampton departments originally in `C1` in column now in columns prefixed `C1_`
 
 ```{r}
 lipid_wide_5 <- lipid_wide_4 |> 
@@ -365,7 +359,7 @@ lipid_wide_5 <- lipid_wide_4 |>
 dim_desc(lipid_wide_5)
 ```
 
-Let's look at 
+Let's look at
 
 ```{r}
 lipid_wide_5 |> 
@@ -407,8 +401,7 @@ pure_wide <- pure_join |>
 dim_desc(pure_wide) 
 ```
 
-As an extra step, I'm going to use the same pivot trick to get
-rid of any Scopus affiliations that aren't University of Southampton.
+As an extra step, I'm going to use the same pivot trick to get rid of any Scopus affiliations that aren't University of Southampton.
 
 ### Separate the WoS Affiliations
 
