@@ -1,0 +1,63 @@
+---
+title: "R for Librarians bibliometrics"
+author: "Alistair Bailey"
+date: last-modified
+date-format: "[Last Updated on] YYYY-MM-DD"
+format: 
+    html:
+      code-fold: true
+      code-link: true
+      embed-resources: true
+    # pdf:
+    #   toc: true
+    #   number-sections: true
+    #   colorlinks: true
+knitr:
+  opts_chunk:
+    results: hide
+execute: 
+  eval: true
+  cache: true
+---
+
+```{r}
+#| label: set-up
+#| message: false
+#| echo: false
+library(tidyverse)
+library(janitor)
+```
+
+```{r}
+#| label: load-data
+#| message: false
+pure <- read_csv("../data/pure-2024-03-26.csv")
+
+pure_cln <- pure |> 
+  clean_names()
+```
+
+```{r}
+glimpse(pure)
+glimpse(pure_cln)
+```
+
+```{r}
+# Filter and select columns
+geotech_data <- pure |> 
+  filter(`Journal > Journal-17` == "Journal of Geotechnical and Geoenvironmental Engineering" & 
+         str_detect(`Electronic version(s) of this work > DOI (Digital Object Identifier)-0`, "10.1061")) |> 
+  select(`Electronic version(s) of this work > DOI (Digital Object Identifier)-0`, `Title of the contribution in original language-5`, `Publication statuses and dates > E-pub ahead of print-7`, `Open Access status-13`)
+
+# View the filtered data
+geotech_data
+```
+
+```{r}
+# Create a new column to count the number of articles published in each year
+pure_n <- pure_cln %>%
+  group_by(ref_open_access_compliance_status_14) %>%
+  summarise(Count = n()) %>%
+  ungroup()
+
+```
