@@ -1,13 +1,18 @@
 ---
-title: "R for Librarians bibliometrics"
+title: "R for Librarians: Bibliometrics Exercises"
 author: "Alistair Bailey"
 date: last-modified
 date-format: "[Last Updated on] YYYY-MM-DD"
 format: 
     html:
+      theme: 
+         light: [cosmo, ../styles.scss]
+         dark: [cosmo, ../dark.scss]
       code-fold: true
       code-link: true
       embed-resources: true
+      toc: true
+      page-layout: full
     # pdf:
     #   toc: true
     #   number-sections: true
@@ -20,29 +25,204 @@ execute:
   cache: true
 ---
 
+## Background
+
+To practice our data wrangling skills we're going to work with some real Pure,
+Scopus and Web of Science data.
+
+The overall aim is to be able to understand which publications in these tables are
+REF and Funder compliant, and which University of Southampton department each 
+publication is associated with via the author affiliations.
+
+## Set-up
+
+We're going to need to load the following tidyverse packages to work with the data.
+
 ```{r}
 #| label: set-up
 #| message: false
-#| echo: false
+#| warning: false
+#| code-fold: false
 library(tidyverse)
+library(readxl)
 library(janitor)
 ```
+
+## Pure data
+
+### Download and inspection
+
+Download this Excel spreadsheet and open it up in Excel.
+
+```{r}
+#| label: download-pure-data
+#| eval: false
+#| code-fold: show
+
+# This is the URL for the excel file
+pure_url <- "https://github.com/ab604/library-r/raw/main/data/pure-2024-03-26.xls"
+# This is the name of the excel file
+pure_file <- "pure-2024-03-26.xls"
+
+# This downloads the file to whatever directory you are in, 
+# but only if "pure-2024-03-26.xls" doesn't already exist.
+if (!file.exists(pure_file)) {
+  download.file(pure_url,pure_file, mode = "wb")
+}
+```
+
+1. What's the first thing you notice about the column variable headings?
+
+::: {.callout-warning collapse="true" title="Expand this block to see my thoughts"}
+1. Many of the variable names are non-syntactic.
+2. Many of the variable names are very long.
+3. We have no code book to tell us what they represent.
+
+As described in [Section 3.5.2](https://ab604.github.io/library-r/getting-started.html#sec-names), R has rules about what constitutes a valid name. A syntactic name must not have white space and must contain letters, digits, `.` and `_`, but cannot begin with a digit or underscore. There are also certain reserved names such as TRUE that cannot be used. A name that breaks these rules is non-syntactic and can only be called if encased with 
+back ticks. 
+
+For example the first variable would have be called in R like so:
+
+\`Electronic version(s) of this work > DOI (Digital Object Identifier)-0\`
+
+So what should we do? I suggest we change them to something easier to work with.
+
+But how? And to what?
+:::
+
+2. Load the data in using the `read_xls()` function and create an object called `pure`
 
 ```{r}
 #| label: load-data
 #| message: false
-pure <- read_csv("../data/pure-2024-03-26.csv")
+pure <- read_xls("pure-2024-03-26.xls")
+```
 
+3. Using whatever method you wish, inspect `pure` and find out how many observations
+and how many columns there are.
+
+::: {.callout-note collapse="true" title="Expand this block to see what I did"}
+Looking at my environment pane I see that `pure` has 5186 rows and 21 columns. 
+:::
+
+4. The simplest way to deal with the columns is to use the `clean_names()` function
+from the `janitor` package. Assign a new object called `pure_cln` as the output of
+`pure` piped to `clean_names()`
+
+Inspect and compare `pure` and `pure_cln`. In what way are they different?
+
+```{r}
+#| label: clean-the-names
 pure_cln <- pure |> 
   clean_names()
 ```
 
+5. I'm still not happy with the name of column one, so one way to rename things
+is using `rename()`. The format is `rename(NEW_NAME = OLD_NAME)`. Note 
+that the new name has to be typed, but the old name can be filled with tab completion.
+
+Rename `electronic_version_s_of_this_work_doi_digital_object_identifier_0` as `DOI`. 
+You can re-assign `pure_cln` to overwrite this.
+
 ```{r}
-glimpse(pure)
-glimpse(pure_cln)
+#| label: check-dupes
+pure_cln <- pure_cln |> 
+  rename(DOI = electronic_version_s_of_this_work_doi_digital_object_identifier_0)
+```
+
+## Wrangle
+
+Ok, so it's still quite hard to make sense of what's going on with this data. 
+We've got several thousand rows and 21 different variables. Do we need them all?
+
+Let's look at the column names:
+
+```{r}
+#| label: pure-columns
+#| code-fold: false
+#| results: show
+colnames(pure_cln)
+```
+I'm going to arbitrarily select the ones I think are most useful and in doing so
+rename some of them. `select()` can rename variables at the same time in 
+
+1. Select these six columns in this order and rename 6 to `title`, 18 to `journal` and
+12 to `licence`.
+
+**Don't forget to tab-complete**
+
+```
+[1] "DOI"                                                     
+[6] "title_of_the_contribution_in_original_language_5" 
+[18] "journal_journal_17" 
+[12] "electronic_version_s_of_this_work_licence_to_document_11"
+[14] "open_access_status_13" 
+[10] "workflow_step_9"
 ```
 
 ```{r}
+#| label: select-pure-cols
+pure_sel <- pure_cln |> 
+  select(DOI, 
+         title = title_of_the_contribution_in_original_language_5,
+         journal = journal_journal_17, 
+         open_access_status_13, ref_open_access_compliance_status_14,
+         licence = electronic_version_s_of_this_work_licence_to_document_11,
+         workflow_step_9)
+```
+
+2. Have a look at `pure_sel` when you are done using which method you prefer.
+
+```{r}
+#| label: glimpse-pure-sel
+glimpse(pure_sel)
+```
+3. Let's do some summarising.
+
+3.1. How many different types of open access status, ref compliance, licences, and
+workflow statuses are there?
+
+```{r}
+#| label: count-types
+# Distinct open access status
+pure_sel |> 
+  distinct(open_access_status_13)
+# Distinct REF status
+pure_sel |> 
+  distinct(ref_open_access_compliance_status_14)
+# Distinct licences. What the hell?
+pure_sel |> 
+  distinct(licence)
+# Distinct workflow status
+pure_sel |> 
+  distinct(workflow_step_9)
+```
+
+
+```{r}
+#| eval: false
+# Read the CSV file
+publications <- read_csv("../data/pure-23-lines.csv") |> 
+  clean_names()
+
+# Exercise 1a: Remove rows with missing DOI values
+publications_clean <- publications |> 
+  filter(!is.na(electronic_version_s_of_this_work_doi_digital_object_identifier_0))
+
+# Exercise 1b: Create a new column with the publication year extracted from the DOI
+publications_clean <- publications_clean %>%
+  mutate(publication_year = str_extract(DOI..Digital.Object.Identifier.., "\\d{4}"))
+
+# Exercise 1c: Reshape the data to a wide format with one row per publication and separate columns for different identifiers
+publications_wide <- publications_clean %>%
+  select(DOI..Digital.Object.Identifier., contains("ID")) %>%
+  pivot_wider(names_from = names(.)[startsWith(names(.), "ID")],
+              values_from = value,
+              names_prefix = "ID_")
+```
+
+```{r}
+#| eval: false
 # Filter and select columns
 geotech_data <- pure |> 
   filter(`Journal > Journal-17` == "Journal of Geotechnical and Geoenvironmental Engineering" & 
@@ -54,10 +234,49 @@ geotech_data
 ```
 
 ```{r}
+#| eval: false
 # Create a new column to count the number of articles published in each year
 pure_n <- pure_cln %>%
   group_by(ref_open_access_compliance_status_14) %>%
   summarise(Count = n()) %>%
   ungroup()
 
+```
+
+## Scopus
+
+```{r}
+#| label: download-scopus-data
+#| eval: false
+#| code-fold: show
+
+# This is the URL for the Scopus CSV file
+scopus_url <- "https://github.com/ab604/library-r/raw/main/data/scopus-2024-03-13.csv"
+# This is the name of the excel file
+scopus_file <- "scopus-2024-03-13.csv"
+
+# This downloads the file to whatever directory you are in, 
+# but only if "scopus-2024-03-13.csv" doesn't already exist.
+if (!file.exists(scopus_file)) {
+  download.file(scopus_url,scopus_file, mode = "wb")
+}
+```
+
+## Web of Science
+
+```{r}
+#| label: download-wos-data
+#| eval: false
+#| code-fold: show
+
+# This is the URL for the WoS TSV file
+wos_url <- "https://github.com/ab604/library-r/raw/main/data/web-of-science-2024-03-26.tsv"
+# This is the name of the excel file
+wos_file <- "web-of-science-2024-03-26.tsv"
+
+# This downloads the file to whatever directory you are in, 
+# but only if "pure-2024-03-26.tsv" doesn't already exist.
+if (!file.exists(wos_file)) {
+  download.file(wos_url,wos_file, mode = "wb")
+}
 ```
