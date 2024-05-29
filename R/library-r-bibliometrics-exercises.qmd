@@ -10,6 +10,8 @@ format:
          dark: [cosmo, ../dark.scss]
       code-fold: true
       code-link: true
+      code-overflow: wrap
+      highlight: github
       embed-resources: true
       toc: true
       page-layout: full
@@ -43,6 +45,12 @@ We're going to need to load the following tidyverse packages to work with the da
 library(tidyverse)
 library(readxl)
 library(janitor)
+```
+
+```{r}
+#| label: flextable
+#| echo: false
+library(flextable)
 ```
 
 ## Pure data
@@ -112,12 +120,12 @@ pure_cln <- pure |>
 
 5.  I'm still not happy with the name of column one, so one way to rename things is using `rename()`. The format is `rename(NEW_NAME = OLD_NAME)`. Note that the new name has to be typed, but the old name can be filled with tab completion.
 
-Rename `electronic_version_s_of_this_work_doi_digital_object_identifier_0` as `DOI`. You can re-assign `pure_cln` to overwrite this.
+Rename `electronic_version_s_of_this_work_doi_digital_object_identifier_0` as `doi`. You can re-assign `pure_cln` to overwrite this.
 
 ```{r}
 #| label: check-dupes
 pure_cln <- pure_cln |> 
-  rename(DOI = electronic_version_s_of_this_work_doi_digital_object_identifier_0)
+  rename(doi = electronic_version_s_of_this_work_doi_digital_object_identifier_0)
 ```
 
 ## Wrangle
@@ -129,7 +137,7 @@ Let's look at the column names:
 ```{r}
 #| label: pure-columns
 #| code-fold: false
-#| results: show
+#| results: hold
 colnames(pure_cln)
 ```
 
@@ -140,7 +148,7 @@ I'm going to arbitrarily select the ones I think are most useful and in doing so
 **Don't forget to tab-complete**
 
 ```         
-[1] "DOI"                                                     
+[1] "doi"                                                     
 [6] "title_of_the_contribution_in_original_language_5" 
 [18] "journal_journal_17" 
 [12] "electronic_version_s_of_this_work_licence_to_document_11"
@@ -151,7 +159,7 @@ I'm going to arbitrarily select the ones I think are most useful and in doing so
 ```{r}
 #| label: select-pure-cols
 pure_sel <- pure_cln |> 
-  select(DOI, 
+  select(doi, 
          title = title_of_the_contribution_in_original_language_5,
          journal = journal_journal_17, 
          open_access_status_13, ref_open_access_compliance_status_14,
@@ -185,52 +193,32 @@ pure_sel |>
 pure_sel |> 
   distinct(workflow_step_9)
 ```
+3.2 Use `group_by()` to find out how many articles are at each `workflow_step_9` stage. 
 
 ```{r}
-#| eval: false
-# Read the CSV file
-publications <- read_csv("../data/pure-23-lines.csv") |> 
-  clean_names()
-
-# Exercise 1a: Remove rows with missing DOI values
-publications_clean <- publications |> 
-  filter(!is.na(electronic_version_s_of_this_work_doi_digital_object_identifier_0))
-
-# Exercise 1b: Create a new column with the publication year extracted from the DOI
-publications_clean <- publications_clean %>%
-  mutate(publication_year = str_extract(DOI..Digital.Object.Identifier.., "\\d{4}"))
-
-# Exercise 1c: Reshape the data to a wide format with one row per publication and separate columns for different identifiers
-publications_wide <- publications_clean %>%
-  select(DOI..Digital.Object.Identifier., contains("ID")) %>%
-  pivot_wider(names_from = names(.)[startsWith(names(.), "ID")],
-              values_from = value,
-              names_prefix = "ID_")
+pure_sel |> 
+  group_by(workflow_step_9) |> 
+  tally()
 ```
 
-```{r}
-#| eval: false
-# Filter and select columns
-geotech_data <- pure |> 
-  filter(`Journal > Journal-17` == "Journal of Geotechnical and Geoenvironmental Engineering" & 
-         str_detect(`Electronic version(s) of this work > DOI (Digital Object Identifier)-0`, "10.1061")) |> 
-  select(`Electronic version(s) of this work > DOI (Digital Object Identifier)-0`, `Title of the contribution in original language-5`, `Publication statuses and dates > E-pub ahead of print-7`, `Open Access status-13`)
+3.3 What's the most frequent journal in the list?
 
-# View the filtered data
-geotech_data
+```{r}
+pure_sel |> 
+  group_by(journal) |> 
+  tally() |> 
+  arrange(desc(n))
 ```
+3.4 Use filter to extract the article "Lipid droplets in steatotic liver disease"
 
 ```{r}
-#| eval: false
-# Create a new column to count the number of articles published in each year
-pure_n <- pure_cln %>%
-  group_by(ref_open_access_compliance_status_14) %>%
-  summarise(Count = n()) %>%
-  ungroup()
-
+pure_lipid <- pure_sel |> 
+  filter(title == "Lipid droplets in steatotic liver disease")
 ```
 
 ## Scopus
+
+### Download and inspection
 
 ```{r}
 #| label: download-scopus-data
@@ -247,6 +235,51 @@ scopus_file <- "scopus-2024-03-13.csv"
 if (!file.exists(scopus_file)) {
   download.file(scopus_url,scopus_file, mode = "wb")
 }
+```
+
+Load the scopus data and fix the variable names
+
+```{r}
+#| label: load-scopus
+#| message: false
+scopus <- read_csv("scopus-2024-03-13.csv") |> 
+  clean_names()
+```
+
+```{r}
+#| label: inspect-scopus
+glimpse(scopus)
+```
+Get the lipid article
+
+```{r}
+scopus_lipid <- scopus |> 
+  filter(title == "Lipid droplets in steatotic liver disease")
+```
+
+Select `affiliations` and pipe it to `str_view()` so we can view all the values 
+contained in the cell and how they are delimited.
+
+```{r}
+#| label: scopus-aff
+#| results: hold
+#| output: asis
+scopus_lipid |> 
+  select(affiliations) |> 
+  str_view() |> 
+  print()
+```
+
+```{r}
+#| label: scopus-aff2
+#| output: asis
+scopus_lipid |> 
+  select(affiliations) |> 
+  mutate(affiliations = str_view(pattern = ";", affiliations)) |> 
+  flextable() |> 
+  font(part = "all", fontname = "Consolas") |>
+  bg(bg = "white", part = "all") |> 
+  autofit()
 ```
 
 ## Web of Science
