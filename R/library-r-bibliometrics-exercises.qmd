@@ -27,12 +27,9 @@ execute:
 
 ## Background
 
-To practice our data wrangling skills we're going to work with some real Pure,
-Scopus and Web of Science data.
+To practice our data wrangling skills we're going to work with some real Pure, Scopus and Web of Science data.
 
-The overall aim is to be able to understand which publications in these tables are
-REF and Funder compliant, and which University of Southampton department each 
-publication is associated with via the author affiliations.
+The overall aim is to be able to understand which publications in these tables are REF and Funder compliant, and which University of Southampton department each publication is associated with via the author affiliations.
 
 ## Set-up
 
@@ -71,26 +68,25 @@ if (!file.exists(pure_file)) {
 }
 ```
 
-1. What's the first thing you notice about the column variable headings?
+1.  What's the first thing you notice about the column variable headings?
 
 ::: {.callout-warning collapse="true" title="Expand this block to see my thoughts"}
-1. Many of the variable names are non-syntactic.
-2. Many of the variable names are very long.
-3. We have no code book to tell us what they represent.
+1.  Many of the variable names are non-syntactic.
+2.  Many of the variable names are very long.
+3.  We have no code book to tell us what they represent.
 
-As described in [Section 3.5.2](https://ab604.github.io/library-r/getting-started.html#sec-names), R has rules about what constitutes a valid name. A syntactic name must not have white space and must contain letters, digits, `.` and `_`, but cannot begin with a digit or underscore. There are also certain reserved names such as TRUE that cannot be used. A name that breaks these rules is non-syntactic and can only be called if encased with 
-back ticks. 
+As described in [Section 3.5.2](https://ab604.github.io/library-r/getting-started.html#sec-names), R has rules about what constitutes a valid name. A syntactic name must not have white space and must contain letters, digits, `.` and `_`, but cannot begin with a digit or underscore. There are also certain reserved names such as TRUE that cannot be used. A name that breaks these rules is non-syntactic and can only be called if encased with back ticks.
 
 For example the first variable would have be called in R like so:
 
-\`Electronic version(s) of this work > DOI (Digital Object Identifier)-0\`
+\`Electronic version(s) of this work \> DOI (Digital Object Identifier)-0\`
 
 So what should we do? I suggest we change them to something easier to work with.
 
 But how? And to what?
 :::
 
-2. Load the data in using the `read_xls()` function and create an object called `pure`
+2.  Load the data in using the `read_xls()` function and create an object called `pure`
 
 ```{r}
 #| label: load-data
@@ -98,16 +94,13 @@ But how? And to what?
 pure <- read_xls("pure-2024-03-26.xls")
 ```
 
-3. Using whatever method you wish, inspect `pure` and find out how many observations
-and how many columns there are.
+3.  Using whatever method you wish, inspect `pure` and find out how many observations and how many columns there are.
 
 ::: {.callout-note collapse="true" title="Expand this block to see what I did"}
-Looking at my environment pane I see that `pure` has 5186 rows and 21 columns. 
+Looking at my environment pane I see that `pure` has 5186 rows and 21 columns.
 :::
 
-4. The simplest way to deal with the columns is to use the `clean_names()` function
-from the `janitor` package. Assign a new object called `pure_cln` as the output of
-`pure` piped to `clean_names()`
+4.  The simplest way to deal with the columns is to use the `clean_names()` function from the `janitor` package. Assign a new object called `pure_cln` as the output of `pure` piped to `clean_names()`
 
 Inspect and compare `pure` and `pure_cln`. In what way are they different?
 
@@ -117,12 +110,9 @@ pure_cln <- pure |>
   clean_names()
 ```
 
-5. I'm still not happy with the name of column one, so one way to rename things
-is using `rename()`. The format is `rename(NEW_NAME = OLD_NAME)`. Note 
-that the new name has to be typed, but the old name can be filled with tab completion.
+5.  I'm still not happy with the name of column one, so one way to rename things is using `rename()`. The format is `rename(NEW_NAME = OLD_NAME)`. Note that the new name has to be typed, but the old name can be filled with tab completion.
 
-Rename `electronic_version_s_of_this_work_doi_digital_object_identifier_0` as `DOI`. 
-You can re-assign `pure_cln` to overwrite this.
+Rename `electronic_version_s_of_this_work_doi_digital_object_identifier_0` as `DOI`. You can re-assign `pure_cln` to overwrite this.
 
 ```{r}
 #| label: check-dupes
@@ -132,8 +122,7 @@ pure_cln <- pure_cln |>
 
 ## Wrangle
 
-Ok, so it's still quite hard to make sense of what's going on with this data. 
-We've got several thousand rows and 21 different variables. Do we need them all?
+Ok, so it's still quite hard to make sense of what's going on with this data. We've got several thousand rows and 21 different variables. Do we need them all?
 
 Let's look at the column names:
 
@@ -143,15 +132,14 @@ Let's look at the column names:
 #| results: show
 colnames(pure_cln)
 ```
-I'm going to arbitrarily select the ones I think are most useful and in doing so
-rename some of them. `select()` can rename variables at the same time in 
 
-1. Select these six columns in this order and rename 6 to `title`, 18 to `journal` and
-12 to `licence`.
+I'm going to arbitrarily select the ones I think are most useful and in doing so rename some of them. `select()` can rename variables at the same time in
+
+1.  Select these six columns in this order and rename 6 to `title`, 18 to `journal` and 12 to `licence`.
 
 **Don't forget to tab-complete**
 
-```
+```         
 [1] "DOI"                                                     
 [6] "title_of_the_contribution_in_original_language_5" 
 [18] "journal_journal_17" 
@@ -171,16 +159,16 @@ pure_sel <- pure_cln |>
          workflow_step_9)
 ```
 
-2. Have a look at `pure_sel` when you are done using which method you prefer.
+2.  Have a look at `pure_sel` when you are done using which method you prefer.
 
 ```{r}
 #| label: glimpse-pure-sel
 glimpse(pure_sel)
 ```
-3. Let's do some summarising.
 
-3.1. How many different types of open access status, ref compliance, licences, and
-workflow statuses are there?
+3.  Let's do some summarising.
+
+3.1. How many different types of open access status, ref compliance, licences, and workflow statuses are there?
 
 ```{r}
 #| label: count-types
@@ -197,7 +185,6 @@ pure_sel |>
 pure_sel |> 
   distinct(workflow_step_9)
 ```
-
 
 ```{r}
 #| eval: false
