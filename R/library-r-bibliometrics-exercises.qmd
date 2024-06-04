@@ -50,6 +50,7 @@ library(janitor)
 ```{r}
 #| label: flextable
 #| echo: false
+#| eval: false
 #| warning: false
 library(flextable)
 ```
@@ -133,7 +134,7 @@ pure_cln <- pure_cln |>
 
 Ok, so it's still quite hard to make sense of what's going on with this data. We've got several thousand rows and 21 different variables. Do we need them all?
 
-Let's look at the column names:
+Let's look at the column names using the base R function `colnames()` :
 
 ```{r}
 #| label: pure-columns
@@ -198,6 +199,7 @@ pure_sel |>
 3.2 Use `group_by()` to find out how many articles are at each `workflow_step_9` stage.
 
 ```{r}
+#| label: pure-group-workflow
 pure_sel |> 
   group_by(workflow_step_9) |> 
   tally()
@@ -206,6 +208,7 @@ pure_sel |>
 3.3 What's the most frequent journal in the list?
 
 ```{r}
+#| label: most-frequent-pure-journal
 pure_sel |> 
   group_by(journal) |> 
   tally() |> 
@@ -215,6 +218,7 @@ pure_sel |>
 3.4 Use filter to extract the article "Lipid droplets in steatotic liver disease"
 
 ```{r}
+#| label: pure-lipid-filter
 pure_lipid <- pure_sel |> 
   filter(title == "Lipid droplets in steatotic liver disease")
 ```
@@ -222,6 +226,8 @@ pure_lipid <- pure_sel |>
 ## Scopus
 
 ### Download and inspection
+
+Download the Scopus data in the same way we did for the Pure data
 
 ```{r}
 #| label: download-scopus-data
@@ -240,7 +246,7 @@ if (!file.exists(scopus_file)) {
 }
 ```
 
-Load the scopus data and fix the variable names
+Load the scopus data and fix the variable names. How many articles do we have?
 
 ```{r}
 #| label: load-scopus
@@ -254,7 +260,9 @@ scopus <- read_csv("scopus-2024-03-13.csv") |>
 glimpse(scopus)
 ```
 
-Get the lipid article
+### Separating the affiliations
+
+Filter row with the lipid article:
 
 ```{r}
 scopus_lipid <- scopus |> 
@@ -267,25 +275,21 @@ Introducing `pull()` from so we can extract the `affilitiations` column. As we o
 #| label: scopus-aff
 #| code-fold: false
 #| eval: true
+#| results: asis
 scopus_lipid |> 
   pull(affiliations) 
 ```
-We can use `tidyr` function `separate_wider_delim()` to separate the column into multiple columns. 
-Below is the code for separating the `scopus_lipid` `affiliations` column with 
-the following arguments:
 
-+ `cols = affiliations` is telling the function which column to separate.
+We can use `tidyr` function `separate_wider_delim()` to separate the column into multiple columns. Below is the code for separating the `scopus_lipid` `affiliations` column with the following arguments:
 
-+ `names_sep = "_"` is telling the function that when it creates new columns using
-the original column name `affiliation` to add an underscores before a number.
+-   `cols = affiliations` is telling the function which column to separate.
 
-+ `delim = ";"` is telling the function to separate the string at each `;`.
+-   `names_sep = "_"` is telling the function that when it creates new columns using the original column name `affiliation` to add an underscores before a number.
 
-+ `too_few = "align_start"` is telling the function what to do if we have a different number of values 
-in each row when we separate. In our case that means different numbers of affiliations for each journal article.
-Here we are saying that if a row has `too_few` wrt to another, put the first affiliation aligned to the first
-column of the other rows and fill the empty columns with `NA`.
-  
+-   `delim = ";"` is telling the function to separate the string at each `;`.
+
+-   `too_few = "align_start"` is telling the function what to do if we have a different number of values in each row when we separate. In our case that means different numbers of affiliations for each journal article. Here we are saying that if a row has `too_few` wrt to another, put the first affiliation aligned to the first column of the other rows and fill the empty columns with `NA`.
+
 ```{r}
 #| label: scopus-sep-affiliations
 #| code-fold: false 
@@ -300,9 +304,87 @@ scopus_lipid |>
   glimpse()
 ```
 
+Now let's do the same thing, but for the whole Scopus dataset. Assign the output to a new object.
 
+```{r}
+#| label: scopus-sep-all-affiliations
+#| code-fold: false 
+#| eval: true
+#| results: markup
+scopus_wide <- scopus |> 
+  separate_wider_delim(cols = affiliations,
+                       names_sep = "_",
+                       delim = ";",
+  too_few = "align_start")
+```
 
+We now have a new table with 483 columns, many of them containing `NA`. Let's look at one way to clean up the table using `pivot_longer()`. We can revisit [Pivoting tables](https://ab604.github.io/library-r/data-wrangling-1.html#pivots)
 
+The basic idea of a pivot from wide to long is to transform columns to rows, so old column names become values in a new single column and the values from each old column become values in a new single column.
+
+All the existing values that aren't being transformed get replicated as repeated rows.
+
+Because we created new columns with the same prefix, `affiliation_` we can use `dplyr::starts_width()` to easily select all the columns we want to transform.
+
+The default name for the new column containing the old column names as values is `name` and the default name for the new column containing the old column's values is `value`.
+
+```{r}
+#| label: pivot-scopus
+scopus_long <- scopus_wide |> 
+  pivot_longer(cols = starts_with("affiliations_")) 
+```
+
+This creates a table with 21 columns, no missing values, but a lot of rows, 150,213 rows.
+
+To just filter for the rows with UoS affiliations we can combine `filter` with a function that detects the string `Southampton` in the `value` column.
+
+Can you guess what the function in the `stringr` package would be called?
+
+::: {.callout-note collapse="true" title="Expand this block to see the answer"}
+Yes, that's right. The `stringr` function to detect strings is called `str_detect()`
+
+It's got an underscore meaning it's a tidyverse function and has a verb like construction.
+:::
+
+```{r}
+#| label: filter-soton
+scopus_soton_long <- scopus_long |> 
+  filter(str_detect(value, "Southampton"))
+```
+
+### Checking the output makes sense
+
+This leaves us with a table with 546 entries. Why? Because some articles have more than one UoS department affiliated. How could we check that? Or summarise this further?
+
+Hint: think about `distinct()` or `group_by()`
+
+```{r}
+#| label: check-affiliations
+# Count the number of rows with distinct article titles
+scopus_soton_long |> 
+  distinct(title) |> 
+  tally()
+```
+
+Ok, that's interesting. We started with 483 articles and now we appear to have 480. What's happened to the other 3?
+
+How might we investigate what's going on here using `str_detect()` again? Hint we can use the Boolean operator `!` to check if something is `FALSE`.
+
+::: {.callout-note collapse="true" title="Expand this block to see what I did"}
+Using the original `scopus` table, I filtered for rows where `str_dectect()` does not detect the string `Southampton` using `!` and find the three rows.
+
+We should look at these in more detail.
+
+```{r}
+#| label: not-soton
+#| code-fold: false
+#| results: hold
+# So this tells us there are indeed three articles without the string Southampton in the affiliations.
+scopus |> 
+  filter(!str_detect(affiliations,"Southampton")) |> 
+  tally()
+```
+:::
 
 ## Web of Science
 
@@ -326,6 +408,7 @@ if (!file.exists(wos_file)) {
 ```{r}
 #| label: load-wos
 #| eval: true
+#| message: false
 wos <- read_tsv("web-of-science-2024-03-26.tsv")
 ```
 
@@ -337,12 +420,9 @@ glimpse(wos)
 
 ## Regular expressions
 
-We need to learn more about working with strings to tackle the `affiliations` task. Using the [Regular expression section](https://ab604.github.io/library-r/data-wrangling-2.html#sec-regular-expressions) 
-as the basis for some exercises, let's dive into working with strings.
+We need to learn more about working with strings to tackle the `affiliations` task. Using the [Regular expression section](https://ab604.github.io/library-r/data-wrangling-2.html#sec-regular-expressions) as the basis for some exercises, let's dive into working with strings.
 
-Regular expressions are patterns, so if we wanted to 
-find all the cats in vector below with names with `er` in them, then `er` would be the pattern
-we are looking for.
+Regular expressions are patterns, so if we wanted to find all the cats in vector below with names with `er` in them, then `er` would be the pattern we are looking for.
 
 Copy and create the `cat_names` vector:
 
@@ -374,16 +454,12 @@ cat_names <-
   )
 ```
 
-
-We need the `stringr` package loaded from the tidyverse and then we'll use `str_view()` 
-to view the pattern `er`. Note that regex's are strings themselves.
+We need the `stringr` package loaded from the tidyverse and then we'll use `str_view()` to view the pattern `er`. Note that regex's are strings themselves.
 
 ```{r}
 cat_names |> 
   str_view("er")
 ```
-
-
 
 ```{r}
 cat_names |> 
