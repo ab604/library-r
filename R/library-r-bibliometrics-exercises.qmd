@@ -50,6 +50,7 @@ library(janitor)
 ```{r}
 #| label: flextable
 #| echo: false
+#| warning: false
 library(flextable)
 ```
 
@@ -193,7 +194,8 @@ pure_sel |>
 pure_sel |> 
   distinct(workflow_step_9)
 ```
-3.2 Use `group_by()` to find out how many articles are at each `workflow_step_9` stage. 
+
+3.2 Use `group_by()` to find out how many articles are at each `workflow_step_9` stage.
 
 ```{r}
 pure_sel |> 
@@ -209,6 +211,7 @@ pure_sel |>
   tally() |> 
   arrange(desc(n))
 ```
+
 3.4 Use filter to extract the article "Lipid droplets in steatotic liver disease"
 
 ```{r}
@@ -250,6 +253,7 @@ scopus <- read_csv("scopus-2024-03-13.csv") |>
 #| label: inspect-scopus
 glimpse(scopus)
 ```
+
 Get the lipid article
 
 ```{r}
@@ -257,30 +261,48 @@ scopus_lipid <- scopus |>
   filter(title == "Lipid droplets in steatotic liver disease")
 ```
 
-Select `affiliations` and pipe it to `str_view()` so we can view all the values 
-contained in the cell and how they are delimited.
+Introducing `pull()` from so we can extract the `affilitiations` column. As we only have one row, we only get the contents of a single cell, unfortunately it contains multiple values. Can you see how each value is delimited?
 
 ```{r}
 #| label: scopus-aff
-#| results: hold
-#| output: asis
+#| code-fold: false
+#| eval: true
+scopus_lipid |> 
+  pull(affiliations) 
+```
+We can use `tidyr` function `separate_wider_delim()` to separate the column into multiple columns. 
+Below is the code for separating the `scopus_lipid` `affiliations` column with 
+the following arguments:
+
++ `cols = affiliations` is telling the function which column to separate.
+
++ `names_sep = "_"` is telling the function that when it creates new columns using
+the original column name `affiliation` to add an underscores before a number.
+
++ `delim = ";"` is telling the function to separate the string at each `;`.
+
++ `too_few = "align_start"` is telling the function what to do if we have a different number of values 
+in each row when we separate. In our case that means different numbers of affiliations for each journal article.
+Here we are saying that if a row has `too_few` wrt to another, put the first affiliation aligned to the first
+column of the other rows and fill the empty columns with `NA`.
+  
+```{r}
+#| label: scopus-sep-affiliations
+#| code-fold: false 
+#| eval: true
+#| results: markup
 scopus_lipid |> 
   select(affiliations) |> 
-  str_view() |> 
-  print()
+  separate_wider_delim(cols = affiliations,
+                       names_sep = "_",
+                       delim = ";",
+  too_few = "align_start") |> 
+  glimpse()
 ```
 
-```{r}
-#| label: scopus-aff2
-#| output: asis
-scopus_lipid |> 
-  select(affiliations) |> 
-  mutate(affiliations = str_view(pattern = ";", affiliations)) |> 
-  flextable() |> 
-  font(part = "all", fontname = "Consolas") |>
-  bg(bg = "white", part = "all") |> 
-  autofit()
-```
+
+
+
 
 ## Web of Science
 
@@ -299,4 +321,71 @@ wos_file <- "web-of-science-2024-03-26.tsv"
 if (!file.exists(wos_file)) {
   download.file(wos_url,wos_file, mode = "wb")
 }
+```
+
+```{r}
+#| label: load-wos
+#| eval: true
+wos <- read_tsv("web-of-science-2024-03-26.tsv")
+```
+
+```{r}
+#| label: inspect-wos
+#| eval: false
+glimpse(wos)
+```
+
+## Regular expressions
+
+We need to learn more about working with strings to tackle the `affiliations` task. Using the [Regular expression section](https://ab604.github.io/library-r/data-wrangling-2.html#sec-regular-expressions) 
+as the basis for some exercises, let's dive into working with strings.
+
+Regular expressions are patterns, so if we wanted to 
+find all the cats in vector below with names with `er` in them, then `er` would be the pattern
+we are looking for.
+
+Copy and create the `cat_names` vector:
+
+```{r}
+#| label: cats
+#| code-fold: false
+cat_names <-
+  c(
+    "Whiskers",
+    "Fluffy",
+    "Mittens",
+    "Socks",
+    "Tiger",
+    "Smokey",
+    "Gizmo",
+    "Oreo",
+    "Luna",
+    "Oliver",
+    "Leo",
+    "Milo",
+    "Charlie",
+    "Simba",
+    "Nala",
+    "Felix",
+    "Garfield",
+    "Tigger",
+    "Chloe",
+    "Bella"
+  )
+```
+
+
+We need the `stringr` package loaded from the tidyverse and then we'll use `str_view()` 
+to view the pattern `er`. Note that regex's are strings themselves.
+
+```{r}
+cat_names |> 
+  str_view("er")
+```
+
+
+
+```{r}
+cat_names |> 
+  str_view("er|ff")
 ```
