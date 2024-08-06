@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.5.47">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>R for Librarians - 6&nbsp; Data wrangling II</title>
+<title>6&nbsp; Data wrangling II – R for Librarians</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -104,13 +104,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-wrangling-2.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data wrangling II</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -230,13 +230,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div id="chapter-04-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="" id="chapter-04-summary"></a>Summary
+Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <code>penguins_info</code> is a dataframe containing other information about penguins (e.g., species, island, year, sex).</li>
 </ul>
 <div class="cell">
-<div id="lst-split-penguins" class="r cell-code listing quarto-float">
+<div id="lst-split-penguins" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-split-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.1: Create unique id for each penguin and split the penguins data into two tables, one with physical measurements, the other with the remaining variables.
 </figcaption><div aria-describedby="lst-split-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -312,7 +312,7 @@ Listing&nbsp;6.1: Create unique id for each penguin and split the penguins data 
 <p>The <code>left_join</code> function returns all records from the left dataframe (<code>penguins_physical</code>) and the matching records from the right dataframe (<code>penguins_info</code>). If there were no matches in the right dataframe, the result will contain null values for the right dataframe’s columns.</p>
 <p>As we didn’t explicitly tell the function which variables to use, we got a message tells us it joined <code>by = join_by(penguin_id)</code>.</p>
 <div class="cell">
-<div id="lst-left-join" class="r cell-code listing quarto-float">
+<div id="lst-left-join" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-left-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.2: Join the two penguins back together with a mutating left join
 </figcaption><div aria-describedby="lst-left-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -324,7 +324,7 @@ Listing&nbsp;6.2: Join the two penguins back together with a mutating left join
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(penguin_id)`</code></pre>
 </div>
-<div id="lst-left-join" class="r cell-code listing quarto-float">
+<div id="lst-left-join" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-left-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.3: Join the two penguins back together with a mutating left join
 </figcaption><div aria-describedby="lst-left-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -352,7 +352,7 @@ $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, 
 <p>Here we’ll do a filtering join, a semi-join.</p>
 <p>First I’ll filter the <code>penguins_info</code> I created just for the data from the year 2008:</p>
 <div class="cell">
-<div id="lst-penguins-2008" class="r cell-code listing quarto-float">
+<div id="lst-penguins-2008" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-penguins-2008-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.4: Create a dataframe for penguins only for the year 2008
 </figcaption><div aria-describedby="lst-penguins-2008-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -367,7 +367,7 @@ Listing&nbsp;6.4: Create a dataframe for penguins only for the year 2008
 <p>As we didn’t explicitly tell the function which variables to use, we got a message tells us it joined <code>by = join_by(penguin_id)</code></p>
 <p>I’ve assigned the resulting table to a new dataframe: <code>penguins_filtered</code>.</p>
 <div class="cell">
-<div id="lst-penguins-semi-join" class="r cell-code listing quarto-float">
+<div id="lst-penguins-semi-join" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-penguins-semi-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.5: Perform a filtering semi join that returns only the rows from <code>penguins_physical</code> that match the rows in <code>penguins_info_filt</code>
 </figcaption><div aria-describedby="lst-penguins-semi-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -379,7 +379,7 @@ Listing&nbsp;6.5: Perform a filtering semi join that returns only the rows from 
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(penguin_id)`</code></pre>
 </div>
-<div id="lst-penguins-semi-join" class="r cell-code listing quarto-float">
+<div id="lst-penguins-semi-join" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-penguins-semi-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.6: Perform a filtering semi join that returns only the rows from <code>penguins_physical</code> that match the rows in <code>penguins_info_filt</code>
 </figcaption><div aria-describedby="lst-penguins-semi-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -447,7 +447,7 @@ Escaping regex special characters with backslash
 <code>ding_words</code>: a character vector of 20 words, all ending with <code>ding</code> using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function (<a href="#lst-ding-strings" class="quarto-xref">Listing&nbsp;<span>6.7</span></a>).</li>
 </ol>
 <div class="cell">
-<div id="lst-ding-strings" class="r cell-code listing quarto-float">
+<div id="lst-ding-strings" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-ding-strings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.7: Create a character vector of twenty words ending in ‘ding’
 </figcaption><div aria-describedby="lst-ding-strings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -482,7 +482,7 @@ Listing&nbsp;6.7: Create a character vector of twenty words ending in ‘ding’
 <code>cat_names</code>: a character vector of 20 strings of cat names using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function (<a href="#lst-cat-strings" class="quarto-xref">Listing&nbsp;<span>6.8</span></a>)</li>
 </ol>
 <div class="cell">
-<div id="lst-cat-strings" class="r cell-code listing quarto-float">
+<div id="lst-cat-strings" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-cat-strings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.8: Create a character vector of twenty cat names
 </figcaption><div aria-describedby="lst-cat-strings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -518,7 +518,7 @@ Listing&nbsp;6.8: Create a character vector of twenty cat names
 <p><code>str_view</code> is a function from the <code>stringr</code> package to search for patterns in the <code>words</code> vector. It returns a visual representation of the matches.</p>
 <p><code>str_view(words, "ding")</code>: searches for words containing the substring “ding” (<a href="#lst-str-view-words" class="quarto-xref">Listing&nbsp;<span>6.9</span></a>).</p>
 <div class="cell">
-<div id="lst-str-view-words" class="r cell-code listing quarto-float">
+<div id="lst-str-view-words" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-str-view-words-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.9: View the string ‘ding’ in <code>ding_words</code>
 </figcaption><div aria-describedby="lst-str-view-words-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -550,7 +550,7 @@ Listing&nbsp;6.9: View the string ‘ding’ in <code>ding_words</code>
 </div>
 <p><code>str_view(ding_words, "bou|rr")</code>: searches for words containing the substrings “bou” or “rr”. The vertical bar <code>|</code> here is a special regex character that represent the Boolean OR operator (<a href="#lst-str-view-or" class="quarto-xref">Listing&nbsp;<span>6.10</span></a>).</p>
 <div class="cell">
-<div id="lst-str-view-or" class="r cell-code listing quarto-float">
+<div id="lst-str-view-or" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-str-view-or-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.10: View the string ‘bou’ or ‘rr’ in <code>ding_words</code>
 </figcaption><div aria-describedby="lst-str-view-or-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -571,7 +571,7 @@ Listing&nbsp;6.10: View the string ‘bou’ or ‘rr’ in <code>ding_words</co
 <p><code>str_detect</code> is a function is used to identify elements in the <code>cat_names</code> vector that contain the pattern “[isk]” (i.e., the characters “i”, “s”, or “k”).</p>
 <p><code>str_detect(cat_names, "[isk]")</code>: returns a logical vector (<code>TRUE</code> or <code>FALSE</code>)indicating which names contain the pattern (<a href="#lst-string-detect" class="quarto-xref">Listing&nbsp;<span>6.11</span></a>):</p>
 <div class="cell">
-<div id="lst-string-detect" class="r cell-code listing quarto-float">
+<div id="lst-string-detect" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-string-detect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.11: Find whether cat names contain i,s or k is TRUE or FALSE
 </figcaption><div aria-describedby="lst-string-detect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -586,7 +586,7 @@ Listing&nbsp;6.11: Find whether cat names contain i,s or k is TRUE or FALSE
 </div>
 <p><code>str_count(cat_names, "[isk]")</code>: counts the number of occurrences of the pattern in each name (<a href="#lst-count-patterns" class="quarto-xref">Listing&nbsp;<span>6.12</span></a>):</p>
 <div class="cell">
-<div id="lst-count-patterns" class="r cell-code listing quarto-float">
+<div id="lst-count-patterns" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-count-patterns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.12: Count how many occurrences of i, s or k in each cat name
 </figcaption><div aria-describedby="lst-count-patterns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -604,7 +604,7 @@ Listing&nbsp;6.12: Count how many occurrences of i, s or k in each cat name
 <p>Here we use to replace <code>str_replace</code> and <code>str_replace_all</code> to match the pattern “[isk]” in the <code>cat_names</code> vector and replace it with a dash (-):</p>
 <p><code>str_replace(cat_names, "[isk]", "-")</code>: replaces the first occurrence of the pattern in each name, that is the first occurrence of either <code>i</code>,<code>s</code> or <code>k</code> (<a href="#lst-str-replace" class="quarto-xref">Listing&nbsp;<span>6.13</span></a>):</p>
 <div class="cell">
-<div id="lst-str-replace" class="r cell-code listing quarto-float">
+<div id="lst-str-replace" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-str-replace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.13: Replace the first occurrence of i, s, or k in each name with a dash
 </figcaption><div aria-describedby="lst-str-replace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -621,7 +621,7 @@ Listing&nbsp;6.13: Replace the first occurrence of i, s, or k in each name with 
 </div>
 <p><code>str_replace_all(cat_names, "[isk]", "-")</code>: replaces all occurrences of the pattern in each name, that is all occurances of either <code>i</code>,<code>s</code> or <code>k</code> (<a href="#lst-str-replace-all" class="quarto-xref">Listing&nbsp;<span>6.14</span></a>):</p>
 <div class="cell">
-<div id="lst-str-replace-all" class="r cell-code listing quarto-float">
+<div id="lst-str-replace-all" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-str-replace-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.14: Replaces all occurances of either i,s or k in each cat name
 </figcaption><div aria-describedby="lst-str-replace-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -656,7 +656,7 @@ Listing&nbsp;6.14: Replaces all occurances of either i,s or k in each cat name
 <li>We pass the arguments <code>size = length(cat_names), replace = TRUE</code> to the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function to indicate we want the same number of values as the length of the <code>cat_names</code> vector, which is 20 names long.</li>
 </ul>
 <div class="cell">
-<div id="lst-cat-tibble" class="r cell-code listing quarto-float">
+<div id="lst-cat-tibble" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-cat-tibble-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.15: Creating the cat tibble
 </figcaption><div aria-describedby="lst-cat-tibble-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -674,7 +674,7 @@ Listing&nbsp;6.15: Creating the cat tibble
 </div>
 <p>Let’s inspect the our new table <a href="#lst-view-cat-tibble" class="quarto-xref">Listing&nbsp;<span>6.16</span></a> :</p>
 <div class="cell">
-<div id="lst-view-cat-tibble" class="r cell-code listing quarto-float">
+<div id="lst-view-cat-tibble" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-view-cat-tibble-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;6.16: View the <code>cat_tibble</code>
 </figcaption><div aria-describedby="lst-view-cat-tibble-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -713,7 +713,7 @@ Listing&nbsp;6.16: View the <code>cat_tibble</code>
 <p>Having created a table with a single variable that combines name, sex and age into a single variable <code>cat_id</code> (<a href="#lst-view-cat-tibble" class="quarto-xref">Listing&nbsp;<span>6.16</span></a>), it would be much more useful to have these as three separate variables: <code>name</code>, <code>sex</code>, and <code>age</code>.</p>
 <p>We can do this using the <code>separate_wider_regex()</code> function from the <code>tidyr</code> package to split the <code>cat_id</code> column into separate columns based on regular expression patterns (<a href="#lst-wide-cat" class="quarto-xref">Listing&nbsp;<span>7.1</span></a>).</p>
 <div class="cell">
-<div id="lst-wide-cat" class="r cell-code listing quarto-float">
+<div id="lst-wide-cat" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-wide-cat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;7.1: Separate <code>cat_tibble</code> wider by regex.
 </figcaption><div aria-describedby="lst-wide-cat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -952,18 +952,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -995,7 +984,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1003,10 +1014,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -1050,7 +1066,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1098,7 +1118,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1319,12 +1344,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./data-wrangling-1.html" class="pagination-link  aria-label=" wrangling="" i="">
+      <a href="./data-wrangling-1.html" class="pagination-link" aria-label="Data wrangling I">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./wrangling-bibliometrics-data.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>Wrangling bibliometrics data</span>">
+      <a href="./wrangling-bibliometrics-data.html" class="pagination-link" aria-label="Wrangling bibliometrics data">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

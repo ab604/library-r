@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.5.47">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>R for Librarians - 5&nbsp; Data wrangling I</title>
+<title>5&nbsp; Data wrangling I – R for Librarians</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -105,13 +105,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-wrangling-1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -236,13 +236,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div id="chapter-03-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="" id="chapter-03-summary"></a>Summary
+Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -285,9 +285,9 @@ Pipe style
 <p>The pipe <code>|&gt;</code> was added to R as of version 4.1.0 , you may see the <code>%&gt;%</code> pipe from the <code>magrittr</code> package sometimes, but it’s simpler to use the native version. However, you may need to check the native pipe is enabled in the <code>Options</code> (<a href="#fig-pipe" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pipe" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of the settings for the native pipe `|>` option in RStudio.">
+<div id="fig-pipe" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An image of the settings for the native pipe `|>` option in RStudio.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/R-native-pipe.PNG" class="img-fluid figure-img" alt="An image of the settings for the native pipe `|>` option in RStudio.">
+<img src="img/R-native-pipe.PNG" class="img-fluid figure-img" alt="An image of the settings for the native pipe `|>` option in RStudio." width="400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pipe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.1: Setting the native pipe <code>|&gt;</code> option in RStudio
@@ -303,9 +303,9 @@ Figure&nbsp;5.1: Setting the native pipe <code>|&gt;</code> option in RStudio
 <p>As mentioned in <a href="getting-started.html#sec-base-r-tidyverse" class="quarto-xref"><span>Section 3.6</span></a>, the grammar is the naming of the functions as verbs. Personally, I find this parallel between R code and human language makes things cognitively easier for me. I can describe what I want to do using natural language and translate it easily into tidyverse code.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dplyr-name" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.">
+<div id="fig-dplyr-name" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/dplyr-name-github.png" class="img-fluid figure-img" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers.">
+<img src="img/dplyr-name-github.png" class="img-fluid figure-img" alt="The creator of dplyr Hadley Wickham explains that in the name, d is for dataframes and plyr is to evoke the tool pliers." width="484">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dplyr-name-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.2: <a href="https://github.com/tidyverse/dplyr/issues/1857">Why is it called <code>dplyr</code>?</a>
@@ -327,7 +327,7 @@ Figure&nbsp;5.2: <a href="https://github.com/tidyverse/dplyr/issues/1857">Why is
 <p>So any row with a value in <code>bill_length_mm</code> greater or equal to 50 is <code>TRUE</code> and is retained and any row with a value less than 50 is <code>FALSE</code> and is discarded.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-filter" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` data frame via a pipe.">
+<div id="fig-filter" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` data frame via a pipe.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-filter-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The dplyr filter function. The filter function returns rows from your data frame that satisfy your filter expression as `TRUE`. Here it shows how filter will return all Palmer Penguins with a bill longer or equal to 50 mm, either by using `penguins` dataframe as the first argument to the function or by passing the `penguins` data frame via a pipe.">
 </div>
@@ -370,78 +370,78 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-802db9e6{}.cl-8025dd98{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8025ddac{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-802898f8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-80289902{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8028a9b0{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9b1{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9b2{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ba{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9bb{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9bc{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9bd{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9c4{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9c5{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9c6{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ce{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9cf{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9d0{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9d1{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9d8{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9d9{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9e2{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9e3{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9e4{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ec{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ed{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ee{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9ef{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8028a9f0{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-802db9e6">
+<style>.cl-1023eedc{}.cl-1009be68{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1009be86{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-101b0bdc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-101b0bf0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-101b2e32{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e3c{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e3d{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e46{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e47{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e50{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e51{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e5a{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e5b{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e5c{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e64{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e65{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e66{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e6e{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e6f{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e70{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e78{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e79{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e7a{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e82{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e83{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e84{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e85{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-101b2e8c{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-1023eedc">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-8028a9b0"><p class="cl-802898f8"><span class="cl-8025dd98">species</span></p></th>
-<th class="cl-8028a9b1"><p class="cl-802898f8"><span class="cl-8025dd98">island</span></p></th>
-<th class="cl-8028a9b2"><p class="cl-80289902"><span class="cl-8025dd98">bill_length_mm</span></p></th>
-<th class="cl-8028a9ba"><p class="cl-80289902"><span class="cl-8025dd98">bill_depth_mm</span></p></th>
-<th class="cl-8028a9bb"><p class="cl-80289902"><span class="cl-8025dd98">flipper_length_mm</span></p></th>
-<th class="cl-8028a9bc"><p class="cl-80289902"><span class="cl-8025dd98">body_mass_g</span></p></th>
-<th class="cl-8028a9bd"><p class="cl-802898f8"><span class="cl-8025dd98">sex</span></p></th>
-<th class="cl-8028a9c4"><p class="cl-80289902"><span class="cl-8025dd98">year</span></p></th>
+<th class="cl-101b2e32"><p class="cl-101b0bdc"><span class="cl-1009be68">species</span></p></th>
+<th class="cl-101b2e3c"><p class="cl-101b0bdc"><span class="cl-1009be68">island</span></p></th>
+<th class="cl-101b2e3d"><p class="cl-101b0bf0"><span class="cl-1009be68">bill_length_mm</span></p></th>
+<th class="cl-101b2e46"><p class="cl-101b0bf0"><span class="cl-1009be68">bill_depth_mm</span></p></th>
+<th class="cl-101b2e47"><p class="cl-101b0bf0"><span class="cl-1009be68">flipper_length_mm</span></p></th>
+<th class="cl-101b2e50"><p class="cl-101b0bf0"><span class="cl-1009be68">body_mass_g</span></p></th>
+<th class="cl-101b2e51"><p class="cl-101b0bdc"><span class="cl-1009be68">sex</span></p></th>
+<th class="cl-101b2e5a"><p class="cl-101b0bf0"><span class="cl-1009be68">year</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
-<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
-<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">391</span></p></td>
-<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">187</span></p></td>
-<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">181</span></p></td>
-<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">3750</span></p></td>
-<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">male</span></p></td>
-<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
+<td class="cl-101b2e5b"><p class="cl-101b0bdc"><span class="cl-1009be68">Adelie</span></p></td>
+<td class="cl-101b2e5c"><p class="cl-101b0bdc"><span class="cl-1009be68">Torgersen</span></p></td>
+<td class="cl-101b2e64"><p class="cl-101b0bf0"><span class="cl-1009be68">391</span></p></td>
+<td class="cl-101b2e65"><p class="cl-101b0bf0"><span class="cl-1009be68">187</span></p></td>
+<td class="cl-101b2e66"><p class="cl-101b0bf0"><span class="cl-1009be86">181</span></p></td>
+<td class="cl-101b2e6e"><p class="cl-101b0bf0"><span class="cl-1009be68">3750</span></p></td>
+<td class="cl-101b2e6f"><p class="cl-101b0bdc"><span class="cl-1009be68">male</span></p></td>
+<td class="cl-101b2e70"><p class="cl-101b0bf0"><span class="cl-1009be68">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
-<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
-<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">395</span></p></td>
-<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">174</span></p></td>
-<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">186</span></p></td>
-<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">3800</span></p></td>
-<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">female</span></p></td>
-<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
+<td class="cl-101b2e5b"><p class="cl-101b0bdc"><span class="cl-1009be68">Adelie</span></p></td>
+<td class="cl-101b2e5c"><p class="cl-101b0bdc"><span class="cl-1009be68">Torgersen</span></p></td>
+<td class="cl-101b2e64"><p class="cl-101b0bf0"><span class="cl-1009be68">395</span></p></td>
+<td class="cl-101b2e65"><p class="cl-101b0bf0"><span class="cl-1009be68">174</span></p></td>
+<td class="cl-101b2e66"><p class="cl-101b0bf0"><span class="cl-1009be86">186</span></p></td>
+<td class="cl-101b2e6e"><p class="cl-101b0bf0"><span class="cl-1009be68">3800</span></p></td>
+<td class="cl-101b2e6f"><p class="cl-101b0bdc"><span class="cl-1009be68">female</span></p></td>
+<td class="cl-101b2e70"><p class="cl-101b0bf0"><span class="cl-1009be68">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
-<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
-<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">403</span></p></td>
-<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">180</span></p></td>
-<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">195</span></p></td>
-<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">3250</span></p></td>
-<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">female</span></p></td>
-<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
+<td class="cl-101b2e5b"><p class="cl-101b0bdc"><span class="cl-1009be68">Adelie</span></p></td>
+<td class="cl-101b2e5c"><p class="cl-101b0bdc"><span class="cl-1009be68">Torgersen</span></p></td>
+<td class="cl-101b2e64"><p class="cl-101b0bf0"><span class="cl-1009be68">403</span></p></td>
+<td class="cl-101b2e65"><p class="cl-101b0bf0"><span class="cl-1009be68">180</span></p></td>
+<td class="cl-101b2e66"><p class="cl-101b0bf0"><span class="cl-1009be86">195</span></p></td>
+<td class="cl-101b2e6e"><p class="cl-101b0bf0"><span class="cl-1009be68">3250</span></p></td>
+<td class="cl-101b2e6f"><p class="cl-101b0bdc"><span class="cl-1009be68">female</span></p></td>
+<td class="cl-101b2e70"><p class="cl-101b0bf0"><span class="cl-1009be68">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
-<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
-<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">NA</span></p></td>
-<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">NA</span></p></td>
-<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">NA</span></p></td>
-<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">NA</span></p></td>
-<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">NA</span></p></td>
-<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
+<td class="cl-101b2e5b"><p class="cl-101b0bdc"><span class="cl-1009be68">Adelie</span></p></td>
+<td class="cl-101b2e5c"><p class="cl-101b0bdc"><span class="cl-1009be68">Torgersen</span></p></td>
+<td class="cl-101b2e64"><p class="cl-101b0bf0"><span class="cl-1009be68">NA</span></p></td>
+<td class="cl-101b2e65"><p class="cl-101b0bf0"><span class="cl-1009be68">NA</span></p></td>
+<td class="cl-101b2e66"><p class="cl-101b0bf0"><span class="cl-1009be86">NA</span></p></td>
+<td class="cl-101b2e6e"><p class="cl-101b0bf0"><span class="cl-1009be68">NA</span></p></td>
+<td class="cl-101b2e6f"><p class="cl-101b0bdc"><span class="cl-1009be68">NA</span></p></td>
+<td class="cl-101b2e70"><p class="cl-101b0bf0"><span class="cl-1009be68">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8028a9c5"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
-<td class="cl-8028a9c6"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
-<td class="cl-8028a9ce"><p class="cl-80289902"><span class="cl-8025dd98">367</span></p></td>
-<td class="cl-8028a9cf"><p class="cl-80289902"><span class="cl-8025dd98">193</span></p></td>
-<td class="cl-8028a9d0"><p class="cl-80289902"><span class="cl-8025ddac">193</span></p></td>
-<td class="cl-8028a9d1"><p class="cl-80289902"><span class="cl-8025dd98">3450</span></p></td>
-<td class="cl-8028a9d8"><p class="cl-802898f8"><span class="cl-8025dd98">female</span></p></td>
-<td class="cl-8028a9d9"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
+<td class="cl-101b2e5b"><p class="cl-101b0bdc"><span class="cl-1009be68">Adelie</span></p></td>
+<td class="cl-101b2e5c"><p class="cl-101b0bdc"><span class="cl-1009be68">Torgersen</span></p></td>
+<td class="cl-101b2e64"><p class="cl-101b0bf0"><span class="cl-1009be68">367</span></p></td>
+<td class="cl-101b2e65"><p class="cl-101b0bf0"><span class="cl-1009be68">193</span></p></td>
+<td class="cl-101b2e66"><p class="cl-101b0bf0"><span class="cl-1009be86">193</span></p></td>
+<td class="cl-101b2e6e"><p class="cl-101b0bf0"><span class="cl-1009be68">3450</span></p></td>
+<td class="cl-101b2e6f"><p class="cl-101b0bdc"><span class="cl-1009be68">female</span></p></td>
+<td class="cl-101b2e70"><p class="cl-101b0bf0"><span class="cl-1009be68">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8028a9e2"><p class="cl-802898f8"><span class="cl-8025dd98">Adelie</span></p></td>
-<td class="cl-8028a9e3"><p class="cl-802898f8"><span class="cl-8025dd98">Torgersen</span></p></td>
-<td class="cl-8028a9e4"><p class="cl-80289902"><span class="cl-8025dd98">393</span></p></td>
-<td class="cl-8028a9ec"><p class="cl-80289902"><span class="cl-8025dd98">206</span></p></td>
-<td class="cl-8028a9ed"><p class="cl-80289902"><span class="cl-8025ddac">190</span></p></td>
-<td class="cl-8028a9ee"><p class="cl-80289902"><span class="cl-8025dd98">3650</span></p></td>
-<td class="cl-8028a9ef"><p class="cl-802898f8"><span class="cl-8025dd98">male</span></p></td>
-<td class="cl-8028a9f0"><p class="cl-80289902"><span class="cl-8025dd98">2007</span></p></td>
+<td class="cl-101b2e78"><p class="cl-101b0bdc"><span class="cl-1009be68">Adelie</span></p></td>
+<td class="cl-101b2e79"><p class="cl-101b0bdc"><span class="cl-1009be68">Torgersen</span></p></td>
+<td class="cl-101b2e7a"><p class="cl-101b0bf0"><span class="cl-1009be68">393</span></p></td>
+<td class="cl-101b2e82"><p class="cl-101b0bf0"><span class="cl-1009be68">206</span></p></td>
+<td class="cl-101b2e83"><p class="cl-101b0bf0"><span class="cl-1009be86">190</span></p></td>
+<td class="cl-101b2e84"><p class="cl-101b0bf0"><span class="cl-1009be68">3650</span></p></td>
+<td class="cl-101b2e85"><p class="cl-101b0bdc"><span class="cl-1009be68">male</span></p></td>
+<td class="cl-101b2e8c"><p class="cl-101b0bf0"><span class="cl-1009be68">2007</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -457,78 +457,78 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-805cb7aa{}.cl-8056683c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-80566846{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-8058bb32{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8058bb3c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8058cbc2{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbcc{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbcd{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbce{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbd6{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbd7{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbe0{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbe1{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbe2{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbe3{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbea{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbeb{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbec{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf4{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf5{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf6{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf7{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbf8{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbfe{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cbff{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc00{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc01{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc08{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc09{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc0a{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc12{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc13{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc14{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc15{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc1c{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc1d{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8058cc1e{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-805cb7aa">
+<style>.cl-1076f14a{}.cl-106bf7cc{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-106bf7e0{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-106fd89c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-106fd8a6{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-106ff930{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff931{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff93a{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff93b{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff93c{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff93d{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff944{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff94e{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff94f{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff950{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff958{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff959{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff962{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff963{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff964{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff96c{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff96d{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff96e{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff976{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff977{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff978{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff980{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff981{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff982{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff98a{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff98b{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff98c{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff98d{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff98e{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff994{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff995{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-106ff99e{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-1076f14a">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-8058cbc2"><p class="cl-8058bb32"><span class="cl-8056683c">species</span></p></th>
-<th class="cl-8058cbcc"><p class="cl-8058bb32"><span class="cl-8056683c">island</span></p></th>
-<th class="cl-8058cbcd"><p class="cl-8058bb3c"><span class="cl-8056683c">bill_length_mm</span></p></th>
-<th class="cl-8058cbce"><p class="cl-8058bb3c"><span class="cl-8056683c">bill_depth_mm</span></p></th>
-<th class="cl-8058cbd6"><p class="cl-8058bb3c"><span class="cl-8056683c">flipper_length_mm</span></p></th>
-<th class="cl-8058cbd7"><p class="cl-8058bb3c"><span class="cl-8056683c">body_mass_g</span></p></th>
-<th class="cl-8058cbe0"><p class="cl-8058bb32"><span class="cl-8056683c">sex</span></p></th>
-<th class="cl-8058cbe1"><p class="cl-8058bb3c"><span class="cl-8056683c">year</span></p></th>
+<th class="cl-106ff930"><p class="cl-106fd89c"><span class="cl-106bf7cc">species</span></p></th>
+<th class="cl-106ff931"><p class="cl-106fd89c"><span class="cl-106bf7cc">island</span></p></th>
+<th class="cl-106ff93a"><p class="cl-106fd8a6"><span class="cl-106bf7cc">bill_length_mm</span></p></th>
+<th class="cl-106ff93b"><p class="cl-106fd8a6"><span class="cl-106bf7cc">bill_depth_mm</span></p></th>
+<th class="cl-106ff93c"><p class="cl-106fd8a6"><span class="cl-106bf7cc">flipper_length_mm</span></p></th>
+<th class="cl-106ff93d"><p class="cl-106fd8a6"><span class="cl-106bf7cc">body_mass_g</span></p></th>
+<th class="cl-106ff944"><p class="cl-106fd89c"><span class="cl-106bf7cc">sex</span></p></th>
+<th class="cl-106ff94e"><p class="cl-106fd8a6"><span class="cl-106bf7cc">year</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8058cbe2"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
-<td class="cl-8058cbe3"><p class="cl-8058bb32"><span class="cl-8056683c">Biscoe</span></p></td>
-<td class="cl-8058cbea"><p class="cl-8058bb3c"><span class="cl-8056683c">379</span></p></td>
-<td class="cl-8058cbeb"><p class="cl-8058bb3c"><span class="cl-8056683c">186</span></p></td>
-<td class="cl-8058cbec"><p class="cl-8058bb3c"><span class="cl-80566846">172</span></p></td>
-<td class="cl-8058cbf4"><p class="cl-8058bb3c"><span class="cl-8056683c">3150</span></p></td>
-<td class="cl-8058cbf5"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
-<td class="cl-8058cbf6"><p class="cl-8058bb3c"><span class="cl-8056683c">2007</span></p></td>
+<td class="cl-106ff94f"><p class="cl-106fd89c"><span class="cl-106bf7cc">Adelie</span></p></td>
+<td class="cl-106ff950"><p class="cl-106fd89c"><span class="cl-106bf7cc">Biscoe</span></p></td>
+<td class="cl-106ff958"><p class="cl-106fd8a6"><span class="cl-106bf7cc">379</span></p></td>
+<td class="cl-106ff959"><p class="cl-106fd8a6"><span class="cl-106bf7cc">186</span></p></td>
+<td class="cl-106ff962"><p class="cl-106fd8a6"><span class="cl-106bf7e0">172</span></p></td>
+<td class="cl-106ff963"><p class="cl-106fd8a6"><span class="cl-106bf7cc">3150</span></p></td>
+<td class="cl-106ff964"><p class="cl-106fd89c"><span class="cl-106bf7cc">female</span></p></td>
+<td class="cl-106ff96c"><p class="cl-106fd8a6"><span class="cl-106bf7cc">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8058cbe2"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
-<td class="cl-8058cbe3"><p class="cl-8058bb32"><span class="cl-8056683c">Biscoe</span></p></td>
-<td class="cl-8058cbea"><p class="cl-8058bb3c"><span class="cl-8056683c">378</span></p></td>
-<td class="cl-8058cbeb"><p class="cl-8058bb3c"><span class="cl-8056683c">183</span></p></td>
-<td class="cl-8058cbec"><p class="cl-8058bb3c"><span class="cl-80566846">174</span></p></td>
-<td class="cl-8058cbf4"><p class="cl-8058bb3c"><span class="cl-8056683c">3400</span></p></td>
-<td class="cl-8058cbf5"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
-<td class="cl-8058cbf6"><p class="cl-8058bb3c"><span class="cl-8056683c">2007</span></p></td>
+<td class="cl-106ff94f"><p class="cl-106fd89c"><span class="cl-106bf7cc">Adelie</span></p></td>
+<td class="cl-106ff950"><p class="cl-106fd89c"><span class="cl-106bf7cc">Biscoe</span></p></td>
+<td class="cl-106ff958"><p class="cl-106fd8a6"><span class="cl-106bf7cc">378</span></p></td>
+<td class="cl-106ff959"><p class="cl-106fd8a6"><span class="cl-106bf7cc">183</span></p></td>
+<td class="cl-106ff962"><p class="cl-106fd8a6"><span class="cl-106bf7e0">174</span></p></td>
+<td class="cl-106ff963"><p class="cl-106fd8a6"><span class="cl-106bf7cc">3400</span></p></td>
+<td class="cl-106ff964"><p class="cl-106fd89c"><span class="cl-106bf7cc">female</span></p></td>
+<td class="cl-106ff96c"><p class="cl-106fd8a6"><span class="cl-106bf7cc">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8058cbf7"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
-<td class="cl-8058cbf8"><p class="cl-8058bb32"><span class="cl-8056683c">Torgersen</span></p></td>
-<td class="cl-8058cbfe"><p class="cl-8058bb3c"><span class="cl-8056683c">402</span></p></td>
-<td class="cl-8058cbff"><p class="cl-8058bb3c"><span class="cl-8056683c">170</span></p></td>
-<td class="cl-8058cc00"><p class="cl-8058bb3c"><span class="cl-80566846">176</span></p></td>
-<td class="cl-8058cc01"><p class="cl-8058bb3c"><span class="cl-8056683c">3450</span></p></td>
-<td class="cl-8058cc08"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
-<td class="cl-8058cc09"><p class="cl-8058bb3c"><span class="cl-8056683c">2009</span></p></td>
+<td class="cl-106ff96d"><p class="cl-106fd89c"><span class="cl-106bf7cc">Adelie</span></p></td>
+<td class="cl-106ff96e"><p class="cl-106fd89c"><span class="cl-106bf7cc">Torgersen</span></p></td>
+<td class="cl-106ff976"><p class="cl-106fd8a6"><span class="cl-106bf7cc">402</span></p></td>
+<td class="cl-106ff977"><p class="cl-106fd8a6"><span class="cl-106bf7cc">170</span></p></td>
+<td class="cl-106ff978"><p class="cl-106fd8a6"><span class="cl-106bf7e0">176</span></p></td>
+<td class="cl-106ff980"><p class="cl-106fd8a6"><span class="cl-106bf7cc">3450</span></p></td>
+<td class="cl-106ff981"><p class="cl-106fd89c"><span class="cl-106bf7cc">female</span></p></td>
+<td class="cl-106ff982"><p class="cl-106fd8a6"><span class="cl-106bf7cc">2009</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8058cbe2"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
-<td class="cl-8058cbe3"><p class="cl-8058bb32"><span class="cl-8056683c">Dream</span></p></td>
-<td class="cl-8058cbea"><p class="cl-8058bb3c"><span class="cl-8056683c">395</span></p></td>
-<td class="cl-8058cbeb"><p class="cl-8058bb3c"><span class="cl-8056683c">167</span></p></td>
-<td class="cl-8058cbec"><p class="cl-8058bb3c"><span class="cl-80566846">178</span></p></td>
-<td class="cl-8058cbf4"><p class="cl-8058bb3c"><span class="cl-8056683c">3250</span></p></td>
-<td class="cl-8058cbf5"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
-<td class="cl-8058cbf6"><p class="cl-8058bb3c"><span class="cl-8056683c">2007</span></p></td>
+<td class="cl-106ff94f"><p class="cl-106fd89c"><span class="cl-106bf7cc">Adelie</span></p></td>
+<td class="cl-106ff950"><p class="cl-106fd89c"><span class="cl-106bf7cc">Dream</span></p></td>
+<td class="cl-106ff958"><p class="cl-106fd8a6"><span class="cl-106bf7cc">395</span></p></td>
+<td class="cl-106ff959"><p class="cl-106fd8a6"><span class="cl-106bf7cc">167</span></p></td>
+<td class="cl-106ff962"><p class="cl-106fd8a6"><span class="cl-106bf7e0">178</span></p></td>
+<td class="cl-106ff963"><p class="cl-106fd8a6"><span class="cl-106bf7cc">3250</span></p></td>
+<td class="cl-106ff964"><p class="cl-106fd89c"><span class="cl-106bf7cc">female</span></p></td>
+<td class="cl-106ff96c"><p class="cl-106fd8a6"><span class="cl-106bf7cc">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8058cbe2"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
-<td class="cl-8058cbe3"><p class="cl-8058bb32"><span class="cl-8056683c">Dream</span></p></td>
-<td class="cl-8058cbea"><p class="cl-8058bb3c"><span class="cl-8056683c">372</span></p></td>
-<td class="cl-8058cbeb"><p class="cl-8058bb3c"><span class="cl-8056683c">181</span></p></td>
-<td class="cl-8058cbec"><p class="cl-8058bb3c"><span class="cl-80566846">178</span></p></td>
-<td class="cl-8058cbf4"><p class="cl-8058bb3c"><span class="cl-8056683c">3900</span></p></td>
-<td class="cl-8058cbf5"><p class="cl-8058bb32"><span class="cl-8056683c">male</span></p></td>
-<td class="cl-8058cbf6"><p class="cl-8058bb3c"><span class="cl-8056683c">2007</span></p></td>
+<td class="cl-106ff94f"><p class="cl-106fd89c"><span class="cl-106bf7cc">Adelie</span></p></td>
+<td class="cl-106ff950"><p class="cl-106fd89c"><span class="cl-106bf7cc">Dream</span></p></td>
+<td class="cl-106ff958"><p class="cl-106fd8a6"><span class="cl-106bf7cc">372</span></p></td>
+<td class="cl-106ff959"><p class="cl-106fd8a6"><span class="cl-106bf7cc">181</span></p></td>
+<td class="cl-106ff962"><p class="cl-106fd8a6"><span class="cl-106bf7e0">178</span></p></td>
+<td class="cl-106ff963"><p class="cl-106fd8a6"><span class="cl-106bf7cc">3900</span></p></td>
+<td class="cl-106ff964"><p class="cl-106fd89c"><span class="cl-106bf7cc">male</span></p></td>
+<td class="cl-106ff96c"><p class="cl-106fd8a6"><span class="cl-106bf7cc">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-8058cc0a"><p class="cl-8058bb32"><span class="cl-8056683c">Adelie</span></p></td>
-<td class="cl-8058cc12"><p class="cl-8058bb32"><span class="cl-8056683c">Dream</span></p></td>
-<td class="cl-8058cc13"><p class="cl-8058bb3c"><span class="cl-8056683c">331</span></p></td>
-<td class="cl-8058cc14"><p class="cl-8058bb3c"><span class="cl-8056683c">161</span></p></td>
-<td class="cl-8058cc15"><p class="cl-8058bb3c"><span class="cl-80566846">178</span></p></td>
-<td class="cl-8058cc1c"><p class="cl-8058bb3c"><span class="cl-8056683c">2900</span></p></td>
-<td class="cl-8058cc1d"><p class="cl-8058bb32"><span class="cl-8056683c">female</span></p></td>
-<td class="cl-8058cc1e"><p class="cl-8058bb3c"><span class="cl-8056683c">2008</span></p></td>
+<td class="cl-106ff98a"><p class="cl-106fd89c"><span class="cl-106bf7cc">Adelie</span></p></td>
+<td class="cl-106ff98b"><p class="cl-106fd89c"><span class="cl-106bf7cc">Dream</span></p></td>
+<td class="cl-106ff98c"><p class="cl-106fd8a6"><span class="cl-106bf7cc">331</span></p></td>
+<td class="cl-106ff98d"><p class="cl-106fd8a6"><span class="cl-106bf7cc">161</span></p></td>
+<td class="cl-106ff98e"><p class="cl-106fd8a6"><span class="cl-106bf7e0">178</span></p></td>
+<td class="cl-106ff994"><p class="cl-106fd8a6"><span class="cl-106bf7cc">2900</span></p></td>
+<td class="cl-106ff995"><p class="cl-106fd89c"><span class="cl-106bf7cc">female</span></p></td>
+<td class="cl-106ff99e"><p class="cl-106fd8a6"><span class="cl-106bf7cc">2008</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -544,78 +544,78 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-808260ea{}.cl-807bad2c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-807bad36{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-807df38e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-807df38f{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-807e02de{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02df{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02e0{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02e8{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02e9{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02ea{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02eb{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02f2{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02f3{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02f4{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02fc{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02fd{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02fe{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e02ff{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0306{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0307{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0310{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0311{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0312{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e0313{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e031a{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e031b{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e031c{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-807e031d{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-808260ea">
+<style>.cl-10bc5bc2{}.cl-10b1595c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-10b15966{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-10b59c06{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-10b59c1a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-10b5b9d4{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9de{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9df{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9e8{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9f2{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9f3{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9f4{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9f5{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9fc{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9fd{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5b9fe{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba06{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba07{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba08{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba10{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba11{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba1a{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba1b{width:0.789in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba1c{width:1.461in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba24{width:1.377in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba25{width:1.713in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5ba26{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5bab0{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-10b5baba{width:0.621in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-10bc5bc2">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-807e02de"><p class="cl-807df38e"><span class="cl-807bad2c">species</span></p></th>
-<th class="cl-807e02df"><p class="cl-807df38e"><span class="cl-807bad2c">island</span></p></th>
-<th class="cl-807e02e0"><p class="cl-807df38f"><span class="cl-807bad2c">bill_length_mm</span></p></th>
-<th class="cl-807e02e8"><p class="cl-807df38f"><span class="cl-807bad2c">bill_depth_mm</span></p></th>
-<th class="cl-807e02e9"><p class="cl-807df38f"><span class="cl-807bad2c">flipper_length_mm</span></p></th>
-<th class="cl-807e02ea"><p class="cl-807df38f"><span class="cl-807bad2c">body_mass_g</span></p></th>
-<th class="cl-807e02eb"><p class="cl-807df38e"><span class="cl-807bad2c">sex</span></p></th>
-<th class="cl-807e02f2"><p class="cl-807df38f"><span class="cl-807bad2c">year</span></p></th>
+<th class="cl-10b5b9d4"><p class="cl-10b59c06"><span class="cl-10b1595c">species</span></p></th>
+<th class="cl-10b5b9de"><p class="cl-10b59c06"><span class="cl-10b1595c">island</span></p></th>
+<th class="cl-10b5b9df"><p class="cl-10b59c1a"><span class="cl-10b1595c">bill_length_mm</span></p></th>
+<th class="cl-10b5b9e8"><p class="cl-10b59c1a"><span class="cl-10b1595c">bill_depth_mm</span></p></th>
+<th class="cl-10b5b9f2"><p class="cl-10b59c1a"><span class="cl-10b1595c">flipper_length_mm</span></p></th>
+<th class="cl-10b5b9f3"><p class="cl-10b59c1a"><span class="cl-10b1595c">body_mass_g</span></p></th>
+<th class="cl-10b5b9f4"><p class="cl-10b59c06"><span class="cl-10b1595c">sex</span></p></th>
+<th class="cl-10b5b9f5"><p class="cl-10b59c1a"><span class="cl-10b1595c">year</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
-<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
-<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">543</span></p></td>
-<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">157</span></p></td>
-<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">231</span></p></td>
-<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">5650</span></p></td>
-<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
-<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2008</span></p></td>
+<td class="cl-10b5b9fc"><p class="cl-10b59c06"><span class="cl-10b1595c">Gentoo</span></p></td>
+<td class="cl-10b5b9fd"><p class="cl-10b59c06"><span class="cl-10b1595c">Biscoe</span></p></td>
+<td class="cl-10b5b9fe"><p class="cl-10b59c1a"><span class="cl-10b1595c">543</span></p></td>
+<td class="cl-10b5ba06"><p class="cl-10b59c1a"><span class="cl-10b1595c">157</span></p></td>
+<td class="cl-10b5ba07"><p class="cl-10b59c1a"><span class="cl-10b15966">231</span></p></td>
+<td class="cl-10b5ba08"><p class="cl-10b59c1a"><span class="cl-10b1595c">5650</span></p></td>
+<td class="cl-10b5ba10"><p class="cl-10b59c06"><span class="cl-10b1595c">male</span></p></td>
+<td class="cl-10b5ba11"><p class="cl-10b59c1a"><span class="cl-10b1595c">2008</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
-<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
-<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">500</span></p></td>
-<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">163</span></p></td>
-<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
-<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">5700</span></p></td>
-<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
-<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2007</span></p></td>
+<td class="cl-10b5b9fc"><p class="cl-10b59c06"><span class="cl-10b1595c">Gentoo</span></p></td>
+<td class="cl-10b5b9fd"><p class="cl-10b59c06"><span class="cl-10b1595c">Biscoe</span></p></td>
+<td class="cl-10b5b9fe"><p class="cl-10b59c1a"><span class="cl-10b1595c">500</span></p></td>
+<td class="cl-10b5ba06"><p class="cl-10b59c1a"><span class="cl-10b1595c">163</span></p></td>
+<td class="cl-10b5ba07"><p class="cl-10b59c1a"><span class="cl-10b15966">230</span></p></td>
+<td class="cl-10b5ba08"><p class="cl-10b59c1a"><span class="cl-10b1595c">5700</span></p></td>
+<td class="cl-10b5ba10"><p class="cl-10b59c06"><span class="cl-10b1595c">male</span></p></td>
+<td class="cl-10b5ba11"><p class="cl-10b59c1a"><span class="cl-10b1595c">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
-<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
-<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">596</span></p></td>
-<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">170</span></p></td>
-<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
-<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">6050</span></p></td>
-<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
-<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2007</span></p></td>
+<td class="cl-10b5b9fc"><p class="cl-10b59c06"><span class="cl-10b1595c">Gentoo</span></p></td>
+<td class="cl-10b5b9fd"><p class="cl-10b59c06"><span class="cl-10b1595c">Biscoe</span></p></td>
+<td class="cl-10b5b9fe"><p class="cl-10b59c1a"><span class="cl-10b1595c">596</span></p></td>
+<td class="cl-10b5ba06"><p class="cl-10b59c1a"><span class="cl-10b1595c">170</span></p></td>
+<td class="cl-10b5ba07"><p class="cl-10b59c1a"><span class="cl-10b15966">230</span></p></td>
+<td class="cl-10b5ba08"><p class="cl-10b59c1a"><span class="cl-10b1595c">6050</span></p></td>
+<td class="cl-10b5ba10"><p class="cl-10b59c06"><span class="cl-10b1595c">male</span></p></td>
+<td class="cl-10b5ba11"><p class="cl-10b59c1a"><span class="cl-10b1595c">2007</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
-<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
-<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">498</span></p></td>
-<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">168</span></p></td>
-<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
-<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">5700</span></p></td>
-<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
-<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2008</span></p></td>
+<td class="cl-10b5b9fc"><p class="cl-10b59c06"><span class="cl-10b1595c">Gentoo</span></p></td>
+<td class="cl-10b5b9fd"><p class="cl-10b59c06"><span class="cl-10b1595c">Biscoe</span></p></td>
+<td class="cl-10b5b9fe"><p class="cl-10b59c1a"><span class="cl-10b1595c">498</span></p></td>
+<td class="cl-10b5ba06"><p class="cl-10b59c1a"><span class="cl-10b1595c">168</span></p></td>
+<td class="cl-10b5ba07"><p class="cl-10b59c1a"><span class="cl-10b15966">230</span></p></td>
+<td class="cl-10b5ba08"><p class="cl-10b59c1a"><span class="cl-10b1595c">5700</span></p></td>
+<td class="cl-10b5ba10"><p class="cl-10b59c06"><span class="cl-10b1595c">male</span></p></td>
+<td class="cl-10b5ba11"><p class="cl-10b59c1a"><span class="cl-10b1595c">2008</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-807e02f3"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
-<td class="cl-807e02f4"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
-<td class="cl-807e02fc"><p class="cl-807df38f"><span class="cl-807bad2c">486</span></p></td>
-<td class="cl-807e02fd"><p class="cl-807df38f"><span class="cl-807bad2c">160</span></p></td>
-<td class="cl-807e02fe"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
-<td class="cl-807e02ff"><p class="cl-807df38f"><span class="cl-807bad2c">5800</span></p></td>
-<td class="cl-807e0306"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
-<td class="cl-807e0307"><p class="cl-807df38f"><span class="cl-807bad2c">2008</span></p></td>
+<td class="cl-10b5b9fc"><p class="cl-10b59c06"><span class="cl-10b1595c">Gentoo</span></p></td>
+<td class="cl-10b5b9fd"><p class="cl-10b59c06"><span class="cl-10b1595c">Biscoe</span></p></td>
+<td class="cl-10b5b9fe"><p class="cl-10b59c1a"><span class="cl-10b1595c">486</span></p></td>
+<td class="cl-10b5ba06"><p class="cl-10b59c1a"><span class="cl-10b1595c">160</span></p></td>
+<td class="cl-10b5ba07"><p class="cl-10b59c1a"><span class="cl-10b15966">230</span></p></td>
+<td class="cl-10b5ba08"><p class="cl-10b59c1a"><span class="cl-10b1595c">5800</span></p></td>
+<td class="cl-10b5ba10"><p class="cl-10b59c06"><span class="cl-10b1595c">male</span></p></td>
+<td class="cl-10b5ba11"><p class="cl-10b59c1a"><span class="cl-10b1595c">2008</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-807e0310"><p class="cl-807df38e"><span class="cl-807bad2c">Gentoo</span></p></td>
-<td class="cl-807e0311"><p class="cl-807df38e"><span class="cl-807bad2c">Biscoe</span></p></td>
-<td class="cl-807e0312"><p class="cl-807df38f"><span class="cl-807bad2c">521</span></p></td>
-<td class="cl-807e0313"><p class="cl-807df38f"><span class="cl-807bad2c">170</span></p></td>
-<td class="cl-807e031a"><p class="cl-807df38f"><span class="cl-807bad36">230</span></p></td>
-<td class="cl-807e031b"><p class="cl-807df38f"><span class="cl-807bad2c">5550</span></p></td>
-<td class="cl-807e031c"><p class="cl-807df38e"><span class="cl-807bad2c">male</span></p></td>
-<td class="cl-807e031d"><p class="cl-807df38f"><span class="cl-807bad2c">2009</span></p></td>
+<td class="cl-10b5ba1a"><p class="cl-10b59c06"><span class="cl-10b1595c">Gentoo</span></p></td>
+<td class="cl-10b5ba1b"><p class="cl-10b59c06"><span class="cl-10b1595c">Biscoe</span></p></td>
+<td class="cl-10b5ba1c"><p class="cl-10b59c1a"><span class="cl-10b1595c">521</span></p></td>
+<td class="cl-10b5ba24"><p class="cl-10b59c1a"><span class="cl-10b1595c">170</span></p></td>
+<td class="cl-10b5ba25"><p class="cl-10b59c1a"><span class="cl-10b15966">230</span></p></td>
+<td class="cl-10b5ba26"><p class="cl-10b59c1a"><span class="cl-10b1595c">5550</span></p></td>
+<td class="cl-10b5bab0"><p class="cl-10b59c06"><span class="cl-10b1595c">male</span></p></td>
+<td class="cl-10b5baba"><p class="cl-10b59c1a"><span class="cl-10b1595c">2009</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -628,7 +628,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-arrange" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
+<div id="fig-arrange" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-arrange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-arrange-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The dplyr arrange function. The arrange function orders rows from your data frame according to column variables. Here it will order the Palmer Penguins data.frame according to their flipper length. The function can either be used by providing the `penguins` dataframe as the first argument to the function or by passing the `penguins` dataframe via a pipe.">
 </div>
@@ -646,7 +646,7 @@ Figure&nbsp;5.4: The <code>dplyr arrange</code> function. The arrange function o
 <p>Selecting the variables contained in the columns can be done in various ways. For example, by the column number, the variable name or by range. Check the help function <code>?select</code> for more options.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-select" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
+<div id="fig-select" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-select-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-select-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The `dplyr select` function. This function selects columns from your data frame. Here it will select the island and year columns from Palmer Penguins data.frame. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 </div>
@@ -718,7 +718,7 @@ $ year   &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,
 <p>Another common task is to create a new variable or variables, often from existing data within the data frame. For this we use the <code>mutate()</code> verb. It follows the same syntax as for <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, <code>arrange()</code> and <code>select()</code> in that the first argument is the dataset, and the subsequent arguments are the new variables we wish to create (<a href="#fig-mutate" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-mutate" class="quarto-figure quarto-figure-center quarto-float anchored" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
+<div id="fig-mutate" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mutate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/dplyr-mutate-penguin.png" class="img-fluid figure-img" style="width:80.0%" alt="The `dplyr mutate` function. The mutate function creates new column variables in your data frame. Here mutate creates a new variable called `body_mass_kg` in the Palmer Penguins data.frame by dividing the values in the `body_mass_g` column by 1000 and storing the answer in new variable `body_mass_kg`. The function can either be used by providing the `penguins` data.frame as the first argument to the function or by passing the `penguins` data.frame via a pipe.">
 </div>
@@ -739,50 +739,50 @@ Figure&nbsp;5.6: The <code>dplyr mutate</code> function. The mutate function cre
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-80c4fb1c{}.cl-80bed49e{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-80bed49f{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 92, 132, 1.00);background-color:transparent;}.cl-80bed4a8{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-80c11ace{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-80c11ad8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-80c12820{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1282a{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1282b{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1282c{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12834{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12835{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12836{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12837{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1283e{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c1283f{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12840{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-80c12848{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-80c4fb1c">
+<style>.cl-112a18d8{}.cl-111f2ca2{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-111f2cac{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 92, 132, 1.00);background-color:transparent;}.cl-111f2cb6{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(231, 48, 55, 1.00);background-color:transparent;}.cl-1123460c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-11234616{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-11236236{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-11236240{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-11236241{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1123624a{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1123624b{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1123624c{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-11236254{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-11236255{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-11236256{width:0.873in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1123625e{width:1.041in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1123625f{width:1.209in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-11236260{width:1.293in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-112a18d8">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-80c12820"><p class="cl-80c11ace"><span class="cl-80bed49e">species</span></p></th>
-<th class="cl-80c1282a"><p class="cl-80c11ace"><span class="cl-80bed49e">island</span></p></th>
-<th class="cl-80c1282b"><p class="cl-80c11ad8"><span class="cl-80bed49e">body_mass_g</span></p></th>
-<th class="cl-80c1282c"><p class="cl-80c11ad8"><span class="cl-80bed49e">body_mass_kg</span></p></th>
+<th class="cl-11236236"><p class="cl-1123460c"><span class="cl-111f2ca2">species</span></p></th>
+<th class="cl-11236240"><p class="cl-1123460c"><span class="cl-111f2ca2">island</span></p></th>
+<th class="cl-11236241"><p class="cl-11234616"><span class="cl-111f2ca2">body_mass_g</span></p></th>
+<th class="cl-1123624a"><p class="cl-11234616"><span class="cl-111f2ca2">body_mass_kg</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
-<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
-<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">3750</span></p></td>
-<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.75</span></p></td>
+<td class="cl-1123624b"><p class="cl-1123460c"><span class="cl-111f2ca2">Adelie</span></p></td>
+<td class="cl-1123624c"><p class="cl-1123460c"><span class="cl-111f2ca2">Torgersen</span></p></td>
+<td class="cl-11236254"><p class="cl-11234616"><span class="cl-111f2cac">3750</span></p></td>
+<td class="cl-11236255"><p class="cl-11234616"><span class="cl-111f2cb6">3.75</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
-<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
-<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">3800</span></p></td>
-<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.80</span></p></td>
+<td class="cl-1123624b"><p class="cl-1123460c"><span class="cl-111f2ca2">Adelie</span></p></td>
+<td class="cl-1123624c"><p class="cl-1123460c"><span class="cl-111f2ca2">Torgersen</span></p></td>
+<td class="cl-11236254"><p class="cl-11234616"><span class="cl-111f2cac">3800</span></p></td>
+<td class="cl-11236255"><p class="cl-11234616"><span class="cl-111f2cb6">3.80</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
-<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
-<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">3250</span></p></td>
-<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.25</span></p></td>
+<td class="cl-1123624b"><p class="cl-1123460c"><span class="cl-111f2ca2">Adelie</span></p></td>
+<td class="cl-1123624c"><p class="cl-1123460c"><span class="cl-111f2ca2">Torgersen</span></p></td>
+<td class="cl-11236254"><p class="cl-11234616"><span class="cl-111f2cac">3250</span></p></td>
+<td class="cl-11236255"><p class="cl-11234616"><span class="cl-111f2cb6">3.25</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
-<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
-<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">NA</span></p></td>
-<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">NA</span></p></td>
+<td class="cl-1123624b"><p class="cl-1123460c"><span class="cl-111f2ca2">Adelie</span></p></td>
+<td class="cl-1123624c"><p class="cl-1123460c"><span class="cl-111f2ca2">Torgersen</span></p></td>
+<td class="cl-11236254"><p class="cl-11234616"><span class="cl-111f2cac">NA</span></p></td>
+<td class="cl-11236255"><p class="cl-11234616"><span class="cl-111f2cb6">NA</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-80c12834"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
-<td class="cl-80c12835"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
-<td class="cl-80c12836"><p class="cl-80c11ad8"><span class="cl-80bed49f">3450</span></p></td>
-<td class="cl-80c12837"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.45</span></p></td>
+<td class="cl-1123624b"><p class="cl-1123460c"><span class="cl-111f2ca2">Adelie</span></p></td>
+<td class="cl-1123624c"><p class="cl-1123460c"><span class="cl-111f2ca2">Torgersen</span></p></td>
+<td class="cl-11236254"><p class="cl-11234616"><span class="cl-111f2cac">3450</span></p></td>
+<td class="cl-11236255"><p class="cl-11234616"><span class="cl-111f2cb6">3.45</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-80c1283e"><p class="cl-80c11ace"><span class="cl-80bed49e">Adelie</span></p></td>
-<td class="cl-80c1283f"><p class="cl-80c11ace"><span class="cl-80bed49e">Torgersen</span></p></td>
-<td class="cl-80c12840"><p class="cl-80c11ad8"><span class="cl-80bed49f">3650</span></p></td>
-<td class="cl-80c12848"><p class="cl-80c11ad8"><span class="cl-80bed4a8">3.65</span></p></td>
+<td class="cl-11236256"><p class="cl-1123460c"><span class="cl-111f2ca2">Adelie</span></p></td>
+<td class="cl-1123625e"><p class="cl-1123460c"><span class="cl-111f2ca2">Torgersen</span></p></td>
+<td class="cl-1123625f"><p class="cl-11234616"><span class="cl-111f2cac">3650</span></p></td>
+<td class="cl-11236260"><p class="cl-11234616"><span class="cl-111f2cb6">3.65</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -867,9 +867,9 @@ Figure&nbsp;5.6: The <code>dplyr mutate</code> function. The mutate function cre
 <p>Reshaping a table is called pivoting. If one pivots a table that leads to increasing the number of rows one would use the <a href="https://tidyr.tidyverse.org/index.html"><code>tidyr</code> package</a> function <code>pivot_longer()</code> and if one pivots a table to increase the number of columns one would use <code>pivot_wider()</code> (<a href="#fig-pivot" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> and <a href="#fig-pivot-animation" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pivot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="pivot">
+<div id="fig-pivot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="pivot">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/pivot-penguins.png" class="img-fluid figure-img" alt="pivot">
+<img src="img/pivot-penguins.png" class="img-fluid figure-img" alt="pivot" width="1422">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.7: pivot
@@ -879,7 +879,7 @@ Figure&nbsp;5.7: pivot
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pivot-animation" class="quarto-figure quarto-figure-center quarto-float anchored" alt="pivot">
+<div id="fig-pivot-animation" class="quarto-float quarto-figure quarto-figure-center anchored" alt="pivot">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pivot-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/tidyr-pivoting.gif" class="img-fluid figure-img" alt="pivot">
 </div>
@@ -1116,18 +1116,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1159,7 +1148,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1167,10 +1178,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -1214,7 +1230,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1262,7 +1282,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1483,12 +1508,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./importing-data.html" class="pagination-link  aria-label=" and="" exporting="" data="">
+      <a href="./importing-data.html" class="pagination-link" aria-label="Importing and exporting data">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data-wrangling-2.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Data wrangling II</span>">
+      <a href="./data-wrangling-2.html" class="pagination-link" aria-label="Data wrangling II">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
