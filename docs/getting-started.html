@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.5.47">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>R for Librarians - 3&nbsp; Getting started</title>
+<title>3&nbsp; Getting started – R for Librarians</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -124,13 +124,13 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./getting-started.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -295,13 +295,13 @@ div.csl-indent {
   
 
 
-</header><div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div id="chapter-02-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="" id="chapter-02-summary"></a>Summary
+Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -324,7 +324,7 @@ div.csl-indent {
 <p>When you first open RStudio, there are three panes,the console where you type commands, your environment/history (top-right), and your files/plots/packages/help/viewer (bottom-right).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-rstudio-ide" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of the default RStudio interactive development environment, showing the default view of the R console, environment and output panes. These can be rearranged as desired.">
+<div id="fig-rstudio-ide" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image of the default RStudio interactive development environment, showing the default view of the R console, environment and output panes. These can be rearranged as desired.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio-ide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/rstudio-view.png" class="img-fluid figure-img" style="width:100.0%" alt="Image of the default RStudio interactive development environment, showing the default view of the R console, environment and output panes. These can be rearranged as desired.">
 </div>
@@ -371,7 +371,7 @@ Shortcuts
 <p>To support the notion of thinking in terms of our scripts as real, it is recommended to turn off the preservation of workspaces between sessions by setting the Tools &gt; Global Options menu in R studio as shown in <a href="#fig-rstudio-env" class="quarto-xref">Figure&nbsp;<span>3.2</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-rstudio-env" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of the RStudio Global Options Save workspace to .RData on exit set to Never.">
+<div id="fig-rstudio-env" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image of the RStudio Global Options Save workspace to .RData on exit set to Never.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio-env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/rstudio-options.png" class="img-fluid figure-img" style="width:66.0%" alt="Image of the RStudio Global Options Save workspace to .RData on exit set to Never.">
 </div>
@@ -395,7 +395,7 @@ Figure&nbsp;3.2: It is recommended to turn off the preservation of workspaces be
 <p>On a Windows machine the root path may start with the hard drive name e.g.&nbsp;<code>C:/</code> and on an Apple or Linux machine it will just begin <code>/</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-absolute-path" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of an absolute path from the root `/` through sub-folders `B` and `E` to folder `H` is shown by a red line.">
+<div id="fig-absolute-path" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image of an absolute path from the root `/` through sub-folders `B` and `E` to folder `H` is shown by a red line.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-absolute-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/directory-structure.svg" class="img-fluid figure-img" style="width:50.0%" alt="Image of an absolute path from the root `/` through sub-folders `B` and `E` to folder `H` is shown by a red line.">
 </div>
@@ -425,7 +425,7 @@ Figure&nbsp;3.3: The absolute path from the root <code>/</code> through sub-fold
 <p>In machine readable language from our R script the relative path would be written as <code>../data/survey-2024-02-27.csv</code> where <code>../</code> means go up one level from where the script is.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-relative-path" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Image of a line indicating a relative path between a R script `analysis-2024-02-27.R` in the R folder and the spreadsheet `survey-2024-02-27.csv` used by the R script in the data folder.">
+<div id="fig-relative-path" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image of a line indicating a relative path between a R script `analysis-2024-02-27.R` in the R folder and the spreadsheet `survey-2024-02-27.csv` used by the R script in the data folder.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-relative-path-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/relative-path.svg" class="img-fluid figure-img" style="width:100.0%" alt="Image of a line indicating a relative path between a R script `analysis-2024-02-27.R` in the R folder and the spreadsheet `survey-2024-02-27.csv` used by the R script in the data folder.">
 </div>
@@ -449,13 +449,13 @@ Figure&nbsp;3.4: The relative path between the R script <code>analysis-2024-02-2
 <p>A function is a piece of code written to perform a specific task. Functions in R have the syntax of the name of the function followed by round brackets. The round brackets are where we type the arguments that the function requires to carry out its task. For example, in <a href="#sec-packages" class="quarto-xref"><span>Section 3.3</span></a> the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> requires the name of the package we want to install as arguments.</p>
 <p>Many, if not most, functions can take more than one argument. The creators of the function should have given these defaults for the situation where the user provides only one or some arguments. RStudio should prompt you for the arguments as you type, but if you need to see what they are, use the help function <code>?</code> with the function name in the Console and it will open the help panel or type the function name into the help panel search box.</p>
 <p>For example, to find out all the arguments for <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> we’d type <code><a href="https://rdrr.io/r/utils/install.packages.html">?install.packages</a></code> and press <code>Enter</code>.</p>
-<div class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
+<div id="cowsay" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try installing the `cowsay` package">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="" id="cowsay"></a>Try installing the <code>cowsay</code> package
+Try installing the <code>cowsay</code> package
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -481,7 +481,7 @@ documentation for the say() function.
 <p>The <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a> package is a dataset curated by Allison Horst of data on three penguin species from the <a href="https://pallter.marine.rutgers.edu/">Palmer Station in Antarctica</a> (<a href="#fig-palmer-penguins-hex" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-palmer-penguins-hex" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
+<div id="fig-palmer-penguins-hex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-palmer-penguins-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/palmerpenguins.png" class="img-fluid figure-img" style="width:33.0%" alt="Hexagon sticker with the title Palmer Penguins and drawings of Chinstrap, Gentoo  and Adélie penguins.">
 </div>
@@ -498,7 +498,7 @@ Figure&nbsp;3.5: Hex sticker of the <a href="https://allisonhorst.github.io/palm
 <p>The three penguins species are the Chinstrap, Gentoo and Adélie penguins (<a href="#fig-palmer-penguins" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-palmer-penguins" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
+<div id="fig-palmer-penguins" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-palmer-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/penguins.png" class="img-fluid figure-img" style="width:80.0%" alt="Artwork by @allison_horst of the Chinstrap, Gentoo  and Adélie penguins.">
 </div>
@@ -511,7 +511,7 @@ Figure&nbsp;3.6: Artwork by @allison_horst of the Chinstrap, Gentoo and Adélie 
 <p>The dataset records various information about 344 penguins, including their culmen (<a href="#fig-culmen" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-culmen" class="quarto-figure quarto-figure-center quarto-float anchored" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
+<div id="fig-culmen" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-culmen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/culmen_depth.png" class="img-fluid figure-img" style="width:66.0%" alt="Artwork by @allison_horst of the culman of a Gentoo penguin. The culmen is the upper ridge of a bird's bill. How bill length and bill depth on the culmen are measured are indicated.">
 </div>
@@ -545,7 +545,7 @@ Figure&nbsp;3.7: Artwork by @allison_horst of the culman of a Gentoo penguin.
 <p>Creating a Project creates a file <code>.Rproj</code> containing all the information associated with your analysis including the Project location (allowing you to quickly navigate to it), and optionally preserves custom settings and open files to make it easier to resume work after a break. This is also super helpful if you are working on multiple projects as you can switch between them at a click.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-create-project" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of the new R project menu in RStudio">
+<div id="fig-create-project" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An image of the new R project menu in RStudio">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/create-project.png" class="img-fluid figure-img" style="width:66.0%" alt="An image of the new R project menu in RStudio">
 </div>
@@ -591,9 +591,9 @@ Figure&nbsp;3.8: Starting a new R project in RStudio
 <p>This is illustrated in <a href="#fig-tidy-data" class="quarto-xref">Figure&nbsp;<span>3.9</span></a> using a part of the Palmer Penguins dataset (<a href="#sec-palmer-penguins" class="quarto-xref"><span>Section 3.4.1</span></a>). The eight variables in the columns form an observation for each penguin in every row, and each cell has a single value recorded.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-tidy-data" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
+<div id="fig-tidy-data" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/tidy-data.png" class="img-fluid figure-img" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell.">
+<img src="img/tidy-data.png" class="img-fluid figure-img" alt="An image of tidy data using the penguin dataset. Every variable has it's own column, every observation has its own row and every value has its own cell." width="683">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.9: Some tidy data from the penguin dataset. Every variable has it’s own column, every observation has its own row and every value has its own cell.
@@ -625,7 +625,7 @@ Figure&nbsp;3.9: Some tidy data from the penguin dataset. Every variable has it�
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-r-atoms" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of atomic R data types: doubles, integers, characters and logicals.">
+<div id="fig-r-atoms" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An image of atomic R data types: doubles, integers, characters and logicals.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-r-atoms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/R-atomic-vectors.png" class="img-fluid figure-img" style="width:50.0%" alt="An image of atomic R data types: doubles, integers, characters and logicals.">
 </div>
@@ -650,13 +650,13 @@ Figure&nbsp;3.10: The atomic R data types that form the building blocks of more 
 </div>
 <p>Note here that we see the use of the assignment operator <code>&lt;-</code> to assign our vector on the right as the object <code>cards</code>. We talk more about that in <a href="#sec-assigning-objects" class="quarto-xref"><span>Section 3.9</span></a>.</p>
 <p>Also note that the output of <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> is itself a vector of length one and type <code>character</code>.</p>
-<div class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try creating a vector of integers">
+<div id="seq" class="unnumbered callout callout-style-default callout-tip no-icon callout-titled" title="Try creating a vector of integers">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="" id="seq"></a>Try creating a vector of integers
+Try creating a vector of integers
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -674,7 +674,7 @@ Figure&nbsp;3.10: The atomic R data types that form the building blocks of more 
 <p>In fact we could assign more than one label to the same object. Another way to think about this is that Bibi is a cat (<a href="#fig-bibi-object" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>), and remains a cat even if I call her Pickle when she’s being naughty.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-bibi-object" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of a cat being assigned the name Bibi to illustrate how the name does not change the data type of the object.">
+<div id="fig-bibi-object" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An image of a cat being assigned the name Bibi to illustrate how the name does not change the data type of the object.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bibi-object-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/bibi-data.png" class="img-fluid figure-img" style="width:80.0%" alt="An image of a cat being assigned the name Bibi to illustrate how the name does not change the data type of the object.">
 </div>
@@ -765,7 +765,7 @@ Figure&nbsp;3.11: Bibi is of data type cat regardless of her name.
 <p>Don’t worry if you find this confusing, everyone does when they first start with R. Hadley Wickham tweeted an image to illustrate list indexing shown in <a href="#fig-list-index" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-list-index" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image a tweet by Hadley Wickham showing pepper pots to indicate how indexing in lists works">
+<div id="fig-list-index" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An image a tweet by Hadley Wickham showing pepper pots to indicate how indexing in lists works">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-list-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/indexing.png" class="img-fluid figure-img" style="width:80.0%" alt="An image a tweet by Hadley Wickham showing pepper pots to indicate how indexing in lists works">
 </div>
@@ -778,7 +778,7 @@ Figure&nbsp;3.12: List indexing by Hadley Wickham
 <p>Lists and <code>NULL</code> which indicates the absence of a vector, complete the set of base vectors in R as illustrated in <a href="#fig-r-vectors" class="quarto-xref">Figure&nbsp;<span>3.13</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-r-vectors" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of the base vectors of R which includes Lists and Null vectors in addition to the atomic vectors.">
+<div id="fig-r-vectors" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An image of the base vectors of R which includes Lists and Null vectors in addition to the atomic vectors.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-r-vectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/R-vectors.png" class="img-fluid figure-img" style="width:66.0%" alt="An image of the base vectors of R which includes Lists and Null vectors in addition to the atomic vectors.">
 </div>
@@ -806,7 +806,7 @@ Figure&nbsp;3.13: The base vectors of R includes Lists and NULL vectors in addit
 <p><a href="#fig-data-frame" class="quarto-xref">Figure&nbsp;<span>3.14</span></a> shows an example data frame we’ll refer to as saved as the object <code>df</code> consisting of three rows and three columns. Each column is a different atomic data type of the same length.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-data-frame" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An image of an example data frame with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.">
+<div id="fig-data-frame" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An image of an example data frame with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/R-data-frame.png" class="img-fluid figure-img" style="width:50.0%" alt="An image of an example data frame with three rows and three columns. The first column is a numeric vector, the second a character vector and the third a logical vector.">
 </div>
@@ -892,7 +892,8 @@ Figure&nbsp;3.14: An example data frame <code>df</code> with three rows and thre
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -927,7 +928,8 @@ Warning messages
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, </span>
 <span>                           colour <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -989,7 +991,7 @@ will be 12 years old.</code></pre>
 <p>Note that <code>glue</code> evaluates the expression <code>age+1</code>.</p>
 </div>
 </div>
-<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-05-08.csv. The date in the filename is the date I built this book (2024-05-08)</p>
+<p>Here we are writing the <code>penguins</code> data frame as a csv file to the <code>outputs</code> folder and a file called outputs/penguin-data-2024-07-08.csv. The date in the filename is the date I built this book (2024-07-08)</p>
 </section><section id="ggsave" class="level3" data-number="3.12.2"><h3 data-number="3.12.2" class="anchored" data-anchor-id="ggsave">
 <span class="header-section-number">3.12.2</span> ggsave</h3>
 <p>If we want to save the last plot we made in <code>ggplot2</code> we can use the <a href="https://ggplot2.tidyverse.org/reference/ggsave.html"><code>ggsave()</code></a> function.</p>
@@ -1030,7 +1032,7 @@ will be 12 years old.</code></pre>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-claude-1" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
+<div id="fig-claude-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-claude-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/claude-part-1-2024-04-04.png" class="img-fluid figure-img" style="width:100.0%" alt="A screenshot of an example of using Claude 3 to create a R assistant that then showed me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm.">
 </div>
@@ -1045,7 +1047,7 @@ Figure&nbsp;3.15: An example of using Claude 3 to create a R assistant that then
 <p>Belle gets it perfect second time, <a href="#fig-claude-2" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-claude-2" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
+<div id="fig-claude-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-claude-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/claude-part-2-2024-04-04.png" class="img-fluid figure-img" style="width:100.0%" alt="A screenshot of an example of updating my Claude 3 R assistants ouput to show me how to write the code to filter the Palmer Penguins data for bill length >= 50 mm using the native R pipe operator.">
 </div>
@@ -1259,18 +1261,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1302,7 +1293,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1310,10 +1323,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -1357,7 +1375,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1405,7 +1427,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1626,12 +1653,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./markup-languages.html" class="pagination-link  aria-label=" languages="">
+      <a href="./markup-languages.html" class="pagination-link" aria-label="Markup Languages">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Markup Languages</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./importing-data.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Importing and exporting data</span>">
+      <a href="./importing-data.html" class="pagination-link" aria-label="Importing and exporting data">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

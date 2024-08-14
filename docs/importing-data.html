@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.5.47">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>R for Librarians - 4&nbsp; Importing and exporting data</title>
+<title>4&nbsp; Importing and exporting data – R for Librarians</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -105,13 +105,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./importing-data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Importing and exporting data</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -234,13 +234,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+</header><div id="chapter-04-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="" id="chapter-04-summary"></a>Summary
+Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -265,56 +265,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-7d72cde0{}.cl-7d6c0eec{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7d6e9f68{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7d6e9f7c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7d6eb2aa{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2ab{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2b4{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2b5{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2b6{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2be{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2bf{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2c0{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2c8{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2c9{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2ca{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2d2{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2d3{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2d4{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2d5{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2dc{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2dd{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2e6{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2e7{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2e8{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2e9{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2f0{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2f1{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6eb2f2{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-7d72cde0">
+<style>.cl-0c37dc98{}.cl-0c2ca0d0{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0c3145fe{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0c314608{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0c316264{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c31626e{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c31626f{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316270{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316278{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316279{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c31627a{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c31627b{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316282{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316283{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316284{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c31628c{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c31628d{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c31628e{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316296{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316297{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316298{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c316299{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c3162a0{width:1.907in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c3162a1{width:1.015in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c3162a2{width:0.931in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c3162a3{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c3162aa{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0c3162ab{width:2.119in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-0c37dc98">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-7d6eb2aa"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">title</span></p></th>
-<th class="cl-7d6eb2ab"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">type</span></p></th>
-<th class="cl-7d6eb2b4"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">genre</span></p></th>
-<th class="cl-7d6eb2b5"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">pages</span></p></th>
-<th class="cl-7d6eb2b6"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">year</span></p></th>
-<th class="cl-7d6eb2be"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">publisher</span></p></th>
+<th class="cl-0c316264"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">title</span></p></th>
+<th class="cl-0c31626e"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">type</span></p></th>
+<th class="cl-0c31626f"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">genre</span></p></th>
+<th class="cl-0c316270"><p class="cl-0c314608"><span class="cl-0c2ca0d0">pages</span></p></th>
+<th class="cl-0c316278"><p class="cl-0c314608"><span class="cl-0c2ca0d0">year</span></p></th>
+<th class="cl-0c316279"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">publisher</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-7d6eb2bf"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Plenty</span></p></td>
-<td class="cl-7d6eb2c0"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Non-fiction</span></p></td>
-<td class="cl-7d6eb2c8"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Cookery</span></p></td>
-<td class="cl-7d6eb2c9"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">288</span></p></td>
-<td class="cl-7d6eb2ca"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">2,010</span></p></td>
-<td class="cl-7d6eb2d2"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Chronicle Books</span></p></td>
+<td class="cl-0c31627a"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Plenty</span></p></td>
+<td class="cl-0c31627b"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Non-fiction</span></p></td>
+<td class="cl-0c316282"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Cookery</span></p></td>
+<td class="cl-0c316283"><p class="cl-0c314608"><span class="cl-0c2ca0d0">288</span></p></td>
+<td class="cl-0c316284"><p class="cl-0c314608"><span class="cl-0c2ca0d0">2,010</span></p></td>
+<td class="cl-0c31628c"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Chronicle Books</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-7d6eb2bf"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">In a Sunburned Country</span></p></td>
-<td class="cl-7d6eb2c0"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Non-fiction</span></p></td>
-<td class="cl-7d6eb2c8"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Travel</span></p></td>
-<td class="cl-7d6eb2c9"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">335</span></p></td>
-<td class="cl-7d6eb2ca"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">2,000</span></p></td>
-<td class="cl-7d6eb2d2"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Broadway Books</span></p></td>
+<td class="cl-0c31627a"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">In a Sunburned Country</span></p></td>
+<td class="cl-0c31627b"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Non-fiction</span></p></td>
+<td class="cl-0c316282"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Travel</span></p></td>
+<td class="cl-0c316283"><p class="cl-0c314608"><span class="cl-0c2ca0d0">335</span></p></td>
+<td class="cl-0c316284"><p class="cl-0c314608"><span class="cl-0c2ca0d0">2,000</span></p></td>
+<td class="cl-0c31628c"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Broadway Books</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-7d6eb2bf"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">The Catcher in the Rye</span></p></td>
-<td class="cl-7d6eb2c0"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Fiction</span></p></td>
-<td class="cl-7d6eb2c8"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Literature</span></p></td>
-<td class="cl-7d6eb2c9"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">234</span></p></td>
-<td class="cl-7d6eb2ca"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">1,951</span></p></td>
-<td class="cl-7d6eb2d2"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Little, Brown and Company</span></p></td>
+<td class="cl-0c31627a"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">The Catcher in the Rye</span></p></td>
+<td class="cl-0c31627b"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Fiction</span></p></td>
+<td class="cl-0c316282"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Literature</span></p></td>
+<td class="cl-0c316283"><p class="cl-0c314608"><span class="cl-0c2ca0d0">234</span></p></td>
+<td class="cl-0c316284"><p class="cl-0c314608"><span class="cl-0c2ca0d0">1,951</span></p></td>
+<td class="cl-0c31628c"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Little, Brown and Company</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-7d6eb2d3"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">A Time of Gifts</span></p></td>
-<td class="cl-7d6eb2d4"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Non-fiction</span></p></td>
-<td class="cl-7d6eb2d5"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Travel</span></p></td>
-<td class="cl-7d6eb2dc"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">321</span></p></td>
-<td class="cl-7d6eb2dd"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">1,977</span></p></td>
-<td class="cl-7d6eb2e6"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">John Murray</span></p></td>
+<td class="cl-0c31628d"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">A Time of Gifts</span></p></td>
+<td class="cl-0c31628e"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Non-fiction</span></p></td>
+<td class="cl-0c316296"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Travel</span></p></td>
+<td class="cl-0c316297"><p class="cl-0c314608"><span class="cl-0c2ca0d0">321</span></p></td>
+<td class="cl-0c316298"><p class="cl-0c314608"><span class="cl-0c2ca0d0">1,977</span></p></td>
+<td class="cl-0c316299"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">John Murray</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-7d6eb2e7"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">In Patagonia</span></p></td>
-<td class="cl-7d6eb2e8"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Non-fiction</span></p></td>
-<td class="cl-7d6eb2e9"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Travel</span></p></td>
-<td class="cl-7d6eb2f0"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">204</span></p></td>
-<td class="cl-7d6eb2f1"><p class="cl-7d6e9f7c"><span class="cl-7d6c0eec">1,977</span></p></td>
-<td class="cl-7d6eb2f2"><p class="cl-7d6e9f68"><span class="cl-7d6c0eec">Jonathan Cape</span></p></td>
+<td class="cl-0c3162a0"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">In Patagonia</span></p></td>
+<td class="cl-0c3162a1"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Non-fiction</span></p></td>
+<td class="cl-0c3162a2"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Travel</span></p></td>
+<td class="cl-0c3162a3"><p class="cl-0c314608"><span class="cl-0c2ca0d0">204</span></p></td>
+<td class="cl-0c3162aa"><p class="cl-0c314608"><span class="cl-0c2ca0d0">1,977</span></p></td>
+<td class="cl-0c3162ab"><p class="cl-0c3145fe"><span class="cl-0c2ca0d0">Jonathan Cape</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -324,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sec-importing-plain-text" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="sec-importing-plain-text">
 <span class="header-section-number">4.2.1</span> Importing plain text</h3>
 <div class="cell">
-<div id="lst-import-csv" class="r cell-code listing quarto-float">
+<div id="lst-import-csv" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-import-csv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;4.1: Importing a plain text csv file from the <code>data</code> folder and assigning it to an object called <code>books</code>
 </figcaption><div aria-describedby="lst-import-csv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -336,7 +336,7 @@ Listing&nbsp;4.1: Importing a plain text csv file from the <code>data</code> fol
 </section><section id="sec-exporting-plain-text" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="sec-exporting-plain-text">
 <span class="header-section-number">4.2.2</span> Exporting plain text</h3>
 <div class="cell">
-<div id="lst-write-csv" class="r cell-code listing quarto-float">
+<div id="lst-write-csv" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-write-csv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;4.2: Writing the <code>penguins</code> data to a csv file in the data folder with <code>write_csv</code>
 </figcaption><div aria-describedby="lst-write-csv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -352,7 +352,7 @@ Listing&nbsp;4.2: Writing the <code>penguins</code> data to a csv file in the da
 <p>When we install the tidyverse packages, <code>readxl</code> is installed, but not loaded by default when we load <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> so we have to load it separately, <code><a href="https://readxl.tidyverse.org">library(readxl)</a></code>.</p>
 <p>For exporting to MS Excel, <code>writexl</code> from <a href="https://docs.ropensci.org/writexl/">R open science writexl</a> has to be installed separately</p>
 <div class="cell">
-<div id="lst-writexl" class="r cell-code listing quarto-float">
+<div id="lst-writexl" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-writexl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;4.3: Install writexl package from ROpenSci for writing to MS Excel
 </figcaption><div aria-describedby="lst-writexl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -364,7 +364,7 @@ Listing&nbsp;4.3: Install writexl package from ROpenSci for writing to MS Excel
 <section id="sec-importing-excel-sheets" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="sec-importing-excel-sheets">
 <span class="header-section-number">4.3.1</span> Importing Excel sheets</h3>
 <div class="cell">
-<div id="lst-import-xl" class="r cell-code listing quarto-float">
+<div id="lst-import-xl" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-import-xl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;4.4: Importing a Excel file from the <code>data</code> folder and assigning it to an object called <code>books</code>
 </figcaption><div aria-describedby="lst-import-xl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -376,7 +376,7 @@ Listing&nbsp;4.4: Importing a Excel file from the <code>data</code> folder and a
 </section><section id="sec-exporting-excel-sheets" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="sec-exporting-excel-sheets">
 <span class="header-section-number">4.3.2</span> Exporting Excel sheets</h3>
 <div class="cell">
-<div id="lst-write-xl" class="r cell-code listing quarto-float">
+<div id="lst-write-xl" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-write-xl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;4.5: Writing the <code>penguins</code> data to a csv file in the data folder with <code>write_csv</code>
 </figcaption><div aria-describedby="lst-write-xl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -569,18 +569,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -612,7 +601,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -620,10 +631,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -667,7 +683,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -715,7 +735,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -936,12 +961,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./getting-started.html" class="pagination-link  aria-label=" started="">
+      <a href="./getting-started.html" class="pagination-link" aria-label="Getting started">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data-wrangling-1.html" class="pagination-link" aria-label="<span class='chapter-number'>5</span>&nbsp; <span class='chapter-title'>Data wrangling I</span>">
+      <a href="./data-wrangling-1.html" class="pagination-link" aria-label="Data wrangling I">
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data wrangling I</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
