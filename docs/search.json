@@ -468,5 +468,35 @@
     "crumbs": [
       "References"
     ]
+  },
+  {
+    "objectID": "exercises.html",
+    "href": "exercises.html",
+    "title": "\n8  Exercises\n",
+    "section": "",
+    "text": "8.1 Getting started",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Exercises</span>"
+    ]
+  },
+  {
+    "objectID": "exercises.html#dplyr",
+    "href": "exercises.html#dplyr",
+    "title": "\n8  Exercises\n",
+    "section": "\n8.2 dplyr",
+    "text": "8.2 dplyr\nAll these exercises use dplyr from the tidyverse, but in addition to reading the book, you may have to Google or ask an AI assistance for help with some of these exercises.\n\n8.2.1 Importing and inspecting data\nExercise 1: Import the data contained in csv file to an object called books from: https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-30.csv\n\n\n\n\n\n\nTip\n\n\n\nYou can read data directly from paths to on-line datasets with read_csv() as you would for locally stored csv files.\n\n\n\nCode# Exercise 1: Import the data contained in csv file to an object called `books`\nbooks &lt;- read_csv(\"https://raw.githubusercontent.com/ab604/library-r/main/data/books-2024-04-30.csv\")",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Exercises</span>"
+    ]
+  },
+  {
+    "objectID": "exercises.html#getting-started",
+    "href": "exercises.html#getting-started",
+    "title": "\n8  Exercises\n",
+    "section": "",
+    "text": "8.1.1 Exploring RStudio\n1 . Find the keyboard shortcuts menu:\nTools &gt; Keyboard shortcuts help\n\nChange the appearance to something different.\n\n8.1.2 Installing packages and using functions\n3 .Install cowsay and make a cat say “U openz ur research to me, I openz my hear to U”\n\nCodeinstall.packages(\"cowsay\")\nlibrary(cowsay)\n\n# Make a cat declare their love of open access publishing\nsay(\"U openz ur research to me, I openz my hear to U\", by = \"cat\")",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Exercises</span>"
+    ]
   }
 ]
