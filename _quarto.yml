@@ -1,49 +1,52 @@
 project:
   type: book
   output-dir: docs
-
 book:
-  title: "R for Librarians"
-  author: "Alistair Bailey"
+  title: R for Librarians
+  author: Alistair Bailey
   date: last-modified
-  date-format: "[Last Updated on] YYYY-MM-DD"
+  date-format: '[Last Updated on] YYYY-MM-DD'
   language: en-GB
-  reader-mode: true  
+  reader-mode: true
   page-footer:
-      left: |
-        This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.
-      right: |
-        This book was built with <a href="https://quarto.org/">Quarto</a>.
+    left: |
+      This font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible</a>.
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
   repo-url: https://github.com/ab604/library-r
   repo-branch: main
-  repo-actions: [edit, issue]
+  repo-actions:
+  - edit
+  - issue
   chapters:
-    - index.qmd
-    - setting-the-scene.qmd
-    - markup-languages.qmd
-    - getting-started.qmd
-    - importing-data.qmd
-    - data-wrangling-1.qmd
-    - data-wrangling-2.qmd
-    - wrangling-bibliometrics-data.qmd
-    - exercises.qmd
-    - references.qmd
-  
+  - index.qmd
+  - setting-the-scene.qmd
+  - markup-languages.qmd
+  - getting-started.qmd
+  - importing-data.qmd
+  - data-wrangling-1.qmd
+  - data-wrangling-2.qmd
+  - wrangling-bibliometrics-data.qmd
+  - exercises.qmd
+  - references.qmd
 bibliography: references.bib
-
 format:
   html:
     code-link: true
     citation:
-        url: https://ab604.github.io/library-r/
+      url: https://ab604.github.io/library-r/
     cache: false
     link-external-icon: true
     link-external-newwindow: true
     theme:
-      light: [cosmo, styles.scss]
-      dark: [cosmo, dark.scss]
-  #pdf:
-   # documentclass: scrreprt
-
+      light:
+      - cosmo
+      - styles.scss
+      dark:
+      - cosmo
+      - dark.scss
+    css: include/webex.css
+    include-after-body: include/webex.js
 editor: visual
-# code-annotations: below
+execute:
+  output: asis
