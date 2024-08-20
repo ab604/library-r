@@ -71,7 +71,6 @@ penguins |>
 write_csv("data/palmer-penguins-data.csv")
 ```
 
-
 ## Excel spreadsheets {#sec-excel}
 
 Excel files saves files into its own proprietary format `.xls` or `.xlsx` that holds information in addition to the data itself (metadata). For reading and writing excel files in R, tidyverse `readxl` package is the place to start: [readxl homepage](https://readxl.tidyverse.org/).
@@ -107,3 +106,5 @@ write_xlsx("data/palmer-penguins-data.xlsx")
 ```
 
 ## Cleaning names {#sec-cleaning-names}
+
+TBC

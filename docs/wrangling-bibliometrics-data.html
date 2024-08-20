@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.4.537">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>7&nbsp; Wrangling bibliometrics data – R for Librarians</title>
+<title>R for Librarians - 7&nbsp; Wrangling bibliometrics data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./exercises.html" rel="next">
 <link href="./data-wrangling-2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -105,13 +105,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wrangling-bibliometrics-data.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wrangling bibliometrics data</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -188,6 +188,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exercises</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -245,13 +251,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><p><strong>WORK IN PROGRESS</strong></p>
-<div id="bibliometrics-summary" class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
+<div class="unnumbered callout callout-style-simple callout-important no-icon callout-titled" title="Summary">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<a href="" id="bibliometrics-summary"></a>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -548,7 +554,7 @@ $ UT &lt;chr&gt; "WOS:001175218400001", "WOS:001170495400001", "WOS:001187496600
 <span class="header-section-number">7.3.2</span> Separating the Scopus Affiliations</h3>
 <p>I’ll use <code>select</code> to look at <code>Affiliations</code> column in <code>lipid_join</code> that originates in the Scopus data, and we can see there are three <code>;</code> separating three values for departments: two are University of Southampton and one is from the University of Pennsylvania.</p>
 <div class="cell">
-<div id="lst-lipid-affiliations" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<div id="lst-lipid-affiliations" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-lipid-affiliations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;7.1: Use <code>select</code> to see how many values are in the <code>Affiliations</code> cell
 </figcaption><div aria-describedby="lst-lipid-affiliations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -563,10 +569,10 @@ Listing&nbsp;7.1: Use <code>select</code> to see how many values are in the <cod
 </div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-1dfdcf6e{}.cl-1df1b184{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1df67dc2{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1df6bb7a{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1df6bb84{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-1dfdcf6e">
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-1df6bb7a"><p class="cl-1df67dc2"><span class="cl-1df1b184">Affiliations</span></p></th></tr></thead>
-<tbody><tr style="overflow-wrap:break-word;"><td class="cl-1df6bb84"><p class="cl-1df67dc2"><span class="cl-1df1b184">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom; National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom; Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td></tr></tbody>
+<style>.cl-3b04510c{}.cl-3afc79fa{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3b003284{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3b004436{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b004440{width:36.152in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-3b04510c">
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-3b004436"><p class="cl-3b003284"><span class="cl-3afc79fa">Affiliations</span></p></th></tr></thead>
+<tbody><tr style="overflow-wrap:break-word;"><td class="cl-3b004440"><p class="cl-3b003284"><span class="cl-3afc79fa">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom; National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom; Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td></tr></tbody>
 </table>
 </div>
 </div>
@@ -585,7 +591,7 @@ Listing&nbsp;7.1: Use <code>select</code> to see how many values are in the <cod
 </ul>
 <p>I’m not assigning an object as I want to see how this looks.</p>
 <div class="cell">
-<div id="lst-lipid-separate-wider" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<div id="lst-lipid-separate-wider" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-lipid-separate-wider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;7.2: Separating the Affiliation values in <code>lipid_join</code> into individual columns using <code>separate_wider_delim()</code>
 </figcaption><div aria-describedby="lst-lipid-separate-wider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -603,17 +609,17 @@ Listing&nbsp;7.2: Separating the Affiliation values in <code>lipid_join</code> i
 </div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-1e26df58{}.cl-1e1b4c9c{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1e1fd672{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1e1ff47c{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1e1ff486{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1e1ff487{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1e1ff490{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1e1ff491{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1e1ff49a{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-1e26df58">
+<style>.cl-3b199a08{}.cl-3b133bcc{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3b15c496{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3b15d3be{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b15d3c8{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b15d3c9{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b15d3ca{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b15d3d2{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b15d3d3{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-3b199a08">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-1e1ff47c"><p class="cl-1e1fd672"><span class="cl-1e1b4c9c">Affiliations_1</span></p></th>
-<th class="cl-1e1ff486"><p class="cl-1e1fd672"><span class="cl-1e1b4c9c">Affiliations_2</span></p></th>
-<th class="cl-1e1ff487"><p class="cl-1e1fd672"><span class="cl-1e1b4c9c">Affiliations_3</span></p></th>
+<th class="cl-3b15d3be"><p class="cl-3b15c496"><span class="cl-3b133bcc">Affiliations_1</span></p></th>
+<th class="cl-3b15d3c8"><p class="cl-3b15c496"><span class="cl-3b133bcc">Affiliations_2</span></p></th>
+<th class="cl-3b15d3c9"><p class="cl-3b15c496"><span class="cl-3b133bcc">Affiliations_3</span></p></th>
 </tr></thead>
 <tbody><tr style="overflow-wrap:break-word;">
-<td class="cl-1e1ff490"><p class="cl-1e1fd672"><span class="cl-1e1b4c9c">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
-<td class="cl-1e1ff491"><p class="cl-1e1fd672"><span class="cl-1e1b4c9c"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
-<td class="cl-1e1ff49a"><p class="cl-1e1fd672"><span class="cl-1e1b4c9c"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
+<td class="cl-3b15d3ca"><p class="cl-3b15c496"><span class="cl-3b133bcc">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
+<td class="cl-3b15d3d2"><p class="cl-3b15c496"><span class="cl-3b133bcc"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
+<td class="cl-3b15d3d3"><p class="cl-3b15c496"><span class="cl-3b133bcc"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
 </tr></tbody>
 </table>
 </div>
@@ -621,7 +627,7 @@ Listing&nbsp;7.2: Separating the Affiliation values in <code>lipid_join</code> i
 </div>
 <p>That seems to work, so lets assign the output to a new object <code>lipid_wide</code>. We expect to add two new columns, <code>lipid_join</code> has 108 columns, we expect <code>lipid_wide</code> to have 110 columns.</p>
 <div class="cell">
-<div id="lst-sep-wide-lipid" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<div id="lst-sep-wide-lipid" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-sep-wide-lipid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;7.3: Separating the Affiliation values in <code>scopus_dat</code> into individual columns using <code>separate_wider_delim()</code> and creating a new object.
 </figcaption><div aria-describedby="lst-sep-wide-lipid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -652,10 +658,10 @@ Listing&nbsp;7.3: Separating the Affiliation values in <code>scopus_dat</code> i
 <span>  <span class="fu">autofit</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-1e512100{}.cl-1e4511ee{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1e494034{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1e495c72{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1e495c7c{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-1e512100">
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-1e495c72"><p class="cl-1e494034"><span class="cl-1e4511ee">C1</span></p></th></tr></thead>
-<tbody><tr style="overflow-wrap:break-word;"><td class="cl-1e495c7c"><p class="cl-1e494034"><span class="cl-1e4511ee">[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Hosp Southampton Natl Hlth Serv Fdn Trust, Southampton, England; [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Genet, Philadelphia, PA 19104 USA</span></p></td></tr></tbody>
+<style>.cl-3b31047c{}.cl-3b2abf9a{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3b2d020a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3b2d0eb2{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b2d0ebc{width:30.245in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-3b31047c">
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-3b2d0eb2"><p class="cl-3b2d020a"><span class="cl-3b2abf9a">C1</span></p></th></tr></thead>
+<tbody><tr style="overflow-wrap:break-word;"><td class="cl-3b2d0ebc"><p class="cl-3b2d020a"><span class="cl-3b2abf9a">[Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr, Southampton, England; [Bilson, Josh; Scorletti, Eleonora] Univ Hosp Southampton Natl Hlth Serv Fdn Trust, Southampton, England; [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Genet, Philadelphia, PA 19104 USA</span></p></td></tr></tbody>
 </table>
 </div>
 </div>
@@ -744,27 +750,27 @@ $ C1_7 &lt;chr&gt; " [Scorletti, Eleonora] Univ Penn, Perelman Sch Med, Dept Gen
 <span>  <span class="fu">autofit</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="tabwid">
-<style>.cl-1eabbe44{}.cl-1e9f3db8{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1ea41d38{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1ea4393a{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43944{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43945{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea4394e{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43958{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43959{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43962{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43963{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea4396c{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea4396d{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43976{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43977{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43980{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1ea43981{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="cl-1eabbe44">
+<style>.cl-3b5f7c80{}.cl-3b58ea0a{font-family:'Consolas';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3b5b89e0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3b5b9c82{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9c8c{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9c8d{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9ca0{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9caa{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9cab{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9cac{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9cbe{width:6.165in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9cbf{width:4.317in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9cc0{width:5.745in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9cc8{width:4.233in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9cc9{width:8.853in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9cdc{width:17.925in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3b5b9ce6{width:9.777in;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="cl-3b5f7c80">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-1ea4393a"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0</span></p></th>
-<th class="cl-1ea43944"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">Title of the contribution in original language-5</span></p></th>
-<th class="cl-1ea43944"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">C1_2</span></p></th>
-<th class="cl-1ea43945"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">C1_4</span></p></th>
-<th class="cl-1ea4394e"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">C1_6</span></p></th>
-<th class="cl-1ea43958"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">Affiliations_1</span></p></th>
-<th class="cl-1ea43959"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">Affiliations_2</span></p></th>
-<th class="cl-1ea43962"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">Affiliations_3</span></p></th>
+<th class="cl-3b5b9c82"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">Electronic version(s) of this work &gt; DOI (Digital Object Identifier)-0</span></p></th>
+<th class="cl-3b5b9c8c"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">Title of the contribution in original language-5</span></p></th>
+<th class="cl-3b5b9c8c"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">C1_2</span></p></th>
+<th class="cl-3b5b9c8d"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">C1_4</span></p></th>
+<th class="cl-3b5b9ca0"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">C1_6</span></p></th>
+<th class="cl-3b5b9caa"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">Affiliations_1</span></p></th>
+<th class="cl-3b5b9cab"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">Affiliations_2</span></p></th>
+<th class="cl-3b5b9cac"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">Affiliations_3</span></p></th>
 </tr></thead>
 <tbody><tr style="overflow-wrap:break-word;">
-<td class="cl-1ea43963"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">10.1097/MCO.0000000000000993</span></p></td>
-<td class="cl-1ea4396c"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">Lipid droplets in steatotic liver disease</span></p></td>
-<td class="cl-1ea4396c"><p class="cl-1ea41d38"><span class="cl-1e9f3db8"> Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth</span></p></td>
-<td class="cl-1ea4396d"><p class="cl-1ea41d38"><span class="cl-1e9f3db8"> Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr</span></p></td>
-<td class="cl-1ea43976"><p class="cl-1ea41d38"><span class="cl-1e9f3db8"> Univ Hosp Southampton Natl Hlth Serv Fdn Trust</span></p></td>
-<td class="cl-1ea43977"><p class="cl-1ea41d38"><span class="cl-1e9f3db8">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
-<td class="cl-1ea43980"><p class="cl-1ea41d38"><span class="cl-1e9f3db8"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
-<td class="cl-1ea43981"><p class="cl-1ea41d38"><span class="cl-1e9f3db8"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
+<td class="cl-3b5b9cbe"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">10.1097/MCO.0000000000000993</span></p></td>
+<td class="cl-3b5b9cbf"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">Lipid droplets in steatotic liver disease</span></p></td>
+<td class="cl-3b5b9cbf"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a"> Univ Southampton, Fac Med, Sch Human Dev &amp; Hlth</span></p></td>
+<td class="cl-3b5b9cc0"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a"> Univ Southampton, Natl Inst Hlth Res Southampton, Biomed Res Ctr</span></p></td>
+<td class="cl-3b5b9cc8"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a"> Univ Hosp Southampton Natl Hlth Serv Fdn Trust</span></p></td>
+<td class="cl-3b5b9cc9"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a">School of Human Development and Health, Faculty of Medicine, University of Southampton, United Kingdom</span></p></td>
+<td class="cl-3b5b9cdc"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a"> National Institute for Health Research, Southampton Biomedical Research Centre, University of Southampton, University Hospital Southampton, National Health Service Foundation Trust, Southampton, United Kingdom</span></p></td>
+<td class="cl-3b5b9ce6"><p class="cl-3b5b89e0"><span class="cl-3b58ea0a"> Department of Genetics, Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA, United States</span></p></td>
 </tr></tbody>
 </table>
 </div>
@@ -1042,7 +1048,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1074,29 +1091,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1104,15 +1099,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -1156,11 +1146,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1208,12 +1194,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1434,13 +1415,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./data-wrangling-2.html" class="pagination-link" aria-label="Data wrangling II">
+      <a href="./data-wrangling-2.html" class="pagination-link  aria-label=" wrangling="" ii="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data wrangling II</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./exercises.html" class="pagination-link" aria-label="<span class='chapter-number'>8</span>&nbsp; <span class='chapter-title'>Exercises</span>">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exercises</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
